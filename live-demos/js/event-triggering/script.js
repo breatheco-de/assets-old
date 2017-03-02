@@ -25,12 +25,13 @@ $(document).ready(function(){
 	printEventLog("ready");
 
 	$.ajax({
-		url: "https://4geeksacademy.github.io/exercise-assets/json/huge.json",
+		url: "https://4geeksacademy.github.io/exercise-assets/json/zips.json",
 		success: function(){
 			printEventLog("huge ajax success");
 		},
-		error: function(){
-			printEventLog("huge ajax error");
+		error: function(objError,errorMsg){
+			console.log(errorMsg);
+			printEventLog("huge ajax error: ");
 		}
 	});
 
