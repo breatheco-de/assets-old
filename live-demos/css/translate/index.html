@@ -1,0 +1,103 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alejandro</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <style>
+#container {
+    max-width:500px;
+    height:465px;
+    background-color:#F8F9F9;
+    border:1px solid #A9A9A9;
+}
+#left-col {
+    padding:5px 5px 5px 5px;
+  float: left;
+  border: 1px;
+  width: 40%;
+    height:inherit;
+}
+#right-col {
+    float: left;
+  width: 57%;
+  display: block;
+    height:inherit;
+    border-left:1px solid #A9A9A9;
+}
+#parent-div{
+    width: 200px;
+    height: 128px;
+    border: 1px solid #CCC;
+    margin: 40px auto 60px;
+    padding-top: 50px;
+    position: relative;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    -o-perspective: 600px;
+    perspective: 600px;
+}
+#div1 {
+    padding: 50px;
+    position: absolute;
+    border: 1px solid black;
+    background-color: red;
+    -webkit-transform: translateX( 0px );
+    -moz-transform: translateX( 0px );
+    -o-transform: translateX( 0px );
+    transform: translateX( 0px );
+}
+
+  </style>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <div id="container">
+    <div id="left-col">
+          <!-- Margin -->
+          <div>
+          <label>Perspective</label>
+          <input type="range" id="perspective_range" value="0" min="0" max="150" />
+          <input type="text"  id="perspective_text" value="0" style="width:30px;"/>
+          </div>
+
+          <div>
+          <label>TranslateX</label>
+          <input type="range" id="translatex_range" value="0" min="0" max="150" />
+          <input type="text"  id="translatex_text" value="0" style="width:30px;"/>
+          </div>
+
+          <div>
+          <label>TranslateY</label>
+          <input type="range" id="translatey_range" value="0" min="0" max="150" />
+          <input type="text"  id="translatey_text" value="0" style="width:30px;"/>
+          </div>
+
+          <div>
+          <label>TranslateZ</label>
+          <input type="range" id="translatez_range" value="0" min="0" max="150" />
+          <input type="text"  id="translatez_text" value="0" style="width:30px;"/>
+          </div>
+
+          <div>
+          <label>Transform Style</label>
+          <select id="transform-style_range">
+            <option value="preserve-3d">preserve-3d</option>
+            <option value="flat">flat</option>
+          </select>
+          </div>
+      </div>
+      <div id="right-col"> 
+        <div id="parent-div">
+          <div id="div1">HELLO</div>
+        </div>
+      </div>
+    </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+#container {
+    max-width:500px;
+    height:465px;
+    background-color:#F8F9F9;
+    border:1px solid #A9A9A9;
+}
+#left-col {
+    padding:5px 5px 5px 5px;
+  float: left;
+  border: 1px;
+  width: 40%;
+    height:inherit;
+}
+#right-col {
+    float: left;
+  width: 57%;
+  display: block;
+    height:inherit;
+    border-left:1px solid #A9A9A9;
+}
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.parallax__layer--base {
+  transform: translateZ(0);
+}
+.parallax__layer--back {
+  transform: translateZ(-1px);
+}

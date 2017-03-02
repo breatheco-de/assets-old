@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Event Triggering</title>
+</head>
+<body onload="myGenericListener(event);">
+<div id="content">
+	<div id="instructions">
+		<h2>Instructions</h2>
+		<p id="instructionsMsg">Open the inspector console!!!!</p>
+	</div>
+	<form id="form1" action="#" method="get" target="_parent" onsubmit="return false;">
+		<fieldset>
+			<legend>Full Name</legend>
+			<label for="firstname">First:</label>
+			<input type="Text" name="firstname">
+			<label for="lastname">Last:</label>
+			<input type="Text" name="lastname">
+			<label for="lastname">Age:</label>
+			<input type="Number" name="age" min="0" max="50">
+		</fieldset>
+		<fieldset>
+			<legend>Contact information</legend>
+			<input type="Text" name="email" placeholder="username@domain.com">
+			<input type="Text" name="phone" placeholder="Mobile phone">
+			<input type="Text" name="website" placeholder="Personal Website URL">
+		</fieldset>
+		<fieldset>
+			<legend>Gender</legend>
+			<label for="gender">Male:</label>
+			<input type="radio" name="gender" value="male">
+			<label for="gender">Female:</label>
+			<input type="radio" name="gender" value="female">
+		</fieldset>
+		<input type='submit' value='SUBSCRIBE' />
+	</form>
+</div>
+	<script
+	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

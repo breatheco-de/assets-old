@@ -1,0 +1,469 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alejandro</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <style>
+  body {
+      font-family: 'Roboto Condensed', sans-serif;
+  }
+  label {
+    font-size:14px;
+    color:#181818;
+}
+#container {
+    max-width:500px;
+    height:465px;
+    background-color:#F8F9F9;
+    border:1px solid #A9A9A9;
+}
+#left-col {
+    padding:5px 5px 5px 5px;
+	float: left;
+	border: 1px;
+	width: 40%;
+    height:inherit;
+}
+#right-col {
+    float: left;
+	width: 57%;
+	display: block;
+    height:inherit;
+    border-left:1px solid #A9A9A9;
+}
+#invisible-cont
+{
+  display: inline-block;
+  margin-top:160px;
+  margin-left:85px;
+  background: red;
+  background-color:blue;
+}
+#box span{background: rgba(255,255,255,0.2); display: inline-block;}
+#box {
+    display: inline-block;
+    margin: 0;
+    width:120px;
+    height:120px;
+    border:1px solid #181818;
+    background: rgba(255,255,255,0.4);
+}
+input[type=range] {
+    -webkit-appearance: none;
+    border: 1px solid white;
+    width: 150px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 150px;
+    height: 5px;
+    background: #dfe0e0;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 0%;
+    background: #2196F3;
+    margin-top: -4px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #dfe0e0;
+}
+input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+input[type=range]::-ms-track {
+    width: 300px;
+    height: 5px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+.color {
+    float:left;
+    padding:4px;
+    margin-top:5px;
+    margin-left:3px;
+    margin-right:3px;
+    width:18px;
+    height:18px;
+    cursor: pointer;
+}
+#color-blue {
+    background-color:dodgerblue;
+}
+#color-green {
+    background-color:mediumspringgreen;
+}
+#color-red {
+    background-color:red;
+}
+#color-pink {
+    background-color:pink;
+}
+#color-orange {
+    background-color:orange;
+}
+#color-gray {
+    background-color:dimgray;
+}
+
+  </style>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <div id="container">
+  	<div id="left-col">
+          <!-- Margin -->
+          <div>
+          <label>Margin Top</label>
+          <input type="range" id="margin_top_range" value="0" min="0" max="150" />
+          <input type="text"  id="margin_top_text" value="0" style="width:30px;"/>
+          </div>
+           <div>
+          <label>Margin Bottom</label>
+          <input type="range" id="margin_bot_range" value="0" min="0" max="150" />
+          <input type="text"  id="margin_bot_text" value="0" style="width:30px;"/>
+          </div>
+          <div>
+          <label>Margin Left</label>
+          <input type="range" id="margin_left_range" value="0" min="0" max="60" />
+          <input type="text"  id="margin_left_text" value="0" style="width:30px;"/>
+          </div>
+          <div>
+          <label>Margin Right</label>
+          <input type="range" id="margin_right_range" value="0" min="0" max="60" />
+          <input type="text"  id="margin_right_text" value="0" style="width:30px;"/>
+          </div>
+          <!-- Padding -->
+           <div>
+          <label>Padding Top</label>
+          <input type="range" id="padding_top_range" value="0" min="0" max="50" />
+          <input type="text"  id="padding_top_text" value="0" style="width:30px;"/>
+          </div>
+          <div>
+          <label>Padding Bottom</label>
+          <input type="range" id="padding_bot_range" value="0" min="0" max="50" />
+          <input type="text"  id="padding_bot_text" value="0" style="width:30px;"/>
+          </div>
+          <div>
+          <label>Padding Left</label>
+          <input type="range" id="padding_left_range" value="0" min="0" max="50" />
+          <input type="text"  id="padding_left_text" value="0" style="width:30px;"/>
+          </div>
+          <div>
+          <label>Padding Right</label>
+          <input type="range" id="padding_right_range" value="0" min="0" max="50" />
+          <input type="text"  id="padding_right_text" value="0" style="width:30px;"/>
+          </div>
+          <!-- Border -->
+          <div>
+          <label>Border Width</label>
+          <input type="range" id="border_width_range" value="1" min="0" max="10" />
+          <input type="text"  id="border_width_text" value="1" style="width:30px;"/>
+          </div>
+          <div>
+          <label>Border Radius</label>
+          <input type="range" id="border_radius_range" value="0" min="0" max="100" />
+          <input type="text"  id="border_radius_text" value="0" style="width:30px;"/>
+          </div>
+          <!-- Color -->
+          <div>
+          <label>Background Color</label>
+          <br/>
+          <div class="color" id="color-red"></div>
+          <div class="color" id="color-green"></div>
+          <div class="color" id="color-blue"></div>
+          <div class="color" id="color-pink"></div>
+          <div class="color" id="color-orange"></div>
+          <div class="color" id="color-gray"></div>
+          </div>
+      </div>
+      <div id="right-col"> 
+          <div id="invisible-cont">
+            <div id="box"><span>Some HTML content inside the container.</span></div>
+          </div>
+          
+      </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+"use strict";
+var myMarginTop = parseInt( $("#box").css("marginTop") );
+var myMarginLeft = parseInt( $("#box").css("marginLeft") );
+var myMarginRight = parseInt( $("#box").css("marginRight") );
+var myMarginBottom = parseInt( $("#box").css("marginBottom") );
+var myPaddingTop = parseInt( $("#box").css("paddingTop") );
+var myPaddingBot = parseInt( $("#box").css("paddingBottom") );
+var myPaddingLeft = parseInt( $("#box").css("paddingLeft") );
+var myPaddingRight = parseInt( $("#box").css("paddingRight") );
+$("#margin_top_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#margin_top_text").val(value);
+    $("#box").css('marginTop', myMarginTop + value + 'px');
+});
+$("#margin_top_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#margin_top_range").attr('max')); 
+
+      if (max >= value) {
+     $("#margin_top_range").val(value);
+         $("#box").css('marginTop', parseInt( $("#box").css("marginTop")) + value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#margin_top_range").val(max); 
+        $("#box").css('marginTop', parseInt( $("#box").css("marginTop")) + max + 'px');
+      };
+});
+
+$("#margin_bot_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#margin_bot_text").val(value);
+    $("#box").css('marginBottom', value - myMarginBottom + 'px');
+});
+$("#margin_bot_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#margin_bot_range").attr('max')); 
+
+      if (max >= value) {
+     $("#margin_bot_range").val(value);
+         $("#box").css('margin-bottom', value - myMarginBottom + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#margin_bot_range").val(max); 
+        $("#box").css('margin-bottom', max - myMarginBottom + 'px');
+      };
+});
+
+$("#margin_left_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#margin_left_text").val(value);
+    $("#box").css('margin-left', myMarginLeft + value + 'px');
+});
+$("#margin_left_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#margin_left_range").attr('max')); 
+
+      if (max >= value) {
+     $("#margin_left_range").val(value);
+         $("#box").css('marginLeft', myMarginLeft  + value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#margin_left_range").val(max); 
+        $("#box").css('margin-left', myMarginLeft + max + 'px');
+      };
+});
+
+$("#margin_right_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#margin_right_text").val(value);
+    $("#box").css('margin-right', value - myMarginRight + 'px');
+});
+$("#margin_right_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#margin_right_range").attr('max')); 
+
+      if (max >= value) {
+     $("#margin_right_range").val(value);
+         $("#box").css('margin-right', myMarginRight  - value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#margin_right_range").val(max); 
+        $("#box").css('margin-right', myMarginRight - max + 'px');
+      };
+});
+
+$("#padding_top_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#padding_top_text").val(value);
+    $("#box").css('padding-top', myPaddingTop + value + 'px');
+});
+$("#padding_top_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#padding_top_range").attr('max')); 
+
+      if (max >= value) {
+     $("#padding_top_range").val(value);
+         $("#box").css('padding-top', myPaddingTop  + value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#padding_top_range").val(max); 
+        $("#box").css('padding-top', myPaddingTop + max + 'px');
+      };
+});
+
+$("#padding_bot_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#padding_bot_text").val(value);
+    $("#box").css('paddingBottom', myPaddingBot + value + 'px');
+});
+$("#padding_bot_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#padding_bot_range").attr('max')); 
+
+      if (max >= value) {
+     $("#padding_bot_range").val(value);
+         $("#box").css('paddingBottom', myPaddingBot  + value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#padding_bot_range").val(max); 
+        $("#box").css('paddingBottom', myPaddingBot + max + 'px');
+      };
+});
+
+$("#padding_left_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#padding_left_text").val(value);
+    $("#box").css('paddingLeft', myPaddingLeft + value + 'px');
+});
+$("#padding_left_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#padding_left_range").attr('max')); 
+
+      if (max >= value) {
+     $("#padding_left_range").val(value);
+         $("#box").css('paddingLeft', myPaddingLeft  + value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#padding_left_range").val(max); 
+        $("#box").css('paddingLeft', myPaddingLeft + max + 'px');
+      };
+});
+
+$("#padding_right_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#padding_right_text").val(value);
+    $("#box").css('paddingRight', myPaddingRight + value + 'px');
+});
+$("#padding_right_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#padding_right_range").attr('max')); 
+
+      if (max >= value) {
+     $("#padding_right_range").val(value);
+         $("#box").css('paddingRight', myPaddingRight  + value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#padding_right_range").val(max); 
+        $("#box").css('paddingRight', myPaddingRight + max + 'px');
+      };
+});
+
+$("#border_width_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#border_width_text").val(value);
+    $("#box").css('border-width', value + 'px');
+});
+$("#border_width_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#border_width_range").attr('max')); 
+
+      if (max >= value) {
+     $("#border_width_range").val(value);
+         $("#box").css('border-width', value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#border_width_range").val(max); 
+        $("#box").css('border-width', max + 'px');
+      };
+});
+
+$("#border_radius_range").on("input change", function() {
+     var value  = parseInt($(this).val());
+     $("#border_radius_text").val(value);
+    $("#box").css('border-radius', value + 'px');
+});
+$("#border_radius_text").on("input change", function() {
+      var value  = parseInt($(this).val());
+      var max = parseInt($("#border_radius_range").attr('max')); 
+
+      if (max >= value) {
+     $("#border_radius_range").val(value);
+         $("#box").css('border-radius', value + 'px');
+      };
+      if (max < value) {
+        $(this).val(max);
+        $("#border_radius_range").val(max); 
+        $("#box").css('border-radius', max + 'px');
+      };
+});
+
+
+// Colors
+$( "#color-red" ).click(function() {
+  $("#box").css('background-color', 'red');
+});
+$( "#color-green" ).click(function() {
+  $("#box").css('background-color', 'mediumspringgreen');
+});
+$( "#color-blue" ).click(function() {
+  $("#box").css('background-color', 'dodgerblue');
+});
+$( "#color-pink" ).click(function() {
+  $("#box").css('background-color', 'pink');
+});
+$( "#color-orange" ).click(function() {
+  $("#box").css('background-color', 'orange');
+});
+$( "#color-gray" ).click(function() {
+  $("#box").css('background-color', 'dimgray');
+});
+</script>
+</body>
+</html>
