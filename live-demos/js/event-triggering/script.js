@@ -11,24 +11,36 @@ function myGenericListener(event)
 
 function printEventLog(eventType)
 {
+	var message = runtimeTime+"mil: ";
 	switch(eventType)
 	{
 		default:
-			console.log(runtimeTime+": "+eventType+" triggered");
+			message += eventType;
 		break;
 	}
+	console.log(message);
 }
 
 $(document).ready(function(){
 	printEventLog("ready");
 
 	$.ajax({
-		url: "https://4geeksacademy.github.io/exercise-assets/json/weird_portfolio.json",
+		url: "https://4geeksacademy.github.io/exercise-assets/json/huge.json",
 		success: function(){
-			printEventLog("ajax success");
+			printEventLog("huge ajax success");
 		},
 		error: function(){
-			printEventLog("ajax error");
+			printEventLog("huge ajax error");
+		}
+	});
+
+	$.ajax({
+		url: "https://4geeksacademy.github.io/exercise-assets/json/project1.json",
+		success: function(){
+			printEventLog("project1 ajax success");
+		},
+		error: function(){
+			printEventLog("project1 ajax error");
 		}
 	});
 });
