@@ -7,8 +7,10 @@
 		{ "id":5, "game":"mario", "name":"Stage Clear", "url":"mario/fx_stage_clear.wav"},
 		{ "id":6, "game":"mario", "name":"Warning", "url":"mario/fx_warning.wav"},
 		{ "id":7, "game":"mario", "name":"World Clear", "url":"mario/fx_world_clear.wav"},
-		{ "id":7, "game":"zelda", "name":"Recorder", "url":"zelda/fx_recorder.wav"},
-		{ "id":7, "game":"duck-duck-duck", "name":"Duck Intro", "url":"zelda/fx_duck_intro.wav"}
+		{ "id":8, "game":"zelda", "name":"Recorder", "url":"zelda/fx_recorder.wav"},
+		{ "id":9, "game":"duck-duck-duck", "name":"Duck Intro", "url":"zelda/fx_duck_intro.wav"},
+		{ "id":10, "game":"none", "name":"Clock Ticking 1", "url":"clock-ticking1.wav" },
+		{ "id":11, "game":"none", "name":"Clock Ticking 2", "url":"clock-ticking2.wav" }
 	],
 	"songs" : [
 		{ "id":1, "game":"mario", "name":"Game Over", "url":"mario/songs/castle.mp3" },
