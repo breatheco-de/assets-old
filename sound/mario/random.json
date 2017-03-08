@@ -1,0 +1,21 @@
+{
+	"fx" : [
+		{ "id":1, "name":"Game Over", "url":"mario/fx_gameover.wav" },
+		{ "id":2, "name":"Jump Super", "url":"mario/fx_jump_super.wav"},
+		{ "id":3, "name":"Die", "url":"mario/fx_mariodie.wav"},
+		{ "id":4, "name":"Pause", "url":"mario/fx_pause.wav"},
+		{ "id":5, "name":"Stage Clear", "url":"mario/fx_stage_clear.wav"},
+		{ "id":6, "name":"Warning", "url":"mario/fx_warning.wav"},
+		{ "id":7, "name":"World Clear", "url":"mario/fx_world_clear.wav"}
+	],
+	"songs" : [
+		{ "id":1, "name":"Game Over", "url":"mario/songs/castle.mp3" },
+		{ "id":1, "name":"Jump Super", "url":"mario/songs/hurry-startman.mp3"},
+		{ "id":1, "name":"Die", "url":"mario/songs/overworld.mp3"},
+		{ "id":1, "name":"Pause", "url":"mario/songs/stage1.mp3"},
+		{ "id":1, "name":"Stage Clear", "url":"mario/songs/stage2.mp3"},
+		{ "id":1, "name":"Warning", "url":"mario/songs/startman.mp3"},
+		{ "id":1, "name":"Warning", "url":"mario/songs/underworld.mp3"},
+		{ "id":1, "name":"World Clear", "url":"mario/songs/underwater.mp3"}
+	]
+}

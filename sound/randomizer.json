@@ -1,0 +1,28 @@
+{
+	"fx" : [
+		{ "id":1, "game":"mario", "name":"Game Over", "url":"mario/fx_gameover.wav" },
+		{ "id":2, "game":"mario", "name":"Jump Super", "url":"mario/fx_jump_super.wav"},
+		{ "id":3, "game":"mario", "name":"Die", "url":"mario/fx_mariodie.wav"},
+		{ "id":4, "game":"mario", "name":"Pause", "url":"mario/fx_pause.wav"},
+		{ "id":5, "game":"mario", "name":"Stage Clear", "url":"mario/fx_stage_clear.wav"},
+		{ "id":6, "game":"mario", "name":"Warning", "url":"mario/fx_warning.wav"},
+		{ "id":7, "game":"mario", "name":"World Clear", "url":"mario/fx_world_clear.wav"},
+		{ "id":7, "game":"zelda", "name":"Recorder", "url":"zelda/fx_recorder.wav"},
+		{ "id":7, "game":"duck-duck-duck", "name":"Duck Intro", "url":"zelda/fx_duck_intro.wav"}
+	],
+	"songs" : [
+		{ "id":1, "game":"mario", "name":"Game Over", "url":"mario/songs/castle.mp3" },
+		{ "id":2, "game":"mario", "name":"Jump Super", "url":"mario/songs/hurry-startman.mp3"},
+		{ "id":3, "game":"mario", "name":"Die", "url":"mario/songs/overworld.mp3"},
+		{ "id":4, "game":"mario", "name":"Pause", "url":"mario/songs/stage1.mp3"},
+		{ "id":5, "game":"mario", "name":"Stage Clear", "url":"mario/songs/stage2.mp3"},
+		{ "id":6, "game":"mario", "name":"Warning", "url":"mario/songs/startman.mp3"},
+		{ "id":7, "game":"mario", "name":"Warning", "url":"mario/songs/underworld.mp3"},
+		{ "id":8, "game":"mario", "name":"World Clear", "url":"mario/songs/underwater.mp3"},
+		{ "id":9, "game":"zelda", "name":"Castle", "url":"zelda/songs/castle.mp3"},
+		{ "id":10, "game":"zelda", "name":"Outworld", "url":"zelda/songs/outworld.mp3"},
+		{ "id":11, "game":"zelda", "name":"Titles", "url":"zelda/songs/title.mp3"},
+		{ "id":12, "game":"dong-kinkong", "name":"Main", "url":"other/songs/dkng-main.mp3"},
+		{ "id":13, "game":"dong-kinkong", "name":"Other", "url":"other/songs/dkng-other.mp3"}
+	]
+}
