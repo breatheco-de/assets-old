@@ -14,7 +14,7 @@
 	],
 	"songs" : [
 		{ "id":1, "game":"mario", "name":"Game Over", "url":"mario/songs/castle.mp3" },
-		{ "id":2, "game":"mario", "name":"Jump Super", "url":"mario/songs/hurry-startman.mp3"},
+		{ "id":2, "game":"mario", "name":"Jump Super", "url":"mario/songs/hurry-starman.mp3"},
 		{ "id":3, "game":"mario", "name":"Die", "url":"mario/songs/overworld.mp3"},
 		{ "id":4, "game":"mario", "name":"Pause", "url":"mario/songs/stage1.mp3"},
 		{ "id":5, "game":"mario", "name":"Stage Clear", "url":"mario/songs/stage2.mp3"},
