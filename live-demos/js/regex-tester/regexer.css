@@ -18,7 +18,7 @@ body
 
 #regexer_input textarea
 {
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     z-index: 2;
     background-color: transparent;
 }

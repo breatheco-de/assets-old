@@ -12,7 +12,15 @@
             var regX;
             window.onload = function()
             {
-                regX = new RegExer("regexer");
+                var defaultE = false;
+                var defaultC = false;
+                <?php if(isset($_GET['e'])) { ?>
+                    defaultE = '<?php echo $_GET["e"]; ?>';
+                <?php } ?>
+                <?php if(isset($_GET['c'])) { ?>
+                    defaultC = '<?php echo $_GET["c"]; ?>';
+                <?php } ?>
+                regX = new RegExer("regexer",defaultE,defaultC);
             };
         </script>
         <style type="text/css">

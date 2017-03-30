@@ -1,14 +1,5 @@
-/**
- * REGEXER.JS - JavaScript for RegExer
- *
- * @package RegExer
- * @version 1.1b
- *
- * @author Pavel
- * @copyright Pavel Meliantchenkov
- */
 
-var RegExer = function(appendToElem)
+var RegExer = function(appendToElem,dExpression,dContent)
 {
     // Parameter & Elements
     var parentElem, 
@@ -29,7 +20,7 @@ var RegExer = function(appendToElem)
         
         regexGroups = [],
         regexPositionToGroup = [],
-        useCSSC = (typeof CSSC !== "undefined"), //experemental with alpha version of CSSC
+        useCSSC = false, //experemental with alpha version of CSSC
         parseError = false,
         mode = "match";
     
@@ -53,16 +44,18 @@ var RegExer = function(appendToElem)
         //Input
         regexInputWrapperElem = document.createElement('div');
         regexInputWrapperElem.setAttribute("id", "regexer_input");
-        regexInputWrapperElem.setAttribute("placeholder", "Type your regex here...");
-        regexInputWrapperElem.setAttribute("value", "([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})");
         
         regexInputElem = document.createElement('textarea');
         regexInputElem.setAttribute("id", "regexer_input_input");
-        regexInputElem.setAttribute("innerText", 
-            "This is an example text, this text contains emails, phone numbers and other sample designed for testing purposes. To use this tool, please type a regular expression in the text-area above. \n" +
-            "When designing regex for emails make sure you cover all possible email types like: info@breatheco.de, dragon23@gmail.com, dragon_ball@yahoo.com.us and also test for bad email formats like ramond=32@skas.com \n" +
-            "When texting for urls you have samples like this: https://thedomain.com.ve/dir1/dir2.html, some urls don't have extensions like this http://www.thedomain.net/directory1, maybe you will find some urls with nested subdomains like http://test.www.thedomain.com.ve/directory1 \n"
-            );
+        regexInputElem.placeholder = "Type your regex here...";
+        if(dExpression && dExpression!='') 
+        {
+            setDefaultExpression(dExpression);
+        }
+        else
+        {
+            setDefaultExpression("([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})");
+        }
 
         regexInputHighlightElem = document.createElement("pre");
         regexInputHighlightElem.setAttribute("id", "regexer_input_pre");
@@ -74,6 +67,15 @@ var RegExer = function(appendToElem)
 
         regexOutputTextElem = document.createElement("textarea");
         regexOutputTextElem.setAttribute("id", "regexer_text_txt");
+        if(dContent && dContent!='') 
+        {
+            setDefaultContent(dContent);
+        }
+        else setDefaultContent(  
+            "This is an example text, this text contains emails, phone numbers and other sample designed for testing purposes. To use this tool, please type a regular expression in the text-area above. &#13;&#13;" +
+            "When designing regex for emails make sure you cover all possible email types like: info@breatheco.de, dragon23@gmail.com, dragon_ball@yahoo.com.us and also test for bad email formats like ramond=32@skas.com &#13;&#13;" +
+            "When texting for urls you have samples like this: https://thedomain.com.ve/dir1/dir2.html, some urls don't have extensions like this http://www.thedomain.net/directory1, maybe you will find some urls with nested subdomains like http://test.www.thedomain.com.ve/directory1"
+            );
         
         regexOutputHighlightElem = document.createElement("pre");
         regexOutputHighlightElem.setAttribute("id", "regexer_text_pre");
@@ -105,7 +107,15 @@ var RegExer = function(appendToElem)
         
         manageEvents();
 
-        highlight();
+    },
+    setDefaultExpression = function(defaultExpression)
+    {
+        regexInputElem.innerHTML = defaultExpression;
+    },
+    setDefaultContent = function(defaultContent)
+    {
+        regexOutputTextElem.innerHTML = defaultContent;
+
     },
     setOutputHeight = function()
     {
@@ -188,23 +198,9 @@ var RegExer = function(appendToElem)
             keyUpParseControll(e);
         });
         
-        regexInputReplaceElem.addEventListener("keyup", function(e)
-        {
-            keyUpParseControll(e);
-        });
-        
         regexInputElem.addEventListener("click", function(e)
         {
             highlight();
-        });
-        
-        regexControllButtonReplace.addEventListener("click", function()
-        {
-            switchMode("replace");
-        });
-        regexControllButtonMatch.addEventListener("click", function()
-        {
-            switchMode("match");
         });
         
         window.addEventListener("resize", function()
@@ -255,7 +251,11 @@ var RegExer = function(appendToElem)
             }
             else
             {
-                regexInputElem.style.borderColor = "#ccc";
+                regexInputElem.style.borderColor = "#a3ccac";
+                regexInputElem.style.backgroundImage = "url('img/valid.png')";
+                regexInputElem.style.backgroundPosition = "right 10px bottom 10px";
+                regexInputElem.style.backgroundRepeat = "no-repeat";
+                regexInputElem.style.backgroundSize = "25px";
             }
             
             
@@ -314,6 +314,10 @@ var RegExer = function(appendToElem)
             else
             {
                 regexInputElem.style.borderColor = "#f00";
+                regexInputElem.style.backgroundImage = "url('img/invalid.png')";
+                regexInputElem.style.backgroundPosition = "right bottom";
+                regexInputElem.style.backgroundRepeat = "no-repeat";
+                regexInputElem.style.backgroundSize = "15%";
             }
             
             parseError = true;
@@ -489,6 +493,7 @@ var RegExer = function(appendToElem)
     {
         parse();
     }
+
 };
 
 var RegExpGrpPos = function(regexp, posabsolute)
