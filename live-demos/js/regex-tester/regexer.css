@@ -8,7 +8,7 @@ body
     height: 50px;
     margin: 0px 2px 5px;
     padding-right: 3px;
-    width: 100%;
+    width: 97%;
     display: block;
     position: absolute;
     font-family: monospace;
@@ -61,7 +61,7 @@ body
 #regexer_text pre
 {
     bottom: 15px;
-    width: 100%;
+    width: 97%;
     position: absolute;
     top: 55px;
     padding: 2px;
