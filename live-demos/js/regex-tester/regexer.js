@@ -54,6 +54,7 @@ var RegExer = function(appendToElem,dExpression,dContent)
         }
         else
         {
+            //s
             setDefaultExpression("([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})");
         }
 
