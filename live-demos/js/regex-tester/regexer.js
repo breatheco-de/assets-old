@@ -53,9 +53,16 @@ var RegExer = function(appendToElem)
         //Input
         regexInputWrapperElem = document.createElement('div');
         regexInputWrapperElem.setAttribute("id", "regexer_input");
+        regexInputWrapperElem.setAttribute("placeholder", "Type your regex here...");
+        regexInputWrapperElem.setAttribute("value", "([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})");
         
         regexInputElem = document.createElement('textarea');
         regexInputElem.setAttribute("id", "regexer_input_input");
+        regexInputElem.setAttribute("innerText", 
+            "This is an example text, this text contains emails, phone numbers and other sample designed for testing purposes. To use this tool, please type a regular expression in the text-area above. \n" +
+            "When designing regex for emails make sure you cover all possible email types like: info@breatheco.de, dragon23@gmail.com, dragon_ball@yahoo.com.us and also test for bad email formats like ramond=32@skas.com \n" +
+            "When texting for urls you have samples like this: https://thedomain.com.ve/dir1/dir2.html, some urls don't have extensions like this http://www.thedomain.net/directory1, maybe you will find some urls with nested subdomains like http://test.www.thedomain.com.ve/directory1 \n"
+            );
 
         regexInputHighlightElem = document.createElement("pre");
         regexInputHighlightElem.setAttribute("id", "regexer_input_pre");
@@ -97,6 +104,8 @@ var RegExer = function(appendToElem)
         setOutputHeight();
         
         manageEvents();
+
+        highlight();
     },
     setOutputHeight = function()
     {
