@@ -31,7 +31,7 @@
                 var defaultE = false;
                 var defaultC = false;
                     
-                defaultE = '<?php echo preg_replace("{\\\}", "\\\",$decodedRegex); ?>';
+                defaultE = '<?php echo preg_replace("{\\\}", "\\\\\\",$decodedRegex); ?>';
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
