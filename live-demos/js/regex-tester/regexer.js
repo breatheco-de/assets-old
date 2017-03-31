@@ -111,11 +111,11 @@ var RegExer = function(appendToElem,dExpression,dContent)
     },
     setDefaultExpression = function(defaultExpression)
     {
-        regexInputElem.innerText = defaultExpression;
+        regexInputElem.innerHTML = defaultExpression;
     },
     setDefaultContent = function(defaultContent)
     {
-        regexOutputTextElem.innerText = defaultContent;
+        regexOutputTextElem.innerHTML = defaultContent;
 
     },
     setOutputHeight = function()

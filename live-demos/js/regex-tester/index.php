@@ -14,9 +14,14 @@
             {
                 var defaultE = false;
                 var defaultC = false;
-                <?php if(isset($_GET['e'])) { ?>
-                    //defaultE = <?php echo json_encode(urldecode(base64_decode($_GET["e"]))); ?>;
-                    defaultE = "<?php echo urldecode(base64_decode($_GET["e"])); ?>";
+                <?php if(isset($_GET['e'])) { 
+                    $decodedRegex = base64_decode($_GET["e"]);
+                    if($decodedRegex){
+                ?>
+                    defaultE = "<?php echo urldecode($decodedRegex); ?>";
+                    <?php } else { ?>
+                    defaultE = "<?php echo urldecode($_GET["e"]); ?>";
+                    <?php } ?>
                 <?php } ?>
                 <?php if(isset($_GET['c'])) { ?>
                     defaultC = '<?php echo strip_tags(urldecode($_GET["c"])); ?>';
