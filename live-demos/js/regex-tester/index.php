@@ -31,10 +31,13 @@
                 var defaultE = false;
                 var defaultC = false;
                     
-                defaultE = '<?php echo preg_replace("{\\\}", "\\\\\\",$decodedRegex); ?>';
+                defaultE = '<?php echo escapeRegExp($decodedRegex); ?>';
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
+            function escapeRegExp(str) {
+              return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+            }
         </script>
         <style type="text/css">
             body{
