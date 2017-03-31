@@ -15,7 +15,7 @@
                 var defaultE = false;
                 var defaultC = false;
                 <?php if(isset($_GET['e'])) { 
-                    $decodedRegex = base64_decode($_GET["e"]);
+                    $decodedRegex = base64_decode($_GET["e"],true);
                     if($decodedRegex){
                         die($decodedRegex);
                 ?>
