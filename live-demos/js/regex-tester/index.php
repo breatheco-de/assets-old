@@ -6,7 +6,7 @@
 
     $decodedContent = '';
     if(isset($_GET['c'])) {
-         $decodedContent = htmlentities(strip_tags(urldecode(base64_decode($_GET["c"]))));
+         $decodedContent = preg_replace( "/\r|\n/", "&#13;&#13;", strip_tags(urldecode(base64_decode($_GET["c"]))));
     }
 ?>
 <!doctype html>
