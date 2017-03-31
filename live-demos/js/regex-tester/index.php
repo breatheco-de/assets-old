@@ -31,7 +31,7 @@
                 var defaultE = false;
                 var defaultC = false;
                     
-                defaultE = '<?php echo htmlentities($decodedRegex); ?>';
+                defaultE = '<?php echo htmlspecialchars($decodedRegex); ?>';
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
