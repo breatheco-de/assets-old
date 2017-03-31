@@ -1,12 +1,7 @@
 <?php 
     $decodedRegex = '';
     if(isset($_GET['e'])) { 
-        if(isset($_GET["encoded"])){
-            $decodedRegex = base64_decode($_GET["e"],true);
-        }else{
-            $decodedRegex = $_GET["e"];
-        }
-        $decodedRegex = urldecode($decodedRegex);
+        $decodedRegex = $_GET["e"];
     }
 
     $decodedContent = '';
@@ -31,7 +26,7 @@
                 var defaultE = false;
                 var defaultC = false;
                     
-                defaultE = escapeRegExp('<?php echo $decodedRegex; ?>');
+                defaultE = decodeURI(atob('<?php echo $decodedRegex; ?>'));
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
