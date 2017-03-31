@@ -26,7 +26,10 @@
                 var defaultE = false;
                 var defaultC = false;
                 
-                var defaultE_raw = atob('<?php echo $decodedRegex; ?>');
+                var defaultE_raw = '<?php echo $decodedRegex; ?>';
+                <?php if(isset($_GET['encoded'])){ ?>
+                defaultE_raw = atob('<?php echo $decodedRegex; ?>');
+                <?php } ?>
                 defaultE = decodeURIComponent(defaultE_raw);
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
