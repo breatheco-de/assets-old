@@ -70,7 +70,7 @@ var RegExer = function(appendToElem,dExpression,dContent)
         regexOutputTextElem.setAttribute("id", "regexer_text_txt");
         if(dContent && dContent!='') 
         {
-            setDefaultContent(dContent);
+            setDefaultContent(dContent.replace(/[\r\n]/g, "&#13;&#13;"));
         }
         else setDefaultContent(  
             "This is an example text, this text contains emails, phone numbers and other sample designed for testing purposes. To use this tool, please type a regular expression in the text-area above. &#13;&#13;" +
