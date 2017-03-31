@@ -111,8 +111,9 @@ var RegExer = function(appendToElem,dExpression,dContent)
     },
     setDefaultExpression = function(defaultExpression)
     {
-        regexInputElem.innerHTML = defaultExpression.replace(/\\(.)/mg, "$1");
-        regexInputElem.value = defaultExpression.replace(/\\(.)/mg, "$1");
+        var tempRegex = defaultExpression;
+        regexInputElem.innerHTML = tempRegex;
+        regexInputElem.value = tempRegex;
     },
     setDefaultContent = function(defaultContent)
     {
