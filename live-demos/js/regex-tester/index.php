@@ -16,7 +16,7 @@
         <title>RegExer</title>
         
         <link rel="stylesheet" type="text/css" href="./regexer.css">
-        <script type="text/javascript" src="./regexer.js"></script>
+        <script type="text/javascript" src="./regexer.js?random=23233"></script>
         <!-- experemental with alpha version of CSSC -->
         <script type="text/javascript" src="https://csscjs.com/cssc.min.js"></script> 
         <script type="text/javascript">
