@@ -31,7 +31,7 @@
                 var defaultE = false;
                 var defaultC = false;
                     
-                defaultE = '<?php echo $decodedRegex; ?>';
+                defaultE = <?php echo json_encode($decodedRegex); ?>;
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
