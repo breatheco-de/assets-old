@@ -17,6 +17,7 @@
                 <?php if(isset($_GET['e'])) { 
                     $decodedRegex = base64_decode($_GET["e"]);
                     if($decodedRegex){
+                        die($decodedRegex);
                 ?>
                     defaultE = "<?php echo urldecode($decodedRegex); ?>";
                     <?php } else { ?>
