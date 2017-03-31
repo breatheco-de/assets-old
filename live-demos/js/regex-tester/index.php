@@ -15,13 +15,18 @@
                 var defaultE = false;
                 var defaultC = false;
                 <?php if(isset($_GET['e'])) { ?>
-                    defaultE = '<?php echo urldecode(base64_decode($_GET["e"])); ?>';
+                    defaultE = stringEscape('<?php echo urldecode(base64_decode($_GET["e"])); ?>');
                 <?php } ?>
                 <?php if(isset($_GET['c'])) { ?>
                     defaultC = '<?php echo strip_tags(urldecode($_GET["c"])); ?>';
                 <?php } ?>
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
+
+            function stringEscape(s) {
+                return s ? s.replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/\t/g,'\\t').replace(/\v/g,'\\v').replace(/'/g,"\\'").replace(/"/g,'\\"').replace(/[\x00-\x1F\x80-\x9F]/g,hex) : s;
+                function hex(c) { var v = '0'+c.charCodeAt(0).toString(16); return '\\x'+v.substr(v.length-2); }
+            },
         </script>
         <style type="text/css">
             body{
