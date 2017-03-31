@@ -6,7 +6,7 @@
 
     $decodedContent = '';
     if(isset($_GET['c'])) {
-         $decodedContent = strip_tags(urldecode(base64_decode($_GET["c"])));
+         $decodedContent = strip_tags(base64_decode($_GET["c"]));
     }
 ?>
 <!doctype html>
