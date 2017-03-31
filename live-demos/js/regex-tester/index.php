@@ -31,7 +31,7 @@
                 var defaultE = false;
                 var defaultC = false;
                     
-                defaultE = '<?php echo htmlspecialchars($decodedRegex); ?>';
+                defaultE = '<?php echo preg_replace("{\\\}", "&Backslash;",$decodedRegex); ?>';
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
