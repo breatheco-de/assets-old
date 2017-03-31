@@ -6,7 +6,7 @@
 
     $decodedContent = '';
     if(isset($_GET['c'])) {
-         $decodedContent = strip_tags(urldecode($_GET["c"]));
+         $decodedContent = strip_tags(urldecode(base64_decode($_GET["c"])));
     }
 ?>
 <!doctype html>
@@ -34,9 +34,6 @@
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
-            function escapeRegExp(str) {
-              return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-            }
         </script>
         <style type="text/css">
             body{
