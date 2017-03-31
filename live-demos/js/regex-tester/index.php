@@ -1,3 +1,19 @@
+<?php 
+    $decodedRegex = '';
+    if(isset($_GET['e'])) { 
+        if(isset($_GET["encoded"])){
+            $decodedRegex = base64_decode($_GET["e"],true);
+        }else{
+            $decodedRegex = $_GET["e"];
+        }
+        $decodedRegex = urldecode($decodedRegex);
+    }
+
+    $decodedContent = '';
+    if(isset($_GET['c'])) {
+         $decodedContent = strip_tags(urldecode($_GET["c"]));
+    }
+?>
 <!doctype html>
 <html>
     <head>
@@ -14,19 +30,9 @@
             {
                 var defaultE = false;
                 var defaultC = false;
-                <?php if(isset($_GET['e'])) { 
-                    $decodedRegex = base64_decode($_GET["e"],true);
-                    if($decodedRegex){
-                        die($decodedRegex);
-                ?>
-                    defaultE = "<?php echo urldecode($decodedRegex); ?>";
-                    <?php } else { ?>
-                    defaultE = "<?php echo urldecode($_GET["e"]); ?>";
-                    <?php } ?>
-                <?php } ?>
-                <?php if(isset($_GET['c'])) { ?>
-                    defaultC = '<?php echo strip_tags(urldecode($_GET["c"])); ?>';
-                <?php } ?>
+                    
+                defaultE = '<?php echo $decodedRegex; ?>';
+                defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
         </script>
