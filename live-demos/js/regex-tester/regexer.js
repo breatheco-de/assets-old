@@ -111,7 +111,7 @@ var RegExer = function(appendToElem,dExpression,dContent)
     },
     setDefaultExpression = function(defaultExpression)
     {
-        regexInputElem.innerHTML = defaultExpression;
+        regexInputElem.innerHTML = defaultExpression.replace(/\\(.)/mg, "$1");
     },
     setDefaultContent = function(defaultContent)
     {
