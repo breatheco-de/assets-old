@@ -18,7 +18,7 @@
                     defaultE = '<?php echo base64_decode($_GET["e"]); ?>';
                 <?php } ?>
                 <?php if(isset($_GET['c'])) { ?>
-                    defaultC = '<?php echo urldecode($_GET["c"]); ?>';
+                    defaultC = '<?php echo $_GET["c"]; ?>';
                 <?php } ?>
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
