@@ -25,8 +25,9 @@
             {
                 var defaultE = false;
                 var defaultC = false;
-                    
-                defaultE = decodeURI(atob('<?php echo $decodedRegex; ?>'));
+                
+                var defaultE_raw = atob('<?php echo $decodedRegex; ?>');
+                defaultE = decodeURI(defaultE_raw);
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
