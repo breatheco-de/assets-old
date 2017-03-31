@@ -27,7 +27,7 @@
                 var defaultC = false;
                 
                 var defaultE_raw = atob('<?php echo $decodedRegex; ?>');
-                defaultE = decodeURI(defaultE_raw);
+                defaultE = decodeURIComponent(defaultE_raw);
                 defaultC = '<?php echo $decodedContent; ?>';
                 regX = new RegExer("regexer",defaultE,defaultC);
             };
