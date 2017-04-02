@@ -67,6 +67,7 @@ class SQLDatabase{
 			if($this->setDBName($settings['db']==false)) $this->dbSample = "chat";
 		}
 		else $this->dbSample = "chat";
+		$this->logMessage("This is the db-samble: ".$this->dbSample);
 
 		if(isset($settings) and isset($settings['prefix'])) $this->prefix = $settings['prefix'];
 
