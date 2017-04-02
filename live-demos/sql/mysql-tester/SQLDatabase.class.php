@@ -265,8 +265,13 @@ class SQLDatabase{
 					return false;
 				}
 				else {
-					$temporaryTablesCreated = true;
-					$this->logMessage($sql);
+					$softLink = mysqli_query($this->softLink,'SELECT * FROM '.$temporalTableName);
+					if(!$softLink){
+						throw new Exception("Error creating temporary table ".$temporalTableName.": ".mysqli_error($this->softLink),1);
+					}else{
+						$temporaryTablesCreated = true;
+						$this->logMessage($sql);
+					}
 				}
 			}
 		}
