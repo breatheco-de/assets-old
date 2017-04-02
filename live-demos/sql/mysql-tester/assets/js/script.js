@@ -133,6 +133,11 @@ function loadBD(){
             $('#diagram').html('<i class="fa fa-database fa-1" aria-hidden="true"></i> <a target="_blank" href="'+imgURL+'">Review DB Diagram</a>');
         }
     }
+    else
+    {
+        imgURL = 'assets/db/'+dbName+'.png';
+        $('#diagram').html('<i class="fa fa-database fa-1" aria-hidden="true"></i> <a target="_blank" href="'+imgURL+'">Review DB Diagram</a>');
+    }
 }
 
 function imageExists(image_url){
