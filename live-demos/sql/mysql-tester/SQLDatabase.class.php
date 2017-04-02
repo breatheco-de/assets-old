@@ -36,11 +36,14 @@ class SQLDatabase{
 	 * @var [type]
 	 */
 	private $outputHTML;
+	
 	/**
 	 * HTML Style for the reponse tables
 	 * @var string
 	 */
 	private $tableStyle;
+
+	private $dbSample;
 
 
 	function __construct($settings){
@@ -53,6 +56,9 @@ class SQLDatabase{
 
 		if(isset($settings) and isset($settings['table-style'])) $this->tableStyle = $settings['table-style'];
 		else $this->tableStyle = "hor-minimalist-b";
+
+		if(isset($settings) and isset($settings['db'])) $this->dbSample = $settings['db'];
+		else $this->dbSample = "chat";
 
 		if(isset($settings) and isset($settings['prefix'])) $this->prefix = $settings['prefix'];
 
@@ -141,6 +147,7 @@ class SQLDatabase{
 		{
 			throw new Exception('could not select db',1);
 		}
+		//else if() reviso si tiene tablas para la bd que queremos probar
 
 		return $link;
 	}
