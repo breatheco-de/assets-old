@@ -263,7 +263,10 @@ class SQLDatabase{
 					throw new Exception("Error creating temporary tables: ".mysqli_error($this->softLink),1);
 					return false;
 				}
-				else $temporaryTablesCreated = true;
+				else {
+					$temporaryTablesCreated = true;
+					$this->logMessage($sql);
+				}
 			}
 		}
 
