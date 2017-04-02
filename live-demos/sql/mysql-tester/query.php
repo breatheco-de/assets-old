@@ -32,6 +32,7 @@ try{
 }
 catch(Exception $e)
 {
+	$result["logs"] = $db->getLogs();
 	$result["code"] = 400;
 	$result["output"] = $e->getMessage();
 	echo json_encode($result);	
