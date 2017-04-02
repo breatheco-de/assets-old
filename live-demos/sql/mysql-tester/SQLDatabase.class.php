@@ -255,10 +255,9 @@ class SQLDatabase{
 		{
 			while($row = mysqli_fetch_array($results))
 			{
-				$row['table_name'] = strtoupper($row['table_name']);
 				array_push($this->tableNames,$row['table_name']);
 
-				$temporalTableName = $this->prefix."_".$row['table_name'];
+				$temporalTableName = strtoupper($this->prefix."_".$row['table_name']);
 				$sql = "CREATE TEMPORARY TABLE IF NOT EXISTS $temporalTableName AS (SELECT * FROM ".$row['table_name'].")";
 				$softLink = mysqli_query($this->softLink,$sql);
 				if(!$softLink)
