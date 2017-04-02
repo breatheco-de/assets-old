@@ -80,7 +80,7 @@ class SQLDatabase{
 
 	public function setDBName($value)
 	{
-		if(file_exists(CONFIG_URL_PATH.$dbSample.'.sql')) $this->dbSample = $value;
+		if(file_exists(CONFIG_URL_PATH.$value.'.sql')) $this->dbSample = $value;
 		else return false;
 	}
 
@@ -151,7 +151,7 @@ class SQLDatabase{
 			if ($cursor) {
 				$this->logMessage("Database ".MYSQL_DATABASE." created successfully");
 
-				$sqlConfig = file_get_contents(CONFIG_URL_PATH.$dbSample.'.sql');
+				$sqlConfig = file_get_contents(CONFIG_URL_PATH.$this->dbSample.'.sql');
 				$cursor = mysqli_query($link,$sqlConfig);
 				if (!$cursor) throw new Exception('Error creating database: ' . mysqli_error($link), 1);
 				else $this->logMessage("DB Configuration loaded successfully");
