@@ -12,6 +12,7 @@ body{
 	z-index: 2;
 	text-align: right;
 	color: white;
+	font-size: 10px;
 }
 #diagram a{ color: #d1e2ff; font-size: 10px;}
 #diagram i{ color: white; font-size: 10px;}
