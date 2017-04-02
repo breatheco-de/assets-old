@@ -77,7 +77,7 @@ class SQLDatabase{
 		else return false;
 	}
 
-	public function executeSQL()
+	public function executeSQL($sqlString)
 	{
 		if(!$sqlString or $sqlString==="") throw new Exception("Empty query.", 1);
 		if(substr($sqlString, -1)!==";") throw new Exception("Missing semicolon.", 1);
