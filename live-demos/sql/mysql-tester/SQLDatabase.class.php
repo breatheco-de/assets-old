@@ -171,7 +171,7 @@ class SQLDatabase{
 
 	private function logMessage($msg){
 		if($this->debug){
-			$msg = preg_replace("/".$this->prefix.'_/',"",$msg);
+			//$msg = preg_replace("/".$this->prefix.'_/',"",$msg);
 			array_push($this->logs, $msg);
 		}
 	}
@@ -255,6 +255,7 @@ class SQLDatabase{
 			while($row = mysqli_fetch_array($results))
 			{
 				array_push($this->tableNames,$row['table_name']);
+
 				$temporalTableName = $this->prefix."_".$row['table_name'];
 				$sql = "CREATE TEMPORARY TABLE IF NOT EXISTS $temporalTableName AS (SELECT * FROM ".$row['table_name'].")";
 				$softLink = mysqli_query($this->softLink,$sql);
