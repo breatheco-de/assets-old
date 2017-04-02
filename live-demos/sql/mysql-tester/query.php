@@ -1,16 +1,21 @@
 <?php
+$debug = false;
+if(isset($_GET['debug']) && $_GET['debug']==true) 
+{
+	$debug = true;
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+}
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 require_once('SQLDatabase.class.php');
 
 header("Content-type:application/json");
 try{
 
 	$db = new SQLDatabase(array(
-		"debug" => true,
-		"prefix" => '3423423',
-		"table-style" => 'hor-zebra'
+		"debug" => $debug,
+		"prefix" => rand(0,999999),
+		"table-style" => $_GET['table']
 		));
 
 	$db->executeSQL(urldecode($_GET['sql']));

@@ -178,7 +178,6 @@ class SQLDatabase{
 		$headersSet = false;
 		$arrayTable = $this->fetchToArrayTable($link);
 		$this->output("<table id='".$this->tableStyle."'>");
-		if(count($arrayTable)==0) "<tr><td>No data.</td></tr>";
 		foreach($arrayTable as $row)
 		{
 			if(!$headersSet) $this->output("<thead> \n");
@@ -199,8 +198,11 @@ class SQLDatabase{
 				$headersSet = true;
 			}
 		}
-		$this->output("</tbody> \n");
+		if($headersSet) $this->output("</tbody> \n");
+
+		if(count($arrayTable)==0) $this->output("<tr><td>No data.</td></tr>");
 		$this->output("</table> \n");
+		
 	}
 
 	private function isSelect($sql)
