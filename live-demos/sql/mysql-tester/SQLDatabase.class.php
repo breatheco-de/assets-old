@@ -57,7 +57,9 @@ class SQLDatabase{
 		if(isset($settings) and isset($settings['table-style'])) $this->tableStyle = $settings['table-style'];
 		else $this->tableStyle = "hor-minimalist-b";
 
-		if(isset($settings) and isset($settings['db'])) $this->dbSample = $settings['db'];
+		if(isset($settings) and isset($settings['db'])){
+			if($this->setDBName($settings['db']==false)) $this->dbSample = "chat";
+		}
 		else $this->dbSample = "chat";
 
 		if(isset($settings) and isset($settings['prefix'])) $this->prefix = $settings['prefix'];
@@ -69,9 +71,16 @@ class SQLDatabase{
 
 	public function getLink(){ return $this->link; }
 
-	public function executeSQL($sqlString)
+	public function setDBName($value)
+	{
+		if(file_exists(CONFIG_URL_PATH.$dbSample.'.sql')) $this->dbSample = $value;
+		else return false;
+	}
+
+	public function executeSQL()
 	{
 		if(!$sqlString or $sqlString==="") throw new Exception("Empty query.", 1);
+		if(substr($sqlString, -1)!==";") throw new Exception("Missing semicolon.", 1);
 		
 		$this->softLink = $this->connect(TESTING_USER,TESTING_PASSWORD);
 		$this->softLink = $this->selectDB($this->softLink,false);
@@ -135,7 +144,7 @@ class SQLDatabase{
 			if ($cursor) {
 				$this->logMessage("Database ".MYSQL_DATABASE." created successfully");
 
-				$sqlConfig = file_get_contents(CONFIG_URL_PATH);
+				$sqlConfig = file_get_contents(CONFIG_URL_PATH.$dbSample.'.sql');
 				$cursor = mysqli_query($link,$sqlConfig);
 				if (!$cursor) throw new Exception('Error creating database: ' . mysqli_error($link), 1);
 			

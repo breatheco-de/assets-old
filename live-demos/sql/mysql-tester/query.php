@@ -15,10 +15,12 @@ try{
 	$result["tablestyles"] = $_GET['tablestyles'];
 	$result["debug"] = $debug;
 	$result["prefix"] = rand(0,999999);
+	$result["db"] = $_GET['db'];
 
 	$db = new SQLDatabase(array(
 		"debug" => $result["debug"],
 		"prefix" => $result["prefix"],
+		"db" => $result["db"],
 		"table-style" => $result["tablestyles"]
 		));
 	$db->executeSQL(urldecode($_GET['sql']));

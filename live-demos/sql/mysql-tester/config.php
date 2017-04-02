@@ -9,4 +9,4 @@
 	define("TESTING_USER","c4geeksa_tutread");
 	define("TESTING_PASSWORD","zL3hFu8y!");
 	
-	define("CONFIG_URL_PATH","config.sql");
+	define("CONFIG_URL_PATH","assets/db/");
