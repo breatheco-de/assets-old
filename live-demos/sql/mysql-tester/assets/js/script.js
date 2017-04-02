@@ -119,6 +119,29 @@ function getParameterByName(name, url) {
 
 function loadBD(){
     var dbNameFromURL = getParameterByName('db');
-    if(dbNameFromURL || dbNameFromURL!='') dbName = dbNameFromURL;
-    $('#diagram').html('<i class="fa fa-database fa-1" aria-hidden="true"></i><a target="_blank" href="assets/db/'+dbName+'.png">Review DB Diagram</a>');
+    if(dbNameFromURL || dbNameFromURL!='')
+    {
+        var imgURL = 'assets/db/'+dbNameFromURL+'.png';
+        if(imageExists(imgURL))
+        {
+            dbName = dbNameFromURL;//re-set the global dbName var
+            $('#diagram').html('<i class="fa fa-database fa-1" aria-hidden="true"></i> <a target="_blank" href="'+imgURL+'">Review DB Diagram</a>');
+        }
+        else
+        {
+            imgURL = 'assets/db/'+dbName+'.png';
+            $('#diagram').html('<i class="fa fa-database fa-1" aria-hidden="true"></i> <a target="_blank" href="'+imgURL+'">Review DB Diagram</a>');
+        }
+    }
+}
+
+function imageExists(image_url){
+
+    var http = new XMLHttpRequest();
+
+    http.open('HEAD', image_url, false);
+    http.send();
+
+    return http.status != 404;
+
 }
