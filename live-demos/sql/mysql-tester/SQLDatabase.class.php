@@ -36,6 +36,11 @@ class SQLDatabase{
 	 * @var [type]
 	 */
 	private $outputHTML;
+	/**
+	 * For debugging purposes
+	 * @var array
+	 */
+	private $logs;
 	
 	/**
 	 * HTML Style for the reponse tables
@@ -50,6 +55,7 @@ class SQLDatabase{
 
 		$this->outputHTML = "";
 		$this->tableNames = array();
+		$this->logs = array();
 
 		if(isset($settings) and isset($settings['debug'])) $this->debug = $settings['debug'];
 		else $this->debug = false;
@@ -70,6 +76,7 @@ class SQLDatabase{
 	}
 
 	public function getLink(){ return $this->link; }
+	public function getLogs(){ return $this->logs; }
 
 	public function setDBName($value)
 	{
@@ -147,7 +154,8 @@ class SQLDatabase{
 				$sqlConfig = file_get_contents(CONFIG_URL_PATH.$dbSample.'.sql');
 				$cursor = mysqli_query($link,$sqlConfig);
 				if (!$cursor) throw new Exception('Error creating database: ' . mysqli_error($link), 1);
-			
+				else $this->logMessage("DB Configuration loaded successfully");
+
 			} else {
 				throw new Exception('Error creating database: ' . mysqli_error($link), 1);
 			}
@@ -164,7 +172,7 @@ class SQLDatabase{
 	private function logMessage($msg){
 		if($this->debug){
 			$msg = preg_replace("/".$this->prefix.'_/',"",$msg);
-			$this->output($msg."<br />\n");
+			array_push($this->logs, $msg);
 		}
 	}
 
@@ -218,6 +226,8 @@ class SQLDatabase{
 
 		if(count($arrayTable)==0) $this->output("<tr><td>No data.</td></tr>");
 		$this->output("</table> \n");
+
+		$this->logMessage("Query rendered as HTML");
 		
 	}
 
@@ -249,12 +259,13 @@ class SQLDatabase{
 				$softLink = mysqli_query($this->softLink,$sql);
 				if(!$softLink)
 				{
-					throw new Exception("Error creating temporal tables: ".mysqli_error($this->softLink),1);
+					throw new Exception("Error creating temporary tables: ".mysqli_error($this->softLink),1);
 					return false;
 				}
 			}
 		}
 
+		$this->logMessage("Temporary tables successfully created");
 		return $this->softLink;
 	}
 

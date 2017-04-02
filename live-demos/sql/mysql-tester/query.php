@@ -25,6 +25,7 @@ try{
 		));
 	$db->executeSQL(urldecode($_GET['sql']));
 
+	$result["logs"] = $db->getLogs();
 	$result["code"] = 200;
 	$result["output"] = $db->getHTML();
 	echo json_encode($result);
