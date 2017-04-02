@@ -64,7 +64,7 @@ class SQLDatabase{
 		else $this->tableStyle = "hor-minimalist-b";
 
 		if(isset($settings) and isset($settings['db'])){
-			if($this->setDBName($settings['db']==false)) $this->dbSample = "chat";
+			if($this->setDBName($settings['db'])==false) $this->dbSample = "chat";
 		}
 		else $this->dbSample = "chat";
 		$this->logMessage("This is the db-samble: ".$this->dbSample);
