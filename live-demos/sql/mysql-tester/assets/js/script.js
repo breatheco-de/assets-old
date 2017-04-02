@@ -1,3 +1,5 @@
+var dbName = 'chat';
+
 $(document).ready(function(){
 	$('#terminal').terminal(
 		function(command) {
@@ -21,6 +23,8 @@ $(document).ready(function(){
 	        }
 	    }).join('');
 	});
+
+    loadBD();
 });
 
 // mysql keywords
@@ -74,6 +78,7 @@ function sendToPHP(value){
 		dataType: 'json',
 		data: { 
             sql: encodeURIComponent(value),
+            db: dbName,
             tablestyles: getParameterByName('tablestyle'),
             debug: getParameterByName('debug')
         },
@@ -110,4 +115,10 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function loadBD(){
+    var dbNameFromURL = getParameterByName('db');
+    if(dbNameFromURL || dbNameFromURL!='') dbName = dbNameFromURL;
+    $('#diagram').html('<i class="fa fa-database fa-1" aria-hidden="true"></i><a target="_blank" href="assets/db/'+dbName+'.png">Review DB Diagram</a>');
 }
