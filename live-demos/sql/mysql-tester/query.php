@@ -12,7 +12,6 @@ require_once('SQLDatabase.class.php');
 header("Content-type:application/json");
 try{
 
-	die($_GET['tablestyle'].'asas');
 	$db = new SQLDatabase(array(
 		"debug" => $debug,
 		"prefix" => rand(0,999999),

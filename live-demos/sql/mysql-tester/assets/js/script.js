@@ -72,7 +72,11 @@ function sendToPHP(value){
 		url: "query.php",
 		cache: false,
 		dataType: 'json',
-		data: { sql: encodeURIComponent(value) },
+		data: { 
+            sql: encodeURIComponent(value),
+            tablestyles: getParameterByName('tablestyle'),
+            debug: getParameterByName('debug')
+        },
 		success: function(data){
 
 			if(data)
@@ -93,5 +97,17 @@ function sendToPHP(value){
 		{
 			alert(error);
 		}
-	})
+	});
+}
+
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
