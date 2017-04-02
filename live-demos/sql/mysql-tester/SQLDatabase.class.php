@@ -249,6 +249,7 @@ class SQLDatabase{
 	private function createTemporalTables(){
 
 		$sql = "SELECT table_name FROM information_schema.tables where table_schema='".MYSQL_DATABASE."'";
+		$temporaryTablesCreated = false;
 		if($results = mysqli_query($this->softLink, $sql))
 		{
 			while($row = mysqli_fetch_array($results))
@@ -262,10 +263,13 @@ class SQLDatabase{
 					throw new Exception("Error creating temporary tables: ".mysqli_error($this->softLink),1);
 					return false;
 				}
+				else $temporaryTablesCreated = true;
 			}
 		}
 
-		$this->logMessage("Temporary tables successfully created");
+		if($temporaryTablesCreated) $this->logMessage("Temporary tables successfully created");
+		else $this->logMessage("No temporary tables were created");
+
 		return $this->softLink;
 	}
 
