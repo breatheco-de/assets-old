@@ -12,11 +12,11 @@ require_once('SQLDatabase.class.php');
 header("Content-type:application/json");
 try{
 
-	die($_GET['table']);
+	die($_GET['tablestyle'].'asas');
 	$db = new SQLDatabase(array(
 		"debug" => $debug,
 		"prefix" => rand(0,999999),
-		"table-style" => $_GET['table']
+		"table-style" => $_GET['tablestyle']
 		));
 
 	$db->executeSQL(urldecode($_GET['sql']));
