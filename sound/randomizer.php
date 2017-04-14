@@ -13,9 +13,9 @@
 		{ "id":6, "category":"game", "name":"Warning", "url":"mario/fx_warning.wav"},
 		{ "id":7, "category":"game", "name":"World Clear", "url":"mario/fx_world_clear.wav"},
 		{ "id":8, "category":"game", "name":"Zelda Recorder", "url":"zelda/fx_recorder.wav"},
-		{ "id":9, "category":"game", "name":"Duck-Duck-Duck Intro", "url":"zelda/fx_duck_intro.wav"},
-		{ "id":10, "category":"other", "name":"Clock Ticking 1", "url":"clock-ticking1.wav" },
-		{ "id":11, "category":"other", "name":"Clock Ticking 2", "url":"clock-ticking2.wav" }
+		{ "id":9, "category":"game", "name":"Duck-Duck-Duck Intro", "url":"other/fx_duck_intro.wav"},
+		{ "id":10, "category":"other", "name":"Clock Ticking 1", "url":"other/clock-ticking1.wav" },
+		{ "id":11, "category":"other", "name":"Clock Ticking 2", "url":"other/clock-ticking2.wav" }
 	],
 	"songs" : [
 		{ "id":1, "category":"game", "name":"Mario Castle", "url":"mario/songs/castle.mp3" },
@@ -32,11 +32,11 @@
 		{ "id":12, "category":"game", "name":"Dong KinKong Main", "url":"other/songs/dkng-main.mp3"},
 		{ "id":13, "category":"game", "name":"Dong KinKong Other", "url":"other/songs/dkng-other.mp3"},
 		{ "id":13, "category":"game", "name":"mega-man", "url":"other/songs/mega-man.mp3"},
-		{ "id":13, "game":"cartoon", "name":"Flintstones", "url":"other/songs/cartoons/flintstones.mp3"},
-		{ "id":13, "game":"cartoon", "name":"power-rangers", "url":"other/songs/cartoons/power-rangers.mp3"},
-		{ "id":13, "game":"cartoon", "name":"simpsons", "url":"other/songs/cartoons/simpsons.mp3"},
-		{ "id":13, "game":"cartoon", "name":"south-park", "url":"other/songs/cartoons/south-park.mp3"},
-		{ "id":13, "game":"cartoon", "name":"thundercats", "url":"other/songs/cartoons/thundercats.mp3"},
-		{ "id":13, "game":"cartoon", "name":"x-men", "url":"other/songs/cartoons/x-men.mp3"}
+		{ "id":13, "game":"cartoon", "name":"Flintstones", "url":"cartoons/songs/flintstones.mp3"},
+		{ "id":13, "game":"cartoon", "name":"power-rangers", "url":"cartoons/songs/power-rangers.mp3"},
+		{ "id":13, "game":"cartoon", "name":"simpsons", "url":"cartoons/songs/simpsons.mp3"},
+		{ "id":13, "game":"cartoon", "name":"south-park", "url":"cartoons/songs/south-park.mp3"},
+		{ "id":13, "game":"cartoon", "name":"thundercats", "url":"cartoons/songs/thundercats.mp3"},
+		{ "id":13, "game":"cartoon", "name":"x-men", "url":"cartoons/songs/x-men.mp3"}
 	]
 }
