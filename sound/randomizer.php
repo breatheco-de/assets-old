@@ -1,4 +1,8 @@
-{
+<?php 
+	header("Content-type: application/json"); 
+	header("Access-Control-Allow-Origin: https://projects.breatheco.de");
+	header("Access-Control-Allow-Origin: https://projects.4geeksacademy.local");
+?>{
 	"fx" : [
 		{ "id":1, "category":"game", "name":"Game Over", "url":"mario/fx_gameover.wav" },
 		{ "id":2, "category":"game", "name":"Jump Super", "url":"mario/fx_jump_super.wav"},
