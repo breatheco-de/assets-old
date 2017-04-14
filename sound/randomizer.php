@@ -1,7 +1,8 @@
 <?php 
 	header("Content-type: application/json"); 
-	header("Access-Control-Allow-Origin: https://projects.breatheco.de");
-	header("Access-Control-Allow-Origin: https://projects.4geeksacademy.local");
+	if(strpos($_SERVER['HTTP_REFERER'], "breatheco")){
+		header("Access-Control-Allow-Origin: *");
+	}		
 ?>{
 	"fx" : [
 		{ "id":1, "category":"game", "name":"Game Over", "url":"mario/fx_gameover.wav" },
