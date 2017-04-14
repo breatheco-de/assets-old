@@ -1,6 +1,6 @@
 <?php 
 	header("Content-type: application/json"); 
-	if(strpos($_SERVER['HTTP_REFERER'], "breatheco")){
+	if(strpos($_SERVER['HTTP_REFERER'], "breatheco") || strpos($_SERVER['HTTP_REFERER'], "4geeksacademy")){
 		header("Access-Control-Allow-Origin: *");
 	}		
 ?>{
@@ -31,12 +31,12 @@
 		{ "id":11, "category":"game", "name":"Zelda Titles", "url":"zelda/songs/title.mp3"},
 		{ "id":12, "category":"game", "name":"Dong KinKong Main", "url":"other/songs/dkng-main.mp3"},
 		{ "id":13, "category":"game", "name":"Dong KinKong Other", "url":"other/songs/dkng-other.mp3"},
-		{ "id":13, "category":"game", "name":"mega-man", "url":"other/songs/mega-man.mp3"},
-		{ "id":13, "game":"cartoon", "name":"Flintstones", "url":"cartoons/songs/flintstones.mp3"},
-		{ "id":13, "game":"cartoon", "name":"power-rangers", "url":"cartoons/songs/power-rangers.mp3"},
-		{ "id":13, "game":"cartoon", "name":"simpsons", "url":"cartoons/songs/simpsons.mp3"},
-		{ "id":13, "game":"cartoon", "name":"south-park", "url":"cartoons/songs/south-park.mp3"},
-		{ "id":13, "game":"cartoon", "name":"thundercats", "url":"cartoons/songs/thundercats.mp3"},
-		{ "id":13, "game":"cartoon", "name":"x-men", "url":"cartoons/songs/x-men.mp3"}
+		{ "id":14, "category":"game", "name":"mega-man", "url":"other/songs/mega-man.mp3"},
+		{ "id":15, "game":"cartoon", "name":"Flintstones", "url":"cartoons/songs/flintstones.mp3"},
+		{ "id":16, "game":"cartoon", "name":"power-rangers", "url":"cartoons/songs/power-rangers.mp3"},
+		{ "id":17, "game":"cartoon", "name":"simpsons", "url":"cartoons/songs/simpsons.mp3"},
+		{ "id":18, "game":"cartoon", "name":"south-park", "url":"cartoons/songs/south-park.mp3"},
+		{ "id":19, "game":"cartoon", "name":"thundercats", "url":"cartoons/songs/thundercats.mp3"},
+		{ "id":20, "game":"cartoon", "name":"x-men", "url":"cartoons/songs/x-men.mp3"}
 	]
 }
