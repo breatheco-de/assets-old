@@ -71,7 +71,7 @@
 				{
 					$('#theForm').hide();
 					$('#submitForm').hide();
-				    $('#titleForm').html("Loadding...");
+				    $('#titleForm').html("Loadding (don't reload)...");
 				  	dropzone.processQueue();
 				}
 				else

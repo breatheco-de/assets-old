@@ -18,7 +18,7 @@ try
 	if ($resp->isSuccess()){
 		if (!empty($_FILES) and (empty($_POST['song-type']) or empty($_POST['song-name']))) {
 		    
-		    $storeFolder = 'sounds/'.$_POST['song-type'].'/songs/uploded';
+		    $storeFolder = 'sounds/'.$_POST['song-type'].'/songs/uploaded';
 		    if(!file_exists(dirname( __FILE__ ).'/'.$storeFolder)) throw new Exception("Invalid song-type", 1);
 
 		    $tempFile = $_FILES['file']['tmp_name'];          //3             
