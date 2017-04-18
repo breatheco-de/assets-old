@@ -13,7 +13,7 @@
 		<form id="theForm" action="upload.php" method="post">
 			<fieldset>
 				<legend>Song Name</legend>
-				<input type="Text" name="song-name" placeholder="File Name">
+				<input id="songName" type="Text" name="song-name" placeholder="File Name">
 			</fieldset>
 			<fieldset>
 				<legend>Song Type</legend>
@@ -58,7 +58,9 @@
 		});
 
 		var cleanFilename = function (name) {
-		   return name.toLowerCase().replace(/[^\w]/gi, '');
+			var songName = $('#songName').val();
+			if(!songName || songName==='') songName = name;
+		   return songName.toLowerCase().replace(/[^\w]/gi, '');
 		};
 	</script>
 </body>
