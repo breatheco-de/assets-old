@@ -44,6 +44,7 @@
 	<script type="text/javascript">
 		Dropzone.autoDiscover = false;
 		var fileCount = 0;
+		$('#submitForm').hide();
 		$(document).ready(function(){
 			var dropzone = new Dropzone("#theForm", {
 				maxFilesize: 4, // MB
@@ -87,6 +88,7 @@
 			dropzone.on("addedfile", function(file) {
 			    /* Maybe display some more file information on your page */
 			  	fileCount++;
+			  	$('#submitForm').show();
 			  	if(fileCount>1) alert('Only one file at a time allowed');
 			});
 
