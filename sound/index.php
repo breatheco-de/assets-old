@@ -27,7 +27,6 @@
 				</select>
 			</fieldset>
 			<fieldset id="captcha">
-				<legend>Are you a human?</legend>
 				<div class="g-recaptcha" data-sitekey="6LfWah0UAAAAAF2cJmOejMBnE9e86PM4Ys36QJvm"></div>
 			</fieldset>
 			<div class="dz-default dz-message">Drop files here</div>
@@ -63,6 +62,8 @@
 					}
 				}
 			});
+
+			$('#theForm').addClass('dropzone');
 
 			$('#submitForm').click(function(){      
 				if(fileCount<2)
