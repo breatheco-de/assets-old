@@ -104,7 +104,7 @@
 			if(!songName || songName==='') songName = name;
 			else songName += '.'+ext;
 
-		   	return songName.toLowerCase().replace(/[^\w]/gi, '');
+		   	return songName.toLowerCase().replace(/[^\w.]/gi, '');
 		};
 	</script>
 </body>
