@@ -31,7 +31,7 @@
 				<div class="g-recaptcha" data-sitekey="6LfWah0UAAAAAF2cJmOejMBnE9e86PM4Ys36QJvm"></div>
 			</fieldset>
 		</form>
-		<button onClick="document.getElementById('theForm').submit();" class="btn btn-primary form-control">Sumit</button>
+		<button id="submitForm" class="btn btn-primary form-control">Sumit</button>
 	</div>
 	<div id="trademark">
 		<img src="http://assets.breatheco.de/img/logo.png">
@@ -42,12 +42,18 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="./dropzone.js?1"></script>
 	<script type="text/javascript">
+		Dropzone.autoDiscover = false;
 		$(document).ready(function(){
 			var dropzone = new Dropzone("#theForm", {
 			  maxFilesize: 4, // MB
+			  autoProcessQueue: false,
 			  acceptedFiles: ".mp3,.wav",
 			  renameFilename: cleanFilename,
 			  maxFiles: 1
+			});
+
+			$('#submitForm').click(function(){           
+			  dropzone.processQueue();
 			});
 		});
 
