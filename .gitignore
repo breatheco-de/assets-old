@@ -1,3 +1,4 @@
 .htaccess
 php_errorlog
 .DS_Store
+sound/*/uplodaded/

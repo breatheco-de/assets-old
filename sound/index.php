@@ -10,7 +10,7 @@
 <body>
 	<div class="container-fluid">
 		<h1>Upload Songs</h1>
-		<form id="theForm" action="upload.php" method="post" class="dropzone">
+		<form id="theForm" action="upload.php" method="post">
 			<fieldset>
 				<legend>Song Name</legend>
 				<input type="Text" name="song-name" placeholder="File Name">
@@ -41,5 +41,19 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="./dropzone.js?1"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var dropzone = new Dropzone("#theForm", {
+			  maxFilesize: 4, // MB
+			  acceptedFiles: ".mp3,.wav",
+			  renameFilename: cleanFilename,
+			  maxFiles: 1
+			});
+		});
+
+		var cleanFilename = function (name) {
+		   return name.toLowerCase().replace(/[^\w]/gi, '');
+		};
+	</script>
 </body>
 </html>

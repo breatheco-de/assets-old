@@ -1,26 +1,35 @@
 <?php
 
 require_once('src/autoload.php');
-
+header('Content-Type: application/json');
 $ds = '/';  //1
 $secret = '6LfWah0UAAAAAOHQHVJA_rguSGTifS30leC6U4Dr';
  
-//$recaptcha = new \ReCaptcha\ReCaptcha($secret);
-//$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-//if ($resp->isSuccess()){
-print_r($_FILES);
-	if (!empty($_FILES) and !empty($_POST['song-type']) and !empty($_POST['song-name'])) {
-	    
-	    $storeFolder = 'sounds/'.$_POST['song-type'];
-	    if(!file_exists(dirname( __FILE__ ).'/'.$storeFolder)) throw new Exception("Invalid song-type", 1);
+$recaptcha = new \ReCaptcha\ReCaptcha($secret);
+$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 
-	    $tempFile = $_FILES['file']['tmp_name'];          //3             
-	    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-	    $targetFile =  $targetPath. $_FILES['file']['name'];  //5
-	    move_uploaded_file($tempFile,$targetFile); //6
+try
+{
+	if ($resp->isSuccess()){
+		if (!empty($_FILES) and !empty($_POST['song-type']) and !empty($_POST['song-name'])) {
+		    
+		    $storeFolder = 'sounds/'.$_POST['song-type'].'/songs/uploded';
+		    if(!file_exists(dirname( __FILE__ ).'/'.$storeFolder)) throw new Exception("Invalid song-type", 1);
+
+		    $tempFile = $_FILES['file']['tmp_name'];          //3             
+		    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+		    $targetFile =  $targetPath. $_FILES['file']['name'];  //5
+		    $result = move_uploaded_file($tempFile,$targetFile); //6
+		    if(!$result) throw new Exception("There was an error moving the files.", 1);
+		    else echo json_encode(array("code"=>200));
+		}
+		else throw new Exception("Invalid form data, please review and try again.", 1);
+		
 	}
-	else throw new Exception("Invalid form data, please review and try again.", 1);
-	
-//}
+}
+catch(Exception $e)
+{
+	echo json_encode(array("code"=>500, "msg"=>$e->getMessage()));
+}
 
 ?>   
