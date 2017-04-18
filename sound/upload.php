@@ -1,6 +1,11 @@
 <?php
 
 require_once('src/autoload.php');
+if (empty($_FILES) and empty($_POST['song-type']) and empty($_POST['song-name']))
+{
+	header("HTTP/1.0 404 Not Found");
+}
+
 header('Content-Type: application/json');
 $ds = '/';  //1
 $secret = '6LfWah0UAAAAAOHQHVJA_rguSGTifS30leC6U4Dr';
@@ -11,7 +16,7 @@ $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR
 try
 {
 	if ($resp->isSuccess()){
-		if (!empty($_FILES) and !empty($_POST['song-type']) and !empty($_POST['song-name'])) {
+		if (!empty($_FILES) and (empty($_POST['song-type']) or empty($_POST['song-name']))) {
 		    
 		    $storeFolder = 'sounds/'.$_POST['song-type'].'/songs/uploded';
 		    if(!file_exists(dirname( __FILE__ ).'/'.$storeFolder)) throw new Exception("Invalid song-type", 1);
