@@ -57,7 +57,7 @@
 			$('#submitForm').click(function(){           
 				$('#theForm').hide();
 			    $('#titleForm').html("Loadding...");
-			  dropzone.processQueue();
+			  	dropzone.processQueue();
 			});
 
 			dropzone.on("addedfile", function(file) {
@@ -69,9 +69,14 @@
 		});
 
 		var cleanFilename = function (name) {
+			var re = /(?:\.([^.]+))?$/;
+			var ext = re.exec(name)[1];
+
 			var songName = $('#songName').val();
 			if(!songName || songName==='') songName = name;
-		   return songName.toLowerCase().replace(/[^\w]/gi, '');
+			else songName += ext;
+
+		   	return songName.toLowerCase().replace(/[^\w]/gi, '');
 		};
 	</script>
 </body>
