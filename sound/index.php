@@ -44,20 +44,37 @@
 	<script src="./dropzone.js?1"></script>
 	<script type="text/javascript">
 		Dropzone.autoDiscover = false;
+		var fileCount = 0;
 		$(document).ready(function(){
 			var dropzone = new Dropzone("#theForm", {
-			  maxFilesize: 4, // MB
-			  addRemoveLinks: true,
-			  autoProcessQueue: false,
-			  acceptedFiles: ".mp3,.wav",
-			  renameFilename: cleanFilename,
-			  maxFiles: 1
+				maxFilesize: 4, // MB
+				addRemoveLinks: true,
+				autoProcessQueue: false,
+				acceptedFiles: ".mp3,.wav",
+				renameFilename: cleanFilename,
+				maxFiles: 1,
+				accept: function(file, done) {
+					if (fileCount>1) {
+						done("Only one file allowed at a time, remove one of the files.");
+					}
+					else 
+					{ 
+						done(); 
+					}
+				}
 			});
 
-			$('#submitForm').click(function(){           
-				$('#theForm').hide();
-			    $('#titleForm').html("Loadding...");
-			  	dropzone.processQueue();
+			$('#submitForm').click(function(){      
+				if(fileCount<2)
+				{
+					$('#theForm').hide();
+				    $('#titleForm').html("Loadding...");
+				  	dropzone.processQueue();
+				}
+				else
+				{
+					alert('Only one file allowed at a time, remove one of the files.');
+				}
 			});
 
 			dropzone.on('success', function() {
@@ -68,9 +85,10 @@
 
 			dropzone.on("addedfile", function(file) {
 			    /* Maybe display some more file information on your page */
-			    alert('file added successfully');
 				$('.dz-default.dz-message').hide();
-			 });
+			  	fileCount++;
+			  	if(fileCount>1) alert('Only one file at a time allowed');
+			});
 		});
 
 		var cleanFilename = function (name) {
@@ -79,7 +97,7 @@
 
 			var songName = $('#songName').val();
 			if(!songName || songName==='') songName = name;
-			else songName += ext;
+			else songName += '.'+ext;
 
 		   	return songName.toLowerCase().replace(/[^\w]/gi, '');
 		};
