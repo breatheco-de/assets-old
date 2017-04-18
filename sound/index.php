@@ -13,11 +13,11 @@
 		<form id="theForm" action="upload.php" method="post">
 			<fieldset>
 				<legend>Song Name</legend>
-				<input id="songName" type="Text" name="song-name" placeholder="File Name">
+				<input id="songName" class="form-control" type="Text" name="song-name" placeholder="File Name">
 			</fieldset>
 			<fieldset>
 				<legend>Song Type</legend>
-				<select name="song-type">
+				<select class="form-control" name="song-type">
 					<option value="cartoons">All Cartoon Songs</option>
 					<option value="mario">Mario Bross Songs</option>
 					<option value="videogame">Other Video Games Songs</option>
