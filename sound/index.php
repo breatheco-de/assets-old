@@ -4,7 +4,7 @@
 	<title>Breathe Code Sound Gallery</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="dropzone.css?1" type="text/css" rel="stylesheet" />
-	<link href="styles.css?1" type="text/css" rel="stylesheet" />
+	<link href="styles.css?2" type="text/css" rel="stylesheet" />
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
@@ -86,9 +86,13 @@
 
 			dropzone.on("addedfile", function(file) {
 			    /* Maybe display some more file information on your page */
-				$('.dz-default.dz-message').hide();
 			  	fileCount++;
 			  	if(fileCount>1) alert('Only one file at a time allowed');
+			});
+
+			dropzone.on("removedfile", function(file) {
+			    /* Maybe display some more file information on your page */
+			  	fileCount--;
 			});
 		});
 
