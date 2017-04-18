@@ -60,11 +60,16 @@
 			  	dropzone.processQueue();
 			});
 
+			dropzone.on('success', function() {
+			  alert('Success!');
+			  $('#theForm').show();
+			  $('#titleForm').html("Upload a song");
+			});
+
 			dropzone.on("addedfile", function(file) {
 			    /* Maybe display some more file information on your page */
 			    alert('file added successfully');
-				$('#theForm').show();
-			    $('#titleForm').html("Upload Songs...");
+				$('.dz-default.dz-message').hide();
 			 });
 		});
 
