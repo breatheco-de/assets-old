@@ -2,34 +2,44 @@
 <html>
 <head>
 	<title>Breathe Code Sound Gallery</title>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link href="../css/dropzone.css" type="text/css" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="dropzone.css?1" type="text/css" rel="stylesheet" />
+	<link href="styles.css?1" type="text/css" rel="stylesheet" />
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 	<div class="container-fluid">
-		<h1>Create User</h1>
-		<form action="#" method="post" action="upload.php" class="dropzone">
+		<h1>Upload Songs</h1>
+		<form id="theForm" action="upload.php" method="post" class="dropzone">
 			<fieldset>
 				<legend>Song Name</legend>
-				<label for="firstname">First:</label>
-				<input type="Text" name="firstname" value="<?php echo $user["name"]; ?>" placeholder="Your Name">
+				<input type="Text" name="song-name" placeholder="File Name">
 			</fieldset>
 			<fieldset>
-				<legend>File Name</legend>
-				<label for="lastname">Email:</label>
-				<input type="Text" name="email" value="<?php echo $user["email"]; ?>" placeholder="username@domain.com">
+				<legend>Song Type</legend>
+				<select name="song-type">
+					<option value="cartoons">All Cartoon Songs</option>
+					<option value="mario">Mario Bross Songs</option>
+					<option value="videogame">Other Video Games Songs</option>
+					<option value="old">Old Classic Songs</option>
+					<option value="trendy">Trendy Songs (only last 30 days)</option>
+					<option value="other">Other Songs</option>
+				</select>
 			</fieldset>
-			<fieldset>
-				<legend>Role</legend>
-				<label for="gender">Admin:</label>
-				<input type="radio" name="role" value="admin" <?php if($user["role"]=='admin') echo 'checked="checked"'; ?>>
-				<label for="gender">Subscriber:</label>
-				<input type="radio" name="role" value="subscriber" <?php if($user["role"]=='subscriber') echo 'checked="checked"'; ?>>
+			<fieldset id="captcha">
+				<legend>Are you a human?</legend>
+				<div class="g-recaptcha" data-sitekey="6LfWah0UAAAAAF2cJmOejMBnE9e86PM4Ys36QJvm"></div>
 			</fieldset>
-			<input type="hidden" name="id" value="<?php echo $user["id"]; ?>">
-			<input type='submit' value='SUBSCRIBE' />
 		</form>
+		<button onClick="document.getElementById('theForm').submit();" class="btn btn-primary form-control">Sumit</button>
 	</div>
-	<script src="../dropzone.min.js"></script>
+	<div id="trademark">
+		<img src="http://assets.breatheco.de/img/logo.png">
+		<p>All rights reserved, Breathe Code @ 2017</p>
+		<p>www.breatheco.de</p>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="./dropzone.js?1"></script>
 </body>
 </html>
