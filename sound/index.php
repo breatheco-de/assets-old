@@ -70,6 +70,7 @@
 				if(fileCount<2)
 				{
 					$('#theForm').hide();
+					$('#submitForm').hide();
 				    $('#titleForm').html("Loadding...");
 				  	dropzone.processQueue();
 				}
@@ -81,8 +82,7 @@
 
 			dropzone.on('success', function() {
 			  alert('Success!');
-			  $('#theForm').show();
-			  $('#titleForm').html("Upload a song");
+			  location.reload();
 			});
 
 			dropzone.on("addedfile", function(file) {
