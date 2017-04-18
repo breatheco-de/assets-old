@@ -25,7 +25,7 @@ try
 		}
 		else throw new Exception("Invalid form data, please review and try again.", 1);
 		
-	}
+	}else throw new Exception("Invalid captcha.", 1);
 }
 catch(Exception $e)
 {
