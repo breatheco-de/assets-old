@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h1>Upload Songs</h1>
+		<h1 id="titleForm">Upload Songs...</h1>
 		<form id="theForm" action="upload.php" method="post">
 			<fieldset>
 				<legend>Song Name</legend>
@@ -30,6 +30,7 @@
 				<legend>Are you a human?</legend>
 				<div class="g-recaptcha" data-sitekey="6LfWah0UAAAAAF2cJmOejMBnE9e86PM4Ys36QJvm"></div>
 			</fieldset>
+			<div class="dz-default dz-message">Drop files here</div>
 		</form>
 		<button id="submitForm" class="btn btn-primary form-control">Sumit</button>
 	</div>
@@ -46,6 +47,7 @@
 		$(document).ready(function(){
 			var dropzone = new Dropzone("#theForm", {
 			  maxFilesize: 4, // MB
+			  addRemoveLinks: true,
 			  autoProcessQueue: false,
 			  acceptedFiles: ".mp3,.wav",
 			  renameFilename: cleanFilename,
@@ -53,8 +55,17 @@
 			});
 
 			$('#submitForm').click(function(){           
+				$('#theForm').hide();
+			    $('#titleForm').html("Loadding...");
 			  dropzone.processQueue();
 			});
+
+			dropzone.on("addedfile", function(file) {
+			    /* Maybe display some more file information on your page */
+			    alert('file added successfully');
+				$('#theForm').show();
+			    $('#titleForm').html("Upload Songs...");
+			 });
 		});
 
 		var cleanFilename = function (name) {
