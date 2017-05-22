@@ -1,0 +1,141 @@
+body {
+  background: #c5c5c5;
+}
+
+button, .button {
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+  background: #f7941e;
+  border: none;
+  color: #fff;
+  display: block;
+  float: left;
+  margin-top: 5px;
+  padding: 7px 17px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+button:hover, .button:hover {
+  background: #f9ab4f;
+}
+button:active, .button:active {
+  background: #da7a08;
+}
+
+.email {
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
+}
+.email .envelope {
+  display: block;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  width: 500px;
+}
+.email .envelope .paper {
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.email .envelope .back:before {
+  content: "";
+  display: block;
+  border-style: solid;
+  border-width: 200px 250px 0px 250px;
+  border-color: transparent transparent #999 transparent;
+  height: 0px;
+  width: 0px;
+}
+.email .envelope .back:after {
+  content: "";
+  display: block;
+  background-color: #999;
+  width: 500px;
+  height: 200px;
+}
+.email .envelope .back.animate:before {
+  -moz-transition: border-width;
+  -o-transition: border-width;
+  -webkit-transition: border-width;
+  transition: border-width;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  border-width: 0 250px 200px 250px;
+}
+.email .envelope .front {
+  top: 200px;
+}
+.email .envelope .front:after {
+  content: "";
+  display: block;
+  background-color: #808285;
+  height: 100px;
+  width: 500px;
+}
+.email .envelope .front:before {
+  content: "";
+  display: block;
+  border-style: solid;
+  border-width: 200px 250px 0px 250px;
+  border-color: transparent #808285;
+  height: 0px;
+  width: 0px;
+}
+.email .envelope .note {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  display: block;
+  height: 280px;
+  margin: 0 auto;
+  position: relative;
+  top: 200px;
+  width: 500px;
+}
+.email .envelope .note.animate {
+  -moz-transition-property: top;
+  -o-transition-property: top;
+  -webkit-transition-property: top;
+  transition-property: top;
+  -moz-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  -webkit-transition-duration: 2s;
+  transition-duration: 2s;
+  -moz-transition-delay: 1s;
+  -o-transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  top: 50px;
+}
+.email .envelope .form-wrapper {
+  background: #fff;
+  height: auto;
+  margin: 10px auto 0 auto;
+  padding: 20px;
+  width: 90%;
+}
+.email .envelope .form-wrapper form {
+  border: 1px dotted #000;
+  height: 210px;
+  padding: 20px;
+}
+.email .envelope .form-wrapper label {
+  display: block;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 5px;
+}
+.email .envelope .form-wrapper textarea {
+  display: block;
+  float: left;
+  min-height: 100px;
+  overflow: scroll;
+  width: 100%;
+}
