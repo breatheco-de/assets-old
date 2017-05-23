@@ -8,3 +8,4 @@
     position: relative; top:0; left: 0;
 }
 #example-child{ background-color: rgba(10, 47, 107,0.9); position: relative; top:-1px; left: -1px;}
+h3 small{font-size: 1em;}

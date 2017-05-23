@@ -3,26 +3,16 @@
     <head>
         <title>Aspect Ratio</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css?v1" type="text/css" /> 
+        <link rel="stylesheet" href="style.css?v2" type="text/css" /> 
     </head>
     <body>
         <div class="container">
             <h1>Aspect Ratio Tester</h1>
-            <h3>Test if an image is good for a specific proportion!</h3>
-				<div class="row">
-					<div class="col-md-6">
-						<label for="ratio_width">Ratio width</label>
-						<input class="form-control" type="number" value="0" id="ratio_width" readonly>
-					</div>
-					<div class="col-md-6">
-						<label for="ratio_height">Ratio height</label>
-						<input class="form-control" type="number" value="0" id="ratio_height" readonly>
-					</div>
-				</div>
+            <h3>Test if an image or box is good for a specific proportion!</h3>
 				<hr>
 				<div class="row">
 					<div class="col-md-6">
-						<h3>Specify a width and height</h3>
+						<h3>A) Specify a width and height <small>and it will tell you the aspect ratio for those sizes:</small></h3>
 						<div class="row">
 							<div class="col-xs-12">
 								<label for="pixel_width">Pixels width</label>
@@ -35,7 +25,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<h3>Or input an image</h3>
+						<h3>B) Or input an image <small>and it will tell you the aspect ratio for that image size:</small></h3>
 						<div class="row">
 							<div class="col-md-12">
 								<form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
@@ -60,8 +50,18 @@
 					</div>
 				</div>
 				<hr>
-				<h3>Example Box Container</h3>
-				<p>If you input a specific width and height the blue square will have that size, if you use an image you image will appear inside the container.</p>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="ratio_width">Calculated aspect ratio width</label>
+						<input class="form-control" type="number" value="0" id="ratio_width" readonly>
+					</div>
+					<div class="col-md-6">
+						<label for="ratio_height">Calculated aspect ratio height</label>
+						<input class="form-control" type="number" value="0" id="ratio_height" readonly>
+					</div>
+				</div>
+				<hr>
+				<h3>This example box container <small>tells you how your box or image will fit in a parent container <?php echo (isset($_REQUEST['ratio'])) ? 'with a '.$_REQUEST['ratio'].' ratio.' : "with a new ratio that you can specify"; ?></small></h3>
 				<div class="row">
 					<div class="col-md-12">
 					    <select class="form-control" id="example-ratios">
