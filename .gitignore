@@ -2,3 +2,5 @@
 php_errorlog
 .DS_Store
 uploaded/
+.c9
+php.ini
