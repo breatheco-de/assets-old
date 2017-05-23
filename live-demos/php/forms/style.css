@@ -88,6 +88,7 @@ button:active, .button:active {
   height: 0px;
   width: 0px;
 }
+.envelopecontent{background: #808285;}
 .email .envelope .note {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -95,6 +96,7 @@ button:active, .button:active {
   height: 280px;
   margin: 0 auto;
   position: relative;
+  background: white;
   top: 200px;
   width: 500px;
 }

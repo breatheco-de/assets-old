@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>HTTP Sniffer</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css?v02">
 </head>
 <body>
 	
@@ -17,7 +17,14 @@
 	      <?php var_dump($_REQUEST); ?>
 	    </div>
 	    <div class="front paper">
-	    	<?php var_dump(getallheaders()); ?>
+	    <?php
+	    $envelope = getallheaders();
+	    ?>
+	    	<ul class="envelopecontent">
+	    	<?php foreach($envelope as $key => $val){ ?>
+	    		<li><?php echo $key; ?>: <?php echo $val; ?></li>
+	    	<?php } ?>
+	    	</ul>
 	    </div>
 	  </div>
 	</div>
