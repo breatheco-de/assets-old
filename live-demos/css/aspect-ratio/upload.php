@@ -11,7 +11,7 @@ $ds = '/';  //1
 try
 {
 		if (!empty($_FILES)) {
-		    $storeFolder = 'temp_images';
+		    $storeFolder = 'uploaded';
 		    $filesToDelete = glob(dirname( __FILE__ ) . $ds. $storeFolder . $ds.'*'); // get all file names
 			foreach($filesToDelete as $f){ // iterate files
 			  if(is_file($f))
