@@ -4,3 +4,4 @@ php_errorlog
 uploaded/
 .c9
 php.ini
+*.log
