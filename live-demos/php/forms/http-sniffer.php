@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>HTTP Sniffer</title>
-	<link rel="stylesheet" type="text/css" href="style.css?v03">
+	<link rel="stylesheet" type="text/css" href="style.css?v04">
 </head>
 <body>
 	
