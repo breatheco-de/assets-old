@@ -88,16 +88,20 @@ button:active, .button:active {
   height: 0px;
   width: 0px;
 }
-.envelopecontent{
-  background: #808285;
+
+.envelopecontent, .requestcontent{
+  overflow: hidden;
   padding: 15px;
   margin: 0;
+}
+.envelopecontent{
+  background: #808285;
   width: 500px;
   box-sizing: border-box;
-  overflow: hidden;
 }
-.envelopecontent li{ list-style: none;}
-.envelopecontent li .contentproperty{display: inline-block; width: 100px;}
+.envelopecontent li, .requestcontent li{ list-style: none;}
+.envelopecontent li .contentproperty,
+.requestcontent li .requestproperty{display: inline-block; width: 100px;}
 .email .envelope .note {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;

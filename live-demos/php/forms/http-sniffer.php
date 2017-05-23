@@ -14,7 +14,11 @@
 	  <div class="envelope">
 	    <div class="back paper"></div>
 	    <div class="note">
-	      <?php var_dump($_REQUEST); ?>
+	    	<ul class="requestcontent">
+	    	<?php foreach($_REQUEST as $key => $val){ ?>
+	    		<li><span class="requestproperty"><?php echo $key; ?></span> <?php echo $val; ?></li>
+	    	<?php } ?>
+	    	</ul>
 	    </div>
 	    <div class="front paper">
 	    <?php
