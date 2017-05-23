@@ -22,7 +22,7 @@
 	    ?>
 	    	<ul class="envelopecontent">
 	    	<?php foreach($envelope as $key => $val){ ?>
-	    		<li><?php echo $key; ?>: <?php echo $val; ?></li>
+	    		<li><span class="contentproperty"><?php echo $key; ?></span> <?php echo $val; ?></li>
 	    	<?php } ?>
 	    	</ul>
 	    </div>
