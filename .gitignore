@@ -5,3 +5,4 @@ uploaded/
 .c9
 php.ini
 *.log
+temp_images/*

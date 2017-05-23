@@ -20,6 +20,7 @@
             });
             
             document.querySelector('#image-url').addEventListener('change',getImage);
+            document.querySelector('#upload-button').addEventListener('click',uploadFile);
             
             
             
@@ -36,6 +37,7 @@
                     }
                 }
             }
+            
         }
         
         function loadSelector()
@@ -49,6 +51,61 @@
              }
              
              exampleRatioSelector.addEventListener('change',resizeExampleContainer);
+        }
+        
+        function uploadFile(){
+            var form = document.getElementById('upload-form');
+            var fileSelect = document.getElementById('image-upload');
+            var uploadButton = document.getElementById('upload-button');
+            
+              event.preventDefault();
+            
+              // Update button text.
+              uploadButton.innerHTML = 'Uploading...';
+            
+                // Get the selected files from the input.
+                var files = fileSelect.files;
+                
+                // Create a new FormData object.
+                var formData = new FormData();
+                
+                // Loop through each of the selected files.
+                for (var i = 0; i < files.length; i++) {
+                  var file = files[i];
+                
+                  // Check the file type.
+                  if (!file.type.match('image.*')) {
+                    continue;
+                  }
+                
+                    // Add the file to the request.
+                    formData.append('file[]', file, file.name);
+                }
+                
+                // Set up the request.
+                var xhr = new XMLHttpRequest();
+                // Open the connection.
+                xhr.open('POST', 'upload.php', true);
+                
+                // Set up a handler for when the request finishes.
+                xhr.onload = function () {
+                  if (xhr.status === 200) {
+                      var response = JSON.parse(xhr.responseText);
+                      if(response.code==200)
+                      {
+                        document.querySelector('#image-url').value = '.'+response.url;
+                        var event = new Event('change');
+                        document.querySelector('#image-url').dispatchEvent(event);
+                      }
+                      
+                    // File(s) uploaded.
+                    uploadButton.innerHTML = 'Upload';
+                  } else {
+                    alert('An error occurred!');
+                  }
+                };
+                // Send the Data.
+                xhr.send(formData);
         }
         
         function resizeExampleContainer(){
