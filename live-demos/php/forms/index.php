@@ -2,19 +2,24 @@
 <html>
 <head>
 	<title>HTTP Sniffer</title>
-	<link rel="stylesheet" type="text/css" href="style.css?v04">
+	<link rel="stylesheet" type="text/css" href="style.css?v06">
 </head>
 <body>
 	
 
 	<h1>The server received the following HTTP package:</h1>
-	<a href="#" class="button" onClick="toggleAnimation();">OPEN</a>
+	<p>Send me an HTTP request and I will show you the content!</p>
+	<a href="#" class="button" onClick="toggleAnimation();">Show Me</a>
 	
 	<div class="email">
 	  <div class="envelope">
 	    <div class="back paper"></div>
 	    <div class="note">
 	    	<ul class="requestcontent">
+	    		<li>
+	    			<span class="requestproperty">Request Type</span>
+	    			<?php echo $_SERVER['REQUEST_METHOD']; ?>
+	    		</li>	
 	    	<?php foreach($_REQUEST as $key => $val){ ?>
 	    		<li><span class="requestproperty"><?php echo $key; ?></span> <?php echo $val; ?></li>
 	    	<?php } ?>

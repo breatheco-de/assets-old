@@ -34,7 +34,7 @@ button:active, .button:active {
   height: 400px;
   margin: 0 auto;
   position: relative;
-  width: 500px;
+  width: 700px;
 }
 .email .envelope .paper {
   display: block;
@@ -46,7 +46,7 @@ button:active, .button:active {
   content: "";
   display: block;
   border-style: solid;
-  border-width: 200px 250px 0px 250px;
+  border-width: 200px 350px 0px 350px;
   border-color: transparent transparent #999 transparent;
   height: 0px;
   width: 0px;
@@ -55,7 +55,7 @@ button:active, .button:active {
   content: "";
   display: block;
   background-color: #999;
-  width: 500px;
+  width: 700px;
   height: 200px;
 }
 .email .envelope .back.animate:before {
@@ -67,7 +67,7 @@ button:active, .button:active {
   -o-transition-duration: 1s;
   -webkit-transition-duration: 1s;
   transition-duration: 1s;
-  border-width: 0 250px 200px 250px;
+  border-width: 0 350px 200px 350px;
 }
 .email .envelope .front {
   top: 200px;
@@ -77,13 +77,13 @@ button:active, .button:active {
   display: block;
   background-color: #808285;
   height: 100px;
-  width: 500px;
+  width: 700px;
 }
 .email .envelope .front:before {
   content: "";
   display: block;
   border-style: solid;
-  border-width: 200px 250px 0px 250px;
+  border-width: 200px 350px 0px 350px;
   border-color: transparent #808285;
   height: 0px;
   width: 0px;
@@ -96,12 +96,14 @@ button:active, .button:active {
 }
 .envelopecontent{
   background: #808285;
-  width: 500px;
+  width: 700px;
   box-sizing: border-box;
 }
 .envelopecontent li, .requestcontent li{ list-style: none;}
 .envelopecontent li .contentproperty,
-.requestcontent li .requestproperty{display: inline-block; width: 100px;font-weight: 800;}
+.requestcontent li .requestproperty{display: inline-block; width: 300px;font-weight: 800;}
+li:hover{background: #BDBDBD;}
+.envelopecontent li:nth-child(odd) {color: #ffffff;}
 .email .envelope .note {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -111,7 +113,7 @@ button:active, .button:active {
   position: relative;
   background: white;
   top: 200px;
-  width: 500px;
+  width: 700px;
 }
 .email .envelope .note.animate {
   -moz-transition-property: top;
