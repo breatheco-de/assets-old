@@ -101,8 +101,7 @@ button:active, .button:active {
 }
 .envelopecontent li, .requestcontent li{ list-style: none;}
 .envelopecontent li .contentproperty,
-.requestcontent li .requestproperty{display: inline-block; width: 100px;}
-.requestproperty,.requestcontent{font-weight: 800;}
+.requestcontent li .requestproperty{display: inline-block; width: 100px;font-weight: 800;}
 .email .envelope .note {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;

@@ -6,9 +6,9 @@
 </head>
 <body>
 	
-	<a href="#" class="button" onClick="toggleAnimation();">OPEN</a>
 
-	<h1>The server received the following:</h1>
+	<h1>The server received the following HTTP package:</h1>
+	<a href="#" class="button" onClick="toggleAnimation();">OPEN</a>
 	
 	<div class="email">
 	  <div class="envelope">
