@@ -1,15 +1,28 @@
+<?php
+	function printAttribute($parameter){
+		if(is_array($parameter))
+		{
+			$cont = 0;
+			echo "[";
+			foreach($parameter as $p) echo ($cont++==(count($parameter)-1)) ? $p : $p.', ';
+			echo "]";
+		}
+		else echo $parameter;
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>HTTP Sniffer</title>
-	<link rel="stylesheet" type="text/css" href="style.css?v06">
+	<link rel="stylesheet" type="text/css" href="style.css?v07">
 </head>
 <body>
 	
-
-	<h1>The server received the following HTTP package:</h1>
-	<p>Send me an HTTP request and I will show you the content!</p>
-	<a href="#" class="button" onClick="toggleAnimation();">Show Me</a>
+	<div class="header">
+		<h1>The server received the following HTTP package:</h1>
+		<p>Send me an HTTP request and I will show you its content!</p>
+		<a href="#" class="button" onClick="toggleAnimation();">Show Me</a>
+	</div>
 	
 	<div class="email">
 	  <div class="envelope">
@@ -21,7 +34,7 @@
 	    			<?php echo $_SERVER['REQUEST_METHOD']; ?>
 	    		</li>	
 	    	<?php foreach($_REQUEST as $key => $val){ ?>
-	    		<li><span class="requestproperty"><?php echo $key; ?></span> <?php echo $val; ?></li>
+	    		<li><span class="requestproperty"><?php echo $key; ?></span> <?php printAttribute($val); ?></li>
 	    	<?php } ?>
 	    	</ul>
 	    </div>
@@ -30,8 +43,12 @@
 	    $envelope = getallheaders();
 	    ?>
 	    	<ul class="envelopecontent">
+	    		<li>
+	    			<span class="contentproperty">Request Type</span>
+	    			<?php echo $_SERVER['REQUEST_METHOD']; ?>
+	    		</li>	
 	    	<?php foreach($envelope as $key => $val){ ?>
-	    		<li><span class="contentproperty"><?php echo $key; ?></span> <?php echo $val; ?></li>
+	    		<li><span class="contentproperty"><?php echo $key; ?></span> <?php echo substr($val,0,50); if(strlen($val)>45) echo "..."; ?></li>
 	    	<?php } ?>
 	    	</ul>
 	    </div>

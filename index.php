@@ -32,7 +32,6 @@
             <ul>Demos
               <li><a href="live-demos/css/bootstrap/">Bootstrap</a></li>
               <li><a href="live-demos/css/box-model/">The Box Model</a></li>
-              <li><a href="live-demos/css/parallax/">Parallax</a></li>
               <li><a href="live-demos/css/perspective/">Perspective</a></li>
               <li><a href="live-demos/css/translate/">Translate</a></li>
               <li><a href="live-demos/js/event-information/">Event Information</a></li>

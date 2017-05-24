@@ -1,7 +1,7 @@
 body {
   background: #c5c5c5;
 }
-
+.header{text-align: center;}
 button, .button {
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
@@ -9,8 +9,6 @@ button, .button {
   background: #f7941e;
   border: none;
   color: #fff;
-  display: block;
-  float: left;
   margin-top: 5px;
   padding: 7px 17px;
   text-decoration: none;
