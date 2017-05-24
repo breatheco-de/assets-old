@@ -20,7 +20,7 @@ button:hover, .button:hover {
 button:active, .button:active {
   background: #da7a08;
 }
-
+.empty{color: orange;}
 .email {
   display: block;
   float: left;

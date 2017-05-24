@@ -7,7 +7,11 @@
 			foreach($parameter as $p) echo ($cont++==(count($parameter)-1)) ? $p : $p.', ';
 			echo "]";
 		}
-		else echo $parameter;
+		else
+		{
+			if(!empty($parameter)) substr($parameter,0,50); if(strlen($parameter)>45) echo "...";
+			else "<span class='empty'>empty</span>";
+		} 
 	}
 ?>
 <!DOCTYPE html>
@@ -48,7 +52,7 @@
 	    			<?php echo $_SERVER['REQUEST_METHOD']; ?>
 	    		</li>	
 	    	<?php foreach($envelope as $key => $val){ ?>
-	    		<li><span class="contentproperty"><?php echo $key; ?></span> <?php echo substr($val,0,50); if(strlen($val)>45) echo "..."; ?></li>
+	    		<li><span class="contentproperty"><?php echo $key; ?></span> <?php  ?></li>
 	    	<?php } ?>
 	    	</ul>
 	    </div>
