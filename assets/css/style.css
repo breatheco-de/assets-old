@@ -1,7 +1,7 @@
 body{background-color: #2b2b2b;}
 ul li{list-style: none;}
-.bcmenu{margin-top: 20vh; color: white;}
-.bcmenu img{margin-bottom: 100px;}
+.bcmenu{margin-top: 5vh; color: white;}
+.bcmenu img{margin-bottom: 50px;}
 .bcmenu ul{font-size: 25px; text-align: left;}
 .bcmenu ul li{font-size: 20px; margin-left: 10px;}
 .bcmenu ul li a{color: #BDBDBD;}

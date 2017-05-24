@@ -26,6 +26,7 @@
               <li><a href="live-demos/js/regex-tester/">Regex Tester</a></li>
               <li><a href="live-demos/sql/mysql-tester/">MySQL Tester</a></li>
               <li><a href="live-demos/css/aspect-ratio/">Aspect Ratio</a></li>
+              <li><a href="../img/">Image API</a></li>
             </ul>
           </div>
           <div class="col-sm-3">

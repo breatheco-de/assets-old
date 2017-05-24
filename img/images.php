@@ -46,8 +46,8 @@ function filterImage($img)
 	
 	if(isset($_GET['tags']))
 	{
-		foreach($_GET['tags'] as $t) if(in_array($t,$tags)) return $img;
-		return false;
+		$tagArray = explode(',',$_GET['tags']);
+		foreach($tagArray as $t) if(!in_array($t,$tags)) return false;
 	}
 	
 	return $img;
@@ -94,8 +94,26 @@ if(isset($_SERVER['HTTP_REFERER']) and (strpos($_SERVER['HTTP_REFERER'], "breath
 	header("Access-Control-Allow-Origin: *");
 }
 
-if(count($images)==0) printResult(null);
+if(isset($_GET['gettags']))
+{
+	$resultTags = array();
+	foreach($images as $img)
+		foreach($img['tags'] as $tag) if(!in_array($tag, $resultTags)) array_push($resultTags,$tag);
+	
+	printJSON($resultTags);
+}
 
+
+if(isset($_GET['getcategories']))
+{
+	$resultCategories = array();
+	foreach($images as $img)
+		if(!in_array($img['category'], $resultCategories)) array_push($resultCategories,$img['category']);
+	
+	printJSON($resultCategories);
+}
+
+if(count($images)==0) printResult(null);
 $result = $images;
 if(isset($_GET['random'])) $result = $images[rand(0,count($images)-1)];
 printResult($result);
