@@ -2,15 +2,15 @@ var dbName = 'chat';
 
 $(document).ready(function(){
 	$('#terminal').terminal(
-    		function(command) {
-    	        if (command !== '') {
-    	           	sendToPHP(command);
-    	        } else {
-    	        }
-        	}, {
+		function(command) {
+	        if (command !== '') {
+	           	sendToPHP(command);
+	        } else {
+	        }
+    	}, {
 	        greetings: 'Type your SQL commands...',
 	        name: 'js_demo',
-	        height: 150,
+	        height: 200,
 	        prompt: 'breathecode> '
     	});
 

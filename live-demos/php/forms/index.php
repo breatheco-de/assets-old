@@ -9,7 +9,8 @@
 		}
 		else
 		{
-			if(!empty($parameter)) substr($parameter,0,50); if(strlen($parameter)>45) echo "...";
+			if(!empty($parameter)) echo substr($parameter,0,50); 
+			if(strlen($parameter)>45) echo "...";
 			else "<span class='empty'>empty</span>";
 		} 
 	}

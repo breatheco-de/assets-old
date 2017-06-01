@@ -1,0 +1,21 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+#diagram{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: inline-block;
+	width: 170px;
+	z-index: 2;
+	text-align: right;
+	color: white;
+	font-size: 10px;
+}
+#diagram a{ color: #d1e2ff; font-size: 10px;}
+#diagram i{ color: white; font-size: 10px;}
+.error{background: #ffd1cc; color: #750b00; font-size: 14px;}
+.success{background: #f4fcf2;}
+#preview{max-height: 200px; overflow: auto; padding-top: 10px; font-size: 10px;}
