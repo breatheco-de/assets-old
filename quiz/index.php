@@ -23,9 +23,9 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <h3>Get list of all quizes JSON</h3>
+            <h3>Get list of all quizzes JSON</h3>
             <pre><code class="markdown">
-  [GET] /quizes.php
+  [GET] /quizzes.php
   Params: None
   
     [
@@ -50,7 +50,7 @@
           <div class="col-sm-8 col-sm-offset-2">
             <h3>Get only one quiz</h3>
             <pre><code class="markdown">
-  [GET] /quizes.php?slug=css
+  [GET] /quizzes.php?slug=css
   
   The slug is a unique string id for each quiz in the platform.
   

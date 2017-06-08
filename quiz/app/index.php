@@ -39,7 +39,7 @@
             $(function() {
                 
                 $.ajax({
-                   url: '../quizes.php', 
+                   url: '../quizzes.php', 
                    dataType: 'json',
                    data: {slug: '<?php echo $_GET['slug']; ?>'},
                    cache: false,
