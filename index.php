@@ -36,6 +36,7 @@
               <li><a href="live-demos/css/box-model/">The Box Model</a></li>
               <li><a href="live-demos/css/perspective/">Perspective</a></li>
               <li><a href="live-demos/css/translate/">Translate</a></li>
+              <li><a href="../json/">Sample API</a></li>
               <li><a href="live-demos/js/event-information/">Event Information</a></li>
               <li><a href="live-demos/js/event-triggering/">Event Triggering</a></li>
             </ul>
