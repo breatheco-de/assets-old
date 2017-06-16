@@ -6,7 +6,7 @@
 	try{
 		$response['code'] = 200;	
 		
-		if(strpos($_SERVER["CONTENT_TYPE"],'json')==false) throw new Exception('Please set the content-type to application/json, right now is: '.$_SERVER["CONTENT_TYPE"]);
+		if(strpos($_SERVER["CONTENT_TYPE"],'json')==false and $_SERVER["CONTENT_TYPE"]!='') throw new Exception('Please set the content-type to application/json, right now is: '.$_SERVER["CONTENT_TYPE"]);
 		$entityBody = file_get_contents('php://input');
 		if(!$entityBody) throw new Exception('The body\'s content is empty, please set the body with a JSON string');
 		
