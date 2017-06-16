@@ -1,8 +1,6 @@
 <?php 
 	header("Content-type: application/json"); 
-	if(strpos($_SERVER['HTTP_REFERER'], "breatheco") || strpos($_SERVER['HTTP_REFERER'], "c9") || strpos($_SERVER['HTTP_REFERER'], "replit")){
-		header("Access-Control-Allow-Origin: *");
-	}		
+	header("Access-Control-Allow-Origin: *");
 ?>
 [{ "city" : "AGAWAM", "loc" : [ -72.622739, 42.070206 ], "pop" : 15338, "state" : "MA", "_id" : "01001" },
 { "city" : "CUSHMAN", "loc" : [ -72.51564999999999, 42.377017 ], "pop" : 36963, "state" : "MA", "_id" : "01002" },
