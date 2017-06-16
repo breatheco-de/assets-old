@@ -6,7 +6,6 @@
 	try{
 		$response['code'] = 200;	
 		
-		if(count($_POST)==0) throw new Exception('Sad, the project was not saved because the resquest URL is right but you did not specify any form parameters.');
 		if(strpos($_SERVER["CONTENT_TYPE"],'json')==false) throw new Exception('Please set the content-type to application/json, right now is: '.$_SERVER["CONTENT_TYPE"]);
 		$entityBody = file_get_contents('php://input');
 		if(!$entityBody) throw new Exception('The body\'s content is empty, please set the body with a JSON string');
