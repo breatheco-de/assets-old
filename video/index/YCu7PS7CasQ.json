@@ -1,0 +1,54 @@
+{
+	"video-id": "YCu7PS7CasQ",
+	"menuname": "Exercises",
+	"timeline":[
+		{
+			"seconds": "56",
+			"description": "#0 Your first request"
+		},
+		{
+			"seconds": "276",
+			"description": "#0.1 The response object"
+		},
+		{
+			"seconds": "712",
+			"description": "#1 GET - Hello World"
+		},
+		{
+			"seconds": "884",
+			"description": "#2 AJAX - Hello World"
+		},
+		{
+			"seconds": "1080",
+			"description": "#3 AJAX - Success and Error"
+		},
+		{
+			"seconds": "1311",
+			"description": "#6 AJAX project card"
+		},
+		{
+			"seconds": "1573",
+			"description": "#7 AJAX List of projects (part-1)"
+		},
+		{
+			"seconds": "1709",
+			"description": "#7.3 AJAX List of projects (part-2)"
+		},
+		{
+			"seconds": "1992",
+			"description": "#8 Create JSON"
+		},
+		{
+			"seconds": "2193",
+			"description": "#10 Render HTML list of projects"
+		},
+		{
+			"seconds": "2764",
+			"description": "#12 JSON access (part-1)"
+		},
+		{
+			"seconds": "2947",
+			"description": "#13 JSON Access (part-2)"
+		}
+	]
+}
