@@ -150,7 +150,6 @@
           	if(data.timeline && data.timeline.length>0) renderTimeline(data.timeline);
           	videoStringId = data['video-id'];
           	
-          	alert(data.menuname);
           	if(data.menuname) $('#'+menuTitle).html(data.menuname);
             initializePlayer();
           }
