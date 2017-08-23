@@ -62,7 +62,7 @@
                     //console.log('You passed '+passed+' from '+total);
                     var evt = document.createEvent("CustomEvent");
                     evt.initCustomEvent("QuizCompleted", true, true, { passedQuestions: passed, totalQuestions: total } );
-                    window.dispatchEvent(evt);
+                    window.parent.dispatchEvent(evt);
                 }
                 
                 function cleanOptions(questions){
