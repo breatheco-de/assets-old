@@ -28,7 +28,10 @@ function createDirectory($path,$qzes){
 			    {
     			    $auxQuiz['info']['category'] = basename($path);
     			    //print_r($auxQuiz); die();
-        			if($auxQuiz) array_push($qzes, $auxQuiz);
+    			    if(!isset($auxQuiz['info']['status']) || $auxQuiz['info']['status']=='published')
+    			    {
+        				if($auxQuiz) array_push($qzes, $auxQuiz);
+    			    }
 			    }
 			}
 		}

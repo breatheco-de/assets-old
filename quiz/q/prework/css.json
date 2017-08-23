@@ -4,12 +4,12 @@
 		"main": "Do you think you know a lot about CSS? Find out with this super crazy knowledge quiz!",
 		"results": "Learn More: Check out the lesson about CSS!.",
 		"badges": [{
-				"slug": "network-inspector",
+				"slug": "tag-master",
 				"points": 5
 			},
 			{
-				"slug": "breakpoint-master",
-				"points": 10
+				"slug": "select-everything",
+				"points": 8
 			}
 		]
 	},
@@ -130,7 +130,7 @@
 			},
 			{
 				"option": "text-style",
-				"correct": true
+				"correct": false
 			}
 		]
 	}, {

@@ -18,7 +18,7 @@
             _categoryPoints = [];
             _messages = {
                 correct: ['That\'s right!'],
-                incorrect: ['Uhh no.', 'Nop, you are wrong dude.']
+                incorrect: ['Uhh no.', 'Nop, you are wrong dude.', 'Mmmmm... almost there, but no.', 'No! Have you been paying attention?']
             },
             _levels = [ 
                 "You are ready",
@@ -463,8 +463,8 @@
                 }
                 
                 if (nextQuestion.length) {
-                    currentQuestion.fadeOut(1000, function(){
-                        nextQuestion.find(_prevQuestionBtn).show().end().fadeIn(500);
+                    currentQuestion.fadeOut(2500, function(){
+                        nextQuestion.find(_prevQuestionBtn).show().end().fadeIn(1500);
                     });
                 } else {
                     plugin.method.completeQuiz();

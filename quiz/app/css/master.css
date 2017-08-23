@@ -135,11 +135,12 @@ ul.answers.inline-answers li button{ background: white; border: 1px #337ab7 soli
 
 ul.responses li {
     margin: 10px 20px 20px;
+    text-align: center;
 }
 ul.responses li p span {
     display: block;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
 }
 ul.responses li.correct p span {
     color: #6C9F2E;
