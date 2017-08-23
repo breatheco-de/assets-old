@@ -60,7 +60,7 @@
                 
                 function sendActivity(passed, total){
                     //console.log('You passed '+passed+' from '+total);
-                    window.postMessage({ passedQuestions: passed, totalQuestions: total }, '*'); 
+                    window.parent.postMessage({ passedQuestions: passed, totalQuestions: total }, '*'); 
                 }
                 
                 function cleanOptions(questions){
