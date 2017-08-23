@@ -457,21 +457,21 @@
 			{
 				"option": "list-style-type",
 				"correct": false
-			}, {
-				"q": "Which of the following value of cursor shows it as crosshair or plus sign?",
-				"a": [{
-						"option": "default",
-						"correct": false
-					},
-					{
-						"option": "pointer",
-						"correct": false
-					},
-					{
-						"option": "crosshair",
-						"correct": true
-					}
-				]
+			}
+		]
+	}, {
+		"q": "Which of the following value of cursor shows it as crosshair or plus sign?",
+		"a": [{
+				"option": "default",
+				"correct": false
+			},
+			{
+				"option": "pointer",
+				"correct": false
+			},
+			{
+				"option": "crosshair",
+				"correct": true
 			}
 		]
 	}]
