@@ -49,7 +49,7 @@
                            data[0].questions = cleanOptions(data[0].questions);
                             $('#slickQuiz').slickQuiz({
                                 json: data[0],
-                                onComplete: sendFinishActivity
+                                onComplete: sendFinishActivity,
                                 onStart: sendStartActivity
                             });
                        }
