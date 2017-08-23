@@ -60,9 +60,7 @@
                 
                 function sendActivity(passed, total){
                     //console.log('You passed '+passed+' from '+total);
-                    var evt = document.createEvent("CustomEvent");
-                    evt.initCustomEvent("QuizCompleted", true, true, { passedQuestions: passed, totalQuestions: total } );
-                    window.parent.dispatchEvent(evt);
+                    window.parent.postMessage({ passedQuestions: passed, totalQuestions: total }, '*'); 
                 }
                 
                 function cleanOptions(questions){
