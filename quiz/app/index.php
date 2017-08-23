@@ -49,7 +49,8 @@
                            data[0].questions = cleanOptions(data[0].questions);
                             $('#slickQuiz').slickQuiz({
                                 json: data[0],
-                                onComplete: sendActivity
+                                onComplete: sendFinishActivity
+                                onStart: sendStartActivity
                             });
                        }
                    },
@@ -58,9 +59,14 @@
                    }
                 });
                 
-                function sendActivity(passed, total){
+                function sendFinishActivity(passed, total){
                     //console.log('You passed '+passed+' from '+total);
                     window.parent.postMessage({ passedQuestions: passed, totalQuestions: total }, '*'); 
+                }
+                
+                function sendStartActivity(){
+                    //console.log('You passed '+passed+' from '+total);
+                    window.parent.postMessage({ started: true }, '*'); 
                 }
                 
                 function cleanOptions(questions){

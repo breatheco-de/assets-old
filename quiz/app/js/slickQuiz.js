@@ -38,7 +38,8 @@
                 preventUnanswered: false,
                 completionResponseMessaging: false,
                 disableResponseMessaging: false,
-                onComplete: null
+                onComplete: null,
+                onStart: null
             },
 
             // Class Name Strings (Used for building quiz and for selectors)
@@ -249,6 +250,9 @@
             // Starts the quiz (hides start button and displays first question)
             startQuiz: function() {
                 function start() {
+                    
+                    if(plugin.config.onStart) plugin.config.onStart();
+                    
                     var firstQuestion = $(_element + ' ' + _questions + ' li').first();
                     if (firstQuestion.length) {
                         firstQuestion.fadeIn(500);
