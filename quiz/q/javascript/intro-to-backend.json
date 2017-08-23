@@ -4,8 +4,8 @@
         "main":    "<p>Do you think you know a lot about the backend? We will see!</p>",
         "results": "<h5>Learn More</h5><p> Check out the lesson about the backend!.</p>",
         "badges": [
-            { "slug": "copy-paster", "points": 23 }, 
-            { "slug": "source-inspector", "points": 45 } 
+            { "slug": "example-finder", "points": 23 }, 
+            { "slug": "package-composer", "points": 45 } 
         ]
     },
     "questions": [
