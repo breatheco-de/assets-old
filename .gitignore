@@ -5,3 +5,7 @@ uploaded/
 .c9
 php.ini
 *.log
+
+
+#Webpack related stuff
+node_modules/

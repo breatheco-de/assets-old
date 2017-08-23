@@ -46,6 +46,7 @@
                    success: function(data){
                        if(data && data.length==1)
                        {
+                           data[0].questions = cleanOptions(data[0].questions);
                             $('#slickQuiz').slickQuiz({
                                 json: data[0],
                                 onComplete: sendActivity
@@ -58,7 +59,35 @@
                 });
                 
                 function sendActivity(passed, total){
-                    console.log('You passed '+passed+' from '+total);
+                    //console.log('You passed '+passed+' from '+total);
+                    var evt = document.createEvent("CustomEvent");
+                    evt.initCustomEvent("QuizCompleted", true, true, { passedQuestions: passed, totalQuestions: total } );
+                    window.dispatchEvent(evt);
+                }
+                
+                function cleanOptions(questions){
+                    if(questions) questions.forEach(function(questionObj){
+                        
+                        questionObj.q = transofrmEntities(questionObj.q);
+                        
+                        questionObj.a.forEach(function(answer){
+                            answer.option = transofrmEntities(answer.option);
+                            return answer;
+                        });
+                        
+                        return questionObj;
+                    });
+                    
+                    return questions;
+                    
+                }
+                
+                function transofrmEntities(strInput){
+                    var result = strInput.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+                        return '&#'+i.charCodeAt(0)+';';
+                    });
+                    
+                    return result;
                 }
                 
             });
