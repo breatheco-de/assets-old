@@ -14,6 +14,7 @@
         var plugin   = this,
             $element = $(element),
             _element = '#' + $element.attr('id'),
+            _started = false,
             _messages = {
                 correct: ['That\'s right!'],
                 incorrect: ['Uhh no.']
@@ -251,8 +252,6 @@
             startQuiz: function() {
                 function start() {
                     
-                    if(plugin.config.onStart) plugin.config.onStart();
-                    
                     var firstQuestion = $(_element + ' ' + _questions + ' li').first();
                     if (firstQuestion.length) {
                         firstQuestion.fadeIn(500);
@@ -356,6 +355,12 @@
 
             // Moves to the next question OR completes the quiz if on last question
             nextQuestion: function(nextButton) {
+                
+                if(!_started && plugin.config.onStart){
+                    _started = true;
+                    plugin.config.onStart();
+                } 
+                
                 var currentQuestion = $($(nextButton).parents(_question)[0]),
                     nextQuestion    = currentQuestion.next(_question),
                     answerInputs    = currentQuestion.find('input:checked');
