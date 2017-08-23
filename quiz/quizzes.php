@@ -23,9 +23,11 @@ function createDirectory($path,$qzes){
 			else if(isValidQuiz($newPath)){
 			    $auxQuiz = json_decode(file_get_contents($path.$value),true);
 			    $auxQuiz['info']['slug'] = substr($value,0,strlen($value)-5);
+			    if(!$auxQuiz['info']['badges']) throw new Exception('There is a Quiz without badges');
 			    if($auxQuiz = filterQuiz($auxQuiz))
 			    {
     			    $auxQuiz['info']['category'] = basename($path);
+    			    //print_r($auxQuiz); die();
         			if($auxQuiz) array_push($qzes, $auxQuiz);
 			    }
 			}

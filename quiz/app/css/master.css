@@ -86,6 +86,7 @@ ol li { list-style-type: decimal; margin-left: 20px; }
 }
 .startQuiz {
     margin-top: 40px;
+    display: block;
 }
 
 .tryAgain {
@@ -110,13 +111,16 @@ ol li { list-style-type: decimal; margin-left: 20px; }
 .questionCount {
     font-size: 14px;
     font-style: italic;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 .questionCount span {
     font-weight: bold;
 }
 
 ol.questions {
-    margin-top: 20px;
+    margin-top: 60px;
     margin-left: 0;
 }
 ol.questions li {
@@ -124,9 +128,10 @@ ol.questions li {
 }
 
 ul.answers {
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin: 10px;
+    text-align:center;
 }
+ul.answers.inline-answers li button{ background: white; border: 1px #337ab7 solid; margin-top: 10px;} 
 
 ul.responses li {
     margin: 10px 20px 20px;
@@ -141,7 +146,7 @@ ul.responses li.correct p span {
 }ul.responses li.incorrect p span {
     color: #B5121B;
 }
-
+.question h3{font-size: 30px; text-align: center; margin-bottom: 20px;}
 .quizResults h3 {
     margin: 0;
 }
@@ -152,4 +157,16 @@ ul.responses li.correct p span {
 .quizResultsCopy {
     clear: both;
     margin-top: 20px;
+}
+br.only-mobile{display: none;}
+.result-card{overflow: hidden;}
+.result-card .card-image{float: left; margin-right: 10px;}
+.result-card .social-media{text-align: center;}
+.result-card .social-media h3{text-align: center;}
+
+@media(max-width: 768px) {
+    .question h3{ font-size: 1em;}
+    .button{ font-size: 0.8em;}
+    br.only-mobile{display: inherit;}
+    .result-card .card-image{max-width: 140px;}
 }

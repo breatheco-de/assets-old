@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Learn about HTML",
-		"main": "Do you think you know a lot about HTML? Find out with this super crazy knowledge quiz!",
+		"main": "<p>Do you think you know a lot about HTML? Find out with this super crazy knowledge quiz!</p>",
 		"results": "Learn More: Check out the lesson about HTML!.",
 		"badges": [{
 				"slug": "css_master",

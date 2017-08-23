@@ -50,6 +50,12 @@
                             $('#slickQuiz').slickQuiz({
                                 json: data[0],
                                 onComplete: sendFinishActivity,
+                                randomSortAnswers: true,
+                                disableResponseMessaging: false,
+                                inlineAnswers: true,
+                                hideQuestion: true,
+                                inputType: 'button',
+                                attempts: 1,
                                 onStart: sendStartActivity
                             });
                        }

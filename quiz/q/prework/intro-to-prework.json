@@ -1,0 +1,71 @@
+{
+	"info": {
+		"name": "Lets see if you read the first lesson",
+		"main": "<p>This was a short lesson that took you 5 min, maybe you want to read it again before taking the Quiz? Remember you have only one chance to make it right</p>",
+		"results": "Did you scored more than 75%? If so, then congratulations! You just won your first points for the Docu-Lover badge",
+		"badges": [{
+			"slug": "docu-lover",
+			"points": 5
+		}]
+	},
+	"questions": [{
+			"q": "Regardless of what you think, the Shu-Ha-Ri filosofy works, but... what does it mean?",
+			"a": [{
+					"option": "That I can do whatever I want whenever I want.",
+					"correct": false
+				},
+				{
+					"option": "That I need to follow the procedures exactly as said until I become confortable.",
+					"correct": true
+				},
+				{
+					"option": "It is the sound humans make when they sneeze.",
+					"correct": false
+				}, {
+					"option": "It's a martial art developed by ancient Egipcians from the north Westeros",
+					"correct": false
+				}
+			]
+		},
+		{
+			"q": "What are the in-class lessons meant for?",
+			"a": [{
+					"option": "To reinforce the theory that I learned on my own",
+					"correct": false
+				},
+				{
+					"option": "To make amazing projects and practice, practice, practice!",
+					"correct": true
+				},
+				{
+					"option": "To do repetitive exercises",
+					"correct": false
+				},
+				{
+					"option": "To catch up with everything that I have behind",
+					"correct": false
+				}
+			]
+		},
+		{
+			"q": "Why do you need to read by yourself?",
+			"a": [{
+					"option": "Because it is part of the training and I will have to do it all the time after I become a developer",
+					"correct": true
+				},
+				{
+					"option": "Because the instructor is lazy and hates to teach this stuff",
+					"correct": false
+				},
+				{
+					"option": "Because the academy wants to hurt me",
+					"correct": false
+				},
+				{
+					"option": "Because the sky is blue",
+					"correct": false
+				}
+			]
+		}
+	]
+}

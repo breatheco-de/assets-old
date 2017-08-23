@@ -14,10 +14,11 @@
         var plugin   = this,
             $element = $(element),
             _element = '#' + $element.attr('id'),
-            _started = false,
+            _totalAnswers = [],
+            _categoryPoints = [];
             _messages = {
                 correct: ['That\'s right!'],
-                incorrect: ['Uhh no.']
+                incorrect: ['Uhh no.', 'Nop, you are wrong dude.']
             },
             _levels = [ 
                 "You are ready",
@@ -30,17 +31,23 @@
                 checkAnswerText:  'Check My Answer!',
                 nextQuestionText: 'Next &raquo;',
                 backButtonText: '',
+                inputType: 'radio',
                 tryAgainText: '',
                 skipStartButton: false,
                 numberOfQuestions: null,
+                allowHTMLContent: false,
+                hideQuestion: false,
                 randomSort: false,
+                inlineAnswers: false,
+                displayQuestionNumber: false,
                 randomSortQuestions: false,
                 randomSortAnswers: false,
                 preventUnanswered: false,
                 completionResponseMessaging: false,
                 disableResponseMessaging: false,
                 onComplete: null,
-                onStart: null
+                onStart: null,
+                attempts: 1
             },
 
             // Class Name Strings (Used for building quiz and for selectors)
@@ -52,7 +59,6 @@
             correctClass           = 'correctResponse',
             correctResponseClass   = 'correct',
             incorrectResponseClass = 'incorrect',
-            checkAnswerClass       = 'checkAnswer',
             nextQuestionClass      = 'nextQuestion',
             backToQuestionClass    = 'backToQuestion',
             tryAgainClass          = 'tryAgain',
@@ -66,7 +72,6 @@
             _correct               = '.' + correctClass,
             _correctResponse       = '.' + correctResponseClass,
             _incorrectResponse     = '.' + incorrectResponseClass,
-            _checkAnswerBtn        = '.' + checkAnswerClass,
             _nextQuestionBtn       = '.' + nextQuestionClass,
             _prevQuestionBtn       = '.' + backToQuestionClass,
             _tryAgainBtn           = '.' + tryAgainClass,
@@ -131,11 +136,24 @@
             questions = questions.slice(0, plugin.config.numberOfQuestions);
             questionCount = questions.length;
         }
+        
+        //Apply the inline class if the option is set
+        if(plugin.config.inlineAnswers) answersClass += ' inline-answers';
+        
+        if(typeof quizValues.info.type != 'undefined'){
+            if(quizValues.info.type=='diagnostic' && (typeof quizValues.info.categories == 'undefined' || quizValues.info.categories.length==0))
+                throw 'slickQuiz Error: You need to specify the cagetories for the Quizz diagnostic';
+            else{
+                quizValues.info.categories.forEach(function(cat){
+                    _categoryPoints[cat.toLowerCase()] = 0;
+                });
+            }
+        }else quizValues.info.type = 'quiz';
 
         plugin.method = {
             // Sets up the questions and answers based on above array
             setupQuiz: function() {
-                $quizName.hide().html(quizValues.info.name).fadeIn(1000);
+                if(!plugin.config.hideQuestion) $quizName.hide().html(quizValues.info.name).fadeIn(1000);
                 $quizHeader.hide().prepend(quizValues.info.main).fadeIn(1000);
                 $quizResultsCopy.append(quizValues.info.results);
 
@@ -147,15 +165,18 @@
                 // Setup questions
                 var quiz  = $('<ol class="' + questionGroupClass + '"></ol>'),
                     count = 1;
-
                 // Loop through questions object
                 for (i in questions) {
                     if (questions.hasOwnProperty(i)) {
                         var question = questions[i];
 
-                        var questionHTML = $('<li class="' + questionClass +'" id="question' + (count - 1) + '"></li>');
+                        
+                        var questionHTML = $('<li class="' + questionClass +'" id="question' + (count - 1) + '" data-id="' + (count - 1) + '"></li>');
                         questionHTML.append('<div class="' + questionCountClass + '">Question <span class="current">' + count + '</span> of <span class="total">' + questionCount + '</span></div>');
-                        questionHTML.append('<h3>' + count + '. ' + question.q + '</h3>');
+                        
+                        let displayNumber = '';
+                        if(plugin.config.displayQuestionNumber) displayNumber = count + '. ';
+                        questionHTML.append('<h3>' + displayNumber + plugin.method.transformEntities(question.q) + '</h3>');
 
                         // Count the number of true values
                         var truths = 0;
@@ -179,22 +200,19 @@
                         // prepare a name for the answer inputs based on the question
                         var selectAny  = question.select_any ? question.select_any : false,
                             inputName  = 'question' + (count - 1),
-                            inputType  = (truths > 1 && !selectAny ? 'checkbox' : 'radio');
+                            inputType  = (truths > 1 && !selectAny ? 'checkbox' : plugin.config.inputType);
 
                         for (i in answers) {
                             if (answers.hasOwnProperty(i)) {
-                                answer   = answers[i],
-                                optionId = inputName + '_' + i.toString();
+                                answer   = answers[i];
+                                optionId = i.toString();
 
-                                // If question has >1 true answers and is not a select any, use checkboxes; otherwise, radios
-                                var input = '<input id="' + optionId + '" name="' + inputName +
-                                            '" type="' + inputType + '" />';
-
-                                var optionLabel = '<label for="' + optionId + '">' + answer.option + '</label>';
-
-                                var answerContent = $('<li></li>')
-                                    .append(input)
-                                    .append(optionLabel);
+                                let answerContent = plugin.method.renderAnswer({
+                                    answer: answer,
+                                    optionId: optionId,
+                                    inputType: inputType,
+                                    inputName: i.toString(),
+                                })
                                 answerHTML.append(answerContent);
                             }
                         }
@@ -222,11 +240,8 @@
 
                         // If response messaging is disabled or hidden until the quiz is completed,
                         // make the nextQuestion button the checkAnswer button, as well
-                        if (plugin.config.disableResponseMessaging || plugin.config.completionResponseMessaging) {
-                            questionHTML.append('<a href="#" class="button ' + nextQuestionClass + ' ' + checkAnswerClass + '">' + plugin.config.nextQuestionText + '</a>');
-                        } else {
+                        if (plugin.config.inputType!='button') {
                             questionHTML.append('<a href="#" class="button ' + nextQuestionClass + '">' + plugin.config.nextQuestionText + '</a>');
-                            questionHTML.append('<a href="#" class="button ' + checkAnswerClass + '">' + plugin.config.checkAnswerText + '</a>');
                         }
 
                         // Append question & answers to quiz
@@ -238,20 +253,71 @@
 
                 // Add the quiz content to the page
                 $quizArea.append(quiz);
+                
+                if(plugin.config.inputType=='button')
+                {
+                    // Bind "next" buttons
+                    $('.answer-option').on('click', function(e) {
+                        e.preventDefault();
+                        
+                        var currentQuestion = $($(this).parents(_question)[0]);
+                        _totalAnswers.push({
+                            id: currentQuestion.attr('data-id'),
+                            answers: [this.getAttribute('data-id')]
+                        })
+                        
+                        plugin.method.nextQuestion(this);
+                    });
+                }
 
                 // Toggle the start button OR start the quiz if start button is disabled
                 if (plugin.config.skipStartButton || $quizStarter.length == 0) {
                     $quizStarter.hide();
+                    $quizHeader.hide();
                     plugin.method.startQuiz(this);
                 } else {
                     $quizStarter.fadeIn(500);
+                    $quizHeader.fadeIn(500);
                 }
+            },
+            
+            renderAnswer: function(answer){
+
+                var answerContent = $('<li></li>')
+                    .append(plugin.method.getQuestionHTML(answer));
+                return answerContent;
+            },
+            
+            getQuestionHTML: function(answer){
+              switch (answer.inputType) {
+                  case 'button':
+                      return '<button class="button answer-option" id="option' + answer.optionId + '"  data-id="' + answer.optionId +
+                                '">' + plugin.method.transformEntities(answer.answer.option) + '</button>';
+                      // code
+                      break;
+                  default:
+                        return '<input id="' + answer.optionId + '" name="' + answer.inputName +
+                                '" type="' + answer.inputType + '" />' + 
+                                 '<label for="' + answer.optionId + '">' + plugin.method.transformEntities(answer.answer.option) + '</label>';
+                      break;
+              }  
+            },
+            
+            transformEntities: function(strInput){
+                
+                if(plugin.config.allowHTMLContent)
+                {
+                    strInput = strInput.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+                        return '&#'+i.charCodeAt(0)+';';
+                    });
+                }
+                
+                return strInput;
             },
 
             // Starts the quiz (hides start button and displays first question)
             startQuiz: function() {
                 function start() {
-                    
                     var firstQuestion = $(_element + ' ' + _questions + ' li').first();
                     if (firstQuestion.length) {
                         firstQuestion.fadeIn(500);
@@ -261,7 +327,8 @@
                 if (plugin.config.skipStartButton || $quizStarter.length == 0) {
                     start();
                 } else {
-                    $quizStarter.fadeOut(300, function(){
+                    $quizStarter.hide();
+                    $quizHeader.fadeOut(300, function(){
                         start();
                     });
                 }
@@ -284,8 +351,7 @@
                     ).hide();
 
                     $(_element + ' ' + _questionCount + ',' +
-                      _element + ' ' + _answers + ',' +
-                      _element + ' ' + _checkAnswerBtn
+                      _element + ' ' + _answers
                     ).show();
 
                     $quizArea.append($(_element + ' ' + _questions)).show();
@@ -297,7 +363,6 @@
             // Validates the response selection(s), displays explanations & next question button
             checkAnswer: function(checkButton) {
                 var questionLI    = $($(checkButton).parents(_question)[0]),
-                    answerInputs  = questionLI.find('input:checked'),
                     questionIndex = parseInt(questionLI.attr('id').replace(/(question)/, ''), 10),
                     answers       = questions[questionIndex].a,
                     selectAny     = questions[questionIndex].select_any ? questions[questionIndex].select_any : false;
@@ -318,6 +383,7 @@
                 // and HTML elements that may be modified by the browser match up
 
                 // Collect the answers submitted
+                var answerInputs  = questionLI.find('input:checked');
                 var selectedAnswers = [];
                 answerInputs.each( function() {
                     var inputValue = $(this).next('label').text();
@@ -330,7 +396,9 @@
                 }
 
                 // Verify all/any true answers (and no false ones) were submitted
-                var correctResponse = plugin.method.compareAnswers(trueAnswers, selectedAnswers, selectAny);
+                var correctResponse = false;
+                if(plugin.config.inputType!='button') correctResponse = plugin.method.compareAnswers(trueAnswers, selectedAnswers, selectAny);
+                else correctResponse = plugin.method.isTheRightAnswer(questionLI.attr('data-id'),$(checkButton).attr('data-id'));
 
                 if (correctResponse) {
                     questionLI.addClass(correctClass);
@@ -350,29 +418,52 @@
 
                     // Toggle responses based on submission
                     questionLI.find(correctResponse ? _correctResponse : _incorrectResponse).fadeIn(300);
+                    
                 }
             },
 
             // Moves to the next question OR completes the quiz if on last question
             nextQuestion: function(nextButton) {
-                
-                if(!_started && plugin.config.onStart){
-                    _started = true;
-                    plugin.config.onStart();
-                } 
-                
                 var currentQuestion = $($(nextButton).parents(_question)[0]),
-                    nextQuestion    = currentQuestion.next(_question),
-                    answerInputs    = currentQuestion.find('input:checked');
-
+                    nextQuestion    = currentQuestion.next(_question);
+                    
+                    if(quizValues.info.type=='diagnostic') plugin.method.saveAnswerInCategory(nextButton);
+                    
+                    if(plugin.config.attempts<=1 && plugin.config.onStart){
+                        plugin.config.onStart();
+                    }else plugin.config.attempts--;
+                    
+                    if(!plugin.config.disableResponseMessaging)
+                    {
+                        plugin.method.checkAnswer(nextButton);
+                        setTimeout(plugin.method.moveToNexQuestion(currentQuestion,nextQuestion), 3000);
+                    }
+                    else plugin.method.moveToNexQuestion(currentQuestion,nextQuestion);
+                
+            },
+            
+            saveAnswerInCategory: function(nextButton){
+                var currentQuestion = $($(nextButton).parents(_question)[0]);
+                
+                var answerInputs    = currentQuestion.find('input:checked');
+                if(plugin.config.inputType=='button')
+                {
+                    var questionId = currentQuestion.attr("data-id");
+                    var optionId = $(nextButton).attr("data-id");
+                    _categoryPoints[questions[questionId].a[optionId].category] += 1;
+                }
+            },
+            
+            moveToNexQuestion: function(currentQuestion,nextQuestion){
                 // If response messaging has been disabled or moved to completion,
                 // make sure we have an answer if we require it, let checkAnswer handle the alert messaging
-                if (plugin.config.preventUnanswered && answerInputs.length === 0) {
+                var answerInputs    = currentQuestion.find('input:checked');
+                if (plugin.config.inputType!='button' && plugin.config.preventUnanswered && answerInputs.length === 0) {
                     return false;
                 }
-
+                
                 if (nextQuestion.length) {
-                    currentQuestion.fadeOut(300, function(){
+                    currentQuestion.fadeOut(1000, function(){
                         nextQuestion.find(_prevQuestionBtn).show().end().fadeIn(500);
                     });
                 } else {
@@ -393,7 +484,6 @@
                         prevQuestion.removeClass(correctClass);
                         prevQuestion.find(_responses + ', ' + _responses + ' li').hide();
                         prevQuestion.find(_answers).show();
-                        prevQuestion.find(_checkAnswerBtn).show();
 
                         // If response messaging hasn't been disabled or moved to completion, hide the next question button
                         // If it has been, we need nextQuestion visible so the user can move forward (there is no separate checkAnswer button)
@@ -416,7 +506,6 @@
                         questionLI.removeClass(correctClass);
                         questionLI.find(_responses + ' li').hide();
                         answers.fadeIn(500);
-                        questionLI.find(_checkAnswerBtn).fadeIn(500);
                         questionLI.find(_nextQuestionBtn).hide();
 
                         // if question is first, don't show back button on question
@@ -441,9 +530,9 @@
                     score     = $(_element + ' ' + _correct).length,
                     levelRank = plugin.method.calculateLevel(score),
                     levelText = $.isNumeric(levelRank) ? levels[levelRank] : '';
-                    
-                if(plugin.config.onComplete) plugin.config.onComplete(score,questionCount);
 
+                if(plugin.config.onComplete) plugin.method.sendResults(score,questionCount);
+                    
                 $(_quizScore + ' span').html(score + ' / ' + questionCount);
                 $(_quizLevel + ' span').html(levelText);
                 $(_quizLevel).addClass('level' + levelRank);
@@ -460,6 +549,11 @@
                     }
                 });
             },
+            
+            sendResults: function(score,questionCount){
+                if(quizValues.info.type=='diagnostic') plugin.config.onComplete(_categoryPoints);
+                else plugin.config.onComplete(score,questionCount);
+            },
 
             // Compares selected responses with true answers, returns true if they match exactly
             compareAnswers: function(trueAnswers, selectedAnswers, selectAny) {
@@ -469,6 +563,13 @@
                     // crafty array comparison (http://stackoverflow.com/a/7726509)
                     return ($(trueAnswers).not(selectedAnswers).length === 0 && $(selectedAnswers).not(trueAnswers).length === 0);
                 }
+            },
+            
+
+            // Compares selected responses with true answers, returns true if they match exactly
+            isTheRightAnswer: function(questionId, answerId) {
+                let questions = quizValues.questions[parseInt(questionId)].a;
+                return questions[answerId].correct;
             },
 
             // Calculates knowledge level based on number of correct answers
@@ -513,23 +614,20 @@
                 plugin.method.resetQuiz(this);
             });
 
-            // Bind "check answer" buttons
-            $(_element + ' ' + _checkAnswerBtn).on('click', function(e) {
-                e.preventDefault();
-                plugin.method.checkAnswer(this);
-            });
-
             // Bind "back" buttons
             $(_element + ' ' + _prevQuestionBtn).on('click', function(e) {
                 e.preventDefault();
                 plugin.method.backToQuestion(this);
             });
 
-            // Bind "next" buttons
-            $(_element + ' ' + _nextQuestionBtn).on('click', function(e) {
-                e.preventDefault();
-                plugin.method.nextQuestion(this);
-            });
+            if(plugin.config.inputType!='button')
+            {
+                // Bind "next" buttons
+                $(_element + ' ' + _nextQuestionBtn).on('click', function(e) {
+                    e.preventDefault();
+                    plugin.method.nextQuestion(this);
+                });
+            }
         };
 
         plugin.init();
