@@ -1,68 +1,140 @@
 {
 	"info": {
-		"name": "Lets see if you read the first lesson",
-		"main": "<p>This was a short lesson that took you 5 min, maybe you want to read it again before taking the Quiz? Remember you have only one chance to make it right</p>",
-		"results": "Did you scored more than 75%? If so, then congratulations! You just won your first points for the Docu-Lover badge",
+		"name": "The internet architechture",
+		"main": "<p>Test your knowledge and understanding of the internet</p>",
+		"results": "Great! If you scored more than 75% of the questions, you have won more points towards becoming a full-stack web developer.",
 		"badges": [{
 			"slug": "docu-lover",
+			"points": 5
+		},
+		{
+			"slug": "client-vs-server",
 			"points": 5
 		}]
 	},
 	"questions": [{
-			"q": "Regardless of what you think, the Shu-Ha-Ri filosofy works, but... what does it mean?",
+			"q": "Everything you see on your browser travels throughout the internet as:",
 			"a": [{
-					"option": "That I can do whatever I want whenever I want.",
-					"correct": false
-				},
-				{
-					"option": "That I need to follow the procedures exactly as said until I become confortable.",
+					"option": "Text",
 					"correct": true
 				},
 				{
-					"option": "It is the sound humans make when they sneeze.",
+					"option": "Images",
+					"correct": false
+				},
+				{
+					"option": "Bytes of information",
 					"correct": false
 				}, {
-					"option": "It's a martial art developed by ancient Egipcians from the north Westeros",
+					"option": "Binary code",
 					"correct": false
 				}
 			]
 		},
 		{
-			"q": "What are the in-class lessons meant for?",
+			"q": "What is the principal function a server does?",
 			"a": [{
-					"option": "To reinforce the theory that I learned on my own",
+					"option": "It responsable of connecting the user to the internet",
 					"correct": false
 				},
 				{
-					"option": "To make amazing projects and practice, practice, practice!",
+					"option": "I have no idea, concept that people talk about these 'servers' but it is hard to understand.",
+					"correct": false
+				},
+				{
+					"option": "Servers are the face of websites, they render whatever information the user want to see",
+					"correct": false
+				},
+				{
+					"option": "Servers provide whatever information clients ask for.",
+					"correct": true
+				}
+			]
+		},
+		{
+			"q": "What is the principal function browser do?",
+			"a": [{
+					"option": "Its a software that translates all the incoming data form the internet into its visual representation",
 					"correct": true
 				},
 				{
-					"option": "To do repetitive exercises",
+					"option": "It is the operating system of the computer.",
 					"correct": false
 				},
 				{
-					"option": "To catch up with everything that I have behind",
+					"option": "It is the website that we use to search the internet.",
+					"correct": false
+				},
+				{
+					"option": "Who cares, I did not pay attention to this lesson because I think I can skip it.",
 					"correct": false
 				}
 			]
 		},
 		{
-			"q": "Why do you need to read by yourself?",
+			"q": "What is the difference between the client and the server?",
 			"a": [{
-					"option": "Because it is part of the training and I will have to do it all the time after I become a developer",
+					"option": "They are the same, they process the user's requests and display the information on their respective screens",
+					"correct": false
+				},
+				{
+					"option": "The server serves a lot of clients by delivering raw text/data, then, each client interprets that data and displays it graphically on the user screen",
 					"correct": true
 				},
 				{
-					"option": "Because the instructor is lazy and hates to teach this stuff",
+					"option": "Servers bring food to people's table and let you enjoy your dinner, the client is whoever is eating and paying for that dinner.",
+					"correct": false
+				}
+			]
+		},
+		{
+			"q": "What languages can be used and exectuted only on the SERVER?",
+			"a": [{
+					"option": "HTML, CSS, Javascript",
 					"correct": false
 				},
 				{
-					"option": "Because the academy wants to hurt me",
+					"option": "PHP, Python, Ruby",
+					"correct": true
+				},
+				{
+					"option": "Java, SQL and Javascript",
+					"correct": false
+				}
+			]
+		},
+		{
+			"q": "What languages can be used and exectuted on a CLIENT?",
+			"a": [{
+					"option": "HTML, CSS, Javascript",
+					"correct": true
+				},
+				{
+					"option": "PHP, Python, Ruby",
 					"correct": false
 				},
 				{
-					"option": "Because the sky is blue",
+					"option": "Java, SQL and Javascript",
+					"correct": false
+				}
+			]
+		},
+		{
+			"q": "What is our purpose as full-stack web developers?",
+			"a": [{
+					"option": "We have to make sure the server is online.",
+					"correct": false
+				},
+				{
+					"option": "We have to write the code that is going to be interpreted by the server and the client to make websites work.",
+					"correct": true
+				},
+				{
+					"option": "We have to make sure the client computer works and has no virus.",
+					"correct": false
+				},
+				{
+					"option": "Now that we know how to code, we can fix our families computers for free whenever we are requested to do so.",
 					"correct": false
 				}
 			]

@@ -17,7 +17,7 @@
             _totalAnswers = [],
             _categoryPoints = [];
             _messages = {
-                correct: ['That\'s right!'],
+                correct: ['That\'s right!','Yes! Maybe you paid attention?','You seem to know most of the anwers','Keep it up!'],
                 incorrect: ['Uhh no.', 'Nop, you are wrong dude.', 'Mmmmm... almost there, but no.', 'No! Have you been paying attention?']
             },
             _levels = [ 
