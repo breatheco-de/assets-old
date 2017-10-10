@@ -32,13 +32,13 @@
 			]
 		},
 		{
-			"q": "What is the principal function a server does?",
+			"q": "What is the principal function a SERVER does?",
 			"a": [{
 					"option": "It responsable of connecting the user to the internet",
 					"correct": false
 				},
 				{
-					"option": "I have no idea, concept that people talk about these 'servers' but it is hard to understand.",
+					"option": "I have no idea, people talk about these 'servers' but it's hard to understand.",
 					"correct": false
 				},
 				{
@@ -46,15 +46,15 @@
 					"correct": false
 				},
 				{
-					"option": "Servers provide whatever information clients ask for.",
+					"option": "Servers provide whatever information the web browsers or mobile applications ask for.",
 					"correct": true
 				}
 			]
 		},
 		{
-			"q": "What is the principal function browser do?",
+			"q": "What is the principal function BROWSER does?",
 			"a": [{
-					"option": "Its a software that translates all the incoming data form the internet into its visual representation",
+					"option": "It's a software that translates all the incoming data form the internet into its visual representation",
 					"correct": true
 				},
 				{
@@ -62,7 +62,7 @@
 					"correct": false
 				},
 				{
-					"option": "It is the website that we use to search the internet.",
+					"option": "It's the website that we use to search the internet.",
 					"correct": false
 				},
 				{
@@ -78,11 +78,11 @@
 					"correct": false
 				},
 				{
-					"option": "The server serves a lot of clients by delivering raw text/data, then, each client interprets that data and displays it graphically on the user screen",
+					"option": "The server is responsable of serving a lot of clients by delivering raw text/data, then, each client interprets that data and displays it graphically on the user screen",
 					"correct": true
 				},
 				{
-					"option": "Servers bring food to people's table and let you enjoy your dinner, the client is whoever is eating and paying for that dinner.",
+					"option": "Servers bring food to people's tables and let you enjoy your dinner, the client is: Whoever is eating and paying for that dinner.",
 					"correct": false
 				}
 			]

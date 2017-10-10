@@ -3,7 +3,7 @@ require "vendor/autoload.php";
 
 if(!isset($_GET['path'])) die("Please specify the 'path': URL for the markdown file");
 
-$skin = 'modest';
+$skin = 'markdown5';
 if(isset($_GET['skin'])) $skin = $_GET['skin'];
 
 $readmeContent = file_get_contents($_GET['path']);

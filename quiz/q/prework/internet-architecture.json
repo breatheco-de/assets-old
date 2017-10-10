@@ -11,7 +11,7 @@
 	"questions": [{
 			"q": "Regardless of what you think, the Shu-Ha-Ri filosofy works, but... what does it mean?",
 			"a": [{
-					"option": "That I can do whatever I want whenever I want.",
+					"option": "That I can do whatever I want, whenever I want.",
 					"correct": false
 				},
 				{
@@ -19,7 +19,7 @@
 					"correct": true
 				},
 				{
-					"option": "It is the sound humans make when they sneeze.",
+					"option": "It's the sound humans make when they sneeze.",
 					"correct": false
 				}, {
 					"option": "It's a martial art developed by ancient Egipcians from the north Westeros",

@@ -18,9 +18,13 @@
 	<script type="text/javascript" src="player.js?v2"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			<?php if(isset($_GET['v'])){ ?>
+			<?php if(isset($_GET['v'])){ 
+			$autoplay = false;
+			if(isset($_GET['autoplay'])) $autoplay = $_GET['autoplay'];
+			?>
 			videotutorial.initialize({
 				'selector':'player',
+				'autoplay': <?php echo (bool) $autoplay; ?>,
 				'menu':'dr-menu',
 				'menu-selector':'menu-items',
 				'timeline-url':'video/index/<?php echo $_GET['v']; ?>.json',

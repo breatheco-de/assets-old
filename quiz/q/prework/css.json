@@ -3,14 +3,10 @@
 		"name": "Learn about CSS",
 		"main": "Do you think you know a lot about CSS? Find out with this super crazy knowledge quiz!",
 		"results": "Learn More: Check out the lesson about CSS!.",
-		"badges": [{
-				"slug": "tag-master",
-				"points": 5
-			},
-			{
-				"slug": "select-everything",
-				"points": 8
-			}
+		"badges": [
+			{ "slug": "tag-master", "points": 5 },
+			{ "slug": "select-everything", "points": 8 },
+			{ "slug": "position-vs-display", "points": 3 }
 		]
 	},
 	"questions": [{

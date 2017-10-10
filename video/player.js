@@ -5,6 +5,7 @@
   	  menuSelector,
   	  videoStringId,
   	  videoURL,
+  	  autoPlay,
       menuTitle,
   	  menuTitleValue,
   	  done = false,
@@ -50,7 +51,7 @@
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
-	   player.playVideo();
+	   if(autoPlay) player.playVideo();
   }
 
   // 5. The API calls this function when the player's state changes.
@@ -70,6 +71,7 @@
   {
     settings = {
     	'selector': 'player',
+    	'autoplay': false,
     	'menu-selector': 'menu-items',
     	'video-url': '',
     	'menu-title': 'Menu'
@@ -80,6 +82,9 @@
 
     if(theSettings['menu-selector']) menuSelector = theSettings['menu-selector'];
     else menuSelector = settings['menu-selector'];
+
+    if(theSettings['autoplay']) autoPlay = theSettings['autoplay'];
+    else autoPlay = settings['autoplay'];
 
     if(theSettings['timeline-url']) videoURL = theSettings['timeline-url'];
     else videoURL = settings['timeline-url'];
