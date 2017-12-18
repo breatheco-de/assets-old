@@ -9,3 +9,6 @@ php.ini
 
 #Webpack related stuff
 node_modules/
+
+#Composer related stuff
+vendor/

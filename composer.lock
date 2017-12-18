@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e9e24f9bf591124e67f210391994fb81",
+    "packages": [
+        {
+            "name": "vincenth520/bittrex",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vincenth520/bittrex.git",
+                "reference": "9a9d7fd43c17e0b9b88b59d3d1ddba6901961740"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vincenth520/bittrex/zipball/9a9d7fd43c17e0b9b88b59d3d1ddba6901961740",
+                "reference": "9a9d7fd43c17e0b9b88b59d3d1ddba6901961740",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bittrex\\": "src/Bittrex/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent",
+                    "email": "1091986039@qq.com",
+                    "homepage": "https://github.com/vincenth520"
+                }
+            ],
+            "description": "bittrex Api SDK for PHP",
+            "homepage": "https://github.com/vincenth520/bittrex",
+            "keywords": [
+                "api",
+                "bitcoin",
+                "bittrex"
+            ],
+            "time": "2017-10-12T10:41:00+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
