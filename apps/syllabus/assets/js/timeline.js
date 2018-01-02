@@ -86,14 +86,14 @@ var Timeline = (function(){
                 popoverContent += `<li>- ${concept}</li>`;
             });
             popoverContent += '</ul>';
-            theKeyConcepts = `<p><a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">Key Concepts</a></p>`;
+            theKeyConcepts = `<p><a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">Click for Key Concepts</a></p>`;
         } 
         
         return `<div class="day ${(day.label.toLowerCase() == 'weekend') ? 'weekend' : ''}">
           <h3 class="text-center">${day.label}</h3>
           <div class="day-topics">
-            ${day.description || 'No description for this particular day'}
             ${theKeyConcepts}
+            ${day.description || 'No description for this particular day'}
           </div>
           <div class="day-projects">
             <ul>
@@ -128,7 +128,10 @@ var Timeline = (function(){
             var popoverContent = '<ul>'; 
             console.log(day.replits);
             day.replits.forEach((replit) => {
-                popoverContent += `<li>- <a href='${replit.url}'>${replit.title}</a></li>`;
+                
+                if(typeof(replit)=='object') popoverContent += `<li>- <a href='${replit.url}'>${replit.title}</a></li>`;
+                else if(typeof(replit)=='string') popoverContent += `<li>- ${replit}</li>`;
+                else popoverContent += `<li>- Invalid Replit</li>`;
             });
             popoverContent += '</ul>';
             content += `<a target="_blank" href="#" data-html="true" data-container="body" data-placement="top" data-toggle="popover" title="Replit Classes" data-content="${popoverContent}">Replits</a>`;

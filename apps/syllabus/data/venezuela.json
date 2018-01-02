@@ -70,7 +70,7 @@
                 {   
                     "label": "Monday", 
                     "description": "Make the students design a website starting from the wireframe, teach them the importance of components and how to pick them and draw a wireframe jumping into coding.",
-                    "project": {"title": "Based on a fake client briefing, the students should build a sitemap and make a list of each page sub-section and the bootstrap components they will use on each section. Then draw the wirframe."},
+                    "project": {"title": "ABC Chocolate (Wire-framing)", "url": "https://bitbucket.org/codingacademy/abc-chocolate-wire-framing"},
                     "homework": "Finishe Replits and Projects",
                     "key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"]
                     
@@ -113,45 +113,48 @@
         },
         {
             "label": "Week 3: First coding skills",
-            "topic": "",
-            "summary": "",
+            "topic": "Time to code!",
+            "summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
             "days":[
                 {   
-                    "label": "Monday", 
-                    "description": "Como es el flujo de una aplicacion (window.onload), application runtime, etc.",
-                    "project": "Haz el random card generator con ellos, recuerda explicar bien (preload, onload)",
-                    "key-concepts": ["preload vs onload", "The runtime or application timeline", "Style manipulation with Javascript"],
+                    "label": "Monday",
+                    "description": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
+                    "project": {"title": "Replit session: Do the replits with the students" },
+                    "key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
                     "breathecode-lessons": [],
                     "tecnologies": ["Loops", "Condicionales", "Variables","Scope"]
                 },
                 {   
                     "label": "Tuesday", 
-                    "description": "Cambiar estilos dinamicamente con Javascript y generando codigo HTML dinamicamente. Realiza el Excuse Generator con los alumnos y enviales como tarea el Random Card Generator",
-                    "project": "https://breatheco.de/en/lesson/learn-to-code-js/",
-                    "homework": "Que hagan los Replits de HTML, CSS, Bootstrap y Layouts",
-                    "tecnologies": ["Terminal","GIT"]
+                    "description": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS",
+                    "project": {"title":"Random Card Generator", "url": "https://bitbucket.org/codingacademy/random-card" },
+                    "homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
+                    "replits": ["The DOM", "Javascript Events"],
+                    "key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"]
                 },
                 {   
                     "label": "Wednesday",
-                    "description": "Explica claramente GIT claramente y realiza el landing page con los alumnos de forma colaborativa (cada alumno hace un pedacito del landing).",
-                    "homework": "Landing Page Collaborativo: https://bitbucket.org/codingacademy/git-collaboration",
-                    "tecnologies": ["GIT","CMD","HTML","CSS","Bootstrap"]
+                    "description": "Finish the Random Card, Reinforce The DOM and Events concepts and work in the Replits with the Students (specially DOM and Javascript)",
+                    "homework": "REPLITS!",
+                    "key-concepts": ["Big review of EVERYTHING"]
                 },
                 {   
                     "label": "Thursday", 
-                    "description": "Termina el landing con GIT, luego introduce programacion, demuestra como usas codigo par generar HTML dinamicamente: Loops, If...else, etc.",
-                    "project": "Empieza a hacer los ejercicios de replit con los alumnos",
-                    "homework": "Deja que hagan los replits para el fin de semana: Introduccion a JS, Arrays y Funciones",
-                    "tecnologies": ["Loops", "Conditionals", "HTML", "CSS","Bootstrap","GIT","CMD"]
+                    "description": "Create a landing page using React.js (don't ever try to explain package.json or webpack.config). Use the react-hello boilerplateto avoid any react configurations and jump right to the code!",
+                    "project": {"title": "React Hello","url":"https://github.com/4GeeksAcademy/react-hello" },
+                    "homework": "TicTacToe With React.js",
+                    "key-concepts": ["Component State", "Component Props", "Component Life Cycle (contructor, mount, render)", "Using NPM Packages"],
+                    "tecnologies": ["React", "Webpack", "HTML", "CSS"]
                 },
                 {   
                     "label": "Weekend", 
-                    "description": "Los alumnos deben terminar los replits de JS, Arrays y funciones"
+                    "description": "During the weekend, students must finish the tictactoe"
                 }
             ]
         },
         {
-            "label": "Week 3: First coding skills",
+            "label": "Week 4: Mastering React.js",
+            "warning": "sd",
             "topic": "",
             "summary": "",
             "days":[
