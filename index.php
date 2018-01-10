@@ -39,6 +39,7 @@
               <li><a href="../json/">Sample API</a></li>
               <li><a href="live-demos/js/event-information/">Event Information</a></li>
               <li><a href="live-demos/js/event-triggering/">Event Triggering</a></li>
+              <li><a href="../apis/tictactoe/">TicTacToe API</a></li>
             </ul>
           </div>
         </div>

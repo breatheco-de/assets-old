@@ -140,23 +140,23 @@
                 },
                 {   
                     "label": "Thursday", 
-                    "description": "Create a landing page using React.js (don't ever try to explain package.json or webpack.config). Use the react-hello boilerplateto avoid any react configurations and jump right to the code!",
-                    "project": {"title": "React Hello","url":"https://github.com/4GeeksAcademy/react-hello" },
+                    "description": "Migrate the !",
+                    "project": {"title": "TicTacToe","url":"https://bitbucket.org/codingacademy/tictactoe-react" },
                     "homework": "TicTacToe With React.js",
                     "key-concepts": ["Component State", "Component Props", "Component Life Cycle (contructor, mount, render)", "Using NPM Packages"],
                     "tecnologies": ["React", "Webpack", "HTML", "CSS"]
                 },
                 {   
                     "label": "Weekend", 
-                    "description": "During the weekend, students must finish the tictactoe"
+                    "description": "During the weekend, students must finish all the replits"
                 }
             ]
         },
         {
             "label": "Week 4: Mastering React.js",
             "warning": "sd",
-            "topic": "",
-            "summary": "",
+            "topic": "Your first Web App",
+            "summary": "Create your first react application",
             "days":[
                 {   
                     "label": "Monday", 
