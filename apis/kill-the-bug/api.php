@@ -39,9 +39,14 @@
         
         if ( !preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $incomingAttempt->username) ) throwError('Invalid username (only letters and numbers permited)');
         
-        foreach($incomingAttempt->commands as $move) 
+        foreach($incomingAttempt->commands as $move)
+        {
             if(!in_array($move, ["runRight", "runLeft", "jumpRight", "jumpLeft", "climb", "open", "push", "kill"]))
-                 throwError('The movement '.$move.' its not allowed');
+            {
+                if(is_string($move)) throwError('The movement '.$move.' its not allowed');
+                else throwError('The movements should an array of strings');
+            }
+        }
         
         if(!in_array($incomingAttempt->character, ["batman"]))
              throwError('The avatar slug '.$incomingAttempt->character.' its not valid');
