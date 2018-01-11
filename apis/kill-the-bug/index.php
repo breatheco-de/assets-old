@@ -52,24 +52,9 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <h3>Delete all pending attempts</h3>
+            <h3>Add one pending attempt</h3>
             <pre><code class="markdown">
-  [POST] /clean_attempts
-  
-  RESPONSE:
-  
-  {
-      "data": "ok",
-      "code": 200
-  }
-              </code></pre>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <h3>Delete all pending attempts</h3>
-            <pre><code class="markdown">
-  [POST] /add_attempts
+  [POST] /add_attempt
   //the possible characters are: ["batman", "einstein"]
   
   REQUEST BODY:
@@ -106,6 +91,21 @@
   {
     "data": "ok",
     "code": 200
+  }
+              </code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h3>Delete all pending attempts</h3>
+            <pre><code class="markdown">
+  [POST] /clean_attempts
+  
+  RESPONSE:
+  
+  {
+      "data": "ok",
+      "code": 200
   }
               </code></pre>
           </div>

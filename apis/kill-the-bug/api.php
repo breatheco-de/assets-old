@@ -21,20 +21,12 @@
 	
 	if(!isset($_GET['method'])) throwError("No recognized API call ".$_GET['method']." please use one of the known methods.");
 
-    if($_GET['method'] == 'pending_attempts')
-    {
+    if($_GET['method'] == 'pending_attempts'){
+        
         $fileContent = file_get_contents($fileName);
         if(!$fileContent) throwError('Imposible to read the database file');
         $jSON = json_decode($fileContent);
         throwSuccess($jSON);
-    }
-    else if($_GET['method'] == 'clean_attempts'){
-        
-        $jSON = [];
-        $jSON["pending_attempts"] = [];
-        file_put_contents($fileName, json_encode($jSON));
-        
-        throwSuccess('ok');
     }
     else if($_GET['method'] == 'add_attempt'){
         
@@ -89,6 +81,14 @@
 		if(count($jSON->pending_attempts) == count($newPendingAttempts)) throwError('The attempt with id '.$incomingAttempt->id.' was not found');
 
         file_put_contents($fileName, json_encode($newPendingAttempts));
+        
+        throwSuccess('ok');
+    }
+    else if($_GET['method'] == 'clean_attempts'){
+        
+        $jSON = [];
+        $jSON["pending_attempts"] = [];
+        file_put_contents($fileName, json_encode($jSON));
         
         throwSuccess('ok');
     }
