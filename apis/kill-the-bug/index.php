@@ -37,7 +37,7 @@
                   "id": "5a57b11d6b8e0",
                   "username": "MariaPerez",
                   "character": "batman",
-                  "moves": [
+                  "commands": [
                       "runLeft",
                       "jumpRight"
                   ]
@@ -62,7 +62,7 @@
   {
     "username": "alesanchezr",
     "character": "batman",
-    "moves": ["runRight", "runLeft", "jumpRight", "jumpLeft", "climb", "open", "push", "kill"]
+    "commands": ["runRight", "runLeft", "jumpRight", "jumpLeft", "climb", "open", "push", "kill"]
   }
   
   RESPONSE:
