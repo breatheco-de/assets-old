@@ -41,21 +41,54 @@
         $incomingJSON = file_get_contents('php://input');
         $incomingAttempt = json_decode($incomingJSON);
         
-        if(!isset($incomingAttempt->full_name)) throwError('Missing full_name');
-        if(!isset($incomingAttempt->avatar_slug)) throwError('Missing avatar_slug');
+        if(!isset($incomingAttempt->username)) throwError('Missing username');
+        if(!isset($incomingAttempt->character)) throwError('Missing character');
         if(!isset($incomingAttempt->moves) || !is_array($incomingAttempt->moves)) throwError('Missing moves or is not an array');
+        
+        if ( !preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $incomingAttempt->username) ) throwError('Invalid username (only letters and numbers permited)');
+        
+        foreach($incomingAttempt->moves as $move) 
+            if(!in_array($move, ["runRight", "runLeft", "jumpRight", "jumpLeft", "climb", "open", "push", "kill"]))
+                 throwError('The movement '.$move.' its not allowed');
+        
+        if(!in_array($incomingAttempt->character, ["batman"]))
+             throwError('The avatar slug '.$incomingAttempt->character.' its not valid');
         
         $fileContent = file_get_contents($fileName);
         if(!$fileContent) throwError('Imposible to read the database file');
         
         $jSON = json_decode($fileContent);
 		array_push($jSON->pending_attempts, [
-		    "full_name" => $incomingAttempt->full_name,
-		    "avatar_slug" => $incomingAttempt->avatar_slug,
+		    "id" => uniqid(),
+		    "username" => $incomingAttempt->username,
+		    "character" => $incomingAttempt->character,
 		    "moves" => $incomingAttempt->moves
 		]);
 
         file_put_contents($fileName, json_encode($jSON));
+        
+        throwSuccess('ok');
+    }
+    else if($_GET['method'] == 'delete_attempt'){
+        
+        $incomingJSON = file_get_contents('php://input');
+        $incomingAttempt = json_decode($incomingJSON);
+        
+        if(!isset($incomingAttempt->id)) throwError('Missing id to delete');
+        
+        $fileContent = file_get_contents($fileName);
+        if(!$fileContent) throwError('Imposible to read the database file');
+        
+        $jSON = json_decode($fileContent);
+        $newPendingAttempts = [];
+		foreach($jSON->pending_attempts as $attempt)
+		{
+		    if($attempt->id != $incomingAttempt->id) $newPendingAttempts[] = $attempt;
+		}
+		
+		if(count($jSON->pending_attempts) == count($newPendingAttempts)) throwError('The attempt with id '.$incomingAttempt->id.' was not found');
+
+        file_put_contents($fileName, json_encode($newPendingAttempts));
         
         throwSuccess('ok');
     }
