@@ -81,7 +81,8 @@
 		
 		if(count($jSON->pending_attempts) == count($newPendingAttempts)) throwError('The attempt with id '.$incomingAttempt->id.' was not found');
 
-        file_put_contents($fileName, json_encode($newPendingAttempts));
+        $jSON->pending_attempts = $newPendingAttempts;
+        file_put_contents($fileName, json_encode($jSON));
         
         throwSuccess('ok');
     }
