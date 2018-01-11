@@ -52,6 +52,7 @@
         $jSON = json_decode($fileContent);
 		array_push($jSON->pending_attempts, [
 		    "id" => uniqid(),
+		    "created_at" => time(),
 		    "username" => $incomingAttempt->username,
 		    "character" => $incomingAttempt->character,
 		    "commands" => $incomingAttempt->commands

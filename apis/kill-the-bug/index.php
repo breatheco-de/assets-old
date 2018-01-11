@@ -35,6 +35,7 @@
           "pending_attempts": [
               {
                   "id": "5a57b11d6b8e0",
+                  "created_at": 1515697384,
                   "username": "MariaPerez",
                   "character": "batman",
                   "commands": [
