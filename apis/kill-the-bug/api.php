@@ -35,11 +35,11 @@
         
         if(!isset($incomingAttempt->username)) throwError('Missing username');
         if(!isset($incomingAttempt->character)) throwError('Missing character');
-        if(!isset($incomingAttempt->moves) || !is_array($incomingAttempt->moves)) throwError('Missing moves or is not an array');
+        if(!isset($incomingAttempt->commands) || !is_array($incomingAttempt->commands)) throwError('Missing moves or is not an array');
         
         if ( !preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $incomingAttempt->username) ) throwError('Invalid username (only letters and numbers permited)');
         
-        foreach($incomingAttempt->moves as $move) 
+        foreach($incomingAttempt->commands as $move) 
             if(!in_array($move, ["runRight", "runLeft", "jumpRight", "jumpLeft", "climb", "open", "push", "kill"]))
                  throwError('The movement '.$move.' its not allowed');
         
@@ -54,7 +54,7 @@
 		    "id" => uniqid(),
 		    "username" => $incomingAttempt->username,
 		    "character" => $incomingAttempt->character,
-		    "moves" => $incomingAttempt->moves
+		    "commands" => $incomingAttempt->commands
 		]);
 
         file_put_contents($fileName, json_encode($jSON));
