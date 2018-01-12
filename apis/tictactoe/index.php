@@ -71,6 +71,18 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-sm-12">
+            <h3>Clean games</h3>
+            <pre><code class="markdown">
+  [POST] /game
+  FORM PARAMS: none
+  RESPONSE:
+  
+    []
+              </code></pre>
+          </div>
+        </div>
+        <div class="row">
             <div class="col-12">
                 <h2 class="text-center">Current Game Log</h2>
                 <?php
