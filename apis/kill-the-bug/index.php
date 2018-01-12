@@ -25,7 +25,7 @@
           <div class="col-sm-8 col-sm-offset-2">
             <h3>Get list of all pending games</h3>
             <pre><code class="markdown">
-  [GET] /pending_attempts
+  [GET] /pending_attempts/:level_id
   PARAMS: None
 
   RESPONSE:

@@ -23,9 +23,14 @@
 
     if($_GET['method'] == 'pending_attempts'){
         
+        if(!isset($_GET['p1'])) throwError("You have to specify for what level you want the pending attempts");
+        
         $fileContent = file_get_contents($fileName);
         if(!$fileContent) throwError('Imposible to read the database file');
         $jSON = json_decode($fileContent);
+        $jSON->pending_attempts = array_filter($jSON->pending_attempts, function($item){
+            return ($item->level == $_GET['p1']);
+        });
         throwSuccess($jSON);
     }
     if($_GET['method'] == 'get_levels' && !isset($_GET['p1'])){
@@ -55,6 +60,7 @@
         $incomingAttempt = json_decode($incomingJSON);
         
         if(!isset($incomingAttempt->username)) throwError('Missing username');
+        if(!isset($incomingAttempt->level)) throwError('Missing level');
         if(!isset($incomingAttempt->character)) throwError('Missing character');
         if(!isset($incomingAttempt->commands) || !is_array($incomingAttempt->commands)) throwError('Missing moves or is not an array');
         
@@ -80,6 +86,7 @@
 		    "id" => uniqid(),
 		    "created_at" => time(),
 		    "username" => $incomingAttempt->username,
+		    "level" => $incomingAttempt->level,
 		    "character" => $incomingAttempt->character,
 		    "commands" => $incomingAttempt->commands
 		]);
