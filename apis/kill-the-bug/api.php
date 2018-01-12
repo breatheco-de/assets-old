@@ -1,5 +1,5 @@
 <?php
-
+    error_reporting(0);
 	header("Content-type: application/json"); 
 	header("Access-Control-Allow-Origin: *");
 	$fileName = 'data.json';
@@ -78,8 +78,7 @@
             }
         }
         
-        if(!in_array($incomingAttempt->character, ["batman"]))
-             throwError('The avatar slug '.$incomingAttempt->character.' its not valid');
+        //if(!in_array($incomingAttempt->character, ["batman"])) throwError('The avatar slug '.$incomingAttempt->character.' its not valid');
         
         $fileContent = file_get_contents($fileName);
         if(!$fileContent) throwError('Imposible to read the database file');
