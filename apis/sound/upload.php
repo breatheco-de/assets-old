@@ -10,7 +10,7 @@
 <body>
 	<div class="container-fluid">
 		<h1 id="titleForm">Upload Songs...</h1>
-		<form id="theForm" action="upload.php" method="post">
+		<form id="theForm" action="file_upload.php" method="post">
 			<fieldset>
 				<legend>Song Name</legend>
 				<input id="songName" class="form-control" type="Text" name="song-name" placeholder="File Name">
