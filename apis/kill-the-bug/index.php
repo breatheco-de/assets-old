@@ -53,6 +53,54 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
+            <h3>Get Game Levels</h3>
+            <pre><code class="markdown">
+  [GET] /get_levels
+  
+  RESPONSE:
+  
+  {
+      "data": [
+          {
+              "slug": "1",
+              "difficulty": "easy",
+              "thumb": "3.png",
+              "title": "Map 1"
+          },
+          ...
+      ],
+      "code": 200
+  }
+              </code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h3>Get Single Game Level</h3>
+            <pre><code class="markdown">
+  [GET] /get_levels/:level_id
+  
+  RESPONSE:
+  
+  {
+      "data": {
+        "title": "Map 1",
+        "difficulty": "easy",
+        "thumb": "3.png",
+        "tilewidth": 70,
+        "type": "map",
+        "version": 1,
+        "width": 12,
+        "height": 10,
+        "layers": []
+      },
+      "code": 200
+  }
+              </code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
             <h3>Add one pending attempt</h3>
             <pre><code class="markdown">
   [POST] /add_attempt

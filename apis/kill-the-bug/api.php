@@ -28,6 +28,27 @@
         $jSON = json_decode($fileContent);
         throwSuccess($jSON);
     }
+    if($_GET['method'] == 'get_levels' && !isset($_GET['p1'])){
+        $files = scandir('levels/');
+        
+        $levels = array_map(function($item){
+            $levelJson = file_get_contents('levels/'.$item);
+            $levelInfo = json_decode($levelJson);
+            return [
+                "slug" => preg_replace('/\\.[^.\\s]{3,4}$/', '', $item),
+                "difficulty" => $levelInfo->difficulty,
+                "thumb" => $levelInfo->thumb,
+                "title" => $levelInfo->title
+            ];
+        },array_slice($files,2));
+        throwSuccess($levels);
+    }
+    else if($_GET['method'] == 'get_levels' && isset($_GET['p1'])){
+        $levelJson = file_get_contents('levels/'.$_GET['p1'].'.json');
+        $levelInfo = json_decode($levelJson);
+        if(!$levelInfo) throwError(json_last_error());
+        throwSuccess($levelInfo);
+    }
     else if($_GET['method'] == 'add_attempt'){
         
         $incomingJSON = file_get_contents('php://input');
