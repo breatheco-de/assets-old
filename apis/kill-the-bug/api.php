@@ -29,9 +29,9 @@
         $jSON = json_decode($fileContent);
         
         if(isset($_GET['p1']) || $_GET['p1']!=''){
-            $jSON->pending_attempts = array_filter($jSON->pending_attempts, function($item){
+            $jSON->pending_attempts = array_values(array_filter($jSON->pending_attempts, function($item){
                 return ($item->level == $_GET['p1']);
-            });
+            }));
         }
         
         throwSuccess($jSON);
@@ -77,7 +77,7 @@
                 else throwError('The movements should an array of strings');
             }
         }
-        
+
         //if(!in_array($incomingAttempt->character, ["batman"])) throwError('The avatar slug '.$incomingAttempt->character.' its not valid');
         
         $fileContent = file_get_contents($fileName);
@@ -95,7 +95,8 @@
 
         file_put_contents($fileName, json_encode($jSON));
         
-        throwSuccess('ok');
+        $jSON->pending_attempts = array_values(array_filter($jSON->pending_attempts, function($item){ return ($item->level == $incomingAttempt->level); }));
+        throwSuccess($jSON);
     }
     else if($_GET['method'] == 'delete_attempt'){
         
@@ -109,9 +110,11 @@
         
         $jSON = json_decode($fileContent);
         $newPendingAttempts = [];
+        $level = null;
 		foreach($jSON->pending_attempts as $attempt)
 		{
 		    if($attempt->id != $incomingAttempt->id) $newPendingAttempts[] = $attempt;
+		    else $level = $attempt->level;
 		}
 		
 		if(count($jSON->pending_attempts) == count($newPendingAttempts)) throwError('The attempt with id '.$incomingAttempt->id.' was not found');
@@ -119,7 +122,10 @@
         $jSON->pending_attempts = $newPendingAttempts;
         file_put_contents($fileName, json_encode($jSON));
         
-        throwSuccess('ok');
+        //filter the attempts for the specific level
+        if($level) $jSON->pending_attempts = array_values(array_filter($jSON->pending_attempts, function($item){ return ($item->level == $level); }));
+        
+        throwSuccess($jSON);
     }
     else if($_GET['method'] == 'clean_attempts'){
         
