@@ -28,7 +28,7 @@
         if(!$fileContent) throwError('Imposible to read the database file');
         $jSON = json_decode($fileContent);
         
-        if(!isset($_GET['p1'])){
+        if(isset($_GET['p1']) || $_GET['p1']!=''){
             $jSON->pending_attempts = array_filter($jSON->pending_attempts, function($item){
                 return ($item->level == $_GET['p1']);
             });
@@ -65,7 +65,7 @@
         if(!isset($incomingAttempt->username)) throwError('Missing username');
         if(!isset($incomingAttempt->level)) throwError('Missing level');
         if(!isset($incomingAttempt->character)) throwError('Missing character');
-        if(!isset($incomingAttempt->commands) || !is_array($incomingAttempt->commands)) throwError('Missing moves or is not an array');
+        if(!isset($incomingAttempt->commands) || !is_array($incomingAttempt->commands)) throwError('Missing commands or is not an array');
         
         if ( !preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $incomingAttempt->username) ) throwError('Invalid username (only letters and numbers permited)');
         
