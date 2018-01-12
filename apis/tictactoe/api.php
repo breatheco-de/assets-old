@@ -1,46 +1,31 @@
 <?php
+    require_once('../APIGenerator.php');
+    
+	$api = new APIGenerator('data.json','[]');
 
-	header("Content-type: application/json"); 
-	header("Access-Control-Allow-Origin: *");
-	$fileName = 'data.json';
-	
-	function throwError($msg){
-	    $result = [];
-	    $result['message'] = $msg;
-        $result['code'] = 500;
-        echo json_encode($result);
-        die();
-	}
-	function throwSuccess($data){
-	    $result = [];
-	    $result['data'] = $data;
-        $result['code'] = 200;
-        echo json_encode($result);
-        die();
-	}
-	
-    if(isset($_GET['all']))
-    {
-        $fileContent = file_get_contents($fileName);
-        if(!$fileContent) throwError('Imposible to read the database file');
+	$api->method('games', function($dataContent){
+        return $dataContent;
+	});
+
+	$api->method('game', function($dataContent) use ($api){
+        if(!isset($_POST['player1']) || !isset($_POST['player2']) || !isset($_POST['winner'])) throw new Exception('Mising POST parameters');
         
-        $jSON = json_decode($fileContent);
-        throwSuccess($jSON);
-    }
-    else if(isset($_POST['u1']) &&  isset($_POST['u2']) && isset($_POST['winner'])){
+        if(empty($dataContent)) $dataContent = [];
         
-        $fileContent = file_get_contents($fileName);
-        if($fileContent === false) throwError('Imposible to read the database file');
-        $jSON = json_decode($fileContent);
-        if(empty($jSON)) $jSON = [];
-        
-        array_push($jSON,[
-            "u1" => $_POST['u1'], "u2" => $_POST['u2'], "winner"=> $_POST['winner']
+        array_push($dataContent,[
+            "player1" => $_POST['player1'], 
+            "player2" => $_POST['player2'], 
+            "winner"=> $_POST['winner']
         ]);
-        file_put_contents($fileName, json_encode($jSON));
         
-        throwSuccess('ok');
-    }
-    else{
-        throwError("No recognized API call please use one of the known methods.");
-    }
+        $api->saveData($dataContent);
+        return $dataContent;
+	});
+	
+	$api->method('clean', function($dataContent) use ($api){
+	    
+	    $api->saveData([]);
+        return [];
+	});
+	
+	$api->run();
