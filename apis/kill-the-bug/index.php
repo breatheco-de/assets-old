@@ -16,7 +16,7 @@
       <div class="bcmenu container-fluid">
         <div class="row text-center">
           <div class="col-xs-12">
-            <img alt="breathe code logo" src="../img/images.php?blob&random&cat=icon&tags=breathecode,128">
+            <img alt="breathe code logo" src="http://assets.breatheco.de/img/images.php?blob&random&cat=icon&tags=breathecode,128">
             <h1>Kill The Bug API</h1>
             <h4 style="font-size: 18px;"><span class="label label-default">HOST:</span> https://assets.breatheco.de/apis/kill-the-bug/api/</h4>
           </div>

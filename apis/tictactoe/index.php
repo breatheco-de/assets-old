@@ -16,9 +16,10 @@
       <div class="bcmenu container">
         <div class="row text-center">
           <div class="col-12">
-            <img alt="breathe code logo" src="../img/images.php?blob&random&cat=icon&tags=breathecode,128">
+            <img alt="breathe code logo" src="http://assets.breatheco.de/img/images.php?blob&random&cat=icon&tags=breathecode,128">
             <h1 class="text-center">TicTacToe API</h1>
             <h4 class="text-center bg-dark text-white" style="font-size: 18px;"><span class="label label-default">HOST:</span> https://assets.breatheco.de/apis/tictactoe/api/</h4>
+            <p><a target="_blank" download="TicTacToe.postman_collection.json" href="TicTacToe.postman_collection.json">Download Postman Collection</a></p>
           </div>
         </div>
         <div class="row">
