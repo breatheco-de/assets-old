@@ -1,4 +1,6 @@
 <?php
+    header("Content-type: application/json"); 
+    header("Access-Control-Allow-Origin: *");
     require_once('../APIGenerator.php');
     
 	$api = new APIGenerator('data.json','[]');
