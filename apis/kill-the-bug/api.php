@@ -67,7 +67,9 @@
         if(!isset($incomingAttempt->character)) throwError('Missing character');
         if(!isset($incomingAttempt->commands) || !is_array($incomingAttempt->commands)) throwError('Missing commands or is not an array');
         
+        /*
         if ( !preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $incomingAttempt->username) ) throwError('Invalid username "'.$incomingAttempt->username.'" (only letters and numbers permited)');
+        */
         
         foreach($incomingAttempt->commands as $move)
         {
