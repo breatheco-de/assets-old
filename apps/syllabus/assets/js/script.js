@@ -7,6 +7,7 @@ $(document).ready(function(){
         topMenuHeight = topMenu.outerHeight(),
         // All list items
         menuItems = topMenu.find("a"),
+        queryString = getUrlVars(),
         // Anchors corresponding to menu items
         scrollItems = menuItems.map(function(){
           var item = $($(this).attr("href"));
@@ -49,31 +50,34 @@ $(document).ready(function(){
        }                   
     });
     
-    $.get('data/venezuela.json').done(function(data){
-        console.log('AJAX Incoming');
-        Timeline.init({
-            containerSelector: 'section',
-            menuContainerSelector: '.nav__wrapper .nav',
-            data: data.weeks
+    if(typeof(queryString['program']) =='undefined') alert('Please Specify a Syllabus on the QueryString ?program=<slug>');
+    else
+    {
+        $.get('data/'+queryString['program']+'.json').done(function(data){
+            console.log('AJAX Incoming');
+            Timeline.init({
+                containerSelector: 'section',
+                menuContainerSelector: '.nav__wrapper .nav',
+                data: data.weeks
+            });
+            
+            $('.syllabus-title').html(data.label);
+            $('.syllabus-description').html(data.description || "No Description for this syllabus");
+            
+            topMenu = $("nav.nav__wrapper");
+            topMenuHeight = topMenu.outerHeight();
+            // All list items
+            menuItems = topMenu.find("a");
+            // Anchors corresponding to menu items
+            scrollItems = menuItems.map(function(){
+              var item = $($(this).attr("href"));
+              if (item.length) { return item; }
+            });
+            
+        }).fail(function(msg){
+            console.log('Error!!', msg);      
         });
-        
-        $('.syllabus-title').html(data.label);
-        $('.syllabus-description').html(data.description || "No Description for this syllabus");
-        
-        topMenu = $("nav.nav__wrapper");
-        topMenuHeight = topMenu.outerHeight();
-        // All list items
-        menuItems = topMenu.find("a");
-        // Anchors corresponding to menu items
-        scrollItems = menuItems.map(function(){
-          var item = $($(this).attr("href"));
-          if (item.length) { return item; }
-        });
-        
-    }).fail(function(msg){
-        
-        console.log('Error!!', msg);      
-    });
+    }
 
 });
 
@@ -85,4 +89,17 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }

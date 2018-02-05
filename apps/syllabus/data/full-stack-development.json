@@ -1,6 +1,6 @@
 {
-    "label": "Full-Stack (Venezuela)",
-    "profile": ["full-stack"],
+    "label": "Full-Stack Development",
+    "profile": ["full-stack-development"],
     "weeks":[
         {
             "label": "Week 1: How web works? CMD",
