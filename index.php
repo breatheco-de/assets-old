@@ -28,7 +28,7 @@
               <li><a href="live-demos/css/aspect-ratio/">Aspect Ratio</a></li>
               <li><a href="../img/">Image API</a></li>
               <li><a href="../apis/sound/">Sounds API</a></li>
-              <li><a href="../quiz/">Quiz API</a></li>
+              <li><a href="../apis/quiz_api/">Quiz API</a></li>
             </ul>
           </div>
           <div class="col-sm-3">
