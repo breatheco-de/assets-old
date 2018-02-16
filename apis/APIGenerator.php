@@ -26,8 +26,12 @@ class APIGenerator{
 	    
 	    $this->request = [];
 	    $this->request['type'] = $_SERVER['REQUEST_METHOD'];
-	    $this->request['url_elements'] = explode('/', $_SERVER['PATH_INFO']);
-	    array_shift($this->request['url_elements']);
+	    $this->request['url_elements'] = explode('/', $_GET['url']);
+	    
+	    //if the request has one empty element means that no resource was specified on the request URL
+	    if(count($this->request['url_elements'])==1 && empty($this->request['url_elements'][0]))
+	        array_shift($this->request['url_elements']);
+	    
 	    $this->parseIncomingParams();
 	    $this->getDataStructure($dataPath, $defaultContent);
     }
