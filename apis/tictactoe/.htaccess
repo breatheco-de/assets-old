@@ -4,5 +4,4 @@ RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
  
-RewriteRule ^api/(.*)/(.*)$ ./api.php?method=$1&p1=$2
-RewriteRule ^api/(.*)$ ./api.php?method=$1
+RewriteRule ^(.*)$ ./index.php/$1

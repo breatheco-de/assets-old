@@ -2,57 +2,175 @@
 
 class APIGenerator{
     
+    //Onyl used if the data is stored in just one json file
     var $fileName = null;
-    var $fileContent = null;
+    
+    //Only use when the data is stored in different files
+    var $dataFiles = null;
+    
+    //The real content already parse, if several datafiles where provided it will be an array of objects
+    var $dataContent = null;
+    
+    //All the API available methods
     var $methods = [];
     
-    function __construct($dataFile,$defaultContent='{}')
-    {
-        header("Content-type: application/json"); 
-	    header("Access-Control-Allow-Origin: *");
+    var $debug = false;
+    
+    var $request;
+    var $host = null;
+        
+    function __construct($dataPath,$defaultContent='{}',$debug = false){
+        
+	    $this->debug = $debug;
+	    $this->host = 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 	    
-	    $this->fileName = $dataFile;
-        $this->checkForFile($defaultContent);
+	    $this->request = [];
+	    $this->request['type'] = $_SERVER['REQUEST_METHOD'];
+	    $this->request['url_elements'] = explode('/', $_SERVER['PATH_INFO']);
+	    array_shift($this->request['url_elements']);
+	    $this->parseIncomingParams();
+	    $this->getDataStructure($dataPath, $defaultContent);
     }
     
-    function checkForFile($defaultContent){
+    function getDataStructure($path, $defaultContent){
         
-        if(!file_exists($this->fileName)){
-            $fh = fopen($this->fileName, 'a'); 
+        $pathParts = pathinfo($path);
+        if(!empty($pathParts['extension'])){
+            $this->fileName = $path;
+            $this->dataContent = $this->parseFile($this->fileName,$defaultContent);
+        } 
+        else
+        {
+            if($this->dataContent == null) $this->dataContent = [];
+            if($this->dataFiles == null) $this->dataFiles = [];
+            
+        	$directories = scandir($path);
+        	$urlparts = explode("/", $path);
+        	$level = 0;
+        	foreach ($directories as $value){
+        		if($this->debug) echo "Recorriendo: $newPath \n";
+    		    $newPath = $path.$value;
+        		if($value!='.' and $value!='..' and is_dir($path)) 
+        		{
+        			$laspath = basename($path);
+        			if(is_dir($newPath)) 
+        			{
+        			    if($this->debug) echo "Entro en: $newPath \n";
+        			    $this->getDataStructure($newPath.'/', $defaultContent);
+        			}
+        			else{
+        			    $newPathParts = pathinfo($newPath);
+        			    if($newPathParts['extension'] == 'json')
+        			    {
+            			    if($this->debug) echo "Guardando $newPath ...\n";
+            			    array_push($this->dataFiles, $newPath);
+            			    $this->dataContent[$newPath] = $this->parseFile($newPath, $defaultContent);
+        			    }
+        			} 
+        		}
+        	}
+        	return $this->dataFiles;
+        }
+    }
+    
+    public function parseIncomingParams() {
+        $parameters = array();
+
+        // first of all, pull the GET vars
+        if (isset($_SERVER['QUERY_STRING'])) {
+            parse_str($_SERVER['QUERY_STRING'], $parameters);
+        }
+
+        // now how about PUT/POST bodies? These override what we got from GET
+        $body = file_get_contents("php://input");
+        $content_type = false;
+        if(isset($_SERVER['CONTENT_TYPE'])) {
+            $content_type = $_SERVER['CONTENT_TYPE'];
+        }
+        switch($content_type) {
+            case "application/json":
+                $body_params = json_decode($body);
+                if($body_params) {
+                    foreach($body_params as $param_name => $param_value) {
+                        $parameters[$param_name] = $param_value;
+                    }
+                }
+                $this->format = "json";
+                break;
+            case "application/x-www-form-urlencoded":
+                parse_str($body, $postvars);
+                foreach($postvars as $field => $value) {
+                    $parameters[$field] = $value;
+
+                }
+                $this->format = "html";
+                break;
+            default:
+                // we could parse other supported formats here
+                break;
+        }
+        $this->request['parameters'] = $parameters;
+    }
+    function parseFile($fileName, $defaultContent){
+        
+        if(!file_exists($fileName)){
+            $fh = fopen($fileName, 'a'); 
             if(is_string($defaultContent)) fwrite($fh,$defaultContent); 
             else fwrite($fh, json_encode($defaultContent)); 
             fclose($fh); 
-            chmod($this->fileName, 0777); 
+            chmod($fileName, 0777); 
             
-            $this->fileContent = json_decode($defaultContent);
+            $dataContent = json_decode($defaultContent);
+            if($dataContent === null or $dataContent ===false) $this->throwError('Unable to get file content: '+json_last_error());
+            
+            return $dataContent;
         }
         else
         {
-            $jsonContent = file_get_contents($this->fileName);
+            $jsonContent = file_get_contents($fileName);
             $dataContent = json_decode($jsonContent);
-            if($dataContent === null or $dataContent ===false){
-                $this->throwError('Unable to get file content: '+json_last_error());
-            } 
-            else $this->fileContent = $dataContent;
+            if($dataContent === null or $dataContent ===false) $this->throwError('Unable to get file content: '+json_last_error());
             
+            return $dataContent;
         }
     }
     
-    function method($methodName, $callback)
-    {
+    function addMethod($methodType='GET', $methodName, $description, $callback){
         if(!$methodName or $methodName=='') throw new Exception('Please specify a method name');
         if(!$callback or !is_callable($callback)) throw new Exception('The callback need to be a callable function');
-        $this->methods[$methodName] = $callback;
+        
+        if(!isset($this->methods[$methodType])) $this->methods[$methodType] = [];
+        if(!isset($this->methods[$methodType][$methodName])) $this->methods[$methodType][$methodName] = [];
+
+        $this->methods[$methodType][$methodName]['callback'] = $callback;
+        $this->methods[$methodType][$methodName]['description'] = $description;
     }
+    function get($methodName, $description, $callback){ $this->addMethod('GET', $methodName, $description, $callback); }
+    function post($methodName, $description, $callback){ $this->addMethod('POST',$methodName, $description, $callback); }
+    function put($methodName, $description, $callback){ $this->addMethod('PUT',$methodName, $description, $callback); }
+    function delete($methodName, $description, $callback){ $this->addMethod('DELETE',$methodName, $description, $callback); }
     
     function run(){
         
-        if(!isset($_GET['method'])) throw new Exception('No method defined');
-        if(!isset($this->methods[$_GET['method']])) throw new Exception('Method '.$_GET['method'].' not recognized');
+        if(count($this->request['url_elements'])==0){
+            header("Content-type: text/html"); 
+            if(file_exists('README.md')) $this->generateDocs('readme');
+            else $this->generateDocs(); 
+            die();
+        }
+        else
+        {
+            header("Content-type: application/json"); 
+	        header("Access-Control-Allow-Origin: *");
+        }
+
+        $methodType = $this->request['type'];
+        $methodName = $this->request['url_elements'][0];
+        if(!isset($this->methods[$methodType][$methodName])) $this->throwError('Method '.$methodType.': /'.$methodName.' not recognized. Maybe with PUT, POST or DELETE?');;
 
         try
         {
-            $result = $this->methods[$_GET['method']]($this->fileContent);
+            $result = $this->methods[$methodType][$methodName]['callback']($this->request, $this->dataContent);
             if($result === null) throw new Exception('Please return something on your API method callback for: '.$_GET['method']);
             
             $this->throwSuccess($result);
@@ -63,6 +181,40 @@ class APIGenerator{
         }        
     }
     
+    function createDirectory($path,$qzes){
+        
+    	$directories = scandir($path);
+    	$urlparts = explode("/", $path);
+    	$level = 0;
+    	foreach ($directories as $value) {
+    		$newPath = $path.$value.'/';
+    		//echo "Recorriendo: $newPath \n";
+    		if($value!='.' and $value!='..' and is_dir($path)) 
+    		{
+    			$laspath = basename($path);
+    			//echo "entro...$laspath... \n";
+    			//if(isset($urlparts[5])) echo $urlparts[5]."\n";
+    			if(is_dir($newPath)) $qzes = createDirectory($newPath,$qzes);
+    			else if(isValidQuiz($newPath)){
+    			    $auxQuiz = json_decode(file_get_contents($path.$value),true);
+    			    $auxQuiz['info']['slug'] = substr($value,0,strlen($value)-5);
+    			    if(!$auxQuiz['info']['badges']) throw new Exception('There is a Quiz without badges');
+    			    if($auxQuiz = filterQuiz($auxQuiz))
+    			    {
+        			    $auxQuiz['info']['category'] = basename($path);
+        			    //print_r($auxQuiz); die();
+        			    if(!isset($auxQuiz['info']['status']) || $auxQuiz['info']['status']=='published')
+        			    {
+            				if($auxQuiz) array_push($qzes, $auxQuiz);
+        			    }
+    			    }
+    			}
+    		}
+    		//else echo "No es directorio".$newPath."\n";
+    	}
+    	return $qzes;
+    }
+    
     function saveData($data){
         
         if($data === null) $this->throwError('Nothing sent to save');
@@ -70,7 +222,40 @@ class APIGenerator{
         if(!is_array($data) && !is_object($data)) $this->throwError('The data sent to save must be an object or array');
         
         $result = file_put_contents($this->fileName,json_encode($data));
-        if(!$result) $this->throwError('Error saving data');
+        if(!$result) $this->throwError('Error saving data into '.$this->fileName);
+    }
+    
+    function getJsonByName($fileName){
+        
+        if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
+        
+        if(!is_array($this->dataContent)) throw new Exception("There is only one json file as data model");
+        
+        foreach ($this->dataContent as $key => $jsonObject) {
+            $file = pathinfo($key);
+            if($file['filename'] == $fileName) return $jsonObject;
+        }
+        
+        throw new Exception("There json file ".$fileName." was not found");
+    }
+    
+    function generateDocs($mode='default'){
+        $content = '<!DOCTYPE html><html><head></head><body style="margin:0px;padding:0px;overflow:hidden">';
+        switch($mode)
+        {
+            case "readme":
+                $content .= '<iframe src="https://assets.breatheco.de/live-demos/markdown-parser/?skin=api&path='.$this->host.'/README.md" frameborder="0" style="overflow:hidden;height:100vh;width:100%" height="100%" width="100%"></iframe>';
+            break;
+            default:
+                $content .= '<h1>Available API Methods</h1>';
+                $content .= '<hp>Host: '.$this->host.'</p>';
+                $content .= '<ul>';
+                foreach($this->methods as $name => $value) $content .= '<li>'.$name.'</li>';
+                $content .= '</ul>';
+            break;
+        }
+        $content .= '</body></html>';
+        echo $content;
     }
     
     function throwError($msg){
@@ -83,8 +268,14 @@ class APIGenerator{
 	
 	function throwSuccess($data){
 	    $result = [];
-	    $result['data'] = $data;
-        $result['code'] = 200;
+	    if(!is_object($data) && !is_array($data))
+	    {
+    	    $result['message'] = $data;
+            $result['code'] = 200;
+	    }
+	    else{
+	        $result = $data;
+	    }
         echo json_encode($result);
         die();
 	}

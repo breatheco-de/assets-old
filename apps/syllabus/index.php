@@ -28,7 +28,6 @@
     </nav>
     <section class="section section1" id="section1">
     </section>
-
     <section class="section section2" id="section2">
       Section 2
     </section>

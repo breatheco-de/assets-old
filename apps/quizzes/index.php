@@ -39,16 +39,15 @@
             $(function() {
                 
                 $.ajax({
-                   url: '../quizzes.php', 
+                   url: '../../apis/quiz_api/quiz/<?php echo $_GET['slug']; ?>', 
                    dataType: 'json',
-                   data: {slug: '<?php echo $_GET['slug']; ?>'},
                    cache: false,
-                   success: function(data){
-                       if(data && data.length==1)
+                   success: function(quizz){
+                       if(quizz && typeof(quizz.info) != 'undefined')
                        {
-                           data[0].questions = cleanOptions(data[0].questions);
+                           quizz.questions = cleanOptions(quizz.questions);
                             $('#slickQuiz').slickQuiz({
-                                json: data[0],
+                                json: quizz,
                                 onComplete: sendFinishActivity,
                                 randomSortAnswers: true,
                                 disableResponseMessaging: false,

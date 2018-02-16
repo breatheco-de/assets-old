@@ -3,7 +3,7 @@ require "vendor/autoload.php";
 
 if(!isset($_GET['path'])) die("Please specify the 'path': URL for the markdown file");
 
-$skin = 'markdown5';
+$skin = 'splendor';
 if(isset($_GET['skin'])) $skin = $_GET['skin'];
 
 $readmeContent = file_get_contents($_GET['path']);
@@ -18,6 +18,13 @@ $Parsedown = new Parsedown();
 	<title></title>
 </head>
 <body onload="onLoadFunction();">
+<style>
+	html{
+		font-size: 10px;
+		margin: 10px auto;
+		max-width: 800px;
+	}
+</style>
 <div style="position: absolute; top:0; right:0;">
 	<select id="theme" onChange="onThemeChange(this);">
 		<option value="markdown5">Markdown5</option>
@@ -39,13 +46,13 @@ function changeCSS(){
 	    link.id   = 'css-link';
 	    link.rel  = 'stylesheet';
 	    link.type = 'text/css';
-	    link.href = 'themes/'+theme+'.css';
+	    link.href = 'themes/'+theme+'.css?1';
 	    link.media = 'all';
 	    head.appendChild(link);
 	}
 	else
 	{
-		link.href = 'themes/'+theme+'.css';
+		link.href = 'themes/'+theme+'.css?1';
 	}
 	return true;
 }
