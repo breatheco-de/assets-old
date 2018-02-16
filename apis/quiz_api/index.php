@@ -10,7 +10,7 @@
 	$api->get('quiz', 'Get a particular quizz',function($request,$data) use ($api){
         
         $quizObj = $api->getJsonByName($request['url_elements'][1]);
-        print_r($quizObj); die();
+        return $quizObj;
 	});
 	
 	$api->run();
