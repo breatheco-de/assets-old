@@ -68,3 +68,17 @@ HOST: https://assets.breatheco.de/apis/quiz_api/
         ...
     ]
 ```
+
+## Rewrite URLS
+
+Here is an example of a .htaccess file that has worked on production environments:
+
+```sh
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /apis/quiz_api/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [L]
+</IfModule>
+```

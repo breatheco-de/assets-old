@@ -124,7 +124,7 @@ class APIGenerator{
             fclose($fh); 
             chmod($fileName, 0777); 
             
-            $dataContent = json_decode($defaultContent);
+            $dataContent = (array) json_decode($defaultContent);
             if($dataContent === null or $dataContent ===false) $this->throwError('Unable to get file content: '+json_last_error());
             
             return $dataContent;
@@ -132,7 +132,7 @@ class APIGenerator{
         else
         {
             $jsonContent = file_get_contents($fileName);
-            $dataContent = json_decode($jsonContent);
+            $dataContent = (array) json_decode($jsonContent);
             if($dataContent === null or $dataContent ===false) $this->throwError('Unable to get file content: '+json_last_error());
             
             return $dataContent;
