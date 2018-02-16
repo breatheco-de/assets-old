@@ -1,5 +1,5 @@
 <?php
-    require_once('../APIGenerator.php');
+	require_once('../APIGenerator.php');
     
 	$api = new APIGenerator('data/','[]',false);
 
