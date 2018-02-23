@@ -1,5 +1,8 @@
 <?php
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+    
 class APIGenerator{
     
     //Onyl used if the data is stored in just one json file
@@ -7,6 +10,8 @@ class APIGenerator{
     
     //Only use when the data is stored in different files
     var $dataFiles = null;
+    
+    var $logger = null;
     
     //The real content already parse, if several datafiles where provided it will be an array of objects
     var $dataContent = null;
@@ -22,11 +27,16 @@ class APIGenerator{
     function __construct($dataPath,$defaultContent='{}',$debug = false){
         
 	    $this->debug = $debug;
-	    $this->host = 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+	    $this->host = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	    
 	    $this->request = [];
 	    $this->request['type'] = $_SERVER['REQUEST_METHOD'];
-	    $this->request['url_elements'] = explode('/', $_GET['url']);
+	    
+	    $url = '';
+	    if(isset($_GET['url'])) $url = $_GET['url'];
+	    
+	    $this->request['url'] = $url;
+	    $this->request['url_elements'] = explode('/', $url);
 	    
 	    //if the request has one empty element means that no resource was specified on the request URL
 	    if(count($this->request['url_elements'])==1 && empty($this->request['url_elements'][0]))
@@ -34,6 +44,12 @@ class APIGenerator{
 	    
 	    $this->parseIncomingParams();
 	    $this->getDataStructure($dataPath, $defaultContent);
+    }
+    
+    function logRequests($fileURL){
+
+        $this->logger = new Logger('requests');
+        $this->logger->pushHandler(new StreamHandler($fileURL, Logger::INFO));
     }
     
     function getDataStructure($path, $defaultContent){
@@ -114,6 +130,8 @@ class APIGenerator{
                 break;
         }
         $this->request['parameters'] = $parameters;
+        
+        $this->request['parameters'] = array_merge($this->request['parameters'], $_POST);
     }
     function parseFile($fileName, $defaultContent){
         
@@ -170,6 +188,9 @@ class APIGenerator{
 
         $methodType = $this->request['type'];
         $methodName = $this->request['url_elements'][0];
+
+        if($this->logger) $this->logger->info("$methodType: ".$this->request['url']." PARAMS: ".json_encode($this->request['parameters']));
+
         if(!isset($this->methods[$methodType][$methodName])) $this->throwError('Method '.$methodType.': /'.$methodName.' not recognized. Maybe with PUT, POST or DELETE?');;
 
         try
@@ -254,7 +275,7 @@ class APIGenerator{
                 $content .= '<h1>Available API Methods</h1>';
                 $content .= '<hp>Host: '.$this->host.'</p>';
                 $content .= '<ul>';
-                foreach($this->methods as $name => $value) $content .= '<li>'.$name.'</li>';
+                foreach($this->methods as $name => $value) $content .= '<li>'.$name.' -> '.json_encode($value).'</li>';
                 $content .= '</ul>';
             break;
         }

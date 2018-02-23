@@ -186,7 +186,7 @@
 			}
 		]
 	}, {
-		"q": "What is more secure when implementing secutiry on API",
+		"q": "What are the ",
 		"a": [{
 				"option": "Making the API clients send a hash signature on every request to validate their session",
 				"correct": false
@@ -200,5 +200,6 @@
 				"correct": true
 			}
 		]
-	}]
+	}
+	]
 }
