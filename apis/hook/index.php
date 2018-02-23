@@ -17,7 +17,7 @@
     
     require_once('../APIGenerator.php');
 	$api = new APIGenerator('data.json','[]');
-	$api->logRequests('requests.log');
+	//$api->logRequests('requests.log');
 
 	$api->get('referral_code', 'Get student referral_code', function($request, $dataContent){
         
