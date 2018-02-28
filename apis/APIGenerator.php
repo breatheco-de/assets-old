@@ -173,7 +173,6 @@ class APIGenerator{
     function delete($methodName, $description, $callback){ $this->addMethod('DELETE',$methodName, $description, $callback); }
     
     function run(){
-        
         if(count($this->request['url_elements'])==0){
             header("Content-type: text/html"); 
             if(file_exists('README.md')) $this->generateDocs('readme');
@@ -265,6 +264,7 @@ class APIGenerator{
     }
     
     function generateDocs($mode='default'){
+
         $content = '<!DOCTYPE html><html><head></head><body style="margin:0px;padding:0px;overflow:hidden">';
         switch($mode)
         {
@@ -275,7 +275,10 @@ class APIGenerator{
                 $content .= '<h1>Available API Methods</h1>';
                 $content .= '<hp>Host: '.$this->host.'</p>';
                 $content .= '<ul>';
-                foreach($this->methods as $name => $value) $content .= '<li>'.$name.' -> '.json_encode($value).'</li>';
+                if(isset($this->methods['GET'])) foreach($this->methods['GET'] as $name => $value) $content .= '<li>GET: '.$name.' -> '.json_encode($value).'</li>';
+                if(isset($this->methods['POST'])) foreach($this->methods['POST'] as $name => $value) $content .= '<li>POST: '.$name.' -> '.json_encode($value).'</li>';
+                if(isset($this->methods['PUT'])) foreach($this->methods['PUT'] as $name => $value) $content .= '<li>PUT: '.$name.' -> '.json_encode($value).'</li>';
+                if(isset($this->methods['DELETE'])) foreach($this->methods['DELETE'] as $name => $value) $content .= '<li>DELETE: '.$name.' -> '.json_encode($value).'</li>';
                 $content .= '</ul>';
             break;
         }

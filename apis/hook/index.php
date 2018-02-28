@@ -17,7 +17,7 @@
     
     require_once('../APIGenerator.php');
 	$api = new APIGenerator('data.json','[]');
-	//$api->logRequests('requests.log');
+	$api->logRequests('requests.log');
 
 	$api->get('referral_code', 'Get student referral_code', function($request, $dataContent){
         
@@ -31,7 +31,7 @@
         
 	});
 	
-	$api->post('referral_code', 'Get student referral_code', function($request, $dataContent){
+	$api->post('referral_code', 'Update student referral_code on active campaign', function($request, $dataContent){
         
         $userEmail = null;
         if(isset($request['parameters']['email'])) $userEmail = $request['parameters']['email'];
@@ -53,6 +53,42 @@
             }
         }    
         return null;
+	});
+	
+	$api->post('initialize', 'Initialize contact info on active campaign', function($request, $dataContent){
+        
+        $userEmail = null;
+        if(isset($request['parameters']['email'])) $userEmail = $request['parameters']['email'];
+        else if(isset($request['parameters']['contact']['email'])) $userEmail = $request['parameters']['contact']['email'];
+        else throw new Exception('Please specify the user email');
+        
+         \AC\ACAPI::start();
+        $contact = \AC\ACAPI::getContactByEmail($userEmail);
+
+        $fields = [];
+        $fieldsToInitialize = [
+            'REFERRAL_KEY','REFERRER_NAME','REFERRED_BY','GCLID','COMPANY_TYPE',
+            'SENORITY_LEVEL','UTM_LOCATION','UTM_LANGUAGE','COURSE','PHONE',
+            'PLATFORM_USERNAME'
+        ];
+        foreach($contact->fields as $id => $field){
+            
+            if(in_array($field->perstag, $fieldsToInitialize))
+            {
+                if(empty($field->val))
+                {
+                    //initialize the field with undefined
+                    $fields['field['.$id.','.$field->dataid.']'] = 'undefined';
+                    
+                    //override the initialization for language, making EN by default 
+                    if($field->perstag == 'UTM_LANGUAGE')
+                        $fields['field['.$id.','.$field->dataid.']'] = 'en';
+                }
+            }
+            
+        }    
+        \AC\ACAPI::updateContact($contact->email,$fields);
+        return 'ok';
 	});
 
 	$api->run();
