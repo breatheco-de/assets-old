@@ -62,6 +62,19 @@ $(document).ready(function(){
             });
             
             $('.syllabus-title').html(data.label);
+            
+            let allTechnologies = flatten(data.weeks.map(function(week){
+                let weekTechnologies = [];
+                let dayTechnologies = week.days.map(function(day){ return day.technologies; });
+                dayTechnologies = dayTechnologies.filter(function(item){return typeof(item)!='undefined';});
+                return weekTechnologies.concat(dayTechnologies);
+            }));
+            
+            var uniqueTechnologies = [];
+            allTechnologies.forEach(function(tech, index){
+                if(uniqueTechnologies.indexOf(tech) === -1) uniqueTechnologies.push(tech);
+            });
+            document.querySelector('#syllabus-technologies').innerHTML = "<h2>"+uniqueTechnologies.map(function(tech){ return wrap(tech); }) + "</h2>";
             $('.syllabus-description').html(data.description || "No Description for this syllabus");
             
             topMenu = $("nav.nav__wrapper");
@@ -80,6 +93,21 @@ $(document).ready(function(){
     }
 
 });
+
+const wrap = function(value){
+    return '<span class="badge badge-secondary">'+value+'</span>';
+}
+const flatten = function(arr, result = []) {
+  for (let i = 0, length = arr.length; i < length; i++) {
+    const value = arr[i];
+    if (Array.isArray(value)) {
+      flatten(value, result);
+    } else {
+      result.push(value);
+    }
+  }
+  return result;
+};
 
 
 function getRandomColor() {

@@ -40,7 +40,7 @@
 							"url": "https://breatheco.de/replit/?r=css"
 						}
 					],
-					"technologies": ["HTML", "CSS"]
+					"technologies": ["HTML5", "CSS"]
 				},
 				{
 					"label": "Day 2",
@@ -64,7 +64,7 @@
 						"title": "Introduccion to the prework",
 						"url": "https://breatheco.de/replit/?r=layouts"
 					}],
-					"technologies": ["Advanced CSS", "HTML5"]
+					"technologies": ["CSS3", "HTML5"]
 				},
 				{
 					"label": "Day 3",
@@ -81,7 +81,8 @@
 						"title": "Working with Bootstrap",
 						"url": "https://breatheco.de/replit/?r=bootstrap"
 					}],
-					"key-concepts": ["Bootstrap Grid", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper Classes"]
+					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper Classes"],
+					"technologies": ["Bootstrap"]
 				},
 				{
 					"label": "Weekend",
@@ -106,7 +107,8 @@
 						"url": "https://breatheco.de/replit/?r=the-command-line"
 					}],
 					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
-					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative ./ vs Absolute Paths /", "Moving Up ../", "Autocomplete with TAB", "GIT in a general way"]
+					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative ./ vs Absolute Paths /", "Moving Up ../", "Autocomplete with TAB", "GIT in a general way"],
+					"technologies": ["Command Line", "Bash Scripts"]
 				},
 				{
 					"label": "Day 5",
@@ -120,7 +122,8 @@
 					"replits": [{
 						"title": "Git interactive tutorial",
 						"url": "https://breatheco.de/replit/?r=git"
-					}]
+					}],
+					"technologies": ["Git", "Markdown"]
 				},
 				{
 					"label": "Day 6",
@@ -130,8 +133,8 @@
 						"url": "https://bitbucket.org/codingacademy/abc-chocolate-wire-framing"
 					},
 					"homework": "Finished Replits and Projects",
-					"key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"]
-
+					"key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"],
+					"technologies": ["Wireframing"]
 				},
 				{
 					"label": "Weekend",
@@ -170,7 +173,7 @@
 							"url": "https://breatheco.de/replit/?r=arrays"
 						}
 					],
-					"technologies": ["JS", "HTML", "CSS", "Bootstrap"]
+					"technologies": ["Javascript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
 				},
 				{
 					"label": "Day 8",
@@ -184,7 +187,7 @@
 						"title": "Working with functions",
 						"url": "https://breatheco.de/replit/?r=functions"
 					}],
-					"technologies": ["Loops", "Condicionales", "Variables", "Scope"]
+					"technologies": ["JS Emac2018", "JS Terminal"]
 				},
 				{
 					"label": "Day 9",
@@ -203,7 +206,8 @@
 							"url": "https://breatheco.de/replit/?r=events"
 						}
 					],
-					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"]
+					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"],
+					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
 				},
 				{
 					"label": "Weekend",
@@ -232,7 +236,7 @@
 						"url": "https://breatheco.de/en/lesson/react-js/"
 					}],
 					"key-concepts": ["Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Export -> Import modules", "Include your bundle on index.html", "Create your React.js Component View"],
-					"technologies": ["React", "Webpack", "Babel.js", "HTML", "CSS", "React"]
+					"technologies": ["React", "Webpack", "Babel.js", "JS Modules"]
 				},
 				{
 					"label": "Day 11",
@@ -247,7 +251,7 @@
 						"title": "Building interfaces with React",
 						"url": "https://breatheco.de/en/lesson/react-js/"
 					}],
-					"technologies": ["React", "Javascript", "CSS", "HTML", "Events"]
+					"technologies": ["React", "Javascript", "Events"]
 				},
 				{
 					"label": "Day 12",
@@ -257,8 +261,8 @@
 						"url": "#todo"
 					},
 					"homework": "Students must create a contact managment app using React Router, Flux & Component lifecycle methods",
-					"key-concepts": ["Router: Matching URLs Flux.Views","Mapping user actions in Flux.Actions", "Dispatching actions to Flux.Store setters", "Handling Flux.Store changes", "Redirect with history.push()"],
-					"technologies": ["React", "Webpack", "NPM", "React Router", "Babel.js", "HTML", "CSS"]
+					"key-concepts": ["Router: Matching URLs Flux.Views", "Mapping user actions in Flux.Actions", "Dispatching actions to Flux.Store setters", "Handling Flux.Store changes", "Redirect with history.push()"],
+					"technologies": ["Flux", "NPM", "React Router", "React", "MVC"]
 				},
 				{
 					"label": "Weekend",
@@ -280,7 +284,7 @@
 					},
 					"key-concepts": ["Building a Trello board", "Building a Kanban Board", "Creating the project Backlog", "Who to write the story", "Acceptance Criteria", "You application roles & capabilities", "Standup Meeting"],
 					"homework": "Students must finish the user stories by next class, remember that the student projects must meet certain conditions to be accepted.",
-					"technologies": ["SCRUM", "User Stories", "Kamban", "Agile Methodologies"]
+					"technologies": ["SCRUM", "User Stories", "Kanban", "Agile Methodologies"]
 				},
 				{
 					"label": "Day 14",
@@ -291,7 +295,7 @@
 					},
 					"key-concepts": ["Students will deliver bad written stories, sit with them and re-explain the best practices"],
 					"homework": "Finish Wireframes and code the HTML/CSS for your first home Flux.View",
-					"technologies": ["Javascript", "React"]
+					"technologies": ["Javascript", "React", "Flux", "React Router"]
 				},
 				{
 					"label": "Day 15",
@@ -302,7 +306,7 @@
 					},
 					"key-concepts": ["Using the React Debugging Chrome Plugin", "Debugging code with the Chrome Source Tab"],
 					"homework": "Sit with every project team and discuss how to split the code into Flux.Views and React.Components, students must finish the home layout by next class",
-					"technologies": ["Lean: MVP", "Flux", "Google "]
+					"technologies": ["Minimum Viable Product", "Flux", "The Chrome Inspector"]
 				},
 				{
 					"label": "Weekend",
@@ -323,17 +327,17 @@
 					},
 					"homework": "Students must add all the application actions into Flux.Actions and start linking them to the Flux.Views, also start dispatching the actions to the Stores if possible",
 					"key-concepts": ["How to map map user actions to Flux.Actions", "Dispatching into the Flux.Store setters", "What to save on the store and what to save locally on the Views/Comopnents States", "Why are the model setters private?", "Why emitting?", "How to listen to the emit?"],
-					"technologies": ["React", "Webpack", "NPM", "Babel.js", "Flux", "HTML", "CSS"]
-				},{
+					"technologies": ["React", "Webpack", "NPM", "Babel.js", "Flux", "HTML Forms", "MVC"]
+				}, {
 					"label": "Day 17",
 					"description": "Finally students must use the Flux.Store getters to retreive the data into the views, they should understand the flow: store changes > views listen > views get the new info and set into the local state > views re-render",
 					"project": {
 						"title": "Work on the student project",
 						"url": "#"
 					},
-					"key-concepts": ["Create some sample data on your Flux.Model", "Create the getters to get that data from the views","Create the listeners to handle store changes","Re-set the views model on store changes","Re-render and conditionally display whatever is needed","Create any actions to change the models","Dispatch from the actions","Create the setters and update the store state"],
+					"key-concepts": ["Create some sample data on your Flux.Model", "Create the getters to get that data from the views", "Create the listeners to handle store changes", "Re-set the views model on store changes", "Re-render and conditionally display whatever is needed", "Create any actions to change the models", "Dispatch from the actions", "Create the setters and update the store state"],
 					"homework": "Students must work on all their Flux.Views to make them work with store data, students must also work on polishing the CSS/HTML based on that",
-					"technologies": ["Flux Workflow","Data-Modeling","Getter-Setter"]
+					"technologies": ["Flux Workflow", "Data-Modeling", "Object Oriented Programming"]
 				},
 				{
 					"label": "Day 18",
@@ -348,10 +352,9 @@
 					"label": "Weekend",
 					"description": "Students must finish the AJAX Replits",
 					"replits": [{
-							"title": "Learn AJAX",
-							"url": "https://breatheco.de/replit/?r=ajax"
-						}
-					]
+						"title": "Learn AJAX",
+						"url": "https://breatheco.de/replit/?r=ajax"
+					}]
 				}
 			]
 		},
@@ -367,10 +370,9 @@
 						"url": "#"
 					},
 					"replits": [{
-							"title": "Learn AJAX",
-							"url": "https://breatheco.de/replit/?r=ajax"
-						}
-					],
+						"title": "Learn AJAX",
+						"url": "https://breatheco.de/replit/?r=ajax"
+					}],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
 					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"]
