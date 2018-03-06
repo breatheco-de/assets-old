@@ -31,58 +31,45 @@
     <section class="section section2" id="section2">
       Section 2
     </section>
-
     <section class="section section3" id="section3">
       Section 3
     </section>
-
     <section class="section section4" id="section4">
       Section 4
     </section>
-
     <section class="section section5" id="section5">
       Section 5
     </section>
-
     <section class="section section6" id="section6">
       Section 6
     </section>
     <section class="section section7" id="section7">
       Scroll down or use the nav.
     </section>
-
     <section class="section section8" id="section8">
       Section 8
     </section>
-
     <section class="section section9" id="section9">
       Section 9
     </section>
-
     <section class="section section10" id="section10">
       Section 10
     </section>
-
     <section class="section section11" id="section11">
       Section 11
     </section>
-
     <section class="section section12" id="section12">
       Section 12
     </section>
-
     <section class="section section13" id="section13">
       Section 13
     </section>
-
     <section class="section section14" id="section14">
       Section 14
     </section>
-
     <section class="section section15" id="section15">
       Section 15
     </section>
-
     <section class="section section16" id="section16">
       Section 16
     </section>

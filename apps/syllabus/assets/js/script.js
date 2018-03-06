@@ -94,7 +94,8 @@ function getRandomColor() {
 function getUrlVars()
 {
     var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    var currentURL = window.location.href.split('#')[0];
+    var hashes = currentURL.slice(window.location.href.indexOf('?') + 1).split('&');
     for(var i = 0; i < hashes.length; i++)
     {
         hash = hashes[i].split('=');
