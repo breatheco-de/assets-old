@@ -17,7 +17,7 @@
     <div class="container">
       <h1 class='syllabus-title'>Jumbotron Auto Viewport Height</h1>
       <p class="syllabus-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi pariatur laboriosam explicabo recusandae.</p>
-      <p id="syllabus-technologies">[asdasd,ads,as,das,d,asd]</p>
+      <p id="syllabus-technologies">[Technologies]</p>
       <p><a class="btn btn-primary btn-lg" href="#" onClick="$('html, body').animate({scrollTop: $('#section1').offset().top+10}, 1000);" role="button">Ver Syllabus</a></p>
     </div>
   </div>

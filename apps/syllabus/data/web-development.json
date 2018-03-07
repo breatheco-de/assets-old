@@ -1,6 +1,7 @@
 {
-	"label": "Full-Stack Development",
-	"profile": ["full-stack-development"],
+	"label": "Web Development",
+	"profile": ["web-development"],
+	"description": "Become an advanced Web-Developer building React.js applications using the WordPress Architecture and API development",
 	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
@@ -257,17 +258,17 @@
 					"label": "Day 12",
 					"description": "React Router + Flux: How to create components that behave like Flux.Views (layouts) and math them with URL Routers. Demonstrate component lifecycle methods: WillMount, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow",
 					"project": {
-						"title": "The Contact List",
+						"title": "The React Meetup-Clone",
 						"url": "#todo"
 					},
-					"homework": "Students must create a contact managment app using React Router, Flux & Component lifecycle methods",
+					"homework": "Students must create a calendar page using React Router, Flux & Component lifecycle methods",
 					"key-concepts": ["Router: Matching URLs Flux.Views", "Mapping user actions in Flux.Actions", "Dispatching actions to Flux.Store setters", "Handling Flux.Store changes", "Redirect with history.push()"],
 					"technologies": ["Flux", "NPM", "React Router", "React", "MVC"]
 				},
 				{
 					"label": "Weekend",
-					"description": "Finish the TodoList with React Router + Flux",
-					"homework": "Finish the TodoList with React Router + Flux"
+					"description": "Finish the Meetup-Clone with React Router + Flux",
+					"homework": "Finish the Meetup-Clone with React Router + Flux"
 				}
 			]
 		},
@@ -366,7 +367,7 @@
 					"label": "Day 19",
 					"description": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
 					"project": {
-						"title": "Use the Contact Manage API to save, delete and update the contacts",
+						"title": "Meetup-Clone with Wordpress",
 						"url": "#"
 					},
 					"replits": [{
@@ -374,33 +375,228 @@
 						"url": "https://breatheco.de/replit/?r=ajax"
 					}],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
-					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
+					"homework": "Using postman, and then using Flux/React, students must use the WordPress API to Bookmark and RSVP to the events",
 					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"]
 				},
 				{
 					"label": "Day 20",
-					"description": "Finish the Contact Managment API integration, focus on Debugging procedures and start the introduction to Python",
+					"description": "Finish the Meetup-Clone API integration, focus on Debugging procedures and start the introduction to PHP/WordPress",
 					"project": {
-						"title": "Contact Managment API Integration",
+						"title": "Meetup-Clone API with WordPress",
 						"url": "#"
 					},
-					"homework": "Students must finish the Contact Managment API integration and advance a lot on the Python replits",
-					"technologies": ["Python", "Back-end", "API"]
+					"homework": "Students must finish Meetup API intetration and finish the PHP Replits",
+					"technologies": ["PHP", "Back-end", "API", "REST"]
 				},
 				{
 					"label": "Day 21",
-					"description": "Install Django-Rest With your students using the Django Hello Boilerplate and create your fist API Methods, demonstrate how the urls.py, views.py, serializable.py and model.py work",
+					"description": "Use Composer+WPCLI to install (WordPress + WPAS Dash + ACPT Plugin) and demonstrate how create you own WordPress model. Explain what Entities are and Entity-Relationship Diagram. Do not explain composer that much (do the analogy with NPM) and do not explain WP-CLI to much either, start using it and students will learn by doing",
 					"project": {
-						"title": "Contact Managment API",
+						"title": "The Meetup-Clone API",
 						"url": "#"
 					},
-					"key-concepts": ["Defining Django Models", "Defining Django API views", "Defining Django URLs"],
-					"homework": "Build your own Contact Managment API",
-					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization"]
+					"homework": "Students must build the needed model to build the Meetup-Clone API and the API RESTful services to CRUD the models",
+					"key-concepts": ["Database Entities: Modeling Data with Wordpress", "The WordPress Dashboard","Creating a CPT", "Relationships between Custom Post Types","POSTMan: How to use it to create all types of requests, headers and content-types"],
+					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization","Custom Post Types","Composer","WordPress Dash". "WP-CLI"]
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must finish all the requests for the Django Contact Managment API"
+					"description": "Students must build the API for the Meetup-Clone project"
+				}
+			]
+		},
+		{
+			"label": "Week 8: Plugins + API + Types",
+			"topic": "Create your WordPress Model",
+			"summary": "Work",
+			"days": [{
+					"label": "Day 22",
+					"description": "Keep using the the ACPT Plugin + Custom Post Types to make your Meetup-Clone Models, review all the concepts and stepts to create an API method (URL->Controller->Model)",
+					"project": {
+						"title": "Meetup-Clone with Wordpress",
+						"url": "#"
+					},
+					"homework": "Keep working on the WordPress Meetup-Clone + API",
+					"technologies": ["HTTP", "AJAX", "JSON", "WordPress API", "Serialization"]
+				},
+				{
+					"label": "Day 23",
+					"description": "Time to start working on the Project API with WordPress, make the students write all their API Requests un a RESTFul way",
+					"project": {
+						"title": "Meetup-Clone API with WordPress",
+						"url": "#"
+					},
+					"homework": "Students must write all the API Methods that are going to be needed for the  project and finish the Meetup-Clone if not already.",
+					"technologies": ["PHP", "Back-end", "API", "REST"]
+				},
+				{
+					"label": "Day 24",
+					"description": "Time to code the API! Review the API methods that students spec out and make them start coding them our using WordPress Dash",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"key-concepts": ["Review everything we have learned"],
+					"homework": "Students must keep working on the Final Project API and Final React Application"
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must keep working on the Final Project API and Final React Application"
+				}
+			]
+		},
+		{
+			"label": "Week 9: The WordPress Theme",
+			"topic": "Build your own WordPress Theme",
+			"summary": "Work",
+			"days": [{
+					"label": "Day 25",
+					"description": "Explain what a WordPress template and how to use them to render HTML. Explain how the controllers can be used to prepare the view information and how to use PHP to insert the values on the templates",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students are required to have some parts of the project on php templates, they need to complete those startign right now",
+					"key-concepts": ["WordPress Templating Engine", "Working with the Controller to prepare the template views", "Using PHP as template engine (conditional display and loops)"],
+					"technologies": ["PHP", "WordPress Themes", "PHP Templating", "MVC", "WordPress Dash"]
+				},
+				{
+					"label": "Day 26",
+					"description": "Work with students on the project",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must work on the project",
+				},
+				{
+					"label": "Day 27",
+					"description": "Students must work on the project",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must work on the project",
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must work on the project"
+				}
+			]
+		},
+		{
+			"label": "Week 10: API Autentication",
+			"topic": "Autenticating your website users",
+			"summary": "",
+			"days": [{
+					"label": "Day 28",
+					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"key-concepts": ["Managing cookies with PHP and Javascript","Using <PrivateRoute /> component on React","Creating a Session Store"],
+					"homework": "Implement login on your React application and save the WordPress user id on the Flux Store to open a session, use cookies to avoid user from looging our even if the website is the React App is refreshed",
+					"technologies": ["Server Sessions", "Cookies"]
+				},
+				{
+					"label": "Day 29",
+					"description": "Finish Implementing Login with your students and help them finish any other needed implementation",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project",
+				},
+				{
+					"label": "Day 30",
+					"description": "Keep working on the final project with your students",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project",
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must keep working on the project"
+				}
+			]
+		},
+		{
+			"label": "Week 11: Payment Integration",
+			"topic": "Autenticating your website users",
+			"summary": "",
+			"days": [{
+					"label": "Day 28",
+					"description": "Install Woocommerce as gateway for payment services and explain the students how to integrate their website to it",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"key-concepts": ["Installing Woocommerce", "Configuring Woocommerce", "Woocommerce API Integration"],
+					"homework": "Students must implement their project payment subscription or plans",
+					"technologies": ["Woocommerce"]
+				},
+				{
+					"label": "Day 29",
+					"description": "Finish Implementing payment options with your students and help them finish any other needed implementation",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project",
+				},
+				{
+					"label": "Day 30",
+					"description": "Keep working on the final project with your students",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project",
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must keep working on the project"
+				}
+			]
+		},
+		{
+			"label": "Week 12: Production Server",
+			"topic": "Uploading & Mantaining the website",
+			"summary": "",
+			"days": [{
+					"label": "Day 28",
+					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"key-concepts": ["Configuring your server database","Using GIT to upload your WordPress","Using WordPress-CLI on Production","Setting up the wp-config.php"],
+					"homework": "Students must upload their project for the final presentation",
+				},
+				{
+					"label": "Day 29",
+					"description": "Finish Implementing Login with your students and help them finish any other needed implementation",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project",
+				},
+				{
+					"label": "Day 30",
+					"description": "Keep working on the final project with your students",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project",
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must keep working on the project"
 				}
 			]
 		}
