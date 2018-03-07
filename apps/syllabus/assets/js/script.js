@@ -74,7 +74,7 @@ $(document).ready(function(){
             allTechnologies.forEach(function(tech, index){
                 if(uniqueTechnologies.indexOf(tech) === -1) uniqueTechnologies.push(tech);
             });
-            document.querySelector('#syllabus-technologies').innerHTML = "<h2>"+uniqueTechnologies.map(function(tech){ return wrap(tech); }) + "</h2>";
+            document.querySelector('#syllabus-technologies').innerHTML = uniqueTechnologies.map(function(tech){ return wrap(tech); });
             $('.syllabus-description').html(data.description || "No Description for this syllabus");
             
             topMenu = $("nav.nav__wrapper");

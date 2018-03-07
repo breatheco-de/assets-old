@@ -274,8 +274,8 @@
 		},
 		{
 			"label": "Week 5: The Project!",
-			"topic": "",
-			"summary": "Time to start working on the project",
+			"topic": "Project Specs",
+			"summary": "Time to start working on the project specs using SCRUM, User Stories, Kanban and Wireframing",
 			"days": [{
 					"label": "Day 13",
 					"description": "Explain User Stories and the SCRUM methodology. Students must pick their projects & partner, and start building the user stories on Trello.com, create the board with them.",
@@ -316,8 +316,8 @@
 			]
 		},
 		{
-			"label": "Week 6: Flux.Model to Flux.View",
-			"topic": "Soft-code Project Views",
+			"label": "Week 6: MVC with Flux",
+			"topic": "Using React Flux",
 			"summary": "No more hard-coding, make your Flux.Views and Components render from the Flux.Model",
 			"days": [{
 					"label": "Day 16",
@@ -360,9 +360,9 @@
 			]
 		},
 		{
-			"label": "Week 7: Ajax(HTTP-JSON)",
-			"topic": "Send and Receive Data with HTTP",
-			"summary": "Work",
+			"label": "Week 7: Consuming API's",
+			"topic": "HTTP, JSON, REST",
+			"summary": "Use fetch and Postman to consume REST APIs with JS",
 			"days": [{
 					"label": "Day 19",
 					"description": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
@@ -396,8 +396,10 @@
 						"url": "#"
 					},
 					"homework": "Students must build the needed model to build the Meetup-Clone API and the API RESTful services to CRUD the models",
-					"key-concepts": ["Database Entities: Modeling Data with Wordpress", "The WordPress Dashboard","Creating a CPT", "Relationships between Custom Post Types","POSTMan: How to use it to create all types of requests, headers and content-types"],
-					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization","Custom Post Types","Composer","WordPress Dash". "WP-CLI"]
+					"key-concepts": ["Database Entities: Modeling Data with Wordpress", "The WordPress Dashboard", "Creating a CPT", "Relationships between Custom Post Types", "POSTMan: How to use it to create all types of requests, headers and content-types"],
+					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization", "Custom Post Types", "Composer", "WordPress Dash",
+						"WP-CLI"
+					]
 				},
 				{
 					"label": "Weekend",
@@ -406,9 +408,9 @@
 			]
 		},
 		{
-			"label": "Week 8: Plugins + API + Types",
-			"topic": "Create your WordPress Model",
-			"summary": "Work",
+			"label": "Week 8: Make a Plugin+API",
+			"topic": "Plugin, CPT, Postman",
+			"summary": "Build a WP plugin with a custom model and API",
 			"days": [{
 					"label": "Day 22",
 					"description": "Keep using the the ACPT Plugin + Custom Post Types to make your Meetup-Clone Models, review all the concepts and stepts to create an API method (URL->Controller->Model)",
@@ -446,48 +448,8 @@
 			]
 		},
 		{
-			"label": "Week 9: The WordPress Theme",
-			"topic": "Build your own WordPress Theme",
-			"summary": "Work",
-			"days": [{
-					"label": "Day 25",
-					"description": "Explain what a WordPress template and how to use them to render HTML. Explain how the controllers can be used to prepare the view information and how to use PHP to insert the values on the templates",
-					"project": {
-						"title": "Final Project",
-						"url": "#"
-					},
-					"homework": "Students are required to have some parts of the project on php templates, they need to complete those startign right now",
-					"key-concepts": ["WordPress Templating Engine", "Working with the Controller to prepare the template views", "Using PHP as template engine (conditional display and loops)"],
-					"technologies": ["PHP", "WordPress Themes", "PHP Templating", "MVC", "WordPress Dash"]
-				},
-				{
-					"label": "Day 26",
-					"description": "Work with students on the project",
-					"project": {
-						"title": "Final Project",
-						"url": "#"
-					},
-					"homework": "Students must work on the project",
-				},
-				{
-					"label": "Day 27",
-					"description": "Students must work on the project",
-					"project": {
-						"title": "Final Project",
-						"url": "#"
-					},
-					"homework": "Students must work on the project",
-				},
-				{
-					"label": "Weekend",
-					"description": "Students must work on the project"
-				}
-			]
-		},
-		{
-			"label": "Week 10: API Autentication",
+			"label": "Week 9: API Autentication",
 			"topic": "Autenticating your website users",
-			"summary": "",
 			"days": [{
 					"label": "Day 28",
 					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
@@ -495,7 +457,7 @@
 						"title": "Final Project",
 						"url": "#"
 					},
-					"key-concepts": ["Managing cookies with PHP and Javascript","Using <PrivateRoute /> component on React","Creating a Session Store"],
+					"key-concepts": ["Managing cookies with PHP and Javascript", "Using <PrivateRoute /> component on React", "Creating a Session Store"],
 					"homework": "Implement login on your React application and save the WordPress user id on the Flux Store to open a session, use cookies to avoid user from looging our even if the website is the React App is refreshed",
 					"technologies": ["Server Sessions", "Cookies"]
 				},
@@ -506,7 +468,7 @@
 						"title": "Final Project",
 						"url": "#"
 					},
-					"homework": "Students must keep working on the project",
+					"homework": "Students must keep working on the project"
 				},
 				{
 					"label": "Day 30",
@@ -515,11 +477,49 @@
 						"title": "Final Project",
 						"url": "#"
 					},
-					"homework": "Students must keep working on the project",
+					"homework": "Students must keep working on the project"
 				},
 				{
 					"label": "Weekend",
 					"description": "Students must keep working on the project"
+				}
+			]
+		},
+		{
+			"label": "Week 10: The WordPress Theme",
+			"topic": "Build your own WordPress Theme",
+			"days": [{
+					"label": "Day 25",
+					"description": "Explain what a WordPress template and how to use them to render HTML. Explain how the controllers can be used to prepare the view information and how to use PHP to insert the values on the templates",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students are required to have some parts of the project on php templates, they need to complete those parts starting right now!",
+					"key-concepts": ["WordPress Templating Engine", "Working with the Controller to prepare the template views", "Using PHP as template engine (conditional display and loops)"],
+					"technologies": ["PHP", "WordPress Themes", "PHP Templating", "MVC", "WordPress Dash"]
+				},
+				{
+					"label": "Day 26",
+					"description": "Work with students on the project",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must work on the project"
+				},
+				{
+					"label": "Day 27",
+					"description": "Students must work on the project",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must work on the project"
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must work on the project"
 				}
 			]
 		},
@@ -545,7 +545,7 @@
 						"title": "Final Project",
 						"url": "#"
 					},
-					"homework": "Students must keep working on the project",
+					"homework": "Students must keep working on the project"
 				},
 				{
 					"label": "Day 30",
@@ -554,7 +554,7 @@
 						"title": "Final Project",
 						"url": "#"
 					},
-					"homework": "Students must keep working on the project",
+					"homework": "Students must keep working on the project"
 				},
 				{
 					"label": "Weekend",
@@ -563,40 +563,115 @@
 			]
 		},
 		{
-			"label": "Week 12: Production Server",
-			"topic": "Uploading & Mantaining the website",
-			"summary": "",
+			"label": "Week 12: The Data Week",
+			"topic": "Messuring everything!",
+			"summary": "Lets make the website a data generation machine with Google Analitycs",
 			"days": [{
-					"label": "Day 28",
-					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
+					"label": "Day 31",
+					"description": "Make students and model their Website needs and Data-Model based on the business, collect all possible data and measure Call To Actions, Leads, Impressions, etc. Report all that data to Google Analytics and other 3rd party services",
+					"project": {
+						"title": "WP Data-Collection Engine",
+						"url": "#"
+					},
+					"key-concepts": ["Google Tag Manager Integration" , "Identifing and Dispatching Events", "Collection Data", "AdWords Integration"],
+					"homework": "Students must map all the relevant interactions on a diagram and start messuring them with Javascript",
+					"technologies": ["Google Analytics","Google Tag Manager","Lean Generation"]
+				},
+				{
+					"label": "Day 32",
+					"description": "Finish Implementing the data-layer with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
 					},
-					"key-concepts": ["Configuring your server database","Using GIT to upload your WordPress","Using WordPress-CLI on Production","Setting up the wp-config.php"],
-					"homework": "Students must upload their project for the final presentation",
+					"homework": "Students must integrate the data-layer"
 				},
 				{
-					"label": "Day 29",
-					"description": "Finish Implementing Login with your students and help them finish any other needed implementation",
-					"project": {
-						"title": "Final Project",
-						"url": "#"
-					},
-					"homework": "Students must keep working on the project",
-				},
-				{
-					"label": "Day 30",
+					"label": "Day 33",
 					"description": "Keep working on the final project with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
 					},
-					"homework": "Students must keep working on the project",
+					"homework": "Students must keep working on the project"
 				},
 				{
 					"label": "Weekend",
 					"description": "Students must keep working on the project"
+				}
+			]
+		},
+		{
+			"label": "Week 13: Final Project",
+			"topic": "Work on the project",
+			"summary": "Help students polish the last things",
+			"days": [{
+					"label": "Day 34",
+					"description": "Install Woocommerce as gateway for payment services and explain the students how to integrate their website to it",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"key-concepts": ["Installing Woocommerce", "Configuring Woocommerce", "Woocommerce API Integration"],
+					"homework": "Students must implement their project payment subscription or plans",
+					"technologies": ["Woocommerce"]
+				},
+				{
+					"label": "Day 35",
+					"description": "Finish Implementing payment options with your students and help them finish any other needed implementation",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project"
+				},
+				{
+					"label": "Day 36",
+					"description": "Keep working on the final project with your students",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project"
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must keep working on the project"
+				}
+			]
+		},
+		{
+			"label": "Week 14: To Production",
+			"topic": "Upload the website",
+			"summary": "Time to upload! Use GIT, WPCLI & CPANEL",
+			"days": [{
+					"label": "Day 37",
+					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"key-concepts": ["Configuring your server database", "Using GIT to upload your WordPress", "Using WordPress-CLI on Production", "Setting up the wp-config.php"],
+					"homework": "Students must upload their project for the final presentation",
+					"technologies": ["MySQL", "GIT", "CPanel", "Hosting"]
+				},
+				{
+					"label": "Day 38",
+					"description": "Finish Implementing Login with your students and help them finish any other needed implementation",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must keep working on the project"
+				},
+				{
+					"label": "Graduation",
+					"description": "Go and have a drink with your students",
+					"project": {
+						"title": "Final Project",
+						"url": "#"
+					},
+					"homework": "Students must present projects and be there for the picture!"
 				}
 			]
 		}

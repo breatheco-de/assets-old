@@ -361,7 +361,7 @@
 		{
 			"label": "Week 7: Ajax(HTTP-JSON)",
 			"topic": "Send and Receive Data with HTTP",
-			"summary": "Work",
+			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
 			"days": [{
 					"label": "Day 19",
 					"description": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
@@ -389,18 +389,526 @@
 				},
 				{
 					"label": "Day 21",
-					"description": "Install Django-Rest With your students using the Django Hello Boilerplate and create your fist API Methods, demonstrate how the urls.py, views.py, serializable.py and model.py work",
+					"description": "One last day to finish the Contact Managment Application with your students, review all the Flux, React, Components and HTTP Ajax concepts and best practices",
 					"project": {
-						"title": "Contact Managment API",
+						"title": "Contact Managment API Integration",
 						"url": "#"
 					},
-					"key-concepts": ["Defining Django Models", "Defining Django API views", "Defining Django URLs"],
-					"homework": "Build your own Contact Managment API",
-					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization"]
+					"homework": "Students must finish the Contact Managment Application and complete all the Python Replits",
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must finish all the requests for the Django Contact Managment API"
+					"description": "As homework students must react and review the Lessons and Videos about Python, Django-Rest"
+				}
+			]
+		},
+		{
+			"label": "Week 8: Python+Djando",
+			"topic": "Doing API's with Django-REST",
+			"summary": "Use Python, Django and REST_Framework to build amazing APIs",
+			"days": [{
+					"label": "Day 22",
+					"description": "Install Django-Rest With your students using the Django Hello Boilerplate and create your fist django application with a hello world, create a sample model and make students run the migrations",
+					"project": {
+						"title": "Build a Contact Managment API",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "Learn SQL",
+						"url": "https://breatheco.de/replit/?r=sql"
+					}],
+					"key-concepts": ["Python is on the Backend","Defining Django Models", "Defining Django API views", "Defining Django URLs"],
+					"homework": "Students must create the required models for the Contact Managment Application",
+					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization","PIP Package Manager"]
+				},
+				{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "Create some models with your students and then let continue with the rest, explain the Entity-Relationship diagrams",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 9: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 10: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 11: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 12: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 13: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 14: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 15: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
+				}
+			]
+		},
+		{
+			"label": "Week 16: ",
+			"topic": "",
+			"summary": "",
+			"days": [{
+					"label": "Day 19",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 20",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Day 21",
+					"description": "",
+					"project": {
+						"title": "",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "",
+						"url": ""
+					}],
+					"key-concepts": [""],
+					"homework": "",
+					"technologies": [""]
+				},
+				{
+					"label": "Weekend",
+					"description": ""
 				}
 			]
 		}

@@ -63,7 +63,7 @@ var Timeline = (function(){
             content += `<li role="presentation"><a href="#${weekContainerId+cont.toString()}">
             <span class="nav__counter">${week.label}</span>
             <h3 class="nav__title">${week.topic}</h3>
-            <p class="nav__body">${week.summary}</p>
+            <p class="nav__body">${(typeof week.summary != 'undefined') ? week.summary:''}</p>
           </a></li>`;
           cont++;
         });

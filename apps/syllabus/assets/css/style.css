@@ -237,3 +237,7 @@
 
 .popover ul{padding: 0;}
 .popover ul li{list-style: none;}
+
+.badge.badge-secondary{
+  font-size: 16px;
+}
