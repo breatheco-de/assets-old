@@ -1,7 +1,7 @@
 {
 	"label": "Web Development",
 	"profile": ["web-development"],
-	"description": "Become an advanced Web-Developer building React.js applications using the WordPress Architecture and API development",
+	"description": "Become a professional Web-Developer building React.js applications and API's on the WordPress Architecture",
 	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",

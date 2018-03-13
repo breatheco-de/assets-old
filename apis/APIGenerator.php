@@ -24,7 +24,7 @@ class APIGenerator{
     var $request;
     var $host = null;
         
-    function __construct($dataPath,$defaultContent='{}',$debug = false){
+    function __construct($dataPath = null,$defaultContent='{}',$debug = false){
         
 	    $this->debug = $debug;
 	    $this->host = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -43,7 +43,7 @@ class APIGenerator{
 	        array_shift($this->request['url_elements']);
 	    
 	    $this->parseIncomingParams();
-	    $this->getDataStructure($dataPath, $defaultContent);
+	    if($dataPath) $this->getDataStructure($dataPath, $defaultContent);
     }
     
     function logRequests($fileURL){
@@ -183,6 +183,8 @@ class APIGenerator{
         {
             header("Content-type: application/json"); 
 	        header("Access-Control-Allow-Origin: *");
+	        header('Access-Control-Allow-Methods: GET, POST, PUT');
+	        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
         }
 
         $methodType = $this->request['type'];
@@ -195,7 +197,7 @@ class APIGenerator{
         try
         {
             $result = $this->methods[$methodType][$methodName]['callback']($this->request, $this->dataContent);
-            if($result === null) throw new Exception('Please return something on your API method callback for: '.$_GET['method']);
+            if($result === null) throw new Exception('Please return something on your API method callback for: '.$methodName);
             
             $this->throwSuccess($result);
         }

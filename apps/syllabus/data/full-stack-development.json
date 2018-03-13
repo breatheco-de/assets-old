@@ -144,7 +144,7 @@
 		},
 		{
 			"label": "Week 3: First coding skills",
-			"topic": "Time to code!",
+			"topic": "Create algorithms",
 			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
 			"days": [{
 					"label": "Day 7",
@@ -218,7 +218,7 @@
 		{
 			"label": "Week 4: React.js introduction",
 			"warning": "You need to be confortable looping already",
-			"topic": "Your first Web App",
+			"topic": "React, Components & Web Apps",
 			"summary": "Create your first react application",
 			"days": [{
 					"label": "Day 10",
@@ -273,8 +273,8 @@
 		},
 		{
 			"label": "Week 5: The Project!",
-			"topic": "",
-			"summary": "Time to start working on the project",
+			"topic": "SCRUM, Kanban, Agile",
+			"summary": "Time to start working on the project using Agile Methodologies",
 			"days": [{
 					"label": "Day 13",
 					"description": "Explain User Stories and the SCRUM methodology. Students must pick their projects & partner, and start building the user stories on Trello.com, create the board with them.",
@@ -316,7 +316,7 @@
 		},
 		{
 			"label": "Week 6: Flux.Model to Flux.View",
-			"topic": "Soft-code Project Views",
+			"topic": "MVC and Flux Framwrok",
 			"summary": "No more hard-coding, make your Flux.Views and Components render from the Flux.Model",
 			"days": [{
 					"label": "Day 16",
@@ -360,7 +360,7 @@
 		},
 		{
 			"label": "Week 7: Ajax(HTTP-JSON)",
-			"topic": "Send and Receive Data with HTTP",
+			"topic": "AJAX & 3rd Party API's",
 			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
 			"days": [{
 					"label": "Day 19",
@@ -394,7 +394,7 @@
 						"title": "Contact Managment API Integration",
 						"url": "#"
 					},
-					"homework": "Students must finish the Contact Managment Application and complete all the Python Replits",
+					"homework": "Students must finish the Contact Managment Application and complete all the Python Replits"
 				},
 				{
 					"label": "Weekend",
@@ -403,9 +403,9 @@
 			]
 		},
 		{
-			"label": "Week 8: Python+Djando",
-			"topic": "Doing API's with Django-REST",
-			"summary": "Use Python, Django and REST_Framework to build amazing APIs",
+			"label": "Week 8: Create your own API",
+			"topic": "Python, Django, ORM",
+			"summary": "Use Python and Django to create your Application Model",
 			"days": [{
 					"label": "Day 22",
 					"description": "Install Django-Rest With your students using the Django Hello Boilerplate and create your fist django application with a hello world, create a sample model and make students run the migrations",
@@ -417,12 +417,12 @@
 						"title": "Learn SQL",
 						"url": "https://breatheco.de/replit/?r=sql"
 					}],
-					"key-concepts": ["Python is on the Backend","Defining Django Models", "Defining Django API views", "Defining Django URLs"],
+					"key-concepts": ["Python has access to the Entire Machine", "Defining Django Models", "Entity Relationship Model", "Many to One","One to One", "Many to Many"],
 					"homework": "Students must create the required models for the Contact Managment Application",
-					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization","PIP Package Manager"]
+					"technologies": ["Data Modeling", "ORM", "Django", "API's", "Serialization", "PIP Package Manager"]
 				},
 				{
-					"label": "Day 19",
+					"label": "Day 23",
 					"description": "",
 					"project": {
 						"title": "",
@@ -434,26 +434,11 @@
 					}],
 					"key-concepts": [""],
 					"homework": "",
-					"technologies": [""]
+					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization", "PIP Package Manager"]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 24",
 					"description": "Create some models with your students and then let continue with the rest, explain the Entity-Relationship diagrams",
-					"project": {
-						"title": "",
-						"url": "#"
-					},
-					"replits": [{
-						"title": "",
-						"url": ""
-					}],
-					"key-concepts": [""],
-					"homework": "",
-					"technologies": [""]
-				},
-				{
-					"label": "Day 21",
-					"description": "",
 					"project": {
 						"title": "",
 						"url": "#"
@@ -477,7 +462,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 25",
 					"description": "",
 					"project": {
 						"title": "",
@@ -492,7 +477,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 26",
 					"description": "",
 					"project": {
 						"title": "",
@@ -507,7 +492,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 27",
 					"description": "",
 					"project": {
 						"title": "",
@@ -532,7 +517,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 28",
 					"description": "",
 					"project": {
 						"title": "",
@@ -547,7 +532,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 29",
 					"description": "",
 					"project": {
 						"title": "",
@@ -562,7 +547,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 30",
 					"description": "",
 					"project": {
 						"title": "",
@@ -587,7 +572,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 31",
 					"description": "",
 					"project": {
 						"title": "",
@@ -602,7 +587,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 32",
 					"description": "",
 					"project": {
 						"title": "",
@@ -617,7 +602,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 33",
 					"description": "",
 					"project": {
 						"title": "",
@@ -642,7 +627,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 34",
 					"description": "",
 					"project": {
 						"title": "",
@@ -657,7 +642,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 35",
 					"description": "",
 					"project": {
 						"title": "",
@@ -672,7 +657,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 36",
 					"description": "",
 					"project": {
 						"title": "",
@@ -697,7 +682,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 37",
 					"description": "",
 					"project": {
 						"title": "",
@@ -712,7 +697,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 38",
 					"description": "",
 					"project": {
 						"title": "",
@@ -727,7 +712,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 39",
 					"description": "",
 					"project": {
 						"title": "",
@@ -752,7 +737,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 40",
 					"description": "",
 					"project": {
 						"title": "",
@@ -767,7 +752,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 41",
 					"description": "",
 					"project": {
 						"title": "",
@@ -782,7 +767,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 42",
 					"description": "",
 					"project": {
 						"title": "",
@@ -807,7 +792,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 43",
 					"description": "",
 					"project": {
 						"title": "",
@@ -822,7 +807,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 44",
 					"description": "",
 					"project": {
 						"title": "",
@@ -837,7 +822,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Day 45",
 					"description": "",
 					"project": {
 						"title": "",
@@ -862,7 +847,7 @@
 			"topic": "",
 			"summary": "",
 			"days": [{
-					"label": "Day 19",
+					"label": "Day 46",
 					"description": "",
 					"project": {
 						"title": "",
@@ -877,7 +862,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 20",
+					"label": "Day 47",
 					"description": "",
 					"project": {
 						"title": "",
@@ -892,7 +877,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Day 21",
+					"label": "Pitch Day",
 					"description": "",
 					"project": {
 						"title": "",
@@ -907,7 +892,7 @@
 					"technologies": [""]
 				},
 				{
-					"label": "Weekend",
+					"label": "The End",
 					"description": ""
 				}
 			]
