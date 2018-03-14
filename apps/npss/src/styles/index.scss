@@ -1,0 +1,60 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+$circleSize: 25px;
+$circleSizeXL: 40px;
+$optionsFontSize: 10px;
+$optionsFontSizeXL: 15px;
+
+h1{
+    font-size: 20px; margin: 20px 0px;
+    @include media-breakpoint-up(md) {
+        font-size: 30px;
+    }
+}
+.alert{
+    li{ list-style: none;}
+}
+.survey-panel{
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 90vw;
+    top: 50%;
+    left: 50%;
+    .leyend{
+        font-size: $optionsFontSize;
+        @include media-breakpoint-up(md) {
+            font-size: $optionsFontSizeXL;
+        }
+    }
+    .npm-buttons{
+        margin: 0;
+        padding: 0;
+        li{
+            border: 1px solid #BDBDBD;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: $circleSize;
+            font-size: $optionsFontSize;
+            font-weight: 900;
+            width: $circleSize;
+            height: $circleSize;
+            margin: 5px;
+            @include media-breakpoint-up(md) {
+                font-size: 20px;
+                width: $circleSizeXL;
+                height: $circleSizeXL;
+                line-height: $circleSizeXL;
+            }
+            &:hover{
+                background: #428bca;
+                color: white;
+                cursor: pointer;
+            }
+            &.selected{ background: #428bca; color: white;}
+        }
+    }
+    textarea{
+        height: 100px;
+    }
+}
