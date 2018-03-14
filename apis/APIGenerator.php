@@ -192,19 +192,22 @@ class APIGenerator{
 
         if($this->logger) $this->logger->info("$methodType: ".$this->request['url']." PARAMS: ".json_encode($this->request['parameters']));
 
-        if(!isset($this->methods[$methodType][$methodName])) $this->throwError('Method '.$methodType.': /'.$methodName.' not recognized. Maybe with PUT, POST or DELETE?');;
+        if($methodType!='OPTIONS'){
+            if(!isset($this->methods[$methodType][$methodName])) $this->throwError('Method '.$methodType.': /'.$methodName.' not recognized. Maybe with PUT, POST or DELETE?');;
 
-        try
-        {
-            $result = $this->methods[$methodType][$methodName]['callback']($this->request, $this->dataContent);
-            if($result === null) throw new Exception('Please return something on your API method callback for: '.$methodName);
-            
-            $this->throwSuccess($result);
+            try{
+                
+                $result = $this->methods[$methodType][$methodName]['callback']($this->request, $this->dataContent);
+                if($result === null) throw new Exception('Please return something on your API method callback for: '.$methodName);
+
+                $this->throwSuccess($result);
+            }
+            catch(Exception $e){
+                
+                $this->throwError($e->getMessage());
+            } 
         }
-        catch(Exception $e)
-        {
-            $this->throwError($e->getMessage());
-        }        
+        else $this->throwSuccess('ok');
     }
     
     function createDirectory($path,$qzes){
