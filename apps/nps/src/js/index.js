@@ -15,6 +15,7 @@ import Layout from './Layout.jsx';
 
 import BreatheCodeAPI from './utils/BreatheCodeAPI';
 BreatheCodeAPI.init(process.env.BC_HOST,process.env.BC_TOKEN);
+
 import NPSApi from './utils/NPSApi';
 NPSApi.init(process.env.ASSETS_HOST,process.env.ASSETS_TOKEN);
 

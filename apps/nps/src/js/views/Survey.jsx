@@ -52,7 +52,7 @@ export default class Survey extends Flux.View {
   }
   
   render() {
-    if(this.state.student == null) return (<h1>Loading student...</h1>);
+    if(this.state.student == null) return (<h1>Loading data...</h1>);
     
     let stars = [];
     for(let i=1; i<=this.state.totalStars;i++){

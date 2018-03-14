@@ -16,7 +16,7 @@ class SurveyActions extends Flux.Action{
             console.log(response);
             this.dispatch('SurveyStore.setResults', response);
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error);
+            this.dispatch('ErrorStore.addError', error.message);
             console.log(error);  
         });
     }
@@ -24,9 +24,10 @@ class SurveyActions extends Flux.Action{
     getStudentData(id){
         NPSAPI.getStudentAnswers(id).then((response) => {
             console.log(response);
-            if(typeof response.code == 'undefined') this.dispatch('SurveyStore.setStudentAnswers', response);
+            if(typeof response === 'undefined') this.dispatch('ErrorStore.addError', "Unable to find the previous answers");
+            else if(typeof response.code == 'undefined') this.dispatch('SurveyStore.setStudentAnswers', response);
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error);
+            this.dispatch('ErrorStore.addError', error.message);
             console.log(error);  
         });
         
@@ -35,7 +36,7 @@ class SurveyActions extends Flux.Action{
             if(response.code == 200) this.dispatch('SurveyStore.setStudent', response.data);
             else this.dispatch('ErrorStore.addError', response.msg);
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error);
+            this.dispatch('ErrorStore.addError', error.message);
             console.log(error);  
         });
     }

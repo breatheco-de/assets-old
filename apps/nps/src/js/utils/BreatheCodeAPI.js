@@ -7,8 +7,10 @@ var BreatheCodeAPI = (function(){
     }
     
     publicScope.init = function(HOST, TOKEN){
-        settings.host = 'https://talenttree-alesanchezr.c9users.io/';
-        settings.token = '4bbf8d2f67acfba271c51001e5cb7e1d583ca13e';
+        if(typeof(HOST) === 'undefined' || HOST=='') throw new Error("Undefined BreatheCode API Host");
+        if(typeof(TOKEN) === 'undefined' || TOKEN=='') throw new Error("Undefined BreatheCode API TOKEN");
+        settings.host = HOST;
+        settings.token = TOKEN;
     };
     
     let request = function(method = 'get', url = ''){
@@ -21,7 +23,11 @@ var BreatheCodeAPI = (function(){
         }
 
         let promise = fetch(settings.host+url+"?access_token="+settings.token, options)
-            .then(response => response.json()); // parses response to JSON
+            .then(response => response.json()) // parses response to JSON
+            .catch(function(error){
+                if(process.env.DEBUG) throw new Error(error.message);
+                else throw new Error("Something went wrong when trying to communicate with the BreatheCode API");
+            });
 
         return promise;
     }
