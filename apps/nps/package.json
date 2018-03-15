@@ -1,5 +1,5 @@
 {
-  "name": "workspace",
+  "name": "assets-nps",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -40,7 +40,7 @@
     "react": "^16.0.0",
     "react-ace": "^5.9.0",
     "react-dom": "^16.0.0",
-    "react-flux-dash": "^1.0.3",
+    "react-flux-dash": "^1.1.4",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "recharts": "^1.0.0-beta.10"

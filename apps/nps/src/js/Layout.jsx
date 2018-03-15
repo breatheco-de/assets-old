@@ -1,5 +1,5 @@
 import React from 'react';
-import Flux from "react-flux-dash";
+import Flux from 'react-flux-dash';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Survey from "./views/Survey.jsx";
 import Confirm from "./views/Confirm.jsx";
@@ -13,7 +13,7 @@ export default class Layout extends Flux.View {
     this.state = {
       errors: []
     };
-    this.bindStore(ErrorStore);
+    this.bindStore(ErrorStore, this.handleStoreChanges);
   }
   
   handleStoreChanges(){

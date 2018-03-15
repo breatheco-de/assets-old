@@ -17,7 +17,7 @@ export default class Survey extends Flux.View {
     }
     this.comments = '';
     
-    this.bindStore(SurveyStore);
+    this.bindStore(SurveyStore, this.handleStoreChanges);
   }
   
   componentWillMount(){

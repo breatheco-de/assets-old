@@ -72,8 +72,8 @@ class BCWrapper{
         $args['access_token'] = self::getToken();
         
         $template = Curl::init()->addHeader('Content-type', 'application/json')
-            ->addHeader('user-agent', 'Httpful/0.2.19')
-            ->addHeader('Origin', 'https://assets-alesanchezr.c9users.io');
+            ->addHeader('user-agent', 'Httpful/0.2.19');
+            //->addHeader('Origin', 'https://assets-alesanchezr.c9users.io');
         Curl::ini($template);
 		
         if($method=='GET') $response = Curl::get(self::$host.$resource.'?'.http_build_query($args))->send();
@@ -85,12 +85,10 @@ class BCWrapper{
 		{
 		    if(self::$debug) 
 		    {
-		    	//print_r($response); die();
 		    	$responseBody = $response->body;
-		    	$errorObj = json_decode($responseBody);
-		    	throw new \Exception($errorObj->msg);
+		    	throw new \Exception($responseBody->msg);
 		    }
-		    throw new \Exception('There was a problem, check your username and password.');
+		    throw new \Exception('There was a problem with the request');
 		}
 		else if($response->code==401) 
 		{

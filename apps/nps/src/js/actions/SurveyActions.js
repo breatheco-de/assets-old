@@ -1,8 +1,6 @@
-import Flux from 'react-flux-dash';
-import BreatheCodeAPI from '../utils/BreatheCodeAPI';
+import Flux from "react-flux-dash";
 import NPSAPI from '../utils/NPSApi';
 import SurveyStore from '../stores/SurveyStore';
-import ErrorStore from '../stores/ErrorStore';
 
 class SurveyActions extends Flux.Action{
     
@@ -32,9 +30,15 @@ class SurveyActions extends Flux.Action{
         });
         
         
-        BreatheCodeAPI.getStudent(id).then((response) => {
-            if(response.code == 200) this.dispatch('SurveyStore.setStudent', response.data);
-            else this.dispatch('ErrorStore.addError', response.msg);
+        NPSAPI.getStudent(id).then((response) => {
+            if(typeof(response.code) == 'undefined'){
+                this.dispatch('SurveyStore.setStudent', response);
+            } 
+            else
+            {
+                if(typeof response.msg !== 'undefined') this.dispatch('ErrorStore.addError', response.msg);
+                else if(typeof response.message !== 'undefined') this.dispatch('ErrorStore.addError', response.message);
+            }
         }).catch((error) => {
             this.dispatch('ErrorStore.addError', error.message);
             console.log(error);  

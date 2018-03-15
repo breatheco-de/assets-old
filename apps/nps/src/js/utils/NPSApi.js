@@ -1,6 +1,7 @@
 var Wrapper = (function(){
     
     let publicScope = {};
+    let requests = [];
     let settings = { 
         host: '',
         token: ''
@@ -24,11 +25,16 @@ var Wrapper = (function(){
         }
         
         let promise = fetch(settings.host+url+"?access_token="+settings.token, options)
-            .then(response => response.json()) // parses response to JSON
-            .catch(function(error){
-               if(process.env.DEBUG) throw new Error(error.message);
-               else throw new Error("Something went wrong when trying to communicate with the NPS API");
-            });
+            .then(function(response){
+              if (response.ok) {
+                return response.json();
+              } else {
+                return response.json().then(function (error) {
+                  throw error;
+                });
+              }
+            }); // parses response to JSON
+            
         return promise;
     }
     
@@ -38,6 +44,10 @@ var Wrapper = (function(){
     
     publicScope.getResults = function(){
         return request('get','answers');
+    }
+    
+    publicScope.getStudent = function(id){
+        return request('get','student/'+id);
     }
     
     publicScope.saveStudentAnswer = function(data){

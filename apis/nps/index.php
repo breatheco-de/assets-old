@@ -1,12 +1,21 @@
 <?php
     require('../../vendor/autoload.php');
     require_once('../APIGenerator.php');
+    require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
     
     use Google\Cloud\Datastore\DatastoreClient;
     $datastore = new DatastoreClient([ 
         'projectId' => 'breathecode-197918',
         'keyFilePath' => '../../breathecode-efde1976e6d3.json'
     ]);
+    
+    use \BreatheCode\BCWrapper;
+    $clientId = 'assets_nps';
+    $clientSecret = 'e7b70d6de15d0416fb28df49cf21dfaf';
+    $host = 'https://api.breatheco.de/';
+    BCWrapper::init($clientId, $clientSecret, $host, true);
+    BCWrapper::setToken('23f11048dd6138c87ea2a607274744ec35194909');
+    
 	$api = new APIGenerator();
 	$api->get('answers', 'Get all survays', function($request) use ($datastore){
         $query = $datastore->query()->kind('NPS_Answer')->order('created_at');
@@ -107,6 +116,15 @@
             "created_at" => $npsAnswer->created_at,
             "comments" => $npsAnswer->comments
         ];
+	});
+	
+	$api->get('student', 'Get student info', function($request) use ($datastore){
+	    
+        if(!isset($request['url_elements'][1])) throw new Exception('Mising student_id');
+	    $userId = $request['url_elements'][1];
+	    
+	    $student = BCWrapper::getStudent(['student_id'=>$userId]);
+        return $student;
 	});
 	
 	$api->post('clean', 'Clean responses',function($request) use ($api){

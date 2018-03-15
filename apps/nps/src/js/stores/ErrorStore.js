@@ -1,4 +1,4 @@
-import Flux from 'react-flux-dash';
+import Flux from "react-flux-dash";
 
 class ErrorStore extends Flux.Store{
     
@@ -17,5 +17,4 @@ class ErrorStore extends Flux.Store{
     getErrors(){ return this.state.errors; }
     
 }
-var _theStore = new ErrorStore();
-export default _theStore;
+export default new ErrorStore();

@@ -1,4 +1,4 @@
-import Flux from 'react-flux-dash';
+import Flux from "react-flux-dash";
 
 class SurveyStore extends Flux.Store{
     
