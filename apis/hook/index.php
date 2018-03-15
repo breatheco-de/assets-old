@@ -2,23 +2,19 @@
     header("Content-type: application/json"); 
     header("Access-Control-Allow-Origin: *");
     
+    require('../api_globals.php');
     require('../../vendor/autoload.php');
     require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
     require('../../vendor_static/ActiveCampaign/ACAPI.php');
     require('HookFunctions.php');
     
-    $clientId = 'alesanchezr';
-    $clientSecret = 'd04f78ef196471d5a954fe71aab4fe63bd95a8a4';
-    //$host = 'https://api.breatheco.de/';
-    $host = 'https://talenttree-alesanchezr.c9users.io/';
-    
     use \BreatheCode\BCWrapper;
-    BCWrapper::init($clientId, $clientSecret, $host, true);
-    BCWrapper::setToken('533887377bc5fc83ef684fc0658a6bef565b2f28');
+    BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, true);
+    BCWrapper::setToken(BREATHECODE_TOKEN);
     
     require_once('../APIGenerator.php');
 	$api = new APIGenerator('data.json','[]');
-	$api->logRequests('requests.log');
+	if(API_DEBUG) $api->logRequests('requests.log');
 
 	$api->get('referral_code', 'Get student referral_code', function($request, $dataContent){
         
@@ -77,6 +73,7 @@
                 return $updatedContact;
             }
         }    
+        
         return null;
 	});
 	
