@@ -91,7 +91,7 @@
         $fieldsToInitialize = [
             'REFERRAL_KEY','REFERRER_NAME','REFERRED_BY','GCLID','COMPANY_TYPE',
             'SENORITY_LEVEL','UTM_LOCATION','UTM_LANGUAGE','COURSE','PHONE',
-            'PLATFORM_USERNAME','LEAD_COUNTRY'
+            'PLATFORM_USERNAME','LEAD_COUNTRY','BREATHECODEID'
         ];
         foreach($contact->fields as $id => $field){
             
