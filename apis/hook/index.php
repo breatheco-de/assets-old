@@ -60,7 +60,7 @@
         else throw new Exception('Please specify the user email');
         
         $user = BCWrapper::getUser(["user_id" => $userEmail]);
-        
+cd         
         \AC\ACAPI::start();
         $contact = \AC\ACAPI::getContactByEmail($userEmail);
 
