@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 
 //include your index.scss file into the bundle
 import '../styles/index.scss';
-
 //import your own components
 import Layout from './Layout.jsx';
 
