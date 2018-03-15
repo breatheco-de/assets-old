@@ -9,11 +9,12 @@
     
     $clientId = 'alesanchezr';
     $clientSecret = 'd04f78ef196471d5a954fe71aab4fe63bd95a8a4';
+    //$host = 'https://api.breatheco.de/';
     $host = 'https://talenttree-alesanchezr.c9users.io/';
     
     use \BreatheCode\BCWrapper;
     BCWrapper::init($clientId, $clientSecret, $host, true);
-    BCWrapper::setToken('d69eae97e7f874c6cdf46de524178e8ca5f1583e');
+    BCWrapper::setToken('533887377bc5fc83ef684fc0658a6bef565b2f28');
     
     require_once('../APIGenerator.php');
 	$api = new APIGenerator('data.json','[]');
@@ -48,6 +49,30 @@
             if($field->perstag == 'REFERRAL_KEY')
             {
                 $fields['field['.$id.','.$field->dataid.']'] = $referralHash;
+                $updatedContact = \AC\ACAPI::updateContact($contact->email,$fields);
+                return $updatedContact;
+            }
+        }    
+        return null;
+	});
+	
+	$api->post('update_bc_info_on_ac', 'Update student breathecode info on active campaign', function($request){
+        
+        $userEmail = null;
+        if(isset($request['parameters']['email'])) $userEmail = $request['parameters']['email'];
+        else if(isset($request['parameters']['contact']['email'])) $userEmail = $request['parameters']['contact']['email'];
+        else throw new Exception('Please specify the user email');
+        
+        $user = BCWrapper::getUser(["user_id" => $userEmail]);
+        
+        \AC\ACAPI::start();
+        $contact = \AC\ACAPI::getContactByEmail($userEmail);
+
+        $fields = [];
+        foreach($contact->fields as $id => $field){
+            if($field->perstag == 'BREATHECODEID')
+            {
+                $fields['field['.$id.','.$field->dataid.']'] = $user->id;
                 $updatedContact = \AC\ACAPI::updateContact($contact->email,$fields);
                 return $updatedContact;
             }

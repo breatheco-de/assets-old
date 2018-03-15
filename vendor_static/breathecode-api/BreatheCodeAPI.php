@@ -182,6 +182,13 @@ class BCWrapper{
         return self::request('post','/settings/user/'.$params['user_id'],$params['settings']);
     }
     
+	public static function getUser($params=[]){
+	
+        self::validate($params,'user_id');
+	    
+	    return self::request('GET','user/'.$params['user_id'],$params);
+	}
+	
 	public static function getStudent($params=[]){
 	
         self::validate($params,'student_id');
