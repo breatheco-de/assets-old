@@ -9,7 +9,7 @@
     require('HookFunctions.php');
     
     use \BreatheCode\BCWrapper;
-    BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, true);
+    BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
     BCWrapper::setToken(BREATHECODE_TOKEN);
     
     require_once('../APIGenerator.php');

@@ -5,6 +5,7 @@ namespace BreatheCode;
 require(dirname(__FILE__).'/httpful.phar');
 
 use \Httpful\Request as Curl;
+use \Httpful\Mime;
 
 class BCWrapper{
     
@@ -12,10 +13,11 @@ class BCWrapper{
     private static $clientSecret = '';
     
     private static $accessToken = [];
+    private static $refreshToken = [];
 
     private static $host = '';
     
-    private static $debug = '';
+    private static $debug = false;
     
     public static function init($clientId, $clientSecret, $host, $debug=false){
         self::$clientId = $clientId;
@@ -57,23 +59,38 @@ class BCWrapper{
 		self::$accessToken[$type] = $token;
 		return $token;
     }
-    
     public static function getToken($type='standard'){
     	
     	if(!empty(self::$accessToken[$type])) return self::$accessToken[$type];
     	else return null;
     }
-    
-    public static function request($method,$resource,$args=[],$decode=true){
-        $method = strtoupper($method);
-
+    public static function requestAccessToken(){
+    	
+    	self::setToken(null);
+		$args['grant_type'] = 'client_credentials';
 		$args['client_id'] = self::$clientId;
 		$args['client_secret'] = self::$clientSecret;
+        $request = Curl::post(self::$host.'/token')
+        	->sendsType(Mime::FORM)
+            ->addHeader('user-agent', 'Httpful/0.2.19')
+            ->body($args);
+        if(self::$debug) $request->addHeader('Origin', 'postman-token');
+        
+        $response = $request->send();
+		if(!$response || !isset($response->body)) throw new \Exception('Autentication Error');
+		
+		if(!isset($response->body->access_token)) throw new \Exception('Autentication Error');
+		else self::setToken($response->body->access_token);
+    }
+    
+    public static function request($method,$resource,$args=[],$decode=true,$retry=true){
+        $method = strtoupper($method);
+
         $args['access_token'] = self::getToken();
         
         $template = Curl::init()->addHeader('Content-type', 'application/json')
             ->addHeader('user-agent', 'Httpful/0.2.19');
-            //->addHeader('Origin', 'https://assets-alesanchezr.c9users.io');
+        if(self::$debug) $template->addHeader('Origin', 'postman-token');
         Curl::ini($template);
 		
         if($method=='GET') $response = Curl::get(self::$host.$resource.'?'.http_build_query($args))->send();
@@ -92,15 +109,24 @@ class BCWrapper{
 		}
 		else if($response->code==401) 
 		{
-			if(self::$debug) throw new \Exception('Unauthorized BreatheCode API request for method: '.$resource);
-			else throw new \Exception('Unauthorized credentials');
+			if($retry){
+				//TODO: retry with new token
+				self::requestAccessToken();
+				$newToken = self::getToken();
+				if($newToken) return self::request($method,$resource,$args,$decode,false);
+				else return null;
+			}
+			else {
+				if(self::$debug) throw new \Exception('Unauthorized BreatheCode API request for method: '.$resource);
+				else throw new \Exception('Unauthorized credentials');
+			}
 		}
 		else if($response->code!=200){
 		    throw new \Exception('Code: '.$response->code.', error');
 		}
 
-		if(!$response->body)
-		{
+		if(!$response->body){
+			
 			$message = 'Error decoding API result';
 			if(self::$debug) 
 			{
@@ -110,8 +136,8 @@ class BCWrapper{
 			throw new \Exception($message);
 		}
 		
-		if(isset($response->body->code))
-		{
+		if(isset($response->body->code)){
+			
     		if($response->body->code!='200') {
     		    if(self::$debug) throw new \Exception($response->body->msg);
     		    else throw new \Exception('There was a problem in the request');

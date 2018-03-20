@@ -1,4 +1,5 @@
 <?php
+    require('../api_globals.php');
     require('../../vendor/autoload.php');
     require_once('../APIGenerator.php');
     require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
@@ -10,11 +11,8 @@
     ]);
     
     use \BreatheCode\BCWrapper;
-    $clientId = 'assets_nps';
-    $clientSecret = 'e7b70d6de15d0416fb28df49cf21dfaf';
-    $host = 'https://api.breatheco.de/';
-    BCWrapper::init($clientId, $clientSecret, $host, true);
-    BCWrapper::setToken('23f11048dd6138c87ea2a607274744ec35194909');
+    BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
+    BCWrapper::setToken(BREATHECODE_TOKEN);
     
 	$api = new APIGenerator();
 	$api->get('answers', 'Get all survays', function($request) use ($datastore){
