@@ -607,18 +607,16 @@
 			"summary": "Help students polish the last things",
 			"days": [{
 					"label": "Day 34",
-					"description": "Install Woocommerce as gateway for payment services and explain the students how to integrate their website to it",
+					"description": "Work on the final projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
-					},
-					"key-concepts": ["Installing Woocommerce", "Configuring Woocommerce", "Woocommerce API Integration"],
-					"homework": "Students must implement their project payment subscription or plans",
-					"technologies": ["Woocommerce"]
+					}
+					"homework": "Students must keep working on the project"
 				},
 				{
 					"label": "Day 35",
-					"description": "Finish Implementing payment options with your students and help them finish any other needed implementation",
+					"description": "Work on the final projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -627,7 +625,7 @@
 				},
 				{
 					"label": "Day 36",
-					"description": "Keep working on the final project with your students",
+					"description": "Work on the final projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
