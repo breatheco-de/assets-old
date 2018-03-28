@@ -646,9 +646,9 @@
 			"summary": "Time to upload! Use GIT, WPCLI & CPANEL",
 			"days": [{
 					"label": "Day 37",
-					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
+					"description": "Explain students how to login into CPanel, use GIT and the WP-CLI to publish their projects",
 					"project": {
-						"title": "Final Project",
+						"title": "Publish Final Project",
 						"url": "#"
 					},
 					"key-concepts": ["Configuring your server database", "Using GIT to upload your WordPress", "Using WordPress-CLI on Production", "Setting up the wp-config.php"],
@@ -657,7 +657,7 @@
 				},
 				{
 					"label": "Day 38",
-					"description": "Finish Implementing Login with your students and help them finish any other needed implementation",
+					"description": "No new stuff: Help students to finish their projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
