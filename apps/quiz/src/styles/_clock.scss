@@ -1,0 +1,27 @@
+/* Clock Icon */
+
+a.clock {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.clock:after,
+a.clock:before {
+    border-left: none;
+    width: 0;
+}
+a.clock:after {
+    height: 9px;
+    left: 12px;
+    top: 3px;
+}
+a.clock:before {
+    height: 4px;
+    left: 15px;
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
