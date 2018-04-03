@@ -93,7 +93,7 @@ var Timeline = (function(){
           <h3 class="text-center">${day.label}</h3>
           <div class="day-topics">
             ${theKeyConcepts}
-            ${day.description || 'No description for this particular day'}
+            ${day.instructions || day.description || 'No instructions for this particular day'}
           </div>
           <div class="day-projects">
             <ul>
@@ -141,9 +141,9 @@ var Timeline = (function(){
     
     pub.getBreatheCodeHTML = function(day){
         var content = '';
-        if(typeof(day['breathecode-lessons'])!='undefined'){
+        if(typeof(day['lessons'])!='undefined'){
             var popoverContent = '<ul>'; 
-            day['breathecode-lessons'].forEach((lesson) => {
+            day['lessons'].forEach((lesson) => {
                 popoverContent += `<li>- <a href='${lesson.url}'>${lesson.title}</a></li>`;
             });
             popoverContent += '</ul>';

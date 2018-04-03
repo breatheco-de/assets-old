@@ -8,14 +8,22 @@ export default class Results extends Flux.View {
     constructor(){
         super();
         this.state = {
-            rightAnswers: QuizStore.getRightAnswers()
+            rightAnswers: 0,
+            time: 0,
+            quiz: null
         };
     }
     
     componentWillMount(){
+        const quiz = QuizStore.getSingleQuiz();
+        if(!quiz) this.props.history.push('/');
+        
         this.setState({
-            
+            rightAnswers: QuizStore.getRightAnswers(),
+            time: QuizStore.getTotalTime(),
+            quiz: quiz
         });
+        
     }
     
     render() {

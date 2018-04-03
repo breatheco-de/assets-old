@@ -183,7 +183,7 @@ class APIGenerator{
         {
             header("Content-type: application/json"); 
 	        header("Access-Control-Allow-Origin: *");
-	        header('Access-Control-Allow-Methods: GET, POST, PUT');
+	        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 	        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
         }
 
@@ -289,6 +289,17 @@ class APIGenerator{
         }
         $content .= '</body></html>';
         echo $content;
+    }
+    
+    function getParam($key, $required=false){
+        $value = null;
+        
+        if(empty($this->request['parameters'][$key])){
+            if($required) throw new Exception("Invalid param $key");
+        }
+        else $value = $request['parameters'][$key];
+        
+        return $value;
     }
     
     function throwError($msg){

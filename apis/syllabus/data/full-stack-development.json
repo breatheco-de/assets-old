@@ -10,36 +10,37 @@
 					"description": "Start Coding right away! Explan the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
 					"project": {
 						"title": "Digital Postcard",
-						"url": "https://bitbucket.org/codingacademy/postcard"
+						"solution": "https://bitbucket.org/codingacademy/postcard"
 					},
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
 					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
-					"breathecode-lessons": [{
+					"lessons": [{
 							"title": "Introduccion to the pre-work",
-							"url": "https://breatheco.de/en/lesson/introduction-to-the-prework/"
+							"slug": "introduction-to-the-prework"
 						},
 						{
 							"title": "Internet Architecture",
-							"url": "https://breatheco.de/en/lesson/internet-architecture/"
+							"slug": "internet-architecture"
 						},
 						{
 							"title": "Learn HTML",
-							"url": "https://breatheco.de/en/lesson/learn-html/"
+							"slug": "learn-html"
 						},
 						{
 							"title": "Learn CSS",
-							"url": "https://breatheco.de/en/lesson/learn-css/"
+							"slug": "learn-css"
 						}
 					],
 					"replits": [{
 							"title": "Learn HTML",
-							"url": "https://breatheco.de/replit/?r=html"
+							"slug": "html"
 						},
 						{
 							"title": "Learn CSS",
-							"url": "https://breatheco.de/replit/?r=css"
+							"slug": "css"
 						}
 					],
+					"assignments": ["postcard"],
 					"technologies": ["HTML5", "CSS"]
 				},
 				{
@@ -51,19 +52,20 @@
 					},
 					"homework": "Students must finish the Instagram & the Postcard.",
 					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
-					"breathecode-lessons": [{
+					"lessons": [{
 							"title": "Doing Layouts",
-							"url": "https://breatheco.de/en/lesson/build-layouts/"
+							"slug": "build-layouts"
 						},
 						{
 							"title": "Advanced CSS Selectors",
-							"url": "https://breatheco.de/en/lesson/mastering-css-selectors/"
+							"slug": "mastering-css-selectors"
 						}
 					],
 					"replits": [{
 						"title": "Introduccion to the prework",
-						"url": "https://breatheco.de/replit/?r=layouts"
+						"slug": "layouts"
 					}],
+					"assignments": ["instagram-feed"],
 					"technologies": ["CSS3", "HTML5"]
 				},
 				{
@@ -73,14 +75,15 @@
 						"title": "Bootstrap Instagram",
 						"url": "https://bitbucket.org/codingacademy/instagram-with-bootstrap"
 					},
-					"breathecode-lessons": [{
+					"lessons": [{
 						"title": "Working with Bootstrap",
-						"url": "https://breatheco.de/en/lesson/learn-bootstrap-4/"
+						"slug": "learn-bootstrap-4"
 					}],
 					"replits": [{
 						"title": "Working with Bootstrap",
-						"url": "https://breatheco.de/replit/?r=bootstrap"
+						"slug": "bootstrap"
 					}],
+					"assignments": ["instagram-feed-bootstrap"],
 					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper Classes"],
 					"technologies": ["Bootstrap"]
 				},
@@ -104,10 +107,10 @@
 					},
 					"replits": [{
 						"title": "Command Line Interactive Challenge",
-						"url": "https://breatheco.de/replit/?r=the-command-line"
+						"slug": "the-command-line"
 					}],
 					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
-					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative ./ vs Absolute Paths /", "Moving Up ../", "Autocomplete with TAB", "GIT in a general way"],
+					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative ./ vs Absolute Paths ", "Moving Up ..", "Autocomplete with TAB", "GIT in a general way"],
 					"technologies": ["Command Line", "Bash Scripts"]
 				},
 				{
@@ -121,7 +124,7 @@
 					"key-concepts": ["The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts"],
 					"replits": [{
 						"title": "Git interactive tutorial",
-						"url": "https://breatheco.de/replit/?r=git"
+						"slug": "git"
 					}],
 					"technologies": ["Git", "Markdown"]
 				},
@@ -155,24 +158,25 @@
 					},
 					"homework": "Students need to make the replits about javascript and the layout for the Random Card Generator",
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
-					"breathecode-lessons": [{
+					"lessons": [{
 							"title": "Learning to code with JS",
-							"url": "https://breatheco.de/en/lesson/learn-to-code-js/"
+							"slug": "learn-to-code-js"
 						},
 						{
 							"title": "Looping and Arrays",
-							"url": "https://breatheco.de/en/lesson/working-with-arrays/"
+							"slug": "working-with-arrays"
 						}
 					],
 					"replits": [{
 							"title": "Introduction to JS",
-							"url": "https://breatheco.de/replit/?r=js-beginner"
+							"slug": "js-beginner"
 						},
 						{
 							"title": "Arrays and Loops",
-							"url": "https://breatheco.de/replit/?r=arrays"
+							"slug": "arrays"
 						}
 					],
+					"assignments": ["excuse-generator"],
 					"technologies": ["Javascript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
 				},
 				{
@@ -182,10 +186,10 @@
 						"title": "Replit session: Do the replits with the students"
 					},
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
-					"breathecode-lessons": [],
+					"lessons": [],
 					"replits": [{
 						"title": "Working with functions",
-						"url": "https://breatheco.de/replit/?r=functions"
+						"slug": "functions"
 					}],
 					"technologies": ["JS Emac2018", "JS Terminal"]
 				},
@@ -199,13 +203,14 @@
 					"homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
 					"replits": [{
 							"title": "The DOM",
-							"url": "https://breatheco.de/replit/?r=the-dom"
+							"slug": "the-dom"
 						},
 						{
 							"title": "Events",
-							"url": "https://breatheco.de/replit/?r=events"
+							"slug": "events"
 						}
 					],
+					"assignments":["random-card"],
 					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"],
 					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
 				},
@@ -217,7 +222,7 @@
 		},
 		{
 			"label": "Week 4: React.js introduction",
-			"warning": "You need to be confortable looping already",
+			"warning": "Students need to be confortable looping already",
 			"topic": "React, Components & Web Apps",
 			"summary": "Create your first react application",
 			"days": [{
@@ -225,16 +230,17 @@
 					"description": "Explain the professional workflow in JS: Why Webpack created bundles? Whay use JS Modules? How organize your code, transpile with babel for cros-browser support, Javascript Emac2018. Please do not attempt to explain the Webpack Config.",
 					"project": {
 						"title": "Todo list with React",
-						"url": "#todo"
+						"url": "https://bitbucket.org/codingacademy/todo-list"
 					},
 					"homework": "Students must have the CSS and HTML for the TodoList already finished and separated in two components: The whole list and each task on the list.",
-					"breathecode-lessons": [{
+					"lessons": [{
 						"title": "Bundeling with Webpack",
-						"url": "https://breatheco.de/en/lesson/webpack/"
+						"slug": "webpack"
 					}, {
 						"title": "Building interfaces with React",
-						"url": "https://breatheco.de/en/lesson/react-js/"
+						"slug": "react-js"
 					}],
+					"assignments":["todo-list"],
 					"key-concepts": ["Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Export -> Import modules", "Include your bundle on index.html", "Create your React.js Component View"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules"]
 				},
@@ -243,13 +249,13 @@
 					"description": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props",
 					"project": {
 						"title": "Continue with: Todo list with React",
-						"url": "#todo"
+						"url": "https://bitbucket.org/codingacademy/todo-list"
 					},
 					"key-concepts": ["Condigional Rendering", "Using props to pass information to the parent component"],
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
-					"breathecode-lessons": [{
+					"lessons": [{
 						"title": "Building interfaces with React",
-						"url": "https://breatheco.de/en/lesson/react-js/"
+						"slug": "react-js"
 					}],
 					"technologies": ["React", "Javascript", "Events"]
 				},
@@ -258,8 +264,9 @@
 					"description": "React Router + Flux: How to create components that behave like Flux.Views (layouts) and math them with URL Routers. Demonstrate component lifecycle methods: WillMount, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow",
 					"project": {
 						"title": "The Contact List",
-						"url": "#todo"
+						"url": "https://bitbucket.org/codingacademy/contact-list"
 					},
+					"assignment": ["contact-list"],
 					"homework": "Students must create a contact managment app using React Router, Flux & Component lifecycle methods",
 					"key-concepts": ["Router: Matching URLs Flux.Views", "Mapping user actions in Flux.Actions", "Dispatching actions to Flux.Store setters", "Handling Flux.Store changes", "Redirect with history.push()"],
 					"technologies": ["Flux", "NPM", "React Router", "React", "MVC"]
@@ -353,7 +360,7 @@
 					"description": "Students must finish the AJAX Replits",
 					"replits": [{
 						"title": "Learn AJAX",
-						"url": "https://breatheco.de/replit/?r=ajax"
+						"slug": "ajax"
 					}]
 				}
 			]
@@ -371,7 +378,7 @@
 					},
 					"replits": [{
 						"title": "Learn AJAX",
-						"url": "https://breatheco.de/replit/?r=ajax"
+						"slug": "ajax"
 					}],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
@@ -415,7 +422,7 @@
 					},
 					"replits": [{
 						"title": "Learn SQL",
-						"url": "https://breatheco.de/replit/?r=sql"
+						"slug": "sql"
 					}],
 					"key-concepts": ["Python has access to the Entire Machine", "Defining Django Models", "Entity Relationship Model", "Many to One","One to One", "Many to Many"],
 					"homework": "Students must create the required models for the Contact Managment Application",

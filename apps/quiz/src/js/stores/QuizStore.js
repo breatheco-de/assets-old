@@ -7,13 +7,20 @@ class QuizStore extends Flux.Store{
         super();
         this.state = {
             //initialize store state
-            quiz: null
+            quiz: null,
+            totalTime: 0
         };
     }
     
     _setQuiz(data){
         this.setStoreState({ quiz: data }).emit();
     }
+    _saveQuiz(data){
+        this.setStoreState({ 
+            totalTime: data.totalTime
+        }).emit();
+    }
+    
     getSingleQuiz(){
         return this.state.quiz;
     }

@@ -1,14 +1,21 @@
 <?php
 
+    require('vendor/autoload.php');
+    require('api_globals.php');
     require('./BreatheCodeAPI.php');
     
-    $clientId = 'alesanchezr';
-    $clientSecret = 'd04f78ef196471d5a954fe71aab4fe63bd95a8a4';
-    $host = 'https://talenttree-alesanchezr.c9users.io/';
-    
     use \BreatheCode\BCWrapper;
-    BCWrapper::init($clientId, $clientSecret, $host, true);
-    BCWrapper::setToken('d69eae97e7f874c6cdf46de524178e8ca5f1583e');
+    BCWrapper::init(CLIENT_ID, CLIENT_SECRET, HOST, DEBUG);
+    BCWrapper::setToken(TOKEN);
     
-    $student = BCWrapper::getStudent(['student_id'=>3]);
-    print_r($student); die();
+    $token = BCWrapper::autenticate('a+fakestudent2@4geeksacademy.com', 'zl3hfu8y', ['read_basic_info']);
+    if($token && $token->access_token)
+    {
+        BCWrapper::setToken($token->access_token);
+        $user = BCWrapper::getMe();
+        print_r($user); die();
+    }
+    
+    
+    //$student = BCWrapper::getStudent(['student_id'=>3]);
+    //print_r($student); die();

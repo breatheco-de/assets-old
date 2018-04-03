@@ -2,11 +2,6 @@
 
 namespace BreatheCode;
 
-require(dirname(__FILE__).'/httpful.phar');
-
-use \Httpful\Request as Curl;
-use \Httpful\Mime;
-
 class BCWrapper{
     
     private static $clientId = '';
@@ -16,6 +11,7 @@ class BCWrapper{
     private static $refreshToken = [];
 
     private static $host = '';
+    private static $guz = '';
     
     private static $debug = false;
     
@@ -24,11 +20,19 @@ class BCWrapper{
         self::$clientSecret = $clientSecret;
         self::$host = $host;
         self::$debug = $debug;
+        
+        
+        $headers = [];
+        $headers['content-type'] = 'application/json';
+        if($debug) $headers['origin'] = 'postman-token';
+        self::$guz = new \GuzzleHttp\Client([
+        	'header' => $headers
+        ]);
     }
     
     private static $scopes = [
     	"student" => ['read_basic_info', 'read_talent_tree', 'student_assignments', 'user_profile' ],
-    	"teacher" => ['read_basic_info', 'read_talent_tree', 'student_assignments', 'teacher_assignments', 'user_profile'],
+    	"teacher" => ['read_basic_info', 'read_talent_tree', 'student_assignments', 'teacher_assignments', 'student_tasks', 'user_profile'],
     	"admin" => ['read_basic_info', 'super_admin']
     	];
     	
@@ -70,13 +74,13 @@ class BCWrapper{
 		$args['grant_type'] = 'client_credentials';
 		$args['client_id'] = self::$clientId;
 		$args['client_secret'] = self::$clientSecret;
-        $request = Curl::post(self::$host.'/token')
-        	->sendsType(Mime::FORM)
-            ->addHeader('user-agent', 'Httpful/0.2.19')
-            ->body($args);
-        if(self::$debug) $request->addHeader('Origin', 'postman-token');
+		$headers = [];
+        if(self::$debug) $headers['origin'] = 'postman-token';
+		$response = $client->request('POST', self::$host.'/token', [
+		    'form_params' => $args,
+		    'headers' => $headers
+		]);
         
-        $response = $request->send();
 		if(!$response || !isset($response->body)) throw new \Exception('Autentication Error');
 		
 		if(!isset($response->body->access_token)) throw new \Exception('Autentication Error');
@@ -88,26 +92,28 @@ class BCWrapper{
 
         $args['access_token'] = self::getToken();
         
-        $template = Curl::init()->addHeader('Content-type', 'application/json')
-            ->addHeader('user-agent', 'Httpful/0.2.19');
-        if(self::$debug) $template->addHeader('Origin', 'postman-token');
-        Curl::ini($template);
-		
-        if($method=='GET') $response = Curl::get(self::$host.$resource.'?'.http_build_query($args))->send();
-        else if($method=='POST') $response = Curl::post(self::$host.$resource)->body($args)->send();
+        if($method=='GET'){
+        	$resp = self::$guz->get(self::$host.$resource.'?'.http_build_query($args));
+        } 
+        else if($method=='POST'){
+	        $options = [ 'json' =>  $args ];
+	        if($resource==='token') $options['auth'] = [self::$clientId, self::$clientSecret];
+	        $resp = self::$guz->post(self::$host.$resource, $options);
+        } 
 		else throw new \Exception('Invalid HTTP request type '.$method);
 
-		if(!$response) throw new \Exception('CURL Error');
-		if($response->code==500) 
+		if(!$resp) throw new \Exception('CURL Error');
+		$statusCode = $resp->getStatusCode();
+		if($statusCode==500) 
 		{
 		    if(self::$debug) 
 		    {
-		    	$responseBody = $response->body;
+		    	$responseBody = $resp->getBody();
 		    	throw new \Exception($responseBody->msg);
 		    }
 		    throw new \Exception('There was a problem with the request');
 		}
-		else if($response->code==401) 
+		else if($statusCode==401) 
 		{
 			if($retry){
 				//TODO: retry with new token
@@ -121,11 +127,12 @@ class BCWrapper{
 				else throw new \Exception('Unauthorized credentials');
 			}
 		}
-		else if($response->code!=200){
-		    throw new \Exception('Code: '.$response->code.', error');
+		else if($statusCode!=200){
+		    throw new \Exception('Code: '.$statusCode.', error: '.$resp->getReasonPhrase());
 		}
-
-		if(!$response->body){
+		
+		$responseBody = json_decode($resp->getBody());
+		if(!$responseBody){
 			
 			$message = 'Error decoding API result';
 			if(self::$debug) 
@@ -136,47 +143,38 @@ class BCWrapper{
 			throw new \Exception($message);
 		}
 		
-		if(isset($response->body->code)){
+		if(isset($responseBody->code)){
 			
-    		if($response->body->code!='200') {
-    		    if(self::$debug) throw new \Exception($response->body->msg);
+    		if($responseBody->code!='200') {
+    		    if(self::$debug) throw new \Exception($responseBody->msg);
     		    else throw new \Exception('There was a problem in the request');
     		}
-    		return $response->body->data;
+    		return $responseBody->data;
 		}
-		else return $response->body;
+		else return $responseBody;
     }
     
     private static function validate($params,$key){
         if(empty($params[$key])) throw new \Exception('Undefined required parameter '.$key);
     }
     
-    public static function autenticate($username, $password){
-		$wpUser = get_user_by('email',$username);
-		if(!$wpUser) throw new \Exception('The wp_user doest not exist');
-		$type = get_user_meta($wpUser->ID, 'type', true);
+    public static function autenticate($username, $password, $scopes){
 
 		$args = [
     		'grant_type' => "password",
+    		'token' => self::$accessToken['standard'],
     		'username' => $username,
     		'password' => $password,
-    		'scope' => implode (" ", self::$scopes[$type])
+    		'scope' => implode(" ",$scopes)
 		];
-		
 		
 		// send the response back to the front end
 		$token = self::request('post','token',$args);
 		if(!empty($token->access_token))
 		{
-		    self::setToken($token->access_token);
-		    $user = self::request('get','me',[]);
-
-    		if(empty($user) or empty($user->wp_id)) {
-    		    throw new \Exception('There is no wordpress ID for this user in the Breathecode API');
-    		}
-    		else return $user;
-    		
-		}else throw new \Exception('There is no access_token for worpress client in the API');
+    		return $token;	
+		}
+		else throw new \Exception('There is no access_token for this credentials');
 		
 		return false;
     }
@@ -208,6 +206,9 @@ class BCWrapper{
         return self::request('post','/settings/user/'.$params['user_id'],$params['settings']);
     }
     
+	public static function getMe($params=[]){
+	    return self::request('GET','me',$params);
+	}
 	public static function getUser($params=[]){
 	
         self::validate($params,'user_id');

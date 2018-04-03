@@ -15,7 +15,7 @@
 					},
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
 					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
-					"breathecode-lessons": [{
+					"lessons": [{
 							"title": "Introduccion to the pre-work",
 							"url": "https://breatheco.de/en/lesson/introduction-to-the-prework/"
 						},
@@ -34,10 +34,12 @@
 					],
 					"replits": [{
 							"title": "Learn HTML",
+							"slug": "html",
 							"url": "https://breatheco.de/replit/?r=html"
 						},
 						{
 							"title": "Learn CSS",
+							"slug": "css",
 							"url": "https://breatheco.de/replit/?r=css"
 						}
 					],
@@ -52,7 +54,7 @@
 					},
 					"homework": "Students must finish the Instagram & the Postcard.",
 					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
-					"breathecode-lessons": [{
+					"lessons": [{
 							"title": "Doing Layouts",
 							"url": "https://breatheco.de/en/lesson/build-layouts/"
 						},
@@ -74,7 +76,7 @@
 						"title": "Bootstrap Instagram",
 						"url": "https://bitbucket.org/codingacademy/instagram-with-bootstrap"
 					},
-					"breathecode-lessons": [{
+					"lessons": [{
 						"title": "Working with Bootstrap",
 						"url": "https://breatheco.de/en/lesson/learn-bootstrap-4/"
 					}],
@@ -156,7 +158,7 @@
 					},
 					"homework": "Students need to make the replits about javascript and the layout for the Random Card Generator",
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
-					"breathecode-lessons": [{
+					"lessons": [{
 							"title": "Learning to code with JS",
 							"url": "https://breatheco.de/en/lesson/learn-to-code-js/"
 						},
@@ -183,7 +185,7 @@
 						"title": "Replit session: Do the replits with the students"
 					},
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
-					"breathecode-lessons": [],
+					"lessons": [],
 					"replits": [{
 						"title": "Working with functions",
 						"url": "https://breatheco.de/replit/?r=functions"
@@ -229,7 +231,7 @@
 						"url": "#todo"
 					},
 					"homework": "Students must have the CSS and HTML for the TodoList already finished and separated in two components: The whole list and each task on the list.",
-					"breathecode-lessons": [{
+					"lessons": [{
 						"title": "Bundeling with Webpack",
 						"url": "https://breatheco.de/en/lesson/webpack/"
 					}, {
@@ -248,7 +250,7 @@
 					},
 					"key-concepts": ["Condigional Rendering", "Using props to pass information to the parent component"],
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
-					"breathecode-lessons": [{
+					"lessons": [{
 						"title": "Building interfaces with React",
 						"url": "https://breatheco.de/en/lesson/react-js/"
 					}],
