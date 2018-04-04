@@ -6,6 +6,10 @@ var Timeline = (function(){
             { label: "Week 2", days:[] },
         ],
         containerSelector: '',
+        replitBaseURL: 'https://breatheco.de/replit/?r=',
+        lessonBaseURL: 'https://breatheco.de/en/lesson/',
+        projectBaseURL: 'https://breatheco.de/replit/?r=',
+        assignmentBaseURL: '#',
         menuContainerSelector: ''
     };
     
@@ -86,7 +90,7 @@ var Timeline = (function(){
                 popoverContent += `<li>- ${concept}</li>`;
             });
             popoverContent += '</ul>';
-            theKeyConcepts = `<p><a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">Click for Key Concepts</a></p>`;
+            theKeyConcepts = `<p><a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">Key Concepts</a></p>`;
         } 
         
         return `<div class="day ${(day.label.toLowerCase() == 'weekend') ? 'weekend' : ''}">
@@ -98,14 +102,14 @@ var Timeline = (function(){
           <div class="day-projects">
             <ul>
               <li><strong>Project:</strong> ${theProject || 'Work on previous projects'}</li>
-              ${pub.getHomeworkHTML(day)}
-              <p class="text-right">${pub.getReplitsHTML(day)} - ${pub.getBreatheCodeHTML(day)}</p>
+              ${pub.getProjectHTML(day)}
+              <p class="text-right">${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)}</p>
             </ul>
           </div>
         </div>`;
     }
     
-    pub.getHomeworkHTML = function(day){
+    pub.getProjectHTML = function(day){
         var theHomeWork = '';
         if(typeof(day.homework)!='undefined'){
             var specialNote =  '';
@@ -129,7 +133,7 @@ var Timeline = (function(){
             console.log(day.replits);
             day.replits.forEach((replit) => {
                 
-                if(typeof(replit)=='object') popoverContent += `<li>- <a href='${replit.url}'>${replit.title}</a></li>`;
+                if(typeof(replit)=='object') popoverContent += `<li>- <a href='${settings.replitBaseURL+replit.slug}'>${replit.title}</a></li>`;
                 else if(typeof(replit)=='string') popoverContent += `<li>- ${replit}</li>`;
                 else popoverContent += `<li>- Invalid Replit</li>`;
             });
@@ -139,12 +143,29 @@ var Timeline = (function(){
         return content;
     }
     
-    pub.getBreatheCodeHTML = function(day){
+    pub.getAssignmentsHTML = function(day){
+        var content = '';
+        if(typeof(day.assignments)!=='undefined'){
+            var popoverContent = '<ul>'; 
+            console.log("Assignments: ",day.assignments);
+            day.assignments.forEach((assignment) => {
+                
+                if(typeof(assignment)=='object') popoverContent += `<li>- <a href='${settings.assignmentBaseURL+assignment.slug}'>${assignment.title}</a></li>`;
+                else if(typeof(assignment)=='string') popoverContent += `<li>- ${assignment}</li>`;
+                else popoverContent += `<li>- Invalid assignments</li>`;
+            });
+            popoverContent += '</ul>';
+            content += `<a target="_blank" href="#" data-html="true" data-container="body" data-placement="top" data-toggle="popover" title="Assignments" data-content="${popoverContent}">Assignments</a>`;
+        }
+        return content;
+    }
+    
+    pub.getLessonsHTML = function(day){
         var content = '';
         if(typeof(day['lessons'])!='undefined'){
             var popoverContent = '<ul>'; 
             day['lessons'].forEach((lesson) => {
-                popoverContent += `<li>- <a href='${lesson.url}'>${lesson.title}</a></li>`;
+                popoverContent += `<li>- <a href='${settings.lessonBaseURL+lesson.slug}'>${lesson.title}</a></li>`;
             });
             popoverContent += '</ul>';
             content += `<a target="_blank" href="#" data-html="true" data-container="body" data-placement="left" data-toggle="popover" title="BreatheCode Lessons" data-content="${popoverContent}">Lessons</a>`;

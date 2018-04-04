@@ -17,30 +17,28 @@
 					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
 					"lessons": [{
 							"title": "Introduccion to the pre-work",
-							"url": "https://breatheco.de/en/lesson/introduction-to-the-prework/"
+							"slug": "introduction-to-the-prework/"
 						},
 						{
 							"title": "Internet Architecture",
-							"url": "https://breatheco.de/en/lesson/internet-architecture/"
+							"slug": "internet-architecture/"
 						},
 						{
 							"title": "Learn HTML",
-							"url": "https://breatheco.de/en/lesson/learn-html/"
+							"slug": "learn-html/"
 						},
 						{
 							"title": "Learn CSS",
-							"url": "https://breatheco.de/en/lesson/learn-css/"
+							"slug": "learn-css/"
 						}
 					],
 					"replits": [{
 							"title": "Learn HTML",
-							"slug": "html",
-							"url": "https://breatheco.de/replit/?r=html"
+							"slug": "html"
 						},
 						{
 							"title": "Learn CSS",
-							"slug": "css",
-							"url": "https://breatheco.de/replit/?r=css"
+							"slug": "css"
 						}
 					],
 					"technologies": ["HTML5", "CSS"]
@@ -56,16 +54,16 @@
 					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
 					"lessons": [{
 							"title": "Doing Layouts",
-							"url": "https://breatheco.de/en/lesson/build-layouts/"
+							"slug": "build-layouts/"
 						},
 						{
 							"title": "Advanced CSS Selectors",
-							"url": "https://breatheco.de/en/lesson/mastering-css-selectors/"
+							"slug": "mastering-css-selectors/"
 						}
 					],
 					"replits": [{
 						"title": "Introduccion to the prework",
-						"url": "https://breatheco.de/replit/?r=layouts"
+						"slug": "layouts"
 					}],
 					"technologies": ["CSS3", "HTML5"]
 				},
@@ -78,11 +76,11 @@
 					},
 					"lessons": [{
 						"title": "Working with Bootstrap",
-						"url": "https://breatheco.de/en/lesson/learn-bootstrap-4/"
+						"slug": "learn-bootstrap-4"
 					}],
 					"replits": [{
 						"title": "Working with Bootstrap",
-						"url": "https://breatheco.de/replit/?r=bootstrap"
+						"slug": "bootstrap"
 					}],
 					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper Classes"],
 					"technologies": ["Bootstrap"]
@@ -107,7 +105,7 @@
 					},
 					"replits": [{
 						"title": "Command Line Interactive Challenge",
-						"url": "https://breatheco.de/replit/?r=the-command-line"
+						"slug": "the-command-line"
 					}],
 					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
 					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative ./ vs Absolute Paths /", "Moving Up ../", "Autocomplete with TAB", "GIT in a general way"],
@@ -124,7 +122,7 @@
 					"key-concepts": ["The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts"],
 					"replits": [{
 						"title": "Git interactive tutorial",
-						"url": "https://breatheco.de/replit/?r=git"
+						"slug": "git"
 					}],
 					"technologies": ["Git", "Markdown"]
 				},
@@ -160,20 +158,20 @@
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
 					"lessons": [{
 							"title": "Learning to code with JS",
-							"url": "https://breatheco.de/en/lesson/learn-to-code-js/"
+							"slug": "learn-to-code-js/"
 						},
 						{
 							"title": "Looping and Arrays",
-							"url": "https://breatheco.de/en/lesson/working-with-arrays/"
+							"slug": "working-with-arrays/"
 						}
 					],
 					"replits": [{
 							"title": "Introduction to JS",
-							"url": "https://breatheco.de/replit/?r=js-beginner"
+							"slug": "js-beginner"
 						},
 						{
 							"title": "Arrays and Loops",
-							"url": "https://breatheco.de/replit/?r=arrays"
+							"slug": "arrays"
 						}
 					],
 					"technologies": ["Javascript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
@@ -188,7 +186,7 @@
 					"lessons": [],
 					"replits": [{
 						"title": "Working with functions",
-						"url": "https://breatheco.de/replit/?r=functions"
+						"slug": "functions"
 					}],
 					"technologies": ["JS Emac2018", "JS Terminal"]
 				},
@@ -202,11 +200,11 @@
 					"homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
 					"replits": [{
 							"title": "The DOM",
-							"url": "https://breatheco.de/replit/?r=the-dom"
+							"slug": "the-dom"
 						},
 						{
 							"title": "Events",
-							"url": "https://breatheco.de/replit/?r=events"
+							"slug": "events"
 						}
 					],
 					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"],
@@ -233,10 +231,10 @@
 					"homework": "Students must have the CSS and HTML for the TodoList already finished and separated in two components: The whole list and each task on the list.",
 					"lessons": [{
 						"title": "Bundeling with Webpack",
-						"url": "https://breatheco.de/en/lesson/webpack/"
+						"slug": "webpack/"
 					}, {
 						"title": "Building interfaces with React",
-						"url": "https://breatheco.de/en/lesson/react-js/"
+						"slug": "react-js/"
 					}],
 					"key-concepts": ["Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Export -> Import modules", "Include your bundle on index.html", "Create your React.js Component View"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules"]
@@ -252,7 +250,7 @@
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
 					"lessons": [{
 						"title": "Building interfaces with React",
-						"url": "https://breatheco.de/en/lesson/react-js/"
+						"slug": "react-js/"
 					}],
 					"technologies": ["React", "Javascript", "Events"]
 				},
@@ -356,7 +354,7 @@
 					"description": "Students must finish the AJAX Replits",
 					"replits": [{
 						"title": "Learn AJAX",
-						"url": "https://breatheco.de/replit/?r=ajax"
+						"slug": "ajax"
 					}]
 				}
 			]
@@ -374,7 +372,7 @@
 					},
 					"replits": [{
 						"title": "Learn AJAX",
-						"url": "https://breatheco.de/replit/?r=ajax"
+						"slug": "ajax"
 					}],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must use the WordPress API to Bookmark and RSVP to the events",

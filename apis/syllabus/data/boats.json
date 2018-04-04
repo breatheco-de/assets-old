@@ -1,0 +1,260 @@
+{
+	"label": "Boats",
+	"profile": ["boats"],
+	"weeks": [
+		{
+			"label": "Week 1: How web works?",
+			"topic": "HTML, CSS & Bootstrap",
+			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
+			"days": [{
+					"label": "Day 1",
+					"description": "Start Coding right away! Explan the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead."
+				},
+				{
+					"label": "Day 2",
+					"description": "Conecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students."
+				},
+				{
+					"label": "Day 3",
+					"description": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own."
+				}
+			]
+		},
+		{
+			"label": "Week 1: GIT, Branching, Workflow",
+			"topic": "Best Practices",
+			"summary": "Time to start having a professional workflow",
+			"days": [{
+					"label": "Day 1",
+					"description": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
+					"project": {
+						"title": "The CMD Challenge",
+						"url": "https://bitbucket.org/codingacademy/terminal-challenge"
+					},
+					"replits": [{
+						"title": "Command Line Interactive Challenge",
+						"slug": "the-command-line"
+					}],
+					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
+					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative ./ vs Absolute Paths ", "Moving Up ..", "Autocomplete with TAB", "GIT in a general way"],
+					"technologies": ["Command Line", "Bash Scripts"]
+				},
+				{
+					"label": "Day 5",
+					"description": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT proyect and make them clone it and upload their piece of the proyect. Review the key concepts.",
+					"project": {
+						"title": "GIT Colaborative Landing Page",
+						"url": "https://bitbucket.org/codingacademy/git-collaboration"
+					},
+					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the Landing Page. Suggested parts: navbar, jumbotron, 2 parts description, product showcase, marketing banner, contact us, footer",
+					"key-concepts": ["The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts"],
+					"replits": [{
+						"title": "Git interactive tutorial",
+						"slug": "git"
+					}],
+					"technologies": ["Git", "Markdown"]
+				},
+				{
+					"label": "Day 6",
+					"description": "Make the students design a wireframe starting from the typical client requierment specs, teach them the importance of using components and how to pick them and draw a wireframe before jumping into coding.",
+					"project": {
+						"title": "ABC Chocolate (Wire-framing)",
+						"url": "https://bitbucket.org/codingacademy/abc-chocolate-wire-framing"
+					},
+					"homework": "Finished Replits and Projects",
+					"key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"],
+					"technologies": ["Wireframing"]
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects througouht the online platform"
+				}
+			]
+		},
+		{
+			"label": "Week 3: First coding skills",
+			"topic": "Create algorithms",
+			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
+			"days": [{
+					"label": "Day 7",
+					"description": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts",
+					"project": {
+						"title": "The Excuse Generator",
+						"url": "https://bitbucket.org/codingacademy/excuse-generator"
+					},
+					"homework": "Students need to make the replits about javascript and the layout for the Random Card Generator",
+					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
+					"lessons": [{
+							"title": "Learning to code with JS",
+							"slug": "learn-to-code-js"
+						},
+						{
+							"title": "Looping and Arrays",
+							"slug": "working-with-arrays"
+						}
+					],
+					"replits": [{
+							"title": "Introduction to JS",
+							"slug": "js-beginner"
+						},
+						{
+							"title": "Arrays and Loops",
+							"slug": "arrays"
+						}
+					],
+					"assignments": ["excuse-generator"],
+					"technologies": ["Javascript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
+				},
+				{
+					"label": "Day 8",
+					"description": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
+					"project": {
+						"title": "Replit session: Do the replits with the students"
+					},
+					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
+					"lessons": [],
+					"replits": [{
+						"title": "Working with functions",
+						"slug": "functions"
+					}],
+					"technologies": ["JS Emac2018", "JS Terminal"]
+				},
+				{
+					"label": "Day 9",
+					"description": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS",
+					"project": {
+						"title": "Random Card Generator",
+						"url": "https://bitbucket.org/codingacademy/random-card"
+					},
+					"homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
+					"replits": [{
+							"title": "The DOM",
+							"slug": "the-dom"
+						},
+						{
+							"title": "Events",
+							"slug": "events"
+						}
+					],
+					"assignments":["random-card"],
+					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"],
+					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
+				},
+				{
+					"label": "Weekend",
+					"description": "During the weekend, students must finish all the replits"
+				}
+			]
+		},
+		{
+			"label": "Week 2: React Native Intro",
+			"topic": "React Native Model and Tools",
+			"summary": "Create your first react application",
+			"days": [{
+					"label": "Day 3",
+					"description": "Explain the professional workflow in JS: Why Webpack created bundles? Whay use JS Modules? How organize your code, transpile with babel for cros-browser support, Javascript Emac2018. Please do not attempt to explain the Webpack Config."
+				},
+				{
+					"label": "Day 11",
+					"description": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props"
+				},
+				{
+					"label": "Day 12",
+					"description": "React Router + Flux: How to create components that behave like Flux.Views (layouts) and math them with URL Routers. Demonstrate component lifecycle methods: WillMount, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow"
+				},
+				{
+					"label": "Weekend",
+					"description": "Finish the TodoList with React Router + Flux"
+				}
+			]
+		},
+		{
+			"label": "Week 6: Flux.Model to Flux.View",
+			"topic": "MVC and Flux Framwrok",
+			"summary": "No more hard-coding, make your Flux.Views and Components render from the Flux.Model",
+			"days": [{
+					"label": "Day 16",
+					"description": "Now with map the Flux.Views user actions into Flux.Actions and greate the Flux.Model setters for them. The Flux.Views are able to get the Flux.Store data through the public getters.",
+					"project": {
+						"title": "Soft-code your project views",
+						"url": "#todo"
+					},
+					"homework": "Students must add all the application actions into Flux.Actions and start linking them to the Flux.Views, also start dispatching the actions to the Stores if possible",
+					"key-concepts": ["How to map map user actions to Flux.Actions", "Dispatching into the Flux.Store setters", "What to save on the store and what to save locally on the Views/Comopnents States", "Why are the model setters private?", "Why emitting?", "How to listen to the emit?"],
+					"technologies": ["React", "Webpack", "NPM", "Babel.js", "Flux", "HTML Forms", "MVC"]
+				}, {
+					"label": "Day 17",
+					"description": "Finally students must use the Flux.Store getters to retreive the data into the views, they should understand the flow: store changes > views listen > views get the new info and set into the local state > views re-render",
+					"project": {
+						"title": "Work on the student project",
+						"url": "#"
+					},
+					"key-concepts": ["Create some sample data on your Flux.Model", "Create the getters to get that data from the views", "Create the listeners to handle store changes", "Re-set the views model on store changes", "Re-render and conditionally display whatever is needed", "Create any actions to change the models", "Dispatch from the actions", "Create the setters and update the store state"],
+					"homework": "Students must work on all their Flux.Views to make them work with store data, students must also work on polishing the CSS/HTML based on that",
+					"technologies": ["Flux Workflow", "Data-Modeling", "Object Oriented Programming"]
+				},
+				{
+					"label": "Day 18",
+					"description": "Last day to complete your Flux.Views, Flux.Actions and Flux.Model",
+					"project": {
+						"title": "Finish project Views/Actions/Models",
+						"url": "#"
+					},
+					"homework": "Finish the project Views/Actions/Models"
+				},
+				{
+					"label": "Weekend",
+					"description": "Students must finish the AJAX Replits",
+					"replits": [{
+						"title": "Learn AJAX",
+						"slug": "ajax"
+					}]
+				}
+			]
+		},
+		{
+			"label": "Week 7: Ajax(HTTP-JSON)",
+			"topic": "AJAX & 3rd Party API's",
+			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
+			"days": [{
+					"label": "Day 19",
+					"description": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
+					"project": {
+						"title": "Use the Contact Manage API to save, delete and update the contacts",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "Learn AJAX",
+						"slug": "ajax"
+					}],
+					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
+					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
+					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"]
+				},
+				{
+					"label": "Day 20",
+					"description": "Finish the Contact Managment API integration, focus on Debugging procedures and start the introduction to Python",
+					"project": {
+						"title": "Contact Managment API Integration",
+						"url": "#"
+					},
+					"homework": "Students must finish the Contact Managment API integration and advance a lot on the Python replits",
+					"technologies": ["Python", "Back-end", "API"]
+				},
+				{
+					"label": "Day 21",
+					"description": "One last day to finish the Contact Managment Application with your students, review all the Flux, React, Components and HTTP Ajax concepts and best practices",
+					"project": {
+						"title": "Contact Managment API Integration",
+						"url": "#"
+					},
+					"homework": "Students must finish the Contact Managment Application and complete all the Python Replits"
+				},
+				{
+					"label": "Weekend",
+					"description": "As homework students must react and review the Lessons and Videos about Python, Django-Rest"
+				}
+			]
+		}
+	]
+}

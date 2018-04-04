@@ -1,7 +1,8 @@
 {
 	"label": "Full-Stack Development",
 	"profile": ["full-stack-development"],
-	"weeks": [{
+	"weeks": [
+		{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
@@ -29,6 +30,16 @@
 						{
 							"title": "Learn CSS",
 							"slug": "learn-css"
+						}
+					],
+					"quizzes": [
+						{
+							"title": "About the Prework",
+							"slug": "intro-to-prework"
+						},
+						{
+							"title": "Basics of HTML",
+							"slug": "html"
 						}
 					],
 					"replits": [{
@@ -65,6 +76,16 @@
 						"title": "Introduccion to the prework",
 						"slug": "layouts"
 					}],
+					"quizzes": [
+						{
+							"title": "Internet Architecture",
+							"slug": "internet-architecture"
+						},
+						{
+							"title": "Basics of CSS",
+							"slug": "css"
+						}
+					],
 					"assignments": ["instagram-feed"],
 					"technologies": ["CSS3", "HTML5"]
 				},
@@ -266,7 +287,7 @@
 						"title": "The Contact List",
 						"url": "https://bitbucket.org/codingacademy/contact-list"
 					},
-					"assignment": ["contact-list"],
+					"assignments": ["contact-list"],
 					"homework": "Students must create a contact managment app using React Router, Flux & Component lifecycle methods",
 					"key-concepts": ["Router: Matching URLs Flux.Views", "Mapping user actions in Flux.Actions", "Dispatching actions to Flux.Store setters", "Handling Flux.Store changes", "Redirect with history.push()"],
 					"technologies": ["Flux", "NPM", "React Router", "React", "MVC"]
@@ -412,51 +433,48 @@
 		{
 			"label": "Week 8: Create your own API",
 			"topic": "Python, Django, ORM",
-			"summary": "Use Python and Django to create your Application Model",
+			"summary": "Creating an API use Python, Django & Rest",
 			"days": [{
 					"label": "Day 22",
-					"description": "Install Django-Rest With your students using the Django Hello Boilerplate and create your fist django application with a hello world, create a sample model and make students run the migrations",
+					"description": "First, run a simple python script in the shell, explain the benefits and capabilities that brings being in the backend. Then, install django using the boilerplate and create one simple endpoint with a very simple model (no relations)",
 					"project": {
 						"title": "Build a Contact Managment API",
+						"url": "#"
+					},
+					"replits": [{
+						"title": "Learn Python",
+						"slug": "python"
+					}],
+					"key-concepts": ["Python has access to the Entire Machine", "Django has packages too (PIP)", "Requirements.txt", "Django Framework", "Workflow for Creating an endpoint"],
+					"homework": "Students must create the required models for the Contact Managment Application",
+					"technologies": ["Django", "API's", "Serialization", "PIP Package Manager"]
+				},
+				{
+					"label": "Day 23",
+					"description": "Practice the Django-Rest MVC Workflow to create new endpoints, focus on how the django ORM works and how to create relationships",
+					"project": {
+						"title": "Continue: Contact Managment API",
 						"url": "#"
 					},
 					"replits": [{
 						"title": "Learn SQL",
 						"slug": "sql"
 					}],
-					"key-concepts": ["Python has access to the Entire Machine", "Defining Django Models", "Entity Relationship Model", "Many to One","One to One", "Many to Many"],
-					"homework": "Students must create the required models for the Contact Managment Application",
-					"technologies": ["Data Modeling", "ORM", "Django", "API's", "Serialization", "PIP Package Manager"]
-				},
-				{
-					"label": "Day 23",
-					"description": "",
-					"project": {
-						"title": "",
-						"url": "#"
-					},
-					"replits": [{
-						"title": "",
-						"url": ""
-					}],
-					"key-concepts": [""],
-					"homework": "",
-					"technologies": ["HTTP", "JSON", "REST", "API's", "Serialization", "PIP Package Manager"]
+					"key-concepts": ["Create new endpoints", "Configuring MySQL", "Creating Models", "Creating Migrations", "Running Migrations","Using PHPMyAdmin", "OneToMany Relationships (models.py)", "ManyToMany Relationships (models.py)"],
+					"homework": "Stutents create all the models of the contact managment API and continue building the enpoints",
+					"technologies": ["Data Modeling", "Migrations", "ORM", "Django"]
 				},
 				{
 					"label": "Day 24",
-					"description": "Create some models with your students and then let continue with the rest, explain the Entity-Relationship diagrams",
+					"description": "Continue doing the endpoints with your students",
 					"project": {
-						"title": "",
+						"title": "Continue: Contact Managment API",
 						"url": "#"
 					},
-					"replits": [{
-						"title": "",
-						"url": ""
-					}],
+					"replits": [],
 					"key-concepts": [""],
 					"homework": "",
-					"technologies": [""]
+					"technologies": ["ORM", "Django", "MySQL", "PHPMyAdmin"]
 				},
 				{
 					"label": "Weekend",
