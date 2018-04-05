@@ -14,11 +14,11 @@
 	$db->setPrimary( 'response', ['quiz_slug','user_id'] );
 	$api->addDB('sqlite', $db);
 
-	$api->get('/quizzes', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 		$content = $api->db['json']->getAllContent();
 	    return $response->withJson($content);
 	});
-	$api->get('/quiz/{slug}', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
         
         $slug = $args['slug'];
         
@@ -28,12 +28,7 @@
 	    return $response->withJson($quizObj);
 	});
 	
-	$api->get('/response', function(Request $request, Response $response, array $args) use ($api) {
-		$responses = $api->db['sqlite']->response()->fetchAll();
-		return $response->withJson($responses);	
-	});
-	
-	$api->get('/quiz/{quiz_slug}/user/{user_id}/response', function(Request $request, Response $response, array $args) use ($api) {
+	$api->get('/{quiz_slug}/user/{user_id}/response', function(Request $request, Response $response, array $args) use ($api) {
         
 		if(empty($args['quiz_slug'])) throw new Exception('Invalid param quiz_slug');
 		if(empty($args['user_id'])) throw new Exception('Invalid param user_id');
@@ -46,6 +41,10 @@
 		return $response->withJson($row);	
 	});
 
+	$api->get('/response', function(Request $request, Response $response, array $args) use ($api) {
+		$responses = $api->db['sqlite']->response()->fetchAll();
+		return $response->withJson($responses);	
+	});
 	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
         
         $parsedBody = $request->getParsedBody();

@@ -104,6 +104,7 @@ class BCWrapper{
 
 		if(!$resp) throw new \Exception('CURL Error');
 		$statusCode = $resp->getStatusCode();
+		
 		if($statusCode==500) 
 		{
 		    if(self::$debug) 
@@ -113,7 +114,7 @@ class BCWrapper{
 		    }
 		    throw new \Exception('There was a problem with the request');
 		}
-		else if($statusCode==401) 
+		else if($statusCode==401 || $statusCode==403) 
 		{
 			if($retry){
 				//TODO: retry with new token
