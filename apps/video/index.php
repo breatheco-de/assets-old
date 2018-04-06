@@ -14,7 +14,7 @@
 	</nav>
 	<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
-	<script src="/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="./assets/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="player.js?v2"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
