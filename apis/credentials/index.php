@@ -12,7 +12,7 @@
 	use Psr\Http\Message\ResponseInterface as Response;
 	$api = new SlimAPI();
 	
-	$api->post('/autenticate', function (Request $request, Response $response, array $args) use ($api) {
+	$api->post('/authenticate', function (Request $request, Response $response, array $args) use ($api) {
         
         $body = json_decode($request->getBody()->getContents());
         if(empty($body->username)) throw new Exception('Invalid username');
@@ -36,7 +36,7 @@
 	    	return $response->withJson(['msg'=>$e->getMessage()])->withStatus(403);
         }
 	});
-	$api->post('/auteticate/github', function (Request $request, Response $response, array $args) use ($api) {
+	$api->post('/autheticate/github', function (Request $request, Response $response, array $args) use ($api) {
         
 	    return $response->withJson($quizObj);
 	});
