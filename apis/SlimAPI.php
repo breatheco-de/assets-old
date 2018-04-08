@@ -5,7 +5,8 @@ class SlimAPI{
     var $app = null;
     var $db = [];
     var $allowedURLs = [
-            'https://coding-editor-alesanchezr.c9users.io'
+            'https://coding-editor-alesanchezr.c9users.io',
+            'https://student.breatheco.de'
         ];
     var $allowedMethods = ['GET','POST','PUT','DELETE','OPTIONS'];
     

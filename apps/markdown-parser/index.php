@@ -1,5 +1,5 @@
 <?php
-require "vendor/autoload.php";
+require "../../vendor/autoload.php";
 
 if(!isset($_GET['path'])) die("Please specify the 'path': URL for the markdown file");
 
