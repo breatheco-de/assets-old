@@ -39,7 +39,7 @@
             $(function() {
                 
                 $.ajax({
-                   url: '../../apis/quiz_api/quiz/<?php echo $_GET['slug']; ?>', 
+                   url: '../../apis/quiz/<?php echo $_GET['slug']; ?>', 
                    dataType: 'json',
                    cache: false,
                    success: function(quizz){
