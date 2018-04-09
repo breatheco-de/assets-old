@@ -1,76 +1,41 @@
 <?php
-require "../../vendor/autoload.php";
 
 if(!isset($_GET['path'])) die("Please specify the 'path': URL for the markdown file");
 
-$skin = 'splendor';
+$flavor = 'github';
 if(isset($_GET['skin'])) $skin = $_GET['skin'];
 
 $readmeContent = file_get_contents($_GET['path']);
 if(!$readmeContent) die("The markdown file could not be loaded:".$_GET['path']);
 
-$Parsedown = new Parsedown();
-
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body onload="onLoadFunction();">
-<style>
-	html{
-		font-size: 10px;
-		margin: 10px auto;
-		max-width: 800px;
-	}
-</style>
-<div style="position: absolute; top:0; right:0;">
-	<select id="theme" onChange="onThemeChange(this);">
-		<option value="markdown5">Markdown5</option>
+	<!--
+		Theme options: Markdown5</option>
 		<option value="air">Air</option>
 		<option value="modest">Modest</option>
 		<option value="retro">Retro</option>
-		<option value="splendor">Splendor</option>
-	</select>
-</div>
-<?php echo $Parsedown->text($readmeContent); ?>
-<script type="text/javascript">
-var theme = '<?php echo $skin; ?>';  // you could encode the css path itself to generate id..
-function changeCSS(){
-	var link = document.getElementById('css-link');
-	if (!link)
-	{
-	    var head  = document.getElementsByTagName('head')[0];
-	    var link  = document.createElement('link');
-	    link.id   = 'css-link';
-	    link.rel  = 'stylesheet';
-	    link.type = 'text/css';
-	    link.href = 'themes/'+theme+'.css?1';
-	    link.media = 'all';
-	    head.appendChild(link);
-	}
-	else
-	{
-		link.href = 'themes/'+theme+'.css?1';
-	}
-	return true;
-}
-
-function onThemeChange(elem)
-{
-	console.log(elem.value);
-	theme = elem.value;
-	changeCSS();
-	return false;
-}
-
-function onLoadFunction(){
-	var selector = document.querySelector('#theme');
-	selector.value = theme;
-}
-
-changeCSS(theme);
-</script>
-</body>
+		<option value="github">Github</option>
+	-->
+    <head>
+        <title>Readme Example</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" type="text/css" />
+    </head>
+    <body>
+        <style type="text/css">
+            img{max-height: 25px;}
+            .markdown-body{ max-width: 800px; margin: 0 auto;}
+        </style>
+        <div class="markdown-body"></div>
+        <script type="text/javascript">
+            window.onload = function(){
+                var converter = new showdown.Converter();
+                converter.setFlavor('<?php echo $flavor; ?>');
+                const html      = converter.makeHtml(`<?php echo $readmeContent?>`);
+                document.querySelector('.markdown-body').innerHTML = html;
+            };
+        </script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/showdownjs/showdown/1.8.6/dist/showdown.min.js"></script>
+    </body>
 </html>
