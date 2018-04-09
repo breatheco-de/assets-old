@@ -27,7 +27,7 @@ export default class Quiz extends Flux.View {
         
         return (
             <div className="p-5 text-center">
-                <h1>Quiz {this.state.quiz.info.name}</h1>
+                <h1>{this.state.quiz.info.name}</h1>
                 <p>{this.state.quiz.info.main}</p>
                 <Link className="btn btn-primary" to={"/"+this.props.match.params.quiz_id+"/start"}>Start</Link>
             </div>

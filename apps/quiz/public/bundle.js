@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ceee057c1e0bd3add3d8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c0533ab19ff8da71b560"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -42916,7 +42916,7 @@ var Quiz = function (_Flux$View) {
 
             if (this.state.quiz === null) return _react2.default.createElement("div", { className: "p-5 text-center" }, _react2.default.createElement("h1", null, "Loading..."));
 
-            return _react2.default.createElement("div", { className: "p-5 text-center" }, _react2.default.createElement("h1", null, "Quiz ", this.state.quiz.info.name), _react2.default.createElement("p", null, this.state.quiz.info.main), _react2.default.createElement(_reactRouterDom.Link, { className: "btn btn-primary", to: "/" + this.props.match.params.quiz_id + "/start" }, "Start"));
+            return _react2.default.createElement("div", { className: "p-5 text-center" }, _react2.default.createElement("h1", null, this.state.quiz.info.name), _react2.default.createElement("p", null, this.state.quiz.info.main), _react2.default.createElement(_reactRouterDom.Link, { className: "btn btn-primary", to: "/" + this.props.match.params.quiz_id + "/start" }, "Start"));
         }
     }]);
 
