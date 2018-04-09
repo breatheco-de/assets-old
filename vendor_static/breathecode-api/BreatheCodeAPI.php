@@ -218,7 +218,7 @@ class BCWrapper{
 	}
 	
 	public static function getStudent($params=[]){
-	
+
         self::validate($params,'student_id');
 	    
 	    return self::request('GET','student/'.$params['student_id'],$params);

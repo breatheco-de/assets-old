@@ -45,27 +45,27 @@
 		$responses = $api->db['sqlite']->response()->fetchAll();
 		return $response->withJson($responses);	
 	});
-	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
+	// $api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
         
-        $parsedBody = $request->getParsedBody();
-        if(empty($parsedBody['quiz_id'])) throw new Exception('Invalid param quiz_id');
-        if(empty($parsedBody['user_id'])) throw new Exception('Invalid param user_id');
-        if(!isset($parsedBody['correct_answers'])) throw new Exception('Invalid param correct_answers');
+ //       $parsedBody = $request->getParsedBody();
+ //       if(empty($parsedBody['quiz_id'])) throw new Exception('Invalid param quiz_id');
+ //       if(empty($parsedBody['user_id'])) throw new Exception('Invalid param user_id');
+ //       if(!isset($parsedBody['correct_answers'])) throw new Exception('Invalid param correct_answers');
         
-        $quizSlug = $parsedBody['quiz_id'];
-        $userId = $parsedBody['user_id'];
-        $correctAnswers = $parsedBody['correct_answers'];
+ //       $quizSlug = $parsedBody['quiz_id'];
+ //       $userId = $parsedBody['user_id'];
+ //       $correctAnswers = $parsedBody['correct_answers'];
 		
-		$row = $api->db['sqlite']->createRow( 'response', $properties = array(
-			'quiz_slug' => $quizSlug,
-			'user_id' => $userId,
-			'timestamp' => date("Y-m-d H:i:s"),
-			'correct_answers' => $correctAnswers
-		) );
+	// 	$row = $api->db['sqlite']->createRow( 'response', $properties = array(
+	// 		'quiz_slug' => $quizSlug,
+	// 		'user_id' => $userId,
+	// 		'timestamp' => date("Y-m-d H:i:s"),
+	// 		'correct_answers' => $correctAnswers
+	// 	) );
 		
-		$row->save();
+	// 	$row->save();
 		
-        return $response->withJson($row);
-	});
+ //       return $response->withJson($row);
+	// });
 	
 	$api->run(); 
