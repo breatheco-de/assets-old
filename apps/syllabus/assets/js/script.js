@@ -53,7 +53,7 @@ $(document).ready(function(){
     if(typeof(queryString['program']) =='undefined') alert('Please Specify a Syllabus on the QueryString ?program=<slug>');
     else
     {
-        $.get('/apis/syllabus/'+queryString['program']).done(function(data){
+        $.get('/apis/syllabus/'+queryString['program']+'?teacher=true').done(function(data){
             console.log('AJAX Incoming');
             Timeline.init({
                 containerSelector: 'section',
