@@ -3,8 +3,8 @@ import Flux from '@4geeksacademy/react-flux-dash';
 
 class QuizActions extends Flux.Action{
     
-    fetchQuiz(){
-      fetch('https://assets.breatheco.de/apis/quiz_api/quiz/rest')
+    fetchQuiz(quizSlug){
+      fetch('https://assets.breatheco.de/apis/quiz/'+quizSlug)
         .then((response) => {
           return response.json();
         })

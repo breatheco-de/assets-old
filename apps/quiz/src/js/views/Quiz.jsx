@@ -18,7 +18,7 @@ export default class Quiz extends Flux.View {
     }
     
     componentWillMount(){
-        if(this.state.quiz === null) QuizActions.fetchQuiz();
+        if(this.state.quiz === null) QuizActions.fetchQuiz(this.props.match.params.quiz_id);
     }
     
     render() {
