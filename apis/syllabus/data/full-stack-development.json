@@ -9,7 +9,7 @@
 			"days": [
 				{
 					"label": "Day 1",
-					"description": "Welcome to web development: At the beginnig there was only HTML and years later... CSS",
+					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
 					"instructions": "Start Coding right away! Explain the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
 					"project": {
 						"title": "Digital Postcard",

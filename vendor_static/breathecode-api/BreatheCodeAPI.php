@@ -223,6 +223,24 @@ class BCWrapper{
 	    
 	    return self::request('GET','student/'.$params['student_id'],$params);
 	}
+	
+	public static function getPasswordToken($params=[]){
+
+        self::validate($params,'user_id');
+        self::validate($params,'token');
+	    
+	    return self::request('GET','remind/user/'.$params['user_id'],$params);
+	}
+	
+	public static function setPassword($params=[]){
+
+        self::validate($params,'user_id');
+        self::validate($params,'token');
+        self::validate($params,'password');
+        self::validate($params,'repeat');
+	    
+	    return self::request('POST','/user/'.$params['user_id'].'/password',$params);
+	}
     
     public static function getUserSettings($params){
         
