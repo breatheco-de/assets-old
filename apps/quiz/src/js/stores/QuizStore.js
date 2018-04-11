@@ -8,8 +8,17 @@ class QuizStore extends Flux.Store{
         this.state = {
             //initialize store state
             quiz: null,
-            totalTime: 0
+            totalTime: 0,
+            templates: {
+                correct: ['That\'s right!','Yes! Maybe you paid attention?','You seem to know most of the anwers','Keep it up!'],
+                incorrect: ['Uhh no.', 'Nop, you are wrong dude.', 'Mmmmm... almost there, but no.', 'No! Have you been paying attention?']
+            }
         };
+    }
+    
+    getRandom(type){
+        const index = Math.floor(Math.random() * this.state.templates[type].length);
+        return this.state.templates[type][index];
     }
     
     _setQuiz(data){

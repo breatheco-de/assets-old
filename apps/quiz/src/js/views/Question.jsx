@@ -15,15 +15,19 @@ export default class Question extends Flux.View {
             error: null,
             question: null,
             result: null,
+            totalQuestions: 0,
             isLastQuestion: false,
             rightQuestions: 0,
-            seconds: 0
+            seconds: 0,
+            correctAnswer: null,
+            totalResults: null,
         };
         this.timeLimit = null;
     }
     
     loadQuestion(questionId){
         const question = QuizStore.getQuestion(this.props.match.params.quiz_id, questionId );
+        if(!question) window.location.href = '/'+this.props.match.params.quiz_id;
         const totalQuestions = QuizStore.getQuestionCount(this.props.match.params.quiz_id);
         this.timeLimit =  QuizStore.getTimeLimit(this.props.match.params.quiz_id);
         
@@ -31,8 +35,8 @@ export default class Question extends Flux.View {
         if(questionId === (totalQuestions-1)) isLastQuestion = true;
         
         
-        if(!question) this.setState({error: 'Invalid question', questionId, result: null, isLastQuestion });
-        else this.setState({question, questionId, result: null, isLastQuestion});
+        if(!question) this.setState({error: 'Invalid question', questionId, result: null, isLastQuestion, totalQuestions, correctAnswer: null });
+        else this.setState({question, questionId, result: null, isLastQuestion, totalQuestions, correctAnswer: null});
     }
     
     componentWillMount(){
@@ -52,19 +56,27 @@ export default class Question extends Flux.View {
         this.props.history.push('/time-is-up');
     }
     
+    getCorrectAnswer(){
+        const ans = this.state.question.a.filter(ans => ans.correct);
+        if(ans.length === 1) return ans[0];
+        else alert('Ooops! It seems that this question has more than one successfull answer, please report this to your teacher');
+    }
+    
     checkAnswer(answer){
+        const ans = this.getCorrectAnswer();
         this.setState({
+            correctAnswer: ans,
             result: {
                 correct: answer.correct,
-                message: (answer.correct) ? 'Correct':"Wrong"
+                message: (answer.correct) ? QuizStore.getRandom('correct'):QuizStore.getRandom('incorrect')
             },
             rightQuestions: (answer.correct) ? this.state.rightQuestions+1 : this.state.rightQuestions
         });
         
         this.nextQuestionTimer = setTimeout(()=>{
-            if(this.state.isLastQuestion) this.calculateResults();
+            if(this.state.isLastQuestion) this.setState({ totalResults: true});
             else this.loadNextQuestion();
-        },1000);
+        },2000);
     }
     
     loadNextQuestion(){
@@ -73,12 +85,19 @@ export default class Question extends Flux.View {
         this.loadQuestion(nextQuestionId);
     }
     
+    printTotalResults(){
+        return (<div className="text-center p-5 results">
+                    You had {this.state.rightQuestions} right questions out of {this.state.totalQuestions}
+        </div>);
+    }
+    
     render() {
+        if(this.state.totalResults) return this.printTotalResults();
         if(this.state.error) return (<p className="alert alert-danger">{this.state.error}</p>);
         if(!this.state.question) return (<div className="text-center p-5"><h1>Loading...</h1></div>);
         
         const answers = this.state.question.a.map((answer, i) => (
-            <li key={i}
+            <li key={i} className="nav-item"
                 onClick={() => this.checkAnswer(answer) }
             >
                 <a className="nav-link active" href="#">
@@ -91,16 +110,24 @@ export default class Question extends Flux.View {
             <div className="text-center p-5">
                 {   (this.state.result) ?
                         (this.state.result.correct) ? (
-                            <p className="alert alert-success">{this.state.result.message}</p>
+                            <p className="answer correct">{this.state.result.message}</p>
                         ) : (
-                            <p className="alert alert-danger">{this.state.result.message}</p>
-                        ) : ''
+                            <p className="answer incorrect">
+                                {this.state.result.message}
+                                <p>
+                                    {this.state.correctAnswer.option}
+                                </p>
+                            </p>
+                        )
+                    :
+                        (<span><h1>{this.state.question.q}</h1>
+                            <ul className="nav justify-content-center flex-column">
+                                {answers}
+                            </ul>
+                        </span>)
                 }
-                <h1>{this.state.question.q}</h1>
-                <ul className="nav justify-content-center">
-                    {answers}
-                </ul>
-                <div className="timer"><a className="clock"></a>{this.state.seconds}</div>
+                <div className="timer"><a className="clock"></a>{this.state.seconds} sec</div>
+                <div className="breadcrumb">{parseInt(this.state.questionId) + 1} / {this.state.totalQuestions}</div>
             </div>
         );
     }

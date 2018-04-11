@@ -17,3 +17,21 @@
     font-size: 20px;
     font-weight: 900;
 }
+.breadcrumb{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: inherit;
+    padding: 0;
+    font-style: italic;
+}
+
+.answer{
+    font-size: 25px;
+    &.correct{ color: green; }
+    &.incorrect{ color: red; }
+}
+
+.results{
+    font-size: 25px;
+}
