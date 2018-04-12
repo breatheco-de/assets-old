@@ -70,4 +70,19 @@
         return $response->withJson($syllabus);
 	});
 	
+	$api->get('/boats', function (Request $request, Response $response, array $args) use ($api) {
+        $syllabus = $api->db['json']->getJsonByName('boats');
+        
+		$teacher = $request->getQueryParam('teacher',null);
+        if(isset($teacher)) return $response->withJson($syllabus);
+        
+        foreach ($syllabus['weeks'] as $week) {
+        	$week->days = array_map(function($day){
+        		if(isset($day->description)) return $day;
+        		else return null;
+        	}, $week->days);
+        }
+        return $response->withJson($syllabus);
+	});
+	
 	$api->run();
