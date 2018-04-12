@@ -4,7 +4,6 @@
         echo "No replit specified";
         die();
     }
-    
     $cohorts = file_get_contents(ASSETS_HOST.'/apis/replit/cohort');
     $cohorts = (array) json_decode($cohorts);
     if(!$cohorts){
@@ -15,7 +14,13 @@
     if(isset($_GET['c'])){
         if($cohorts[$_GET['c']]){
             $replits = (array) $cohorts[$_GET['c']];
-            if(isset($replits[$_GET['r']])) header("Location: ".$replits[$_GET['r']]);
+            if(isset($replits[$_GET['r']])){
+                if (filter_var($replits[$_GET['r']], FILTER_VALIDATE_URL)) {
+                    header("Location: ".$replits[$_GET['r']]);
+                } else {
+                    echo "This cohort does not have thet '".$_GET['r']."' replit setup yet, talk to your teacher";
+                }
+            } 
             else echo "This cohort does not have that replit setup yet, talk yo your teacher";
             die();
         } 
