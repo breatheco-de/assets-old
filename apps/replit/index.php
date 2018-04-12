@@ -12,16 +12,16 @@
     }
     
     if(isset($_GET['c'])){
-        if($cohorts[$_GET['c']]){
+        if(!empty($cohorts[$_GET['c']])){
             $replits = (array) $cohorts[$_GET['c']];
             if(isset($replits[$_GET['r']])){
                 if (filter_var($replits[$_GET['r']], FILTER_VALIDATE_URL)) {
                     header("Location: ".$replits[$_GET['r']]);
                 } else {
-                    echo "This cohort does not have thet '".$_GET['r']."' replit setup yet, talk to your teacher";
+                    echo "This cohort does not have thet '".$_GET['r']."' replit setup yet, talk to your teacher to report the issue.";
                 }
             } 
-            else echo "This cohort does not have that replit setup yet, talk yo your teacher";
+            else echo "This cohort does not have that replit setup yet, talk to your teacher to report the issue.";
             die();
         } 
     }
