@@ -1,11 +1,8 @@
 # TicTacToe API
-
-HOST: https://assets.breatheco.de/apis/tictactoe/
-[Download Postman Collection](TicTacToe.postman_collection.json)
           
 ## 1. Get list of all pending games
 ```
-  [GET] /api/games
+  [GET] /game/all
   PARAMS: None
 
   RESPONSE:
@@ -43,10 +40,10 @@ HOST: https://assets.breatheco.de/apis/tictactoe/
         ],
         "code": 200
     }
-
+```
 ## 3. Clean games
 ```
-  [POST] /game
+  [DELETE] /game/all
   FORM PARAMS: none
   RESPONSE:
   

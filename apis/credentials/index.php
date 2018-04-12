@@ -1,5 +1,5 @@
 <?php
-	require('../api_globals.php');
+	require('../../globals.php');
 	require_once('../../vendor/autoload.php');
 	require_once('../SlimAPI.php');
 	require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');

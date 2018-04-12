@@ -7,9 +7,9 @@ Resources for Teachers and Students using the [BreatheCode Platform](https://bre
 - [Image API](apis/img/)
 - [Sounds API](apis/sound/)
 - [Quiz API](apis/quiz/)
-- [Replits API](apis/quiz/)
+- [Replits API](apis/replit/)
 
-## Project API's
+## Sample API's for Projects
 
 - [Fake Sample API](../fake/)
 - [TicTacToe API](../apis/tictactoe/)

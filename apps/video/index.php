@@ -1,9 +1,13 @@
 <html>
 <head>
 	<title>Video Player</title>
+	<link rel="stylesheet" href="assets/bootstrap4.min.css" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="style.css?v2">
 </head>
 <body>
+	<?php if(!isset($_GET['v'])){ ?>
+		<div class="alert alert-danger">You need to specify what tutorial you want to see</div>
+	<?php } else { ?>
 	<nav id="videomenu" class="dr-menu">
 		<div class="dr-trigger">
 			<a id="menu-title" class="dr-label">Topics Covered</a>
@@ -33,5 +37,6 @@
 			<?php } ?>
 		});
 	</script>
+	<?php } ?>
 </body>
 </html>

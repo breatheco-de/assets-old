@@ -141,7 +141,7 @@
 
   function loadInfoJSON(jsonURL){
       $.ajax({
-        url: '/'+jsonURL,
+        url: '/apis/vtutorial/'+jsonURL,
         cache: false,
         dataType: 'json',
         success: function(data){

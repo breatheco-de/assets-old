@@ -1,5 +1,5 @@
 <?php
-require('api_globals.php');
+require('../globals.php');
 //	
 //	Project: phpLiteAdmin (http://www.phpliteadmin.org/)
 //	Version: 1.9.7.1

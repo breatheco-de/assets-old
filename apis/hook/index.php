@@ -2,7 +2,7 @@
     header("Content-type: application/json"); 
     header("Access-Control-Allow-Origin: *");
     
-    require('../api_globals.php');
+    require('../../globals.php');
     require('../../vendor/autoload.php');
     require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
     require('../../vendor_static/ActiveCampaign/ACAPI.php');

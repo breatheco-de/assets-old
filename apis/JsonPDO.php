@@ -135,9 +135,14 @@ class JsonPDO{
         if($data === null) $this->throwError('Nothing sent to save');
         
         if(!is_array($data) && !is_object($data)) $this->throwError('The data sent to save must be an object or array');
-        
+        if(!$this->fileName) throw new Exception('You need to specify the JSON file name');
         $result = file_put_contents($this->fileName,json_encode($data));
         if(!$result) $this->throwError('Error saving data into '.$this->fileName);
+    }
+    
+    function toFile($fileName){
+        $path = $this->getPathByName($fileName);
+        return new FileInterface($path);
     }
     
     function getJsonByName($fileName){
@@ -154,6 +159,19 @@ class JsonPDO{
         throw new Exception("There json file ".$fileName." was not found");
     }
     
+    function getPathByName($fileName){
+        
+        if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
+        
+        if(!is_array($this->dataContent)) throw new Exception("There is only one json file as data model");
+        
+        foreach ($this->dataContent as $key => $jsonObject) {
+            if(strpos($key,$fileName)) return $key;
+        }
+        
+        throw new Exception("There json file ".$fileName." was not found");
+    }
+    
     function getAllContent(){
         return $this->dataContent;   
     }
@@ -161,4 +179,23 @@ class JsonPDO{
     function throwError($msg){
 	    throw new Exception($msg);
 	}
+}
+
+class FileInterface{
+    private $fileName = null;
+    function __construct($fileName=null){
+        if(!$fileName) throw new Exception('Missing file name');
+        if(!file_exists($fileName)) throw new Exception('JSON file '.$fileName.' does not exists');
+        $this->fileName = $fileName;
+    }
+    function save($data){
+        if($data === null) $this->throwError('Nothing sent to save');
+        
+        if(!is_array($data) && !is_object($data)) $this->throwError('The data sent to save must be an object or array');
+        if(!$this->fileName) throw new Exception('You need to specify the JSON file name');
+        $result = file_put_contents($this->fileName,json_encode($data));
+        if(!$result) $this->throwError('Error saving data into '.$this->fileName);
+        
+        return $data;
+    }
 }
