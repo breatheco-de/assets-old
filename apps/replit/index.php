@@ -16,7 +16,8 @@
             $replits = (array) $cohorts[$_GET['c']];
             if(isset($replits[$_GET['r']])){
                 if (filter_var($replits[$_GET['r']], FILTER_VALIDATE_URL)) {
-                    header("Location: ".$replits[$_GET['r']]);
+                    header("Location: ".$replits[$_GET['r']], true, 302);
+                    echo "Redirecting to... ".$replits[$_GET['r']];
                 } else {
                     echo "This cohort does not have thet '".$_GET['r']."' replit setup yet, talk to your teacher to report the issue.";
                 }
