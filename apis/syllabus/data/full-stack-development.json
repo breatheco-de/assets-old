@@ -123,7 +123,8 @@
 			"label": "Week 2: Wireframes, CMD & GIT",
 			"topic": "Prework done!",
 			"summary": "Time to start having a professional workflow",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 4",
 					"description": "A text editor and the console, that's all you need to be a great coder. Time to master the second one.",
 					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
@@ -133,6 +134,10 @@
 					},
 					"replits": [{
 						"title": "Command Line Interactive Challenge",
+						"slug": "the-command-line"
+					}],
+					"lessons": [{
+						"title": "The Command Line",
 						"slug": "the-command-line"
 					}],
 					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
@@ -152,6 +157,10 @@
 					"replits": [{
 						"title": "Git interactive tutorial",
 						"slug": "git"
+					}],
+					"lessons": [{
+						"title": "GIT (Version Control System)",
+						"slug": "learn-git-version-control-system"
 					}],
 					"technologies": ["Git", "Github","Markdown"]
 				},
@@ -216,7 +225,6 @@
 						"title": "Replit session: Do the replits with the students"
 					},
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
-					"lessons": [],
 					"replits": [{
 						"title": "Working with functions",
 						"slug": "functions"
@@ -240,6 +248,17 @@
 							"slug": "events"
 						}
 					],
+					"lessons": [{
+						"title": "Introduction to Front-End Web Development",
+						"slug": "intro-to-front-end-web-development"
+					},
+					{
+						"title": "The DOM",
+						"slug": "the-dom"
+					},{
+						"title": "Events",
+						"slug": "events"
+					}],
 					"assignments":["random-card"],
 					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"],
 					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]

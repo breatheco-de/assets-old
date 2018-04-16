@@ -8,6 +8,7 @@ var Timeline = (function(){
         containerSelector: '',
         replitBaseURL: 'https://breatheco.de/replit/?r=',
         lessonBaseURL: 'https://breatheco.de/en/lesson/',
+        quizBaseURL: 'https://assets.breatheco.de/apps/quiz/',
         projectBaseURL: 'https://breatheco.de/replit/?r=',
         assignmentBaseURL: '#',
         menuContainerSelector: ''
@@ -103,7 +104,7 @@ var Timeline = (function(){
             <ul>
               <li><strong>Project:</strong> ${theProject || 'Work on previous projects'}</li>
               ${pub.getProjectHTML(day)}
-              <p class="text-right">${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)}</p>
+              <p class="text-right">${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)} - ${pub.getQuizzesHTML(day)}</p>
             </ul>
           </div>
         </div>`;
@@ -169,6 +170,19 @@ var Timeline = (function(){
             });
             popoverContent += '</ul>';
             content += `<a target="_blank" href="#" data-html="true" data-container="body" data-placement="left" data-toggle="popover" title="BreatheCode Lessons" data-content="${popoverContent}">Lessons</a>`;
+        } 
+        return content;
+    }
+    
+    pub.getQuizzesHTML = function(day){
+        var content = '';
+        if(typeof(day['quizzes'])!='undefined'){
+            var popoverContent = '<ul>'; 
+            day['quizzes'].forEach((quiz) => {
+                popoverContent += `<li>- <a href='${settings.quizBaseURL+quiz.slug}'>${quiz.title}</a></li>`;
+            });
+            popoverContent += '</ul>';
+            content += `<a target="_blank" href="#" data-html="true" data-container="body" data-placement="left" data-toggle="popover" title="BreatheCode Quizzes" data-content="${popoverContent}">Quizzes</a>`;
         } 
         return content;
     }
