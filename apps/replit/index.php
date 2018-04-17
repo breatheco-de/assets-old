@@ -11,7 +11,7 @@
         echo $twig->render('pick-replit.html', array('msg' => 'No replit specified'));
         die();
     }
-    $cohorts = file_get_contents(ASSETS_HOST.'/apis/replit/cohort');
+    $cohorts = file_get_contents(ASSETS_HOST.'/apis/replit/cohort?v'.mt_rand());
     $cohorts = (array) json_decode($cohorts);
     if(!$cohorts){
         echo $twig->render('error.html', array('msg' => "There was a problem loading the replits"));
