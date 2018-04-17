@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Replit Selector</title>
+        <link rel="stylesheet" href="bootstrap4.min.css" type="text/css" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="assets/multiselect.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row no-gutters">
+                <div class="col-1 text-right pr-2">
+                    <img src="/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32"></img>
+                </div>
+                <div class="col-11 text-left">
+                    <h3>What's your cohort?</h3>
+                    <select id="cohorts" class="selectpicker">
+                        <option value="-1" selected>Loading cohorts...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            window.onload = function(){
+                let cohortSelector = document.querySelector('#cohort-selector');
+                load('#cohorts','/apis/replit/cohort', function(cohort, key){
+                    return `<option value="${key}">${key}</option>`;
+                })
+                .then(function(){
+                    $('#cohorts').multiselect({
+                        enableFiltering: true,
+                        includeFilterClearBtn: false,
+                        filterBehavior: 'value',
+                        onChange: function(selectedOptions){
+                            cohort = selectedOptions[0].value;
+                            if(cohort !== '-1') window.location.href = `?r={{ replit }}&c=${cohort}`;
+                        }
+                    });
+                });
+            }
+            
+            function load(dropdownId, dataURL, loadFunction){
+                return fetch(dataURL)
+                .then(function(resp){
+                    return resp.json();
+                })
+                .then(function(results){
+                        let html = '<option value="-1">Select a topic</option>';
+                        for(let key in results){
+                            if(typeof loadFunction === 'undefined'){
+                                html += `<option value="${results[key].slug}">${results[key].title}</option>`;
+                            }
+                            else html += loadFunction(results[key], key);
+                        }
+                        document.querySelector(dropdownId).innerHTML = html;
+                    return results;
+                });
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="assets/multiselect.js"></script>
+    </body>
+</html>
