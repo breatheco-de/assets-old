@@ -26,7 +26,6 @@
                     header("Location: ".$replits[$_GET['r']], true, 302);
                     echo "Redirecting to... ".$replits[$_GET['r']];
                 } else {
-                    print_r($replits[$_GET['r']]);
                     echo $twig->render('error.html', array(
                         'msg' => "This cohort (".$_GET['c'].") does not have any exercises for '".$_GET['r']."'  setup yet, talk to your teacher to report the issue.",
                         'replits' => $replits[$_GET['r']]
@@ -36,7 +35,6 @@
             } 
             else
             {
-                print_r($replits);
                 echo $twig->render('error.html', array('msg' => "This cohort: ".$_GET['c']." does not have '".$_GET['r']."' excercises setup yet, talk to your teacher to report the issue."));
                 die();
             }
