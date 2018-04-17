@@ -22,11 +22,14 @@
         if(!empty($cohorts[$_GET['c']])){
             $replits = (array) $cohorts[$_GET['c']];
             if(isset($replits[$_GET['r']])){
-                if (filter_var($replits[$_GET['r']], FILTER_VALIDATE_URL)) {
+                if (!empty($replits[$_GET['r']])) {
                     header("Location: ".$replits[$_GET['r']], true, 302);
                     echo "Redirecting to... ".$replits[$_GET['r']];
                 } else {
-                    echo $twig->render('error.html', array('msg' => "This cohort (".$_GET['c'].") does not have any exercises for '".$_GET['r']."'  setup yet, talk to your teacher to report the issue."));
+                    echo $twig->render('error.html', array(
+                        'msg' => "This cohort (".$_GET['c'].") does not have any exercises for '".$_GET['r']."'  setup yet, talk to your teacher to report the issue.",
+                        'replits' => $replits[$_GET['r']]
+                        ));
                     die();
                 }
             } 

@@ -45,7 +45,7 @@
                     return resp.json();
                 })
                 .then(function(results){
-                        let html = '<option value="-1">Select a topic</option>';
+                        let html = '<option value="-1">Select one option</option>';
                         for(let key in results){
                             if(typeof loadFunction === 'undefined'){
                                 html += `<option value="${results[key].slug}">${results[key].title}</option>`;
