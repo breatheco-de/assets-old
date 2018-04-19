@@ -39,11 +39,11 @@ var Wrapper = (function(){
     }
     
     publicScope.getStudentAnswers = function(id){
-        return request('get','student_answers/'+id);
+        return request('get','responses/user/'+id);
     }
     
     publicScope.getResults = function(){
-        return request('get','answers');
+        return request('get','responses');
     }
     
     publicScope.getStudent = function(id){
@@ -52,11 +52,11 @@ var Wrapper = (function(){
     
     publicScope.saveStudentAnswer = function(data){
         
-        return request('put','answer',{
+        return request('put','response',{
         	user_id: data.student.id,
-        	answer: data.answer.rating,
-        	cohort: data.student.cohorts[0],
-        	comments: data.answer.comments
+        	score: data.answer.rating,
+        	cohort_slug: data.student.cohorts[0],
+        	comment: data.answer.comments
         });
     }
     

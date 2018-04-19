@@ -44,11 +44,11 @@ export default class Results extends Flux.View {
     let cohorts = [];
     for(let i = 0; i<rslts.length;i++)
     {
-      if(cohorts.indexOf(rslts[i].cohort) == -1) cohorts.push(rslts[i].cohort);
+      if(cohorts.indexOf(rslts[i].cohort_slug) == -1) cohorts.push(rslts[i].cohort_slug);
       
-      if(this.filterCohorts && rslts[i].cohort != this.filterCohorts) continue; 
-      if(typeof groups[rslts[i].answer] == 'undefined') groups[rslts[i].answer] = 1;
-      else groups[rslts[i].answer]++;
+      if(this.filterCohorts && rslts[i].cohort_slug != this.filterCohorts) continue; 
+      if(typeof groups[rslts[i].score] == 'undefined') groups[rslts[i].score] = 1;
+      else groups[rslts[i].score]++;
     }
     
     return { groups, cohorts };
@@ -57,13 +57,13 @@ export default class Results extends Flux.View {
   render() {
     //if(!this.state.results) return (<div><h1>Awating results...</h1></div>);
     
-    const resultRows = this.state.results.filter((item) => (!this.filterCohorts || item.cohort == this.filterCohorts)).map(function(item, i){
+    const resultRows = this.state.results.filter((item) => (!this.filterCohorts || item.cohort_slug == this.filterCohorts)).map(function(item, i){
       return (<tr key={i}>
               <td>{item.user_id}</td>
-              <td>{item.answer}</td>
-              <td>{item.cohort}</td>
-              <td>{item.created_at.date}</td>
-              <td>{item.comments}</td>
+              <td>{item.score}</td>
+              <td>{item.cohort_slug}</td>
+              <td>{item.created_at}</td>
+              <td>{item.comment}</td>
             </tr>);
     });
     
@@ -102,8 +102,8 @@ export default class Results extends Flux.View {
                 <thead className="thead-dark">
                   <tr>
                     <td>User ID</td>
-                    <td>Answer</td>
-                    <td>Cohort</td>
+                    <td>score</td>
+                    <td>cohort_slug</td>
                     <td>Created</td>
                     <td>Comments</td>
                   </tr>

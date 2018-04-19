@@ -20,8 +20,16 @@
         
         $username = $body->username;
         $password = $body->password;
+        $scope = (empty($body->scope)) ? 'student':$body->scope;
         try{
-        	$token = BC::autenticate($username,$password,['read_basic_info', 'student_tasks']);
+        	
+        	$permissions = [
+        		'student' => ['read_basic_info', 'student_tasks'],
+        		'admin' => ['read_basic_info', 'super_admin']
+        	];
+        	if(!isset($permissions[$scope])) throw new Exception('Invalid scope'); 
+        	
+        	$token = BC::autenticate($username,$password,$permissions[$scope]);
 		    if($token && $token->access_token)
 		    {
 		        BC::setToken($token->access_token);

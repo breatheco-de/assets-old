@@ -1,134 +1,85 @@
 <?php
-    require('../../globals.php');
-    require('../../vendor/autoload.php');
-    require_once('../APIGenerator.php');
-    require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-    
-    use Google\Cloud\Datastore\DatastoreClient;
-    $datastore = new DatastoreClient([ 
-        'projectId' => 'breathecode-197918',
-        'keyFilePath' => '../../breathecode-efde1976e6d3.json'
-    ]);
-    
+	require_once('../../vendor/autoload.php');
+	require_once('../../globals.php');
+	require_once('../JsonPDO.php');
+	require_once('../SlimAPI.php');
+	require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
+	
+	use Carbon\Carbon;
+	use Psr\Http\Message\ServerRequestInterface as Request;
+	use Psr\Http\Message\ResponseInterface as Response;
+	$api = new SlimAPI([
+		'debug' => API_DEBUG
+	]);
+	
+	$pdo = new \PDO( 'sqlite:db.sqlite3' );
+	$db = new \LessQL\Database( $pdo );
+	$db->setPrimary( 'response', ['user_id'] );
+	$api->addDB('sqlite', $db);
+	
     use \BreatheCode\BCWrapper;
     BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
     BCWrapper::setToken(BREATHECODE_TOKEN);
-    
-	$api = new APIGenerator();
-	$api->get('answers', 'Get all survays', function($request) use ($datastore){
-        $query = $datastore->query()->kind('NPS_Answer')->order('created_at');
-        $items = $datastore->runQuery($query);
+
+	$api->get('/responses', function (Request $request, Response $response, array $args) use ($api) {
+		$content = $api->db['sqlite']->response();
+	    return $response->withJson($content);
+	});
+	
+	$api->get('/student/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
+		
+		if(empty($args['user_id'])) throw new Exception('Invalid param user_id', 500);
+		
+		$student = BCWrapper::getStudent(['student_id'=>$args['user_id']]);
+	    return $response->withJson($student);
+	});
+	
+	$api->get('/responses/user/{user_id}', function(Request $request, Response $response, array $args) use ($api) {
         
-        $results = [];
-        foreach($items as $ans) {
-            $results[] = [
-                "user_id" => $ans->user_id,
-                "answer" => $ans->answer,
-                "cohort" => $ans->cohort,
-                "created_at" => $ans->created_at,
-                "comments" => $ans->comments,
-            ];
-        }
-        return $results;
+		if(empty($args['user_id'])) throw new Exception('Invalid param user_id', 500);
+		
+		$row = $api->db['sqlite']->response()
+			->where('user_id',$args['user_id']);
+
+		if(!$row) $row = (object) [];
+		return $response->withJson($row);	
 	});
 
-	$api->get('student_answers', 'Get all survays', function($request) use ($datastore){
-	    
-	    if(!isset($request['url_elements'][1])) throw new Exception('Mising student_id');
-	    $userId = $request['url_elements'][1];
-        
-        $query = $datastore->query()->kind('NPS_Answer')->filter('user_id', '=', intval($userId));
-        $items = $datastore->runQuery($query);
-        
-        $results = [];
-        $latestAnswer = null;
-        foreach($items as $ans) {
-            $newAnswer = [
-                "user_id" => $ans->user_id,
-                "answer" => $ans->answer,
-                "cohort" => $ans->cohort,
-                "created_at" => $ans->created_at,
-                "comments" => $ans->comments,
-            ];
-            $results[] = $newAnswer;
-            //get the latest answer
-            if(!$latestAnswer or ($latestAnswer['created_at'] < $newAnswer['created_at'])) $latestAnswer = $newAnswer;
-        }
-        return $results;
+	$api->get('/response', function(Request $request, Response $response, array $args) use ($api) {
+		$responses = $api->db['sqlite']->response()->fetchAll();
+		return $response->withJson($responses);	
 	});
-
-	$api->put('answer', 'Save new survay', function($request) use ($datastore){
-	    
-        if(!isset($request['parameters']['user_id'])) throw new Exception('Mising request body user_id');
-        if(!isset($request['parameters']['answer'])) throw new Exception('Mising request body answer');
-        if(!isset($request['parameters']['cohort'])) throw new Exception('Mising request body cohort');
-        if(!isset($request['parameters']['comments'])) throw new Exception('Mising request comments');
+	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
         
-        $userId = $request['parameters']['user_id'];
-        $query = $datastore->query()->kind('NPS_Answer')->filter('user_id', '=', intval($userId));
-        $items = $datastore->runQuery($query);
+        $parsedBody = $request->getParsedBody();
+        if(empty($parsedBody['score'])) throw new Exception('Invalid param quiz_id');
+        if(empty($parsedBody['user_id'])) throw new Exception('Invalid param user_id');
+        if(empty($parsedBody['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
         
-        $results = [];
-        $latestAnswer = null;
-        foreach($items as $ans) {
-            $newAnswer = [
-                "user_id" => $ans->user_id,
-                "answer" => $ans->answer,
-                "cohort" => $ans->cohort,
-                "created_at" => $ans->created_at,
-                "comments" => $ans->comments,
-            ];
-            $results[] = $newAnswer;
-            //get the latest answer
-            if(!$latestAnswer or ($latestAnswer['created_at'] < $newAnswer['created_at'])) $latestAnswer = $newAnswer;
-        }
+		$answers = $api->db['sqlite']->response()
+			->where('user_id',$parsedBody['user_id'])->fetchAll();
+		foreach($answers as $ans){
+			$now = Carbon::now();
+			$day = Carbon::createFromFormat('Y-m-d H:i:s', $ans->created_at);
+			if($now->diffInHours($day) < 24) throw new Exception('You have already answered');
+		} 
         
-        if($latestAnswer)
-        {
-            $today = new DateTime();
-            $days = $today->diff($latestAnswer['created_at'])->format("%d");
-            if(intval($days) < 25) throw new Exception('You need to wait at least 25 days to vote again');
-        }
-        
-        $npsAnswer = $datastore->entity('NPS_Answer', [
-            'created_at' => new DateTime(),
-            'user_id' => $request['parameters']['user_id'],
-            'answer' => $request['parameters']['answer'],
-            'cohort' => $request['parameters']['cohort'],
-            'comments' => $request['parameters']['comments']
-        ]);
-        
-        try
-        {
-            $datastore->insert($npsAnswer);
-        }
-        catch(Exception $e){
-            $exception = json_decode($e->getMessage());
-            throw new Exception($exception->error->message);
-        }
-        
-        return [
-            "user_id" => $npsAnswer->user_id,
-            "answer" => $npsAnswer->answer,
-            "cohort" => $npsAnswer->cohort,
-            "created_at" => $npsAnswer->created_at,
-            "comments" => $npsAnswer->comments
-        ];
+        $score = $parsedBody['score'];
+        $userId = $parsedBody['user_id'];
+        $cohort = $parsedBody['cohort_slug'];
+        $comment = (!empty($parsedBody['comment'])) ? $parsedBody['cohort_slug'] : null;
+		
+		$row = $api->db['sqlite']->createRow( 'response', $properties = array(
+			'score' => $score,
+			'user_id' => $userId,
+			'cohort_slug' => $cohort,
+			'comment' => $cohort,
+			'created_at' => date("Y-m-d H:i:s")
+		) );
+		
+		$row->save();
+		
+        return $response->withJson($row);
 	});
 	
-	$api->get('student', 'Get student info', function($request) use ($datastore){
-	    
-        if(!isset($request['url_elements'][1])) throw new Exception('Mising student_id');
-	    $userId = $request['url_elements'][1];
-	    
-	    $student = BCWrapper::getStudent(['student_id'=>$userId]);
-        return $student;
-	});
-	
-	$api->post('clean', 'Clean responses',function($request) use ($api){
-	    
-	    $api->saveData([]);
-        return [];
-	});
-	
-	$api->run();
+	$api->run(); 

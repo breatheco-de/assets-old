@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -37,6 +38,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv()
+    new Dotenv(),
+    new HtmlWebpackPlugin({
+        title: 'Student Survey',
+        favicon: 'bc-icon.ico',
+        template: 'template.html'
+    })
   ]
 };

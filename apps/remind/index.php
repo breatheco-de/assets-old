@@ -9,7 +9,7 @@
         }
     	require('../../vendor/autoload.php');
         require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-    	require('../../apis/api_globals.php');
+    	require('../../globals.php');
     	
         BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
         BC::setToken(BREATHECODE_TOKEN);
@@ -25,7 +25,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <?php if(isset($_GET['invite'])){ ?>
+        <title>Invite - BreatheCode Platform</title>
+        <?php } else { ?>
         <title>Remind Password - BreatheCode Platform</title>
+        <?php } ?>
         <link rel="stylesheet" href="bootstrap4.min.css" type="text/css" />
         <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
@@ -34,7 +38,12 @@
             <?php if(!$error){ ?>
                 <div class="text-center">
                     <img src="/apis/img/images.php?blob&random&cat=icon&tags=breathecode,64"></img>
+                    <?php if(isset($_GET['invite'])){ ?>
+                    <h2 class="p-2">Welcome to BreatheCode</h2>
+                    <p>Please choose a password to continue</p>
+                    <?php } else { ?>
                     <h2 class="p-2">Reset your password</h2>
+                    <?php } ?>
                 </div>
                 <div>
                     <form action="process.php" method="post" onSubmit="submitForm(e);">
@@ -46,6 +55,12 @@
                         <?php if(isset($user)){ ?>
                         <input type="hidden" name="id" value="<?php echo $user->id ?>"/>
                         <input type="hidden" name="token" value="<?php echo $user->token ?>"/>
+                        <?php if(isset($_GET['invite'])){ ?>
+                        <input type="hidden" name="invite" value="<?php echo $user->token ?>"/>
+                        <?php } ?>
+                        <?php if(isset($_GET['callback'])){ ?>
+                        <input type="hidden" name="callback" value="<?php echo $_GET['callback']; ?>"/>
+                        <?php } ?>
                         <div class="form-group text-left">
                             <label class="form-control-label">Your email</label>
                             <input type="text" class="form-control" readonly="readonly" value="<?php echo $user->username; ?>">
@@ -61,13 +76,21 @@
                         </div>
         
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-lg form-control">LOGIN</button>
+                            <?php if(isset($_GET['invite'])){ ?>
+                            <button type="submit" class="btn btn-primary btn-lg form-control">Finish Sign Up</button>
+                            <?php } else { ?>
+                            <button type="submit" class="btn btn-primary btn-lg form-control">Change Password</button>
+                            <?php } ?>
                         </div>
                     </form>
                 </div>
             <?php } else {?>
             <div class="alert alert-danger">
+                <?php if(isset($_GET['invite'])){ ?>
+                Invalid invitation link
+                <?php } else { ?>
                 Invalid remind password link
+                <?php } ?>
             </div>
             <?php } ?>
         </div>

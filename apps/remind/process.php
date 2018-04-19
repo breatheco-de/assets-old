@@ -1,13 +1,15 @@
 <?php
 
     if(!isset($_POST['id']) || !isset($_POST['password']) || !isset($_POST['repeat']) || !isset($_POST['token'])){
-        header("Location: index.php?error=missing");
+        $withInvite = (isset($_POST['invite'])) ? '&invite' : '';
+        $withCallback = (isset($_POST['callback'])) ? '&callback='.$_POST['callback'] : '';
+        header("Location: index.php?error=missing$withInvite$withCallback");
         die();
     }
     
 	require('../../vendor/autoload.php');
     require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-	require('../../apis/api_globals.php');
+	require('../../globals.php');
 	
 	use BreatheCode\BCWrapper as BC;
     BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
@@ -22,7 +24,13 @@
         ]);
     }
     catch(Exception $e){
-        header("Location: index.php?error=missing");
+        $withInvite = (isset($_POST['invite'])) ? '&invite=true' : '';
+        $withCallback = (isset($_POST['callback'])) ? '&callback='.$_POST['callback'] : '';
+        header("Location: index.php?error=missing$withInvite$withCallback");
+        die();
+    }
+    if(isset($_POST['callback'])){
+        header("Location: ".base64_decode($_POST['callback'])."?fromCallback");
         die();
     }
 ?>
