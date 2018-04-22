@@ -11,6 +11,7 @@ class SlimAPI{
             'https://coding-editor-alesanchezr.c9users.io',
             'https://assets-alesanchezr.c9users.io',
             'https://assets.breatheco.de',
+            'https://bc-js-clients-alesanchezr.c9users.io',
             'https://bc-admin-alesanchezr.c9users.io',
             'https://student.breatheco.de',
             'https://www.student.breatheco.de'

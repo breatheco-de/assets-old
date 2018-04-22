@@ -221,6 +221,7 @@
 				{
 					"label": "Day 8",
 					"instructions": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
+					"description": "4 powerful tools that gave birth to computers: Variables, functions, conditionals and loops. Practice them every day and you will start seing the matrix.",
 					"project": {
 						"title": "Replit session: Do the replits with the students"
 					},
@@ -229,6 +230,7 @@
 						"title": "Working with functions",
 						"slug": "functions"
 					}],
+					"lessons": [],
 					"technologies": ["JS Emac2018", "JS Terminal"]
 				},
 				{
