@@ -230,7 +230,10 @@
 						"title": "Working with functions",
 						"slug": "functions"
 					}],
-					"lessons": [],
+					"lessons": [{
+							"title": "Working with functions",
+							"slug": "working-with-functions"
+					}],
 					"technologies": ["JS Emac2018", "JS Terminal"]
 				},
 				{
