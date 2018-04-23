@@ -95,6 +95,10 @@ class SlimAPI{
         return $this->app->run();
     }
     
+    public function getContainer(){
+        return $this->app->getContainer();
+    }
+    
     function readmeTemplate($readmePath){
         if(!file_exists($readmePath)) throw new Exception('Readme not found in path '.$readmePath, 404);
         if(!$this->appName) throw new Exception('You need to set a name for the API in order to use the Readme Generator');

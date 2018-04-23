@@ -11,6 +11,9 @@ BC::setToken(BREATHECODE_TOKEN);
 
 function addAPIRoutes($api){
 	
+	//$route = $api->getContainer()->get('request')->getUri()->getPath();
+	//print_r($route);die();
+	
 	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
         
         $body = json_decode($request->getBody()->getContents());
@@ -42,7 +45,7 @@ function addAPIRoutes($api){
         {
 	    	return $response->withJson(['msg'=>$e->getMessage()])->withStatus(403);
         }
-        
+        return $response->withJson('error');
 	});
 	
 	$api->post('/autheticate/github', function (Request $request, Response $response, array $args) use ($api) {
