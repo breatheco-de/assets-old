@@ -225,7 +225,7 @@
 					"project": {
 						"title": "Replit session: Do the replits with the students"
 					},
-					"key-concepts": ["JS Functions"],
+					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
 					"replits": [{
 						"title": "Working with functions",
 						"slug": "functions"
@@ -234,7 +234,7 @@
 							"title": "Working with functions",
 							"slug": "working-with-functions"
 					}],
-					"technologies": ["JS Emac2018", "JS Terminal"]
+					"technologies": ["JS Functions"]
 				},
 				{
 					"label": "Day 9",
