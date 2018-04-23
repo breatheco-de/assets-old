@@ -221,11 +221,11 @@
 				{
 					"label": "Day 8",
 					"instructions": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
-					"description": "4 powerful tools that gave birth to computers: Variables, functions, conditionals and loops. Practice them every day and you will start seing the matrix.",
+					"description": "When Julius Caesar and Napoleon said 'Divide and Conquer' they were probably talking about using functions in programming languages... master functions and the entire Europe will be yours :)",
 					"project": {
 						"title": "Replit session: Do the replits with the students"
 					},
-					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
+					"key-concepts": ["JS Functions"],
 					"replits": [{
 						"title": "Working with functions",
 						"slug": "functions"
