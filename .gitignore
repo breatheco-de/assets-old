@@ -15,3 +15,6 @@ vendor/
 
 #apis global variables
 /globals.php
+
+#ignore any sqlite file
+*.sqlite3
