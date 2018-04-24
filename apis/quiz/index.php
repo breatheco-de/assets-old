@@ -4,8 +4,6 @@
 	require_once('../JsonPDO.php');
 	require_once('routes.php');
 	
-	use Psr\Http\Message\ServerRequestInterface as Request;
-	use Psr\Http\Message\ResponseInterface as Response;
 	$api = new SlimAPI();
 	$api->addReadme('/','./README.md');
 	$api->addDB('json', new JsonPDO('data/','[]',false));
