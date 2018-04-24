@@ -43,4 +43,7 @@
     $runner->addReporter(new BasicConsole(80, true));
     
     // Run all checks
-    $runner->run();
+    $results = $runner->run();
+    
+
+    if($results->getFailureCount() > 0) exit(1);
