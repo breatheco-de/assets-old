@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d76343f428f2580d30037cf578c936bd",
+    "content-hash": "b241335bcdf3e72bc32120bad4d9751b",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1169,6 +1169,69 @@
                 "templating"
             ],
             "time": "2018-04-02T09:24:19+00:00"
+        },
+        {
+            "name": "zendframework/zenddiagnostics",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/ZendDiagnostics.git",
+                "reference": "d27aa064c5185c5830e917ffe48284b0995eed13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/ZendDiagnostics/zipball/d27aa064c5185c5830e917ffe48284b0995eed13",
+                "reference": "d27aa064c5185c5830e917ffe48284b0995eed13",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6|^7.0"
+            },
+            "require-dev": {
+                "doctrine/migrations": "^1.0",
+                "guzzle/http": "^3.0",
+                "guzzle/plugin-mock": "^3.0",
+                "mikey179/vfsstream": "^1.6",
+                "php-amqplib/php-amqplib": "^2.0",
+                "phpunit/phpunit": "^4.7|^5.0",
+                "predis/predis": "^1.0",
+                "sensiolabs/security-checker": "^1.3",
+                "symfony/yaml": "^2.7|^3.0|^4.0",
+                "zendframework/zend-loader": "^2.0"
+            },
+            "suggest": {
+                "doctrine/migrations": "Required by Check\\DoctrineMigration",
+                "ext-bcmath": "Required by Check\\CpuPerformance",
+                "guzzle/http": "Required by Check\\GuzzleHttpService",
+                "predis/predis": "Required by Check\\Redis",
+                "sensiolabs/security-checker": "Required by Check\\SecurityAdvisory",
+                "symfony/yaml": "Required by Check\\YamlFile",
+                "videlalvaro/php-amqplib": "Required by Check\\RabbitMQ"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "ZendDiagnostics\\": "src/",
+                    "ZendDiagnosticsTest\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "A set of components for performing diagnostic tests in PHP applications",
+            "homepage": "https://github.com/zendframework/ZendDiagnostics",
+            "keywords": [
+                "diagnostics",
+                "php",
+                "test"
+            ],
+            "time": "2017-12-13T08:36:13+00:00"
         }
     ],
     "packages-dev": [
