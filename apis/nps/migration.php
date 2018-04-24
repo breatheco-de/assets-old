@@ -14,7 +14,7 @@
 
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS response
-      (ID INT PRIMARY KEY     NOT NULL,
+      (ID INT PRIMARY KEY,
       cohort_slug           TEXT    NOT NULL,
       comment           TEXT    NOT NULL,
       score            INT     NOT NULL,
