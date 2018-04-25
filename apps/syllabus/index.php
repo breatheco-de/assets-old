@@ -85,7 +85,7 @@
     <h1>Choose a Syllabus</h1>
     <select id="select-location" class="form-control">
       <option value='-1'>Select a syllabus</option>
-      <option value='web-dev'>Web Development in WordPress</option>
+      <option value='web-development'>Web Development in WordPress</option>
       <option value='full-stack'>Full Stack Development</option>
       <option value='boats'>Boats</option>
     </select>

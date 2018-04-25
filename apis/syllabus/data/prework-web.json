@@ -1,6 +1,6 @@
 {
 	"label": "Coding Introduction",
-	"profile": "web-intro",
+	"profile": "prework-web",
 	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",

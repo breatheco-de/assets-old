@@ -15,9 +15,9 @@
 	$api->addReadme('/','./README.md');
 	$getSlug = function($slug){
 	    $allSlugs = [
-	        "full-stack" => "full-stack-development",
-	        "web-dev" => "web-development",
-	        "web-intro" => "prework-web",
+	        "full-stack" => "full-stack",
+	        "web-development" => "web-development",
+	        "prework-web" => "prework-web",
 	        "blockchain" => "blockchain",
 	        "boats" => "boats"
 	    ];
