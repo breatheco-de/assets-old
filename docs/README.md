@@ -10,6 +10,7 @@ This repository contains essential components of the BC platform, the repository
 ## 3rd party integrations
 
 The assets repository integrates with the following 3rd parties:
+
 1. Main BretheCode API (api.bretheco.de): To retrive students, courses, etc.
 2. projects.brethec.co: It exposes the projects API for simplicity.
 3. [ActiveCampaign](./ActiveCampaign.md): CRM and Email Marketing.
