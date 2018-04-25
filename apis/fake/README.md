@@ -1,4 +1,4 @@
-[<- Back to the APIs Readme](../README.md) or [APIs Readme](../README.md)
+[<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
 
 # Fake API
 

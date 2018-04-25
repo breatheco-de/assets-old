@@ -1,3 +1,5 @@
+[<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
+
 # ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128) Image API - Breathe Code
 HOST:</span> https://assets.breatheco.de/apis/img
 

@@ -1,3 +1,5 @@
+[<- Back to the APIs Readme](../docs/README.md) or [APPs Readme](../README.md)
+
 # Event Checking Application
 
 This application allows any allowed BreatheCode team member to register the attendance
@@ -11,3 +13,7 @@ of any person into particular events.
 5. If the emails is not in the system, the app lets you search for the user by name.
 6. If the user is not found, it lets you create a new user.
 7. After we have the user created or found, the all needs to use the /apis/events API to checking the user.
+
+## TODO
+
+Everything, this app has not been started

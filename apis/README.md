@@ -1,18 +1,21 @@
-[<- Back to the Main Readme](../README.md)
+[<- Back to the Main Readme](../docs/README.md)
 
 # BreatheCode API's
 
 This directory contains several APIs needed to run the breathecode platform:
 
-1. [/Quizes](./quiz/README.md): Used by the breathecode platform quizes.
-2. [/Sounds](./sound/README.md): Sounds for games and tutorials.
-3. [/NPS](./nps/README.md): API implementation for Net Promoter Score
-4. [/Kill-The-Bug](./kill-the-bug/README.md): Great game to play with audiences interested in learning to code.
+1. [/Credentials](./credentials/README.md): OAuth implementation on the BC Platform
+2. [/Quizes](./quiz/README.md): Used by the breathecode platform quizes.
+3. [/Sounds](./sound/README.md): Sounds for games and tutorials.
+4. [/NPS](./nps/README.md): API implementation for Net Promoter Score
+5. [/Kill-The-Bug](./kill-the-bug/README.md): Great game to play with audiences interested in learning to code.
 6. [/VTutorials](./vtutorial/README.md): Use by the breathecode platform to enhance the video tutorials (captions, instructions, etc).
 7. [/Syllabus](./syllabus/README.md): All the syllabus available on the BC Platform
 8. [/Replit](./replit/README.md): All the replits available on the BC Platform
 9. [/Projects](./projects/README.md): Proxy inteface to the projects API
 10.[/Img](./img/README.md): Database of images for tutorials, marketing, etc.
+11.[/Fake](./fake/README.md): A series of endpoints exposed for dummy calls on the breathecode tutorials and exercises
+12.[/Hooks](./hoos/README.md): Hooks used by 3rd party services like ActiveCampaign, Zapier, etc.
 
 ## Usage
 

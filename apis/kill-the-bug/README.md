@@ -1,4 +1,3 @@
 [<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
 
-# Authentication API
-
+# API used for the Kill The Bug, intro to coding game
