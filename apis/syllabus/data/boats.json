@@ -1,6 +1,6 @@
 {
 	"label": "Boats.com",
-	"profile": ["boats"],
+	"profile": "boats",
 	"weeks": [
 		{
 			"label": "Week 1: GIT, Branching, Workflow",

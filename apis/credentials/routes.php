@@ -34,6 +34,7 @@ function addAPIRoutes($api){
 		        BC::setToken($token->access_token);
 		        $user = BC::getMe();
 		        $user->access_token = $token->access_token;
+		        $user->cohorts = $user->full_cohorts;
 		        $user->scope = $token->scope;
 	    		return $response->withJson($user);
 		    }

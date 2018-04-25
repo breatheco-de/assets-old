@@ -44,6 +44,5 @@
     
     // Run all checks
     $results = $runner->run();
-    
 
     if($results->getFailureCount() > 0) exit(1);

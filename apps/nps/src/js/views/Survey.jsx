@@ -84,7 +84,7 @@ export default class Survey extends Flux.View {
                 </div>
                 <div className="row mb-4">
                   <div className="col-12">
-                    <h1>What can we do to improove?</h1>
+                    <h1>What can we do to improve?</h1>
                     <textarea className="form-control"
                       onChange={ evt => this.comments = evt.target.value}
                       defaultValue={this.comments}></textarea>
