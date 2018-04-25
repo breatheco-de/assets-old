@@ -239,6 +239,7 @@
 				{
 					"label": "Day 9",
 					"instructions": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS",
+					"description": "Ok but how do we use Javascript to build websites? You have to interact with the DOM whenever an event occurs",
 					"project": {
 						"title": "Random Card Generator",
 						"url": "https://bitbucket.org/codingacademy/random-card"
