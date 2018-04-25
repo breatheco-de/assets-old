@@ -6,7 +6,7 @@ HOST:</span> https://assets.breatheco.de/apis/img
 ## Get list of images in JSON
 
 ```
-[GET] /images.php
+[GET] /apis/img/images.php
 Params:
 - cat: funny (string)
 - tags: tag1,tag2,...tag (string of terms separated by comma)
@@ -14,18 +14,18 @@ Params:
 
 ## Get only one random image
 ```
-    [GET] /images.php?random
+    [GET] /apis/img/images.php?random
     You can combine it with any other parameters.
 ```
 
 ## Get result as blob image
 ```
-    [GET] /images.php?blob
+    [GET] /api/img/images.php?blob
     You can combine it with any other parameters.
 ```
 ### Categories
 ```
-[GET] /images.php?getcategories
+[GET] /apis/img/images.php?getcategories
 
 //Example
 [
@@ -42,7 +42,7 @@ Params:
 ```
 ## Tags
 ```
-[GET] /images.php?gettags
+[GET] /apis/img/images.php?gettags
 
 //Example
 [
@@ -60,7 +60,7 @@ Params:
 
 Get the breathecode logo in 3 sizes
 ```
-GET: /img/images.php?blob&random&cat=icon&tags=breathecode,128
-GET: /img/images.php?blob&random&cat=icon&tags=breathecode,16
-GET: /img/images.php?blob&random&cat=icon&tags=breathecode,32
+GET: /apis/img/images.php?blob&random&cat=icon&tags=breathecode,128
+GET: /apis/img/images.php?blob&random&cat=icon&tags=breathecode,16
+GET: /apis/img/images.php?blob&random&cat=icon&tags=breathecode,32
 ```
