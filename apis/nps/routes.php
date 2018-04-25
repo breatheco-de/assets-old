@@ -7,8 +7,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
 use \BreatheCode\BCWrapper;
 
+require('../../vendor_static/ActiveCampaign/ACAPI.php');
+
 BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BCWrapper::setToken(BREATHECODE_TOKEN);
+
+\AC\ACAPI::start(AC_API_KEY);
+\AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
 
 function addAPIRoutes($api){
 
@@ -42,9 +47,10 @@ function addAPIRoutes($api){
 	});
 	
 	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
-        
+
         $parsedBody = $request->getParsedBody();
         if(empty($parsedBody['score'])) throw new Exception('Invalid param quiz_id');
+        if(empty($parsedBody['email'])) throw new Exception('Invalid param email');
         if(empty($parsedBody['user_id'])) throw new Exception('Invalid param user_id');
         if(empty($parsedBody['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
         
@@ -57,6 +63,7 @@ function addAPIRoutes($api){
 		} 
         
         $score = $parsedBody['score'];
+        $email = $parsedBody['email'];
         $userId = $parsedBody['user_id'];
         $cohort = $parsedBody['cohort_slug'];
         $comment = (!empty($parsedBody['comment'])) ? $parsedBody['cohort_slug'] : null;
@@ -71,6 +78,17 @@ function addAPIRoutes($api){
 		
 		$row->save();
 		
+		try{
+        	$contact = \AC\ACAPI::trackEvent($email, 'nps_survey_answered');
+		}
+		catch(Exception $e)
+		{
+			$api->emailError(
+				ADMIN_EMAIL, 
+				'API Error: Event tracking for nps_survey_answered',
+				'There has been an error trying to register the nps_survey_answered event in active campaign for the user '.$email
+			);
+		}
         return $response->withJson($row);
 	});
 	

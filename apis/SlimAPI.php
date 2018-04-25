@@ -1,6 +1,9 @@
 <?php
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Aws\Ses\SesClient;
+use Aws\Ses\Exception\SesException;
+
 class SlimAPI{
     
     var $app = null;
@@ -134,4 +137,55 @@ class SlimAPI{
     </html>
         ';
     }
+    
+    public function emailError($to,$subject,$message){
+        
+        $loader = new \Twig_Loader_Filesystem('../');
+        $twig = new \Twig_Environment($loader);
+        
+        $template = $twig->load('email_template.html');
+        
+        $client = SesClient::factory(array(
+            'version'=> 'latest',     
+            'region' => 'us-west-2',
+            'credentials' => [
+                'key'    => S3_KEY,
+                'secret' => S3_SECRETE,
+            ]
+        ));
+        
+        try {
+             $result = $client->sendEmail([
+            'Destination' => [
+                'ToAddresses' => [
+                    $to,
+                ],
+            ],
+            'Message' => [
+                'Body' => [
+                    'Html' => [
+                        'Charset' => 'UTF-8',
+                        'Data' => $template->render(['subject' => $subject, 'message' => $message]),
+                    ],
+        			'Text' => [
+                        'Charset' => 'UTF-8',
+                        'Data' => $message,
+                    ],
+                ],
+                'Subject' => [
+                    'Charset' => 'UTF-8',
+                    'Data' => $subject,
+                ],
+            ],
+            'Source' => 'info@breatheco.de',
+            //'ConfigurationSetName' => 'ConfigSet',
+        ]);
+             $messageId = $result->get('MessageId');
+             return true;
+        
+        } catch (SesException $error) {
+            throw new Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
+        }
+    }
+    
 }

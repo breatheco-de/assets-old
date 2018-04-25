@@ -56,6 +56,7 @@ var Wrapper = (function(){
         	user_id: data.student.id,
         	score: data.answer.rating,
         	cohort_slug: data.student.cohorts[0],
+        	email: data.student.email,
         	comment: data.answer.comments
         });
     }

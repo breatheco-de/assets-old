@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2e4be87b3793e8dbb6a8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9ad94428d740f17c80a7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -66325,6 +66325,7 @@ var Wrapper = function () {
             user_id: data.student.id,
             score: data.answer.rating,
             cohort_slug: data.student.cohorts[0],
+            email: data.student.email,
             comment: data.answer.comments
         });
     };
@@ -66878,7 +66879,7 @@ var Survey = function (_Flux$View) {
             _react2.default.createElement(
               "h1",
               null,
-              "What can we do to improove?"
+              "What can we do to improve?"
             ),
             _react2.default.createElement("textarea", { className: "form-control",
               onChange: function onChange(evt) {

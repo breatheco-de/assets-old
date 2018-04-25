@@ -9,15 +9,20 @@ class ACAPI{
     
     private static $connector = [];
     
-    public static function start(){
+    public static function start($apiKey){
         
         $apiOldURL = 'https://4geeks.api-us1.com';
         $apiURL = 'https://4geeks.api-us1.com/api/3/';
-        $apiKey = "30f9f6fe16d0c589445290af8c87fd7658500c700eda21ad8a232103d0037486c57e7a7d";
         
         if(empty(self::$connector['new'])) self::$connector['new'] = new \AC\Connector($apiURL, $apiKey);
         if(empty(self::$connector['old'])) self::$connector['old'] = new \ActiveCampaign($apiOldURL, $apiKey);
         
+    }
+    
+    public static function setupEventTracking($actid, $key, $email = null){
+        self::$connector['old']->track_email = $email;
+        self::$connector['old']->track_actid = $actid;
+        self::$connector['old']->track_key = $key;
     }
     
     /**
@@ -110,5 +115,19 @@ class ACAPI{
     private static function findField($fields, $slug){
         foreach($fields as $f) if($f->perstag == $slug) return $f;
         return null;
+    }
+    
+    public static function trackEvent($email, $event, $eventData=null){
+        
+        self::$connector['old']->track_email = $email;
+        $request["event"] = $event;
+        $request["event-data"] = $eventData;
+		
+    	$result = self::$connector['old']->api("tracking/log", $request);
+    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->error);
+        
+        // successful request
+        if(!is_object($result)) return (int)$result;
+        else return $result;
     }
 }

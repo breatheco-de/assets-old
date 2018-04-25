@@ -2,6 +2,21 @@
 
 Simple App to get feedback from students
 
+## Usage 
+
+There are two main URLS:
+```md
+URL: /apps/nps/survey/<user_id>
+To render a survey for a particular user
+
+URL: /apps/nps/results
+To review the results
+```
+## Installation
+
+1. Set a .env file
+2. Build with NPM
+
 ### .env example
 ```js
 // .env

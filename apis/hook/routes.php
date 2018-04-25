@@ -20,7 +20,7 @@ function addAPIRoutes($api){
         
         if(empty($args['email'])) throw new Exception('Please specify the user email');
         
-         \AC\ACAPI::start();
+         \AC\ACAPI::start(AC_API_KEY);
         $contact = \AC\ACAPI::getContactByEmail($args['email']);
         
         return $response->withJson([
@@ -36,7 +36,7 @@ function addAPIRoutes($api){
         else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
         else throw new Exception('Please specify the user email');
         
-         \AC\ACAPI::start();
+         \AC\ACAPI::start(AC_API_KEY);
         $contact = \AC\ACAPI::getContactByEmail($userEmail);
 
         $referralHash = HookFunctions::getReferralCode($contact->id, $contact->email, $contact->sdate);
@@ -63,7 +63,7 @@ function addAPIRoutes($api){
         
         $user = BC::getUser(["user_id" => $userEmail]);
 
-        \AC\ACAPI::start();
+        \AC\ACAPI::start(AC_API_KEY);
         $contact = \AC\ACAPI::getContactByEmail($userEmail);
 
         $fields = [];
@@ -87,7 +87,7 @@ function addAPIRoutes($api){
         else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
         else throw new Exception('Please specify the user email');
         
-         \AC\ACAPI::start();
+         \AC\ACAPI::start(AC_API_KEY);
         $contact = \AC\ACAPI::getContactByEmail($userEmail);
 
         $fields = [];
