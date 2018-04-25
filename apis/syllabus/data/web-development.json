@@ -17,19 +17,19 @@
 					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
 					"lessons": [{
 							"title": "Introduccion to the pre-work",
-							"slug": "introduction-to-the-prework/"
+							"slug": "introduction-to-the-prework"
 						},
 						{
 							"title": "Internet Architecture",
-							"slug": "internet-architecture/"
+							"slug": "internet-architecture"
 						},
 						{
 							"title": "Learn HTML",
-							"slug": "learn-html/"
+							"slug": "learn-html"
 						},
 						{
 							"title": "Learn CSS",
-							"slug": "learn-css/"
+							"slug": "learn-css"
 						}
 					],
 					"replits": [{
@@ -54,11 +54,11 @@
 					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
 					"lessons": [{
 							"title": "Doing Layouts",
-							"slug": "build-layouts/"
+							"slug": "build-layouts"
 						},
 						{
 							"title": "Advanced CSS Selectors",
-							"slug": "mastering-css-selectors/"
+							"slug": "mastering-css-selectors"
 						}
 					],
 					"replits": [{
@@ -158,11 +158,11 @@
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
 					"lessons": [{
 							"title": "Learning to code with JS",
-							"slug": "learn-to-code-js/"
+							"slug": "learn-to-code-js"
 						},
 						{
 							"title": "Looping and Arrays",
-							"slug": "working-with-arrays/"
+							"slug": "working-with-arrays"
 						}
 					],
 					"replits": [{
@@ -231,10 +231,10 @@
 					"homework": "Students must have the CSS and HTML for the TodoList already finished and separated in two components: The whole list and each task on the list.",
 					"lessons": [{
 						"title": "Bundeling with Webpack",
-						"slug": "webpack/"
+						"slug": "webpack"
 					}, {
 						"title": "Building interfaces with React",
-						"slug": "react-js/"
+						"slug": "react-js"
 					}],
 					"key-concepts": ["Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Export -> Import modules", "Include your bundle on index.html", "Create your React.js Component View"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules"]
@@ -250,7 +250,7 @@
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
 					"lessons": [{
 						"title": "Building interfaces with React",
-						"slug": "react-js/"
+						"slug": "react-js"
 					}],
 					"technologies": ["React", "Javascript", "Events"]
 				},
