@@ -1,61 +1,65 @@
 # BreatheCode API's
 
-This directory contains several apis needed to run the breathecode platform:
+This directory contains several APIs needed to run the breathecode platform:
 
-1. Quizes: Used by the breathecode platform quizes.
-2. Kill The Bug Game: To save the participants.
-3. Sounds: For games and tutorials.
-4. TicTacToe: For the tictactoe project.
-3. Replit video tutorials: Use by the breathecode platform for the video tutorials.
+1. [/Quizes](./quiz/README.md): Used by the breathecode platform quizes.
+2. [/Sounds](./sound/README.md): Sounds for games and tutorials.
+3. [/NPS](./nps/README.md): API implementation for Net Promoter Score
+4. [/Kill-The-Bug](./kill-the-bug/README.md): Great game to play with audiences interested in learning to code.
+6. [/VTutorials](./vtutorial/README.md): Use by the breathecode platform to enhance the video tutorials (captions, instructions, etc).
+7. [/Syllabus](./syllabus/README.md): All the syllabus available on the BC Platform
+8. [/Replit](./replit/README.md): All the replits available on the BC Platform
+9. [/Projects](./projects/README.md): Proxy inteface to the projects API
+10.[/Img](./img/README.md): Database of images for tutorials, marketing, etc.
 
-## Creating new API's
+## Usage
 
-If you are building a very simple API there is no need for anything but the APIGenerator.php file.
+The entire repository uses [SlimPHP](https://www.slimframework.com/) to create each of the APIs, and it also 
+contains other class helpers to interface with SQLite, JSON Files, Amazon Email Service, etc.
 
-### 1. This will create a GET request:
+### Steps to create a new API
+
+1. Create a new folder inside the apis/ directory.
+```sh
+$ mkdir ./apis/<your_api_name_slug>
+$ cd <your_api_name_slug>
 ```
-	$api = new APIGenerator('data/','[]',false);
-
-    /*
-    * Parameters
-    * - The URL pattern
-    * - Description of what the services does.
-    * - Callback function that will handle the request (it receives the request info and the $content from the stored data)
-    */
-	$api->get('quizzes','Get all quizzes',function($request,$dataContent) use ($api){
-	    //return whatever you want to respond back to the requester
-
-        //If your data is sored in only one file	    
-        return $dataContent;
-        
-        //or if you have several files storing your data
-        $jsonContent = $api->getJsonByName($request['url_elements'][1]);
-        return $dataContent;
-	});
+2. Add a .htaccess file to that folder to redirect all the request to index.php
+```sh
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
+</IfModule>
 ```
-Note: url_elements contains all the URL parts
+3. Add an index.php file
+```php
+	require_once('../../vendor/autoload.php');
+	require_once('../SlimAPI.php');
+	require_once('routes.php');
+	
+	$api = new SlimAPI();
+	$api = addAPIRoutes($api);
+	$api->run(); 
 ```
- https://exampledomain./com/<part1>/<part2>/<part3>/<partN>/
-```
-
-### 2. This will create a POST request:
-```
-	$api = new APIGenerator('data/','[]',false);
-
-    /*
-    * Parameters
-    * - The URL pattern
-    * - Description of what the services does.
-    * - Callback function that will handle the request (it receives the request info and the $content from the stored data)
-    */
-	$api->post('game', 'Create new game', function($request, $dataContent) use ($api){
-	    
-        if(!isset($request['parameters']['player1']) || !isset($request['parameters']['player2']) || !isset($request['parameters']['winner'])) throw new Exception('Mising request body with parameters player1, player2 and winner');
-        
-        if(is_array($dataContent)) array_push($dataContent,$request['parameters']);
-        else $dataContent = array_merge([],[$request['parameters']]);
-        
-        $api->saveData($dataContent);
-        return $dataContent;
-	});
+4. All the routs of your API should be inside a routs.php file with the following content
+```php
+ use Psr\Http\Message\ServerRequestInterface as Request;
+ use Psr\Http\Message\ResponseInterface as Response;
+ 
+ function addAPIRoutes($api){
+ 
+  /**
+   * This is an example endpoint that matches the following URL:
+   * GET: /apis/<your_api_name_slug>/all
+  */
+ 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
+ 	    //any php logic for your function
+ 	});
+ 	
+ 	//add here any other endpoints you want
+ 	
+ 	return $api;
+ }
 ```
