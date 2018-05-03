@@ -14,7 +14,10 @@ Displays the HTML version of a given markdown file.
 Display NPS survays for BC users.
 
 4. [/Quiz](../apps/quiz/README.md):
-Allows BC users to take quizzes.
+Allows BC students to ***take*** quizzes.
+
+4. [/quiz-maker](../apps/quiz-maker/README.md):
+Allows BC users to ***CREATE*** quizzes.
 
 5. [/Quizzes](../apps/quizzes/README.md):
 Old version of the Quiz app.
