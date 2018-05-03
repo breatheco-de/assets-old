@@ -7,6 +7,7 @@ Resources for Teachers and Students using the [BreatheCode Platform](https://bre
 - [Image API](apis/img/)
 - [Sounds API](apis/sound/)
 - [Quiz API](apis/quiz/)
+- [Video API](apis/video/)
 - [Replits API](apis/replit/)
 
 ## Sample API's for Projects
@@ -18,6 +19,7 @@ Resources for Teachers and Students using the [BreatheCode Platform](https://bre
 
 ## Other Tools
 
+- [Quiz Maker](/apps/quiz-maker/): Create or edit BC Quizzes easy.
 - [HTTP Sniffer](live-demos/php/forms/): Shoot POST and GET requests and it will show you the content.
 - [Markdown Parser](apps/markdown-parser/): Pass a markdown file path to the url and it will render it like github
 - [Regex Tester](live-demos/js/regex-tester/): Test Regular expressions

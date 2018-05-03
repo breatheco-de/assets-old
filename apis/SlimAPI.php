@@ -3,8 +3,19 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Aws\Ses\SesClient;
 use Aws\Ses\Exception\SesException;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Respect\Validation\Validator as v;
 
 class SlimAPI{
+    
+    public static $INFO = 'info';
+    public static $NOTICE = 'notice';
+    public static $WARNING = 'warning';
+    public static $ERROR = 'error';
+    private $logPaths = [
+        'activity' => '../.logs/api_activity.log'
+    ];
     
     var $app = null;
     var $appName = null;
@@ -26,7 +37,7 @@ class SlimAPI{
         if(!empty($settings['debug'])) $this->debug = $settings['debug'];
     	$c = new \Slim\Container([
     	    'settings' => [
-    	        'displayErrorDetails' => true,
+    	        'displayErrorDetails' => $this->debug,
     	    ],
     	]);
     	if(!$this->debug)
@@ -35,12 +46,25 @@ class SlimAPI{
         	    return function ($request, $response, $exception) use ($c) {
         	        
         	        $code = $exception->getCode();
+
+        	        $this->log(self::$ERROR, $exception->getMessage());
     
         	        return $c['response']->withStatus(($code) ? $code : 200)
         	                             ->withHeader('Content-Type', 'application/json')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
         	};
+        	$c['phpErrorHandler'] = function ($c) {
+        	    return function ($request, $response, $exception) use ($c) {
+        	        
+        	        $this->log(self::$ERROR, $exception->getMessage());
+    
+        	        return $c['response']->withStatus(500)
+        	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->write( json_encode(['msg' => $exception->getMessage()]));
+        	    };
+        	};
+        	//$c['notFoundHandler'] = $phpErrorHandler;
     	}
         
 	    $this->app = new \Slim\App($c);
@@ -138,7 +162,7 @@ class SlimAPI{
         ';
     }
     
-    public function emailError($to,$subject,$message){
+    public function sendMail($to,$subject,$message){
         
         $loader = new \Twig_Loader_Filesystem('../');
         $twig = new \Twig_Environment($loader);
@@ -188,4 +212,74 @@ class SlimAPI{
         }
     }
     
+    public function log($level, $msg, $data=null){
+        
+        if(empty($level) || empty($msg)) throw new Exception('Mising level or message');
+        // create a log channel
+        $log = new Logger('activity');
+        if(!file_exists($this->logPaths['activity'])) throw new Exception('Activity log not found: '.$this->logPaths['activity']);
+        $log->pushHandler(new StreamHandler($this->logPaths['activity'], Logger::DEBUG));
+        
+        // add records to the log
+        if($data) $msg .= json_encode($data);
+        switch($level){
+            case self::$NOTICE: $log->notice($msg); break;
+            case self::$ERROR: $log->error($msg); break;
+            case self::$WARNING: $log->warning($msg); break;
+            case self::$INFO: $log->info($msg); break;
+        }
+    }
+    
+    function validate($value, $key=null){
+        $val = new Validator($value, $key);
+        return $val;
+    }
+    
+}
+
+class Validator{
+    var $value = null;
+    var $key = null;
+    
+    function __construct($value, $key=null){
+        //if there is a key, the $value is an object a we need to grabe the value inside of it
+        $value = (array) $value;
+
+        if($key && isset($value[$key])) $value = $value[$key];
+        else if($key) $value = null;
+        
+        $this->value = $value;
+        $this->key = $key;
+    }
+    function smallString($min=1, $max=255){ 
+        $validator = v::stringType()->length($min, $max)->validate($this->value);
+        $for = ($this->key) ? ' for '.$this->key : '';
+        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        return $this->value;
+    }
+    function bigString($min=1, $max=2000){ 
+        $validator = v::stringType()->length($min, $max)->validate($this->value);
+        
+        $for = ($this->key) ? ' for '.$this->key : '';
+        if(!$validator) throw new Exception('Invalid value: '.$this->value.$for, 500);
+        return $this->value;
+    }
+    function int(){ 
+        $validator = v::intVal()->validate($this->value);
+        $for = ($this->key) ? ' for '.$this->key : '';
+        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        return $this->value;
+    }
+    function url(){ 
+        $validator = v::url()->validate($this->value);
+        $for = ($this->key) ? ' for '.$this->key : '';
+        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        return $this->value;
+    }
+    function bool(){ 
+        $validator = v::boolType()->validate((bool) $this->value);
+        $for = ($this->key) ? ' for '.$this->key : '';
+        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        return $this->value;
+    }
 }

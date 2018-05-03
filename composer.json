@@ -8,7 +8,9 @@
         "twig/twig": "^2.0",
         "nesbot/carbon": "^1.26",
         "zendframework/zenddiagnostics": "^1.1",
-        "aws/aws-sdk-php": "^3.55"
+        "aws/aws-sdk-php": "^3.55",
+        "jamiehollern/eventbrite": "^1.0",
+        "respect/validation": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.5"

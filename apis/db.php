@@ -55,18 +55,14 @@ $subdirectories = false;
 
 //if the above $directory variable is set to false, you must specify the databases manually in an array as the next variable
 //if any of the databases do not exist as they are referenced by their path, they will be created automatically
-$databases = array(
-	array(
-		'path'=> 'quiz_api/db.sqlite3',
-		'name'=> 'Quizzes'
-	),
-	array(
-		'path'=> 'nps/db.sqlite3',
-		'name'=> 'Net Promoter Score'
-	),
-);
-
-
+$files = array();
+$dirs = array_filter(glob('*'), 'is_dir');
+foreach($dirs as $dir)
+	foreach (glob($dir."/*.sqlite3") as $file)
+		$databases[] = [
+			'path' => $file,
+			'name' => $dir
+		];
 /* ---- Interface settings ---- */
 
 // Theme! If you want to change theme, save the CSS file in same folder of phpliteadmin or in folder "themes"

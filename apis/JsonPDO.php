@@ -80,7 +80,6 @@ class JsonPDO{
             else fwrite($fh, json_encode($defaultContent)); 
             fclose($fh); 
             chmod($fileName, 0777); 
-            
             $dataContent = (array) json_decode($defaultContent);
             if($dataContent === null or $dataContent ===false) $this->throwError('Unable to get file content: '+json_last_error());
             
@@ -90,7 +89,7 @@ class JsonPDO{
         {
             $jsonContent = file_get_contents($fileName);
             $dataContent = (array) json_decode($jsonContent);
-            if($dataContent === null or $dataContent ===false) $this->throwError('Unable to get file content: '+json_last_error());
+            if(empty($dataContent)) $this->throwError('Unable to get file "'.$fileName.'" contents or it was empty: '+json_last_error());
             
             return $dataContent;
         }
@@ -117,7 +116,6 @@ class JsonPDO{
     			    if($auxQuiz = filterQuiz($auxQuiz))
     			    {
         			    $auxQuiz['info']['category'] = basename($path);
-        			    //print_r($auxQuiz); die();
         			    if(!isset($auxQuiz['info']['status']) || $auxQuiz['info']['status']=='published')
         			    {
             				if($auxQuiz) array_push($qzes, $auxQuiz);

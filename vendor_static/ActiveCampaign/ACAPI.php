@@ -78,12 +78,47 @@ class ACAPI{
         return $result;
     }
     
+    public static function createContact($email, $fieldsToUpdate){
+        
+    	$contact = array_merge($fieldsToUpdate, ["email" => $email]);
+    	
+    	/*
+    	$contact = array(
+    		"first_name"         => "Test",
+    		"last_name"          => "Test",
+    		"p[{$list_id}]"      => $list_id,
+    		"status[{$list_id}]" => 1, // "Active" status
+    	);*/
+    	$result = self::$connector['old']->api("contact/add", $contact);
+    	if (!(int)$result->success) throw new \Exception('Add contact failed. Error returned: '. $result->error);
+        
+        // successful request
+        return $result;
+    }
+    
+    public static function updateContactFields($contact, $new_fields=[]){
+        
+    	$slugsToUpdate = array_map(function($vallue, $key){
+            return $key;
+    	},$fields);
+        foreach($contact->fields as $original_key => $original_value){
+            
+            if(in_array($original_value->perstag, $slugsToUpdate))
+            {
+                //initialize the field with undefined
+                $fields['field['.$id.','.$original_value->dataid.']'] = $new_fields[$original_value->perstag];
+            }
+            
+        }
+    }
+    
     public static function getContactByEmail($email){
         
+        if(!is_string($email)) throw new Exception('The email must by a string');
     	$result = self::$connector['old']->api("contact/view?email=".$email);
 
-    	if (!(int)$result->success) throw new \Exception('Error returned: '. $result->error);
-        
+    	if ($result->http_code != 200) throw new \Exception('Error returned: '. $result->error);
+        if(0 === (int)$result->success) return null;
         // successful request
         return $result;
     }
@@ -124,7 +159,7 @@ class ACAPI{
         $request["event-data"] = $eventData;
 		
     	$result = self::$connector['old']->api("tracking/log", $request);
-    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->error);
+    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->message);
         
         // successful request
         if(!is_object($result)) return (int)$result;

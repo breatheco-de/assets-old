@@ -1,0 +1,53 @@
+@import 'colors';
+
+body{
+    padding-top: 50px;
+}
+.no-margin{
+    margin: 0px;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.show{
+    position: fixed;
+    top: 5%;
+    right: 1%;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.section-url{
+    padding-top: 60px;
+}
+
+.section-question{
+    padding-top: 30px;
+    background: #e8f5ff;
+}
+
+.questions{
+    padding-top: 30px;
+    .option{
+        height: 40px;
+    }
+}
+
+.download-btn{
+    position: fixed;
+    top: 8px;
+    right: 10px;
+    z-index: 1030;
+}
+
+.questions-nav.sticky-top{
+    top: 56px;
+}
+
+.badges{
+    padding: 50px 0px
+}

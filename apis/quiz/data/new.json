@@ -1,0 +1,20 @@
+{
+    "info": {
+        "name":    "Some fake name",
+        "status":    "draft",
+        "main":    "Some fake description",
+        "results": "What do you want to say to whomever finishes the quiz?",
+        "badges": [
+            { "slug": "css_master", "points": 23 }
+        ]
+    },
+    "questions": [
+        {
+            "q": "Sample Question",
+            "a": [
+                {"option": "some option",      "correct": true},
+                {"option": "some other",     "correct": false}
+            ]
+        }
+    ]
+}

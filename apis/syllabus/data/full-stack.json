@@ -187,7 +187,8 @@
 			"label": "Week 3: First coding skills",
 			"topic": "Create algorithms",
 			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 7",
 					"description": "HTML & CSS are great, but the world needed interactive pages. Javascript comes to help us generate HTML & CSS based on the users activity.",
 					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts",

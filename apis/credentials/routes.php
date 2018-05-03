@@ -19,9 +19,10 @@ function addAPIRoutes($api){
         
         $username = $body->username;
         $password = $body->password;
-        $scope = (empty($body->scope)) ? 'student':$body->scope;
         try{
-        	
+        	$user = BC::getUser(['user_id' => $username]);
+        	$scope = (empty($user->type)) ? 'student':$user->type;
+
         	$permissions = [
         		'student' => ['read_basic_info', 'student_tasks'],
         		'admin' => ['read_basic_info', 'super_admin']
@@ -34,7 +35,9 @@ function addAPIRoutes($api){
 		        BC::setToken($token->access_token);
 		        $user = BC::getMe();
 		        $user->access_token = $token->access_token;
-		        $user->cohorts = $user->full_cohorts;
+		        if($user->type == 'student'){
+		        	$user->cohorts = $user->full_cohorts;
+		        }
 		        $user->scope = $token->scope;
 	    		return $response->withJson($user);
 		    }

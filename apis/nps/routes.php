@@ -83,7 +83,7 @@ function addAPIRoutes($api){
 		}
 		catch(Exception $e)
 		{
-			$api->emailError(
+			$api->sendMail(
 				ADMIN_EMAIL, 
 				'API Error: Event tracking for nps_survey_answered',
 				'There has been an error trying to register the nps_survey_answered event in active campaign for the user '.$email

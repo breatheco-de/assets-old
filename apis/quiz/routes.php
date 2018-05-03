@@ -53,10 +53,13 @@ function addAPIRoutes($api){
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
         
         $slug = $args['slug'];
-        
         $quizObj = $api->db['json']->getJsonByName($slug);
-        $quizObj['info'] = (array) $quizObj['info'];
-        $quizObj['info']['slug'] = $slug;
+
+        if(!empty($quizObj)){
+	        $quizObj['info'] = (array) $quizObj['info'];
+	        $quizObj['info']['slug'] = $slug;
+		    return $response->withJson($quizObj);
+        }
 	    return $response->withJson($quizObj);
 	});
 	

@@ -4,7 +4,9 @@
 	require_once('../JsonPDO.php');
 	require_once('routes.php');
 	
-	$api = new SlimAPI();
+	$api = new SlimAPI([
+		'name' => 'Quiz API'
+	]);
 	$api->addReadme('/','./README.md');
 	$api->addDB('json', new JsonPDO('data/','[]',false));
 	
