@@ -30,6 +30,8 @@ var Timeline = (function(){
         var sections = $(this.settings.containerSelector);
         var cont = 0;
         
+        if(typeof this.settings.data == 'undefined') throw new Error('The JSON came empty or invalid');
+        
         this.settings.data.forEach(function(week){
             $(sections[cont]).html(pub.renderWeek(week));
             var marginTop = 70;

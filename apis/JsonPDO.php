@@ -89,7 +89,7 @@ class JsonPDO{
         {
             $jsonContent = file_get_contents($fileName);
             $dataContent = (array) json_decode($jsonContent);
-            if(empty($dataContent)) $this->throwError('Unable to get file "'.$fileName.'" contents or it was empty: '+json_last_error());
+            if(empty($dataContent)) $this->throwError('Unable to get file "'.$fileName.'" contents or it was empty: ');
             
             return $dataContent;
         }

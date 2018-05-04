@@ -20,7 +20,7 @@ function addAPIRoutes($api){
         $username = $body->username;
         $password = $body->password;
         try{
-        	$user = BC::getUser(['user_id' => $username]);
+        	$user = BC::getUser(['user_id' => urlencode($username)]);
         	$scope = (empty($user->type)) ? 'student':$user->type;
 
         	$permissions = [

@@ -239,7 +239,7 @@
 				},
 				{
 					"label": "Day 9",
-					"instructions": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS",
+					"instructions": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS, make students do the 'Map Of Events' to strategize, start using the breathecode-cli and vanilla-js ",
 					"description": "Ok but how do we use Javascript to build websites? You have to interact with the DOM whenever an event occurs",
 					"project": {
 						"title": "Random Card Generator",
@@ -260,6 +260,10 @@
 						"slug": "intro-to-front-end-web-development"
 					},
 					{
+						"title": "Bundeling with Webpack",
+						"slug": "webpack"
+					},
+					{
 						"title": "The DOM",
 						"slug": "the-dom"
 					},{
@@ -267,7 +271,7 @@
 						"slug": "events"
 					}],
 					"assignments":["random-card"],
-					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Using Math.random() GLOBAL Function to pick the cards and suites", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements"],
+					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements","Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html"],
 					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
 				},
 				{
@@ -283,22 +287,32 @@
 			"summary": "Create your first react application",
 			"days": [{
 					"label": "Day 10",
-					"instructions": "Explain the professional workflow in JS: Why Webpack created bundles? Whay use JS Modules? How organize your code, transpile with babel for cros-browser support, Javascript Emac2018. Please do not attempt to explain the Webpack Config.",
+					"instructions": "Its the first time students will be using objects, explain the concept. Make students create their first react components and explain the use of JSX. Explain the difference between Functional components and or class components and the render function",
+					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
 					"project": {
 						"title": "Todo list with React",
 						"url": "https://bitbucket.org/codingacademy/todo-list"
 					},
 					"homework": "Students must have the CSS and HTML for the TodoList already finished and separated in two components: The whole list and each task on the list.",
-					"lessons": [{
-						"title": "Bundeling with Webpack",
-						"slug": "webpack"
-					}, {
-						"title": "Building interfaces with React",
-						"slug": "react-js"
-					}],
+					"lessons": [
+						{
+							"title": "Object Oriented Programming",
+							"slug": "object-oriented-programming"
+						},
+						{
+							"title": "Building interfaces with React",
+							"slug": "react-js"
+						}
+					],
+					"replits": [
+						{
+							"title": "Object Oriented Programming",
+							"slug": "object-oriented-programing"
+						}
+					],
 					"assignments":["todo-list"],
-					"key-concepts": ["Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Export -> Import modules", "Include your bundle on index.html", "Create your React.js Component View"],
-					"technologies": ["React", "Webpack", "Babel.js", "JS Modules"]
+					"key-concepts": ["Export -> Import modules", "You can create your own tags","Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
+					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
 				},
 				{
 					"label": "Day 11",
@@ -436,7 +450,7 @@
 						"title": "Learn AJAX",
 						"slug": "ajax"
 					}],
-					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
+					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "explain the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
 					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"]
 				},
