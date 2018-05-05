@@ -1,5 +1,5 @@
 <video controls loop autoplay>
-  <source src="/apis/video/coding-weekend" type="video/mp4">
+  <source src="/apis/video/4geeks-background" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 <script type="text/javascript">
