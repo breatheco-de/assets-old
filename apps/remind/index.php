@@ -16,7 +16,9 @@
         try{
             $user = BC::getPasswordToken(['user_id'=>$_GET['id'],'token'=>$_GET['t']]);
         }
-        catch(Exception $e){ }
+        catch(Exception $e){ 
+            //print_r($e->getMessage()); die();
+        }
         
         if(!empty($user)) $error=false;
     } 

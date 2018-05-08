@@ -26,7 +26,7 @@
     catch(Exception $e){
         $withInvite = (isset($_POST['invite'])) ? '&invite=true' : '';
         $withCallback = (isset($_POST['callback'])) ? '&callback='.$_POST['callback'] : '';
-        header("Location: index.php?error=missing$withInvite$withCallback");
+        header("Location: index.php?error=missing".$withInvite.$withCallback);
         die();
     }
     if(isset($_POST['callback'])){
