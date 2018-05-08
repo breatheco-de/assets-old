@@ -28,6 +28,7 @@ class SlimAPI{
             'https://bc-js-clients-alesanchezr.c9users.io',
             'https://bc-admin-alesanchezr.c9users.io',
             'https://student.breatheco.de',
+            'https://admin.breatheco.de',
             'https://www.student.breatheco.de'
         ];
     var $allowedMethods = ['GET','POST','PUT','DELETE','OPTIONS'];

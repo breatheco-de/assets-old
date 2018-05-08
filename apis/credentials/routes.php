@@ -49,6 +49,36 @@ function addAPIRoutes($api){
         return $response->withJson('error');
 	});
 	
+	$api->put('/signup', function (Request $request, Response $response, array $args) use ($api) {
+        
+        $body = json_decode($request->getBody()->getContents());
+        if(empty($body->username)) throw new Exception('Invalid username');
+        if(empty($body->full_name)) throw new Exception('Invalid full_name');
+        if(empty($body->cohort_slug)) throw new Exception('Invalid cohort_slug');
+        
+        $username = $body->username;
+        $fullName = $body->full_name;
+        $cohortSlug = $body->cohort_slug;
+        try{
+        	$user = BC::createStudent([
+        		'email' => urlencode($username),
+        		'full_name' => $fullName,
+        		'cohort_slug' => $cohortSlug
+        	]);
+        	
+        	if($user){
+		         \AC\ACAPI::start(AC_API_KEY);
+		        //the list id in active campaign for active students is 4
+		        $updatedContact = \AC\ACAPI::subscribeToList($username, 4, $cohortSlug);
+        	}
+        }
+        catch(Exception $e)
+        {
+	    	return $response->withJson(['msg'=>$e->getMessage()])->withStatus(500);
+        }
+        return $response->withJson('error');
+	});
+	
 	$api->post('/auth/github', function (Request $request, Response $response, array $args) use ($api) {
         
 	    return $response->withJson($quizObj);

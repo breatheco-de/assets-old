@@ -100,6 +100,10 @@ class BCWrapper{
 	        if($resource==='token') $options['auth'] = [self::$clientId, self::$clientSecret];
 	        $resp = self::$guz->post(self::$host.$resource, $options);
         } 
+        else if($method=='PUT'){
+	        $options = [ 'json' =>  $args ];
+	        $resp = self::$guz->put(self::$host.$resource, $options);
+        } 
 		else throw new \Exception('Invalid HTTP request type '.$method);
 
 		if(!$resp) throw new \Exception('CURL Error');
@@ -178,6 +182,16 @@ class BCWrapper{
 		else throw new \Exception('There is no access_token for this credentials');
 		
 		return false;
+    }
+    
+    
+    public static function createStudent($params){
+        
+        self::validate($params,'email');
+        self::validate($params,'full_name');
+        self::validate($params,'cohort_slug');
+
+        return self::request('put','student/',$params);
     }
     
     public static function createCredentials($params){
