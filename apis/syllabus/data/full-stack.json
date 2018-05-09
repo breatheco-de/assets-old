@@ -325,8 +325,11 @@
 					"key-concepts": ["Condigional Rendering", "Using props to pass information to the parent component", "Communication between components thru function properties", "Component Isolation", "this.setState", "Inmutable State", "All props are read-only", "Component Life-cycle methods"],
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
 					"lessons": [{
-						"title": "Building interfaces with React",
-						"slug": "react-js"
+						"title": "Profesional Web Development",
+						"slug": "intro-to-professional-web-development"
+					},{
+						"title": "Creating User Stories",
+						"slug": "creating-user-stories"
 					}],
 					"technologies": ["React", "Javascript", "Events"]
 				},
