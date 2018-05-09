@@ -317,11 +317,12 @@
 				{
 					"label": "Day 11",
 					"instructions": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props",
+					"description": "Finally we can create our own HTML tags and re-use them on several projects and views. The key to understand a component is understanding Props and The State.",
 					"project": {
 						"title": "Continue with: Todo list with React",
 						"url": "https://bitbucket.org/codingacademy/todo-list"
 					},
-					"key-concepts": ["Condigional Rendering", "Using props to pass information to the parent component"],
+					"key-concepts": ["Condigional Rendering", "Using props to pass information to the parent component", "Communication between components thru function properties", "Component Isolation", "this.setState", "Inmutable State", "All props are read-only", "Component Life-cycle methods"],
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
 					"lessons": [{
 						"title": "Building interfaces with React",
