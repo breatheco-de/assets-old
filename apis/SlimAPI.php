@@ -36,6 +36,7 @@ class SlimAPI{
     function __construct($settings=null){
         if(!empty($settings['name'])) $this->appName = $settings['name'];
         if(!empty($settings['debug'])) $this->debug = $settings['debug'];
+
     	$c = new \Slim\Container([
     	    'settings' => [
     	        'displayErrorDetails' => $this->debug,

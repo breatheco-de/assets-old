@@ -2,12 +2,43 @@
 
 namespace AC;
 
+use Exception;
 require_once(dirname(__FILE__)."/lib/includes/ActiveCampaign.class.php");
 require_once(dirname(__FILE__)."/Connector.php");
 
 class ACAPI{
     
+    private static $lists = [
+        'hot_leads' => 1,
+        'soft_leads' => 8,
+        'active_student' => 4,
+        'alumni' => 9,
+        'workshops' => 7,
+        'newsletter' => 1,
+        'hiring_partners' => 10
+    ];
+    
+    private static $tags = [
+        'platform_signup'
+    ];
+    
     private static $connector = [];
+    
+    public static function tag($slug){
+        if(is_array($slug)){
+            foreach($slug as $s) if(!in_array($s, self::$tags)) throw new Exception('Invalid Active Campaign Tag');
+            return implode(',',$slug);
+        } 
+        else{
+            if(!in_array($slug, self::$tags)) throw new Exception('Invalid Active Campaign Tag');
+            return $slug;
+        } 
+    }
+    
+    public static function list($slug){
+        if(!isset(self::$lists[$slug])) throw new Exception('Invalid Active Campaign List: '.$slug);
+        return self::$lists[$slug];
+    }
     
     public static function start($apiKey){
         
@@ -42,7 +73,7 @@ class ACAPI{
         if($tags) $contact["tags"] = $tags;
         
     	$result = self::$connector['old']->api("contact/sync", $contact);
-    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->error);
+    	if (!(int)$result->success) throw new Exception('Syncing contact failed. Error returned: '. $result->error);
         
         // successful request
         return (int)$result->subscriber_id;
@@ -54,7 +85,7 @@ class ACAPI{
         $request["tags"] = $tags;
 
     	$result = self::$connector['old']->api("contact/tag_add", $request);
-    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->error);
+    	if (!(int)$result->success) throw new Exception('Syncing contact failed. Error returned: '. $result->error);
         
         // successful request
         return (int)$result->subscriber_id;
@@ -70,9 +101,10 @@ class ACAPI{
     		"last_name"          => "Test",
     		"p[{$list_id}]"      => $list_id,
     		"status[{$list_id}]" => 1, // "Active" status
+    		"tags" => "platform_signup"
     	);*/
     	$result = self::$connector['old']->api("contact/sync", $contact);
-    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->error);
+    	if (!(int)$result->success) throw new Exception('Syncing contact failed. Error returned: '. $result->error);
         
         // successful request
         return $result;
@@ -84,16 +116,24 @@ class ACAPI{
     	
     	/*
     	$contact = array(
-    		"first_name"         => "Test",
-    		"last_name"          => "Test",
-    		"p[{$list_id}]"      => $list_id,
-    		"status[{$list_id}]" => 1, // "Active" status
+    		"first_name"            => "Test",
+    		"last_name"             => "Test",
+    		"p[{$list_id}]"         => $list_id,
+    		"tag"                   => 'tag1,tag2,tag3',
+    		"phone"                 => '+3245234543',
+    		"status[{$list_id}]"    => 1, // "Active" status
     	);*/
     	$result = self::$connector['old']->api("contact/add", $contact);
-    	if (!(int)$result->success) throw new \Exception('Add contact failed. Error returned: '. $result->error);
+    	if ($result->success == 0) throw new Exception('Add contact failed. Error returned: '. $result->error);
         
         // successful request
         return $result;
+    }
+    
+    public static function createOrUpdateContact($email, $fieldsToUpdate){
+        $contact = self::getContactByEmail($email);
+        if($contact) return self::updateContact($email, $fieldsToUpdate);
+        else return self::createContact($email, $fieldsToUpdate);
     }
     
     public static function updateContactFields($contact, $new_fields=[]){
@@ -117,7 +157,7 @@ class ACAPI{
         if(!is_string($email)) throw new Exception('The email must by a string');
     	$result = self::$connector['old']->api("contact/view?email=".$email);
 
-    	if ($result->http_code != 200) throw new \Exception('Error returned: '. $result->error);
+    	if ($result->http_code != 200) throw new Exception('Error returned: '. $result->error);
         if(0 === (int)$result->success) return null;
         // successful request
         return $result;
@@ -143,7 +183,7 @@ class ACAPI{
         $list = array_shift($list);
         $courseField = self::findField($list->fields,$slug);
         
-        if(!$courseField) throw new \Exception('Unable to find custom field: '.$slug);
+        if(!$courseField) throw new Exception('Unable to find custom field: '.$slug);
         return $courseField;
     }
     
@@ -159,7 +199,7 @@ class ACAPI{
         $request["event-data"] = $eventData;
 		
     	$result = self::$connector['old']->api("tracking/log", $request);
-    	if (!(int)$result->success) throw new \Exception('Syncing contact failed. Error returned: '. $result->message);
+    	if (!(int)$result->success) throw new Exception('Syncing contact failed. Error returned: '. $result->message);
         
         // successful request
         if(!is_object($result)) return (int)$result;

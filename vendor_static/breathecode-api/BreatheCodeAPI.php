@@ -1,7 +1,7 @@
 <?php
 
 namespace BreatheCode;
-
+use Exception;
 class BCWrapper{
     
     private static $clientId = '';
@@ -81,32 +81,33 @@ class BCWrapper{
 		    'headers' => $headers
 		]);
         
-		if(!$response || !isset($response->body)) throw new \Exception('Autentication Error');
+		if(!$response || !isset($response->body)) throw new Exception('Autentication Error');
 		
-		if(!isset($response->body->access_token)) throw new \Exception('Autentication Error');
+		if(!isset($response->body->access_token)) throw new Exception('Autentication Error');
 		else self::setToken($response->body->access_token);
     }
     
     public static function request($method,$resource,$args=[],$decode=true,$retry=true){
         $method = strtoupper($method);
 
-        $args['access_token'] = self::getToken();
         
         if($method=='GET'){
+        	$args['access_token'] = self::getToken();
         	$resp = self::$guz->get(self::$host.$resource.'?'.http_build_query($args));
         } 
         else if($method=='POST'){
+        	$args['access_token'] = self::getToken();
 	        $options = [ 'json' =>  $args ];
 	        if($resource==='token') $options['auth'] = [self::$clientId, self::$clientSecret];
 	        $resp = self::$guz->post(self::$host.$resource, $options);
         } 
         else if($method=='PUT'){
 	        $options = [ 'json' =>  $args ];
-	        $resp = self::$guz->put(self::$host.$resource, $options);
+	        $resp = self::$guz->put(self::$host.$resource.'?access_token='.self::getToken(), $options);
         } 
-		else throw new \Exception('Invalid HTTP request type '.$method);
+		else throw new Exception('Invalid HTTP request type '.$method);
 
-		if(!$resp) throw new \Exception('CURL Error');
+		if(!$resp) throw new Exception('CURL Error');
 		$statusCode = $resp->getStatusCode();
 		
 		if($statusCode==500) 
@@ -114,9 +115,9 @@ class BCWrapper{
 		    if(self::$debug) 
 		    {
 		    	$responseBody = $resp->getBody();
-		    	throw new \Exception($responseBody->msg);
+		    	throw new Exception($responseBody->msgm, $statusCode);
 		    }
-		    throw new \Exception('There was a problem with the request');
+		    throw new Exception('There was a problem with the request', $statusCode);
 		}
 		else if($statusCode==401 || $statusCode==403) 
 		{
@@ -128,12 +129,12 @@ class BCWrapper{
 				else return null;
 			}
 			else {
-				if(self::$debug) throw new \Exception('Unauthorized BreatheCode API request for method: '.$resource);
-				else throw new \Exception('Unauthorized credentials');
+				if(self::$debug) throw new Exception('Unauthorized BreatheCode API request for method: '.$resource, $statusCode);
+				else throw new Exception('Unauthorized credentials', $statusCode);
 			}
 		}
 		else if($statusCode!=200){
-		    throw new \Exception('Code: '.$statusCode.', error: '.$resp->getReasonPhrase());
+		    throw new Exception('Code: '.$statusCode.', error: '.$resp->getReasonPhrase(), $statusCode);
 		}
 		
 		$responseBody = json_decode($resp->getBody());
@@ -144,15 +145,17 @@ class BCWrapper{
 			{
 				$message .= ': ';
 				$message .= json_last_error_msg();
+				$message .= ' -> ';
+				$message .= $resp->getBody();
 			}
-			throw new \Exception($message);
+			throw new Exception($message, 500);
 		}
 		
 		if(isset($responseBody->code)){
 			
     		if($responseBody->code!='200') {
-    		    if(self::$debug) throw new \Exception($responseBody->msg);
-    		    else throw new \Exception('There was a problem in the request');
+    		    if(self::$debug) throw new Exception($responseBody->msg, 500);
+    		    else throw new Exception('There was a problem in the request');
     		}
     		return $responseBody->data;
 		}
@@ -160,7 +163,7 @@ class BCWrapper{
     }
     
     private static function validate($params,$key){
-        if(empty($params[$key])) throw new \Exception('Undefined required parameter '.$key);
+        if(empty($params[$key])) throw new Exception('Undefined required parameter '.$key);
     }
     
     public static function autenticate($username, $password, $scopes){
@@ -179,7 +182,7 @@ class BCWrapper{
 		{
     		return $token;	
 		}
-		else throw new \Exception('There is no access_token for this credentials');
+		else throw new Exception('There is no access_token for this credentials');
 		
 		return false;
     }
