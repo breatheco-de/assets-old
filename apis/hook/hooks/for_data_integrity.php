@@ -82,15 +82,25 @@ function addDataIntegrityHooks($api){
         $userEmail = null;
         if(!empty($parsedBody['email'])) $userEmail = $parsedBody['email'];
         else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
-        else throw new Exception('Please specify the user email');
+        else throw new Exception('Please specify the user email', 404);
         
         ACAPI::start(AC_API_KEY);
-        $contact = ACAPI::getContactByEmail($userEmail);
+        try{
+            $contact = ACAPI::getContactByEmail($userEmail);
+        }catch(Exception $e){ return $response->withJson(['The contact was not found']); }
+        if(empty($contact)) return $response->withJson(['The contact was not found']);
         /*
             is it a student or alumni?
         */
-        $student = BC::getStudent(["student_id" => $userEmail]);
-        if($student) //it is a student
+        $student=null;
+        try{
+            $student = BC::getStudent(["student_id" => $userEmail]);
+        }catch(Exception $e){ 
+            if(!in_array($e->getCode(), [200,404])) throw $e; 
+            else $log[] = 'The email was not found on BreatheCode';
+        }
+        
+        if(!empty($student)) //it is a student
         {
             $status = HookFunctions::studentCohortStatus($student);
             
@@ -111,6 +121,7 @@ function addDataIntegrityHooks($api){
                 $newFields['BREATHECODEID'] = $student->id;
                 $log[] = 'The breathecode_id '.$student->id.' was added to the student';
             } 
+            
             $contactFields = ACAPI::updateContactFields($contact, $newFields);
             
             if(!empty($student->phone)){
@@ -130,8 +141,9 @@ function addDataIntegrityHooks($api){
             $contactFields["p[".ACAPI::list('alumni')."]"] = ACAPI::list('alumni');
             if($status['alumni']) $log[] = 'The student -subscribed- to the alumni list';
             else $log[] = 'The student -unsubscribed- from: alumni list';
+            
+            \AC\ACAPI::updateContact($userEmail,$contactFields);
         }
-        \AC\ACAPI::updateContact($contact->email,$contactFields);
         
         return $response->withJson($log);
 	});

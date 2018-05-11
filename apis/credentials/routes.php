@@ -70,7 +70,7 @@ function addAPIRoutes($api){
     		'cohort_slug' => $cohortSlug
     	]);
     	
-    	if($user){
+    	if(!empty($user) && $user->type==='student'){
             ACAPI::start(AC_API_KEY);
             $result = ACAPI::createOrUpdateContact($username,[
                 "first_name" => $firstName,
@@ -83,6 +83,7 @@ function addAPIRoutes($api){
             
             return $response->withJson($user)->withStatus(200);
     	}
+
         return $response->withJson('error');
 	});
 	

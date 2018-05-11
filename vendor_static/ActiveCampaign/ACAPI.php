@@ -195,15 +195,26 @@ class ACAPI{
         return $result;
     }
     
+    private static function _processResult($result){
+        
+        if(empty($result)) throw new Exception('Empty response from Active Campaign');
+        if(isset($result->success) && 0 === (int) $result->success) return null;
+        
+            
+        //if(!isset($result->http_code)) print_r($result); die();
+        //if($result->http_code != '200' && !isset($result->error)) print_r($result); die();
+    	if ($result->http_code != '200') throw new Exception('Error returned: '. $result->error);
+    	
+    	return $result;
+    }
+    
     public static function getContactByEmail($email){
         
         if(!is_string($email)) throw new Exception('The email must by a string');
     	$result = self::$connector['old']->api("contact/view?email=".$email);
 
-    	if ($result->http_code != 200) throw new Exception('Error returned: '. $result->error);
-        if(0 === (int)$result->success) return null;
         // successful request
-        return $result;
+        return self::_processResult($result);
     }
     
     public static function getAllCustomFields(){
