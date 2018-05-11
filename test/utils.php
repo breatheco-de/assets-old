@@ -50,8 +50,9 @@
     function getSample($slug){
         if(!empty($samples[$slug])) return $samples[$slug];
         else{
-            $content = file_get_contents(ASSETS_HOST.'/apis/hook/sample/'.$slug);
-            if(!$content) throw new Exception('Invalid Sample URL: '.ASSETS_HOST.'hook/sample/'.$slug);
+            $url = ASSETS_HOST.'/apis/hook/sample/'.$slug;
+            $content = file_get_contents($url);
+            if(!$content) throw new Exception('Invalid Sample URL: '.$url);
             
             $obj = json_decode($content);
             if(!$obj) throw new Exception('Invalid sample syntax for sample/'.$slug.' '.$content);
