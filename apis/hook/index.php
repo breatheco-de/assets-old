@@ -29,5 +29,9 @@
     //eventbrite api integration
     require_once('hooks/for_data_integrity.php');
     $api = addDataIntegrityHooks($api);
+
+    //eventbrite api integration
+    require_once('hooks/for_samples.php');
+    $api = addSampleRoutes($api);
 	
 	$api->run();

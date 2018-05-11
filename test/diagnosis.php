@@ -25,10 +25,16 @@
     
     $runner->addCheck(checkURL($assetsURL.'/replit/cohort/mdc-iii', "html"));
     $runner->addCheck(checkURL($assetsURL.'/replit/cohort', "en-iii"));
+    $runner->addCheck(checkURL($assetsURL.'/replit/templates', "object-oriented-programing"));
     
     $runner->addCheck(checkURL($assetsURL.'/kill-the-bug/api/pending_attempts', '"code":200'));
-    
-    $runner->addCheck(checkURL($assetsURL.'/hook/referral_code/mricigliano@4geeks.co', '"referral_code"'));
+
+    $runner->addCheck(checkURL($assetsURL.'/hook/referral_code/'.getSample('user')->username, '"referral_code"'));
+    $runner->addCheck(checkEndpoint(
+        'POST',
+        $assetsURL.'/hook/sync/contact',
+        ['email'=> getSample('user')->username]
+    )->assertSuccess());
     
     $runner->addCheck(checkURL($assetsURL.'/fake/hello.php', '"content" : "hello world"'));
     $runner->addCheck(checkURL($assetsURL.'/fake/project1.php', 'Amazon eCommerce'));

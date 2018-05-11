@@ -331,6 +331,10 @@ class BCWrapper{
 	    return self::request('GET','badges/',$args,$decode);
 	}
 	
+	public static function getAll($type,$args=[],$decode=true){
+	    return self::request('GET',$type.'s/',$args,$decode);
+	}
+	
 	public static function getBadge($args=[],$decode=true){
 	
 	    return self::request('GET','badge/'.$args['badge_id'],$args,$decode);
