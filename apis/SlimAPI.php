@@ -238,8 +238,9 @@ class SlimAPI{
         $val = new Validator($value, $key);
         return $val;
     }
-    function optional($value){
-        return (!empty($value)) ? $value : null;
+    function optional($value, $key=null){
+        if(!$key) return (!empty($value)) ? $value : null;
+        else return (!empty($value[$key])) ? $value[$key] : null;
     }
     
 }
@@ -252,10 +253,12 @@ class Validator{
     
     function __construct($value, $key=null){
         //if there is a key, the $value is an object a we need to grab the value inside of it
-        $value = (array) $value;
 
-        if($key && isset($value[$key])) $value = $value[$key];
-        else if($key) $value = null;
+        if($key){
+            $value = (array) $value;
+            if(isset($value[$key])) $value = $value[$key];
+            else $value = null;
+        }
         
         $this->value = $value;
         $this->key = $key;
@@ -277,6 +280,12 @@ class Validator{
         $validator = v::intVal()->validate($this->value);
         $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
+        return $this->value;
+    }
+    function email(){ 
+        $validator = v::email()->validate($this->value);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid email value: '.$for);
         return $this->value;
     }
     function url(){ 

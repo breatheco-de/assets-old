@@ -64,21 +64,21 @@ function addAPIRoutes($api){
 			if($now->diffInHours($day) < 24) throw new Exception('You have already answered',400);
 		} 
         
-		$row = $api->db['sqlite']->createRow( 'response', $properties = array(
+		$row = $api->db['sqlite']->createRow( 'response', [
 			'score' => $score,
 			'email' => $email,
-			'user_id' => $api->optional($parsedBody['user_id']),
-			'cohort_slug' => $api->optional($parsedBody['cohort_slug']),
-			'profile_slug' => $api->optional($parsedBody['profile_slug']),
-			'comment' => $api->optional($parsedBody['comment']),
-			'tags' => $api->optional($parsedBody['tags']),
+			'user_id' => $api->optional($parsedBody,'user_id'),
+			'cohort_slug' => $api->optional($parsedBody,'cohort_slug'),
+			'profile_slug' => $api->optional($parsedBody,'profile_slug'),
+			'comment' => $api->optional($parsedBody,'comment'),
+			'tags' => $api->optional($parsedBody,'tags'),
 			'created_at' => date("Y-m-d H:i:s")
-		) );
+		]);
 		
 		$row->save();
 		
 		try{
-        	$contact = \AC\ACAPI::trackEvent($email, 'nps_survey_answered');
+        	$contact = \AC\ACAPI::trackEvent($email, 'nps_survey_answered', $score);
 		}
 		catch(Exception $e)
 		{
