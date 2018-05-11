@@ -107,7 +107,7 @@ function addDataIntegrityHooks($api){
                 $newFields['COURSE'] = $status['courses'];
                 $log[] = 'The courses '.$status['courses'].' were added to the student';
             } 
-            if(!empty($status['BREATHECODEID'])){
+            if(!empty($student->id)){
                 $newFields['BREATHECODEID'] = $student->id;
                 $log[] = 'The breathecode_id '.$student->id.' was added to the student';
             } 
