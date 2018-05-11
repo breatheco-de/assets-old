@@ -262,33 +262,33 @@ class Validator{
     }
     function smallString($min=1, $max=255){ 
         $validator = v::stringType()->length($min, $max)->validate($this->value);
-        $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new ArgumentException('Invalid value'.$for);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function bigString($min=1, $max=2000){ 
         $validator = v::stringType()->length($min, $max)->validate($this->value);
         
-        $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new ArgumentException('Invalid value: '.$this->value.$for);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function int(){ 
         $validator = v::intVal()->validate($this->value);
-        $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new ArgumentException('Invalid value'.$for);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function url(){ 
         $validator = v::url()->validate($this->value);
-        $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new ArgumentException('Invalid value'.$for);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function bool(){ 
         $validator = v::boolType()->validate((bool) $this->value);
-        $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new ArgumentException('Invalid value'.$for);
+        $for = ($this->key) ? $this->value.' for '.$this->key : '';
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
 }

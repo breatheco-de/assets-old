@@ -25,7 +25,7 @@ class SurveyActions extends Flux.Action{
             if(typeof response === 'undefined') this.dispatch('ErrorStore.addError', "Unable to find the previous answers");
             else if(typeof response.code == 'undefined') this.dispatch('SurveyStore.setStudentAnswers', response);
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error.message);
+            this.dispatch('ErrorStore.addError', error.msg);
             console.log(error);  
         });
         
@@ -40,7 +40,7 @@ class SurveyActions extends Flux.Action{
                 else if(typeof response.message !== 'undefined') this.dispatch('ErrorStore.addError', response.message);
             }
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error.message);
+            this.dispatch('ErrorStore.addError', error.msg);
             console.log(error);  
         });
     }
