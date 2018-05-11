@@ -51,11 +51,13 @@ function addAPIRoutes($api){
         $parsedBody = $request->getParsedBody();
         if(empty($parsedBody['score'])) throw new Exception('Invalid param quiz_id');
         if(empty($parsedBody['email'])) throw new Exception('Invalid param email');
-        if(empty($parsedBody['user_id'])) throw new Exception('Invalid param user_id');
-        if(empty($parsedBody['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
         
-		$answers = $api->db['sqlite']->response()
-			->where('user_id',$parsedBody['user_id'])->fetchAll();
+        $a1 = [];
+		if(isset($parsedBody['user_id']))
+			$a1 = $api->db['sqlite']->response()->where('user_id',$parsedBody['user_id'])->fetchAll();
+		
+		$a2 = $api->db['sqlite']->response()->where('email',$parsedBody['email'])->fetchAll();
+		$answers = array_merge($a1,$a2);
 		foreach($answers as $ans){
 			$now = Carbon::now();
 			$day = Carbon::createFromFormat('Y-m-d H:i:s', $ans->created_at);
@@ -64,15 +66,20 @@ function addAPIRoutes($api){
         
         $score = $parsedBody['score'];
         $email = $parsedBody['email'];
-        $userId = $parsedBody['user_id'];
-        $cohort = $parsedBody['cohort_slug'];
-        $comment = (!empty($parsedBody['comment'])) ? $parsedBody['cohort_slug'] : null;
+        $userId = (!empty($parsedBody['user_id'])) ? $parsedBody['user_id'] : null;
+        $comment = (!empty($parsedBody['comment'])) ? $parsedBody['comment'] : null;
+        $profileSlug = (!empty($parsedBody['profile_slug'])) ? $parsedBody['profile_slug'] : null;
+        $cohort = (!empty($parsedBody['cohort_slug'])) ? $parsedBody['cohort_slug'] : null;
+        $tags = (!empty($parsedBody['tags'])) ? $parsedBody['tags'] : null;
 		
 		$row = $api->db['sqlite']->createRow( 'response', $properties = array(
 			'score' => $score,
 			'user_id' => $userId,
+			'email' => $email,
 			'cohort_slug' => $cohort,
-			'comment' => $cohort,
+			'profile_slug' => $profileSlug,
+			'comment' => $comment,
+			'tags' => $tags,
 			'created_at' => date("Y-m-d H:i:s")
 		) );
 		

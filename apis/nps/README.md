@@ -2,4 +2,22 @@
 
 # Net Promoter Score API
 
-TODO: Finish this readme
+Get all reponses
+```
+GET: /responses
+```
+
+Get all reponses from particular student
+```
+GET: /responses/user/{user_id}
+```
+
+Create a new reponse
+```
+PUT /response
+```
+
+Get al a particular reponse
+```
+GET: /response
+```

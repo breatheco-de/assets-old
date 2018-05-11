@@ -102,8 +102,8 @@ export default class Results extends Flux.View {
                 <thead className="thead-dark">
                   <tr>
                     <td>User ID</td>
-                    <td>score</td>
-                    <td>cohort_slug</td>
+                    <td>Score</td>
+                    <td>Cohort</td>
                     <td>Created</td>
                     <td>Comments</td>
                   </tr>

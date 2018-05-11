@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9ad94428d740f17c80a7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "35bb52d1459f77c5a295"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -66667,12 +66667,12 @@ var Results = function (_Flux$View) {
                   _react2.default.createElement(
                     "td",
                     null,
-                    "score"
+                    "Score"
                   ),
                   _react2.default.createElement(
                     "td",
                     null,
-                    "cohort_slug"
+                    "Cohort"
                   ),
                   _react2.default.createElement(
                     "td",
