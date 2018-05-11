@@ -1,5 +1,5 @@
 <?php
-
+use BreatheCode\BCWrapper as BC;
 class HookFunctions{
     
     static $api;
@@ -31,5 +31,18 @@ class HookFunctions{
         ]);
         
         return $contact;
+    }
+    
+    static function studentCohortStatus($user){
+        $status = [];
+        foreach($user->cohorts as $cohortId){
+            $cohort = BC::getCohort(['cohort_id' => $cohortId]);
+            $active = ['not-started', 'on-prework', 'on-course','on-final-project'];
+            $alumni = ['finished'];
+            if(in_array($cohort->stage, $active)) $status['active'] = true;
+            if(in_array($cohort->stage, $alumni)) $status['alumni'] = true;
+        }
+        
+        return $status;
     }
 }

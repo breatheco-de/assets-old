@@ -187,7 +187,6 @@ class BCWrapper{
 		return false;
     }
     
-    
     public static function createStudent($params){
         
         self::validate($params,'email');
@@ -239,6 +238,13 @@ class BCWrapper{
         self::validate($params,'student_id');
 	    
 	    return self::request('GET','student/'.$params['student_id'],$params);
+	}
+	
+	public static function getCohort($params=[]){
+
+        self::validate($params,'cohort_id');
+	    
+	    return self::request('GET','cohort/'.$params['cohort_id'],$params);
 	}
 	
 	public static function getPasswordToken($params=[]){

@@ -4,6 +4,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 use BreatheCode\BCWrapper as BC;
+use \AC\ACAPI;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
@@ -73,12 +74,40 @@ function addDataIntegrityHooks($api){
         return $response->withJson('ok');
 	});
 	
-	$api->post('/sync/active_students', function (Request $request, Response $response, array $args) use ($api) {
+	$api->post('/sync/contact_cohorts', function (Request $request, Response $response, array $args) use ($api) {
         
-        //TODO: this services removes or adds active students to the active, student list 
-        //\AC\ACAPI::updateContact($contact->email,$fields);
+        $log = [];
+        $parsedBody = $request->getParsedBody();
         
-        return $response->withJson('ok');
+        $userEmail = null;
+        if(!empty($parsedBody['email'])) $userEmail = $parsedBody['email'];
+        else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
+        else throw new Exception('Please specify the user email');
+        
+        ACAPI::start(AC_API_KEY);
+        $contact = ACAPI::getContactByEmail($userEmail);
+        /*
+            is it a student or alumni?
+        */
+        $student = BC::getStudent(["student_id" => $userEmail]);
+        if($student) //it is a student
+        {
+            $contactFields = [];
+            
+            $status = HookFunctions::studentCohortStatus($student);
+            $contactFields["p[".ACAPI::list('active_student')."]"] = ACAPI::list('active_student');
+            $contactFields["status[".ACAPI::list('active_student')."]"] = ($status['active']) ? 1 : 2;
+            if($status['active']) $log[] = 'The student -subscribed- to the active_student list';
+            else $log[] = 'The student -unsubscribed- from: active_student list';
+
+            $contactFields["status[".ACAPI::list('alumni')."]"] = ($status['alumni']) ? 1 : 2;
+            $contactFields["p[".ACAPI::list('alumni')."]"] = ACAPI::list('alumni');
+            if($status['alumni']) $log[] = 'The student -subscribed- to the alumni list';
+            else $log[] = 'The student -unsubscribed- from: alumni list';
+        }
+        \AC\ACAPI::updateContact($contact->email,$contactFields);
+        
+        return $response->withJson($log);
 	});
 
 	return $api;

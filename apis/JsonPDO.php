@@ -26,7 +26,6 @@ class JsonPDO{
     }
     
     function logRequests($fileURL){
-
         $this->logger = new Logger('requests');
         $this->logger->pushHandler(new StreamHandler($fileURL, Logger::INFO));
     }
