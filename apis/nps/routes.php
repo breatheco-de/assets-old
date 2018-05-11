@@ -49,8 +49,8 @@ function addAPIRoutes($api){
 	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
 
         $parsedBody = $request->getParsedBody();
-        $email = $api->validate($parsedBody['score'])->int();
-        $score = $api->validate($parsedBody['email'])->email();
+        $score = $api->validate($parsedBody['score'])->int();
+        $email = $api->validate($parsedBody['email'])->email();
         
         $a1 = [];
 		if(isset($parsedBody['user_id']))
