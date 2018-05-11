@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "35bb52d1459f77c5a295"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "30fff3dcdce7448e3e16"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -66565,6 +66565,11 @@ var Results = function (_Flux$View) {
           _react2.default.createElement(
             "td",
             null,
+            item.email
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
             item.score
           ),
           _react2.default.createElement(
@@ -66663,6 +66668,11 @@ var Results = function (_Flux$View) {
                     "td",
                     null,
                     "User ID"
+                  ),
+                  _react2.default.createElement(
+                    "td",
+                    null,
+                    "Email"
                   ),
                   _react2.default.createElement(
                     "td",

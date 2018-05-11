@@ -60,6 +60,7 @@ export default class Results extends Flux.View {
     const resultRows = this.state.results.filter((item) => (!this.filterCohorts || item.cohort_slug == this.filterCohorts)).map(function(item, i){
       return (<tr key={i}>
               <td>{item.user_id}</td>
+              <td>{item.email}</td>
               <td>{item.score}</td>
               <td>{item.cohort_slug}</td>
               <td>{item.created_at}</td>
@@ -102,6 +103,7 @@ export default class Results extends Flux.View {
                 <thead className="thead-dark">
                   <tr>
                     <td>User ID</td>
+                    <td>Email</td>
                     <td>Score</td>
                     <td>Cohort</td>
                     <td>Created</td>
