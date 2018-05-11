@@ -18,6 +18,17 @@ class ACAPI{
         'hiring_partners' => 10
     ];
     
+    private static $automations = [
+        'nps' => 23,
+        'referral_program' => 27,
+        'student_referral' => 28,
+        'soft_to_hard' => 25,
+        'incoming_soft' => 21,
+        'incoming_strong' => 7,
+        'online_platform_registration' => 11,
+        'newsletter' => 12
+    ];
+    
     private static $tags = [
         'platform_signup'
     ];
@@ -26,7 +37,7 @@ class ACAPI{
     
     public static function tag($slug){
         if(is_array($slug)){
-            foreach($slug as $s) if(!in_array($s, self::$tags)) throw new Exception('Invalid Active Campaign Tag');
+            foreach($slug as $s) if(empty(self::$tags[$s])) throw new Exception('Invalid Active Campaign Tag');
             return implode(',',$slug);
         } 
         else{
@@ -38,6 +49,17 @@ class ACAPI{
     public static function list($slug){
         if(!isset(self::$lists[$slug])) throw new Exception('Invalid Active Campaign List: '.$slug);
         return self::$lists[$slug];
+    }
+    
+    public static function automation($slug){
+        if(is_array($slug)){
+            foreach($slug as $s) if(empty(self::$automations[$s])) throw new Exception('Invalid Active Campaign Automation: '.$s);
+            return implode(',',$slug);
+        } 
+        else{
+            if(!in_array($slug, self::$automations)) throw new Exception('Invalid Active Campaign Automation: '.$slug);
+            return $slug;
+        } 
     }
     
     public static function start($apiKey){
@@ -151,6 +173,26 @@ class ACAPI{
                 $fields['field['.$original_key.','.$original_value->dataid.']'] = $newFields[$original_value->perstag];
         }
         return $fields;
+    }
+    
+    public static function addToAutomations($email, $automations){
+        
+    	/*
+    	$contact = array(
+    		"contact_email"            => "Test",
+    		"automation"             => "1,3,56,7",
+    	);*/
+    	$args = [
+    	    "contact_email" => $email,
+    	    "automation" => self::automation($automations)
+    	];
+    	
+    	$result = self::$connector['old']->api("automation/contact_add",$args);
+
+    	if ($result->http_code != 200) throw new Exception('Error returned: '. $result->error);
+        if(0 === (int)$result->success) return null;
+        // successful request
+        return $result;
     }
     
     public static function getContactByEmail($email){

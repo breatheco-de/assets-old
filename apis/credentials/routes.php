@@ -85,6 +85,7 @@ function addAPIRoutes($api){
                     "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
                     "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
                 ]);
+                if($result) ACAPI::addToAutomations($body->email, ['online_platform_registration']);
                 
                 return $response->withJson($user)->withStatus(200);
         	}
