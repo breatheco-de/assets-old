@@ -56,45 +56,33 @@ function addAPIRoutes($api){
 	
 	$api->put('/signup', function (Request $request, Response $response, array $args) use ($api) {
         
-        $body = json_decode($request->getBody()->getContents());
-        if(empty($body->email)) throw new Exception('Invalid email');
-        if(empty($body->first_name)) throw new Exception('Invalid first_name');
-        if(empty($body->last_name)) throw new Exception('Invalid last_name');
-        if(empty($body->phone)) throw new Exception('Invalid phone');
-        if(empty($body->cohort_slug)) throw new Exception('Invalid cohort_slug');
+        $body = $api->getParsedBody();
+        $username = $api->validate($parsedBody['email'])->email();
+        $firstName = $api->validate($parsedBody['first_name'])->smallString();
+        $lastName = $api->validate($parsedBody['last_name'])->smallString();
+        $phone = $api->validate($parsedBody['phone'])->smallString();
+        $cohortSlug = $api->validate($parsedBody['cohort_slug'])->smallString();
         
-        $username = $body->email;
-        $firstName = $body->first_name;
-        $lastName = $body->last_name;
-        $phone = $body->phone;
-        $cohortSlug = $body->cohort_slug;
-        try{
-        	$user = BC::createStudent([
-        		'email' => urlencode($username),
-        		'full_name' => $firstName.' '.$lastName,
-        		'phone' => $phone,
-        		'cohort_slug' => $cohortSlug
-        	]);
-        	
-        	if($user){
-                ACAPI::start(AC_API_KEY);
-                $result = ACAPI::createOrUpdateContact($body->email,[
-                    "first_name" => $firstName,
-                    "last_name" => $lastName,
-                    "phone" => $phone,
-                    "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
-                    "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
-                ]);
-                if($result) ACAPI::addToAutomations($body->email, ['online_platform_registration']);
-                
-                return $response->withJson($user)->withStatus(200);
-        	}
-        }
-        catch(Exception $e)
-        {
-            if(API_DEBUG) throw $e;
-	    	return $response->withJson(['msg'=>$e->getMessage()])->withStatus(500);
-        }
+    	$user = BC::createStudent([
+    		'email' => urlencode($username),
+    		'full_name' => $firstName.' '.$lastName,
+    		'phone' => $phone,
+    		'cohort_slug' => $cohortSlug
+    	]);
+    	
+    	if($user){
+            ACAPI::start(AC_API_KEY);
+            $result = ACAPI::createOrUpdateContact($username,[
+                "first_name" => $firstName,
+                "last_name" => $lastName,
+                "phone" => $phone,
+                "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
+                "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
+            ]);
+            if($result) ACAPI::addToAutomations($username, ['online_platform_registration']);
+            
+            return $response->withJson($user)->withStatus(200);
+    	}
         return $response->withJson('error');
 	});
 	

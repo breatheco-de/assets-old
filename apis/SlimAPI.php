@@ -47,11 +47,12 @@ class SlimAPI{
         	$c['errorHandler'] = function ($c) {
         	    return function ($request, $response, $exception) use ($c) {
         	        
-        	        $code = $exception->getCode();
-
         	        $this->log(self::$ERROR, $exception->getMessage());
-    
-        	        return $c['response']->withStatus(($code) ? $code : 200)
+
+        	        $code = $exception->getCode();
+                    if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
+
+        	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
@@ -60,8 +61,9 @@ class SlimAPI{
         	    return function ($request, $response, $exception) use ($c) {
         	        
         	        $this->log(self::$ERROR, $exception->getMessage());
-    
-        	        return $c['response']->withStatus(500)
+        	        $code = $exception->getCode();
+                    if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
+        	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
@@ -236,15 +238,20 @@ class SlimAPI{
         $val = new Validator($value, $key);
         return $val;
     }
+    function optional($value){
+        return (!empty($value)) ? $value : null;
+    }
     
 }
-
+class ArgumentException extends Exception{
+    protected $code = 400;
+}
 class Validator{
     var $value = null;
     var $key = null;
     
     function __construct($value, $key=null){
-        //if there is a key, the $value is an object a we need to grabe the value inside of it
+        //if there is a key, the $value is an object a we need to grab the value inside of it
         $value = (array) $value;
 
         if($key && isset($value[$key])) $value = $value[$key];
@@ -256,32 +263,32 @@ class Validator{
     function smallString($min=1, $max=255){ 
         $validator = v::stringType()->length($min, $max)->validate($this->value);
         $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        if(!$validator) throw new ArgumentException('Invalid value'.$for);
         return $this->value;
     }
     function bigString($min=1, $max=2000){ 
         $validator = v::stringType()->length($min, $max)->validate($this->value);
         
         $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new Exception('Invalid value: '.$this->value.$for, 500);
+        if(!$validator) throw new ArgumentException('Invalid value: '.$this->value.$for);
         return $this->value;
     }
     function int(){ 
         $validator = v::intVal()->validate($this->value);
         $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        if(!$validator) throw new ArgumentException('Invalid value'.$for);
         return $this->value;
     }
     function url(){ 
         $validator = v::url()->validate($this->value);
         $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        if(!$validator) throw new ArgumentException('Invalid value'.$for);
         return $this->value;
     }
     function bool(){ 
         $validator = v::boolType()->validate((bool) $this->value);
         $for = ($this->key) ? ' for '.$this->key : '';
-        if(!$validator) throw new Exception('Invalid value'.$for, 500);
+        if(!$validator) throw new ArgumentException('Invalid value'.$for);
         return $this->value;
     }
 }

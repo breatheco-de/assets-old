@@ -24,7 +24,7 @@ function addAPIRoutes($api){
 	
 	$api->get('/student/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
 		
-		if(empty($args['user_id'])) throw new Exception('Invalid param user_id', 500);
+		$api->validate($args['user_id'])->int();
 		
 		$student = BCWrapper::getStudent(['student_id'=>$args['user_id']]);
 	    return $response->withJson($student);
@@ -32,7 +32,7 @@ function addAPIRoutes($api){
 	
 	$api->get('/responses/user/{user_id}', function(Request $request, Response $response, array $args) use ($api) {
         
-		if(empty($args['user_id'])) throw new Exception('Invalid param user_id', 500);
+		$api->validate($args['user_id'])->int();
 		
 		$row = $api->db['sqlite']->response()
 			->where('user_id',$args['user_id']);
@@ -49,8 +49,8 @@ function addAPIRoutes($api){
 	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
 
         $parsedBody = $request->getParsedBody();
-        if(empty($parsedBody['score'])) throw new Exception('Invalid param quiz_id');
-        if(empty($parsedBody['email'])) throw new Exception('Invalid param email');
+        $email = $api->validate($parsedBody['score'])->int();
+        $score = $api->validate($parsedBody['email'])->email();
         
         $a1 = [];
 		if(isset($parsedBody['user_id']))
@@ -61,25 +61,17 @@ function addAPIRoutes($api){
 		foreach($answers as $ans){
 			$now = Carbon::now();
 			$day = Carbon::createFromFormat('Y-m-d H:i:s', $ans->created_at);
-			if($now->diffInHours($day) < 24) throw new Exception('You have already answered');
+			if($now->diffInHours($day) < 24) throw new Exception('You have already answered',400);
 		} 
         
-        $score = $parsedBody['score'];
-        $email = $parsedBody['email'];
-        $userId = (!empty($parsedBody['user_id'])) ? $parsedBody['user_id'] : null;
-        $comment = (!empty($parsedBody['comment'])) ? $parsedBody['comment'] : null;
-        $profileSlug = (!empty($parsedBody['profile_slug'])) ? $parsedBody['profile_slug'] : null;
-        $cohort = (!empty($parsedBody['cohort_slug'])) ? $parsedBody['cohort_slug'] : null;
-        $tags = (!empty($parsedBody['tags'])) ? $parsedBody['tags'] : null;
-		
 		$row = $api->db['sqlite']->createRow( 'response', $properties = array(
 			'score' => $score,
-			'user_id' => $userId,
 			'email' => $email,
-			'cohort_slug' => $cohort,
-			'profile_slug' => $profileSlug,
-			'comment' => $comment,
-			'tags' => $tags,
+			'user_id' => $api->optional($parsedBody['user_id']),
+			'cohort_slug' => $api->optional($parsedBody['cohort_slug']),
+			'profile_slug' => $api->optional($parsedBody['profile_slug']),
+			'comment' => $api->optional($parsedBody['comment']),
+			'tags' => $api->optional($parsedBody['tags']),
 			'created_at' => date("Y-m-d H:i:s")
 		) );
 		
