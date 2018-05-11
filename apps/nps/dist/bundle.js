@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "30fff3dcdce7448e3e16"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1fb199b7a4d870f6fe53"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -65985,7 +65985,7 @@ var SurveyActions = function (_Flux$Action) {
                 console.log(response);
                 _this2.dispatch('SurveyStore.setResults', response);
             }).catch(function (error) {
-                _this2.dispatch('ErrorStore.addError', error.message);
+                _this2.dispatch('ErrorStore.addError', 'Imposible to get NPS results');
                 console.log(error);
             });
         }
@@ -65998,7 +65998,7 @@ var SurveyActions = function (_Flux$Action) {
                 console.log(response);
                 if (typeof response === 'undefined') _this3.dispatch('ErrorStore.addError', "Unable to find the previous answers");else if (typeof response.code == 'undefined') _this3.dispatch('SurveyStore.setStudentAnswers', response);
             }).catch(function (error) {
-                _this3.dispatch('ErrorStore.addError', error.message);
+                _this3.dispatch('ErrorStore.addError', 'Imposible to get student answers');
                 console.log(error);
             });
 
@@ -66009,7 +66009,7 @@ var SurveyActions = function (_Flux$Action) {
                     if (typeof response.msg !== 'undefined') _this3.dispatch('ErrorStore.addError', response.msg);else if (typeof response.message !== 'undefined') _this3.dispatch('ErrorStore.addError', response.message);
                 }
             }).catch(function (error) {
-                _this3.dispatch('ErrorStore.addError', error.message);
+                _this3.dispatch('ErrorStore.addError', 'Imposible to retrieve student');
                 console.log(error);
             });
         }
@@ -66029,6 +66029,9 @@ var SurveyActions = function (_Flux$Action) {
                 if (response.code == 500) _this4.dispatch('ErrorStore.addError', response.message);else {
                     history.push('/thanks');
                 }
+            }).catch(function (error) {
+                _this4.dispatch('ErrorStore.addError', 'Error saving the response, maybe you have already voted?');
+                console.log(error);
             });
         }
     }]);
@@ -66396,7 +66399,8 @@ var Confirm = function (_Flux$View) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.setState({
-        student: _SurveyStore2.default.getStudent()
+        student: _SurveyStore2.default.getStudent(),
+        answer: _SurveyStore2.default.getAnswerData()
       });
     }
   }, {
@@ -66414,9 +66418,26 @@ var Confirm = function (_Flux$View) {
           _react2.default.createElement(
             "div",
             { className: "col-12" },
-            _react2.default.createElement(
-              "h1",
+            this.state.answer.rating > 7 ? _react2.default.createElement(
+              "div",
               null,
+              _react2.default.createElement("img", { style: { maxHeight: '200px' }, src: "http://assets.breatheco.de/apis/img/images.php?cat=funny&random&blob" }),
+              _react2.default.createElement(
+                "h1",
+                { className: "text-success" },
+                "Awesome!"
+              )
+            ) : '',
+            _react2.default.createElement(
+              "h3",
+              null,
+              "You gave us ",
+              this.state.answer.rating,
+              " points out of 10"
+            ),
+            _react2.default.createElement(
+              "h3",
+              { className: "mb-4" },
               "Are you sure you want to send this results?"
             ),
             _react2.default.createElement(
@@ -66980,7 +67001,8 @@ var Thanks = function (_Flux$View) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.setState({
-        student: _SurveyStore2.default.getStudent()
+        student: _SurveyStore2.default.getStudent(),
+        answer: _SurveyStore2.default.getAnswerData()
       });
     }
   }, {
@@ -67000,7 +67022,31 @@ var Thanks = function (_Flux$View) {
               "h1",
               null,
               "Thank You!"
-            )
+            ),
+            this.state.answer.rating > 7 ? _react2.default.createElement(
+              "div",
+              { className: "" },
+              _react2.default.createElement(
+                "p",
+                null,
+                "Would you mind giving us a review on Switchup or Course Report?"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "btn btn-light", href: "https://www.coursereport.com/schools/4geeks-academy#/reviews/write-a-review" },
+                "Course Report"
+              ),
+              _react2.default.createElement(
+                "span",
+                null,
+                "or"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "btn btn-light", href: "https://www.switchup.org/bootcamps/4geeks-academy" },
+                "Write a review on Switchup"
+              )
+            ) : ''
           )
         )
       );

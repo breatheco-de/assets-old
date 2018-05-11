@@ -12,7 +12,8 @@ export default class Thanks extends Flux.View {
   
   componentWillMount(){
     this.setState({
-      student: SurveyStore.getStudent()
+      student: SurveyStore.getStudent(),
+      answer: SurveyStore.getAnswerData()
     })
   }
   
@@ -23,6 +24,19 @@ export default class Thanks extends Flux.View {
                 <div className="row">
                   <div className="col-12">
                     <h1>Thank You!</h1>
+                    { 
+                      (this.state.answer.rating > 7) ?
+                        <div className="">
+                          <p>Would you mind giving us a review on Switchup or Course Report?</p>
+                          <a className="btn btn-light" href="https://www.coursereport.com/schools/4geeks-academy#/reviews/write-a-review">
+                            Course Report
+                          </a>
+                          <span>or</span>
+                          <a className="btn btn-light" href="https://www.switchup.org/bootcamps/4geeks-academy">
+                            Write a review on Switchup
+                          </a>
+                        </div> : ''
+                    }
                   </div>
                 </div>
             </div>

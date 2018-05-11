@@ -14,7 +14,7 @@ class SurveyActions extends Flux.Action{
             console.log(response);
             this.dispatch('SurveyStore.setResults', response);
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error.message);
+            this.dispatch('ErrorStore.addError', 'Imposible to get NPS results');
             console.log(error);  
         });
     }
@@ -25,7 +25,7 @@ class SurveyActions extends Flux.Action{
             if(typeof response === 'undefined') this.dispatch('ErrorStore.addError', "Unable to find the previous answers");
             else if(typeof response.code == 'undefined') this.dispatch('SurveyStore.setStudentAnswers', response);
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error.msg);
+            this.dispatch('ErrorStore.addError', 'Imposible to get student answers');
             console.log(error);  
         });
         
@@ -40,7 +40,7 @@ class SurveyActions extends Flux.Action{
                 else if(typeof response.message !== 'undefined') this.dispatch('ErrorStore.addError', response.message);
             }
         }).catch((error) => {
-            this.dispatch('ErrorStore.addError', error.msg);
+            this.dispatch('ErrorStore.addError', 'Imposible to retrieve student');
             console.log(error);  
         });
     }
@@ -58,6 +58,9 @@ class SurveyActions extends Flux.Action{
             {
                 history.push('/thanks');
             }
+        }).catch((error) => {
+            this.dispatch('ErrorStore.addError', 'Error saving the response, maybe you have already voted?');
+            console.log(error);  
         });
     }
 }
