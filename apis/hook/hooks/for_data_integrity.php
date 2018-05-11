@@ -99,11 +99,11 @@ function addDataIntegrityHooks($api){
                 $newFields['UTM_LANGUAGE'] = $status['lang'];
                 $log[] = 'The utm_language '.$status['lang'].' was added to the student';
             }
-            if(!empty($status['UTM_LOCATION'])){
+            if(!empty($status['locations'])){
                 $newFields['UTM_LOCATION'] = $status['locations'];
                 $log[] = 'The UTM_LOCATION '.$status['locations'].' was added to the student';
             } 
-            if(!empty($status['COURSE'])){
+            if(!empty($status['courses'])){
                 $newFields['COURSE'] = $status['courses'];
                 $log[] = 'The courses '.$status['courses'].' were added to the student';
             } 
