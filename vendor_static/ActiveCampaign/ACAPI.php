@@ -136,20 +136,21 @@ class ACAPI{
         else return self::createContact($email, $fieldsToUpdate);
     }
     
-    public static function updateContactFields($contact, $new_fields=[]){
-        
-    	$slugsToUpdate = array_map(function($vallue, $key){
-            return $key;
-    	},$fields);
-        foreach($contact->fields as $original_key => $original_value){
-            
+    /**
+     * 
+     * 
+    */ 
+    public static function updateContactFields($contact, $newFields=[]){
+        $contact = (array) $contact;
+        //print_r($contact);die();
+        $slugsToUpdate = [];
+        foreach($newFields as $key => $val) $slugsToUpdate[] = $key;
+
+        foreach($contact['fields'] as $original_key => $original_value){
             if(in_array($original_value->perstag, $slugsToUpdate))
-            {
-                //initialize the field with undefined
-                $fields['field['.$id.','.$original_value->dataid.']'] = $new_fields[$original_value->perstag];
-            }
-            
+                $fields['field['.$original_key.','.$original_value->dataid.']'] = $newFields[$original_value->perstag];
         }
+        return $fields;
     }
     
     public static function getContactByEmail($email){

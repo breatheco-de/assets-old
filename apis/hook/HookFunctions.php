@@ -35,13 +35,34 @@ class HookFunctions{
     
     static function studentCohortStatus($user){
         $status = [];
+        
+        $courses = [];
+        $cohorts = [];
+        $locations = [];
         foreach($user->cohorts as $cohortId){
             $cohort = BC::getCohort(['cohort_id' => $cohortId]);
             $active = ['not-started', 'on-prework', 'on-course','on-final-project'];
             $alumni = ['finished'];
             if(in_array($cohort->stage, $active)) $status['active'] = true;
             if(in_array($cohort->stage, $alumni)) $status['alumni'] = true;
+            
+            //get the language
+            $status['lang'] = $cohort->language;
+            
+            //add all the cohorts
+            $courses[] = $cohort->profile_slug;
+            
+            //add all the cohorts
+            $cohorts[] = $cohort->slug;
+            
+            //add all the cohorts
+            $locations[] = $cohort->location_slug;
         }
+        if(!isset($status['active'])) $status['active'] = false;
+        if(!isset($status['alumni'])) $status['alumni'] = false;
+        $status['courses'] = implode(',',$courses);
+        $status['cohorts'] = implode(',',$cohorts);
+        $status['locations'] = implode(',',$locations);
         
         return $status;
     }

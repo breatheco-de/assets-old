@@ -54,7 +54,6 @@ function addEventbriteRoutes($api){
           break;
         }
 	});
-	
 		
 	$api->post('/eventbrite/sync', function (Request $request, Response $response, array $args) use ($api) {
         
