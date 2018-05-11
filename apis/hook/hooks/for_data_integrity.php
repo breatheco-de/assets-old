@@ -95,15 +95,31 @@ function addDataIntegrityHooks($api){
             $status = HookFunctions::studentCohortStatus($student);
             
             $newFields = [];
-            if(!empty($status['lang'])) $newFields['UTM_LANGUAGE'] = $status['lang'];
-            if(!empty($status['UTM_LOCATION'])) $newFields['UTM_LOCATION'] = $status['locations'];
-            if(!empty($status['COURSE'])) $newFields['COURSE'] = $status['courses'];
-            if(!empty($status['BREATHECODEID'])) $newFields['BREATHECODEID'] = $student->id;
+            if(!empty($status['lang'])){
+                $newFields['UTM_LANGUAGE'] = $status['lang'];
+                $log[] = 'The utm_language '.$status['lang'].' was added to the student';
+            }
+            if(!empty($status['UTM_LOCATION'])){
+                $newFields['UTM_LOCATION'] = $status['locations'];
+                $log[] = 'The UTM_LOCATION '.$status['locations'].' was added to the student';
+            } 
+            if(!empty($status['COURSE'])){
+                $newFields['COURSE'] = $status['courses'];
+                $log[] = 'The courses '.$status['courses'].' were added to the student';
+            } 
+            if(!empty($status['BREATHECODEID'])){
+                $newFields['BREATHECODEID'] = $student->id;
+                $log[] = 'The breathecode_id '.$student->id.' was added to the student';
+            } 
             $contactFields = ACAPI::updateContactFields($contact, $newFields);
             
-            if(!empty($student->phone)) $contactFields["phone"] = $student->phone;
+            if(!empty($student->phone)){
+                $contactFields["phone"] = $student->phone;
+                $log[] = 'The following phone was added to the student: '.$student->phone;
+            } 
             //apply tags for each cohort
             $contactFields["tags"] = $status['cohorts'];
+            $log[] = 'The following tags were added to the student: '.$status['cohorts'];
             //add or remove to the active student list
             $contactFields["p[".ACAPI::list('active_student')."]"] = ACAPI::list('active_student');
             $contactFields["status[".ACAPI::list('active_student')."]"] = ($status['active']) ? 1 : 2;
