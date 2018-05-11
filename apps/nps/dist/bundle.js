@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1fb199b7a4d870f6fe53"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "441d4cb5ca2e78cc3b57"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -66421,7 +66421,7 @@ var Confirm = function (_Flux$View) {
             this.state.answer.rating > 7 ? _react2.default.createElement(
               "div",
               null,
-              _react2.default.createElement("img", { style: { maxHeight: '200px' }, src: "http://assets.breatheco.de/apis/img/images.php?cat=funny&random&blob" }),
+              _react2.default.createElement("img", { style: { maxHeight: '200px' }, src: "http://assets.breatheco.de/apis/img/images.php?cat=happy&random&blob" }),
               _react2.default.createElement(
                 "h1",
                 { className: "text-success" },

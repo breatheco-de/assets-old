@@ -28,7 +28,7 @@ export default class Confirm extends Flux.View {
                     {
                       (this.state.answer.rating > 7) ?
                         <div>
-                          <img style={{maxHeight: '200px'}} src="http://assets.breatheco.de/apis/img/images.php?cat=funny&random&blob" />
+                          <img style={{maxHeight: '200px'}} src="http://assets.breatheco.de/apis/img/images.php?cat=happy&random&blob" />
                           <h1 className="text-success">Awesome!</h1>
                         </div>:''
                     }
