@@ -4,6 +4,7 @@
 	require_once('routes.php');
 	
 	$api = new SlimAPI([
+		'debug' => API_DEBUG,
 		'name' => 'Video API'
 	]);
 	$api->addReadme('/','./README.md');

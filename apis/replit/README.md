@@ -2,9 +2,9 @@
 
 # Replit Exercises API
 
-#### Get single syllabus
+#### Get replt templates
 ```
-GET: replit/cohort/{slug}
+GET: replit/templates
 ```
 
 #### Get all replit from particular cohort
