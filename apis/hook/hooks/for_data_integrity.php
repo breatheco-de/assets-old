@@ -93,12 +93,13 @@ function addDataIntegrityHooks($api){
         if($student) //it is a student
         {
             $status = HookFunctions::studentCohortStatus($student);
-            $contactFields = ACAPI::updateContactFields($contact, [
-                'UTM_LANGUAGE' => $status['lang'],
-                'UTM_LOCATION' => $status['locations'],
-                'BREATHECODEID' => $student->id,
-                'COURSE' => $status['courses']
-            ]);
+            
+            $newFields = [];
+            if(!empty($status['lang'])) $newFields['UTM_LANGUAGE'] = $status['lang'];
+            if(!empty($status['UTM_LOCATION'])) $newFields['UTM_LOCATION'] = $status['locations'];
+            if(!empty($status['COURSE'])) $newFields['COURSE'] = $status['courses'];
+            if(!empty($status['BREATHECODEID'])) $newFields['BREATHECODEID'] = $student->id;
+            $contactFields = ACAPI::updateContactFields($contact, $newFields);
             
             if(!empty($student->phone)) $contactFields["phone"] = $student->phone;
             //apply tags for each cohort
