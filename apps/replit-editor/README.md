@@ -2,18 +2,19 @@
 
 # Replit Updater
 
-This is a small React JS that updates the replits of any given breathecode 
+This is a small React JS that updates the replits for any given breathecode 
 cohort using the [/apis/replit](Replit API).
 
 ## Functionalities
-1. The application receives a cohort_slug in the URL, like this:
+Everythign starts when the user types the following URL to create/update all the replits for a particular cohort:
 ```
 https://assets.breatheco.de/apps/replit-editor/:cohort_slug
 ```
-2. If no cohort slug is not specified ir says "cohort not found"
-3. If the cohort already has some replits they need to be prefilled on the array.
-4. IF the cohort has no previus replits it needs to created them from scratch.
-5. The app knows how many replits exercises should be added because you can find them as replit templates.
+1. The app renders a form with as many inputs as replits are supposed to be specified (you can check /replit/templates on the Replit API for that)
+2. If the cohort already has some replits already, the form should be prefilled with those values.
+3. If the cohort has no previus replits, the form will render with empty values.
+
+Note: If no cohort slug is specified, the application should show "cohort not found".
 
 ## TODO
 Everything, this app has not been started
