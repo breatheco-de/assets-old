@@ -4,10 +4,11 @@ Resources for Teachers and Students using the [BreatheCode Platform](https://bre
 
 ## Available Assets API's
 
-- [Image API](apis/img/)
+- [Images API](apis/img/)
 - [Sounds API](apis/sound/)
 - [Quiz API](apis/quiz/)
-- [Video API](apis/video/)
+- [Lessons API](apis/lesson/)
+- [Videos API](apis/video/)
 - [Replits API](apis/replit/)
 
 ## Sample API's for Projects

@@ -10,6 +10,7 @@ $optionsFontSizeXL: 15px;
     padding: 0;
 }
 input.form-control{border-radius: 0px;}
+textarea, input, button,textarea:focus, input:focus, button:focus { outline: none; }
 h1{
     font-size: 20px; margin: 20px 0px;
     @include media-breakpoint-up(md) {
@@ -83,6 +84,6 @@ h1{
             margin-top: 5px;
         }
     }
-    .comments{ min-width: 500px; }
+    .comments{ min-width: 350px; }
     .date{ min-width: 120px;}
 }

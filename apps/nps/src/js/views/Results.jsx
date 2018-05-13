@@ -111,15 +111,15 @@ export default class Results extends Flux.View {
               {cohortElements}
             </select>
           </div>
-          <div className="row kpis">
+          <div className="row kpis no-gutters">
             <div className="col-3 text-center">
               <span className="avg">Avg: {this.state.average}</span>
             </div>
             <div className="col-9 text-center">
-              <input placeholder="search..." className="form-control" type="text" onChange={(e) => this.setState({searchToken: e.target.value})} value={this.state.searchToken} />
+              <input placeholder="search..." className="form-control" type="text" onChange={(e) => this.setState({searchToken: e.target.value.toLowerCase()})} value={this.state.searchToken} />
             </div>
           </div>
-          <div className="row">
+          <div className="row no-gutters">
             <div className="col-12">
               <div className="table-responsive">
                 <table className="table table-hover table-striped">
