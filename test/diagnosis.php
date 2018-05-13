@@ -44,6 +44,7 @@
     $runner->addCheck(checkURL($assetsURL.'/projects/',"readme"));
     
     $runner->addCheck(checkURL($assetsURL.'/syllabus/full-stack','"label"'));
+    $runner->addCheck(checkURL($assetsURL.'/syllabus/web-development','"label"'));
     
     // Add console reporter
     $runner->addReporter(new BasicConsole(80, true));

@@ -18,7 +18,7 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 function addAPIRoutes($api){
 
 	$api->get('/responses', function (Request $request, Response $response, array $args) use ($api) {
-		$content = $api->db['sqlite']->response();
+		$content = $api->db['sqlite']->response()->orderBy( 'created_at', 'DESC' );
 	    return $response->withJson($content);
 	});
 	
@@ -78,7 +78,7 @@ function addAPIRoutes($api){
 		$row->save();
 		
 		try{
-        	$contact = \AC\ACAPI::trackEvent($email, 'nps_survey_answered', $score);
+        	if(AC_INTEGRATION) $contact = \AC\ACAPI::trackEvent($email, 'nps_survey_answered', $score);
 		}
 		catch(Exception $e)
 		{

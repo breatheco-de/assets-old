@@ -27,7 +27,7 @@ export default class Layout extends Flux.View {
     let errors = this.state.errors.map((msg,i) => (<li key={i}>{ msg }</li>));
     
     return (
-      <div className="container text-center">
+      <div className="container-fluid text-center">
         { (errors.length>0) ? (<div className="alert alert-danger mt-5">{errors}</div>) : ''}
         <BrowserRouter basename={process.env.BASENAME}>
           <div>

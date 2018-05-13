@@ -18,6 +18,8 @@ class ACAPI{
         'hiring_partners' => 10
     ];
     
+    private static $disabled = false;
+    
     private static $automations = [
         'nps' => 23,
         'referral_program' => 27,
