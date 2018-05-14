@@ -11,7 +11,16 @@ use BreatheCode\BCWrapper as BC;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
+use wrapi\slack\slack;
+
 function addAPIRoutes($api){
+	
+	$api->get('/slack', function (Request $request, Response $response, array $args) use ($api) {
+	    $slack = new slack(SLACK_API_TOKEN);
+	    $channels = $slack->channels->list(array("exclude_archived" => 1));
+	    return $response->withJson($channels);
+	});
+	
 	
 	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
         

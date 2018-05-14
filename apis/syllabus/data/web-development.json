@@ -1,14 +1,16 @@
 {
 	"label": "Web Development",
 	"profile": "web-development",
-	"description": "Become a professional Web-Developer building React.js applications and API's on the WordPress Architecture",
+	"instructions": "Become a professional Web-Developer building React.js applications and API's on the WordPress Architecture",
 	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 1",
-					"description": "Start Coding right away! Explan the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
+					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
+					"instructions": "Start Coding right away! Explan the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
 					"project": {
 						"title": "Digital Postcard",
 						"url": "https://bitbucket.org/codingacademy/postcard"
@@ -45,7 +47,8 @@
 				},
 				{
 					"label": "Day 2",
-					"description": "Conecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
+					"description": "Websites got popular and CSS evolved to enable very ritch and elaborated layouts.",
+					"instructions": "Conecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
 					"project": {
 						"title": "Simple Instagram",
 						"url": "https://bitbucket.org/codingacademy/instagram-without-bootstrap"
@@ -69,7 +72,8 @@
 				},
 				{
 					"label": "Day 3",
-					"description": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own.",
+					"description": "Then, Bootstrap came to profesionalize websites, removing 99% of the pain. Everything is a component from now own.",
+					"instructions": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own.",
 					"project": {
 						"title": "Bootstrap Instagram",
 						"url": "https://bitbucket.org/codingacademy/instagram-with-bootstrap"
@@ -87,7 +91,8 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must finish all pending proyects!",
+					"description": "And God created the coding weekends, the perfect place to partice, share and collaborate with your classmates.",
+					"instructions": "Students must finish all pending proyects!",
 					"technologies": ["HTML5", "CSS3"]
 				}
 			]
@@ -98,7 +103,7 @@
 			"summary": "Time to start having a professional workflow",
 			"days": [{
 					"label": "Day 4",
-					"description": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
+					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
 					"project": {
 						"title": "The CMD Challenge",
 						"url": "https://bitbucket.org/codingacademy/terminal-challenge"
@@ -113,7 +118,7 @@
 				},
 				{
 					"label": "Day 5",
-					"description": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT proyect and make them clone it and upload their piece of the proyect. Review the key concepts.",
+					"instructions": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT proyect and make them clone it and upload their piece of the proyect. Review the key concepts.",
 					"project": {
 						"title": "GIT Colaborative Landing Page",
 						"url": "https://bitbucket.org/codingacademy/git-collaboration"
@@ -128,7 +133,7 @@
 				},
 				{
 					"label": "Day 6",
-					"description": "Make the students design a wireframe starting from the typical client requierment specs, teach them the importance of using components and how to pick them and draw a wireframe before jumping into coding.",
+					"instructions": "Make the students design a wireframe starting from the typical client requierment specs, teach them the importance of using components and how to pick them and draw a wireframe before jumping into coding.",
 					"project": {
 						"title": "ABC Chocolate (Wire-framing)",
 						"url": "https://bitbucket.org/codingacademy/abc-chocolate-wire-framing"
@@ -139,7 +144,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects througouht the online platform"
+					"instructions": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects througouht the online platform"
 				}
 			]
 		},
@@ -149,7 +154,7 @@
 			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
 			"days": [{
 					"label": "Day 7",
-					"description": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts",
+					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts",
 					"project": {
 						"title": "The Excuse Generator",
 						"url": "https://bitbucket.org/codingacademy/excuse-generator"
@@ -178,7 +183,7 @@
 				},
 				{
 					"label": "Day 8",
-					"description": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
+					"instructions": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
 					"project": {
 						"title": "Replit session: Do the replits with the students"
 					},
@@ -192,7 +197,7 @@
 				},
 				{
 					"label": "Day 9",
-					"description": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS",
+					"instructions": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS",
 					"project": {
 						"title": "Random Card Generator",
 						"url": "https://bitbucket.org/codingacademy/random-card"
@@ -212,7 +217,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "During the weekend, students must finish all the replits"
+					"instructions": "During the weekend, students must finish all the replits"
 				}
 			]
 		},
@@ -223,7 +228,7 @@
 			"summary": "Create your first react application",
 			"days": [{
 					"label": "Day 10",
-					"description": "Explain the professional workflow in JS: Why Webpack created bundles? Whay use JS Modules? How organize your code, transpile with babel for cros-browser support, Javascript Emac2018. Please do not attempt to explain the Webpack Config.",
+					"instructions": "Explain the professional workflow in JS: Why Webpack created bundles? Whay use JS Modules? How organize your code, transpile with babel for cros-browser support, Javascript Emac2018. Please do not attempt to explain the Webpack Config.",
 					"project": {
 						"title": "Todo list with React",
 						"url": "#todo"
@@ -241,7 +246,7 @@
 				},
 				{
 					"label": "Day 11",
-					"description": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props",
+					"instructions": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props",
 					"project": {
 						"title": "Continue with: Todo list with React",
 						"url": "#todo"
@@ -256,7 +261,7 @@
 				},
 				{
 					"label": "Day 12",
-					"description": "React Router + Flux: How to create components that behave like Flux.Views (layouts) and math them with URL Routers. Demonstrate component lifecycle methods: WillMount, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow",
+					"instructions": "React Router + Flux: How to create components that behave like Flux.Views (layouts) and math them with URL Routers. Demonstrate component lifecycle methods: WillMount, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow",
 					"project": {
 						"title": "The React Meetup-Clone",
 						"url": "#todo"
@@ -267,7 +272,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Finish the Meetup-Clone with React Router + Flux",
+					"instructions": "Finish the Meetup-Clone with React Router + Flux",
 					"homework": "Finish the Meetup-Clone with React Router + Flux"
 				}
 			]
@@ -278,7 +283,7 @@
 			"summary": "Time to start working on the project specs using SCRUM, User Stories, Kanban and Wireframing",
 			"days": [{
 					"label": "Day 13",
-					"description": "Explain User Stories and the SCRUM methodology. Students must pick their projects & partner, and start building the user stories on Trello.com, create the board with them.",
+					"instructions": "Explain User Stories and the SCRUM methodology. Students must pick their projects & partner, and start building the user stories on Trello.com, create the board with them.",
 					"project": {
 						"title": "Project Kanban Board",
 						"url": "#TODO"
@@ -289,7 +294,7 @@
 				},
 				{
 					"label": "Day 14",
-					"description": "Review student project Boards and User Stories, fix their errors and make them wireframe their entire project",
+					"instructions": "Review student project Boards and User Stories, fix their errors and make them wireframe their entire project",
 					"project": {
 						"title": "Wireframe your project Flux.Views",
 						"url": "#"
@@ -300,7 +305,7 @@
 				},
 				{
 					"label": "Day 15",
-					"description": "Students must have all the MVP stories and wireframes finished, now it's time to start coding them, thei should turn their HTML/CSS into a Flux.View and separate everything into components",
+					"instructions": "Students must have all the MVP stories and wireframes finished, now it's time to start coding them, thei should turn their HTML/CSS into a Flux.View and separate everything into components",
 					"project": {
 						"title": "Build your project Flux.Views",
 						"url": "#"
@@ -311,7 +316,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Student Projects Flux.Views must be finished by next class"
+					"instructions": "Student Projects Flux.Views must be finished by next class"
 				}
 			]
 		},
@@ -321,7 +326,7 @@
 			"summary": "No more hard-coding, make your Flux.Views and Components render from the Flux.Model",
 			"days": [{
 					"label": "Day 16",
-					"description": "Now with map the Flux.Views user actions into Flux.Actions and greate the Flux.Model setters for them. The Flux.Views are able to get the Flux.Store data through the public getters.",
+					"instructions": "Now with map the Flux.Views user actions into Flux.Actions and greate the Flux.Model setters for them. The Flux.Views are able to get the Flux.Store data through the public getters.",
 					"project": {
 						"title": "Soft-code your project views",
 						"url": "#todo"
@@ -331,7 +336,7 @@
 					"technologies": ["React", "Webpack", "NPM", "Babel.js", "Flux", "HTML Forms", "MVC"]
 				}, {
 					"label": "Day 17",
-					"description": "Finally students must use the Flux.Store getters to retreive the data into the views, they should understand the flow: store changes > views listen > views get the new info and set into the local state > views re-render",
+					"instructions": "Finally students must use the Flux.Store getters to retreive the data into the views, they should understand the flow: store changes > views listen > views get the new info and set into the local state > views re-render",
 					"project": {
 						"title": "Work on the student project",
 						"url": "#"
@@ -342,7 +347,7 @@
 				},
 				{
 					"label": "Day 18",
-					"description": "Last day to complete your Flux.Views, Flux.Actions and Flux.Model",
+					"instructions": "Last day to complete your Flux.Views, Flux.Actions and Flux.Model",
 					"project": {
 						"title": "Finish project Views/Actions/Models",
 						"url": "#"
@@ -351,7 +356,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must finish the AJAX Replits",
+					"instructions": "Students must finish the AJAX Replits",
 					"replits": [{
 						"title": "Learn AJAX",
 						"slug": "ajax"
@@ -365,7 +370,7 @@
 			"summary": "Use fetch and Postman to consume REST APIs with JS",
 			"days": [{
 					"label": "Day 19",
-					"description": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
+					"instructions": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
 					"project": {
 						"title": "Meetup-Clone with Wordpress",
 						"url": "#"
@@ -380,7 +385,7 @@
 				},
 				{
 					"label": "Day 20",
-					"description": "Finish the Meetup-Clone API integration, focus on Debugging procedures and start the introduction to PHP/WordPress",
+					"instructions": "Finish the Meetup-Clone API integration, focus on Debugging procedures and start the introduction to PHP/WordPress",
 					"project": {
 						"title": "Meetup-Clone API with WordPress",
 						"url": "#"
@@ -390,7 +395,7 @@
 				},
 				{
 					"label": "Day 21",
-					"description": "Use Composer+WPCLI to install (WordPress + WPAS Dash + ACPT Plugin) and demonstrate how create you own WordPress model. Explain what Entities are and Entity-Relationship Diagram. Do not explain composer that much (do the analogy with NPM) and do not explain WP-CLI to much either, start using it and students will learn by doing",
+					"instructions": "Use Composer+WPCLI to install (WordPress + WPAS Dash + ACPT Plugin) and demonstrate how create you own WordPress model. Explain what Entities are and Entity-Relationship Diagram. Do not explain composer that much (do the analogy with NPM) and do not explain WP-CLI to much either, start using it and students will learn by doing",
 					"project": {
 						"title": "The Meetup-Clone API",
 						"url": "#"
@@ -403,7 +408,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must build the API for the Meetup-Clone project"
+					"instructions": "Students must build the API for the Meetup-Clone project"
 				}
 			]
 		},
@@ -413,7 +418,7 @@
 			"summary": "Build a WP plugin with a custom model and API",
 			"days": [{
 					"label": "Day 22",
-					"description": "Keep using the the ACPT Plugin + Custom Post Types to make your Meetup-Clone Models, review all the concepts and stepts to create an API method (URL->Controller->Model)",
+					"instructions": "Keep using the the ACPT Plugin + Custom Post Types to make your Meetup-Clone Models, review all the concepts and stepts to create an API method (URL->Controller->Model)",
 					"project": {
 						"title": "Meetup-Clone with Wordpress",
 						"url": "#"
@@ -423,7 +428,7 @@
 				},
 				{
 					"label": "Day 23",
-					"description": "Time to start working on the Project API with WordPress, make the students write all their API Requests un a RESTFul way",
+					"instructions": "Time to start working on the Project API with WordPress, make the students write all their API Requests un a RESTFul way",
 					"project": {
 						"title": "Meetup-Clone API with WordPress",
 						"url": "#"
@@ -433,7 +438,7 @@
 				},
 				{
 					"label": "Day 24",
-					"description": "Time to code the API! Review the API methods that students spec out and make them start coding them our using WordPress Dash",
+					"instructions": "Time to code the API! Review the API methods that students spec out and make them start coding them our using WordPress Dash",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -443,7 +448,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must keep working on the Final Project API and Final React Application"
+					"instructions": "Students must keep working on the Final Project API and Final React Application"
 				}
 			]
 		},
@@ -452,7 +457,7 @@
 			"topic": "Autenticating your website users",
 			"days": [{
 					"label": "Day 28",
-					"description": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
+					"instructions": "Help students build the API services to login the user on both sides: on the React Side but at the same time opening the cookins on WordPress.",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -463,7 +468,7 @@
 				},
 				{
 					"label": "Day 29",
-					"description": "Finish Implementing Login with your students and help them finish any other needed implementation",
+					"instructions": "Finish Implementing Login with your students and help them finish any other needed implementation",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -472,7 +477,7 @@
 				},
 				{
 					"label": "Day 30",
-					"description": "Keep working on the final project with your students",
+					"instructions": "Keep working on the final project with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -481,7 +486,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must keep working on the project"
+					"instructions": "Students must keep working on the project"
 				}
 			]
 		},
@@ -490,7 +495,7 @@
 			"topic": "Build your own WordPress Theme",
 			"days": [{
 					"label": "Day 25",
-					"description": "Explain what a WordPress template and how to use them to render HTML. Explain how the controllers can be used to prepare the view information and how to use PHP to insert the values on the templates",
+					"instructions": "Explain what a WordPress template and how to use them to render HTML. Explain how the controllers can be used to prepare the view information and how to use PHP to insert the values on the templates",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -501,7 +506,7 @@
 				},
 				{
 					"label": "Day 26",
-					"description": "Work with students on the project",
+					"instructions": "Work with students on the project",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -510,7 +515,7 @@
 				},
 				{
 					"label": "Day 27",
-					"description": "Students must work on the project",
+					"instructions": "Students must work on the project",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -519,7 +524,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must work on the project"
+					"instructions": "Students must work on the project"
 				}
 			]
 		},
@@ -529,7 +534,7 @@
 			"summary": "",
 			"days": [{
 					"label": "Day 28",
-					"description": "Install Woocommerce as gateway for payment services and explain the students how to integrate their website to it",
+					"instructions": "Install Woocommerce as gateway for payment services and explain the students how to integrate their website to it",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -540,7 +545,7 @@
 				},
 				{
 					"label": "Day 29",
-					"description": "Finish Implementing payment options with your students and help them finish any other needed implementation",
+					"instructions": "Finish Implementing payment options with your students and help them finish any other needed implementation",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -549,7 +554,7 @@
 				},
 				{
 					"label": "Day 30",
-					"description": "Keep working on the final project with your students",
+					"instructions": "Keep working on the final project with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -558,7 +563,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must keep working on the project"
+					"instructions": "Students must keep working on the project"
 				}
 			]
 		},
@@ -568,7 +573,7 @@
 			"summary": "Lets make the website a data generation machine with Google Analitycs",
 			"days": [{
 					"label": "Day 31",
-					"description": "Make students and model their Website needs and Data-Model based on the business, collect all possible data and measure Call To Actions, Leads, Impressions, etc. Report all that data to Google Analytics and other 3rd party services",
+					"instructions": "Make students and model their Website needs and Data-Model based on the business, collect all possible data and measure Call To Actions, Leads, Impressions, etc. Report all that data to Google Analytics and other 3rd party services",
 					"project": {
 						"title": "WP Data-Collection Engine",
 						"url": "#"
@@ -579,7 +584,7 @@
 				},
 				{
 					"label": "Day 32",
-					"description": "Finish Implementing the data-layer with your students",
+					"instructions": "Finish Implementing the data-layer with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -588,7 +593,7 @@
 				},
 				{
 					"label": "Day 33",
-					"description": "Keep working on the final project with your students",
+					"instructions": "Keep working on the final project with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -597,7 +602,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must keep working on the project"
+					"instructions": "Students must keep working on the project"
 				}
 			]
 		},
@@ -607,7 +612,7 @@
 			"summary": "Help students polish the last things",
 			"days": [{
 					"label": "Day 34",
-					"description": "Work on the final projects",
+					"instructions": "Work on the final projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -616,7 +621,7 @@
 				},
 				{
 					"label": "Day 35",
-					"description": "Work on the final projects",
+					"instructions": "Work on the final projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -625,7 +630,7 @@
 				},
 				{
 					"label": "Day 36",
-					"description": "Work on the final projects",
+					"instructions": "Work on the final projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -634,7 +639,7 @@
 				},
 				{
 					"label": "Weekend",
-					"description": "Students must keep working on the project"
+					"instructions": "Students must keep working on the project"
 				}
 			]
 		},
@@ -644,7 +649,7 @@
 			"summary": "Time to upload! Use GIT, WPCLI & CPANEL",
 			"days": [{
 					"label": "Day 37",
-					"description": "Explain students how to login into CPanel, use GIT and the WP-CLI to publish their projects",
+					"instructions": "Explain students how to login into CPanel, use GIT and the WP-CLI to publish their projects",
 					"project": {
 						"title": "Publish Final Project",
 						"url": "#"
@@ -655,7 +660,7 @@
 				},
 				{
 					"label": "Day 38",
-					"description": "No new stuff: Help students to finish their projects",
+					"instructions": "No new stuff: Help students to finish their projects",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
@@ -664,7 +669,7 @@
 				},
 				{
 					"label": "Graduation",
-					"description": "Go and have a drink with your students",
+					"instructions": "Go and have a drink with your students",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
