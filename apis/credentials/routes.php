@@ -79,7 +79,7 @@ function addAPIRoutes($api){
     		'cohort_slug' => $cohortSlug
     	]);
     	
-    	if(!empty($user) && $user->type==='student'){
+    	if(!empty($user)){
             ACAPI::start(AC_API_KEY);
             $result = ACAPI::createOrUpdateContact($username,[
                 "first_name" => $firstName,
@@ -92,8 +92,9 @@ function addAPIRoutes($api){
             
             return $response->withJson($user)->withStatus(200);
     	}
-
-        return $response->withJson('error');
+        else{
+            throw new Exception('The student was not added into breathecode');
+        }
 	});
 	
 	$api->post('/auth/github', function (Request $request, Response $response, array $args) use ($api) {
