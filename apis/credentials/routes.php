@@ -66,11 +66,11 @@ function addAPIRoutes($api){
 	$api->put('/signup', function (Request $request, Response $response, array $args) use ($api) {
         
         $body = $request->getParsedBody();
-        $username = $api->validate($parsedBody['email'])->email();
-        $firstName = $api->validate($parsedBody['first_name'])->smallString();
-        $lastName = $api->validate($parsedBody['last_name'])->smallString();
-        $phone = $api->validate($parsedBody['phone'])->smallString();
-        $cohortSlug = $api->validate($parsedBody['cohort_slug'])->smallString();
+        $username = $api->validate($body,'email')->email();
+        $firstName = $api->validate($body,'first_name')->smallString();
+        $lastName = $api->validate($body,'last_name')->smallString();
+        $phone = $api->validate($body,'phone')->smallString();
+        $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
         
     	$user = BC::createStudent([
     		'email' => urlencode($username),
