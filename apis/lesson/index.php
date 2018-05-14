@@ -5,7 +5,9 @@
 	require('routes.php');
 	
 	$api = new SlimAPI([
-		'debug' => API_DEBUG
+		'debug' => API_DEBUG,
+		'name' => 'Lessons API'
 	]);
+	$api->addReadme('/','./README.md');
 	$api = addAPIRoutes($api);
 	$api->run(); 
