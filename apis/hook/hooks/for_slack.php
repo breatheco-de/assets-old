@@ -14,6 +14,7 @@ function addSlackRoutes($api){
 	$api->post('/'.$scope.'/invite', function (Request $request, Response $response, array $args) use ($api) {
         
         $parsedBody = $request->getParsedBody();
+        $userEmail = '';
         if(!empty($parsedBody['email'])) $userEmail = $parsedBody['email'];
         else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
         else throw new Exception('Please specify the user email');

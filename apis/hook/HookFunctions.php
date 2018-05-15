@@ -95,5 +95,6 @@ class HookFunctions{
                 "channels" => $chanls
             ]));
         if(!$result['ok']) throw new Exception('Could not invite the user to '.$chanls.': '.$result['error']);
+        else return $result;
     }
 }
