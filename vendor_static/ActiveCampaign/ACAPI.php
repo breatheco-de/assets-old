@@ -21,18 +21,30 @@ class ACAPI{
     private static $disabled = false;
     
     private static $automations = [
-        'nps' => 23,
-        'referral_program' => 27,
-        'student_referral' => 28,
-        'soft_to_hard' => 25,
-        'incoming_soft' => 21,
-        'incoming_strong' => 7,
-        'online_platform_registration' => 11,
-        'newsletter' => 12
+        'nps' => "23",
+        'referral_program' => "27",
+        'student_referral' => "28",
+        'soft_to_hard' => "25",
+        'incoming_soft' => "21",
+        'incoming_strong' => "7",
+        'online_platform_registration' => "11",
+        'newsletter' => "12"
     ];
     
     private static $tags = [
         'platform_signup'
+    ];
+    
+    private static $events = [
+        'online_platform_registration',
+        'application_rendered',
+        'coding_weekend_attendance',
+        'newsletter_signup',
+        'nps_survey_answered',
+        'public_event_attendance',
+        'student_application',
+        'student_referral',
+        'syllabus_download'
     ];
     
     private static $connector = [];
@@ -46,6 +58,12 @@ class ACAPI{
             if(!in_array($slug, self::$tags)) throw new Exception('Invalid Active Campaign Tag');
             return $slug;
         } 
+    }
+    
+    public static function event($slug){
+        if(!in_array($slug, self::$events)) throw new Exception('Invalid Active Campaign Event: '.$slug);
+
+        return $slug;
     }
     
     public static function list($slug){
@@ -177,26 +195,6 @@ class ACAPI{
         return $fields;
     }
     
-    public static function addToAutomations($email, $automations){
-        
-    	/*
-    	$contact = array(
-    		"contact_email"            => "Test",
-    		"automation"             => "1,3,56,7",
-    	);*/
-    	$args = [
-    	    "contact_email" => $email,
-    	    "automation" => self::automation($automations)
-    	];
-    	
-    	$result = self::$connector['old']->api("automation/contact_add",$args);
-
-    	if ($result->http_code != 200) throw new Exception('Error returned: '. $result->error);
-        if(0 === (int)$result->success) return null;
-        // successful request
-        return $result;
-    }
-    
     private static function _processResult($result){
         
         if(empty($result)) throw new Exception('Empty response from Active Campaign');
@@ -251,7 +249,7 @@ class ACAPI{
     public static function trackEvent($email, $event, $eventData=null){
         
         self::$connector['old']->track_email = $email;
-        $request["event"] = $event;
+        $request["event"] = self::event($event);
         $request["event-data"] = $eventData;
 		
     	$result = self::$connector['old']->api("tracking/log", $request);
