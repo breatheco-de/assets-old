@@ -4,6 +4,7 @@
     require_once('../SlimAPI.php');
     require('../../vendor_static/ActiveCampaign/ACAPI.php');
     require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
+    require_once('../../vendor_static/breathecode-api/SlackAPI.php');
     require('HookFunctions.php');
     
 	$api = new SlimAPI([
@@ -33,5 +34,9 @@
     //eventbrite api integration
     require_once('hooks/for_samples.php');
     $api = addSampleRoutes($api);
+    
+    //slack api integration
+    require_once('hooks/for_slack.php');
+    $api = addSlackRoutes($api);
 	
 	$api->run();

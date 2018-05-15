@@ -1,5 +1,7 @@
 <?php
 use BreatheCode\BCWrapper as BC;
+use BreatheCode\SlackWrapper;
+
 class HookFunctions{
     
     static $api;
@@ -65,5 +67,33 @@ class HookFunctions{
         $status['locations'] = implode(',',$locations);
         
         return $status;
+    }
+    
+    static function getOrCreateSlackChannel($channelSlug){
+	    //get all groups
+        $slack = SlackWrapper::getWrappers(SLACK_API_TOKEN, SLACK_API_TOKEN_LEGACY);
+	    $result = $slack['new']->groups->list();
+        if(!$result['ok']) throw new Exception('Could not retieve list of channels from slack');
+	    $targetGroup = null;
+	    foreach($result['groups'] as $group)
+	        if($group['name'] === $channelSlug) $targetGroup = $group;
+
+        if(!$targetGroup){
+            $result = $slack['new']->groups->create(['name' => $channelSlug]);
+            if(!$result['ok']) throw new Exception('Private channel '.$channelSlug.' could not be created: '.$result['error']);
+            $targetGroup = $results['group'];
+        }
+        return $targetGroup;
+    }
+    
+    static function inviteUserToSlackChannel($email, $channels){
+        $slack = SlackWrapper::getWrappers(SLACK_API_TOKEN, SLACK_API_TOKEN_LEGACY);
+        $chanls = implode(",",$channels);
+
+        $result = $slack['old']->users->admin->invite(http_build_query([
+                "email" => $email,
+                "channels" => $chanls
+            ]));
+        if(!$result['ok']) throw new Exception('Could not invite the user to '.$chanls.': '.$result['error']);
     }
 }

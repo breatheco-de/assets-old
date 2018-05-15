@@ -30,3 +30,19 @@ Content-type: x-www-form-urlencoded
 Params:
     email (string)
 ```
+
+5. Sync BC user info with Active Campaign
+```sh
+POST: /sync/contact
+Content-type: x-www-form-urlencoded
+Params:
+    email (string)
+```
+
+5. Invite BC User/Student to slack
+```sh
+POST: /slack/invite
+Content-type: x-www-form-urlencoded
+Params:
+    email (string)
+```

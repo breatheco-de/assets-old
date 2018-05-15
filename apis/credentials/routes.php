@@ -4,6 +4,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
+require_once('../../vendor_static/breathecode-api/SlackAPI.php');
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
 require_once('../../globals.php');
 use \AC\ACAPI;
@@ -11,16 +12,7 @@ use BreatheCode\BCWrapper as BC;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-use wrapi\slack\slack;
-
 function addAPIRoutes($api){
-	
-	$api->get('/slack', function (Request $request, Response $response, array $args) use ($api) {
-	    $slack = new slack(SLACK_API_TOKEN);
-	    $channels = $slack->channels->list(array("exclude_archived" => 1));
-	    return $response->withJson($channels);
-	});
-	
 	
 	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
         
@@ -71,6 +63,7 @@ function addAPIRoutes($api){
         $lastName = $api->validate($body,'last_name')->smallString();
         $phone = $api->validate($body,'phone')->smallString();
         $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
+        $profileSlug = $api->optional($body,'profile_slug');
         
     	$user = BC::createStudent([
     		'email' => urlencode($username),
@@ -81,15 +74,15 @@ function addAPIRoutes($api){
     	
     	if(!empty($user)){
             ACAPI::start(AC_API_KEY);
-            ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
-            $result = ACAPI::createOrUpdateContact($username,[
+            $contact = ACAPI::createOrUpdateContact($username,[
                 "first_name" => $firstName,
                 "last_name" => $lastName,
                 "phone" => $phone,
                 "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
                 "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
             ]);
-            if($result){
+            if($contact){
+                ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
                 ACAPI::trackEvent($username, 'online_platform_registration');
             } 
             
