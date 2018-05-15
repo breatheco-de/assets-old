@@ -72,14 +72,14 @@ function addAPIRoutes($api){
         $phone = $api->validate($body,'phone')->smallString();
         $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
         
-    // 	$user = BC::createStudent([
-    // 		'email' => urlencode($username),
-    // 		'full_name' => $firstName.' '.$lastName,
-    // 		'phone' => $phone,
-    // 		'cohort_slug' => $cohortSlug
-    // 	]);
+    	$user = BC::createStudent([
+    		'email' => urlencode($username),
+    		'full_name' => $firstName.' '.$lastName,
+    		'phone' => $phone,
+    		'cohort_slug' => $cohortSlug
+    	]);
     	
-    // 	if(!empty($user)){
+    	if(!empty($user)){
             ACAPI::start(AC_API_KEY);
             ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
             $result = ACAPI::createOrUpdateContact($username,[
@@ -93,11 +93,11 @@ function addAPIRoutes($api){
                 ACAPI::trackEvent($username, 'online_platform_registration');
             } 
             
-//            return $response->withJson($user)->withStatus(200);
-    // 	}
-    //     else{
-    //         throw new Exception('The student was not added into breathecode');
-    //     }
+            return $response->withJson($user)->withStatus(200);
+    	}
+        else{
+            throw new Exception('The student was not added into breathecode');
+        }
 	});
 	
 	$api->post('/auth/github', function (Request $request, Response $response, array $args) use ($api) {
