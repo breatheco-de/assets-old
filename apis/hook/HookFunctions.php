@@ -73,7 +73,7 @@ class HookFunctions{
 	    //get all groups
         $slack = SlackWrapper::getWrappers(SLACK_API_TOKEN, SLACK_API_TOKEN_LEGACY);
 	    $result = $slack['new']->groups->list();
-        if(!$result['ok']) throw new Exception('Could not retieve list of channels from slack');
+        if(!$result['ok']) throw new Exception('Could not retieve list of channels from slack: '.$result['error']);
 	    $targetGroup = null;
 	    foreach($result['groups'] as $group)
 	        if($group['name'] === $channelSlug) $targetGroup = $group;
