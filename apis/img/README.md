@@ -59,8 +59,12 @@ Params:
 ## Examples
 
 Get the breathecode logo in 3 sizes
-```
-GET: /apis/img/images.php?blob&random&cat=icon&tags=breathecode,128
-GET: /apis/img/images.php?blob&random&cat=icon&tags=breathecode,16
-GET: /apis/img/images.php?blob&random&cat=icon&tags=breathecode,32
-```
+[/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
+[/apis/img/images.php?blob&random&cat=icon&tags=breathecode,16](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
+[/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
+Get 4geeks academy icon
+[/apis/img/images.php?blob&random&cat=icon&tags=4geeks](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
+Get 4geeks academy logo in black and small
+[http://assets.breatheco.de/apis/img/images.php?blob&random&cat=logo&tags=4geeks,black,small](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=logo&tags=4geeks,black,small)
+Get random funny images
+[http://assets.breatheco.de/apis/img/images.php?blob&random&cat=funny](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=funny)

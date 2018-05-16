@@ -297,6 +297,10 @@
 						{
 							"title": "Building interfaces with React",
 							"slug": "react-js"
+						},
+						{
+							"title": "Creating React.js Components",
+							"slug": "making-react-components"
 						}
 					],
 					"replits": [{

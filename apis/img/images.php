@@ -34,8 +34,8 @@ function createDirectory($path,$imgs){
 	return $imgs;
 }
 
-function filterImage($img)
-{
+function filterImage($img){
+	
 	if(!$img['ext']) return false;
 	if($img['category']=='.') return false;
 	if(isset($_GET['cat']) and $img['category']!=$_GET['cat']) return false;
@@ -84,8 +84,7 @@ function printJSON($content){
 	die();
 }
 
-function printResult($result)
-{
+function printResult($result){
 	if(isset($_GET['blob'])) printFile($result);
 	else printJSON($result);
 }
