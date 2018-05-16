@@ -5,7 +5,8 @@
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "About HTTP, the browser, Client-Server model, Code your first HTML & CSS",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 1",
 					"description": "Understand the internet architecture, how the browser works and how HTTP works with one example. Then start coding right away",
 					"instructions": "Start Coding right away! Explan the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
@@ -96,7 +97,8 @@
 			"label": "Week 2: Wireframes, CMD & GIT",
 			"topic": "Prework done!",
 			"summary": "Time to start having a professional workflow",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 4",
 					"description": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
 					"project": {
