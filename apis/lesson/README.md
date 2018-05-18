@@ -5,4 +5,7 @@
 Get all lessons
 ```
 GET: /lesson/all
+
+PARAMS:
+- status (string): Filter the lessons by status ['draft, 'publish']
 ```
