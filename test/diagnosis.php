@@ -41,7 +41,9 @@
     
     $runner->addCheck(checkURL($assetsURL.'/img/images.php?blob&random&cat=icon&tags=breathecode,16'));
     
-    $runner->addCheck(checkURL($assetsURL.'/project/',"readme"));
+    $runner->addCheck(checkURL($assetsURL.'/video/why-pair-programming'));
+    
+    $runner->addCheck(checkURL($assetsURL.'/project/all',"readme"));
     
     $runner->addCheck(checkURL($assetsURL.'/syllabus/full-stack','"label"'));
     $runner->addCheck(checkURL($assetsURL.'/syllabus/web-development','"label"'));

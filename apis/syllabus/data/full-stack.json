@@ -363,6 +363,10 @@
 						"title": "Final Project Wireframes",
 						"url": "#"
 					},
+					"lessons":[{
+						"title": "Importing and Exporting from other JS files",
+						"slug": "importing-and-exporting-javascript-modules"
+					}],
 					"assignments": ["full-stack-project-wireframes"],
 					"homework": "Students must finish everything that is due, and create their first 3 page wireframes",
 					"key-concepts": ["Wireframing", "Minimum Viable Product", "Why creating a prototipe"],
@@ -371,7 +375,7 @@
 				{
 					"label": "Day 14",
 					"instructions": "React Router + React: How to create components that behave like Flux.Views (layouts) and match them with URL Routers.",
-					"description": "But some react components will never be re-used, they behave more like page or layout. We will call those components Views and React will help us contect them together to create our main website navegation",
+					"description": "But some react components will never be re-used, they behave more like page or layout. We will call those components: 'Views'... React will help us connect them together to create our main website navegation",
 					"project": {
 						"title": "Build your project Flux.Views",
 						"url": "#"
@@ -383,14 +387,14 @@
 				},
 				{
 					"label": "Day 15",
-					"instructions": "Demonstrate component lifecycle methods: WillMount, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow",
+					"instructions": "Demonstrate component lifecycle methods: getDerivedStateFromProps, DidMount and willUnmount. Finally demonstrate the flux Action-Model-View workflow",
 					"description": "MVC (Model-View-Controller) is one of the most popular coding design patterns, its main goal is to split the business data from the comopnent state. Now your project will have Views, Actions (the controller) and a centralized Store (the model)",
 					"project": {
 						"title": "The Contact List",
 						"url": "https://bitbucket.org/codingacademy/contact-list"
 					},
 					"lessons": [{
-						"title": "React JS",
+						"title": "Learning about FLUX",
 						"slug": "flux"
 					}],
 					"assignments": ["contact-list"],
@@ -505,6 +509,16 @@
 						"title": "Learn Python",
 						"slug": "python"
 					}],
+					"lessons":[{
+						"title": "From Javascript to Python",
+						"slug": "from-javascript-to-python"
+					},{
+						"title": "Building REST API's",
+						"slug":"understanding-restul-apis"
+					},{
+						"title": "Building REST API's with django",
+						"slug":"building-restful-apis-with-django"
+					}],
 					"key-concepts": ["Python has access to the Entire Machine", "Django has packages too (PIP)", "Requirements.txt", "Django Framework", "Workflow for Creating an endpoint"],
 					"homework": "Students must create the required models for the Contact Managment Application",
 					"technologies": ["Django", "API's", "Serialization", "PIP Package Manager"]
@@ -519,6 +533,10 @@
 					"replits": [{
 						"title": "Learn SQL",
 						"slug": "sql"
+					}],
+					"lessons": [{
+						"title": "Understanding SQL (Relational Databases)",
+						"slug": "relational-databases"
 					}],
 					"key-concepts": ["Create new endpoints", "Configuring MySQL", "Creating Models", "Creating Migrations", "Running Migrations", "Using PHPMyAdmin", "OneToMany Relationships (models.py)", "ManyToMany Relationships (models.py)"],
 					"homework": "Stutents create all the models of the contact managment API and continue building the enpoints",
