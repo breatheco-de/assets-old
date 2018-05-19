@@ -14,9 +14,9 @@ This directory contains several APIs needed to run the breathecode platform:
 7. [/Syllabus](./syllabus/README.md): All the syllabus available on the BC Platform
 8. [/Replit](./replit/README.md): All the replits available on the BC Platform
 9. [/Projects](./project/README.md): All the lessons included on projects.breatheco.de
-10.[/Img](./img/README.md): Database of images for tutorials, marketing, etc.
-11.[/Fake](./fake/README.md): A series of endpoints exposed for dummy calls on the breathecode tutorials and exercises
-12.[/Hooks](./hoos/README.md): Hooks used by 3rd party services like ActiveCampaign, Zapier, etc.
+10. [/Img](./img/README.md): Database of images for tutorials, marketing, etc.
+11. [/Fake](./fake/README.md): A series of endpoints exposed for dummy calls on the breathecode tutorials and exercises
+12. [/Hooks](./hoos/README.md): Hooks used by 3rd party services like ActiveCampaign, Zapier, etc.
 
 ## Usage
 
