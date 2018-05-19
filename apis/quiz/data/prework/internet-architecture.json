@@ -1,5 +1,6 @@
 {
 	"info": {
+		"slug": "internet-architecture",
 		"name": "What do you know about the internet architecture?",
 		"main": "<p>Knowing the architecture is mandatory to undersanting web development, you have to know this!</p>",
 		"results": "You have finished! Remember, you need to answer 75% of the questions correctly to earn the badges.",

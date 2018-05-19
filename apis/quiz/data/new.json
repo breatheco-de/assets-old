@@ -1,5 +1,6 @@
 {
     "info": {
+        "slug":    "new",
         "name":    "Some fake name",
         "status":    "draft",
         "main":    "Some fake description",

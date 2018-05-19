@@ -1,6 +1,7 @@
 {
     "info": {
         "name":    "Learn about Javascript Events",
+        "events":    "events",
         "status":    "draft",
         "main":    "<p>Do you think you know a lot about events? Find out with this super crazy knowledge quiz!</p>",
         "results": "<h5>Learn More</h5><p> Check out the lesson about events!.</p>",

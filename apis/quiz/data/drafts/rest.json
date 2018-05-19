@@ -1,5 +1,6 @@
 {
 	"info": {
+		"slug": "rest",
 		"name": "Test your RESTful API Knowledge",
 		"main": "Beware, a lot of HTTP, Requests, Responses and REST questions are about start pumping!",
 		"results": "Learn More: Check out the lesson about CSS!.",

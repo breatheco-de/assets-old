@@ -1,5 +1,6 @@
 {
 	"info": {
+		"slug": "html-advanced",
 		"name": "Learn about HTML",
 		"main": "<p>Do you think you know a lot about HTML? Find out with this super crazy knowledge quiz!</p>",
 		"results": "Learn More: Check out the lesson about HTML!.",

@@ -1,5 +1,6 @@
 {
 	"info": {
+		"slug": "intro-to-prework",
 		"name": "The internet architechture",
 		"main": "<p>Test your knowledge and understanding of the internet</p>",
 		"results": "Great! If you scored more than 75% of the questions, you have won more points towards becoming a full-stack web developer.",

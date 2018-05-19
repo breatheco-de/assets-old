@@ -1,5 +1,6 @@
 {
     "info": {
+        "slug":    "cmd",
         "name":    "Learn about Javascript Events",
         "status":    "draft",
         "main":    "<p>Do you think you know a lot about events? Find out with this super crazy knowledge quiz!</p>",
