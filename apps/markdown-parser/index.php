@@ -32,7 +32,7 @@ if(!$readmeContent) die("The markdown file could not be loaded:".$_GET['path']);
             window.onload = function(){
                 var converter = new showdown.Converter();
                 converter.setFlavor('<?php echo $flavor; ?>');
-                const html      = converter.makeHtml(`<?php echo $readmeContent?>`);
+                const html      = converter.makeHtml(`<?php echo str_replace('`','\`',$readmeContent); ?>`);
                 document.querySelector('.markdown-body').innerHTML = html;
             };
         </script>
