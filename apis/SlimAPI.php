@@ -6,7 +6,9 @@ use Aws\Ses\Exception\SesException;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Respect\Validation\Validator as v;
-
+function debug($data){
+    print_r($data); die();
+}
 class SlimAPI{
     
     public static $INFO = 'info';
@@ -239,8 +241,8 @@ class SlimAPI{
         return $val;
     }
     function optional($value, $key=null){
-        if(!$key) return (!empty($value)) ? $value : null;
-        else return (!empty($value[$key])) ? $value[$key] : null;
+        $val = new ValidatorOptional($value, $key);
+        return $val;
     }
     
 }
@@ -250,10 +252,10 @@ class ArgumentException extends Exception{
 class Validator{
     var $value = null;
     var $key = null;
+    var $optional = false;
     
     function __construct($value, $key=null){
         //if there is a key, the $value is an object a we need to grab the value inside of it
-
         if($key){
             $value = (array) $value;
             if(isset($value[$key])) $value = $value[$key];
@@ -264,40 +266,58 @@ class Validator{
         $this->key = $key;
     }
     function smallString($min=1, $max=255){ 
+        if(empty($this->value) && $this->optional) return null;
+        
         $validator = v::stringType()->length($min, $max)->validate($this->value);
         $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function bigString($min=1, $max=2000){ 
-        $validator = v::stringType()->length($min, $max)->validate($this->value);
+        if(empty($this->value) && $this->optional) return null;
         
+        $validator = v::stringType()->length($min, $max)->validate($this->value);
+
         $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function int(){ 
+        if(empty($this->value) && $this->optional) return null;
+        
         $validator = v::intVal()->validate($this->value);
         $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function email(){ 
+        if(empty($this->value) && $this->optional) return null;
+        
         $validator = v::email()->validate($this->value);
         $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
         if(!$validator) throw new ArgumentException('Invalid email value: '.$for);
         return $this->value;
     }
     function url(){ 
+        if(empty($this->value) && $this->optional) return null;
+        
         $validator = v::url()->validate($this->value);
         $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
     function bool(){ 
+        if(empty($this->value) && $this->optional) return null;
+        
         $validator = v::boolType()->validate((bool) $this->value);
         $for = ($this->key) ? $this->value.' for '.$this->key : '';
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
+    }
+}
+class ValidatorOptional extends Validator{
+    public function __construct($value, $key=null){
+        parent::__construct($value, $key);
+        $this->optional = true;
     }
 }

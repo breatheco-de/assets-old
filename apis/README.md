@@ -8,6 +8,7 @@ This directory contains several APIs needed to run the breathecode platform:
 2. [/Quizes](./quiz/README.md): Used by the breathecode platform quizes.
 2. [/Lessons](./lesson/README.md): All the lessons included on breathecode.
 3. [/Sounds](./sound/README.md): Sounds for games and tutorials.
+2. [/Events](./event/README.md): For the academy events and workshops
 4. [/NPS](./nps/README.md): API implementation for Net Promoter Score
 5. [/Kill-The-Bug](./kill-the-bug/README.md): Great game to play with audiences interested in learning to code.
 6. [/VTutorials](./vtutorial/README.md): Use by the breathecode platform to enhance the video tutorials (captions, instructions, etc).

@@ -23,6 +23,12 @@
       'created_at' DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
       'id'  INTEGER PRIMARY KEY NOT NULL  
    );
+   CREATE TABLE 'event_checking' (
+      'event_id' TEXT NOT NULL, 
+      'email' TEXT NOT NULL, 
+      'created_at' DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      'id'  INTEGER PRIMARY KEY NOT NULL 
+   );
 EOF;
 
    $ret = $db->exec($sql);
