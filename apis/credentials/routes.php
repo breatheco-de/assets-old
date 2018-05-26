@@ -6,6 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 require_once('../../vendor_static/breathecode-api/SlackAPI.php');
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
+require('../BreatheCodeLogger.php');
 require_once('../../globals.php');
 use \AC\ACAPI;
 use BreatheCode\BCWrapper as BC;
@@ -45,6 +46,14 @@ function addAPIRoutes($api){
 		        	$user->cohorts = $user->full_cohorts;
 		        }
 		        $user->scope = $token->scope;
+		        
+		        try{
+		            BreatheCodeLogger::logActivity($username, [
+		                'slug' => 'breathecode_login',
+		                'user_id' => $user->id
+		            ]);
+		        }catch(Exception $e){  }
+		        
 	    		return $response->withJson($user);
 		    }
         }

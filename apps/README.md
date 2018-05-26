@@ -52,3 +52,6 @@ Manages the signup, login and remind password within the BC platform.
 Displays a status check of the entire BreatheCode platform.
 
     **TODO:** this applications is pending for development
+
+10. [Screen](../apps/screen/README.md):
+Screens for academy events

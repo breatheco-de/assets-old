@@ -17,7 +17,7 @@
 	    $allSlugs = [
 	        "full-stack" => "full-stack",
 	        "web-development" => "web-development",
-	        "prework-web" => "prework-web",
+	        "coding-introduction" => "coding-introduction",
 	        "blockchain" => "blockchain",
 	        "boats" => "boats"
 	    ];
