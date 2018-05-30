@@ -1,5 +1,6 @@
 {
     "require": {
+        "glicer/link-checker": "dev-master",
         "guzzlehttp/guzzle": "~6.0",
         "monolog/monolog": "^1.23",
         "google/cloud-datastore": "^1.3",

@@ -14,7 +14,7 @@
 					"instructions": "Start Coding right away! Explain the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
 					"project": {
 						"title": "Digital Postcard",
-						"solution": "https://bitbucket.org/codingacademy/postcard"
+						"solution": "https://bitbucket.org/codingacademy/postcard/"
 					},
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
 					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
@@ -63,7 +63,7 @@
 					"instructions": "Connecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
 					"project": {
 						"title": "Simple Instagram",
-						"url": "https://bitbucket.org/codingacademy/instagram-without-bootstrap"
+						"url": "https://bitbucket.org/codingacademy/instagram-without-bootstrap/"
 					},
 					"homework": "Students must finish the Instagram & the Postcard.",
 					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
@@ -99,7 +99,7 @@
 					"instructions": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own.",
 					"project": {
 						"title": "Bootstrap Instagram",
-						"url": "https://bitbucket.org/codingacademy/instagram-with-bootstrap"
+						"url": "https://bitbucket.org/codingacademy/instagram-with-bootstrap/"
 					},
 					"lessons": [{
 						"title": "Working with Bootstrap",
@@ -131,7 +131,7 @@
 					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
 					"project": {
 						"title": "The CMD Challenge",
-						"url": "https://bitbucket.org/codingacademy/terminal-challenge"
+						"url": "https://github.com/breatheco-de/excercise-terminal-challenge/"
 					},
 					"replits": [{
 						"title": "Command Line Interactive Challenge",
@@ -151,7 +151,7 @@
 					"instructions": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT proyect and make them clone it and upload their piece of the proyect. Review the key concepts.",
 					"project": {
 						"title": "GIT Colaborative Landing Page",
-						"url": "https://bitbucket.org/codingacademy/git-collaboration"
+						"url": "https://github.com/breatheco-de/exercise-git-collabration/"
 					},
 					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the Landing Page. Suggested parts: navbar, jumbotron, 2 parts description, product showcase, marketing banner, contact us, footer",
 					"key-concepts": ["Creating SSH Keys", "Using Github", "The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts"],
@@ -171,7 +171,7 @@
 					"instructions": "Make the students design a wireframe starting from the typical client requierment specs, teach them the importance of using components and how to pick them and draw a wireframe before jumping into coding.",
 					"project": {
 						"title": "ABC Chocolate (Wire-framing)",
-						"url": "https://bitbucket.org/codingacademy/abc-chocolate-wire-framing"
+						"url": "https://github.com/breatheco-de/exercise-abc-chocolate/"
 					},
 					"homework": "Finished Replits and Projects",
 					"key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"],
@@ -195,7 +195,7 @@
 					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts",
 					"project": {
 						"title": "The Excuse Generator",
-						"url": "https://bitbucket.org/codingacademy/excuse-generator"
+						"url": "https://bitbucket.org/codingacademy/excuse-generator/"
 					},
 					"homework": "Students need to make the replits about javascript and the layout for the Random Card Generator",
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
@@ -244,7 +244,7 @@
 					"description": "Ok but how do we use Javascript to build websites? You have to interact with the DOM whenever an event occurs",
 					"project": {
 						"title": "Random Card Generator",
-						"url": "https://bitbucket.org/codingacademy/random-card"
+						"url": "https://bitbucket.org/codingacademy/random-card/"
 					},
 					"homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
 					"replits": [{
@@ -294,7 +294,7 @@
 					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
 					"project": {
 						"title": "Todo list with React",
-						"url": "https://bitbucket.org/codingacademy/todo-list"
+						"url": "https://bitbucket.org/codingacademy/todo-list/"
 					},
 					"homework": "Students must have the CSS and HTML for the TodoList already finished in one big component and using a hard coded state",
 					"lessons": [
@@ -327,7 +327,7 @@
 					"description": "Finally we can create our own HTML tags and re-use them on several projects and views. The key to understand a component is understanding Props and The State.",
 					"project": {
 						"title": "Continue with: Todo list with React",
-						"url": "https://bitbucket.org/codingacademy/todo-list"
+						"url": "https://bitbucket.org/codingacademy/todo-list/"
 					},
 					"key-concepts": ["Condigional Rendering", "The component state", "The state is inmutable", "Using const, map, filter and concat to prevent state mutation"],
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
