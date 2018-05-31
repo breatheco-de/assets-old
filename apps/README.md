@@ -56,5 +56,7 @@ Displays a status check of the entire BreatheCode platform.
 10. [Screen](../apps/screen/README.md):
 Screens for academy events
 
-11. [Student External Profile](../apps/screen/README.md):
+11. [Student External Profile (SEP)](../apps/sep/README.md):
 Search and display any student external profile
+
+    **TODO:** this applications is pending for development
