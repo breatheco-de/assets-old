@@ -49,12 +49,6 @@ class BaseTestCase extends TestCase {
         return $responseObj;
     }
     
-    protected function assertContainsProperties($obj, $properties){
-        
-        foreach($properties as $prop) if(!property_exists($obj, $prop)) return false;
-        
-        return true;
-    }
 }
 
 class CatalogTest extends BaseTestCase
