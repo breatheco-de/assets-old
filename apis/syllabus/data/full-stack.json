@@ -1,16 +1,18 @@
 {
 	"label": "Full-Stack Development",
 	"profile": "full-stack",
-	"weeks": [{
+	"weeks": [
+		{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
 			"days": [{
 					"label": "Day 1",
 					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
-					"instructions": "Start Coding right away! Explain the internet architecture in 5 minutes, then explain how the browser works and how HTTP works with one example. Then start coding right away, do the postcard and explain the tags as you use then in the project. Students should code the project with your lead.",
+					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
 					"project": {
 						"title": "Digital Postcard",
+						"slug": "postcard",
 						"solution": "https://bitbucket.org/codingacademy/postcard/"
 					},
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
@@ -55,7 +57,7 @@
 				},
 				{
 					"label": "Day 2",
-					"description": "Websites got popular and CSS evolved to enable very ritch and elaborated layouts.",
+					"description": "Then, websites got popular and CSS evolved to enable amazing layouts with boxes and also a ritch set of CSS Selectors",
 					"instructions": "Connecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
 					"project": {
 						"title": "Simple Instagram",
@@ -90,7 +92,7 @@
 				},
 				{
 					"label": "Day 3",
-					"description": "Then, Bootstrap came to profesionalize websites, removing 99% of the pain. Everything is a component from now own.",
+					"description": "Then, Bootstrap came to profesionalize websites, removing 99% of the layout pain. Everything is a component from now own.",
 					"instructions": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own.",
 					"project": {
 						"title": "Bootstrap Instagram",
@@ -105,7 +107,7 @@
 						"slug": "bootstrap"
 					}],
 					"assignments": ["instagram-feed-bootstrap"],
-					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper Classes"],
+					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper/Utility Classes that come with bootstrap"],
 					"technologies": ["Bootstrap"]
 				},
 				{
@@ -184,13 +186,13 @@
 			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
 			"days": [{
 					"label": "Day 7",
-					"description": "HTML & CSS are great, but the world needed interactive pages. Javascript comes to help us generate HTML & CSS based on the users activity.",
-					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts",
+					"description": "HTML & CSS are great, but the world needed interactive pages (not just beautiful text documents). Javascript comes to help us generate HTML & CSS based after the initial text document has already loaded and also re-write the website live based on the user activity.",
+					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts. Use the VanilaJS boilerplate, that way students will start getting used to it",
 					"project": {
 						"title": "The Excuse Generator",
 						"solution": "https://bitbucket.org/codingacademy/excuse-generator/"
 					},
-					"homework": "Students need to make the replits about javascript and the layout for the Random Card Generator",
+					"homework": "Students need to finish the Excuse Generator, make the replits about javascript and the layout for the Random Card Generator",
 					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
 					"lessons": [{
 							"title": "Learning to code with JS",
@@ -229,11 +231,11 @@
 						"title": "Working with functions",
 						"slug": "working-with-functions"
 					}],
-					"technologies": ["JS Functions"]
+					"technologies": ["JS Functions", "Arrow Functions"]
 				},
 				{
 					"label": "Day 9",
-					"instructions": "Let's do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS, make students do the 'Map Of Events' to strategize, start using the breathecode-cli and vanilla-js ",
+					"instructions": "Do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS, make students do the 'Map Of Events' to strategize, start using the breathecode-cli and vanilla-js ",
 					"description": "Ok but how do we use Javascript to build websites? You have to interact with the DOM whenever an event occurs",
 					"project": {
 						"title": "Random Card Generator",

@@ -87,6 +87,7 @@
       <option value='-1'>Select a syllabus</option>
       <option value='web-development'>Web Development in WordPress</option>
       <option value='full-stack'>Full Stack Development</option>
+      <option value='coding-introduction'>Coding Introduction</option>
       <option value='boats'>Boats</option>
     </select>
   </div>
