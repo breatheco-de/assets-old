@@ -1,58 +1,199 @@
 {
-    "info": {
-        "slug":    "bootstrap",
-        "name":    "Learn about Javascript Events",
-        "status":    "draft",
-        "main":    "<p>Do you think you know a lot about events? Find out with this super crazy knowledge quiz!</p>",
-        "results": "<h5>Learn More</h5><p> Check out the lesson about events!.</p>",
-        "badges": [
-            { "slug": "css_master", "points": 23 }, 
-            { "slug": "html_master", "points": 45 } 
-        ]
-    },
-    "questions": [
-        {
-            "q": "Which of the following is the correct event handler to detect a mouse click on a link?",
-            "a": [
-                {"option": "onMouseUp",      "correct": false},
-                {"option": "onLink",     "correct": false},
-                {"option": "onClick",      "correct": true}
-            ]
-        },
-        {
-            "q": "When does the onLoad event handler for the <body> tag execute?",
-            "a": [
-                {"option": "When an image is finished loading.",           "correct": false},
-                {"option": "When the entire page is finished loading.",     "correct": true},
-                {"option": "When the user attempts to load another page.",  "correct": false},
-                {"option": "When you restart your computer.",               "correct": false}
-            ]
-        },
-        {
-            "q": "Where are you right now? Select ALL that apply.",
-            "a": [
-                {"option": "Planet Earth",           "correct": true},
-                {"option": "Pluto",                  "correct": false},
-                {"option": "At a computing device",  "correct": true},
-                {"option": "The Milky Way",          "correct": true}
-            ],
-            "select_any": true
-        },
-        {
-            "q": "How many inches of rain does Michigan get on average per year?",
-            "a": [
-                {"option": "149",    "correct": false},
-                {"option": "32",     "correct": true},
-                {"option": "3",      "correct": false},
-                {"option": "1291",   "correct": false}
-            ]
-        },
-        {
-            "q": "Is Earth bigger than a basketball?",
-            "a": [
-                {"option": "Yes",    "correct": true},
-                {"option": "No",     "correct": false}
-            ]
-        }
-    ]
+	"info": {
+		"name": "Bootstrap",
+		"main": "Quiz Bootstrap. Components, Utilities, Grid and more.",
+		"results": "Yeah! Bootstrap is great!",
+		"badges": [{
+			"slug": "tag-master",
+			"points": "5"
+		}, {
+			"slug": "bootstraper",
+			"points": "5"
+		}, {
+			"slug": "position-vs-display",
+			"points": "5"
+		}, {
+			"slug": "form-inputs",
+			"points": "5"
+		}],
+		"slug": "bootstrap-quiz"
+	},
+	"questions": [{
+		"q": "Which of these class options is the correct one to center text?",
+		"a": [{
+			"option": "texte-center",
+			"correct": false
+		}, {
+			"option": "text-center",
+			"correct": true
+		}, {
+			"option": "center-text",
+			"correct": false
+		}]
+	}, {
+		"q": "With which class option to align a text to the medium?",
+		"a": [{
+			"option": "middle-align",
+			"correct": false
+		}, {
+			"option": "align-medium",
+			"correct": false
+		}, {
+			"option": "align-middle",
+			"correct": true
+		}]
+	}, {
+		"q": "What would you choose, if you want a div with 100% width?",
+		"a": [{
+			"option": "<div class=\"w-100\" style=\"background-color: #eee;\">Width 100%</div>",
+			"correct": true
+		}, {
+			"option": "<div class=\"width-100\" style=\"background-color: #eee;\">Width 100%</div>",
+			"correct": false
+		}, {
+			"option": "<div class=\"wd-100\" style=\"background-color: #eee;\">Width 100%</div>",
+			"correct": false
+		}]
+	}, {
+		"q": "Bootstrap has many components, one of them is Form. So that we could use it?",
+		"a": [{
+			"option": "Write a text",
+			"correct": false
+		}, {
+			"option": "Send data",
+			"correct": true
+		}, {
+			"option": "Show many images",
+			"correct": false
+		}]
+	}, {
+		"q": "Modal is another component of bootstrap, and with it you can display super cool messages. What is the correct way to call Modal action?",
+		"a": [{
+			"option": "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">   Launch demo modal </button>",
+			"correct": true
+		}, {
+			"option": "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal-message\" data-target=\"#exampleModal\">   Launch demo modal </button>",
+			"correct": false
+		}, {
+			"option": "<button type=\"submit\" class=\"btn btn-primary\" data-toggle=\"modal-message\" data-target=\"#exampleModal\">   Launch demo modal </button>",
+			"correct": false
+		}]
+	}, {
+		"q": "What is the wrong way to use pagination?",
+		"a": [{
+			"option": "<nav aria-label=\"Page navigation example\">   <ul class=\"pagination\">     <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li>     <li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li></ul></nav>",
+			"correct": false
+		}, {
+			"option": "<nav aria-label=\"Page navigation example\">   <ul class=\"pagination\">     <li class=\"page-item\"><a class=\"\" href=\"#\">Previous</a></li>     <li class=\"page-item\"><a class=\"\" href=\"#\">1</a></li></ul></nav>",
+			"correct": false
+		}, {
+			"option": "<nav aria-label=\"Page navigation example\">   <ul class=\"paginationes\">     <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li>     <li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li></ul></nav>",
+			"correct": true
+		}]
+	}, {
+		"q": "To line up your div row in the middle of your container, what kind should you use?",
+		"a": [{
+			"option": "align-items-center",
+			"correct": true
+		}, {
+			"option": "items-center",
+			"correct": false
+		}, {
+			"option": "center-items-align",
+			"correct": false
+		}]
+	}, {
+		"q": "If you want your div to be of variable width, which one should you use?",
+		"a": [{
+			"option": "col-12",
+			"correct": false
+		}, {
+			"option": "col-md-auto",
+			"correct": true
+		}, {
+			"option": "row",
+			"correct": false
+		}]
+	}, {
+		"q": "To the div we can assign a stop through classes. Which one is not the correct one?",
+		"a": [{
+			"option": "class=\"h-25 d-inline-block\"",
+			"correct": false
+		}, {
+			"option": "class=\".d-inline-block h-75\"",
+			"correct": false
+		}, {
+			"option": "class=\"height-75 d-inline-block\"",
+			"correct": true
+		}]
+	}, {
+		"q": "What is the div for mobile resolution?",
+		"a": [{
+			"option": "<div class=\"col-sm-1\"></div>",
+			"correct": true
+		}, {
+			"option": "<div class=\"col-xs-1\"></div>",
+			"correct": false
+		}, {
+			"option": "<div class=\"col-lg-1\"></div>",
+			"correct": false
+		}]
+	}, {
+		"q": "To vertically align two divs, what is the correct way?",
+		"a": [{
+			"option": "<div class=\"d-inline p-2 bg-primary text-white\">d-inline</div>",
+			"correct": true
+		}, {
+			"option": "<div class=\"inline p-2 bg-primary text-white\">d-inline</div>",
+			"correct": false
+		}]
+	}, {
+		"q": "<div class=\"row\">   <div class=\"col-auto mr-auto\">Hello</div>   <div class=\"col-auto\">World</div> </div>.  As shown on the screen?",
+		"a": [{
+			"option": "Hello, to the right and World too",
+			"correct": false
+		}, {
+			"option": "Hello and Word in the center",
+			"correct": false
+		}, {
+			"option": "Hello, to the left and World to the right",
+			"correct": true
+		}]
+	}, {
+		"q": "What is the class to hide elements?",
+		"a": [{
+			"option": "class=\"display-none\"",
+			"correct": false
+		}, {
+			"option": "class=\"d-none\"",
+			"correct": true
+		}, {
+			"option": "class=\"none\"",
+			"correct": false
+		}]
+	}, {
+		"q": "<div class=\"row\"><div class=\"col\">1 of 3</div><div class=\"col\">2 of 3</div><div class=\"col\">3 of 3</div></div>",
+		"a": [{
+			"option": "Columns are kept side by side for only in mobile",
+			"correct": false
+		}, {
+			"option": "Columns are kept side by side for all resolutions",
+			"correct": true
+		}, {
+			"option": "Columns are kept side by side for only in tablet",
+			"correct": false
+		}]
+	}, {
+		"q": "What is the input component used for?",
+		"a": [{
+			"option": "Send data",
+			"correct": true
+		}, {
+			"option": "Show image",
+			"correct": false
+		}, {
+			"option": "Show a modal",
+			"correct": false
+		}]
+	}]
 }
