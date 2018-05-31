@@ -67,11 +67,11 @@ function addAPIRoutes($api){
 		$row = $api->db['sqlite']->createRow( 'response', [
 			'score' => $score,
 			'email' => $email,
-			'user_id' => $api->optional($parsedBody,'user_id'),
-			'cohort_slug' => $api->optional($parsedBody,'cohort_slug'),
-			'profile_slug' => $api->optional($parsedBody,'profile_slug'),
-			'comment' => $api->optional($parsedBody,'comment'),
-			'tags' => $api->optional($parsedBody,'tags'),
+			'user_id' => $api->optional($parsedBody,'user_id')->int(),
+			'cohort_slug' => $api->optional($parsedBody,'cohort_slug')->smallString(),
+			'profile_slug' => $api->optional($parsedBody,'profile_slug')->smallString(),
+			'comment' => $api->optional($parsedBody,'comment')->bigString(),
+			'tags' => $api->optional($parsedBody,'tags')->smallString(),
 			'created_at' => date("Y-m-d H:i:s")
 		]);
 		

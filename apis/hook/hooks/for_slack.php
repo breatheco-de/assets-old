@@ -26,7 +26,9 @@ function addSlackRoutes($api){
     	        'academy_news_events' => "C6R5DV6LW",
     	        'coding_weekends' => "CAEK465QR",
     	        'general' => "C0BG1MAV7",
-    	        'job-hunting' => "C6PNCBMMX"
+    	        'job-hunting' => "C6PNCBMMX",
+    	        'introductions' => "C9ZDKH5T9",
+    	        'public_support' => "CAZ9W99U4"
     	    ];
     	    $channelIds = [];
     	    foreach($channels as $key=>$id) $channelIds[] = $id;
