@@ -4,3 +4,11 @@ body{
 video{
     width: 100%;
 }
+.card-img-top{
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    width: 100%;
+    height: 250px;
+}

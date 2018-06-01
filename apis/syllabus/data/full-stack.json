@@ -45,11 +45,13 @@
 					],
 					"replits": [{
 							"title": "Learn HTML",
-							"slug": "html"
+							"slug": "html",
+							"vtutorial_slug": "html"
 						},
 						{
 							"title": "Learn CSS",
-							"slug": "css"
+							"slug": "css",
+							"vtutorial_slug": "css"
 						}
 					],
 					"assignments": ["postcard"],

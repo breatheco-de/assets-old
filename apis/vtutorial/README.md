@@ -4,10 +4,10 @@
 
 #### Get all the video tutorials
 ```
-GET: /vtutorial/
+GET: /vtutorial/all
 ```
 
-#### Get all the video tutorials
+#### Get the ajax video tutorial
 ```
 GET: /vtutorial/ajax
 ```
