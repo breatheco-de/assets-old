@@ -3,6 +3,7 @@
 	require_once('../JsonPDO.php');
 	require_once('../SlimAPI.php');
 	require_once('routes.php');
+	require('ReplitFunctions.php');
 	
 	$api = new SlimAPI([
 		'name' => 'Replit API - BreatheCode Platform',

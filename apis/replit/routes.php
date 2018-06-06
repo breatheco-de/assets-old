@@ -2,19 +2,41 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 function addAPIRoutes($api){
+	//get all cohorts and its replits
+	$api->get('/template/all', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$templatesPDO = new JsonPDO('_templates/','{}',false);
+		$baseTemplates = $templatesPDO->getAllContent();
+		$templates = []; 
+		foreach($baseTemplates as $key => $temp){
+			$templates[] = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($key));
+		} 
+		
+	    return $response->withJson($templates);
+	});
+
+	//get all cohorts and its replits
+	$api->get('/template/{profile_url}', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$templatesPDO = new JsonPDO('_templates/','{}',false);
+		$replits = $templatesPDO->getJsonByName($args['profile_url']);
+		if(!$replits) throw new Exception('Invalid profile: '.$args['profile_url'], 400);
+		
+	    return $response->withJson($replits);
+	});
+
 
 	//get all cohorts and its replits
 	$api->get('/templates', function (Request $request, Response $response, array $args) use ($api) {
-		$templatesPDO = new JsonPDO('base-replits.json','[]',false);
-		$replits = $templatesPDO->getAllContent();
 		
-	    return $response->withJson($replits);
+		$templates = ReplitFunctions::getTemplates();
+	    return $response->withJson($templates);
 	});
 	
 	//get all cohorts and its replits
 	$api->get('/cohort', function (Request $request, Response $response, array $args) use ($api) {
-		$templatesPDO = new JsonPDO('base-replits.json','[]',false);
-		$baseReplits = $templatesPDO->getAllContent();
+		
+		$baseReplits = ReplitFunctions::getTemplates();
 		
 		$content = $api->db['json']->getAllContent();
 		$cohorts = [];
