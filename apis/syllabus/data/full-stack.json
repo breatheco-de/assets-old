@@ -1,8 +1,7 @@
 {
 	"label": "Full-Stack Development",
 	"profile": "full-stack",
-	"weeks": [
-		{
+	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
@@ -367,7 +366,7 @@
 						"title": "Final Project Wireframes",
 						"solution": "#"
 					},
-					"lessons":[{
+					"lessons": [{
 						"title": "Importing and Exporting from other JS files",
 						"slug": "importing-and-exporting-javascript-modules"
 					}],
@@ -384,7 +383,7 @@
 						"title": "Build your project Flux.Views",
 						"solution": "#"
 					},
-					"lessons":[{
+					"lessons": [{
 						"title": "Using React Router",
 						"slug": "routing-our-views-with-react-router"
 					}],
@@ -412,6 +411,7 @@
 				},
 				{
 					"label": "Weekend",
+					"description": "Now that you are working on the final project it is the best time to meet with your parner to work on the weends",
 					"instructions": "Student Projects Flux.Views must be finished by next class"
 				}
 			]
@@ -423,34 +423,72 @@
 			"days": [{
 					"label": "Day 16",
 					"instructions": "Now with map the Flux.Views user actions into Flux.Actions and greate the Flux.Model setters for them. The Flux.Views are able to get the Flux.Store data through the public getters.",
+					"description": "Now thanks to Flux we can start having a centralized storage for the entire application, it is time to practice the Flux Flow until mastery: Flux.Views, Flux.Actions, Flux.Store",
 					"project": {
-						"title": "Soft-code your project views",
+						"title": "The Contact List",
 						"solution": "#TODO"
 					},
-					"homework": "Students must add all the application actions into Flux.Actions and start linking them to the Flux.Views, also start dispatching the actions to the Stores if possible",
+					"homework": "Students must finish the contact list application using Flux",
 					"key-concepts": ["How to map map user actions to Flux.Actions", "Dispatching into the Flux.Store setters", "What to save on the store and what to save locally on the Views/Comopnents States", "Why are the model setters private?", "Why emitting?", "How to listen to the emit?"],
 					"technologies": ["React", "Webpack", "NPM", "Babel.js", "Flux", "HTML Forms", "MVC"]
-				}, {
+				},
+				{
 					"label": "Day 17",
-					"instructions": "Finally students must use the Flux.Store getters to retreive the data into the views, they should understand the flow: store changes > views listen > views get the new info and set into the local state > views re-render",
+					"instructions": "Help students work on their projects and finish the contact list",
+					"description": "Flux + React + JS and HTML/CSS is a lot to take in, let it dry! Replicated the Flux workflow everywhere in your project until it is attached into our unconscious",
 					"project": {
-						"title": "Work on the student project",
-						"solution": "#TODO"
+						"title": "Fluxify the Final Project"
 					},
-					"key-concepts": ["Create some sample data on your Flux.Model", "Create the getters to get that data from the views", "Create the listeners to handle store changes", "Re-set the views model on store changes", "Re-render and conditionally display whatever is needed", "Create any actions to change the models", "Dispatch from the actions", "Create the setters and update the store state"],
-					"homework": "Students must work on all their Flux.Views to make them work with store data, students must also work on polishing the CSS/HTML based on that",
-					"technologies": ["Flux Workflow", "Data-Modeling", "Object Oriented Programming"]
+					"assignments": ["full-stack-project-fluxify"],
+					"key-concepts": ["Creating Flux.Views", "Creating Flux.Stores", "Binding/Subscribing the store to the views"],
+					"homework": "Students must finish the contact list and start fluxifing their project",
+					"technologies": ["Flux, React"]
+				}, {
+					"label": "Day 18",
+					"instructions": "Help students work on their projects and finish the contact list",
+					"description": "One more day to fluxify our project! heat the engines because soon we will be conecting our application with APIs!",
+					"project": {
+						"title": "Fluxify the Final Project"
+					},
+					"key-concepts": ["Creating Flux.Views", "Creating Flux.Stores", "Binding/Subscribing the store to the views"],
+					"homework": "Students must finish the contact list and start fluxifing their project",
+					"technologies": ["Flux, React"]
 				},
 				{
 					"label": "Weekend",
-					"description": "Time to work on the project! Call your project mate and meet with him at the office!",
+					"description": "Yes! Another great weekend to keep becoming a developer",
 					"instructions": "Students must finish the AJAX Replits",
 					"homework": "Finish your project Flux.Views"
 				}
 			]
 		},
 		{
-			"label": "Week 7: Ajax(HTTP-JSON)",
+			"label": "Week 7: Practice Week!",
+			"topic": "Everything together",
+			"summary": "Work on the project and catch up with all the assignments",
+			"days": [{
+					"label": "Day 19",
+					"instructions": "",
+					"homework": ""
+				},
+				{
+					"label": "Day 20",
+					"instructions": "",
+					"homework": ""
+				},
+				{
+					"label": "Day 21",
+					"instructions": "",
+					"homework": ""
+				},
+				{
+					"label": "Weekend",
+					"instructions": ""
+				}
+			]
+		},
+		{
+			"label": "Week 8: Ajax(HTTP-JSON)",
 			"topic": "AJAX & 3rd Party API's",
 			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
 			"days": [{
@@ -503,7 +541,7 @@
 			]
 		},
 		{
-			"label": "Week 8: Create your own API",
+			"label": "Week 9: Create your own API",
 			"topic": "Python, Django, ORM",
 			"summary": "Creating an API use Python, Django & Rest",
 			"days": [{
@@ -517,15 +555,15 @@
 						"title": "Learn Python",
 						"slug": "python"
 					}],
-					"lessons":[{
+					"lessons": [{
 						"title": "From Javascript to Python",
 						"slug": "from-javascript-to-python"
-					},{
+					}, {
 						"title": "Building REST API's",
-						"slug":"understanding-restul-apis"
-					},{
+						"slug": "understanding-restul-apis"
+					}, {
 						"title": "Building REST API's with django",
-						"slug":"building-restful-apis-with-django"
+						"slug": "building-restful-apis-with-django"
 					}],
 					"key-concepts": ["Python has access to the Entire Machine", "Django has packages too (PIP)", "Requirements.txt", "Django Framework", "Workflow for Creating an endpoint"],
 					"homework": "Students must create the required models for the Contact Managment Application",
@@ -569,62 +607,7 @@
 			]
 		},
 		{
-			"label": "Week 9: ",
-			"topic": "",
-			"summary": "",
-			"days": [{
-					"label": "Day 25",
-					"instructions": "",
-					"project": {
-						"title": "",
-						"solution": "#"
-					},
-					"replits": [{
-						"title": "",
-						"url": ""
-					}],
-					"key-concepts": [""],
-					"homework": "",
-					"technologies": [""]
-				},
-				{
-					"label": "Day 26",
-					"instructions": "",
-					"project": {
-						"title": "",
-						"solution": "#"
-					},
-					"replits": [{
-						"title": "",
-						"url": ""
-					}],
-					"key-concepts": [""],
-					"homework": "",
-					"technologies": [""]
-				},
-				{
-					"label": "Day 27",
-					"instructions": "",
-					"project": {
-						"title": "",
-						"solution": "#"
-					},
-					"replits": [{
-						"title": "",
-						"url": ""
-					}],
-					"key-concepts": [""],
-					"homework": "",
-					"technologies": [""]
-				},
-				{
-					"label": "Weekend",
-					"instructions": ""
-				}
-			]
-		},
-		{
-			"label": "Week 10: ",
+			"label": "Week 10",
 			"topic": "",
 			"summary": "",
 			"days": [{
