@@ -57,8 +57,7 @@ function addAPIRoutes($api){
 		try{
 			$replits = $api->db['json']->getJsonByName($args['cohort_slug']);
 			
-			$templatesPDO = new JsonPDO('base-replits.json','[]',false);
-			$baseReplits = $templatesPDO->getAllContent();
+			$baseReplits = ReplitFunctions::getTemplates();
 			foreach($baseReplits as $brepl){
 				if(!empty($brepl->base)){
 					if(empty($replits[$brepl->slug])) $replits[$brepl->slug] = $brepl->base;
