@@ -310,7 +310,7 @@
 						"title": "Object Oriented Programming",
 						"slug": "object-oriented-programing"
 					}],
-					"assignments": ["todo-list"],
+					"assignments": ["simple-counter-react", "trafic-light-react"],
 					"key-concepts": ["Export -> Import modules", "You can create your own tags", "Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
 				},
@@ -322,6 +322,7 @@
 						"title": "Continue with: Todo list with React",
 						"solution": "https://bitbucket.org/codingacademy/todo-list/"
 					},
+					"assignments": ["todo-list"],
 					"key-concepts": ["Condigional Rendering", "The component state", "The state is inmutable", "Using const, map, filter and concat to prevent state mutation"],
 					"homework": "Students must finish the TodoList being able to add & delete tasks.",
 					"technologies": ["React", "Javascript", "Events"]
