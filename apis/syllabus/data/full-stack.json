@@ -310,7 +310,7 @@
 						"title": "Object Oriented Programming",
 						"slug": "object-oriented-programing"
 					}],
-					"assignments": ["simple-counter-react", "trafic-light-react"],
+					"assignments": ["simple-counter-react", "traffic-light-react"],
 					"key-concepts": ["Export -> Import modules", "You can create your own tags", "Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
 				},
