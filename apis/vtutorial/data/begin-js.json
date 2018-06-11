@@ -10,6 +10,6 @@
 		{ "seconds": "495", "description": "#1.5 Anchor same page" },
 		{ "seconds": "553", "description": "#2 String concatenation" },
 		{ "seconds": "602", "description": "#2.1 Create a basic HTML" },
-		{ "seconds": "715", "description": "#3 Calling your first function" },
+		{ "seconds": "715", "description": "#3 Calling your first function" }
 	]
 }
