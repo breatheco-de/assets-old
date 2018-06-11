@@ -1,0 +1,15 @@
+{
+	"video-id": "2sRXuTxX6TI",
+	"menuname": "Begin JS Replit's",
+	"timeline":[ 
+		{ "seconds": "58", "description": "#0 Console Log" },
+		{ "seconds": "144", "description": "#1.1 Declare Variables" },
+		{ "seconds": "208", "description": "#1.2 Print variables in the console" },
+		{ "seconds": "246", "description": "#1.3 Multiply two values" },
+		{ "seconds": "369", "description": "#1.4 User input variables" },
+		{ "seconds": "495", "description": "#1.5 Anchor same page" },
+		{ "seconds": "553", "description": "#2 String concatenation" },
+		{ "seconds": "602", "description": "#2.1 Create a basic HTML" },
+		{ "seconds": "715", "description": "#3 Calling your first function" },
+	]
+}

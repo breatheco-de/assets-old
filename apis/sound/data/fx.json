@@ -1,0 +1,13 @@
+[
+	{ "id":1, "category":"game", "name":"Game Over", "url":"data/mario/fx_gameover.wav" },
+	{ "id":2, "category":"game", "name":"Jump Super", "url":"data/mario/fx_jump_super.wav"},
+	{ "id":3, "category":"game", "name":"Die", "url":"data/mario/fx_mariodie.wav"},
+	{ "id":4, "category":"game", "name":"Pause", "url":"data/mario/fx_pause.wav"},
+	{ "id":5, "category":"game", "name":"Stage Clear", "url":"data/mario/fx_stage_clear.wav"},
+	{ "id":6, "category":"game", "name":"Warning", "url":"data/mario/fx_warning.wav"},
+	{ "id":7, "category":"game", "name":"World Clear", "url":"data/mario/fx_world_clear.wav"},
+	{ "id":8, "category":"game", "name":"Zelda Recorder", "url":"data/videogame/fx_recorder.wav"},
+	{ "id":9, "category":"game", "name":"Duck-Duck-Duck Intro", "url":"data/other/fx_duck_intro.wav"},
+	{ "id":10, "category":"other", "name":"Clock Ticking 1", "url":"data/other/clock-ticking1.wav" },
+	{ "id":11, "category":"other", "name":"Clock Ticking 2", "url":"data/other/clock-ticking2.wav" }
+]
