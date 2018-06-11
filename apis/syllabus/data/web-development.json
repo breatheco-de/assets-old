@@ -212,7 +212,8 @@
 					],
 					"replits": [{
 							"title": "Introduction to JS",
-							"slug": "js-beginner"
+							"slug": "js-beginner",
+							"vtutorial_slug": "begin-js"
 						},
 						{
 							"title": "Arrays and Loops",
