@@ -473,22 +473,26 @@
 			"summary": "Work on the project and catch up with all the assignments",
 			"days": [{
 					"label": "Day 19",
-					"instructions": "",
-					"homework": ""
+					"instructions": "Finish the assignments with students",
+					"description": "Practice everything you've learned"
+					"homework": "Students must deliver all previous assaignments"
 				},
 				{
 					"label": "Day 20",
-					"instructions": "",
-					"homework": ""
+					"instructions": "Finish the assignments with students",
+					"description": "Practice everything you've learned"
+					"homework": "Students must deliver all previous assaignments"
 				},
 				{
 					"label": "Day 21",
-					"instructions": "",
-					"homework": ""
+					"instructions": "Finish the assignments with students",
+					"description": "Practice everything you've learned"
+					"homework": "Students must deliver all previous assaignments"
 				},
 				{
 					"label": "Weekend",
-					"instructions": ""
+					"instructions": "Finish the assignments with students",
+					"description": "Practice everything you've learned"
 				}
 			]
 		},
@@ -504,13 +508,13 @@
 						"title": "Use the Contact Manage API to save, delete and update the contacts",
 						"solution": "#TODO"
 					},
-					"replits": [{
-						"title": "Learn AJAX",
-						"slug": "ajax"
-					}],
+					"replits": [],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "explain the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
-					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"]
+					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"],
+					"resources": [
+						{ "type": "video", "url": "https://www.youtube.com/watch?v=Oive66jrwBs"}
+					]
 				},
 				{
 					"label": "Day 20",
