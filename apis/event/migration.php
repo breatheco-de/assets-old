@@ -21,6 +21,7 @@
       'logo_url' TEXT NOT NULL, 
       'event_date' DATETIME NOT NULL, 
       'type' TEXT NOT NULL, 
+      'address' TEXT NOT NULL, 
       'city_slug' TEXT NOT NULL, 
       'banner_url' TEXT, 
       'invite_only' INTEGER NOT NULL, 

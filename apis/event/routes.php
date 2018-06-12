@@ -81,6 +81,7 @@ function addAPIRoutes($api){
         $logo = $api->validate($parsedBody,'logo_url')->url();
         $type = $api->validate($parsedBody,'type')->smallString();
         $city = $api->validate($parsedBody,'city_slug')->smallString();
+        $address = $api->validate($parsedBody,'address')->smallString();
         $date = $api->validate($parsedBody,'event_date')->date();
         $private = $api->validate($parsedBody,'invite_only')->bool();
         
@@ -92,6 +93,7 @@ function addAPIRoutes($api){
 			'capacity' => $capacity,
 			'logo_url' => $logo,
 			'city_slug' => $city,
+			'address' => $address,
 			'invite_only' => $private,
 			'event_date' => DateTime::createFromFormat('Y-m-d H:i:s', $date),
 			'created_at' => date("Y-m-d H:i:s")

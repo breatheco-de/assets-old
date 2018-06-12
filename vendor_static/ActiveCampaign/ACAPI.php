@@ -32,7 +32,8 @@ class ACAPI{
     ];
     
     private static $tags = [
-        'platform_signup'
+        'platform_signup',
+        'recurrent-student'//means that it has studied more than one course already
     ];
     
     private static $events = [
@@ -44,7 +45,8 @@ class ACAPI{
         'public_event_attendance',
         'student_application',
         'student_referral',
-        'syllabus_download'
+        'syllabus_download',
+        'new_cohort_registration'
     ];
     
     private static $connector = [];

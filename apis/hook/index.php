@@ -28,8 +28,8 @@
     $api = addEventbriteRoutes($api);
 
     //eventbrite api integration
-    require_once('hooks/for_data_integrity.php');
-    $api = addDataIntegrityHooks($api);
+    require_once('hooks/for_active_campaign.php');
+    $api = addActiveCampaignHooks($api);
 
     //eventbrite api integration
     require_once('hooks/for_samples.php');
