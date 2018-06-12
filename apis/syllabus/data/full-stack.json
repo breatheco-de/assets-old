@@ -5,8 +5,7 @@
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 1",
 					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
 					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
@@ -123,8 +122,7 @@
 			"label": "Week 2: Wireframes, CMD & GIT",
 			"topic": "Prework done!",
 			"summary": "Time to start having a professional workflow",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 4",
 					"description": "A text editor and the console, that's all you need to be a great coder. Time to master the second one.",
 					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
@@ -424,8 +422,7 @@
 			"label": "Week 6: Flux.Model to Flux.View",
 			"topic": "MVC and Flux Framework",
 			"summary": "No more hard-coding, make your Flux.Views and Components render from the Flux.Model",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 16",
 					"instructions": "Now with map the Flux.Views user actions into Flux.Actions and greate the Flux.Model setters for them. The Flux.Views are able to get the Flux.Store data through the public getters.",
 					"description": "Now thanks to Flux we can start having a centralized storage for the entire application, it is time to practice the Flux Flow until mastery: Flux.Views, Flux.Actions, Flux.Store",
@@ -474,19 +471,19 @@
 			"days": [{
 					"label": "Day 19",
 					"instructions": "Finish the assignments with students",
-					"description": "Practice everything you've learned"
+					"description": "Practice everything you've learned",
 					"homework": "Students must deliver all previous assaignments"
 				},
 				{
 					"label": "Day 20",
 					"instructions": "Finish the assignments with students",
-					"description": "Practice everything you've learned"
+					"description": "Practice everything you've learned",
 					"homework": "Students must deliver all previous assaignments"
 				},
 				{
 					"label": "Day 21",
 					"instructions": "Finish the assignments with students",
-					"description": "Practice everything you've learned"
+					"description": "Practice everything you've learned",
 					"homework": "Students must deliver all previous assaignments"
 				},
 				{
@@ -500,8 +497,7 @@
 			"label": "Week 8: Ajax(HTTP-JSON)",
 			"topic": "AJAX & 3rd Party API's",
 			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 19",
 					"instructions": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
 					"project": {
@@ -512,9 +508,10 @@
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "explain the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
 					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"],
-					"resources": [
-						{ "type": "video", "url": "https://www.youtube.com/watch?v=Oive66jrwBs"}
-					]
+					"resources": [{
+						"type": "video",
+						"url": "https://www.youtube.com/watch?v=Oive66jrwBs"
+					}]
 				},
 				{
 					"label": "Day 20",
