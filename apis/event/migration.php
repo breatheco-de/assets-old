@@ -19,6 +19,8 @@
       'url' TEXT NOT NULL, 
       'capacity' INTEGER NOT NULL, 
       'logo_url' TEXT NOT NULL, 
+      'event_date' DATETIME NOT NULL, 
+      'banner_url' TEXT, 
       'invite_only' INTEGER NOT NULL, 
       'created_at' DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
       'id'  INTEGER PRIMARY KEY NOT NULL  

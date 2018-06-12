@@ -306,6 +306,14 @@ class Validator{
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
+    function date(){ 
+        if(empty($this->value) && $this->optional) return null;
+        
+        $validator = v::date()->validate($this->value);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
+        return $this->value;
+    }
     function bool(){ 
         if(empty($this->value) && $this->optional) return null;
         

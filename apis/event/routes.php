@@ -18,7 +18,7 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 function addAPIRoutes($api){
 
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
-		$content = $api->db['sqlite']->event()->fetchAll();
+		$content = $api->db['sqlite']->event()->orderBy( 'event_date', 'DESC' )->fetchAll();
 	    return $response->withJson($content);
 	});
 	
@@ -79,6 +79,7 @@ function addAPIRoutes($api){
         $url = $api->validate($parsedBody,'url')->url();
         $capacity = $api->validate($parsedBody,'capacity')->int();
         $logo = $api->validate($parsedBody,'logo_url')->url();
+        $date = $api->validate($parsedBody,'event_date')->date();
         $private = $api->validate($parsedBody,'invite_only')->bool();
         
         $props = [
@@ -88,6 +89,7 @@ function addAPIRoutes($api){
 			'capacity' => $capacity,
 			'logo_url' => $logo,
 			'invite_only' => $private,
+			'event_date' => DateTime::createFromFormat('Y-m-d H:i:s', $date),
 			'created_at' => date("Y-m-d H:i:s")
 		];
 		$row = $api->db['sqlite']->createRow('event', $props);

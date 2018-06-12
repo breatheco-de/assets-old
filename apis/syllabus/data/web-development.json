@@ -19,7 +19,7 @@
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
 					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
 					"lessons": [{
-							"title": "Introduccion to the pre-work",
+							"title": "Introduction to the pre-work",
 							"slug": "introduction-to-the-prework"
 						},
 						{
@@ -79,7 +79,7 @@
 						}
 					],
 					"replits": [{
-						"title": "Introduccion to the prework",
+						"title": "Doing Layouts",
 						"slug": "layouts"
 					}],
 					"quizzes": [
