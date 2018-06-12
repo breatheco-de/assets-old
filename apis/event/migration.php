@@ -20,6 +20,8 @@
       'capacity' INTEGER NOT NULL, 
       'logo_url' TEXT NOT NULL, 
       'event_date' DATETIME NOT NULL, 
+      'type' TEXT NOT NULL, 
+      'city_slug' TEXT NOT NULL, 
       'banner_url' TEXT, 
       'invite_only' INTEGER NOT NULL, 
       'created_at' DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 

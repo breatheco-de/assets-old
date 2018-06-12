@@ -79,15 +79,19 @@ function addAPIRoutes($api){
         $url = $api->validate($parsedBody,'url')->url();
         $capacity = $api->validate($parsedBody,'capacity')->int();
         $logo = $api->validate($parsedBody,'logo_url')->url();
+        $type = $api->validate($parsedBody,'type')->smallString();
+        $city = $api->validate($parsedBody,'city_slug')->smallString();
         $date = $api->validate($parsedBody,'event_date')->date();
         $private = $api->validate($parsedBody,'invite_only')->bool();
         
         $props = [
+			'type' => EventFunctions::getType($type),
 			'description' => $desc,
 			'title' => $title,
 			'url' => $url,
 			'capacity' => $capacity,
 			'logo_url' => $logo,
+			'city_slug' => $city,
 			'invite_only' => $private,
 			'event_date' => DateTime::createFromFormat('Y-m-d H:i:s', $date),
 			'created_at' => date("Y-m-d H:i:s")

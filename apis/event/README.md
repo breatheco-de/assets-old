@@ -25,14 +25,18 @@ Request (application/json)
 
     body:
     {
-    	'description' => 'event description',
-    	'title' => 'event title',
-    	'url' => 'http://eventbrite_or_landing_page_url.com',
-    	'capacity' => 100,
-    	'logo_url' => 'http://url/to/logo',
-    	'invite_only' => true
+        "title": "asd",
+        "description": "Description for the event",
+        "url":"http://www.asdads.com",
+        "invite_only": true,
+        "city_slug": "ccs",
+        "type": "coding_weekend",
+        "event_date": "2017-08-20 20:30:00",
+        "logo_url":"http://www.asdads.com",
+        "capacity":200
     }
 ```
+Note: The valid event types are: ['workshop','hackathon','intro_to_coding','coding_weekend','4geeks_night','other']
 
 5. Checking to one event
 ```

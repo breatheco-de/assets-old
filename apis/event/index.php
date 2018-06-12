@@ -4,6 +4,7 @@
 	require_once('../JsonPDO.php');
 	require_once('../SlimAPI.php');
 	require('routes.php');
+	require('EventFunctions.php');
 	
 	$api = new SlimAPI([
 		'debug' => API_DEBUG,
