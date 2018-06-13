@@ -7,11 +7,6 @@ function addAPIRoutes($api){
     
     $scope = '';
 
-	$api->get($scope.'/', function(Request $request, Response $response, array $args) use ($api) {
-		throw new Exception('Please specify an agenda_slug like: /contact/agenda/my_slug', 400);
-		return $response->withJson($contacts);	
-	});
-
 	$api->get($scope.'/agenda/{agenda_slug}', function(Request $request, Response $response, array $args) use ($api) {
 		$contacts = $api->db['sqlite']->fake_contact_list()
 		                ->where('agenda_slug',$args['agenda_slug'])

@@ -1,0 +1,141 @@
+{
+	"info": {
+		"name": "Assets: Fake",
+		"_postman_id": "0e691438-c21a-30b1-1a7a-69b5cf5c220c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contact-list",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{assets_host}}fake/contact/agenda/alejo",
+							"host": [
+								"{{assets_host}}fake"
+							],
+							"path": [
+								"contact",
+								"agenda",
+								"alejo"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Migration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{assets_host}}fake/contact/migration.php",
+							"host": [
+								"{{assets_host}}fake"
+							],
+							"path": [
+								"contact",
+								"migration.php"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE contact /contact-list/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"full_name\": \"asd\",\n  \"email\": \"aalejo@ga.com\",\n  \"agenda_slug\": \"alejo\",\n  \"address\":\"47568 NW 34ST, 33434 FL, USA\",\n  \"phone\":\"4545363456\"\n}"
+						},
+						"url": {
+							"raw": "{{assets_host}}fake/contact/",
+							"host": [
+								"{{assets_host}}fake"
+							],
+							"path": [
+								"contact",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE contact /contact-list/{id}",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"full_name\": \"asd\",\n  \"email\": \"aalejoo@ga.commmmm\",\n  \"agenda_slug\": \"alejo\",\n  \"address\":\"47568 NW 34ST, 33434 FL, USA\",\n  \"phone\":\"4545363456\"\n}"
+						},
+						"url": {
+							"raw": "{{assets_host}}fake/contact/1",
+							"host": [
+								"{{assets_host}}fake"
+							],
+							"path": [
+								"contact",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE contact /contact/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{assets_host}}fake/contact/1",
+							"host": [
+								"{{assets_host}}fake"
+							],
+							"path": [
+								"contact",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

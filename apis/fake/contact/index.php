@@ -8,7 +8,7 @@
 		'debug' => API_DEBUG,
 		'name' => 'Fake Contacts API'
 	]);
-	
+	$api->addReadme('/','./README.md');
 	$pdo = new \PDO( 'sqlite:db.sqlite3' );
 	$db = new \LessQL\Database( $pdo );
 	$db->setPrimary( 'fake_contact_list', 'id' );

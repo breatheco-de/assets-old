@@ -1,8 +1,8 @@
 <?php
-	require_once('../../vendor/autoload.php');
-	require_once('../../globals.php');
-	require_once('../JsonPDO.php');
-	require_once('../SlimAPI.php');
+	require_once('../../../vendor/autoload.php');
+	require_once('../../../globals.php');
+	require_once('../../JsonPDO.php');
+	require_once('../../SlimAPI.php');
 	
 	use Psr\Http\Message\ServerRequestInterface as Request;
 	use Psr\Http\Message\ResponseInterface as Response;

@@ -1,81 +1,54 @@
 [<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
 
-# Add new contact
+# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Fake Contact-List API
 
-1. Get All the BreatheCode Events
-```
-GET: /apis/event/all
-```
+Use this API to test your skills doing AJAX requests with the [contact-list](https://projects.breatheco.de/d/contact-list#readme) ajax exercise on the BreatheCode Platform.
 
-2. Get One Particular BC Event
-```
-GET: /apis/event/:event_id
-```
+[Right-click here to download the POSTMan Collection](https://assets.breatheco.de/apis/fake/contact/collection.json).
 
-3. Delete One Particular BC Event
+#### 1) Get All contacts from an Agenda
 ```
-DELETE: /apis/event/:event_id
+GET: /apis/fake/contact/agenda/{agenda_slug}
 ```
 
-4. Create one event
+#### 2) Get One Particular Contact
 ```
-PUT: /apis/event/
+GET: /apis/fake/contact/{event_id}
+```
+
+#### 3) Delete One Particular Contact
+```
+DELETE: /apis/fake/contact/{event_id}
+```
+
+#### 4) Create one contact
+```
+PUT: /apis/fake/contact/
 
 Request (application/json)
 
     body:
     {
-    	'description' => 'event description',
-    	'title' => 'event title',
-    	'url' => 'http://eventbrite_or_landing_page_url.com',
-    	'capacity' => 100,
-    	'logo_url' => 'http://url/to/logo',
-    	'invite_only' => true
+        "full_name": "Dave Bradley",
+        "email": "dave@gmail.com",
+        "agenda_slug": "my_super_agenda",
+        "address":"47568 NW 34ST, 33434 FL, USA",
+        "phone":"7864445566"
     }
 ```
 
-5. Checking to one event
+#### 5) Update one contact
 ```
-PUT: /apis/event/{evnet_id}/checkin
+POST: /apis/fake/contact/{contact_id}
 
 Request (application/json)
 
+    body:
     {
-      "email": "aalejo@gmail.com"
+        "full_name": "Dave Bradley",
+        "email": "dave@gmail.com",
+        "agenda_slug": "my_super_agenda",
+        "address":"47568 NW 34ST, 33434 FL, USA",
+        "phone":"7864445566"
     }
-
-```
-
-5. Get event checkins
-```
-GET: /apis/event/{event_id}/checkin
-
-Response (application/json)
-
-    [
-        {
-            "event_id": "1",
-            "email": "aalejo@gmail.com",
-            "created_at": "2018-05-23 20:26:00",
-            "id": "1"
-        },
-        {
-            "event_id": "1",
-            "email": "aalejo@gmail.com",
-            "created_at": "2018-05-23 20:26:09",
-            "id": "2"
-        },
-        {
-            "event_id": "1",
-            "email": "aalejo@gmail.com",
-            "created_at": "2018-05-23 20:26:21",
-            "id": "3"
-        },
-        {
-            "event_id": "1",
-            "email": "aalejo@gmail.com",
-            "created_at": "2018-05-23 20:26:22",
-            "id": "4"
-        }
-    ]
 ```

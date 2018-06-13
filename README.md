@@ -13,10 +13,10 @@ Resources for Teachers and Students using the [BreatheCode Platform](https://bre
 
 ## Sample API's for Projects
 
-- [Fake Sample API](../fake/)
-- [TicTacToe API](../apis/tictactoe/)
-- [Meetup API](../apis/meetup/)
-- [Contact Management API](../apis/contact/)
+- [Fake Sample API](../apis/fake/)
+- [TicTacToe API](../apis/fake/tictactoe/)
+- [Meetup API](../apis/fake/meetup/)
+- [Contact Management API](../apis/fake/contact/)
 
 ## Other Tools
 
