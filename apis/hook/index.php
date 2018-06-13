@@ -34,6 +34,10 @@
     //eventbrite api integration
     require_once('hooks/for_samples.php');
     $api = addSampleRoutes($api);
+
+    //breathecode api integration
+    require_once('hooks/for_breathecode.php');
+    $api = addBreatheCodeHooks($api);
     
     //slack api integration
     require_once('hooks/for_slack.php');

@@ -1,6 +1,6 @@
 [<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
 
-# Events API
+# Add new contact
 
 1. Get All the BreatheCode Events
 ```
@@ -25,19 +25,14 @@ Request (application/json)
 
     body:
     {
-        "title": "asd",
-        "description": "Description for the event",
-        "url":"http://www.asdads.com",
-        "invite_only": true,
-        "city_slug": "ccs",
-        "address": "3444 NW 43rd ST",
-        "type": "coding_weekend",
-        "event_date": "2017-08-20 20:30:00",
-        "logo_url":"http://www.asdads.com",
-        "capacity":200
+    	'description' => 'event description',
+    	'title' => 'event title',
+    	'url' => 'http://eventbrite_or_landing_page_url.com',
+    	'capacity' => 100,
+    	'logo_url' => 'http://url/to/logo',
+    	'invite_only' => true
     }
 ```
-Note: The valid event types are: ['workshop','hackathon','intro_to_coding','coding_weekend','4geeks_night','other']
 
 5. Checking to one event
 ```

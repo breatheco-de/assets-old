@@ -96,9 +96,11 @@ class BCWrapper{
         	$resp = self::$guz->get(self::$host.$resource.'?'.http_build_query($args));
         } 
         else if($method=='POST'){
-        	$args['access_token'] = self::getToken();
-	        $options = [ 'json' =>  $args ];
+	        $options = [ 
+	        	'json' => $args
+	        ];
 	        if($resource==='token') $options['auth'] = [self::$clientId, self::$clientSecret];
+	        else $resource .= '?access_token='.self::getToken();
 	        $resp = self::$guz->post(self::$host.$resource, $options);
         } 
         else if($method=='PUT'){
@@ -358,6 +360,15 @@ class BCWrapper{
 		self::validate($args,'points_earned');
 		
 	    $result = self::request('POST','activity/student/'.$args['student_id'], $args);
+	    return $result;
+	}
+	
+	public static function addStudentCohort($args=[],$decode=true){
+	
+		self::validate($args,'student_id');
+		self::validate($args,'cohort_id');
+		
+	    $result = self::request('POST','student/cohort/'.$args['cohort_id'], [['student_id' => $args['student_id']]]);
 	    return $result;
 	}
 	
