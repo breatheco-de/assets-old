@@ -78,6 +78,23 @@ class SlimAPI{
         	};
         	//$c['notFoundHandler'] = $phpErrorHandler;
     	}
+    	else{
+        	$c['phpErrorHandler'] = $c['errorHandler'] = function ($c) {
+        	    return function ($request, $response, $exception) use ($c) {
+        	        
+        	        $code = $exception->getCode();
+                    if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
+        	        return $c['response']->withStatus($code)
+        	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->write( json_encode([
+        	                                 'msg' => $exception->getMessage(),
+        	                                 'trace' => array_map(function($trace){ 
+        	                                     return sprintf("\n%s:%s %s::%s", $trace['file'], $trace['line'], $trace['class'], $trace['function']);
+        	                                 },debug_backtrace())
+    	                                 ]));
+        	    };
+        	};
+    	}
         
 	    $this->app = new \Slim\App($c);
 	    
