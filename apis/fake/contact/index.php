@@ -6,7 +6,8 @@
 	
 	$api = new SlimAPI([
 		'debug' => API_DEBUG,
-		'name' => 'Fake Contacts API'
+		'name' => 'Fake Contacts API',
+		'allowedURLs' => 'all'
 	]);
 	$api->addReadme('/','./README.md');
 	$pdo = new \PDO( 'sqlite:db.sqlite3' );

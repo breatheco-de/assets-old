@@ -38,6 +38,12 @@ class SlimAPI{
     function __construct($settings=null){
         if(!empty($settings['name'])) $this->appName = $settings['name'];
         if(!empty($settings['debug'])) $this->debug = $settings['debug'];
+        if(!empty($settings['allowedURLs'])){
+            if(is_array($settings['allowedURLs']))
+                $this->allowedURLs = array_push($settings['allowedURLs'], $this->allowedURLs);
+            else if($settings['allowedURLs'] == 'all') $this->allowedURLs = 'all';
+            else throw new Exception('Invalid setting value for allowedURLs');
+        } 
 
     	$c = new \Slim\Container([
     	    'settings' => [
@@ -79,7 +85,7 @@ class SlimAPI{
 	    $allowedMethods = $this->allowedMethods;
         if(isset($_SERVER['HTTP_ORIGIN'])){
             foreach($allowedURLs as $o)
-                if($_SERVER['HTTP_ORIGIN'] == $o)
+                if($_SERVER['HTTP_ORIGIN'] == $o || $allowedURLs == 'all')
                 {
                     $this->app->add(function ($req, $res, $next) use ($allowedURLs,$allowedMethods) {
                         $response = $next($req, $res);
