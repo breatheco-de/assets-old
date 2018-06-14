@@ -50,8 +50,7 @@ class SlimAPI{
     	        'displayErrorDetails' => $this->debug,
     	    ],
     	]);
-    	if(!$this->debug)
-    	{
+    	if(!$this->debug){
         	$c['errorHandler'] = function ($c) {
         	    return function ($request, $response, $exception) use ($c) {
         	        
@@ -59,9 +58,10 @@ class SlimAPI{
 
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
-
+    
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
         	};
@@ -73,6 +73,7 @@ class SlimAPI{
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
         	};
@@ -86,6 +87,7 @@ class SlimAPI{
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode([
         	                                 'msg' => $exception->getMessage(),
         	                                 'trace' => array_map(function($trace){ 
@@ -104,9 +106,9 @@ class SlimAPI{
             foreach($allowedURLs as $o)
                 if((isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $o) || $o == 'all')
                 {
-                    print_r('asd'); die();
                     $this->app->add(function ($req, $res, $next) use ($allowedURLs,$allowedMethods) {
                         $response = $next($req, $res);
+                    print_r('asd'); die();
                         return $response
                                 ->withHeader('Access-Control-Allow-Origin', '*')
                                 ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization, X-PINGOTHER')
