@@ -55,7 +55,7 @@ class SlimAPI{
         	$c['errorHandler'] = function ($c) {
         	    return function ($request, $response, $exception) use ($c) {
         	        
-        	        $this->log(self::$ERROR, $exception->getMessage());
+        	        //$this->log(self::$ERROR, $exception->getMessage());
 
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
@@ -68,7 +68,7 @@ class SlimAPI{
         	$c['phpErrorHandler'] = function ($c) {
         	    return function ($request, $response, $exception) use ($c) {
         	        
-        	        $this->log(self::$ERROR, $exception->getMessage());
+        	        //$this->log(self::$ERROR, $exception->getMessage());
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
         	        return $c['response']->withStatus($code)
