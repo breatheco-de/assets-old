@@ -41,7 +41,7 @@ class SlimAPI{
         if(!empty($settings['allowedURLs'])){
             if(is_array($settings['allowedURLs']))
                 $this->allowedURLs = array_push($settings['allowedURLs'], $this->allowedURLs);
-            else if($settings['allowedURLs'] == 'all') $this->allowedURLs = 'all';
+            else if($settings['allowedURLs'] == 'all') $this->allowedURLs = ['all'];
             else throw new Exception('Invalid setting value for allowedURLs');
         } 
 
@@ -83,9 +83,9 @@ class SlimAPI{
 	    
 	    $allowedURLs = $this->allowedURLs;
 	    $allowedMethods = $this->allowedMethods;
-        if(isset($_SERVER['HTTP_ORIGIN'])){
+        if(isset($_SERVER['HTTP_ORIGIN']) || in_array('all', $allowedURLs)){
             foreach($allowedURLs as $o)
-                if($_SERVER['HTTP_ORIGIN'] == $o || $allowedURLs == 'all')
+                if((isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $o) || $o == 'all')
                 {
                     $this->app->add(function ($req, $res, $next) use ($allowedURLs,$allowedMethods) {
                         $response = $next($req, $res);
