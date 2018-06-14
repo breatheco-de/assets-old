@@ -104,6 +104,7 @@ class SlimAPI{
             foreach($allowedURLs as $o)
                 if((isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $o) || $o == 'all')
                 {
+                    print_r('asd'); die();
                     $this->app->add(function ($req, $res, $next) use ($allowedURLs,$allowedMethods) {
                         $response = $next($req, $res);
                         return $response

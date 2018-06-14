@@ -34,7 +34,7 @@ function addAPIRoutes($api){
 		                ->where('email',$parsedBody['email'])
 		                ->where('agenda_slug',$parsedBody['agenda_slug'])
 		                ->fetchAll();
-		if($contacts) throw new Exception('The contact already exists', 400);
+		if($contacts) throw new Exception('The contact with email "'.$parsedBody['email'].'" already exists', 400);
         
         $contactToSave = [
 			'full_name' => $api->validate($parsedBody['full_name'])->smallString(),
