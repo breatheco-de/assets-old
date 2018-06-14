@@ -108,7 +108,6 @@ class SlimAPI{
                 {
                     $this->app->add(function ($req, $res, $next) use ($allowedURLs,$allowedMethods) {
                         $response = $next($req, $res);
-                    print_r('asd'); die();
                         return $response
                                 ->withHeader('Access-Control-Allow-Origin', '*')
                                 ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization, X-PINGOTHER')
