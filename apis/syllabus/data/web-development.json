@@ -382,10 +382,10 @@
 				},
 				{
 					"label": "Day 14",
-					"instructions": "React Router + React: How to create components that behave like Flux.Views (layouts) and match them with URL Routers.",
+					"instructions": "React Router + React: How to create components that behave like Views (layouts) and match them with URL Routers.",
 					"description": "But some react components will never be re-used, they behave more like page or layout. We will call those components: 'Views'... React will help us connect them together to create our main website navegation",
 					"project": {
-						"title": "Build your project Flux.Views",
+						"title": "Build your project Views",
 						"solution": "#"
 					},
 					"lessons": [{
@@ -393,8 +393,8 @@
 						"slug": "routing-our-views-with-react-router"
 					}],
 					"assignments": ["full-stack-project-prototype"],
-					"key-concepts": ["React Router", "Router: Matching URLs Flux.Views", "Component vs View", "The Component State", "Using the React Debugging Chrome Plugin", "Debugging code with the Chrome Source Tab"],
-					"homework": "Sit with every project team and discuss how to split the code into Flux.Views and React.Components, students must finish the home layout by next class",
+					"key-concepts": ["React Router", "Router: Matching URLs Views", "Component vs View", "The Component State", "Using the React Debugging Chrome Plugin", "Debugging code with the Chrome Source Tab"],
+					"homework": "Sit with every project team and discuss how to split the code into Views and React.Components, students must finish the home layout by next class",
 					"technologies": ["Minimum Viable Product", "React Router", "The Chrome Inspector"]
 				},
 				{
@@ -414,7 +414,7 @@
 				{
 					"label": "Weekend",
 					"description": "Now that you are working on the final project it is the best time to meet with your parner to work on the weends",
-					"instructions": "Student Projects Flux.Views must be finished by next class"
+					"instructions": "Student Projects Views must be finished by next class"
 				}
 			]
 		},
@@ -565,7 +565,7 @@
 						"url": "#"
 					},
 					"key-concepts": ["Managing cookies with PHP and Javascript", "Using <PrivateRoute /> component on React", "Creating a Session Store"],
-					"homework": "Implement login on your React application and save the WordPress user id on the Flux Store to open a session, use cookies to avoid user from looging our even if the website is the React App is refreshed",
+					"homework": "Implement login on your React application and save the WordPress user id on the Context Store to open a session, use cookies to avoid user from looging our even if the website is the React App is refreshed",
 					"technologies": ["Server Sessions", "Cookies"]
 				},
 				{

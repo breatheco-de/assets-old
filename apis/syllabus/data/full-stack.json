@@ -576,7 +576,7 @@
 				{
 					"label": "Day 23",
 					"instructions": "Practice the Django-Rest MVC Workflow to create new endpoints, focus on how the django ORM works and how to create relationships",
-					"description": "The most frequent backend operation is writing on a database and there are two main ways of doing so: 'Using SQL' or 'not using SQL', let's start by review how SQL works and why it's so influential on the database world",
+					"description": "The most frequent backend operation is writing on a database and there are two main ways of doing so: 'Using SQL' or 'not using SQL', let's start by reviewing how SQL works and why it's so influential on the database world",
 					"project": {
 						"title": "Continue: Contact Managment API",
 						"solution": "#TODO"
