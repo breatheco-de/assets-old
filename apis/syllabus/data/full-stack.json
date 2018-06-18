@@ -494,12 +494,13 @@
 			]
 		},
 		{
-			"label": "Week 8: Ajax(HTTP-JSON)",
+			"label": "Week 8: fetch(HTTP-JSON)",
 			"topic": "AJAX & 3rd Party API's",
 			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
 			"days": [{
 					"label": "Day 19",
-					"instructions": "Intro to AJAX: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
+					"instructions": "Intro to HTTP: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
+					"description": "When you real application is almost ready, it's time to integrated with a real database. That will enable it to work with real information: Create, Update, delete and get real data. We do HTTP Requests for that.",
 					"project": {
 						"title": "Use the Contact Manage API to save, delete and update the contacts",
 						"solution": "#TODO"
@@ -507,7 +508,7 @@
 					"replits": [],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "explain the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using Flux/React, students must consume the API to Save, Delete and Update Contacts.",
-					"technologies": ["HTTP", "AJAX", "JSON", "API", "Serialization"],
+					"technologies": ["HTTP", "AJAX", "JSON", "HTTP Fetch", "API", "Serialization"],
 					"resources": [{
 						"type": "video",
 						"url": "https://www.youtube.com/watch?v=Oive66jrwBs"
@@ -516,6 +517,7 @@
 				{
 					"label": "Day 20",
 					"instructions": "Finish the Contact Managment API integration, focus on Debugging procedures and start the introduction to Python",
+					"description": "Make sure to finish the contact managment project",
 					"project": {
 						"title": "Contact Managment API Integration",
 						"solution": "#TODO"
@@ -526,6 +528,7 @@
 				{
 					"label": "Day 21",
 					"instructions": "One last day to finish the Contact Managment Application with your students, review all the Flux, React, Components and HTTP Ajax concepts and best practices",
+					"description": "Make sure to finish the contact managment project",
 					"project": {
 						"title": "Contact Managment API Integration",
 						"solution": "#TODO"
@@ -545,6 +548,7 @@
 			"days": [{
 					"label": "Day 22",
 					"instructions": "First, run a simple python script in the shell, explain the benefits and capabilities that brings being in the backend. Then, install django using the boilerplate and create one simple endpoint with a very simple model (no relations)",
+					"description": "Welcome to the backend! The backend side has almost no limitations, you have access to the entire computer, printers or anything you need. Your life as backend developer will start by doing API's because it is the most needed skill in the market, we really hope you like it as much as we do!",
 					"project": {
 						"title": "Build a Contact Managment API",
 						"solution": "#TODO"
@@ -570,6 +574,7 @@
 				{
 					"label": "Day 23",
 					"instructions": "Practice the Django-Rest MVC Workflow to create new endpoints, focus on how the django ORM works and how to create relationships",
+					"description": "The most frequent backend operation is writing on a database and there are two main ways of doing so: 'Using SQL' or 'not using SQL', let's start by review how SQL works and why it's so influential on the database world",
 					"project": {
 						"title": "Continue: Contact Managment API",
 						"solution": "#TODO"
@@ -589,6 +594,7 @@
 				{
 					"label": "Day 24",
 					"instructions": "Continue doing the endpoints with your students",
+					"description": "Finish the Contact Managment API and it's time to start working on your project API",
 					"project": {
 						"title": "Continue: Contact Managment API",
 						"solution": "#TODO"
