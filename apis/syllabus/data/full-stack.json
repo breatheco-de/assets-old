@@ -532,8 +532,8 @@
 						"title": "Contact Managment API Integration",
 						"solution": "#TODO"
 					},
-					"homework": "Students must finish the Contact Managment API integration and advance a lot on the Python replits",
-					"technologies": ["Python", "Back-end", "API"]
+					"homework": "Students must finish the Contact Managment API integration",
+					"technologies": ["HTTP", "Fetch", "API's"]
 				},
 				{
 					"label": "Day 24",
