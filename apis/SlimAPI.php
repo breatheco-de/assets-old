@@ -305,7 +305,7 @@ class Validator{
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
-    function bigString($min=1, $max=2000){ 
+    function bigString($min=1, $max=4000){ 
         if(empty($this->value) && $this->optional) return null;
         
         $validator = v::stringType()->length($min, $max)->validate($this->value);
