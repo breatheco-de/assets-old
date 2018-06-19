@@ -1,13 +1,11 @@
 {
 	"label": "Full-Stack Development",
 	"profile": "full-stack",
-	"weeks": [
-		{
+	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 1",
 					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
 					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
@@ -124,8 +122,7 @@
 			"label": "Week 2: Wireframes, CMD & GIT",
 			"topic": "Prework done!",
 			"summary": "Time to start having a professional workflow",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 4",
 					"description": "A text editor and the console, that's all you need to be a great coder. Time to master the second one.",
 					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
@@ -188,8 +185,7 @@
 			"label": "Week 3: First coding skills",
 			"topic": "Create algorithms",
 			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 7",
 					"description": "HTML & CSS are great, but the world needed interactive pages (not just beautiful text documents). Javascript comes to help us generate HTML & CSS based after the initial text document has already loaded and also re-write the website live based on the user activity.",
 					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts. Use the VanilaJS boilerplate, that way students will start getting used to it",
@@ -289,8 +285,7 @@
 			"warning": "Students need to be confortable looping already",
 			"topic": "React, Components & Web Apps",
 			"summary": "Create your first react application",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 10",
 					"instructions": "Its the first time students will be using objects, explain the concept. Make students create their first react components and explain the use of JSX. Explain the difference between Functional components and or class components and the render function",
 					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
@@ -365,8 +360,7 @@
 			"label": "Week 5: The Project!",
 			"topic": "SCRUM, Kanban, Agile",
 			"summary": "Time to start working on the project using Agile Methodologies",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 13",
 					"instructions": "Force students to finish all that's due, students that have not finished the replits cannot enter the class and will remain separated from the big group",
 					"description": "We have learned a lot in a short amout of time, let's work hard on finishing all the Replits, assignments and create our project Wireframes",
@@ -428,8 +422,7 @@
 			"label": "Week 6: Flux.Model to Flux.View",
 			"topic": "MVC and Flux Framework",
 			"summary": "No more hard-coding, make your Flux.Views and Components render from the Flux.Model",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 16",
 					"instructions": "Now with map the Flux.Views user actions into Flux.Actions and greate the Flux.Model setters for them. The Flux.Views are able to get the Flux.Store data through the public getters.",
 					"description": "Now thanks to Flux we can start having a centralized storage for the entire application, it is time to practice the Flux Flow until mastery: Flux.Views, Flux.Actions, Flux.Store",
@@ -450,8 +443,8 @@
 					},
 					"assignments": ["full-stack-project-fluxify"],
 					"key-concepts": ["Creating Flux.Views", "Creating Flux.Stores", "Binding/Subscribing the store to the views"],
-					"homework": "Students must finish the contact list and start fluxifing their project",
-				}, 
+					"homework": "Students must finish the contact list and start fluxifing their project"
+				},
 				{
 					"label": "Day 18",
 					"instructions": "Help students work on their projects and finish the contact list",
@@ -460,7 +453,7 @@
 						"title": "Fluxify the Final Project"
 					},
 					"key-concepts": ["Creating Flux.Views", "Creating Flux.Stores", "Binding/Subscribing the store to the views"],
-					"homework": "Students must finish the contact list and start fluxifing their project",
+					"homework": "Students must finish the contact list and start fluxifing their project"
 				},
 				{
 					"label": "Weekend",
@@ -474,8 +467,7 @@
 			"label": "Week 7: Practice Week!",
 			"topic": "Everything together",
 			"summary": "Work on the project and catch up with all the assignments",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 19",
 					"instructions": "Finish the assignments with students",
 					"description": "Practice everything you've learned",
@@ -504,8 +496,7 @@
 			"label": "Week 8: fetch(HTTP-JSON)",
 			"topic": "AJAX & 3rd Party API's",
 			"summary": "Use the Javascript Fetch native object to do API Requests and Receive the JSON Responses",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 22",
 					"instructions": "Intro to HTTP: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
 					"description": "When you real application is almost ready, it's time to integrated with a real database. That will enable it to work with real information: Create, Update, delete and get real data. We do HTTP Requests for that.",
@@ -530,7 +521,7 @@
 						"title": "Contact Managment API Integration",
 						"solution": "#TODO"
 					},
-					"homework": "Students must finish the Contact Managment API integration",
+					"homework": "Students must finish the Contact Managment API integration"
 				},
 				{
 					"label": "Day 24",
@@ -552,8 +543,7 @@
 			"label": "Week 9: Create your own API",
 			"topic": "Python, Django, ORM",
 			"summary": "Creating an API use Python, Django & Rest",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 25",
 					"instructions": "First, run a simple python script in the shell, explain the benefits and capabilities that brings being in the backend. Then, install django using the boilerplate and create one simple endpoint with a very simple model (no relations)",
 					"description": "Welcome to the backend! The backend side has almost no limitations, you have access to the entire computer, printers or anything you need. Your life as backend developer will start by doing API's because it is the most needed skill in the market, we really hope you like it as much as we do!",
@@ -622,8 +612,7 @@
 			"label": "Week 10",
 			"topic": "",
 			"summary": "",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 28",
 					"instructions": "",
 					"project": {
