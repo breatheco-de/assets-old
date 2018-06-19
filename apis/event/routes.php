@@ -18,7 +18,13 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 function addAPIRoutes($api){
 
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
-		$content = $api->db['sqlite']->event()->orderBy( 'event_date', 'DESC' )->fetchAll();
+		
+		$content = $api->db['sqlite']->event();
+		if(isset($_GET['type'])) $content = $content->where('type',$_GET['type']);
+		if(isset($_GET['location'])) $content = $content->where('location_slug',$_GET['location']);
+		if(isset($_GET['lang'])) $content = $content->where('lang',$_GET['lang']);
+		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+	    
 	    return $response->withJson($content);
 	});
 	
@@ -81,6 +87,9 @@ function addAPIRoutes($api){
         $logo = $api->validate($parsedBody,'logo_url')->url();
         $type = $api->validate($parsedBody,'type')->smallString();
         $city = $api->validate($parsedBody,'city_slug')->smallString();
+        $location = $api->validate($parsedBody,'location_slug')->smallString();
+        $lang = $api->validate($parsedBody,'lang')->enum(['en','es']);
+        $banner = $api->validate($parsedBody,'banner_url')->url();
         $address = $api->validate($parsedBody,'address')->smallString();
         $date = $api->validate($parsedBody,'event_date')->date();
         $private = $api->validate($parsedBody,'invite_only')->bool();
@@ -92,7 +101,10 @@ function addAPIRoutes($api){
 			'url' => $url,
 			'capacity' => $capacity,
 			'logo_url' => $logo,
+			'location_slug' => $location,
 			'city_slug' => $city,
+			'lang' => $lang,
+			'banner_url' => $banner,
 			'address' => $address,
 			'invite_only' => $private,
 			'event_date' => DateTime::createFromFormat('Y-m-d H:i:s', $date),

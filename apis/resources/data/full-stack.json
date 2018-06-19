@@ -14,4 +14,11 @@
         "slug": "the-new-boston", 
         "url": "https://www.youtube.com/user/thenewboston" 
     }
+    { 
+        "type": "video", 
+        "slug": "how-to-use-postman", 
+        "title": "How to use postman",
+        "url": "https://www.youtube.com/watch?v=t5n07Ybz7yI",
+        "tags": ["postman", "how to"]
+    }
 }

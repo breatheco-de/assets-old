@@ -451,7 +451,6 @@
 					"assignments": ["full-stack-project-fluxify"],
 					"key-concepts": ["Creating Flux.Views", "Creating Flux.Stores", "Binding/Subscribing the store to the views"],
 					"homework": "Students must finish the contact list and start fluxifing their project",
-					"technologies": ["Flux, React"]
 				}, 
 				{
 					"label": "Day 18",
@@ -462,7 +461,6 @@
 					},
 					"key-concepts": ["Creating Flux.Views", "Creating Flux.Stores", "Binding/Subscribing the store to the views"],
 					"homework": "Students must finish the contact list and start fluxifing their project",
-					"technologies": ["Flux, React"]
 				},
 				{
 					"label": "Weekend",
@@ -533,7 +531,6 @@
 						"solution": "#TODO"
 					},
 					"homework": "Students must finish the Contact Managment API integration",
-					"technologies": ["HTTP", "Fetch", "API's"]
 				},
 				{
 					"label": "Day 24",
@@ -543,7 +540,7 @@
 						"title": "Contact Managment API Integration",
 						"solution": "#TODO"
 					},
-					"homework": "Students must finish the Contact Managment Application and complete all the Python Replits"
+					"homework": "Students must finish the Contact Managment Application"
 				},
 				{
 					"label": "Weekend",
