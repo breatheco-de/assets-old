@@ -31,6 +31,7 @@ Request (application/json)
         "invite_only": true,
         "city_slug": "ccs",
         "address": "3444 NW 43rd ST",
+        "banner_url": "http://url/to/image.png",
         "type": "coding_weekend",
         "event_date": "2017-08-20 20:30:00",
         "logo_url":"http://www.asdads.com",

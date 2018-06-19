@@ -167,7 +167,7 @@
 				"correct": false
 			},
 			{
-				"option": "text-transform:capitalize",
+				"option": "text-decoration:capitalize",
 				"correct": false
 			},
 			{
@@ -279,7 +279,11 @@
 	}, {
 		"q": "What is the default value of the position property?",
 		"a": [{
-				"option": "static",
+				"option": "amazing",
+				"correct": false
+			},
+		      {
+				"option": "inline",
 				"correct": false
 			},
 			{

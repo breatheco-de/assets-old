@@ -298,6 +298,13 @@ class Validator{
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
+    function enum($options){ 
+        if(empty($this->value) && $this->optional) return null;
+        
+        $validator = in_array($this->value, $options);
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
+        return $this->value;
+    }
     function bigString($min=1, $max=2000){ 
         if(empty($this->value) && $this->optional) return null;
         

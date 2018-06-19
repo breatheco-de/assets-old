@@ -14,19 +14,21 @@
 
    $sql =<<<EOF
    CREATE TABLE 'event' (
-      'description' TEXT NOT NULL, 
-      'title' TEXT NOT NULL, 
-      'url' TEXT NOT NULL, 
-      'capacity' INTEGER NOT NULL, 
-      'logo_url' TEXT NOT NULL, 
-      'event_date' DATETIME NOT NULL, 
-      'type' TEXT NOT NULL, 
-      'address' TEXT NOT NULL, 
-      'city_slug' TEXT NOT NULL, 
-      'banner_url' TEXT, 
-      'invite_only' INTEGER NOT NULL, 
-      'created_at' DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-      'id'  INTEGER PRIMARY KEY NOT NULL  
+      'description'     TEXT NOT NULL, 
+      'title'           TEXT NOT NULL, 
+      'url'             TEXT NOT NULL, 
+      'capacity'        INTEGER NOT NULL, 
+      'logo_url'        TEXT NOT NULL, 
+      'event_date'      DATETIME NOT NULL, 
+      'type'            TEXT NOT NULL, 
+      'address'         TEXT NOT NULL,
+      'location_slug'   TEXT     NULL,
+      'lang'            TEXT     NULL,
+      'city_slug'       TEXT NOT NULL, 
+      'banner_url'      TEXT, 
+      'invite_only'     INTEGER NOT NULL, 
+      'created_at'      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+      'id'              INTEGER PRIMARY KEY NOT NULL  
    );
    CREATE TABLE 'event_checking' (
       'event_id' TEXT NOT NULL, 
