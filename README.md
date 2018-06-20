@@ -22,6 +22,8 @@ Resources for Teachers and Students using the [BreatheCode Platform](https://bre
 
 - [Screen Viewer](/apps/screen/): Show screens on events or the office.
 - [Quiz Maker](/apps/quiz-maker/): Create or edit BC Quizzes easy.
+- [Syllabus Maker](/apps/syllabus-maker/): Create or edit academy syllabus.
+- [Replit Editor](/apps/replit-editor/): Create or edit academy syllabus.
 - [Video Tutorials](/apps/video/): Shoot POST and GET requests and it will show you the content.
 - [HTTP Sniffer](live-demos/php/forms/): Shoot POST and GET requests and it will show you the content.
 - [Markdown Parser](apps/markdown-parser/): Pass a markdown file path to the url and it will render it like github

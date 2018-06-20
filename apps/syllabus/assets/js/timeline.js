@@ -82,8 +82,9 @@ var Timeline = (function(){
         var theProject = '';
         if(typeof(day.project)=='object')
         {
-            if(typeof(day.project.url) != 'undefined') theProject = `<a target="_blank" href="${day.project.url}">${day.project.title}</a>`;
+            if(typeof(day.project.instructions) != 'undefined') theProject = `<a target="_blank" href="${day.project.instructions}">${day.project.title}</a>`;
             else theProject = day.project.title;
+            if(typeof(day.project.solution) != 'undefined') theProject += ` <a target="_blank" href="${day.project.solution}">(solution)</a>`;
         }
 
         var theKeyConcepts = '';
@@ -154,7 +155,7 @@ var Timeline = (function(){
             day.assignments.forEach((assignment) => {
                 
                 if(typeof(assignment)=='object') popoverContent += `<li>- <a href='${settings.assignmentBaseURL+assignment.slug}'>${assignment.title}</a></li>`;
-                else if(typeof(assignment)=='string') popoverContent += `<li>- ${assignment}</li>`;
+                else if(typeof(assignment)=='string') popoverContent += `<li><a href='https://projects.breatheco.de/d/${assignment}#readme' target='_blank'>${assignment}</a></li>`;
                 else popoverContent += `<li>- Invalid assignments</li>`;
             });
             popoverContent += '</ul>';

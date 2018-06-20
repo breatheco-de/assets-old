@@ -11,7 +11,6 @@
 					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
 					"project": {
 						"title": "Digital Postcard",
-						"slug": "postcard",
 						"solution": "https://bitbucket.org/codingacademy/postcard/"
 					},
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
@@ -128,7 +127,7 @@
 					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
 					"project": {
 						"title": "The CMD Challenge",
-						"solution": "https://github.com/breatheco-de/excercise-terminal-challenge/"
+						"instructions": "https://github.com/breatheco-de/excercise-terminal-challenge/"
 					},
 					"replits": [{
 						"title": "Command Line Interactive Challenge",
@@ -148,7 +147,7 @@
 					"instructions": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT proyect and make them clone it and upload their piece of the proyect. Review the key concepts.",
 					"project": {
 						"title": "GIT Colaborative Landing Page",
-						"solution": "https://github.com/breatheco-de/exercise-git-collabration/"
+						"instructions": "https://github.com/breatheco-de/exercise-git-collabration/"
 					},
 					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the Landing Page. Suggested parts: navbar, jumbotron, 2 parts description, product showcase, marketing banner, contact us, footer",
 					"key-concepts": ["Creating SSH Keys", "Using Github", "The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts"],
@@ -168,7 +167,7 @@
 					"instructions": "Make the students design a wireframe starting from the typical client requierment specs, teach them the importance of using components and how to pick them and draw a wireframe before jumping into coding.",
 					"project": {
 						"title": "ABC Chocolate (Wire-framing)",
-						"solution": "https://github.com/breatheco-de/exercise-abc-chocolate/"
+						"instructions": "https://github.com/breatheco-de/exercise-abc-chocolate/"
 					},
 					"homework": "Finished Replits and Projects",
 					"key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"],

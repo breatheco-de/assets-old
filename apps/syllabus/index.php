@@ -81,7 +81,7 @@
   <script type="text/javascript" src="assets/js/script.js"></script>
 <?php } else { ?>
   <div class="container text-center pd-5">
-    <img class='mt-5' alt="breathe code logo" src="http://assets.breatheco.de/img/images.php?blob&random&cat=icon&tags=breathecode,128">
+    <img class='mt-5' alt="breathe code logo" src="https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128">
     <h1>Choose a Syllabus</h1>
     <select id="select-location" class="form-control">
       <option value='-1'>Select a syllabus</option>
