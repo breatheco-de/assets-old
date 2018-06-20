@@ -6,7 +6,7 @@
 </head>
 <body>
 	<?php if(!isset($_GET['v'])){ ?>
-		<div class="alert alert-danger">You need to specify what tutorial you want to see</div>
+		<div class="alert alert-danger">You need to specify what tutorial you want to see using ?v=[vtutorial_slug]</div>
 	<?php } else { ?>
 	<nav id="videomenu" class="dr-menu">
 		<div class="dr-trigger">
