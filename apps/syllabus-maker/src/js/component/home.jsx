@@ -785,7 +785,7 @@ export class CreateCard extends React.Component{
                 {this.state.syllabus_succeeded ? (
                     <div className="">
                         <div className="container-fluid p-0 bg-light bordered-bottom">
-                            <div className="container">
+                            <div className="container-fluid">
                                 <div className="row">
                                     <div className="col-12 py-3">
                                         <h3 className="display-4 mb-4">Syllabus</h3>

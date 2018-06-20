@@ -52,8 +52,6 @@ Thumbs.db
 node_modules/
 
 # ignore the dist directory were our bundle files are going to be
-public/*
-!public/index.html
 
 dist/*
 !dist/index.html
