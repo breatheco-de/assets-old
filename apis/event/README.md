@@ -1,6 +1,6 @@
 [<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
 
-# Events API
+# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Events API
 
 1. Get All the BreatheCode Events
 ```

@@ -2,6 +2,8 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 function addAPIRoutes($api){
+	
+	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
 	$api->get('/template/all', function (Request $request, Response $response, array $args) use ($api) {
 		
@@ -86,7 +88,7 @@ function addAPIRoutes($api){
 		$api->db['json']->toFile($args['cohort_slug'])->save($data);
 		
 	    return $response->withJson($cohorts);
-	});
+	})->add($api->auth());
 	
 	
 	return $api;

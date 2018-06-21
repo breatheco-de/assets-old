@@ -1,24 +1,32 @@
 
-# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128) BreatheCode Exercise Assets
+# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) BreatheCode Exercise Assets
 Resources for Teachers and Students using the [BreatheCode Platform](https://breatheco.de).
-
 ## Available Assets API's
 
-- [Images API](apis/img/)
-- [Sounds API](apis/sound/)
-- [Quiz API](apis/quiz/)
-- [Lessons API](apis/lesson/)
-- [Videos API](apis/video/)
-- [Replits API](apis/replit/)
+[Images](apis/img/), [Sounds](apis/sound/), [Quizzes](apis/quiz/), [Lessons](apis/lesson/), [Videos](apis/video/), [Replits](apis/replit/), [Events](apis/event/)
 
-## Sample API's for Projects
+#### Important Note: 
+Some API methods are private and they will require the use of and access token in the URL query string like this:
+> METHOD: /path/to/resource/?access_token={your_access_token}
+
+The access token can be generated with this endpoint:
+```
+POST: /apis/events/token/generate
+    
+    PARAMS:
+    - client_id (string): your client id
+    - client_pass (string): your client password
+```
+If you don't have a client_id or client_pass send us an email to request it.
+
+## Other Sample API's for Projects
 
 - [Fake Sample API](../apis/fake/)
 - [TicTacToe API](../apis/fake/tictactoe/)
 - [Meetup API](../apis/fake/meetup/)
 - [Contact Management API](../apis/fake/contact/)
 
-## Other Tools
+## Very Useful tools
 
 - [Screen Viewer](/apps/screen/): Show screens on events or the office.
 - [Quiz Maker](/apps/quiz-maker/): Create or edit BC Quizzes easy.

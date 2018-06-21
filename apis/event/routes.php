@@ -17,6 +17,8 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 
 function addAPIRoutes($api){
 
+	$api->addTokenGenerationPath();
+
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 		
 		$content = $api->db['sqlite']->event();
@@ -64,7 +66,8 @@ function addAPIRoutes($api){
         $event->save();
 
 		return $response->withJson($event);
-	});
+	})
+		->add($api->auth());
 	
 	$api->delete('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {
         
@@ -75,7 +78,8 @@ function addAPIRoutes($api){
 		else throw new Exception('Event not found');
 		
 		return $response->withJson([ "code" => 200 ]);	
-	});
+	})
+		->add($api->auth());
 
 	$api->put('/', function(Request $request, Response $response, array $args) use ($api) {
         $parsedBody = $request->getParsedBody();
@@ -114,7 +118,8 @@ function addAPIRoutes($api){
 		$row->save();
 		
         return $response->withJson($row);
-	});
+	})
+		->add($api->auth());
 
 	$api->get('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
         
@@ -147,7 +152,8 @@ function addAPIRoutes($api){
 		\AC\ACAPI::trackEvent($email, 'public_event_attendance');
 		
         return $response->withJson($row);
-	});
+	})
+		->add($api->auth());
 	
 	return $api;
 }

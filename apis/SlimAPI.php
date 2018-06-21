@@ -6,6 +6,8 @@ use Aws\Ses\Exception\SesException;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Respect\Validation\Validator as v;
+use \Firebase\JWT\JWT;
+
 function debug($data){
     print_r($data); die();
 }
@@ -57,7 +59,7 @@ class SlimAPI{
         	        //$this->log(self::$ERROR, $exception->getMessage());
 
         	        $code = $exception->getCode();
-                    if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
+                    if(!in_array($code, [500,400,301,302,401,404,403])) $code = 500;
     
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
@@ -84,7 +86,7 @@ class SlimAPI{
         	    return function ($request, $response, $exception) use ($c) {
         	        
         	        $code = $exception->getCode();
-                    if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
+                    if(!in_array($code, [500,400,301,302,401,404,403])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
         	                             ->withHeader('Access-Control-Allow-Origin', '*')
@@ -123,22 +125,64 @@ class SlimAPI{
     }
     
     public function get($path, $callback){
-        $this->app->get($path, $callback);
+        return $this->app->get($path, $callback);
     }
     public function post($path, $callback){
-        $this->app->post($path, $callback);
+        return $this->app->post($path, $callback);
     }
     public function put($path, $callback){
-        $this->app->put($path, $callback);
+        return $this->app->put($path, $callback);
     }
     public function delete($path, $callback){
-        $this->app->delete($path, $callback);
+        return $this->app->delete($path, $callback);
     }
     
     public function addReadme($path='/', $markdownPath='./README.md'){
         $slimAPI = $this;
         $this->app->get($path, function (Request $request, Response $response, array $args) use ($slimAPI, $markdownPath){
             return $response->write($slimAPI->readmeTemplate($markdownPath));
+    	});
+    }
+    
+    public function auth(){
+        
+        return function ($request, $response, $next) {
+
+            $path = $request->getUri()->getPath();
+            if($path != 'token/generate'){
+                if(!isset($_GET['access_token'])) throw new Exception('Invalid access token', 403);
+                else{
+                    $parts = explode('.', $_GET['access_token']);
+                    if(count($parts)!=3) throw new Exception('Invalid access token', 403);
+                }
+            	$decoded = JWT::decode($_GET['access_token'], JWT_KEY, array('HS256'));
+            }
+        	
+        	$response = $next($request, $response);
+        
+        	return $response;
+        };
+
+    }
+    
+    public function addTokenGenerationPath(){
+        $this->app->post('/token/generate', function (Request $request, Response $response, array $args){
+                
+            if(empty($_POST['client_id']) || empty($_POST['client_pass']))
+                throw new Exception('Missing credentials');
+            
+            if(JWT_CLIENTS[$_POST['client_id']] != $_POST['client_pass'])
+                throw new Exception('Invalid credentials');
+
+    		$token = array(
+    		    "clientId" => $_POST['client_id'],
+    		    "iat" => time(),
+    		    "exp" => time() + 31556952000 // plus one year in miliseconds
+    		);
+    	
+    		$token['access_token'] = JWT::encode($token, JWT_KEY);
+            
+            return $response->withJson($token);
     	});
     }
     
