@@ -26,6 +26,13 @@ function addAPIRoutes($api){
 		if(isset($_GET['location'])) $content = $content->where('location_slug',$_GET['location']);
 		if(isset($_GET['lang'])) $content = $content->where('lang',$_GET['lang']);
 		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+		
+		if(isset($_GET['status'])){
+			if($_GET['status']=='upcoming') 
+				$content = array_filter($content, function($evt){
+					return ($evt->event_date >= date());
+				});
+		} 
 	    
 	    return $response->withJson($content);
 	});
