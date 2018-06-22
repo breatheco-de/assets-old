@@ -22,19 +22,49 @@ function addAPIRoutes($api){
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 		
 		$content = $api->db['sqlite']->event();
-		if(isset($_GET['type'])) $content = $content->where('type',$_GET['type']);
-		if(isset($_GET['location'])) $content = $content->where('location_slug',$_GET['location']);
-		if(isset($_GET['lang'])) $content = $content->where('lang',$_GET['lang']);
+		if(isset($_GET['type'])) $content = $content->where('type',explode(",",$_GET['type']));
+		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
+		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
 		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
-		
 		if(isset($_GET['status'])){
 			if($_GET['status']=='upcoming') 
 				$content = array_filter($content, function($evt){
-					return ($evt->event_date >= date());
+					return ($evt->event_date >= date("Y-m-d"));
+				});
+			if($_GET['status']=='past') 
+				$content = array_filter($content, function($evt){
+					return ($evt->event_date < date("Y-m-d"));
 				});
 		} 
-	    
 	    return $response->withJson($content);
+	});
+	
+	$api->get('/redirect', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$content = $api->db['sqlite']->event();
+		if(isset($_GET['type'])) $content = $content->where('type',explode(",",$_GET['type']));
+		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
+		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
+		
+		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+		if(isset($_GET['status'])){
+			if($_GET['status']=='upcoming') 
+				$content = array_filter($content, function($evt){
+					return ($evt->event_date >= date("Y-m-d"));
+				});
+			if($_GET['status']=='past') 
+				$content = array_filter($content, function($evt){
+					return ($evt->event_date < date("Y-m-d"));
+				});
+		} 
+
+		if(isset($content[0])) return $response->withRedirect($content[0]->url); 
+		else{
+			$fallback = (isset($_GET['fallback'])) ? $_GET['fallback'] : null;
+			//$api->sendMail("a@4geeks.us", "Broken redirect for events", "The following query returned no events: ".print_r($_GET));
+			if($fallback) return $response->withRedirect($fallback)->withStatus(302); 
+			else return $response->withStatus(404); 
+		} 
 	});
 	
 	$api->get('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {

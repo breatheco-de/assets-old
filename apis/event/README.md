@@ -5,19 +5,37 @@
 1. Get All the BreatheCode Events
 ```
 GET: /apis/event/all
+
+Request PARAMS:
+    type (enum): types of the events separated by comma ['workshop','coding_weekend','hackathon','intro_to_coding','4geeks_night','other']
+    location (string): slug of the academy location
+    lang (enum): event language ['en','es']
+    status (string): ['upcoming', 'past']
 ```
 
-2. Get One Particular BC Event
+2. Get redirected to the next upcoming event
+```
+GET: /apis/event/redirect
+        
+Request PARAMS:
+    fallback (url): where to redirect if no event has been found
+    type (enum): types of the events separated by comma ['workshop','coding_weekend','hackathon','intro_to_coding','4geeks_night','other']
+    location (string): slug of the academy location
+    lang (enum): event language ['en','es']
+    status (string): ['upcoming', 'past']
+```
+
+3. Get One Particular BC Event
 ```
 GET: /apis/event/:event_id
 ```
 
-3. Delete One Particular BC Event
+4. Delete One Particular BC Event
 ```
 DELETE: /apis/event/:event_id
 ```
 
-4. Create one event
+5. Create one event
 ```
 PUT: /apis/event/
 
@@ -38,9 +56,9 @@ Request (application/json)
         "capacity":200
     }
 ```
-Note: The valid event types are: ['workshop','hackathon','intro_to_coding','coding_weekend','4geeks_night','other']
+Note: The valid event types are: workshop, hackathon, intro_to_coding, coding_weekend, 4geeks_night, other
 
-5. Checking to one event
+6. Checking to one event
 ```
 PUT: /apis/event/{evnet_id}/checkin
 
@@ -52,7 +70,7 @@ Request (application/json)
 
 ```
 
-5. Get event checkins
+7. Get event checkins
 ```
 GET: /apis/event/{event_id}/checkin
 
