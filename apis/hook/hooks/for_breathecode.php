@@ -24,31 +24,28 @@ function addBreatheCodeHooks($api){
         
         $body = $request->getParsedBody();
         $studentId = $api->validate($body,'student_id')->int();
-        $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
+        $cohortSlug = $api->validate($body,'cohort_slug')->slug();
         
         $student = BC::getStudent(["student_id" => $studentId]);
-        
         if(!$student) throw new Exception("Invalid student id: "+$studentId,400);
         ACAPI::start(AC_API_KEY);
-        $contact = ACAPI::getContactByEmail($student->username);
+        $contact = ACAPI::getContactByEmail($student->email);
 
     	$resp = BC::addStudentCohort([
     		'student_id' => $student->id,
     		'cohort_id' => $cohortSlug
     	]);
-    	
-    	print_r($resp); die();
 
     	if(!empty($student)){
             ACAPI::start(AC_API_KEY);
-            $contact = ACAPI::createOrUpdateContact($student->username,[
+            $contact = ACAPI::createOrUpdateContact($student->email,[
                 "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
                 "tags" => ACAPI::tag('recurrent-student').','.$cohortSlug
             ]);
             if($contact){
                 $log[] = 'The contact was updated in Active Campaign with the recurrent-student tag and the new cohort';
                 ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
-                ACAPI::trackEvent($student->username, ACAPI::event('new_cohort_registration'));
+                ACAPI::trackEvent($student->email, ACAPI::event('new_cohort_registration'));
                 $log[] = 'The event "new_cohort_registration" was fired';
             } 
             

@@ -93,6 +93,10 @@ class SlimAPI{
         	                             ->write( json_encode([
         	                                 'msg' => $exception->getMessage(),
         	                                 'trace' => array_map(function($trace){ 
+        	                                     if(!isset($trace['file'])) $trace['file'] = '';
+        	                                     if(!isset($trace['line'])) $trace['line'] = '';
+        	                                     if(!isset($trace['class'])) $trace['class'] = '';
+        	                                     if(!isset($trace['function'])) $trace['function'] = '';
         	                                     return sprintf("\n%s:%s %s::%s", $trace['file'], $trace['line'], $trace['class'], $trace['function']);
         	                                 },debug_backtrace())
     	                                 ]));
@@ -342,10 +346,20 @@ class Validator{
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }
-    function enum($options){ 
+    function slug(){ 
+        if(empty($this->value) && $this->optional) return null;
+
+        $validator = preg_match('/^([a-zA-z])(-|_|[a-z0-9])*$/', $this->value);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        if(!$validator) throw new ArgumentException('Invalid value: '.$for);
+        return $this->value;
+    }
+    function enum($options=[]){ 
         if(empty($this->value) && $this->optional) return null;
         
         $validator = in_array($this->value, $options);
+        $for = ($this->key) ? $this->value.' for '.$this->key : $this->value;
+        $for .= ' it has to match one of the following: '.implode($options,",");
         if(!$validator) throw new ArgumentException('Invalid value: '.$for);
         return $this->value;
     }

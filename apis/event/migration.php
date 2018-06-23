@@ -18,7 +18,7 @@
       'title'           TEXT NOT NULL, 
       'url'             TEXT NOT NULL, 
       'capacity'        INTEGER NOT NULL, 
-      'logo_url'        TEXT NOT NULL, 
+      'logo_url'        TEXT     NULL, 
       'event_date'      DATETIME NOT NULL, 
       'type'            TEXT NOT NULL, 
       'address'         TEXT NOT NULL,

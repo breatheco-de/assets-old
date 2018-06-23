@@ -97,8 +97,27 @@ function addAPIRoutes($api){
         $logo = $api->optional($parsedBody,'logo_url')->url();
         if($logo) $event->logo_url = $logo;
         
-        $private = $api->optional($parsedBody,'invite_only')->bool();
-        if($private) $event->invite_only = $private;
+        $val = $api->optional($parsedBody,'invite_only')->bool();
+        if($val) $event->invite_only = $val;
+        
+        $val = $api->optional($parsedBody,'event_date')->date();
+        if($val) $event->event_date = $val;
+        
+        $val = $api->optional($parsedBody,'type')->enum(EventFunctions::$types);
+        if($val) $event->type = $val;
+        
+        $val = $api->optional($parsedBody,'address')->smallString();
+        if($val) $event->address = $val;
+        
+        $val = $api->optional($parsedBody,'location_slug')->slug();
+        if($val) $event->location_slug = $val;
+        
+        $val = $api->optional($parsedBody,'lang')->slug();
+        if($val) $event->lang = $val;
+        $val = $api->optional($parsedBody,'city_slug')->slug();
+        if($val) $event->city_slug = $val;
+        $val = $api->optional($parsedBody,'banner_url')->url();
+        if($val) $event->banner_url = $val;
         
         $event->save();
 
@@ -125,15 +144,15 @@ function addAPIRoutes($api){
         $title = $api->validate($parsedBody,'title')->smallString();
         $url = $api->validate($parsedBody,'url')->url();
         $capacity = $api->validate($parsedBody,'capacity')->int();
-        $logo = $api->validate($parsedBody,'logo_url')->url();
-        $type = $api->validate($parsedBody,'type')->smallString();
-        $city = $api->validate($parsedBody,'city_slug')->smallString();
-        $location = $api->validate($parsedBody,'location_slug')->smallString();
+        $logo = $api->optional($parsedBody,'logo_url')->url();
+        $type = $api->validate($parsedBody,'type')->enum(EventFunctions::$types);
+        $city = $api->validate($parsedBody,'city_slug')->slug();
+        $location = $api->validate($parsedBody,'location_slug')->slug();
         $lang = $api->validate($parsedBody,'lang')->enum(['en','es']);
         $banner = $api->validate($parsedBody,'banner_url')->url();
         $address = $api->validate($parsedBody,'address')->smallString();
         $date = $api->validate($parsedBody,'event_date')->date();
-        $private = $api->validate($parsedBody,'invite_only')->bool();
+        $val = $api->validate($parsedBody,'invite_only')->bool();
         
         $props = [
 			'type' => EventFunctions::getType($type),
@@ -147,7 +166,7 @@ function addAPIRoutes($api){
 			'lang' => $lang,
 			'banner_url' => $banner,
 			'address' => $address,
-			'invite_only' => $private,
+			'invite_only' => $val,
 			'event_date' => DateTime::createFromFormat('Y-m-d H:i:s', $date),
 			'created_at' => date("Y-m-d H:i:s")
 		];
