@@ -3,6 +3,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 function addAPIRoutes($api){
+	
+	$api->addTokenGenerationPath();
 
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 		$content = $api->db['json']->getAllContent();
@@ -48,7 +50,7 @@ function addAPIRoutes($api){
 		$row->save();
 		
         return $response->withJson($row);
-	});
+	})->add($api->auth());
 	
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
         

@@ -13,6 +13,12 @@ class EventFunctions{
         '4geeks_night' => '4geeks_night',
         'other' => 'other'
     ];
+    static $status = [
+        'published' => 'published',
+        'unlisted' => 'unlisted',
+        'pending_review' => 'pending_review',
+        'draft' => 'draft'
+    ];
     
     public static function setAPI($api){
         self::$api = $api;
@@ -22,6 +28,12 @@ class EventFunctions{
         if(!isset(self::$types[$type])) throw new Exception("Invalid event type: ".$type, 400);
         
         return self::$types[$type];
+    }
+    
+    public static function getStatus($type){
+        if(!isset(self::$status[$type])) throw new Exception("Invalid event status: ".$type, 400);
+        
+        return self::$status[$type];
     }
     
 }

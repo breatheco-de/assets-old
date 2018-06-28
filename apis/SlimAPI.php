@@ -159,6 +159,7 @@ class SlimAPI{
                     $parts = explode('.', $_GET['access_token']);
                     if(count($parts)!=3) throw new Exception('Invalid access token', 403);
                 }
+
             	$decoded = JWT::decode($_GET['access_token'], JWT_KEY, array('HS256'));
             }
         	

@@ -21,6 +21,7 @@
       'logo_url'        TEXT     NULL, 
       'event_date'      DATETIME NOT NULL, 
       'type'            TEXT NOT NULL, 
+      'status'          TEXT NOT NULL, 
       'address'         TEXT NOT NULL,
       'location_slug'   TEXT     NULL,
       'lang'            TEXT     NULL,

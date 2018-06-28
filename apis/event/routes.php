@@ -27,14 +27,17 @@ function addAPIRoutes($api){
 		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
 		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 		if(isset($_GET['status'])){
-			if($_GET['status']=='upcoming') 
+			if($_GET['status']=='upcoming') {
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date >= date("Y-m-d"));
 				});
-			if($_GET['status']=='past') 
+			} else if($_GET['status']=='past') {
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date < date("Y-m-d"));
 				});
+			} else {
+				$content = $content->where('status',explode(",",$_GET['status']));
+			}
 		} 
 	    return $response->withJson($content);
 	});
@@ -106,6 +109,9 @@ function addAPIRoutes($api){
         $val = $api->optional($parsedBody,'type')->enum(EventFunctions::$types);
         if($val) $event->type = $val;
         
+        $val = $api->optional($parsedBody,'status')->enum(EventFunctions::$status);
+        if($val) $event->status = $val;
+        
         $val = $api->optional($parsedBody,'address')->smallString();
         if($val) $event->address = $val;
         
@@ -122,8 +128,7 @@ function addAPIRoutes($api){
         $event->save();
 
 		return $response->withJson($event);
-	})
-		->add($api->auth());
+	})->add($api->auth());
 	
 	$api->delete('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {
         
@@ -164,6 +169,7 @@ function addAPIRoutes($api){
 			'location_slug' => $location,
 			'city_slug' => $city,
 			'lang' => $lang,
+			'status' => EventFunctions::getStatus('draft'),
 			'banner_url' => $banner,
 			'address' => $address,
 			'invite_only' => $val,
