@@ -1,6 +1,13 @@
 <?php
+
+require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \BreatheCode\BCWrapper;
+
+BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
+BCWrapper::setToken(BREATHECODE_TOKEN);
+
 function addAPIRoutes($api){
 	
 	$api->addTokenGenerationPath();
@@ -72,7 +79,7 @@ function addAPIRoutes($api){
 	    return $response->withJson($replits);
 	});
 	
-	//save replits of a cohort
+	//update replits of a cohort
 	$api->post('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
 		try{
@@ -81,10 +88,19 @@ function addAPIRoutes($api){
 		catch(Exception $e){
 			throw new Exception('The Cohort has no Replit\'s or does not exists', 404);
 		}
+
+		$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
+		if(!$cohort) throw new Exception('The cohort was not found on the Breathecode API', 400);
+		
+		$templatesPDO = new JsonPDO('_templates/','{}',false);
+		$templates = $templatesPDO->getJsonByName($cohort->profile_slug);
 			
 		$data = $request->getParsedBody();
 		if(!is_array($data)) throw new Exception('The body must be an object with all the replits of the cohort');
 		
+		foreach($templates as $replTemp) if(!isset($data[$replTemp->slug])) 
+			throw new Exception('The replits are not following the same template, a replit class was expected for '.$replTemp->slug.' but was not found');
+
 		$api->db['json']->toFile($args['cohort_slug'])->save($data);
 		
 	    return $response->withJson($cohorts);
