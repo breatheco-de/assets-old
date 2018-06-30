@@ -73,15 +73,17 @@ function addAPIRoutes($api){
 	$api->get('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {
         
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
-		$row = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+		
+		$row = $api->db['sqlite']->event()->fetch($args['event_id']);
+
 		return $response->withJson($row);	
 	});
 	
 	$api->post('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
 		
-		$event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
-
+		$event = $api->db['sqlite']->event()->fetch($args['event_id']);
+        
         $parsedBody = $request->getParsedBody();
         $desc = $api->optional($parsedBody,'description')->bigString();
         if($desc) $event->description = $desc;
@@ -122,6 +124,7 @@ function addAPIRoutes($api){
         if($val) $event->city_slug = $val;
         $val = $api->optional($parsedBody,'banner_url')->url();
         if($val) $event->banner_url = $val;
+        
         $event->save();
 
 		return $response->withJson($event);
@@ -131,7 +134,7 @@ function addAPIRoutes($api){
         
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
 		
-		$row = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+		$row = $api->db['sqlite']->event()->fetch($args['event_id']);
 		if($row) $row->delete();
 		else throw new Exception('Event not found');
 		

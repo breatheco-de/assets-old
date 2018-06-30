@@ -10,6 +10,20 @@
 		{ "seconds": "495", "description": "#1.5 Anchor same page" },
 		{ "seconds": "553", "description": "#2 String concatenation" },
 		{ "seconds": "602", "description": "#2.1 Create a basic HTML" },
-		{ "seconds": "715", "description": "#3 Calling your first function" }
+		{ "seconds": "715", "description": "#3 Calling your first function" },
+		{ "seconds": "13:52", "description": "#3.1 Creating your first function" },
+		{ "seconds": "15:20", "description": "#3.2 Create a new function" },
+		{ "seconds": "18:07", "description": "#4 Your first if" },
+		{ "seconds": "22:49", "description": "#4.1 How much the wedding costs" },
+		{ "seconds": "26:04", "description": "#5 Your first switch" },
+		{ "seconds": "30:55", "description": "#6 Random Numbers" },
+		{ "seconds": "32:46", "description": "#7 Your first loop" },
+		{ "seconds": "34:10", "description": "#7.1 Create a for loop" },
+		{ "seconds": "36:32", "description": "#7.2 Random Colors" },
+		{ "seconds": "40:31", "description": "#7.3 Looping with FizzBuzz" },
+		{ "seconds": "44:48", "description": "#7.4 Russian Roulette" },
+		{ "seconds": "46:30", "description": "#8 The Beatles" },
+		{ "seconds": "51:59", "description": "#9 Bottles of Milk" },
+		{ "seconds": "01:05:09", "description": "#10 Javascript Objects" }
 	]
 }
