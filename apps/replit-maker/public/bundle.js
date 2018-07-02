@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "de326e2f802bf97a7146"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d4daf501d2c41c8c1f4f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -41132,7 +41132,7 @@ var ShowCohort = function (_Flux$DashView) {
 
             (0, _action.loadReplits)(this.state.typeCohort);
             this.subscribe(_action.store, 'replits', function (data) {
-                _this2.setState({ cohortDataInput: data });
+                _this2.setState({ cohortDataInput: data, forJsonCohort: data });
             });
 
             if (!this.state.typeProfile) {
@@ -41172,7 +41172,6 @@ var ShowCohort = function (_Flux$DashView) {
     }, {
         key: 'getDataFormCohort',
         value: function getDataFormCohort(data) {
-
             this.setState({
                 forJsonCohort: data
             });
@@ -41187,7 +41186,6 @@ var ShowCohort = function (_Flux$DashView) {
     }, {
         key: 'getDataSelectReplits',
         value: function getDataSelectReplits(data) {
-
             this.props.getData(data);
         }
     }, {

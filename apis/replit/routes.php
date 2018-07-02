@@ -66,7 +66,10 @@ function addAPIRoutes($api){
 		try{
 			$replits = $api->db['json']->getJsonByName($args['cohort_slug']);
 			
-			$baseReplits = ReplitFunctions::getTemplates();
+			$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
+			$profileSlug = $cohort ?  $cohort->profile_slug : null;
+			
+			$baseReplits = ReplitFunctions::getTemplates($profileSlug);
 			foreach($baseReplits as $brepl){
 				if(!empty($brepl->base)){
 					if(empty($replits[$brepl->slug])) $replits[$brepl->slug] = $brepl->base;

@@ -44,7 +44,7 @@ export default class ShowCohort extends Flux.DashView{
         
         loadReplits(this.state.typeCohort);
         this.subscribe(store, 'replits', (data)=>{
-            this.setState({ cohortDataInput: data});
+            this.setState({ cohortDataInput: data, forJsonCohort: data });
         });
         
         if(!this.state.typeProfile){
@@ -84,7 +84,6 @@ export default class ShowCohort extends Flux.DashView{
     }
 
     getDataFormCohort(data){
-        
         this.setState({
             forJsonCohort: data,
         });
@@ -97,7 +96,6 @@ export default class ShowCohort extends Flux.DashView{
     }
 
     getDataSelectReplits(data){
-        
         this.props.getData(data);
     }
     
