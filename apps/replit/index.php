@@ -23,8 +23,20 @@
             $replits = (array) $cohorts[$_GET['c']];
             if(isset($replits[$_GET['r']])){
                 if (!empty($replits[$_GET['r']])) {
+                    
+                    $headers = get_headers($replits[$_GET['r']]);
+                    foreach($headers as $h){
+                        if(strpos($h,'SAMEORIGIN')){
+                            echo "<h1>";
+                            echo "This exercise needs to be opened in a new window, please copy and paste this url on your window url: ";
+                            echo "<a target='_blank' href='".$replits[$_GET['r']]."'>".$replits[$_GET['r']]."</a>";
+                            echo "</h1>";
+                            die();
+                        }
+                    }
                     header("Location: ".$replits[$_GET['r']], true, 302);
                     echo "Redirecting to... ".$replits[$_GET['r']];
+                
                 } else {
                     echo $twig->render('error.html', array(
                         'msg' => "This cohort (".$_GET['c'].") does not have any exercises for '".$_GET['r']."'  setup yet, talk to your teacher to report the issue.",
