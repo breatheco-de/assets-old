@@ -14,6 +14,8 @@ Get all the quizes
 GET: /quiz/<slug>
 ```
 
+### Warning: The followin methods requier autentication
+
 3. Create a quiz:
 ```
 PUT: /quiz/<slug>?access_token=<token>
