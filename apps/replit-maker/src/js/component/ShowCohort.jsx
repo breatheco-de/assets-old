@@ -1,6 +1,6 @@
 import React from 'react';
 import Flux from '@4geeksacademy/react-flux-dash';
-import {store, loadReplits, loadProfiles} from '../action.js';
+import {store, loadReplits, loadTemplates} from '../action.js';
 
 import RowTitle from './show/RowTitle.jsx';
 import FormSlug from './show/FormSlug.jsx';
@@ -47,28 +47,33 @@ export default class ShowCohort extends Flux.DashView{
             this.setState({ cohortDataInput: data});
         });
         
-        loadProfiles(this.state.typeProfile);
-        this.subscribe(store, 'templates', (data)=>{
-            this.setState({ cohortLabel: data });
-        });
+        if(!this.state.typeProfile){
+            alert("This cohort is missing the profile_slug, therefor is impossible to load its template");
+        }
+        else{
+            loadTemplates(this.state.typeProfile);
+            this.subscribe(store, 'templates', (data)=>{
+                this.setState({ cohortLabel: data });
+            });
+        }
 
         // this.getApiProfile(this.state.typeProfile);
     }
 
     getApiProfile(profile){
         
-        let endpoint = 'https://assets.breatheco.de/apis/replit/template/'+profile;
-		fetch(endpoint)
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-            console.log(data);
-            this.setState({ cohortLabel: data });
-		})
-		.catch((error) => {
-			console.log('error', error);
-        })
+        let endpoint = process.env.hostAssets+'/apis/replit/template/'+profile;
+    		fetch(endpoint)
+    		.then((response) => {
+    			return response.json();
+    		})
+    		.then((data) => {
+                console.log(data);
+                this.setState({ cohortLabel: data });
+    		})
+    		.catch((error) => {
+    			console.log('error', error);
+            })
     }
 
     getDataFormSlug(data){

@@ -1,8 +1,5 @@
 import React from 'react';
 
-//include images into your bundle
-import rigoImage from '../../img/logo.png';
-
 export default class BannerHeader extends React.Component{
     constructor(props){
         super(props);
@@ -30,11 +27,25 @@ export default class BannerHeader extends React.Component{
 
     postApi(){
         let slug = this.props.createJson[0];
-        let url = process.env.hostAssets+'/apis/replit/cohort/'+slug+'?access_token='+process.env.token;
+        let url = process.env.hostAssets+'/apis/replit/cohort/'+slug+'?access_token='+process.env.assetsToken;
         fetch(url, {
             headers: {"content-type": "application/json"},
             method: 'POST',  
             body: JSON.stringify(this.props.createJson[1])
+        })
+        .then(resp => {
+            if(resp.status!=200){
+                this.setState({
+                    messageFailure: 'The was an error saving the replits'
+                });
+                setTimeout(()=>{
+                    this.setState({
+                        messageFailure: null
+                    }); 
+                }, 2000);
+                throw new Error('The was an error saving the replits');
+            }
+            else return resp.json();
         })
         .then((data)=> {  
             // console.log('Request success: ', data);
@@ -45,7 +56,7 @@ export default class BannerHeader extends React.Component{
                 this.setState({
                     messageSuccess: null
                 }); 
-            }, 2000)
+            }, 2000);
         })  
         .catch((error)=> {  
             // console.log('Request failure: ', error);  
@@ -56,7 +67,7 @@ export default class BannerHeader extends React.Component{
                 this.setState({
                     messageFailure: null
                 }); 
-            }, 2000)
+            }, 2000);
         });
     }
 
@@ -78,7 +89,7 @@ export default class BannerHeader extends React.Component{
                     }
                     <nav className="navbar navbar-light bg-light">
                         <a className="navbar-brand" href="#">
-                            <img src={rigoImage} width="30" height="30" className="d-inline-block align-top mr-2" alt="" />
+                            <img src="https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,64" width="30" height="30" className="d-inline-block align-top mr-2" alt="" />
                             Cohort Maker - BreatheCode
                         </a>
                         {(this.props.button) ?

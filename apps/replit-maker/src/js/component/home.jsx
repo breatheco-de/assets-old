@@ -1,7 +1,6 @@
 import React from 'react';
 
 //include images into your bundle
-import rigoImage from '../../img/rigo-baby.jpg';
 import BannerHeader from './BannerHeader.jsx';
 import ShowCohort from './ShowCohort.jsx';
 
@@ -28,7 +27,7 @@ export class Home extends React.Component{
 
         let endpoint;
         if(id || id != null){
-            endpoint = process.env.hostTalentTree+'/cohorts/teacher/'+id+'?access_token=7677557f945439bb97b072b7078c970218d9a470';
+            endpoint = process.env.hostTalentTree+'/cohorts/teacher/'+id+'?access_token='+process.env.apiToken;
         }else{
             endpoint = process.env.hostTalentTree+'/cohorts/';
         }

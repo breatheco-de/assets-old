@@ -14,7 +14,7 @@ export const loadReplits = (cohort)=>{
         });
 }
 
-export const loadProfiles = (profile_slug)=>{
+export const loadTemplates = (profile_slug)=>{
     let endpoint = process.env.hostAssets+'/apis/replit/template/'+profile_slug;
     fetch(endpoint)
         .then((response) => {
