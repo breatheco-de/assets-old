@@ -83,7 +83,7 @@ function addAPIRoutes($api){
 		
 	    $api->db['json']->toNewFile($slug)->save($data);
 	    return $response->withJson($data);
-	});->add($api->auth());
+	})->add($api->auth());
 	
 	$api->post('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
         
@@ -100,7 +100,7 @@ function addAPIRoutes($api){
 		
 	    $api->db['json']->toFile($slug)->save($data);
 	    return $response->withJson($data);
-	});->add($api->auth());
+	})->add($api->auth());
 	
 	return $api;
 }
