@@ -1,5 +1,5 @@
 import React from 'react';
-import {setReplitsInputs} from '../../action.js';
+import {loadReplits} from '../../action.js';
 
 
 export default class SelectReplits extends React.Component{
@@ -32,7 +32,7 @@ export default class SelectReplits extends React.Component{
                     </select>
                 </div>
                 <div className="form-group btn-preload">
-                    <button type="button" className="btn btn-primary" onClick={()=>setReplitsInputs(this.state.cohort_slug)}>Load</button>
+                    <button type="button" className="btn btn-primary" onClick={()=>loadReplits(this.state.cohort_slug)}>Load</button>
                 </div>
                 <div className="form-group btn-preload">
                     <button type="button" className="btn btn-light">Cancel</button>

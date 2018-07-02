@@ -3,11 +3,15 @@ import Flux from '@4geeksacademy/react-flux-dash';
 export const loadReplits = (cohort)=>{
     let endpoint = process.env.hostAssets+'/apis/replit/cohort/'+cohort;
     fetch(endpoint)
-        .then((response) => {
-            return response.json();
+        .then((resp) => {
+            if(resp.status != 200){
+                alert('The cohort has no previous replits');
+            }
+            else return resp.json();
         })
         .then((data) => {
-            Flux.dispatchEvent('replits', data);
+            if(typeof data != 'undefined' && data) Flux.dispatchEvent('replits', data);
+            
         })
         .catch((error) => {
             console.log('error', error);

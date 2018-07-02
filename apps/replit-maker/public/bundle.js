@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a8badc807535696377d5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "de326e2f802bf97a7146"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -40824,10 +40824,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var loadReplits = exports.loadReplits = function loadReplits(cohort) {
     var endpoint = "https://assets.breatheco.de" + '/apis/replit/cohort/' + cohort;
-    fetch(endpoint).then(function (response) {
-        return response.json();
+    fetch(endpoint).then(function (resp) {
+        if (resp.status != 200) {
+            alert('The cohort has no previous replits');
+        } else return resp.json();
     }).then(function (data) {
-        _reactFluxDash2.default.dispatchEvent('replits', data);
+        if (typeof data != 'undefined' && data) _reactFluxDash2.default.dispatchEvent('replits', data);
     }).catch(function (error) {
         console.log('error', error);
     });
@@ -41854,7 +41856,7 @@ var SelectReplits = function (_React$Component) {
                     _react2.default.createElement(
                         'button',
                         { type: 'button', className: 'btn btn-primary', onClick: function onClick() {
-                                return (0, _action.setReplitsInputs)(_this2.state.cohort_slug);
+                                return (0, _action.loadReplits)(_this2.state.cohort_slug);
                             } },
                         'Load'
                     )
