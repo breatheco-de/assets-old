@@ -65,5 +65,42 @@ function addAPIRoutes($api){
 	    return $response->withJson($quizObj);
 	});
 	
+	$api->put('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
+        
+        $quizObj = null;
+        $slug = $args['slug'];
+        try{
+        	$quizObj = $api->db['json']->getJsonByName($slug);
+        }
+        catch(Exception $e){}
+        
+        if(!empty($quizObj)) throw new Exception('The quiz already exists', 400);
+		$data = $request->getParsedBody();
+		if(!is_array($data)) throw new Exception('The body must be a quiz object');
+		if(!isset($data['info'])) throw new Exception('Missing or invalid quiz info');
+		if(!isset($data['questions']) || !is_array($data['questions'])) throw new Exception('Missing or invalid quiz questions');
+		if(count($data['questions']) <= 4) throw new Exception('A quiz needs to have at least 5 questions');
+		
+	    $api->db['json']->toNewFile($slug)->save($data);
+	    return $response->withJson($data);
+	});//->add($api->auth());
+	
+	$api->post('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
+        
+        $quizObj = null;
+        $slug = $args['slug'];
+        $quizObj = $api->db['json']->getJsonByName($slug);
+        if(empty($quizObj)) throw new Exception('The quiz does not exists', 400);
+
+		$data = $request->getParsedBody();
+		if(!is_array($data)) throw new Exception('The body must be a quiz object');
+		if(!isset($data['info'])) throw new Exception('Missing or invalid quiz "info"');
+		if(!isset($data['questions']) || !is_array($data['questions'])) throw new Exception('Missing or invalid quiz "questions"');
+		if(count($data['questions']) <= 4) throw new Exception('A quiz needs to have at least 5 questions');
+		
+	    $api->db['json']->toFile($slug)->save($data);
+	    return $response->withJson($data);
+	});//->add($api->auth());
+	
 	return $api;
 }

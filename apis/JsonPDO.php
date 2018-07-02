@@ -11,6 +11,8 @@ class JsonPDO{
     //Only use when the data is stored in different files
     var $dataFiles = null;
     
+    var $dataPath = null;
+    
     var $logger = null;
     
     //The real content already parse, if several datafiles where provided it will be an array of objects
@@ -21,7 +23,7 @@ class JsonPDO{
     function __construct($dataPath = null,$defaultContent='{}',$debug = false){
         
 	    $this->debug = $debug;
-	    
+	    $this->dataPath = $dataPath;
 	    if($dataPath) $this->getDataStructure($dataPath, $defaultContent);
     }
     
@@ -143,6 +145,11 @@ class JsonPDO{
         return new FileInterface($path);
     }
     
+    function toNewFile($fileName){
+        if(!$this->dataPath) throw new Exception('Missing data path', 400);
+        return new FileInterface($this->dataPath.$fileName.'.json', $create=true);
+    }
+    
     function getJsonByName($fileName){
         
         if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
@@ -181,9 +188,9 @@ class JsonPDO{
 
 class FileInterface{
     private $fileName = null;
-    function __construct($fileName=null){
+    function __construct($fileName=null, $create=false){
         if(!$fileName) throw new Exception('Missing file name');
-        if(!file_exists($fileName)) throw new Exception('JSON file '.$fileName.' does not exists');
+        if(!file_exists($fileName) && !$create) throw new Exception('JSON file '.$fileName.' does not exists');
         $this->fileName = $fileName;
     }
     function save($data){
