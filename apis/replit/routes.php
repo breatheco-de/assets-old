@@ -82,12 +82,11 @@ function addAPIRoutes($api){
 	//update replits of a cohort
 	$api->post('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
+		$originalCohort = null;
 		try{
-			$cohorts = $api->db['json']->getJsonByName($args['cohort_slug']);
+			$originalCohort = $api->db['json']->getJsonByName($args['cohort_slug']);
 		}
-		catch(Exception $e){
-			throw new Exception('The Cohort has no Replit\'s or does not exists', 404);
-		}
+		catch(Exception $e){}
 
 		$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
 		if(!$cohort) throw new Exception('The cohort was not found on the Breathecode API', 400);
@@ -101,7 +100,8 @@ function addAPIRoutes($api){
 		foreach($templates as $replTemp) if(!isset($data[$replTemp->slug])) 
 			throw new Exception('The replits are not following the same template, a replit class was expected for '.$replTemp->slug.' but was not found');
 
-		$api->db['json']->toFile($args['cohort_slug'])->save($data);
+		if($originalCohort) $api->db['json']->toFile($args['cohort_slug'])->save($data);
+		else $api->db['json']->toNewFile($args['cohort_slug'])->save($data);
 		
 	    return $response->withJson($cohorts);
 	})->add($api->auth());
