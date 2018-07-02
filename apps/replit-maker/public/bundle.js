@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d4daf501d2c41c8c1f4f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c4f63eb32f135cc819f8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -40854,8 +40854,20 @@ var _store = function (_Flux$DashStore) {
 
         var _this = _possibleConstructorReturn(this, (_store.__proto__ || Object.getPrototypeOf(_store)).call(this));
 
-        _this.addEvent('replits');
+        var templatesAdded = false;
+        _this.addEvent('replits', function (replits) {
+            if (!templatesAdded) return replits;
+            var templates = _this.getState('templates');
+            if (!Array.isArray(templates)) return templates;
+
+            var newReplits = replits ? replits : {};
+            templates.forEach(function (t) {
+                if (typeof newReplits[t.slug] == 'undefined') newReplits[t.slug] = t.base || '';
+            });
+            return replits;
+        });
         _this.addEvent('templates', function (templates) {
+            templatesAdded = true;
             if (!Array.isArray(templates)) return templates;
 
             var oldReplits = _this.getState('replits');

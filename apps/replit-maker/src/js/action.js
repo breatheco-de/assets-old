@@ -35,8 +35,20 @@ export const loadTemplates = (profile_slug)=>{
 class _store extends Flux.DashStore{
     constructor(){
         super();
-        this.addEvent('replits');
+        let templatesAdded = false;
+        this.addEvent('replits', (replits)=>{
+            if(!templatesAdded) return replits;
+            let templates = this.getState('templates');
+            if(!Array.isArray(templates)) return templates;
+            
+            let newReplits = (replits) ? replits : {};
+            templates.forEach((t)=>{
+                if(typeof newReplits[t.slug] == 'undefined') newReplits[t.slug] = t.base || '';
+            });
+            return replits;
+        });
         this.addEvent('templates', (templates)=>{
+            templatesAdded = true;
             if(!Array.isArray(templates)) return templates;
             
             let oldReplits = this.getState('replits');

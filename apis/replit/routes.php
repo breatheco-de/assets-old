@@ -106,7 +106,7 @@ function addAPIRoutes($api){
 		if($originalCohort) $api->db['json']->toFile($args['cohort_slug'])->save($data);
 		else $api->db['json']->toNewFile($args['cohort_slug'])->save($data);
 		
-	    return $response->withJson($cohorts);
+	    return $response->withJson($data);
 	})->add($api->auth());
 	
 	
