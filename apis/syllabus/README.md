@@ -2,24 +2,33 @@
 
 # Syllabus API
 
-#### Get a course syllabus
+#### 1) Get a course syllabus
 ```
 GET: syllabus/{slug}
 ```
 ## Examples
 
-[Get pre-work syllabus](/apis/syllabus/web-intro)
+[Get pre-work syllabus](/apis/syllabus/coding-introduction)
 
-# TODO:
-
-1) We need a service to get al list of al the possible syllabus that I can retrieve
+#### 2) Get all syllabus
 
 ```js
-GET: /apis/syllabus
+GET: /syllabus/all
 
 Response:
 [
-    { slug: 'full-stack', title: 'Full Stack Web Development' },
-    { slug: 'web-development', title: 'Web Development' }
+    {
+        "slug": "blockchain",
+        "title": "Blockchain",
+        "weeks": 1,
+        "days": 3,
+        "technologies": []
+    }
+    ...
 ]
+```
+
+#### 3) Update a course syllabus
+```
+POST: syllabus/{slug}
 ```

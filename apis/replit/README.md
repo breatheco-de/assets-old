@@ -15,4 +15,12 @@ GET: replit/cohort/{cohort_slug}
 #### Save all replits from a particular cohort
 ```
 POST: replit/cohort/{cohort_slug}
+
+Request (application/json):
+
+    {
+    	"label": "Boats.com",
+    	"profile": "boats",
+    	"weeks": []
+    }
 ```
