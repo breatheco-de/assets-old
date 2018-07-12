@@ -346,7 +346,7 @@
 						"title": "Creating User Stories",
 						"slug": "creating-user-stories"
 					}],
-					"assignments": ["full-stack-project-stories"],
+					"assignments": ["web-development-project-stories"],
 					"key-concepts": ["Building a Trello board", "Building a Kanban Board", "Creating the project Backlog", "Who to write the story", "Acceptance Criteria", "You application roles & capabilities", "Standup Meeting"],
 					"homework": "Students must finish the user stories by next class, remember that the student projects must meet certain conditions to be accepted.",
 					"technologies": ["SCRUM", "User Stories", "Kanban", "Agile Methodologies"]
@@ -375,7 +375,6 @@
 						"title": "Importing and Exporting from other JS files",
 						"slug": "importing-and-exporting-javascript-modules"
 					}],
-					"assignments": ["full-stack-project-wireframes"],
 					"homework": "Students must finish everything that is due, and create their first 3 page wireframes",
 					"key-concepts": ["Wireframing", "Minimum Viable Product", "Why creating a prototipe"],
 					"technologies": ["Wireframing", "SCRUM", "Kanban"]
@@ -392,7 +391,6 @@
 						"title": "Using React Router",
 						"slug": "routing-our-views-with-react-router"
 					}],
-					"assignments": ["full-stack-project-prototype"],
 					"key-concepts": ["React Router", "Router: Matching URLs Views", "Component vs View", "The Component State", "Using the React Debugging Chrome Plugin", "Debugging code with the Chrome Source Tab"],
 					"homework": "Sit with every project team and discuss how to split the code into Views and React.Components, students must finish the home layout by next class",
 					"technologies": ["Minimum Viable Product", "React Router", "The Chrome Inspector"]
@@ -431,8 +429,8 @@
 				"description": "How to make a formal frontend web app using navigation (React Router)",
 				"instructions": "Force students to finish all that's due, students that have not finished the replits cannot enter the class and will remain separated from the big group. Explain the logic behind React Router, and the things to remember",
 				"project": {
-							"title": "Build your project Views",
-							"url": "#"
+					"title": "Build your project Views",
+					"url": "#"
 				},
 				"homework": "Students (in groups) must create a 4 page website (Home, Blog, Product, Checkout-Cart) using React Router"
 			}, {
@@ -498,6 +496,7 @@
 						"title": "Learn HTTP Fetch",
 						"slug": "http-fetch"
 					}],
+					"assignments": ["web-development-project-prototype"],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using React, students must use the WordPress API to Bookmark and RSVP to the events",
 					"technologies": ["HTTP", "HTTP Fetch", "JSON", "API", "Serialization"]
