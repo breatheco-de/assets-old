@@ -51,7 +51,7 @@ class BreatheCodeLogger{
 
     }
     
-    private static function _logInternally($student, $activity_slug, $data=null){
+    private static function _logInternally($student, $activity_slug, $data='No additional data'){
         $datastore = new DatastoreClient([ 
             'projectId' => 'breathecode-197918',
             'keyFilePath' => '../../breathecode-efde1976e6d3.json'
@@ -62,10 +62,13 @@ class BreatheCodeLogger{
             'slug' => $activity_slug,
             'data' => $data
         ];
+
         if(is_string($student)) $activity['email'] = $student;
         else{
+            //print_r($student); die();
             if(!empty($student->id)) $activity['user_id'] = $student->id;
-            else if(!empty($student->email)) $activity['email'] = $student->email;
+            
+            if(!empty($student->email)) $activity['email'] = $student->email;
             else if(!empty($student->username)) $activity['email'] = $student->username;
         }
         
@@ -77,9 +80,9 @@ class BreatheCodeLogger{
         \AC\ACAPI::start(AC_API_KEY);
         \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
         if(!is_string($student)){
-            if(!empty($student->id)) $student = $student->id;
-            else if(!empty($student->email)) $student = $student->email;
+            if(!empty($student->email)) $student = $student->email;
             else if(!empty($student->username)) $student = $student->username;
+            else throw new Exception('Missing user email or username');
         }
         \AC\ACAPI::trackEvent($student, $activity_slug, $data);
     }
