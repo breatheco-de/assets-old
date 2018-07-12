@@ -447,11 +447,7 @@
 			"replits": [],
 			"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a JavaScript object but as TEXT", "The goal is to send\/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why use several request types (GET, POST, PUT, DELETE)?", "Explain the 3 main content-types: Form, URL-Encoded, Raw (With JSON)"],
 			"homework": "Using POSTman, and then using Flux\/React, students must consume the API to Save, Delete and Update Contacts.",
-			"technologies": ["HTTP", "AJAX", "JSON", "HTTP Fetch", "API", "Serialization"],
-			"resources": [{
-				"type": "video",
-				"url": "https:\/\/www.youtube.com\/watch?v=Oive66jrwBs"
-			}]
+			"technologies": ["HTTP", "AJAX", "JSON", "HTTP Fetch", "API", "Serialization"]
 		}, {
 			"label": "Day 23",
 			"instructions": "Finish the Contact Managment API integration, focus on Debugging procedures and start the introduction to Python",
@@ -510,7 +506,7 @@
 			"description": "The most frequent backend operation is writing in a database and there are two main ways of doing so: 'Using SQL' or 'not using SQL', let's start by reviewing how SQL works and why it's so influential in the database world",
 			"project": {
 				"title": "Continue: Contact Management API",
-				"solution": "https://bitbucket.org/codingacademy/contact-list-api"
+				"solution": "https://bitbucket.org/codingacademy/contact-list-api/"
 			},
 			"replits": [{
 				"title": "Learn SQL",

@@ -27,7 +27,7 @@ function addAPIRoutes($api){
 		
 		$api->validate($args['user_id'])->int();
 		
-		$student = BCWrapper::getStudent(['student_id'=>$args['user_id']]);
+		$student = BC::getStudent(['student_id'=>$args['user_id']]);
 	    return $response->withJson($student);
 	});
 	
