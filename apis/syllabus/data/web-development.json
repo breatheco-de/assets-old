@@ -346,7 +346,7 @@
 						"title": "Creating User Stories",
 						"slug": "creating-user-stories"
 					}],
-					"assignments": ["full-stack-project-stories"],
+					"assignments": ["web-development-project-stories"],
 					"key-concepts": ["Building a Trello board", "Building a Kanban Board", "Creating the project Backlog", "Who to write the story", "Acceptance Criteria", "You application roles & capabilities", "Standup Meeting"],
 					"homework": "Students must finish the user stories by next class, remember that the student projects must meet certain conditions to be accepted.",
 					"technologies": ["SCRUM", "User Stories", "Kanban", "Agile Methodologies"]
