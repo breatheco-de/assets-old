@@ -1,0 +1,58 @@
+{
+	"program_slug": "full-stack",
+	"school_slug": "thinkfull",
+	"cities": ["miami", "portland"],
+	"focus": "",
+	"price": {
+		"financing": true,
+		"finance_max_length_in_months": 0,
+		"finance_min_length_in_months": 0,
+		"avg_usd_price_monthly": 300,
+		"avg_usd_price_upfront": 12000
+	},
+	"time_commitment": ["all-in", "full-time", "part-time-hard", "part-time-slow"],
+	"learning-style": {
+		"one_on_one_mentorship": true,
+		"online_exercises": true,
+		"description": ""
+	},
+	"online-platform": true,
+	"syllabus": {
+		"topics": ["html", "css"],
+		"skills": []
+	},
+	"mentors": {
+		"industry_influencers": false
+	},
+	"placement_rate": 80,
+	"post_graduate_support": {
+		"job_support": true,
+		"job_support_length_in_days": 9999999
+	},
+	"job_guarantee": {
+		"refund": true,
+		"defered": true
+	},
+	"pre_work": {
+		"avg_length_in_days": 14,
+		"technologies": ["html", "css"],
+		"description": ""
+	},
+	"scolarships": {
+		"for_woman": true,
+		"for_veterans": true,
+		"other": "for kids"
+	},
+	"application_process": {
+		"avg_length_in_days": 15,
+		"includes_tests": true,
+		"includes_interviews": true,
+		"description": ""
+	},
+	"reviews": {
+		"average": 0,
+		"top": [],
+		"worse": []
+	}
+
+}

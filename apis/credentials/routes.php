@@ -48,9 +48,9 @@ function addAPIRoutes($api){
 		        $user->scope = $token->scope;
 		        
 		        try{
-		            BreatheCodeLogger::logActivity($username, [
+		            BreatheCodeLogger::logActivity([
 		                'slug' => 'breathecode_login',
-		                'user_id' => $user->id
+		                'user' => $user
 		            ]);
 		        }catch(Exception $e){  }
 		        
@@ -91,8 +91,10 @@ function addAPIRoutes($api){
                 "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
             ]);
             if($contact){
-                ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
-                ACAPI::trackEvent($username, 'online_platform_registration');
+                BreatheCodeLogger::logActivity([
+                    'slug' => 'online_platform_registration',
+                    'user' => $user
+                ]);
             } 
             
             return $response->withJson($user)->withStatus(200);

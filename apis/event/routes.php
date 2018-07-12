@@ -5,12 +5,13 @@ require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
-use \BreatheCode\BCWrapper;
+use BreatheCode\BCWrapper as BC;
 
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
+require('../BreatheCodeLogger.php');
 
-BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
-BCWrapper::setToken(BREATHECODE_TOKEN);
+BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
+BC::setToken(BREATHECODE_TOKEN);
 
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
@@ -211,7 +212,13 @@ function addAPIRoutes($api){
 		$row = $api->db['sqlite']->createRow('event_checking', $props);
 		$row->save();
 		
-		\AC\ACAPI::trackEvent($email, 'public_event_attendance');
+		$event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+		$user = BC::getUser(['user_id' => urlencode($email)]);
+        BreatheCodeLogger::logActivity([
+            'slug' => 'public_event_attendance',
+            'user' => ($user) ? $user : $email,
+            'data' => $event->title
+        ]);
 		
         return $response->withJson($row);
 	})

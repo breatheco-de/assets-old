@@ -1,0 +1,57 @@
+{
+    "4geeks": {
+        "slug": "4geeks",
+        "title": "4Geeks Academy",
+        "founded_year": 2009,
+        "cities": ["miami", "caracas", "maracaibo"],
+        "focus": "",
+        "philosophy":"",
+        "placement_rate": 89,
+        "post_graduate_support": {
+            "job_support": true,
+            "job_support_length_in_days": 9999999
+        }
+    },
+    "wyncode": {
+        "slug": "wyncode",
+        "title": "Wyncode",
+        "founded_year": 2009,
+        "cities": ["miami"],
+        "focus": "",
+        "philosophy":"",
+        "placement_rate": 91,
+        "post_graduate_support": {
+            "job_support": true,
+            "job_support_length_in_days": 90
+        }
+    },
+    "ironhack": {
+        "slug": "ironhack",
+        "title": "IronHack",
+        "founded_year": 2007,
+        "cities": ["miami", "paris", "barcelona", "madrid"],
+        "focus": "",
+        "philosophy":"",
+        "placement_rate": 85,
+        "post_graduate_support": {
+            "job_support": true,
+            "job_support_length_in_days": 90
+        }
+    },
+    "general_assembly": {
+        "slug": "general_assembly",
+        "title": "General Assembly"
+    },
+    "hackreactor": {
+        "slug": "hackreactor",
+        "title": "HackReactor"
+    },
+    "thinkfull": {
+        "slug": "thinkfull",
+        "title": "ThinkFull"
+    },
+    "fullstack_academy": {
+        "slug": "fullstack_academy",
+        "title": "Full-Stack Academy"
+    }
+}

@@ -164,6 +164,20 @@ class JsonPDO{
         throw new Exception("There json file ".$fileName." was not found");
     }
     
+    function jsonExists($fileName){
+        
+        if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
+        
+        if(!is_array($this->dataContent)) throw new Exception("There is only one json file as data model");
+        
+        foreach ($this->dataContent as $key => $jsonObject) {
+            $file = pathinfo($key);
+            if($file['filename'] == $fileName) return true;
+        }
+        
+        return false;
+    }
+    
     function getPathByName($fileName){
         
         if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
