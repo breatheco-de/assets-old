@@ -26,18 +26,22 @@ function addAPIRoutes($api){
 		if(isset($_GET['type'])) $content = $content->where('type',explode(",",$_GET['type']));
 		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
 		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
-		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 		if(isset($_GET['status'])){
 			if($_GET['status']=='upcoming') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date >= date("Y-m-d"));
 				});
 			} else if($_GET['status']=='past') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date < date("Y-m-d"));
 				});
 			} else {
 				$content = $content->where('status',explode(",",$_GET['status']));
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 			}
 		} 
 	    return $response->withJson($content);
@@ -50,16 +54,21 @@ function addAPIRoutes($api){
 		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
 		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
 		
-		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 		if(isset($_GET['status'])){
-			if($_GET['status']=='upcoming') 
+			if($_GET['status']=='upcoming') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date >= date("Y-m-d"));
 				});
-			if($_GET['status']=='past') 
+			}
+			else if($_GET['status']=='past') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date < date("Y-m-d"));
 				});
+			}
 		} 
 
 		if(isset($content[0])) return $response->withRedirect($content[0]->url); 
