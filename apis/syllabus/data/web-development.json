@@ -531,32 +531,42 @@
 			]
 		},
 		{
-			"label": "Week 9: Make a Plugin+API",
+			"label": "Week 9: PHP and Wordpress",
 			"topic": "Plugin, CPT, Postman",
-			"summary": "Build a WP plugin with a custom model and API",
+			"summary": "Intro to PHP and Install/Run Wordpress",
 			"days": [{
 					"label": "Day 25",
-					"instructions": "Keep using the the ACPT Plugin + Custom Post Types to make your Meetup-Clone Models, review all the concepts and stepts to create an API method (URL->Controller->Model)",
+					"description": "Welcome to the Backend! Now you'll have access to the File System, DB and more computing power, but from great power, [insert uncle Ben's quote]... First, is there a difference between JS and PHP?",
+					"instructions": "Talk about the differences between JS and PHP, the way of showing (echo, print) things, looping and object oriente programming",
 					"project": {
 						"title": "Meetup-Clone with Wordpress",
 						"url": "#"
 					},
-					"homework": "Keep working on the WordPress Meetup-Clone + API",
-					"technologies": ["HTTP", "AJAX", "JSON", "WordPress API", "Serialization"]
+					"homework": "PHP Replits",
+					"technologies": ["PHP"],
+					"replits": [{
+						"title": "Intro to PHP",
+						"slug": "from-js-to-php"
+					}],
+					"lessons": [{
+						"title": "From JS to PHP",
+						"slug": "from-javascript-to-php"
+					}]
 				},
 				{
 					"label": "Day 26",
-					"instructions": "Time to start working on the Project API with WordPress, make the students write all their API Requests un a RESTFul way",
+					"description": "PHP isn't that bad, the problem is the order of the files, which is inexistant... But don't worry, we'll fix that with a framework, specifically, Wordpress.",
+					"instructions": "Install Wordpress, using the Wordpress-CLI ",
 					"project": {
 						"title": "Meetup-Clone API with WordPress",
 						"url": "#"
 					},
-					"homework": "Students must write all the API Methods that are going to be needed for the  project and finish the Meetup-Clone if not already.",
+					"homework": "Students must write all the API Methods documentation that are going to be needed for the  project and finish the Meetup-Clone if not already.",
 					"technologies": ["PHP", "Back-end", "API", "REST"]
 				},
 				{
 					"label": "Day 27",
-					"instructions": "Time to code the API! Review the API methods that students spec out and make them start coding them our using WordPress Dash",
+					"instructions": "Time to start working on the Project API with WordPress, make the students write all their API Requests un a RESTFul way. Time to code the API! Review the API methods that students spec out and make them start coding them our using WordPress Dash",
 					"project": {
 						"title": "Final Project",
 						"url": "#"
