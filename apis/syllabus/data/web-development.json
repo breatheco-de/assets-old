@@ -2,13 +2,11 @@
 	"label": "Web Development",
 	"profile": "web-development",
 	"instructions": "Become a professional Web-Developer building React.js applications and API's on the WordPress Architecture",
-	"weeks": [
-		{
+	"weeks": [{
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
-			"days": [
-				{
+			"days": [{
 					"label": "Day 1",
 					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
 					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
@@ -492,10 +490,6 @@
 						"solution": "#",
 						"slug": "meetup-clone-react"
 					},
-					"replits": [{
-						"title": "Learn HTTP Fetch",
-						"slug": "http-fetch"
-					}],
 					"assignments": ["web-development-project-prototype"],
 					"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a Javascript object but as TEXT", "The goal is to send/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why using several request types (GET, POST, PUT, DELETE)?", "Explan the 3 mains types content-types: Form, URL-Encoded, Raw (With JSON)"],
 					"homework": "Using postman, and then using React, students must use the WordPress API to Bookmark and RSVP to the events",
@@ -706,9 +700,9 @@
 						"title": "WP Data-Collection Engine",
 						"url": "#"
 					},
-					"key-concepts": ["Google Tag Manager Integration" , "Identifing and Dispatching Events", "Collection Data", "AdWords Integration"],
+					"key-concepts": ["Google Tag Manager Integration", "Identifing and Dispatching Events", "Collection Data", "AdWords Integration"],
 					"homework": "Students must map all the relevant interactions on a diagram and start messuring them with Javascript",
-					"technologies": ["Google Analytics","Google Tag Manager","Lean Generation"]
+					"technologies": ["Google Analytics", "Google Tag Manager", "Lean Generation"]
 				},
 				{
 					"label": "Day 38",
