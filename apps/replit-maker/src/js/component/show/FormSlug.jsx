@@ -1,5 +1,4 @@
 import React from 'react';
-import 'jquery';
 
 export default class FormSlug extends React.Component{
     constructor(props){
