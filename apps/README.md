@@ -60,3 +60,83 @@ Screens for academy events
 Search and display any student external profile
 
     **TODO:** this applications is pending for development
+
+12. Dependencias por proyecto, vendor.bundle.js
+
+    QUIZ APP:
+    "@4geeksacademy/react-flux-dash": "^1.1.8",
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-regular": "^5.0.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
+    "bootstrap": "^4.0.0-beta.2",
+    "events": "^1.1.1",
+    "flux": "^3.1.3",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.4",
+    "popper.js": "^1.12.9",
+    "prop-types": "^15.6.1",
+    "query-string": "^5.0.1",
+    "react": "^16.0.0",
+    "react-ace": "^5.9.0",
+    "react-dom": "^16.0.0",
+    "react-polyfills": "0.0.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+
+    REPLIT-MAKER:
+    "@4geeksacademy/react-flux-dash": "^3.0.2",
+    "@breathecode/breathecode-cli": "^1.0.1",
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-regular": "^5.0.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
+    "bootstrap": "^4.0.0-beta.2",
+    "dotenv": "^6.0.0",
+    "dotenv-webpack": "^1.5.7",
+    "events": "^1.1.1",
+    "flux": "^3.1.3",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.4",
+    "popper.js": "^1.12.9",
+    "prop-types": "^15.6.1",
+    "query-string": "^5.0.1",
+    "react": "^16.0.0",
+    "react-ace": "^5.9.0",
+    "react-dom": "^16.0.0",
+    "react-polyfills": "0.0.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+
+    SYLLABUS-MAKER:
+    "@4geeksacademy/react-flux-dash": "^1.1.8",
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-regular": "^5.0.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
+    "bootstrap": "^4.0.0-beta.2",
+    "events": "^1.1.1",
+    "flux": "^3.1.3",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.4",
+    "popper.js": "^1.12.9",
+    "prop-types": "^15.6.1",
+    "query-string": "^5.0.1",
+    "react": "^16.0.0",
+    "react-ace": "^5.9.0",
+    "react-dom": "^16.0.0",
+    "react-polyfills": "0.0.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+
+    NPS:
+    "bootstrap": "^4.0.0-beta.2",
+    "dotenv-webpack": "^1.5.5",
+    "events": "^1.1.1",
+    "flux": "^3.1.3",
+    "moment": "^2.19.4",
+    "query-string": "^5.0.1",
+    "react": "^16.0.0",
+    "react-ace": "^5.9.0",
+    "react-dom": "^16.0.0",
+    "react-flux-dash": "^1.1.4",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "recharts": "^1.0.0-beta.10"
