@@ -67,10 +67,6 @@ module.exports = {
       Util: "exports-loader?Util!bootstrap/js/dist/util",
       Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
     }),
-    new Dotenv({
-      path: '.env',
-      systemvars: true
-    }),
     new HtmlWebpackPlugin({
         favicon: '4geeks.ico',
         template: 'template.html'
