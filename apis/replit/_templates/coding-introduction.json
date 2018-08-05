@@ -4,5 +4,7 @@
     {"slug": "css-selectors", "title": "Master the CSS Selectors"},
     {"slug": "layouts", "title": "Display vs Position"},
     {"slug": "forms", "title": "Create FORMS"},
-    {"slug": "js-beginner", "title": "General Javascript", "vtutorial_slug": "begin-js"}
+    {"slug": "js-beginner", "title": "General Javascript"},
+    {"slug": "functions", "title": "Using Functions"},
+    {"slug": "arrays", "title": "Working with Arrays"}
 ]
