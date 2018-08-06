@@ -11,12 +11,12 @@ import Layout from './Layout.jsx';
 import NPSApi from './utils/NPSApi';
 
 const parsed = queryString.parse(location.search);
-if(typeof parsed.token == 'undefined'){
+if(typeof parsed.access_token == 'undefined'){
     const app = document.querySelector('#app').innerHTML = `
         <div class='alert alert-danger'>This view could not be displayed because of a configuration issue: Missing API Token</div>`;
 }
 else{
-    NPSApi.init(process.env.ASSETS_HOST,parsed.token);
+    NPSApi.init(process.env.ASSETS_HOST,parsed.access_token);
     console.log('NPS ',process.env.MODE)
     
     //render your react application
