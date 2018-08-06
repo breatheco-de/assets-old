@@ -12,6 +12,7 @@ php_errorlog
 !package.json
 !webpack.production.js
 !webpack.development.js
+.env.sample
 
 # track readme.md in the root (i.e. do NOT ignore it)
 !README.md

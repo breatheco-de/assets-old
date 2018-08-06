@@ -110,7 +110,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f7a74e89539135424747"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "411eebfbc6f657672c6b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1425,18 +1425,20 @@ var Home = exports.Home = function (_React$Component) {
         value: function getApiCohort() {
             var _this2 = this;
 
+            console.log('Hola');
             var url_string = window.location.href;
             var url = new URL(url_string);
             var id = url.searchParams.get("teacher");
 
             var endpoint = void 0;
             if (id || id != null) {
-                endpoint = "https://api.breatheco.de" + '/cohorts/teacher/' + id + '?access_token=' + "714bfa43e7c312be999d0afea89148e75d2db9dc4a22575b98358f834790f7fced029a8e";
+                endpoint = "https://api.breatheco.de" + '/cohorts/teacher/' + id + '?access_token=' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6InJhZmFlc2FhIiwiaWF0IjoxNTMzMzE3NzYyLCJleHAiOjMzMDkwMjY5NzYyfQ.SHiWcnI-lJ-S3bAoUWNtodBTlRH20wkfNuTeQDkKvT0";
             } else {
                 endpoint = "https://api.breatheco.de" + '/cohorts/';
             }
 
             fetch(endpoint).then(function (response) {
+                console.log(response);
                 if (!response.ok) {
                     throw response;
                 } else {

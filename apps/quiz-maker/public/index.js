@@ -1,2 +1,1676 @@
-!function(e){function t(t){for(var a,s,i=t[0],u=t[1],l=t[2],f=0,p=[];f<i.length;f++)s=i[f],o[s]&&p.push(o[s][0]),o[s]=0;for(a in u)Object.prototype.hasOwnProperty.call(u,a)&&(e[a]=u[a]);for(c&&c(t);p.length;)p.shift()();return r.push.apply(r,l||[]),n()}function n(){for(var e,t=0;t<r.length;t++){for(var n=r[t],a=!0,i=1;i<n.length;i++){var u=n[i];0!==o[u]&&(a=!1)}a&&(r.splice(t--,1),e=s(s.s=n[0]))}return e}var a={},o={1:0};var r=[];function s(t){if(a[t])return a[t].exports;var n=a[t]={i:t,l:!1,exports:{}};return e[t].call(n.exports,n,n.exports,s),n.l=!0,n.exports}s.m=e,s.c=a,s.d=function(e,t,n){s.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:n})},s.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},s.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return s.d(t,"a",t),t},s.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},s.p="";var i=window.webpackJsonp=window.webpackJsonp||[],u=i.push.bind(i);i.push=t,i=i.slice();for(var l=0;l<i.length;l++)t(i[l]);var c=u;r.push([36,0]),n()}([,,,,,,,,,,,,,function(e,t,n){"use strict";var a=c(n(12)),o=c(n(11)),r=c(n(10)),s=c(n(9)),i=c(n(8)),u=c(n(7)),l=c(n(6));function c(e){return e&&e.__esModule?e:{default:e}}a.default.config={autoReplaceSvg:"nest"},a.default.library.add(o.default,r.default,s.default,i.default,u.default,l.default)},,,,function(e,t,n){(e.exports=n(16)(!1)).push([e.i,"body {\n  padding-top: 50px; }\n\n.no-margin {\n  margin: 0px; }\n\n.no-padding {\n  padding: 0px; }\n\n.show {\n  position: fixed;\n  top: 5%;\n  right: 1%; }\n\n.hidden {\n  display: none !important; }\n\n.section-url {\n  padding-top: 60px; }\n\n.section-question {\n  padding-top: 30px;\n  background: #e8f5ff; }\n\n.questions {\n  padding-top: 30px; }\n  .questions .option {\n    height: 40px; }\n\n.download-btn {\n  position: fixed;\n  top: 8px;\n  right: 10px;\n  z-index: 1030; }\n\n.questions-nav.sticky-top {\n  top: 56px; }\n\n.badges {\n  padding: 50px 0px; }\n",""])},function(e,t,n){var a=n(17);"string"==typeof a&&(a=[[e.i,a,""]]);var o={hmr:!0,transform:void 0,insertInto:void 0};n(15)(a,o);a.locals&&(e.exports=a.locals)},function(e,t,n){e.exports=n.p+"logo.png"},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,o=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),r=n(0),s=(a=r)&&a.__esModule?a:{default:a};var i=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default.Component),o(t,[{key:"newQuestion",value:function(){this.props.onClick()}},{key:"render",value:function(){return s.default.createElement("div",{className:""},s.default.createElement("button",{type:"button",className:"btn btn-primary",onClick:this.newQuestion.bind(this)},s.default.createElement("i",{className:"fas fa-plus-circle"})," Add Question"))}}]),t}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,o=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),r=n(0),s=(a=r)&&a.__esModule?a:{default:a};var i=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={valueQuestion:[],valueOption:[],isChecked:!1,showMessage:!1,editing:!1},n.handleChangeOptions=n.handleChangeOptions.bind(n),n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default.Component),o(t,[{key:"componentWillReceiveProps",value:function(e){this.setState({valueQuestion:e.data.q,valueOption:e.answer})}},{key:"componentWillMount",value:function(){this.setState({valueQuestion:this.props.data.q,valueOption:this.props.answer})}},{key:"handleChangeQuestion",value:function(e){this.setState({valueQuestion:e.target.value}),this.props.handleJsonQuestion(e.target.value,{typeRequest:"question"})}},{key:"handleChangeOptions",value:function(e,t){var n=this.state.valueOption.map(function(n,a){return t==a?{option:e.target.value,correct:n.correct}:n});this.setState({valueOption:n}),this.props.handleJsonQuestion(n,{typeRequest:"option"},t)}},{key:"handleChangeOptionsTrueFalse",value:function(e,t){if(this.setState({isChecked:!this.state.isChecked}),this.state.isChecked){var n=this.state.valueOption.map(function(e,n){return t==n?{option:e.option,correct:!0}:e});this.setState({valueOption:n}),this.props.handleJsonQuestion(n,{typeRequest:"checkbox"})}else{var a=this.state.valueOption.map(function(e,n){return t==n?{option:e.option,correct:!1}:e});this.setState({valueOption:a}),this.props.handleJsonQuestion(a,{typeRequest:"checkbox"})}}},{key:"handleDeleteQuestion",value:function(){var e=this;this.setState({showMessage:!0}),setTimeout(function(){e.setState({showMessage:!1})},2e3),this.props.onSelect()}},{key:"handleDeleteOpcion",value:function(e,t){this.props.onDeleteOption(e,t)}},{key:"handleNewOption",value:function(){this.props.onNewOption()}},{key:"handleUpQuestion",value:function(){this.props.onUpQuestion()}},{key:"handleDownQuestion",value:function(){this.props.onDownQuestion()}},{key:"render",value:function(){var e,t=this;return e=this.state.valueOption.map(function(e,n){return s.default.createElement("div",{className:"row option",key:n},s.default.createElement("div",{className:"col-8"},s.default.createElement("input",{className:"form-control",type:"text",value:e.option,onChange:function(e){return t.handleChangeOptions(e,n)},placeholder:"Type your option value"})),s.default.createElement("div",{className:"col-2"},s.default.createElement("label",{className:"float-right"},"Correct?"),s.default.createElement("input",{type:"checkbox",checked:e.correct,value:e.correct,onChange:function(e){return t.handleChangeOptionsTrueFalse(e,n)}})),s.default.createElement("div",{className:"col-2"},s.default.createElement("button",{className:"btn text-danger",onClick:function(){return t.handleDeleteOpcion(e,n)}},s.default.createElement("i",{className:"fas fa-trash-alt text-danger"}))))}),s.default.createElement("div",{className:"questions"},s.default.createElement("div",{className:"message-delete "+(this.state.showMessage?"show ":"hidden")},s.default.createElement("div",{className:"alert alert-danger",role:"alert"},"Question Deleted")),s.default.createElement("button",{type:"button",className:"btn text-danger float-right",onClick:this.handleDeleteQuestion.bind(this)},"delete question"),s.default.createElement("button",{className:"btn text-primary "+(this.props.firstQuestion?"hidden":""),onClick:function(){return t.handleUpQuestion()}},s.default.createElement("i",{class:"fas fa-arrow-circle-up"})),s.default.createElement("button",{className:"btn text-primary "+(this.props.lastQuestion?"hidden":""),onClick:function(){return t.handleDownQuestion()}},s.default.createElement("i",{class:"fas fa-arrow-circle-down"})),s.default.createElement("div",{className:"form-group"},s.default.createElement("input",{className:"form-control",type:"text",value:this.state.valueQuestion,onChange:function(e){return t.handleChangeQuestion(e)},placeholder:"Type your question title"})),e,s.default.createElement("div",{className:"row"},s.default.createElement("div",{className:"col-12"},s.default.createElement("button",{className:"btn text-primary",onClick:function(){return t.handleNewOption()}},s.default.createElement("i",{className:"fas fa-plus-circle"})," new option"))))}}]),t}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,o=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),r=n(0),s=(a=r)&&a.__esModule?a:{default:a};var i=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default.Component),o(t,[{key:"newBadges",value:function(){this.props.onClick()}},{key:"render",value:function(){return s.default.createElement("div",{className:""},s.default.createElement("button",{type:"button",className:"btn btn-primary",onClick:this.newBadges.bind(this)},s.default.createElement("i",{className:"fas fa-plus-circle"})," Add Badges"))}}]),t}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),o=s(n(0)),r=s(n(22));function s(e){return e&&e.__esModule?e:{default:e}}n(1);var i=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={nameInfo:"",mainInfo:"",resultInfo:"",badges:[],slug:""},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default.Component),a(t,[{key:"componentWillReceiveProps",value:function(e){this.setState({nameInfo:e.data.name,mainInfo:e.data.main,resultInfo:e.data.results,slug:e.data.slug,badges:e.data.badges})}},{key:"handleChangeName",value:function(e){this.setState({nameInfo:e.target.value}),this.props.handleJsonInfo({name:e.target.value,main:this.state.mainInfo,results:this.state.resultInfo,badges:this.state.badges,slug:this.state.slug},{typeRequest:"name"})}},{key:"handleChangeMain",value:function(e){this.setState({mainInfo:e.target.value}),this.props.handleJsonInfo({name:this.state.nameInfo,main:e.target.value,results:this.state.resultInfo,badges:this.state.badges,slug:this.state.slug},{typeRequest:"nameMain"})}},{key:"handleChangeResult",value:function(e){this.setState({resultInfo:e.target.value}),this.props.handleJsonInfo({name:this.state.nameInfo,main:this.state.mainInfo,results:e.target.value,badges:this.state.badges,slug:this.state.slug},{typeRequest:"nameResult"})}},{key:"handleChangeSlug",value:function(e,t,n){this.setState({slug:e.target.value}),this.props.handleJsonInfo({name:this.state.nameInfo,main:this.state.mainInfo,results:this.state.resultInfo,badges:this.state.badges,slug:e.target.value},{typeRequest:"nameSlug"})}},{key:"handleChangeNameBadges",value:function(e,t,n){console.log(e,t,n);var a=this.state.badges.map(function(t,a){return n==a?{slug:e.target.value,points:t.points}:{slug:t.slug,points:t.points}});this.setState({badges:a}),this.props.handleJsonInfo({name:this.state.nameInfo,main:this.state.mainInfo,results:this.state.resultInfo,badges:a,slug:this.state.slug},{typeRequest:"nameBadges"})}},{key:"handleChangePointBadges",value:function(e,t,n){console.log(e,t,n);var a=this.state.badges.map(function(t,a){return n==a?{slug:t.slug,points:e.target.value}:{slug:t.slug,points:t.points}});this.setState({badges:a}),this.props.handleJsonInfo({name:this.state.nameInfo,main:this.state.mainInfo,results:this.state.resultInfo,badges:a,slug:this.state.slug},{typeRequest:"pointBadges"})}},{key:"handleNewBadges",value:function(){this.setState({badges:[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(this.state.badges),[{slug:"",points:""}])})}},{key:"handleDeleteBadges",value:function(e,t){var n=this.state.badges.filter(function(t){return t!=e});this.setState({badges:n})}},{key:"render",value:function(){var e,t=this;return e=this.state.badges.map(function(e,n){return o.default.createElement("div",{className:"form-row",key:n},o.default.createElement("div",{className:"form-group col-md-4"},o.default.createElement("input",{type:"text",className:"form-control",value:e.slug,onChange:function(a){return t.handleChangeNameBadges(a,e,n)},placeholder:"Slug"})),o.default.createElement("div",{className:"form-group col-md-4"},o.default.createElement("input",{type:"number",className:"form-control",value:e.points,onChange:function(a){return t.handleChangePointBadges(a,e,n)},placeholder:"Points"})),o.default.createElement("button",{type:"button",onClick:function(){return t.handleDeleteBadges(e,n)},className:"btn text-danger float-right"},"delete"))}),o.default.createElement("div",null,o.default.createElement("div",{className:"section-question p-4"},o.default.createElement("div",{className:"form-group"},o.default.createElement("label",null,"Quiz title"),o.default.createElement("input",{type:"text",className:"form-control",value:this.state.nameInfo,onChange:this.handleChangeName.bind(this)})),o.default.createElement("div",{className:"form-group"},o.default.createElement("label",null,"Description shown to the student before starting the quiz"),o.default.createElement("input",{type:"text",className:"form-control",value:this.state.mainInfo,onChange:this.handleChangeMain.bind(this)})),o.default.createElement("div",{className:"form-group"},o.default.createElement("label",null,"Last message once the quiz is over"),o.default.createElement("input",{type:"text",className:"form-control",value:this.state.resultInfo,onChange:this.handleChangeResult.bind(this)})),o.default.createElement("div",{className:"form-group"},o.default.createElement("label",null,"Slug"),o.default.createElement("input",{type:"text",className:"form-control",value:this.state.slug,onChange:this.handleChangeSlug.bind(this)}))),o.default.createElement("div",{className:"row"},o.default.createElement("div",{className:"col-12"},o.default.createElement("nav",{className:"questions-nav navbar sticky-top navbar-dark bg-dark"},o.default.createElement("a",{className:"navbar-brand",href:"#"},"Badges"),o.default.createElement("div",{className:"ml-auto"},o.default.createElement(r.default,{onClick:this.handleNewBadges.bind(this)})))),o.default.createElement("div",{className:"col-12 col-sm-10 col-md-8 col-xl-6 mx-auto badges"},e)))}}]),t}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),o=u(n(0)),r=u(n(23)),s=u(n(21)),i=u(n(20));function u(e){return e&&e.__esModule?e:{default:e}}n(1);var l=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={apiBadges:[],apiInfo:[],apiQuestions:[],json:[]},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default.Component),a(t,[{key:"componentWillMount",value:function(){this.getApi()}},{key:"getApi",value:function(){var e=this;fetch(this.props.data).then(function(e){return e.json()}).then(function(t){e.setState({apiInfo:t.info,apiQuestions:t.questions,apiBadges:t.info.badges})}).catch(function(e){console.log("error",e)})}},{key:"handleNewQuestion",value:function(){this.setState({apiQuestions:[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(this.state.apiQuestions),[{q:"",a:[{option:"",correct:!1},{option:"",correct:!1},{option:"",correct:!1}]}])}),setTimeout(function(){return window.scrollTo(0,document.body.scrollHeight)},500)}},{key:"handleDeleteQuestion",value:function(e,t){var n=this.state.apiQuestions.filter(function(t){return t!=e});this.setState({apiQuestions:n})}},{key:"handleDeleteOption",value:function(e,t,n){var a=this.state.apiQuestions.map(function(e,a){return t==a?(e.a.splice(n,1),{q:e.q,a:e.a}):{q:e.q,a:e.a}});this.setState({apiQuestions:a})}},{key:"handleNewOption",value:function(e){var t=this.state.apiQuestions.map(function(t,n){return e==n?(t.a.push({option:"",correct:!1}),{q:t.q,a:t.a}):{q:t.q,a:t.a}});this.setState({apiQuestions:t})}},{key:"handleUpQuestion",value:function(e){var t=this.state.apiQuestions,n=e,a=e-1;if(a>=t.length)for(var o=a-t.length+1;o--;)t.push(void 0);t.splice(a,0,t.splice(n,1)[0]),this.setState({apiQuestions:t})}},{key:"handleDownQuestion",value:function(e){var t=this.state.apiQuestions,n=e,a=e+1;if(a>=t.length)for(var o=a-t.length+1;o--;)t.push(void 0);t.splice(a,0,t.splice(n,1)[0]),this.setState({apiQuestions:t})}},{key:"getValueFromQuestion",value:function(e,t,n,a){if("question"==t.typeRequest){var o=this.state.apiQuestions.map(function(t,a){return n==a?{q:e,a:t.a}:{q:t.q,a:t.a}});this.setState({apiQuestions:o})}else if("option"==t.typeRequest){var r=this.state.apiQuestions.map(function(t,a){return n==a?{q:t.q,a:e}:{q:t.q,a:t.a}});this.setState({apiQuestions:r})}else if("checkbox"==t.typeRequest){var s=this.state.apiQuestions.map(function(t,a){return n==a?{q:t.q,a:e}:{q:t.q,a:t.a}});this.setState({apiQuestions:s})}}},{key:"getValueFromInfo",value:function(e,t){"nameBadges"!=t.typeRequest&&"pointBadges"!=t.typeRequest&&"nameSlug"!=t.typeRequest&&"nameResult"!=t.typeRequest&&"nameMain"!=t.typeRequest&&"name"!=t.typeRequest||this.setState({apiInfo:e})}},{key:"download",value:function(e){var t={info:{name:this.state.apiInfo.name,main:this.state.apiInfo.main,results:this.state.apiInfo.results,badges:this.state.apiInfo.badges,slug:this.state.apiInfo.slug},questions:this.state.apiQuestions},n=JSON.stringify(t),a=document.createElement("a");a.setAttribute("href","data:text/plain;charset=utf-8,"+encodeURIComponent(n)),a.setAttribute("download",e),a.style.display="none",document.body.appendChild(a),a.click(),document.body.removeChild(a)}},{key:"render",value:function(){var e=this,t=this.state.apiQuestions.map(function(t,n){var a=e.state.apiQuestions.length-1;return 0==n?o.default.createElement(s.default,{key:n,data:t,answer:t.a,handleJsonQuestion:function(t,a,o){return e.getValueFromQuestion(t,a,n,o)},onSelect:function(){return e.handleDeleteQuestion(t,n)},onDeleteOption:function(t,a){return e.handleDeleteOption(t,n,a)},onNewOption:function(){return e.handleNewOption(n)},onUpQuestion:function(){return e.handleUpQuestion(n)},onDownQuestion:function(){return e.handleDownQuestion(n)},firstQuestion:!0}):n<a?o.default.createElement(s.default,{key:n,data:t,answer:t.a,handleJsonQuestion:function(t,a,o){return e.getValueFromQuestion(t,a,n,o)},onSelect:function(){return e.handleDeleteQuestion(t,n)},onDeleteOption:function(t,a){return e.handleDeleteOption(t,n,a)},onNewOption:function(){return e.handleNewOption(n)},onUpQuestion:function(){return e.handleUpQuestion(n)},onDownQuestion:function(){return e.handleDownQuestion(n)}}):o.default.createElement(s.default,{key:n,data:t,answer:t.a,handleJsonQuestion:function(t,a,o){return e.getValueFromQuestion(t,a,n,o)},onSelect:function(){return e.handleDeleteQuestion(t,n)},onDeleteOption:function(t,a){return e.handleDeleteOption(t,n,a)},onNewOption:function(){return e.handleNewOption(n)},onUpQuestion:function(){return e.handleUpQuestion(n)},onDownQuestion:function(){return e.handleDownQuestion(n)},lastQuestion:!0})});return o.default.createElement("div",{className:"container-fluid p-0"},o.default.createElement("button",{className:"btn btn-primary download-btn",onClick:function(){return e.download("quiz.json")}},o.default.createElement("i",{className:"fas fa-download"})," download progress"),o.default.createElement("nav",{className:"navbar navbar-dark bg-dark"},o.default.createElement("a",{className:"navbar-brand",href:"#"},"General Quiz Information")),o.default.createElement(r.default,{data:this.state.apiInfo,handleJsonInfo:function(t,n){return e.getValueFromInfo(t,n)}}),o.default.createElement("nav",{className:"questions-nav navbar sticky-top navbar-dark bg-dark"},o.default.createElement("a",{className:"navbar-brand",href:"#"},"Questions"),o.default.createElement("div",{className:"ml-auto"},o.default.createElement(i.default,{onClick:this.handleNewQuestion.bind(this)}))),o.default.createElement("div",{className:"row"},o.default.createElement("div",{className:"col-12 col-sm-10 col-md-8 col-xl-6 mx-auto"},t)))}}]),t}();t.default=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,o=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),r=n(0),s=(a=r)&&a.__esModule?a:{default:a};n(1);var i=function(e){function t(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var e=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.state={value:"https://assets.breatheco.de/apis/quiz/new"},e}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.default.Component),o(t,[{key:"handleSubmit",value:function(e){e.preventDefault(),this.props.onSelect(this.state.value),this.setState({value:""})}},{key:"handleChange",value:function(e){this.setState({value:e.target.value})}},{key:"render",value:function(){return s.default.createElement("div",{className:"alert alert-primary"},s.default.createElement("h4",{className:"alert-heading"},"Load Quiz from URL"),s.default.createElement("form",{onSubmit:this.handleSubmit.bind(this)},s.default.createElement("div",{className:"form-row"},s.default.createElement("div",{className:"form-group col-md-8"},s.default.createElement("input",{className:"form-control",type:"text",value:this.state.value,onChange:this.handleChange.bind(this),placeholder:"JSON URL HERE"})),s.default.createElement("div",{className:"form-group col"},s.default.createElement("button",{type:"submit",className:"btn btn-light form-control"},"Load Quiz")))))}}]),t}();t.default=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),o=i(n(0)),r=i(n(25)),s=i(n(24));i(n(19));function i(e){return e&&e.__esModule?e:{default:e}}n(1);var u=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={url:"",titleBanner:""},n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default.Component),a(t,[{key:"urlAPI",value:function(e){this.setState({url:e})}},{key:"render",value:function(){return o.default.createElement("div",null,o.default.createElement("nav",{className:"navbar fixed-top navbar-light bg-light"},o.default.createElement("a",{className:"navbar-brand",href:"#"},o.default.createElement("img",{src:"https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,64",width:"30",height:"30",className:"d-inline-block align-top mr-2",alt:""}),"Quiz Maker - BreatheCode")),this.state.url?o.default.createElement(s.default,{data:this.state.url}):o.default.createElement(r.default,{onSelect:this.urlAPI.bind(this)}))}}]),t}();t.default=u},,,,,,,,,,function(e,t,n){"use strict";var a=s(n(0)),o=s(n(34)),r=s(n(26));function s(e){return e&&e.__esModule?e:{default:e}}n(18),n(13),o.default.render(a.default.createElement(r.default,null),document.getElementById("app"))}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"index": 0
+/******/ 	};
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 	}
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push(["./src/js/index.js","vendor"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/style/index.scss":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./src/style/index.scss ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "body {\n  padding-top: 50px; }\n\n.no-margin {\n  margin: 0px; }\n\n.no-padding {\n  padding: 0px; }\n\n.show {\n  position: fixed;\n  top: 5%;\n  right: 1%; }\n\n.hidden {\n  display: none !important; }\n\n.section-url {\n  padding-top: 60px; }\n\n.section-question {\n  padding-top: 30px;\n  background: #e8f5ff; }\n\n.questions {\n  padding-top: 30px; }\n  .questions .option {\n    height: 40px; }\n\n.download-btn {\n  position: fixed;\n  top: 8px;\n  right: 10px;\n  z-index: 1030; }\n\n.questions-nav.sticky-top {\n  top: 56px; }\n\n.badges {\n  padding: 50px 0px; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./src/img/logo.png":
+/*!**************************!*\
+  !*** ./src/img/logo.png ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "logo.png";
+
+/***/ }),
+
+/***/ "./src/js/components/App.js":
+/*!**********************************!*\
+  !*** ./src/js/components/App.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _GetQuiz = __webpack_require__(/*! ./GetQuiz */ "./src/js/components/GetQuiz.js");
+
+var _GetQuiz2 = _interopRequireDefault(_GetQuiz);
+
+var _ShowQuiz = __webpack_require__(/*! ./ShowQuiz */ "./src/js/components/ShowQuiz.js");
+
+var _ShowQuiz2 = _interopRequireDefault(_ShowQuiz);
+
+var _logo = __webpack_require__(/*! ../../img/logo.png */ "./src/img/logo.png");
+
+var _logo2 = _interopRequireDefault(_logo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App(props) {
+        _classCallCheck(this, App);
+
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+        _this.state = {
+            url: '',
+            titleBanner: ''
+        };
+        return _this;
+    }
+
+    _createClass(App, [{
+        key: 'urlAPI',
+        value: function urlAPI(url) {
+            this.setState({ url: url });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'nav',
+                    { className: 'navbar fixed-top navbar-light bg-light' },
+                    _react2.default.createElement(
+                        'a',
+                        { className: 'navbar-brand', href: '#' },
+                        _react2.default.createElement('img', { src: 'https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,64', width: '30', height: '30', className: 'd-inline-block align-top mr-2', alt: '' }),
+                        'Quiz Maker - BreatheCode'
+                    )
+                ),
+                this.state.url ? _react2.default.createElement(_ShowQuiz2.default, { data: this.state.url }) : _react2.default.createElement(_GetQuiz2.default, { onSelect: this.urlAPI.bind(this) })
+            );
+        }
+    }]);
+
+    return App;
+}(_react2.default.Component);
+
+exports.default = App;
+
+/***/ }),
+
+/***/ "./src/js/components/GetQuiz.js":
+/*!**************************************!*\
+  !*** ./src/js/components/GetQuiz.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var GetQuiz = function (_React$Component) {
+    _inherits(GetQuiz, _React$Component);
+
+    function GetQuiz() {
+        _classCallCheck(this, GetQuiz);
+
+        var _this = _possibleConstructorReturn(this, (GetQuiz.__proto__ || Object.getPrototypeOf(GetQuiz)).call(this));
+
+        _this.state = {
+            value: 'https://assets.breatheco.de/apis/quiz/new'
+        };
+        return _this;
+    }
+
+    _createClass(GetQuiz, [{
+        key: 'handleSubmit',
+        value: function handleSubmit(event) {
+            event.preventDefault();
+            this.props.onSelect(this.state.value);
+            this.setState({
+                value: ''
+            });
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(event) {
+            this.setState({
+                value: event.target.value
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'alert alert-primary' },
+                _react2.default.createElement(
+                    'h4',
+                    { className: 'alert-heading' },
+                    'Load Quiz from URL'
+                ),
+                _react2.default.createElement(
+                    'form',
+                    { onSubmit: this.handleSubmit.bind(this) },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-row' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group col-md-8' },
+                            _react2.default.createElement('input', {
+                                className: 'form-control',
+                                type: 'text',
+                                value: this.state.value,
+                                onChange: this.handleChange.bind(this),
+                                placeholder: 'JSON URL HERE'
+                            })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group col' },
+                            _react2.default.createElement(
+                                'button',
+                                { type: 'submit', className: 'btn btn-light form-control' },
+                                'Load Quiz'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return GetQuiz;
+}(_react2.default.Component);
+
+exports.default = GetQuiz;
+
+/***/ }),
+
+/***/ "./src/js/components/Info.js":
+/*!***********************************!*\
+  !*** ./src/js/components/Info.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _NewBadges = __webpack_require__(/*! ./NewBadges */ "./src/js/components/NewBadges.js");
+
+var _NewBadges2 = _interopRequireDefault(_NewBadges);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Info = function (_React$Component) {
+    _inherits(Info, _React$Component);
+
+    function Info(props) {
+        _classCallCheck(this, Info);
+
+        var _this = _possibleConstructorReturn(this, (Info.__proto__ || Object.getPrototypeOf(Info)).call(this, props));
+
+        _this.state = {
+            nameInfo: '',
+            mainInfo: '',
+            resultInfo: '',
+            badges: [],
+            slug: ''
+        };
+        return _this;
+    }
+
+    _createClass(Info, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(props) {
+            this.setState({
+                nameInfo: props.data.name,
+                mainInfo: props.data.main,
+                resultInfo: props.data.results,
+                slug: props.data.slug,
+                badges: props.data.badges
+            });
+        }
+    }, {
+        key: 'handleChangeName',
+        value: function handleChangeName(event) {
+            this.setState({
+                nameInfo: event.target.value
+            });
+
+            this.props.handleJsonInfo({
+                name: event.target.value,
+                main: this.state.mainInfo,
+                results: this.state.resultInfo,
+                badges: this.state.badges,
+                slug: this.state.slug
+            }, { typeRequest: 'name' });
+        }
+    }, {
+        key: 'handleChangeMain',
+        value: function handleChangeMain(event) {
+            this.setState({
+                mainInfo: event.target.value
+            });
+
+            this.props.handleJsonInfo({
+                name: this.state.nameInfo,
+                main: event.target.value,
+                results: this.state.resultInfo,
+                badges: this.state.badges,
+                slug: this.state.slug
+            }, { typeRequest: 'nameMain' });
+        }
+    }, {
+        key: 'handleChangeResult',
+        value: function handleChangeResult(event) {
+            this.setState({
+                resultInfo: event.target.value
+            });
+
+            this.props.handleJsonInfo({
+                name: this.state.nameInfo,
+                main: this.state.mainInfo,
+                results: event.target.value,
+                badges: this.state.badges,
+                slug: this.state.slug
+            }, { typeRequest: 'nameResult' });
+        }
+    }, {
+        key: 'handleChangeSlug',
+        value: function handleChangeSlug(event, value, key) {
+            this.setState({
+                slug: event.target.value
+            });
+
+            this.props.handleJsonInfo({
+                name: this.state.nameInfo,
+                main: this.state.mainInfo,
+                results: this.state.resultInfo,
+                badges: this.state.badges,
+                slug: event.target.value
+            }, { typeRequest: 'nameSlug' });
+        }
+    }, {
+        key: 'handleChangeNameBadges',
+        value: function handleChangeNameBadges(event, value, key) {
+            console.log(event, value, key);
+            var resultBadges = this.state.badges.map(function (data, id) {
+                if (key == id) {
+                    return { slug: event.target.value, points: data.points };
+                } else {
+                    return { slug: data.slug, points: data.points };
+                }
+            });
+            this.setState({
+                badges: resultBadges
+            });
+
+            this.props.handleJsonInfo({
+                name: this.state.nameInfo,
+                main: this.state.mainInfo,
+                results: this.state.resultInfo,
+                badges: resultBadges,
+                slug: this.state.slug
+            }, { typeRequest: 'nameBadges' });
+        }
+    }, {
+        key: 'handleChangePointBadges',
+        value: function handleChangePointBadges(event, value, key) {
+            console.log(event, value, key);
+            var resultBadges = this.state.badges.map(function (data, id) {
+                if (key == id) {
+                    return { slug: data.slug, points: event.target.value };
+                } else {
+                    return { slug: data.slug, points: data.points };
+                }
+            });
+            this.setState({
+                badges: resultBadges
+            });
+
+            this.props.handleJsonInfo({
+                name: this.state.nameInfo,
+                main: this.state.mainInfo,
+                results: this.state.resultInfo,
+                badges: resultBadges,
+                slug: this.state.slug
+            }, { typeRequest: 'pointBadges' });
+        }
+    }, {
+        key: 'handleNewBadges',
+        value: function handleNewBadges() {
+            var newBadges = {
+                slug: '',
+                points: ''
+            };
+            this.setState({
+                badges: [].concat(_toConsumableArray(this.state.badges), [newBadges])
+            });
+        }
+    }, {
+        key: 'handleDeleteBadges',
+        value: function handleDeleteBadges(data, i) {
+            var filteredBadges = this.state.badges.filter(function (el) {
+                return el != data;
+            });
+            this.setState({
+                badges: filteredBadges
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var resultBadges = null;
+            resultBadges = this.state.badges.map(function (value, key) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'form-row', key: key },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-group col-md-4' },
+                        _react2.default.createElement('input', {
+                            type: 'text',
+                            className: 'form-control',
+                            value: value.slug,
+                            onChange: function onChange(event) {
+                                return _this2.handleChangeNameBadges(event, value, key);
+                            },
+                            placeholder: 'Slug'
+                        })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-group col-md-4' },
+                        _react2.default.createElement('input', {
+                            type: 'number',
+                            className: 'form-control',
+                            value: value.points,
+                            onChange: function onChange(event) {
+                                return _this2.handleChangePointBadges(event, value, key);
+                            },
+                            placeholder: 'Points'
+                        })
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        {
+                            type: 'button',
+                            onClick: function onClick() {
+                                return _this2.handleDeleteBadges(value, key);
+                            },
+                            className: 'btn text-danger float-right' },
+                        'delete'
+                    )
+                )
+
+                /*<div className="form-group" key={key}>
+                    <label>Badges</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={value.slug}
+                        onChange={(event)=>this.handleChangeNameBadges(event, value, key)}
+                    />
+                    <label>Points</label>
+                    <input
+                        type="number"
+                        className="form-control"
+                        value={value.points}
+                        onChange={(event)=>this.handleChangePointBadges(event, value, key)}
+                    />
+                </div>*/
+                ;
+            });
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'section-question p-4' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        _react2.default.createElement(
+                            'label',
+                            null,
+                            'Quiz title'
+                        ),
+                        _react2.default.createElement('input', {
+                            type: 'text',
+                            className: 'form-control',
+                            value: this.state.nameInfo,
+                            onChange: this.handleChangeName.bind(this)
+                        })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        _react2.default.createElement(
+                            'label',
+                            null,
+                            'Description shown to the student before starting the quiz'
+                        ),
+                        _react2.default.createElement('input', {
+                            type: 'text',
+                            className: 'form-control',
+                            value: this.state.mainInfo,
+                            onChange: this.handleChangeMain.bind(this)
+                        })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        _react2.default.createElement(
+                            'label',
+                            null,
+                            'Last message once the quiz is over'
+                        ),
+                        _react2.default.createElement('input', {
+                            type: 'text',
+                            className: 'form-control',
+                            value: this.state.resultInfo,
+                            onChange: this.handleChangeResult.bind(this)
+                        })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        _react2.default.createElement(
+                            'label',
+                            null,
+                            'Slug'
+                        ),
+                        _react2.default.createElement('input', {
+                            type: 'text',
+                            className: 'form-control',
+                            value: this.state.slug,
+                            onChange: this.handleChangeSlug.bind(this)
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-12' },
+                        _react2.default.createElement(
+                            'nav',
+                            { className: 'questions-nav navbar sticky-top navbar-dark bg-dark' },
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'navbar-brand', href: '#' },
+                                'Badges'
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'ml-auto' },
+                                _react2.default.createElement(_NewBadges2.default, { onClick: this.handleNewBadges.bind(this) })
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-12 col-sm-10 col-md-8 col-xl-6 mx-auto badges' },
+                        resultBadges
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Info;
+}(_react2.default.Component);
+
+exports.default = Info;
+
+/***/ }),
+
+/***/ "./src/js/components/NewBadges.js":
+/*!****************************************!*\
+  !*** ./src/js/components/NewBadges.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewQuestion = function (_React$Component) {
+  _inherits(NewQuestion, _React$Component);
+
+  function NewQuestion(props) {
+    _classCallCheck(this, NewQuestion);
+
+    var _this = _possibleConstructorReturn(this, (NewQuestion.__proto__ || Object.getPrototypeOf(NewQuestion)).call(this, props));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(NewQuestion, [{
+    key: "newBadges",
+    value: function newBadges() {
+      this.props.onClick();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "" },
+        _react2.default.createElement(
+          "button",
+          {
+            type: "button",
+            className: "btn btn-primary",
+            onClick: this.newBadges.bind(this) },
+          _react2.default.createElement("i", { className: "fas fa-plus-circle" }),
+          " Add Badges"
+        )
+      );
+    }
+  }]);
+
+  return NewQuestion;
+}(_react2.default.Component);
+
+exports.default = NewQuestion;
+
+/***/ }),
+
+/***/ "./src/js/components/NewQuestion.js":
+/*!******************************************!*\
+  !*** ./src/js/components/NewQuestion.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewQuestion = function (_React$Component) {
+  _inherits(NewQuestion, _React$Component);
+
+  function NewQuestion(props) {
+    _classCallCheck(this, NewQuestion);
+
+    var _this = _possibleConstructorReturn(this, (NewQuestion.__proto__ || Object.getPrototypeOf(NewQuestion)).call(this, props));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(NewQuestion, [{
+    key: "newQuestion",
+    value: function newQuestion() {
+      this.props.onClick();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "" },
+        _react2.default.createElement(
+          "button",
+          {
+            type: "button",
+            className: "btn btn-primary",
+            onClick: this.newQuestion.bind(this) },
+          _react2.default.createElement("i", { className: "fas fa-plus-circle" }),
+          " Add Question"
+        )
+      );
+    }
+  }]);
+
+  return NewQuestion;
+}(_react2.default.Component);
+
+exports.default = NewQuestion;
+
+/***/ }),
+
+/***/ "./src/js/components/Questions.js":
+/*!****************************************!*\
+  !*** ./src/js/components/Questions.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Questions = function (_React$Component) {
+	_inherits(Questions, _React$Component);
+
+	function Questions(props) {
+		_classCallCheck(this, Questions);
+
+		var _this = _possibleConstructorReturn(this, (Questions.__proto__ || Object.getPrototypeOf(Questions)).call(this, props));
+
+		_this.state = {
+			valueQuestion: [],
+			valueOption: [],
+			isChecked: false,
+			showMessage: false,
+			editing: false
+		};
+
+		_this.handleChangeOptions = _this.handleChangeOptions.bind(_this);
+		return _this;
+	}
+
+	_createClass(Questions, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.setState({
+				valueQuestion: nextProps.data.q,
+				valueOption: nextProps.answer
+			});
+		}
+	}, {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.setState({
+				valueQuestion: this.props.data.q,
+				valueOption: this.props.answer
+			});
+		}
+	}, {
+		key: 'handleChangeQuestion',
+		value: function handleChangeQuestion(event) {
+			this.setState({
+				valueQuestion: event.target.value
+			});
+			this.props.handleJsonQuestion(event.target.value, { typeRequest: 'question' });
+		}
+	}, {
+		key: 'handleChangeOptions',
+		value: function handleChangeOptions(event, key) {
+			var newOptions = this.state.valueOption.map(function (opt, i) {
+				if (key == i) {
+					return { option: event.target.value, correct: opt.correct };
+				} else {
+					return opt;
+				}
+			});
+			this.setState({
+				valueOption: newOptions
+			});
+			this.props.handleJsonQuestion(newOptions, { typeRequest: 'option' }, key);
+		}
+	}, {
+		key: 'handleChangeOptionsTrueFalse',
+		value: function handleChangeOptionsTrueFalse(event, key) {
+			this.setState({
+				isChecked: !this.state.isChecked
+			});
+			if (this.state.isChecked) {
+				var newOptions = this.state.valueOption.map(function (opt, i) {
+					if (key == i) {
+						return { option: opt.option, correct: true };
+					} else {
+						return opt;
+					}
+				});
+				this.setState({
+					valueOption: newOptions
+				});
+				this.props.handleJsonQuestion(newOptions, { typeRequest: 'checkbox' });
+			} else {
+				var _newOptions = this.state.valueOption.map(function (opt, i) {
+					if (key == i) {
+						return { option: opt.option, correct: false };
+					} else {
+						return opt;
+					}
+				});
+				this.setState({
+					valueOption: _newOptions
+				});
+				this.props.handleJsonQuestion(_newOptions, { typeRequest: 'checkbox' });
+			}
+		}
+	}, {
+		key: 'handleDeleteQuestion',
+		value: function handleDeleteQuestion() {
+			var _this2 = this;
+
+			this.setState({
+				showMessage: true
+			});
+			setTimeout(function () {
+				_this2.setState({
+					showMessage: false
+				});
+			}, 2000);
+			this.props.onSelect();
+		}
+	}, {
+		key: 'handleDeleteOpcion',
+		value: function handleDeleteOpcion(data, key) {
+			this.props.onDeleteOption(data, key);
+		}
+	}, {
+		key: 'handleNewOption',
+		value: function handleNewOption() {
+			this.props.onNewOption();
+		}
+	}, {
+		key: 'handleUpQuestion',
+		value: function handleUpQuestion() {
+			this.props.onUpQuestion();
+		}
+	}, {
+		key: 'handleDownQuestion',
+		value: function handleDownQuestion() {
+			this.props.onDownQuestion();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var options = null;
+			options = this.state.valueOption.map(function (value, key) {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'row option', key: key },
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-8' },
+						_react2.default.createElement('input', {
+							className: 'form-control',
+							type: 'text',
+							value: value.option,
+							onChange: function onChange(event) {
+								return _this3.handleChangeOptions(event, key);
+							},
+							placeholder: 'Type your option value'
+						})
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-2' },
+						_react2.default.createElement(
+							'label',
+							{ className: 'float-right' },
+							'Correct?'
+						),
+						_react2.default.createElement('input', {
+							type: 'checkbox',
+							checked: value.correct,
+							value: value.correct,
+							onChange: function onChange(event) {
+								return _this3.handleChangeOptionsTrueFalse(event, key);
+							}
+						})
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-2' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'btn text-danger', onClick: function onClick() {
+									return _this3.handleDeleteOpcion(value, key);
+								} },
+							_react2.default.createElement('i', { className: 'fas fa-trash-alt text-danger' })
+						)
+					)
+				);
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'questions' },
+				_react2.default.createElement(
+					'div',
+					{ className: "message-delete " + (this.state.showMessage ? "show " : "hidden") },
+					_react2.default.createElement(
+						'div',
+						{ className: 'alert alert-danger', role: 'alert' },
+						'Question Deleted'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					{
+						type: 'button',
+						className: 'btn text-danger float-right',
+						onClick: this.handleDeleteQuestion.bind(this) },
+					'delete question'
+				),
+				_react2.default.createElement(
+					'button',
+					{ className: "btn text-primary " + (this.props.firstQuestion ? "hidden" : ""), onClick: function onClick() {
+							return _this3.handleUpQuestion();
+						} },
+					_react2.default.createElement('i', { 'class': 'fas fa-arrow-circle-up' })
+				),
+				_react2.default.createElement(
+					'button',
+					{ className: "btn text-primary " + (this.props.lastQuestion ? "hidden" : ""), onClick: function onClick() {
+							return _this3.handleDownQuestion();
+						} },
+					_react2.default.createElement('i', { 'class': 'fas fa-arrow-circle-down' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'form-group' },
+					_react2.default.createElement('input', {
+						className: 'form-control',
+						type: 'text',
+						value: this.state.valueQuestion,
+						onChange: function onChange(event) {
+							return _this3.handleChangeQuestion(event);
+						},
+						placeholder: 'Type your question title'
+					})
+				),
+				options,
+				_react2.default.createElement(
+					'div',
+					{ className: 'row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-12' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'btn text-primary', onClick: function onClick() {
+									return _this3.handleNewOption();
+								} },
+							_react2.default.createElement('i', { className: 'fas fa-plus-circle' }),
+							' new option'
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Questions;
+}(_react2.default.Component);
+
+exports.default = Questions;
+
+/***/ }),
+
+/***/ "./src/js/components/ShowQuiz.js":
+/*!***************************************!*\
+  !*** ./src/js/components/ShowQuiz.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Info = __webpack_require__(/*! ./Info */ "./src/js/components/Info.js");
+
+var _Info2 = _interopRequireDefault(_Info);
+
+var _Questions = __webpack_require__(/*! ./Questions */ "./src/js/components/Questions.js");
+
+var _Questions2 = _interopRequireDefault(_Questions);
+
+var _NewQuestion = __webpack_require__(/*! ./NewQuestion */ "./src/js/components/NewQuestion.js");
+
+var _NewQuestion2 = _interopRequireDefault(_NewQuestion);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShowQuiz = function (_React$Component) {
+	_inherits(ShowQuiz, _React$Component);
+
+	function ShowQuiz(props) {
+		_classCallCheck(this, ShowQuiz);
+
+		var _this = _possibleConstructorReturn(this, (ShowQuiz.__proto__ || Object.getPrototypeOf(ShowQuiz)).call(this, props));
+
+		_this.state = {
+			apiBadges: [],
+			apiInfo: [],
+			apiQuestions: [],
+			json: []
+		};
+		return _this;
+	}
+
+	_createClass(ShowQuiz, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.getApi();
+		}
+
+		//Consulta API
+
+	}, {
+		key: 'getApi',
+		value: function getApi() {
+			var _this2 = this;
+
+			fetch(this.props.data).then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				_this2.setState({
+					apiInfo: data.info,
+					apiQuestions: data.questions,
+					apiBadges: data.info.badges
+				});
+			}).catch(function (error) {
+				console.log('error', error);
+			});
+		}
+
+		//Agregar pregunta
+
+	}, {
+		key: 'handleNewQuestion',
+		value: function handleNewQuestion() {
+			var newQuestion = {
+				q: '',
+				a: [{
+					option: '',
+					correct: false
+				}, {
+					option: '',
+					correct: false
+				}, {
+					option: '',
+					correct: false
+				}]
+			};
+			this.setState({
+				apiQuestions: [].concat(_toConsumableArray(this.state.apiQuestions), [newQuestion])
+			});
+			setTimeout(function () {
+				return window.scrollTo(0, document.body.scrollHeight);
+			}, 500);
+		}
+
+		//Eliminar pregunta
+
+	}, {
+		key: 'handleDeleteQuestion',
+		value: function handleDeleteQuestion(data, i) {
+			var filteredQuestions = this.state.apiQuestions.filter(function (el) {
+				return el != data;
+			});
+			this.setState({
+				apiQuestions: filteredQuestions
+			});
+		}
+
+		//Eliminar option de pregunta
+
+	}, {
+		key: 'handleDeleteOption',
+		value: function handleDeleteOption(data, key, idOption) {
+			var filteredQuestions = this.state.apiQuestions.map(function (value, i) {
+				if (key == i) {
+					value.a.splice(idOption, 1);
+					return { q: value.q, a: value.a };
+				} else {
+					return { q: value.q, a: value.a };
+				}
+			});
+
+			this.setState({
+				apiQuestions: filteredQuestions
+			});
+		}
+
+		//Agregar nueva opcion a pregunta
+
+	}, {
+		key: 'handleNewOption',
+		value: function handleNewOption(key) {
+			var resultNewOption = this.state.apiQuestions.map(function (value, i) {
+				if (key == i) {
+					value.a.push({ option: '', correct: false });
+					return { q: value.q, a: value.a };
+				} else {
+					return { q: value.q, a: value.a };
+				}
+			});
+
+			this.setState({
+				apiQuestions: resultNewOption
+			});
+		}
+	}, {
+		key: 'handleUpQuestion',
+		value: function handleUpQuestion(key) {
+			var arr = this.state.apiQuestions;
+			var old_index = key;
+			var new_index = key - 1;
+			//this.handleActionUpQuestion(this.state.apiQuestions, old_index, new_index);
+			if (new_index >= arr.length) {
+				var k = new_index - arr.length + 1;
+				while (k--) {
+					arr.push(undefined);
+				}
+			}
+			arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+
+			this.setState({
+				apiQuestions: arr
+			});
+		}
+	}, {
+		key: 'handleDownQuestion',
+		value: function handleDownQuestion(key) {
+			var arr = this.state.apiQuestions;
+			var old_index = key;
+			var new_index = key + 1;
+			if (new_index >= arr.length) {
+				var k = new_index - arr.length + 1;
+				while (k--) {
+					arr.push(undefined);
+				}
+			}
+			arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+
+			this.setState({
+				apiQuestions: arr
+			});
+		}
+
+		//Datos que recibo para modificar el json del API
+
+	}, {
+		key: 'getValueFromQuestion',
+		value: function getValueFromQuestion(data, type, idQuestion, idOption) {
+			if (type.typeRequest == 'question') {
+				var resultQuestions = this.state.apiQuestions.map(function (value, i) {
+					if (idQuestion == i) {
+						return { q: data, a: value.a };
+					} else {
+						return { q: value.q, a: value.a };
+					}
+				});
+				this.setState({
+					apiQuestions: resultQuestions
+				});
+			} else if (type.typeRequest == 'option') {
+				var resultOption = this.state.apiQuestions.map(function (value, idQ) {
+					if (idQuestion == idQ) {
+						return { q: value.q, a: data };
+					} else {
+						return { q: value.q, a: value.a };
+					}
+				});
+				this.setState({
+					apiQuestions: resultOption
+				});
+			} else if (type.typeRequest == 'checkbox') {
+				var resultCheckbox = this.state.apiQuestions.map(function (value, idQ) {
+					if (idQuestion == idQ) {
+						return { q: value.q, a: data };
+					} else {
+						return { q: value.q, a: value.a };
+					}
+				});
+				this.setState({
+					apiQuestions: resultCheckbox
+				});
+			}
+		}
+	}, {
+		key: 'getValueFromInfo',
+		value: function getValueFromInfo(data, type) {
+			if (type.typeRequest == 'nameBadges' || type.typeRequest == 'pointBadges' || type.typeRequest == 'nameSlug' || type.typeRequest == 'nameResult' || type.typeRequest == 'nameMain' || type.typeRequest == 'name') {
+				this.setState({
+					apiInfo: data
+				});
+			}
+		}
+	}, {
+		key: 'download',
+		value: function download(filename) {
+			var buildJson = {
+				info: {
+					name: this.state.apiInfo.name,
+					main: this.state.apiInfo.main,
+					results: this.state.apiInfo.results,
+					badges: this.state.apiInfo.badges,
+					slug: this.state.apiInfo.slug
+				},
+				questions: this.state.apiQuestions
+			};
+
+			var text = JSON.stringify(buildJson);
+			var element = document.createElement('a');
+			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+			element.setAttribute('download', filename);
+			element.style.display = 'none';
+			document.body.appendChild(element);
+			element.click();
+			document.body.removeChild(element);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var results = this.state.apiQuestions.map(function (value, key) {
+				var lastQuestion = _this3.state.apiQuestions.length - 1;
+				if (key == 0) {
+					return _react2.default.createElement(_Questions2.default, {
+						key: key,
+						data: value,
+						answer: value.a,
+						handleJsonQuestion: function handleJsonQuestion(data, type, idOption) {
+							return _this3.getValueFromQuestion(data, type, key, idOption);
+						},
+						onSelect: function onSelect() {
+							return _this3.handleDeleteQuestion(value, key);
+						},
+						onDeleteOption: function onDeleteOption(value, idOption) {
+							return _this3.handleDeleteOption(value, key, idOption);
+						},
+						onNewOption: function onNewOption() {
+							return _this3.handleNewOption(key);
+						},
+						onUpQuestion: function onUpQuestion() {
+							return _this3.handleUpQuestion(key);
+						},
+						onDownQuestion: function onDownQuestion() {
+							return _this3.handleDownQuestion(key);
+						},
+						firstQuestion: true });
+				} else if (key < lastQuestion) {
+					return _react2.default.createElement(_Questions2.default, {
+						key: key,
+						data: value,
+						answer: value.a,
+						handleJsonQuestion: function handleJsonQuestion(data, type, idOption) {
+							return _this3.getValueFromQuestion(data, type, key, idOption);
+						},
+						onSelect: function onSelect() {
+							return _this3.handleDeleteQuestion(value, key);
+						},
+						onDeleteOption: function onDeleteOption(value, idOption) {
+							return _this3.handleDeleteOption(value, key, idOption);
+						},
+						onNewOption: function onNewOption() {
+							return _this3.handleNewOption(key);
+						},
+						onUpQuestion: function onUpQuestion() {
+							return _this3.handleUpQuestion(key);
+						},
+						onDownQuestion: function onDownQuestion() {
+							return _this3.handleDownQuestion(key);
+						} });
+				} else {
+					return _react2.default.createElement(_Questions2.default, {
+						key: key,
+						data: value,
+						answer: value.a,
+						handleJsonQuestion: function handleJsonQuestion(data, type, idOption) {
+							return _this3.getValueFromQuestion(data, type, key, idOption);
+						},
+						onSelect: function onSelect() {
+							return _this3.handleDeleteQuestion(value, key);
+						},
+						onDeleteOption: function onDeleteOption(value, idOption) {
+							return _this3.handleDeleteOption(value, key, idOption);
+						},
+						onNewOption: function onNewOption() {
+							return _this3.handleNewOption(key);
+						},
+						onUpQuestion: function onUpQuestion() {
+							return _this3.handleUpQuestion(key);
+						},
+						onDownQuestion: function onDownQuestion() {
+							return _this3.handleDownQuestion(key);
+						},
+						lastQuestion: true });
+				}
+			});
+			return _react2.default.createElement(
+				'div',
+				{ className: 'container-fluid p-0' },
+				_react2.default.createElement(
+					'button',
+					{ className: 'btn btn-primary download-btn', onClick: function onClick() {
+							return _this3.download("quiz.json");
+						} },
+					_react2.default.createElement('i', { className: 'fas fa-download' }),
+					' download progress'
+				),
+				_react2.default.createElement(
+					'nav',
+					{ className: 'navbar navbar-dark bg-dark' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'navbar-brand', href: '#' },
+						'General Quiz Information'
+					)
+				),
+				_react2.default.createElement(_Info2.default, { data: this.state.apiInfo, handleJsonInfo: function handleJsonInfo(data, type) {
+						return _this3.getValueFromInfo(data, type);
+					} }),
+				_react2.default.createElement(
+					'nav',
+					{ className: 'questions-nav navbar sticky-top navbar-dark bg-dark' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'navbar-brand', href: '#' },
+						'Questions'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'ml-auto' },
+						_react2.default.createElement(_NewQuestion2.default, { onClick: this.handleNewQuestion.bind(this) })
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-12 col-sm-10 col-md-8 col-xl-6 mx-auto' },
+						results
+					)
+				)
+			);
+		}
+	}]);
+
+	return ShowQuiz;
+}(_react2.default.Component);
+
+exports.default = ShowQuiz;
+
+/***/ }),
+
+/***/ "./src/js/icons.js":
+/*!*************************!*\
+  !*** ./src/js/icons.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _fontawesome = __webpack_require__(/*! @fortawesome/fontawesome */ "./node_modules/@fortawesome/fontawesome/index.es.js");
+
+var _fontawesome2 = _interopRequireDefault(_fontawesome);
+
+var _faCheck = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faCheck */ "./node_modules/@fortawesome/fontawesome-free-solid/faCheck.js");
+
+var _faCheck2 = _interopRequireDefault(_faCheck);
+
+var _faTrashAlt = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faTrashAlt */ "./node_modules/@fortawesome/fontawesome-free-solid/faTrashAlt.js");
+
+var _faTrashAlt2 = _interopRequireDefault(_faTrashAlt);
+
+var _faPlusCircle = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faPlusCircle */ "./node_modules/@fortawesome/fontawesome-free-solid/faPlusCircle.js");
+
+var _faPlusCircle2 = _interopRequireDefault(_faPlusCircle);
+
+var _faDownload = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faDownload */ "./node_modules/@fortawesome/fontawesome-free-solid/faDownload.js");
+
+var _faDownload2 = _interopRequireDefault(_faDownload);
+
+var _faArrowCircleUp = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faArrowCircleUp */ "./node_modules/@fortawesome/fontawesome-free-solid/faArrowCircleUp.js");
+
+var _faArrowCircleUp2 = _interopRequireDefault(_faArrowCircleUp);
+
+var _faArrowCircleDown = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faArrowCircleDown */ "./node_modules/@fortawesome/fontawesome-free-solid/faArrowCircleDown.js");
+
+var _faArrowCircleDown2 = _interopRequireDefault(_faArrowCircleDown);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_fontawesome2.default.config = {
+  autoReplaceSvg: 'nest'
+}; /* global FontAwesomeConfig */
+
+_fontawesome2.default.library.add(_faCheck2.default, _faTrashAlt2.default, _faPlusCircle2.default, _faDownload2.default, _faArrowCircleUp2.default, _faArrowCircleDown2.default);
+
+/***/ }),
+
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _App = __webpack_require__(/*! ./components/App */ "./src/js/components/App.js");
+
+var _App2 = _interopRequireDefault(_App);
+
+__webpack_require__(/*! ../style/index.scss */ "./src/style/index.scss");
+
+__webpack_require__(/*! ./icons.js */ "./src/js/icons.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
+
+/***/ }),
+
+/***/ "./src/style/index.scss":
+/*!******************************!*\
+  !*** ./src/style/index.scss ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/style/index.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ })
+
+/******/ });
 //# sourceMappingURL=index.js.map

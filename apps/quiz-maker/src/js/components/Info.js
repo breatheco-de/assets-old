@@ -1,8 +1,6 @@
 import React from 'react';
 import NewBadges from './NewBadges';
 
-import 'jquery';
-
 export default class Info extends React.Component {
 	constructor(props){
         super(props);
