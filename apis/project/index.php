@@ -13,7 +13,7 @@
 	
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 		$body = $response->getBody();
-		$body->write(file_get_contents('https://projects.breatheco.de/app/projects.php'));
+		$body->write(file_get_contents('http://projects.breatheco.de/app/projects.php'));
 	    return $response->withHeader('Content-type', 'application/json');
 	});
 	
