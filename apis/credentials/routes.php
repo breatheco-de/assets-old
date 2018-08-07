@@ -26,6 +26,12 @@ function addAPIRoutes($api){
         try{
         	$user = BC::getUser(['user_id' => urlencode($username)]);
         	$scope = (empty($user->type)) ? 'student':$user->type;
+        	
+        	if($user->status == 'blocked'){
+        	   return $response->withJson([
+        	        'msg'=> 'You access to the BreatheCode platform has been revoked'
+        	   ])->withStatus(403);
+        	}
 
         	$permissions = [
         		'admin' => ['super_admin'],
