@@ -24,10 +24,11 @@ export class Home extends React.Component{
         var url_string = window.location.href
         var url = new URL(url_string);
         var id = url.searchParams.get("teacher");
+        var access_token = url.searchParams.get("access_token");
 
         let endpoint;
-        if(id || id != null){
-            endpoint = process.env.hostTalentTree+'/cohorts/teacher/'+id+'?access_token='+process.env.apiToken;
+        if(id || id != null && access_token || access_token != null){
+            endpoint = process.env.hostTalentTree+'/cohorts/teacher/'+id+'?access_token='+access_token;
         }else{
             endpoint = process.env.hostTalentTree+'/cohorts/';
         }
@@ -45,6 +46,7 @@ export class Home extends React.Component{
             });
 		})
 		.catch((error) => {
+            alert('Something is wrong with your URL or parameters');
 			console.log('error', error);
         })
     }

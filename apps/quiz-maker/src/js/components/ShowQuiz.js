@@ -3,8 +3,6 @@ import Info from './Info';
 import Questions from './Questions';
 import NewQuestion from './NewQuestion';
 
-import 'jquery';
-
 export default class ShowQuiz extends React.Component {
 	constructor(props){
 		super(props);

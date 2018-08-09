@@ -1,7 +1,5 @@
 import React from 'react';
 
-import 'jquery';
-
 export default class GetQuiz extends React.Component {
 	constructor(){
         super();

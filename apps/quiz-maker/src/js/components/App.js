@@ -3,8 +3,6 @@ import GetQuiz from './GetQuiz';
 import ShowQuiz from './ShowQuiz';
 import logo from '../../img/logo.png';
 
-import 'jquery';
-
 export default class App extends React.Component {
 	constructor(props){
         super(props);
