@@ -27666,4 +27666,4 @@ module.exports = warning;
 /***/ })
 
 }]);
-//# sourceMappingURL=vendor.bundle.js.map
+//# sourceMappingURL=vendor.js.map

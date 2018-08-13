@@ -15,7 +15,7 @@ export default class Layout extends Flux.View {
     render() {
         return (
             <div>
-                <BrowserRouter basename="/apps/quiz/">
+                <BrowserRouter basename={process.env.url}>
                     <div>
                         <Switch>
                             <Route exact path="/:quiz_id" component={Quiz} />

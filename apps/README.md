@@ -64,7 +64,8 @@ Search and display any student external profile
 12. Dependencias por proyecto, vendor.bundle.js
 
     QUIZ APP:
-    "@4geeksacademy/react-flux-dash": "^1.1.8",
+
+    ``"@4geeksacademy/react-flux-dash": "^1.1.8",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.8",
@@ -81,10 +82,26 @@ Search and display any student external profile
     "react-dom": "^16.0.0",
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2"``
+
+    to do:
+    * upgrade a react-flux-dash LISTO
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs LISTO
+    * remover jquery LISTO
+    * remover react-ace LISTO
+    * remover popperjs LISTO
+    * upgrade a dotenv NO LO TIENE
+    * actualizar react y react-dom ultimaV LISTO
+    * flux 3.1.3 de estar en esa version LISTO EN ESA VERSION
+    * moment a ultima version LISTO
+    * agregar react-polyfills a todos YA ESTA AGREGADO
+    * agregar prop-types a todos LISTO
+    - quitar fontawesome de vendor y agregarlo a bundle
 
     REPLIT-MAKER:
-    "@4geeksacademy/react-flux-dash": "^3.0.2",
+
+    ``"@4geeksacademy/react-flux-dash": "^3.0.2",
     "@breathecode/breathecode-cli": "^1.0.1",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
@@ -104,10 +121,27 @@ Search and display any student external profile
     "react-dom": "^16.0.0",
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2"``
+
+    to do:
+    * upgrade a react-flux-dash LISTO
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs LISTO
+    * remover jquery LISTO
+    * remover react-ace LISTO
+    * remover popperjs de todos los proyectos LISTO
+    * upgrade a dotenv ESTA EN SU ULT VERSION
+    * actualizar react y react-dom ultimaV LISTO
+    * actualizar react y react-router ultimaV LISTO
+    * flux 3.1.3 de estar en esa version ESTA EN SU ULT VERSION
+    * moment a ultima version LISTO
+    * agregar react-polyfills a todos LISTO
+    * agregar react-protypes a todos LISTO
+    * quitar fontawesome de vendor y agregarlo a bundle SE DEJARA EN EL BUNDLE
 
     SYLLABUS-MAKER:
-    "@4geeksacademy/react-flux-dash": "^1.1.8",
+
+    ``"@4geeksacademy/react-flux-dash": "^1.1.8",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.8",
@@ -124,10 +158,27 @@ Search and display any student external profile
     "react-dom": "^16.0.0",
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2"``
+
+    to do:
+    * upgrade a react-flux-dash
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs de todos los proyectos
+    * remover jquery de todos los proyectos LISTO
+    * remover react-ace de todos los proyectos LISTO
+    * remover popperjs de todos los proyectos LISTO
+    * upgrade a dotenv NO ESTA
+    * actualizar react y react-dom ultimaV LISTO
+    * actualizar react y react-router ultimaV LISTO
+    * flux 3.1.3 de estar en esa version ESTA EN LA ULT VERSION
+    * moment a ultima version LISTO
+    * agregar react-polyfills a todos LISTO
+    * agregar react-protypes a todos LISTO
+    * quitar fontawesome de vendor y agregarlo a bundle SE DEJARA EN EL BUNDLE
 
     NPS:
-    "bootstrap": "^4.0.0-beta.2",
+    
+    ``"bootstrap": "^4.0.0-beta.2",
     "dotenv-webpack": "^1.5.5",
     "events": "^1.1.1",
     "flux": "^3.1.3",
@@ -139,4 +190,65 @@ Search and display any student external profile
     "react-flux-dash": "^1.1.4",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "recharts": "^1.0.0-beta.10"
+    "recharts": "^1.0.0-beta.10"``
+
+    to do:
+    * upgrade a react-flux-dash LISTO
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs de todos los proyectos NO ESTABA EN EL PROYECTO
+    * remover jquery de todos los proyectos LISTO
+    * remover react-ace de todos los proyectos LISTO
+    * remover popperjs de todos los proyectos NO ESTABA EN EL PROYECTO
+    * upgrade a dotenv NO ESTABA EN EL PROYECTO
+    * actualizar react y react-dom ultimaV LISTO
+    * actualizar react y react-router ultimaV LISTO
+    * flux 3.1.3 de estar en esa version ESTA EN LA ULTIMA VERSION
+    * moment a ultima version LISTO
+    * agregar react-polyfills a todos LISTO
+    * agregar react-protypes a todos LISTO
+    * quitar fontawesome de vendor y agregarlo a bundle SE DEJARA EN EL BUNDLE
+    
+    DA ERROR EN LA BUSQUEDAD
+
+    QUIZ-MAKER APP:
+
+    ``"babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"``
+
+    to do:
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs de todos los proyectos NO ESTABA EN EL PROYECTO
+    * remover jquery de todos los proyectos LISTO
+    * remover react-ace de todos los proyectos NO ESTABA EN EL PROYECTO
+    * remover popperjs de todos los proyectos LISTO
+    * upgrade a dotenv NO ESTABA EN EL PROYECTO
+    * actualizar react y react-dom ultimaV LISTO
+    * actualizar react y react-router ultimaV NO ESTABA EN EL PROYECTO
+    * flux 3.1.3 de estar en esa version NO ESTABA EN EL PROYECTO
+    * moment a ultima version NO ESTABA EN EL PROYECTO
+    * agregar react-polyfills a todos LISTO
+    * agregar react-protypes a todos LISTO
+    * quitar fontawesome de vendor y agregarlo a bundle NO ESTA EN EL PROYECTO
+
+
+FUNCIONAMIENTO POR PROYECTO:
+
+1) NPS: Funcional.
+2) Quiz: Funcional
+3) Quiz-maker: Error con el CDN. ```Uncaught TypeError: Cannot read property 'call' of undefined```
+4) Replit maker: A veces falla, error reportado en github
+5) Syllabus-maker: Funcional
+
+
+
+
+quiz: sin cdn
+quiz-maker: cdn
+replit-maker: cdn
+syllabus-maker: sin cdn

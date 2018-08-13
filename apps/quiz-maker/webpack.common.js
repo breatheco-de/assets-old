@@ -8,10 +8,10 @@ module.exports = {
   entry: {
     index: APP_DIR + '/index.js',
   },
-  output: {
-    path: BUILD_DIR,
-    filename: '[name].js'
-  },
+//   output: {
+//     path: BUILD_DIR,
+//     filename: '[name].js'
+//   },
   optimization: {
     splitChunks: {
         cacheGroups: {
@@ -54,8 +54,8 @@ module.exports = {
         } //for images
   	]
   },
-  devtool: 'source-map',
-  devServer: {
-    contentBase:  './dist',
-  }
+//   devtool: 'source-map',
+//   devServer: {
+//     contentBase:  './dist',
+//   }
 };
