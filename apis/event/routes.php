@@ -58,6 +58,7 @@ function addAPIRoutes($api){
 			if($_GET['status']=='upcoming') {
 				$content = $content->where('status','published');
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+				
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date >= date("Y-m-d"));
 				});
@@ -71,6 +72,8 @@ function addAPIRoutes($api){
 			}
 		} 
 
+		if(!is_array($content)) $content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+		
 		if(isset($content[0])) return $response->withRedirect($content[0]->url); 
 		else{
 			$fallback = (isset($_GET['fallback'])) ? $_GET['fallback'] : null;

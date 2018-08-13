@@ -6,6 +6,8 @@ uploaded/
 php.ini
 *.log
 
+# certificate ssl from the hosting
+.well-known/
 
 #Webpack related stuff
 node_modules/

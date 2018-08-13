@@ -31,6 +31,7 @@ class SlimAPI{
             'https://assets.breatheco.de',
             'https://bc-js-clients-alesanchezr.c9users.io',
             'https://bc-admin-alesanchezr.c9users.io',
+            'http://bc-admin-alesanchezr.c9users.io',
             'https://student.breatheco.de',
             'https://admin.breatheco.de',
             'https://www.student.breatheco.de'
@@ -40,12 +41,12 @@ class SlimAPI{
     function __construct($settings=null){
         if(!empty($settings['name'])) $this->appName = $settings['name'];
         if(!empty($settings['debug'])) $this->debug = $settings['debug'];
-        if(!empty($settings['allowedURLs'])){
+        if(!empty($settings['allowedURLs']) && $this->debug){
             if(is_array($settings['allowedURLs']))
                 $this->allowedURLs = array_push($settings['allowedURLs'], $this->allowedURLs);
             else if($settings['allowedURLs'] == 'all') $this->allowedURLs = ['all'];
             else throw new Exception('Invalid setting value for allowedURLs');
-        } 
+        }
 
     	$c = new \Slim\Container([
     	    'settings' => [
@@ -57,7 +58,7 @@ class SlimAPI{
         	    return function ($request, $response, $exception) use ($c) {
         	        
         	        //$this->log(self::$ERROR, $exception->getMessage());
-
+                
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404,403])) $code = 500;
     
@@ -75,6 +76,7 @@ class SlimAPI{
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
         	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
@@ -84,11 +86,12 @@ class SlimAPI{
     	else{
         	$c['phpErrorHandler'] = $c['errorHandler'] = function ($c) {
         	    return function ($request, $response, $exception) use ($c) {
-        	        
+
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404,403])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
         	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode([
         	                                 'msg' => $exception->getMessage(),
