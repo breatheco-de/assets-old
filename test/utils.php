@@ -61,3 +61,13 @@
             return $samples[$slug];
         }
     }
+    function get($url){
+        $content = file_get_contents($url);
+        if(!$content) throw new Exception('Invalid cohort url: '.$url);
+        
+        $obj = json_decode($content);
+        if(!$obj) throw new Exception('Invalid sample syntax for cohorts');
+        if(empty($samples[$url])) $samples[$url] = $obj;
+        
+        return $samples[$url];
+    }

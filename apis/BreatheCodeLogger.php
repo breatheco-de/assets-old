@@ -66,10 +66,10 @@ class BreatheCodeLogger{
         if(is_string($student)) $activity['email'] = $student;
         else{
             //print_r($student); die();
-            if(!empty($student->id)) $activity['user_id'] = $student->id;
+            if(!empty($student->id)) $activity['user_id'] = (string) $student->id;
             
-            if(!empty($student->email)) $activity['email'] = $student->email;
-            else if(!empty($student->username)) $activity['email'] = $student->username;
+            if(!empty($student->email)) $activity['email'] = (string) $student->email;
+            else if(!empty($student->username)) $activity['email'] = (string) $student->username;
         }
         
         $record = $datastore->entity('student_activity', $activity);

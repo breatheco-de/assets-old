@@ -73,7 +73,7 @@
                                     <?php echo substr($act->created_at->date, 0, 10); ?>
                                     <span class="daysago"><?php echo time_elapsed_string($act->created_at->date); ?></span>
                                 </span>
-                                <h1><?php echo activity($act->slug); ?></h1>
+                                <h3><?php echo activity($act->slug); ?></h3>
                             </li>
                         <?php } ?>
                     </ul>

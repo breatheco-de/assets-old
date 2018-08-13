@@ -24,6 +24,7 @@ var Wrapper = (function(){
             options.body = JSON.stringify(data);
         }
         
+        console.log(settings.host+url+"?access_token="+settings.token);
         let promise = fetch(settings.host+url+"?access_token="+settings.token, options)
             .then(function(response){
               if (response.ok) {
