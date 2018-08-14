@@ -3,6 +3,7 @@ import React from 'react';
 //include images into your bundle
 import BannerHeader from './BannerHeader.jsx';
 import ShowCohort from './ShowCohort.jsx';
+import {tokens} from '../action';
 
 //create your first component
 export class Home extends React.Component{
@@ -10,9 +11,10 @@ export class Home extends React.Component{
         super(props);
         this.state = {
             dataApiAllCohorts: [],
+            errorMessage: null,
             optionSelected: '',
             show: false
-        }
+        };
     }
 
     componentDidMount(){
@@ -21,34 +23,33 @@ export class Home extends React.Component{
 
     //Consulta API
 	getApiCohort(){
-        var url_string = window.location.href
-        var url = new URL(url_string);
+        var url = new URL(window.location.href);
         var id = url.searchParams.get("teacher");
-        var access_token = url.searchParams.get("access_token");
 
         let endpoint;
-        if(id || id != null && access_token || access_token != null){
-            endpoint = process.env.hostTalentTree+'/cohorts/teacher/'+id+'?access_token='+access_token;
+        if(typeof id != 'undefined' && id != null){
+            endpoint = process.env.hostTalentTree+'/cohorts/teacher/'+id;
         }else{
             endpoint = process.env.hostTalentTree+'/cohorts/';
         }
 
-		fetch(endpoint)
-		.then((response) => {
-            if (!response.ok) { throw response }else{
-                return response.json();
-            }
+		fetch(endpoint+'?access_token='+tokens().bcToken)
+		.then((resp) => {
+		    if(resp.status == 200) return resp.json();
+		    else{
+		        if(resp.status == 401) throw new Error('Not authorized');
+		    }
 		})
 		.then((data) => {
-            let dataCohort = data
+            let dataCohort = data;
 			this.setState({
 				dataApiAllCohorts: dataCohort.data
             });
 		})
 		.catch((error) => {
-            alert('Something is wrong with your URL or parameters');
-			console.log('error', error);
-        })
+			console.log('Something is wrong', error);
+			this.setState({ errorMessage: error.message || error });
+        });
     }
 
     handleSubmit(event){
@@ -73,32 +74,35 @@ export class Home extends React.Component{
 
     render(){
         
-            const optionSelect = this.state.dataApiAllCohorts.map((val, key)=>(
-                <option value={val.slug} key={key}>{val.name}</option>
-            ));
+        const optionSelect = this.state.dataApiAllCohorts.map((val, key)=>(
+            <option value={val.slug} key={key}>{val.name}</option>
+        ));
         return (
-            (this.state.show) ?
             <div>
-                <ShowCohort data={{cohortSelected: this.state.optionSelected, allCohorts: this.state.dataApiAllCohorts}}/> 
-            </div> :
-            <div>
-                <BannerHeader/>
-                <div className="alert alert-primary">
-                    <h4 className="alert-heading">Type a cohort to update or create a new one:</h4>
-                    <form onSubmit={(event)=> this.handleSubmit(event)}>
-                    <div className="form-row justify-content-md-center banner-form">
-                        <div className="form-group col-md-4 no-margin">
-                            <select className="custom-select" onChange={(event)=>this.handleChange(event)}>
-                                <option defaultValue="default">Select a cohort to edit the replits</option>
-                                {optionSelect}
-                            </select>
+            { (this.state.errorMessage) ? <div className="alert alert-danger text-center rounded-0">{this.state.errorMessage}</div>:''}
+            { (this.state.show) ?
+                <ShowCohort data={{cohortSelected: this.state.optionSelected, allCohorts: this.state.dataApiAllCohorts}} /> 
+                :
+                <div>
+                    <BannerHeader/>
+                    <div className="alert alert-primary">
+                        <h4 className="alert-heading">Type a cohort to update or create a new one:</h4>
+                        <form onSubmit={(event)=> this.handleSubmit(event)}>
+                        <div className="form-row justify-content-md-center banner-form">
+                            <div className="form-group col-md-4 no-margin">
+                                <select className="custom-select" onChange={(event)=>this.handleChange(event)}>
+                                    <option defaultValue="default">Select a cohort to edit the replits</option>
+                                    {optionSelect}
+                                </select>
+                            </div>
+                            <div className="form-group col-3 no-margin">
+                                <button type="submit" className="btn btn-light form-control">START</button>
+                            </div>
                         </div>
-                        <div className="form-group col-3 no-margin">
-                            <button type="submit" className="btn btn-light form-control">START</button>
-                        </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
+            }
             </div>
         );
     }

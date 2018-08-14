@@ -52,6 +52,7 @@ function addAPIRoutes($api){
 		        	$user->cohorts = $user->full_cohorts;
 		        }
 		        $user->scope = $token->scope;
+		        $user->assets_token = $api->jwt_encode($user->id);
 		        
 		        try{
 		            BreatheCodeLogger::logActivity([

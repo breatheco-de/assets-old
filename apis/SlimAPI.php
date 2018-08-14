@@ -194,7 +194,15 @@ class SlimAPI{
     	});
     }
     
-
+    public function jwt_encode($payload, $expiration=31556952000){
+		$token = array(
+		    "clientId" => $payload,
+		    "iat" => time(),
+		    "exp" => time() + $expiration
+		);
+	
+		return JWT::encode($token, JWT_KEY);
+    }
     /*
      * Get an instance of the application.
      *
