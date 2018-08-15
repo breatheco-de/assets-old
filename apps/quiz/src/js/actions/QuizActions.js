@@ -9,7 +9,6 @@ class QuizActions extends Flux.Action{
           return response.json();
         })
         .then((quiz) => {
-          console.log(quiz);
           this.dispatch('QuizStore.setQuiz', quiz );
         })
         .catch(function(error){

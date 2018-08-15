@@ -1,3 +1,4 @@
+/* global process */
 import React from 'react';
 import Flux from "@4geeksacademy/react-flux-dash";
 import { BrowserRouter, Route, Switch } from "react-router-dom";

@@ -109,7 +109,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bb335c9fcb2516f48777"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "98a4b1f879b07f10b6ed"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -914,7 +914,7 @@ function _inherits(subClass, superClass) {
     if (typeof superClass !== "function" && superClass !== null) {
         throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
     }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+} /* global process */
 
 var Layout = function (_Flux$View) {
     _inherits(Layout, _Flux$View);
@@ -1010,7 +1010,6 @@ var QuizActions = function (_Flux$Action) {
       fetch('https://assets.breatheco.de/apis/quiz/' + quizSlug).then(function (response) {
         return response.json();
       }).then(function (quiz) {
-        console.log(quiz);
         _this2.dispatch('QuizStore.setQuiz', quiz);
       }).catch(function (error) {
         throw new Error(error);
