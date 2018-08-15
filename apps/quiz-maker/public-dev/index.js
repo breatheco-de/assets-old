@@ -230,7 +230,9 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: 'urlAPI',
         value: function urlAPI(url) {
-            this.setState({ url: url });
+            this.setState({
+                url: 'https://assets.breatheco.de/apis/quiz/' + url
+            });
         }
     }, {
         key: 'render',
@@ -297,30 +299,66 @@ var GetQuiz = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (GetQuiz.__proto__ || Object.getPrototypeOf(GetQuiz)).call(this));
 
         _this.state = {
-            value: 'https://assets.breatheco.de/apis/quiz/new'
+            slugQuiz: '',
+            allQuiz: []
         };
         return _this;
     }
 
     _createClass(GetQuiz, [{
+        key: 'handleGetQuiz',
+        value: function handleGetQuiz() {
+            var _this2 = this;
+
+            fetch('https://assets.breatheco.de/apis/quiz/all').then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this2.setState({
+                    allQuiz: data
+                });
+            }).catch(function (error) {
+                console.log('error', error);
+            });
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.handleGetQuiz();
+        }
+    }, {
         key: 'handleSubmit',
         value: function handleSubmit(event) {
             event.preventDefault();
-            this.props.onSelect(this.state.value);
-            this.setState({
-                value: ''
-            });
+            console.log(this.state.slugQuiz);
+            this.props.onSelect(this.state.slugQuiz);
         }
     }, {
         key: 'handleChange',
         value: function handleChange(event) {
+            console.log(event.target.value);
             this.setState({
-                value: event.target.value
+                slugQuiz: event.target.value
             });
         }
     }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
+            var styleOption = {
+                width: '100%',
+                height: '100%'
+            };
+            var slugQuiz = Object.entries(this.state.allQuiz);
+            var optionSelect = slugQuiz.map(function (value, key) {
+                return value[1].info.slug ? _react2.default.createElement(
+                    'option',
+                    { key: key, value: value[1].info.slug, onChange: function onChange(event) {
+                            return _this3.handleChange(event);
+                        } },
+                    value[1].info.slug
+                ) : '';
+            });
             return _react2.default.createElement(
                 'div',
                 { className: 'alert alert-primary' },
@@ -331,20 +369,27 @@ var GetQuiz = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'form',
-                    { onSubmit: this.handleSubmit.bind(this) },
+                    { onSubmit: function onSubmit(event) {
+                            return _this3.handleSubmit(event);
+                        } },
                     _react2.default.createElement(
                         'div',
                         { className: 'form-row' },
                         _react2.default.createElement(
                             'div',
                             { className: 'form-group col-md-8' },
-                            _react2.default.createElement('input', {
-                                className: 'form-control',
-                                type: 'text',
-                                value: this.state.value,
-                                onChange: this.handleChange.bind(this),
-                                placeholder: 'JSON URL HERE'
-                            })
+                            _react2.default.createElement(
+                                'select',
+                                { style: styleOption, onChange: function onChange(event) {
+                                        return _this3.handleChange(event);
+                                    } },
+                                _react2.default.createElement(
+                                    'option',
+                                    { defaultValue: true },
+                                    'All Quiz'
+                                ),
+                                optionSelect
+                            )
                         ),
                         _react2.default.createElement(
                             'div',

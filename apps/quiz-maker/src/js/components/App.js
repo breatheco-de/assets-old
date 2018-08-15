@@ -13,7 +13,9 @@ export default class App extends React.Component {
     }
 
     urlAPI(url){
-        this.setState({ url });
+        this.setState({ 
+            url: 'https://assets.breatheco.de/apis/quiz/'+url
+        });
     }
 
 	render () {
