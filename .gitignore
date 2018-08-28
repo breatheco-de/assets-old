@@ -6,6 +6,8 @@ uploaded/
 php.ini
 *.log
 
+.sass-cache/
+
 # certificate ssl from the hosting
 .well-known/
 

@@ -157,13 +157,26 @@ class SlimAPI{
 
             $path = $request->getUri()->getPath();
             if($path != 'token/generate'){
-                if(!isset($_GET['access_token'])) throw new Exception('Invalid access token', 403);
-                else{
+                $token = '';
+                if(isset($_GET['access_token'])){
                     $parts = explode('.', $_GET['access_token']);
                     if(count($parts)!=3) throw new Exception('Invalid access token', 403);
+                    $token = $_GET['access_token'];
+                } 
+                else{
+                    $authHeader = $_SERVER["HTTP_AUTHORIZATION"];
+                    if(!empty($authHeader)){
+                        if(strpos($authHeader,"JWT") === false) throw new Exception('Authorization header must contain JWT', 403);
+                        $authHeader = str_replace("JWT ", "", $authHeader);
+                        $parts = explode('.', $authHeader);
+                        if(count($parts)!=3) throw new Exception('Invalid access token', 403);
+                        $token = $authHeader;
+                        
+                    }
+                    else throw new Exception('Invalid access token', 403);
                 }
 
-            	$decoded = JWT::decode($_GET['access_token'], JWT_KEY, array('HS256'));
+            	$decoded = JWT::decode($token, JWT_KEY, array('HS256'));
             }
         	
         	$response = $next($request, $response);
