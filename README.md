@@ -1,5 +1,5 @@
 
-# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) BreatheCode Exercise Assets
+# ![alt text](https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) BreatheCode Exercise Assets
 Resources for Teachers and Students using the [BreatheCode Platform](https://breatheco.de).
 ## Available Assets API's
 
