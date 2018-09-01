@@ -71,3 +71,56 @@
         
         return $samples[$url];
     }
+    
+    use Aws\Ses\SesClient;
+    use Aws\Ses\Exception\SesException;
+    function sendError($to,$subject,$message){
+        
+        if(!is_array($to)) $to = [$to];
+        
+        $ABS_PATH = dirname(__FILE__).'/';
+        $loader = new \Twig_Loader_Filesystem($ABS_PATH);
+        $twig = new \Twig_Environment($loader);
+        
+        $template = $twig->load('error_template.html');
+        
+        $client = SesClient::factory(array(
+            'version'=> 'latest',     
+            'region' => 'us-west-2',
+            'credentials' => [
+                'key'    => S3_KEY,
+                'secret' => S3_SECRETE,
+            ]
+        ));
+        
+        try {
+             $result = $client->sendEmail([
+            'Destination' => [
+                'ToAddresses' => $to,
+            ],
+            'Message' => [
+                'Body' => [
+                    'Html' => [
+                        'Charset' => 'UTF-8',
+                        'Data' => $template->render(['subject' => 'Error! '.$subject, 'message' => $message]),
+                    ],
+        			'Text' => [
+                        'Charset' => 'UTF-8',
+                        'Data' => $message,
+                    ],
+                ],
+                'Subject' => [
+                    'Charset' => 'UTF-8',
+                    'Data' => $subject,
+                ],
+            ],
+            'Source' => 'info@breatheco.de',
+            //'ConfigurationSetName' => 'ConfigSet',
+        ]);
+             $messageId = $result->get('MessageId');
+             return true;
+        
+        } catch (SesException $error) {
+            throw new Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
+        }
+    }

@@ -1,4 +1,8 @@
 <?php
+/**
+ * This test checks that all the cohorts have all the needed replits links
+ */
+
     include './globals.php';
     include './vendor/autoload.php';
     include './test/utils.php';
@@ -20,4 +24,13 @@
     // Run all checks
     $results = $runner->run();
 
-    if($results->getFailureCount() > 0) exit(1);
+    if($results->getFailureCount() > 0){
+        sendError(
+            ["a@4geeksacademy.com"], 
+            "The cohort replits test is failing",
+            "
+Make sure all the cohorts have the replit urls setup.
+            "
+        );
+        exit(1);  
+    } 

@@ -1,4 +1,8 @@
 <?php
+/**
+ * This test checks that there is always an upcoming 4geeks night
+ */
+
     include './globals.php';
     include './vendor/autoload.php';
     include './test/utils.php';
@@ -17,4 +21,13 @@
     // Run all checks
     $results = $runner->run();
 
-    if($results->getFailureCount() > 0) exit(1);
+    if($results->getFailureCount() > 0){
+        sendError(
+            ["a@4geeksacademy.com"], 
+            "The upcoming events test is failing",
+            "
+Make sure there is a 4Geeks Nights scheduled to come.
+            "
+        );
+        exit(1);  
+    } 
