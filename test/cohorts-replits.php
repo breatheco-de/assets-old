@@ -17,7 +17,8 @@
     
     $resp = get(BREATHECODE_HOST.'cohorts/');
     foreach($resp->data as $cohort){
-        $runner->addCheck(checkURL($assetsURL.'/replit/cohort/'.$cohort->slug, 'https:\/\/repl.it\/classroom\/invite\/'));
+        if($cohort->stage != 'not-started')
+            $runner->addCheck(checkURL($assetsURL.'/replit/cohort/'.$cohort->slug, 'https:\/\/repl.it\/classroom\/invite\/'));
     }
     
     $runner->addReporter(new BasicConsole(80, true)); 
