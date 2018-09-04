@@ -6,6 +6,7 @@ export const loadTokens = () => {
     var url = new URL(window.location.href);
     _bcToken = url.searchParams.get("bc_token");
     _assetsToken = url.searchParams.get("assets_token");
+    if(!_bcToken && !_assetsToken) console.warn("No bc_token or assets_token have been detected on the URL");
 };
 export const tokens = () => {
     return {

@@ -9,14 +9,24 @@
 			"days": [{
 					"label": "Day 1",
 					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
-					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
+					"instructions": "You have 30 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
 					"project": {
 						"title": "Digital Postcard",
 						"slug": "postcard",
 						"solution": "https://bitbucket.org/codingacademy/postcard/"
 					},
 					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
-					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
+					"key-concepts": [
+						"Client vs Server", 
+						"HTTP Request vs Response", 
+						"Everything is text!", 
+						"Browser Interpretation", 
+						"Indentation", 
+						"HTML is similar to Word: Headings, paragraphs, etc",
+						"HTML vs CSS", 
+						"Always Be Closing", 
+						"CSS Selectors (basic ones)"
+					],
 					"lessons": [{
 							"title": "Introduction to the pre-work",
 							"slug": "introduction-to-the-prework"
