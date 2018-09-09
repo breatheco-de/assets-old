@@ -1,4 +1,4 @@
-# Day 1 - Web Development
+# Day 1 - Full Stack
 
 1. Present the academy and team (3min).
 2. Students present itself (5min).
