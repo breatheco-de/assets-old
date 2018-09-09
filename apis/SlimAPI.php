@@ -188,15 +188,32 @@ class SlimAPI{
     
     public function addTokenGenerationPath(){
         $this->app->post('/token/generate', function (Request $request, Response $response, array $args){
-                
-            if(empty($_POST['client_id']) || empty($_POST['client_pass']))
-                throw new Exception('Missing credentials');
             
-            if(JWT_CLIENTS[$_POST['client_id']] != $_POST['client_pass'])
-                throw new Exception('Invalid credentials');
+            $ct = $request->getHeader('Content-Type');
+            $cliendId = '';
+            $cliendPass = '';
+            
+            if($ct[0] == 'application/json'){
+                $parsedBody = $request->getParsedBody();
+                if(empty($parsedBody['client_id']) || empty($parsedBody['client_pass']))
+                     throw new Exception('MISSING credentials: client_id and client_pass');
+                $cliendId = $parsedBody['client_id'];
+                $cliendPass = $parsedBody['client_pass'];
+            }
+            else
+            {
+                if(empty($_POST['client_id']) || empty($_POST['client_pass']))
+                    throw new Exception('MISSING credentials: client_id and client_pass');
+                $cliendId = $_POST['client_id'];
+                $cliendPass = $_POST['client_pass'];
+                
+            }
+            
+            if(JWT_CLIENTS[$clientId] != $clientPass)
+                throw new Exception('INVALID credentials: client_id and client_pass');
 
     		$token = array(
-    		    "clientId" => $_POST['client_id'],
+    		    "clientId" => $clientId,
     		    "iat" => time(),
     		    "exp" => time() + 31556952000 // plus one year in miliseconds
     		);

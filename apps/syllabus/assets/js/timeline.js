@@ -102,6 +102,11 @@ var Timeline = (function(){
           <div class="day-topics">
             ${theKeyConcepts}
             ${day.instructions || day.description || 'No instructions for this particular day'}
+            ${
+                (typeof day.instructions_link != 'undefined') ?
+                    `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">Full details</a>`
+                    :''
+            }
           </div>
           <div class="day-projects">
             <ul>

@@ -196,6 +196,15 @@ function addAPIRoutes($api){
 	})
 		->add($api->auth());
 
+	$api->get('/user/{user_email}', function(Request $request, Response $response, array $args) use ($api) {
+        
+		if(empty($args['user_email'])) throw new Exception('Invalid param user_email', 400);
+		
+		$user = BC::getUser(['user_id' => urlencode($args['user_email'])]);
+
+		return $response->withJson($user);	
+	})->add($api->auth());
+	
 	$api->get('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
         
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
@@ -208,12 +217,19 @@ function addAPIRoutes($api){
 	$api->put('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
         
         if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
+        $event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+        if(!$event) throw new Exception('Event not found', 400);
         
         $parsedBody = $request->getParsedBody();
         $email = $api->validate($parsedBody,'email')->email();
         
         $contact = \AC\ACAPI::getContactByEmail($email);
         if(empty($contact)) throw new Exception('The user is not registered into Active Campaign', 400);
+        
+        $row = $api->db['sqlite']->event_checking()->where( 'event_id', $args['event_id'] )->fetchAll();
+		foreach($row as $checkin) 
+			if($checkin['email'] == $email) 
+				throw new Exception('The user has already checked in', 400);
         
         $props = [
 			'event_id' => $args['event_id'],
@@ -224,7 +240,6 @@ function addAPIRoutes($api){
 		$row = $api->db['sqlite']->createRow('event_checking', $props);
 		$row->save();
 		
-		$event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
 		$user = BC::getUser(['user_id' => urlencode($email)]);
         BreatheCodeLogger::logActivity([
             'slug' => 'public_event_attendance',
@@ -235,6 +250,24 @@ function addAPIRoutes($api){
         return $response->withJson($row);
 	})
 		->add($api->auth());
+	
+	$api->put('/active_campaign/user', function(Request $request, Response $response, array $args) use ($api) {
+        
+        $parsedBody = $request->getParsedBody();
+        $email = $api->validate($parsedBody,'email')->email();
+        $firstName = $api->validate($parsedBody,'first_name')->smallString();
+        $lastName = $api->validate($parsedBody,'last_name')->smallString();
+        
+        $contact = \AC\ACAPI::getContactByEmail($email);
+        if(!empty($contact)) throw new Exception('The user is already registered on Active Campaign', 400);
+        
+        $contact = \AC\ACAPI::createContact($email, [
+    		"first_name"        => $firstName,
+    		"last_name"         => $lastName
+        ]);
+		
+        return $response->withJson("ok");
+	})->add($api->auth());
 	
 	return $api;
 }

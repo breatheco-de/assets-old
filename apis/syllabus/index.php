@@ -57,15 +57,27 @@
         $syllabus = $api->db['json']->getJsonByName($getSlug($args['slug']));
         
 		$teacher = $request->getQueryParam('teacher',null);
-        if(isset($teacher)) return $response->withJson($syllabus);
-        
-        foreach ($syllabus['weeks'] as $week) {
-        	$week->days = array_map(function($day){
-        		if(isset($day->description)) return $day;
-        		else return null;
-        	}, $week->days);
+        if(isset($teacher)){
+	        foreach ($syllabus['weeks'] as $week) {
+	        	$week->days = array_map(function($day, $number) use ($syllabus){
+	        		$instructionsURL = "/instructions/".$syllabus['profile']."/day".$number.".md";
+	        		if(file_exists(__DIR__.$instructionsURL))
+	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus$instructionsURL";
+	        		return $day;
+	        	}, $week->days, array_keys($week->days));
+	        }
+        	return $response->withJson($syllabus);
+        } 
+        else{
+	        foreach ($syllabus['weeks'] as $week) {
+	        	$week->days = array_map(function($day){
+	        		if(isset($day->description)) return $day;
+	        		else return null;
+	        	}, $week->days);
+	        }
+	        return $response->withJson($syllabus);
         }
-        return $response->withJson($syllabus);
+        
 	});
     
 	$api->post('/{slug}', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
