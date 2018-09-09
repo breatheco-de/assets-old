@@ -119,7 +119,7 @@
 						"slug": "bootstrap"
 					}],
 					"assignments": ["instagram-feed-bootstrap"],
-					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper/Utility Classes that come with bootstrap"],
+					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper/Utility Classes that come with bootstrap","Explain Layout (grid layout, rows/columns, responsiveness)"],
 					"technologies": ["Bootstrap"]
 				},
 				{
