@@ -60,7 +60,7 @@
         if(isset($teacher)){
 	        foreach ($syllabus['weeks'] as $week) {
 	        	$week->days = array_map(function($day, $number) use ($syllabus){
-	        		$instructionsURL = "/instructions/".$syllabus['profile']."/day".$number.".md";
+	        		$instructionsURL = "/instructions/".$syllabus['profile']."/day".($number+1).".md";
 	        		if(file_exists(__DIR__.$instructionsURL))
 	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus$instructionsURL";
 	        		return $day;
