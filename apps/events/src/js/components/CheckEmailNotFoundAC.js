@@ -184,7 +184,6 @@ export default class CheckEmailNotFoundAC extends React.Component{
     }
 
     render(){
-        if(this.state.disabledButton){
             return (
                 <div className="full-width">
                 <div className="row justify-content-center full-width no-margin">
@@ -228,67 +227,22 @@ export default class CheckEmailNotFoundAC extends React.Component{
                         </div>
                             
                         <div className="float-right">
-                            <button type="button" disabled={this.state.disabledButton} className="btn btn-outline-secondary ml-3" onClick={()=>this.cancelForm()}>Cancel</button>
-                            <button type="submit" disabled={this.state.disabledButton} className="btn btn-outline-success ml-3">Loading</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                </div>
-            )
-        }else{
-            return (
-                <div className="full-width">
-                <div className="row justify-content-center full-width no-margin">
-                    <div className="col-md-8 col-sm-10 col-11 pt-5 pb-5">
-                        <form className="form" onSubmit={(event)=>this.checkinNewUserToEvent(event)}>
-                        <div className="form-group row">
-                            <label className="col-sm-2 col-form-label text-black">Email</label>
-                            <div className="col-sm-10">
-                            <input 
-                                type="text" 
-                                className={'form-control '+this.state.invalidClassEmail}
-                                placeholder="Email"
-                                value={this.state.email}
-                                onChange={(event)=>this.handleChangeInputEmail(event)}
-                                />
+                        {(this.state.disabledButton) ?
+                            <div>
+                                <button type="button" disabled={this.state.disabledButton} className="btn btn-outline-secondary ml-3" onClick={()=>this.cancelForm()}>Cancel</button>
+                                <button type="submit" disabled={this.state.disabledButton} className="btn btn-outline-success ml-3">Loading</button>
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <label className="col-sm-2 col-form-label text-black">First Name</label>
-                            <div className="col-sm-10">
-                            <input 
-                                type="text" 
-                                className={'form-control '+this.state.invalidClassFirst}
-                                placeholder="First Name"
-                                value={this.state.first_name}
-                                onChange={(event)=>this.handleChangeInputFirstName(event)}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label className="col-sm-2 col-form-label text-black">Last Name</label>
-                            <div className="col-sm-10">
-                            <input 
-                                type="text" 
-                                className={'form-control '+this.state.invalidClassLast}
-                                placeholder="Last Name"
-                                value={this.state.last_name}
-                                onChange={(event)=>this.handleChangeInputLastName(event)}
-                                />
-                            </div>
-                        </div>
-                            
-                        <div className="float-right">
+                            :
+                            <div>
                                 <button type="button" className="btn btn-outline-secondary ml-3" onClick={()=>this.cancelForm()}>Cancel</button>
                                 <button type="submit" className="btn btn-outline-success ml-3">Save and Check In</button>
-                            
+                            </div>
+                        }
                         </div>
                         </form>
                     </div>
                 </div>
                 </div>
             )
-        }
     }
 }
