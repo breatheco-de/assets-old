@@ -82,7 +82,7 @@ This is done by adding the property `id=”name”` for example:
 ```
 When you have defined it in your HTML, the targeting in your CSS would be: `#myDiv`  
 The `#` (hash/octothorpe) tells the interpreter that you are targeting an `ID`  
-Class is similar to ID that it helps to identify the specific element but it is NOT Unique  
+Class is similar to ID, in that, it helps to identify the specific element but it is NOT Unique  
 
 **Class is a property of the element**  
 An element can have many classes or not  
@@ -96,7 +96,7 @@ You don’t need a special property in your html for this as it’s a broad rang
 An example would be div elements. To select all divs in css, you would just use the div selector:
 ```css
 div { 
-    //some css rull here
+    //some css rule here
 }  
 ```
 In CSS, selectors can be combined to enhance the specificity of your targeting. Rule of thumb goes that the more specific CSS will take precedence.  
