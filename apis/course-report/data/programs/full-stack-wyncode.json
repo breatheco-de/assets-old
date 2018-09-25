@@ -1,16 +1,16 @@
 {
 	"program_slug": "full-stack",
 	"school_slug": "wyncode",
-	"cities": ["miami", "portland"],
-	"focus": "",
+	"cities": ["miami"],
+	"focus": "WebDevelopment",
 	"price": {
 		"financing": true,
-		"finance_max_length_in_months": 0,
-		"finance_min_length_in_months": 0,
-		"avg_usd_price_monthly": 300,
-		"avg_usd_price_upfront": 12000
+		"finance_max_length_in_months": null,
+		"finance_min_length_in_months": null,
+		"avg_usd_price_monthly": null,
+		"avg_usd_price_upfront": 12500
 	},
-	"time_commitment": ["all-in", "full-time", "part-time-hard", "part-time-slow"],
+	"time_commitment": ["full-time-inmersive"],
 	"learning-style": {
 		"one_on_one_mentorship": true,
 		"online_exercises": true,
@@ -18,41 +18,66 @@
 	},
 	"online-platform": true,
 	"syllabus": {
-		"topics": ["html", "css"],
-		"skills": []
+		"topics": ["html", "css", "JavaScript", "Ruby on Rails", "React on Rails"],
+		"skills": ["Front-End Development", "Computational Thinking", "Product Pitching"]
 	},
 	"mentors": {
 		"industry_influencers": false
 	},
-	"placement_rate": 80,
+	"placement_rate": 91,
 	"post_graduate_support": {
 		"job_support": true,
-		"job_support_length_in_days": 9999999
+		"job_support_length_in_days": 35
 	},
 	"job_guarantee": {
-		"refund": true,
-		"defered": true
+		"refund": false,
+		"defered": false
 	},
 	"pre_work": {
-		"avg_length_in_days": 14,
-		"technologies": ["html", "css"],
+		"avg_length_in_days": 7,
+		"technologies": ["HTML", "CCS", "Git", "GitHub", "Command Line"],
 		"description": ""
 	},
 	"scolarships": {
 		"for_woman": true,
 		"for_veterans": true,
-		"other": "for kids"
+		"other": "Wyncode's Future Leaders of Tech Scholarship covers the full tuition of individuals with financial need coming from an underrepresented community in tech and provides a three-month paid internship with their hiring partners at the conclusion the course."
 	},
 	"application_process": {
-		"avg_length_in_days": 15,
+		"avg_length_in_days": -1,
 		"includes_tests": true,
 		"includes_interviews": true,
-		"description": ""
+		"description": "1. Complete an online application form. 2. Participate in an interview with the admissions team that could take from 30 to 45 minutes. 3. Submit your admissions challenge (wich consist of going on Code Academy and completing 50% of the Intro to JavaScript) and student documents."
 	},
 	"reviews": {
-		"average": 0,
-		"top": [],
-		"worse": []
+		"switch_up": 5,
+		"course_report": 4.6,
+		"google": 4.9,
+		"the_worse": [{
+				"description": "Similar to other reviewers, I had attempted several times to learn programming on my own through various online resources (coursera, treehouse, and codecademy), but I struggled to devote the necessary time. Learning a programming language is similar to picking up any other foreign language, it's significantly easier if you are fully immersed in it. While there are plenty of self-taught programmers, I think this is where Wyncode and bootcamps, in general, offer an advantage. Upon enrolling in Wyncode, you're surrounding yourself in the language of programming, from the concepts to the actual syntax. The Positives: - The staff. I had Auston as my lead instructor, who is immensely knowledgeable and bring plenty of impressive, real world experience to the course. Auston does a great job of teaching the conceptual / theoretical material and then tying it to back to tangible examples using anecdotes or stories from his experiences. The technique is very in keeping with Wyncode’s philosophy of developing successful coders with business acumen. Additionally, Wyncode’s many other instructors and Teaching Assistants are always around and offering help. Their backgrounds range from experienced, senior developers to recent graduates of the program. - Job Assistance. I was fortunate enough to receive an offer before I graduated from the program as a result of Wyncode bringing in hiring partners for “mock” interviews during the final two weeks. While these are less formal than interviews you may experience after graduation, they are important and can result in job placement. This process does a great job of providing low-pressure opportunities to get experience in interviewing, as well as providing exposure to individuals and companies in the Miami tech scene. - The curriculum. The course starts with Ruby. While it may not be the newest or most cutting-edge language, it is perfect for beginners. It is easy to read and has light syntax, making basic programming concepts (loops, variables, logic statements, etc.) easier to get comfortable with as you get started. Once you’ve gotten exposure to said concepts, the course moves onto JavaScript and then introduces the Rails framework. The Negatives:- The curriculum. There are aspects of the curriculum which I think could be better tuned. Given the diverse backgrounds of its cohorts, Wyncode’s curriculum can feel overwhelming to some and slow to others. Finding that balance is tough, but something I believe the staff could improve upon. - The trivial. No parking, occasionally noisy next-door neighbors, potentially long commutes, poorly constructed homework assignments. Overall, attending Wyncode was a very positive experience and worth the investment of both time and money. It has opened a lot of doors for me as well as providing a great foundation to continue to learn and explore concepts of interest.",
+				"full_name": "Mark R.",
+				"url": "https://www.coursereport.com/schools/wyncode#/reviews",
+				"score": 4
+			},
+			{
+				"description": "Wyncode Academy is a very expensive very fast pace environment. Students will be bombarded with information.  The teachers and their TA's are good, but the mandatory homework is confusing if not difficult.  The students who excel at Wyncode are the type of students that should apply - former IT professionals, computer science graduates, and the people who live with them.  If you enter this Academy with no computer science background, then expect to hit a wall.  All students feel anxiety and many feel regret.  The commute and parking situation make those feelings even worse. Wyncode will assist students in finding employment and even set up interviews, but the majority fail the entrance exams and don't get hired per statistics.  It should also be known that some of the staffs biggest cheerleaders did not attend the academy, therefore they are not fully qualified to speak on the student experience.  There are success stories who are willing to submit reviews online, but there are twice as many failures who are too discouraged from the whole experience.  At the end of the day, whether you graduated Wyncode Academy with or without struggle, the most important thing is a return on your investment.",
+				"full_name": "Honest Abe",
+				"url": "https://www.coursereport.com/schools/wyncode#/reviews",
+				"score": 3.5
+			}
+		],
+		"the_best": [{
+				"description": "Wyncode is great and the curriculum is awesome! I have to name drop because I owe my success to a few people who went above and beyond. Angel is an instructor there and is one of the most real people I've met. Angel strolls in a little earlier than he's supposed to and stays a little later as well. The man always has a smile on his face and won't hesitate to support you in your toughest week emotionally or technically. The other two names are the dynamic TA duo Patricio and Keith. These two will help with any problems you have, continue to help after they've left and will follow up with you even on their days off. They are another of the most genuine people I've met in my experience. Thank you Wyncode!",
+				"full_name": "Alex Soto",
+				"url": "https://www.switchup.org/bootcamps/wyncode?ratings=5",
+				"score": 5
+			},
+			{
+				"description": "I joined Wyncode because I was very unhappy with the career field I was in and wanted something drastically different. I had an interest in code but did not have the time to pursue it with my work schedule, I thought about joining for over a year until finally the right opportunity came up and I signed up for the full-time course. The experience was life changing, being able to show up every day and work on learning code was the best option for me. It allowed me to completely dedicate myself to improving a skill for 10 weeks. The staff and other students at Wyncode have become like a second family, and I would not have been able to learn everything I learned without them. After the course, I worked with the Hiring Director at Wyncode to secure interviews and get introductions to hiring managers. Within 3 months I was able to land a job as a Front-End Developer for a large corporation.",
+				"full_name": "Raul Martinez",
+				"url": "https://www.switchup.org/bootcamps/wyncode?ratings=5",
+				"score": 5
+			}
+		]
 	}
-
 }

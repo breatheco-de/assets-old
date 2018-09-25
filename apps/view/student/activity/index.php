@@ -1,9 +1,11 @@
 <?php
     $user = null;
     $activity = null;
+    $activityEndpoint = 'https://'.$_SERVER['SERVER_NAME'].'/apis/activity/user/';
     if(!empty($_GET['user'])){
         $user = $_GET['user'];
-        $data = trim(file_get_contents('https://'.$_SERVER['SERVER_NAME'].'/apis/activity/user/'.$user));
+        $activityEndpoint .= $user;
+        $data = trim(file_get_contents($activityEndpoint));
         if(!empty($data)){
             $activity = json_decode($data);
         } 
@@ -56,7 +58,7 @@
         <?php if(!$user){ ?>
             <div>You need to specify the user</div>
         <?php } else if(!is_array($activity->log)){ ?>
-            <div>There was a problem retreving the user activity</div>
+            <div>There was a problem retreving the user activity from <a href="<?php echo $activityEndpoint; ?>"><?php echo $activityEndpoint; ?></a></div>
         <?php } else { ?>
             <div class="intro">
                 <h1>Activity Timeline for: <?php echo $activity->user->full_name; ?> </h1>

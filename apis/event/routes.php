@@ -158,6 +158,9 @@ function addAPIRoutes($api){
 	$api->put('/', function(Request $request, Response $response, array $args) use ($api) {
         $parsedBody = $request->getParsedBody();
         
+        $status = $api->optional($parsedBody,'status')->string();
+        if($status) throw new Exception('The status can only be a draft, you can later update the shift status on another request', 400);
+        
         $desc = $api->validate($parsedBody,'description')->bigString();
         $title = $api->validate($parsedBody,'title')->smallString();
         $url = $api->validate($parsedBody,'url')->url();
@@ -198,7 +201,7 @@ function addAPIRoutes($api){
 
 	$api->get('/user/{user_email}', function(Request $request, Response $response, array $args) use ($api) {
         
-		if(empty($args['user_email'])) throw new Exception('Invalid param user_email', 400);
+		if(empty($args['user_email'])) throw new Exception('Param user_email not found', 400);
 		
 		$user = BC::getUser(['user_id' => urlencode($args['user_email'])]);
 
@@ -218,13 +221,13 @@ function addAPIRoutes($api){
         
         if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
         $event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
-        if(!$event) throw new Exception('Event not found', 400);
+        if(!$event) throw new Exception('Event not found', 401);
         
         $parsedBody = $request->getParsedBody();
         $email = $api->validate($parsedBody,'email')->email();
         
         $contact = \AC\ACAPI::getContactByEmail($email);
-        if(empty($contact)) throw new Exception('The user is not registered into Active Campaign', 400);
+        if(empty($contact)) throw new Exception('The user is not registered into Active Campaign', 401);
         
         $row = $api->db['sqlite']->event_checking()->where( 'event_id', $args['event_id'] )->fetchAll();
 		foreach($row as $checkin) 
@@ -240,18 +243,23 @@ function addAPIRoutes($api){
 		$row = $api->db['sqlite']->createRow('event_checking', $props);
 		$row->save();
 		
-		$user = BC::getUser(['user_id' => urlencode($email)]);
+		$user = null;
+		$trackOnBreathecode = true;
+		try{
+			$user = BC::getUser(['user_id' => urlencode($email)]);
+		}
+		catch(Exception $e){ $trackOnBreathecode = false; }
         BreatheCodeLogger::logActivity([
             'slug' => 'public_event_attendance',
             'user' => ($user) ? $user : $email,
+            'track_on_log' => $trackOnBreathecode,
             'data' => $event->title
         ]);
 		
         return $response->withJson($row);
-	})
-		->add($api->auth());
+	})->add($api->auth());
 	
-	$api->put('/active_campaign/user', function(Request $request, Response $response, array $args) use ($api) {
+	$api->post('/active_campaign/user', function(Request $request, Response $response, array $args) use ($api) {
         
         $parsedBody = $request->getParsedBody();
         $email = $api->validate($parsedBody,'email')->email();
@@ -263,10 +271,11 @@ function addAPIRoutes($api){
         
         $contact = \AC\ACAPI::createContact($email, [
     		"first_name"        => $firstName,
-    		"last_name"         => $lastName
+    		"last_name"         => $lastName,
+    		"tags" => \AC\ACAPI::tag('event_signup')
         ]);
 		
-        return $response->withJson("ok");
+        return $response->withJson(["status" => "ok"]);
 	})->add($api->auth());
 	
 	return $api;

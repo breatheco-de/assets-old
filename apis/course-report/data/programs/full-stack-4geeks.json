@@ -2,57 +2,64 @@
 	"program_slug": "full-stack",
 	"school_slug": "4geeks",
 	"cities": ["miami", "caracas", "maracaibo"],
-	"focus": "",
+	"focus": ["SoftwareDevelopment","WebDevelopment"],
 	"price": {
 		"financing": true,
-		"finance_max_length_in_months": 0,
-		"finance_min_length_in_months": 0,
-		"avg_usd_price_monthly": 300,
-		"avg_usd_price_upfront": 10000
+		"finance_max_length_in_months": 60,
+		"finance_min_length_in_months": 6,
+		"avg_usd_price_monthly": 135,
+		"avg_usd_price_upfront": 6000
 	},
-	"time_commitment": ["all-in", "full-time", "part-time-hard", "part-time-slow"],
+	"time_commitment": ["part-time-inmersive"],
 	"learning-style": {
 		"one_on_one_mentorship": true,
 		"online_exercises": true,
-		"description": ""
+		"description": "Online Theory and In-Place Training"
 	},
 	"online-platform": true,
 	"syllabus": {
-		"topics": ["html", "css"],
-		"skills": []
+		"topics": ["JavaScript","HTML", "CSS", "Python","React", "PHP", "GIT", "AJAX", "DJango", "RESTful APIs", "MongoDB", "MVC"],
+		"skills": ["Front-end Development", "Back-end Development", "Databases", "Building Web Apps", "Real-world coding tools management"]
 	},
 	"mentors": {
 		"industry_influencers": false
 	},
-	"placement_rate": 80,
+	"placement_rate": 89,
 	"post_graduate_support": {
 		"job_support": true,
-		"job_support_length_in_days": 9999999
+		"job_support_length_in_days": 120
 	},
 	"job_guarantee": {
-		"refund": true,
-		"defered": true
+		"refund": false,
+		"defered": false
 	},
 	"pre_work": {
 		"avg_length_in_days": 14,
-		"technologies": ["html", "css"],
-		"description": ""
+		"technologies": ["html", "css", "JavaScript"],
+		"description": "The main goals of the Pre-Work (first phase of the program) are to really get to know our students and to provide them with the basic knowledge and the necessary tools to succeed throughout the next phase of the program. It consists in 38 hours of coding challenges and mentoring sessions in 2 Weeks"
 	},
 	"scolarships": {
-		"for_woman": true,
-		"for_veterans": true,
-		"other": "for kids"
+		"for_woman": false,
+		"for_veterans": false,
+		"other": "LGTBQ disscount through Lesbian Who Tech program"
 	},
 	"application_process": {
-		"avg_length_in_days": 15,
-		"includes_tests": true,
+		"avg_length_in_days": 5,
+		"includes_tests": false,
 		"includes_interviews": true,
-		"description": ""
+		"description": "1) The prospective student submits an online application. 2) The coordinator contacts the student to request personal information and to schedule a preliminary interview. 3) An e-mail is sent to the applicant with the Academy's decision and with instructions for the payment process."
 	},
 	"reviews": {
-		"average": 0,
-		"top": [],
-		"worse": []
+		"switch_up": 4.8,
+		"course_report": 4.6,
+		"google": 4.6,
+		"the_worse": [
+			{ "description": "It got its ups and downs, but overall a quite good experience. Though I learnt a lot about programming languages and useful tools.", "full_name": "Devis", "url": "https://www.coursereport.com/schools/4geeks-academy#/reviews", "score": 4 },
+			{ "description": "I studied Computer Sciences and was great, but I felt it was not enough, I thought I was needing something, like an ¡extra' or a 'plus'. At the university I learned about programming, but I didn't know about the web. After try 4Geeks Academy I feel I have all I need to be a good web developer. Know I have the power to create knew digital tools to change the world and use WordPress to say it! :-)", "full_name": "Marco Gonzalo", "url": "https://www.switchup.org/bootcamps/4geeks-academy?ratings=4", "score": 4 }
+		],
+		"the_best": [
+			{ "description": "At the beginning i was hesitant because the course was to cheap to be true, but it is true!! It’s incredible to find such an amazing course, location and teachers for that price. The course is hard but there is a lot of content, videos, etc. I loved the coding weekends! I feel that I learned so much during this 4 months and I also gain a new family for the rest of my life.", "full_name": "Yennylind Ortega", "url": "https://www.switchup.org/bootcamps/4geeks-academy?ratings=5", "score": 5 },
+			{ "description": "I loved 4Geeks Academy, the blended approach, with their online platform is ideal for part-time! Alejandro and Ignacio (my instructors) were very experienced and knew what they are doing. I remember spending a lot of time trying to practice at home and getting the exercises done. Most of the times I had questions regarding a particular issue, and they were always making an effort to answer what I asked. Also, they have several communications ways to open the communication with all the students.", "full_name": "Samantha Liew", "url": "https://www.google.co.ve/search?ei=E9OaW8b1E8uB5wKe-ZcY&q=google+reviews+4geeks+academy+miami&oq=google+reviews+4geeks+academy+miami&gs_l=psy-ab.3...4030.5051..5282...0.0..0.357.1265.0j4j1j1......0....1..gws-wiz.......0i71j33i22i29i30j33i160j33i21.rZXgOgEB1eI#lrd=0x88d9b153865e526d:0xf884fb3f86a9c7db,1,,,", "score": 5 }
+		]
 	}
-
 }

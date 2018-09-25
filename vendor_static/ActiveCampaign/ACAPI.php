@@ -33,6 +33,7 @@ class ACAPI{
     
     private static $tags = [
         'platform_signup',
+        'event_signup',
         'recurrent-student'//means that it has studied more than one course already
     ];
     

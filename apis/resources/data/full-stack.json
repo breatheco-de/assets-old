@@ -27,5 +27,12 @@
         "title": "How to use the fetch function",
         "url": "https://www.youtube.com/watch?v=Oive66jrwBs",
         "tags": ["fetch", "http", "javascript"]
+    },
+    { 
+        "type": "infographic", 
+        "slug": "git-guide-rogerdudler", 
+        "title": "How to use git",
+        "url": "http://rogerdudler.github.io/git-guide/",
+        "tags": ["git"]
     }
 }

@@ -1,36 +1,39 @@
 {
-	"program_slug": "full-stack",
+	"program_slug": "WebDevelopment",
 	"school_slug": "general_assembly",
-	"cities": ["miami", "portland"],
-	"focus": "",
+	"cities": ["Miami", "Atlanta", "Austin", "Boston", "Chicago", "Dallas", "Denver", "London", "Los Angeles", "Melbourne", "New York City",
+		"Providence", "San Francisco",
+		"Seattle", "Singapore", "Sydney", "Toronto", "Washington DC"
+	],
+	"focus": "Front-End WebDevelopment",
 	"price": {
 		"financing": true,
-		"finance_max_length_in_months": 0,
-		"finance_min_length_in_months": 0,
-		"avg_usd_price_monthly": 300,
-		"avg_usd_price_upfront": 12000
+		"finance_max_length_in_months": null,
+		"finance_min_length_in_months": null,
+		"avg_usd_price_monthly": 250,
+		"avg_usd_price_upfront": 13950
 	},
-	"time_commitment": ["all-in", "full-time", "part-time-hard", "part-time-slow"],
+	"time_commitment": ["part-time-inmersive"],
 	"learning-style": {
 		"one_on_one_mentorship": true,
-		"online_exercises": true,
-		"description": ""
+		"online_exercises": false,
+		"description": "Live virtual classroom, lectures and video conferences"
 	},
 	"online-platform": true,
 	"syllabus": {
-		"topics": ["html", "css"],
-		"skills": []
+		"topics": ["html", "css", "Angular", "Express", "JavaScript", "Mongo", "Node", "Ruby on Rails"],
+		"skills": ["Web Architect", "Product Development", "Front-End Development", "Back-End Development"]
 	},
 	"mentors": {
 		"industry_influencers": false
 	},
-	"placement_rate": 80,
+	"placement_rate": 87,
 	"post_graduate_support": {
 		"job_support": true,
-		"job_support_length_in_days": 9999999
+		"job_support_length_in_days": 120
 	},
 	"job_guarantee": {
-		"refund": true,
+		"refund": false,
 		"defered": true
 	},
 	"pre_work": {
@@ -41,7 +44,7 @@
 	"scolarships": {
 		"for_woman": true,
 		"for_veterans": true,
-		"other": "for kids"
+		"other": "none"
 	},
 	"application_process": {
 		"avg_length_in_days": 15,
@@ -50,9 +53,34 @@
 		"description": ""
 	},
 	"reviews": {
-		"average": 0,
-		"top": [],
-		"worse": []
+		"switch_up": 4.8,
+		"course_report": 4.8,
+		"google": 4.6,
+		"the_worse": [{
+				"description": "",
+				"full_name": "",
+				"url": "",
+				"score": 4.3
+			},
+			{
+				"description": "",
+				"full_name": "",
+				"url": "",
+				"score": 4.3
+			}
+		],
+		"the_best": [{
+				"description": "",
+				"full_name": "",
+				"url": "",
+				"score": 4.3
+			},
+			{
+				"description": "",
+				"full_name": "",
+				"url": "",
+				"score": 4.3
+			}
+		]
 	}
-
 }

@@ -20,8 +20,10 @@ function addAPIRoutes($api){
         $user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
         
         $filters=[];
+        
         if(filter_var($args["user_id"], FILTER_VALIDATE_EMAIL)) $filters["email"] = $args["user_id"];
         else $filters["user_id"] = $args["user_id"];
+        
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         $result = BreatheCodeLogger::retrieveActivity($filters);
         
