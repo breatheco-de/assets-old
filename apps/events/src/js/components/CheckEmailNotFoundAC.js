@@ -2,6 +2,7 @@ import React from 'react';
 import {Notify, Notifier} from '@breathecode/react-notifier';
 import Empty from './message/Empty';
 import Success from './message/Success';
+import Warning from './message/warning';
 
 export default class CheckEmailNotFoundAC extends React.Component{
     constructor(props){
@@ -14,8 +15,8 @@ export default class CheckEmailNotFoundAC extends React.Component{
             invalidClassEmail: '',
             invalidClassFirst: '',
             invalidClassLast: '',
-            showFormRegister: false
-
+            showFormRegister: false,
+            disabledButton: false
         }
     }
 
@@ -36,13 +37,19 @@ export default class CheckEmailNotFoundAC extends React.Component{
 
     checkinNewUserToEvent(event){
         event.preventDefault();
-        const endpointRegisterUserACmp = "https://assets-alesanchezr.c9users.io/apis/event/active_campaign/user?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6InJhZmFlc2FhIiwiaWF0IjoxNTMzMzE3NzYyLCJleHAiOjMzMDkwMjY5NzYyfQ.SHiWcnI-lJ-S3bAoUWNtodBTlRH20wkfNuTeQDkKvT0"
+
+        //Se desabilita el boton de checkin en la peticion al api
+        this.setState({
+            disabledButton: true
+        })
+
+        const endpointRegisterUserAC = process.env.ADD_USER_AC+"?access_token="+process.env.TOKEN;
         const endpointCheckinEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin?access_token="+process.env.TOKEN;
 
         //Si los input en el form estan llenos, se hace el POST
         if(this.state.email.length != 0 && this.state.first_name.length != 0 && this.state.last_name.length != 0){
             //Se guarda en ActiveCampaing con los datos provenientes de Breathecode
-            fetch(endpointRegisterUserACmp, {
+            fetch(endpointRegisterUserAC, {
                 headers: {"Content-Type": "application/json"},
                 method: 'POST',
                 body: JSON.stringify({
@@ -72,12 +79,21 @@ export default class CheckEmailNotFoundAC extends React.Component{
                     console.log('response');
                     if (response.status == 200){
                         console.log('entro en 200');
+                        this.setState({
+                            status: '200',
+                            disabledButton: false
+                        })
                         return response.json();
                     }else{
                         throw response;
                     }
                 })
                 .then((data)=>{
+                    if(this.props.numberOfUsersInEvent > this.props.capacityEvent){
+                        let noti = Notify.add('info', Warning, ()=>{
+                            noti.remove();
+                        }, 3000);    
+                    }
                     let noti = Notify.add('info', Success, ()=>{
                         noti.remove();
                     }, 3000);
@@ -86,11 +102,17 @@ export default class CheckEmailNotFoundAC extends React.Component{
                 })
                 .catch((error)=>{
                     //No chekeao el usuario creado en el evento
+                    this.setState({
+                        disabledButton: false
+                    })
                     console.log('no registro el evento', error);
                 })
             })
             .catch((error)=>{
                 //No registro el usuario en activeCampaing
+                this.setState({
+                    disabledButton: false
+                })
                 console.log('error', error);
             })
 
@@ -162,56 +184,111 @@ export default class CheckEmailNotFoundAC extends React.Component{
     }
 
     render(){
-        return(
-            <div className="full-width">
-            <div className="row justify-content-center full-width no-margin">
-                <div className="col-md-8 col-sm-10 col-11 pt-5 pb-5">
-                    <form className="form" onSubmit={(event)=>this.checkinNewUserToEvent(event)}>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label text-black">Email</label>
-                        <div className="col-sm-10">
-                        <input 
-                            type="text" 
-                            className={'form-control '+this.state.invalidClassEmail}
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={(event)=>this.handleChangeInputEmail(event)}
-                            />
+        if(this.state.disabledButton){
+            return (
+                <div className="full-width">
+                <div className="row justify-content-center full-width no-margin">
+                    <div className="col-md-8 col-sm-10 col-11 pt-5 pb-5">
+                        <form className="form" onSubmit={(event)=>this.checkinNewUserToEvent(event)}>
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label text-black">Email</label>
+                            <div className="col-sm-10">
+                            <input 
+                                type="text" 
+                                className={'form-control '+this.state.invalidClassEmail}
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={(event)=>this.handleChangeInputEmail(event)}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label text-black">First Name</label>
-                        <div className="col-sm-10">
-                        <input 
-                            type="text" 
-                            className={'form-control '+this.state.invalidClassFirst}
-                            placeholder="First Name"
-                            value={this.state.first_name}
-                            onChange={(event)=>this.handleChangeInputFirstName(event)}
-                            />
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label text-black">First Name</label>
+                            <div className="col-sm-10">
+                            <input 
+                                type="text" 
+                                className={'form-control '+this.state.invalidClassFirst}
+                                placeholder="First Name"
+                                value={this.state.first_name}
+                                onChange={(event)=>this.handleChangeInputFirstName(event)}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label text-black">Last Name</label>
-                        <div className="col-sm-10">
-                        <input 
-                            type="text" 
-                            className={'form-control '+this.state.invalidClassLast}
-                            placeholder="Last Name"
-                            value={this.state.last_name}
-                            onChange={(event)=>this.handleChangeInputLastName(event)}
-                            />
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label text-black">Last Name</label>
+                            <div className="col-sm-10">
+                            <input 
+                                type="text" 
+                                className={'form-control '+this.state.invalidClassLast}
+                                placeholder="Last Name"
+                                value={this.state.last_name}
+                                onChange={(event)=>this.handleChangeInputLastName(event)}
+                                />
+                            </div>
                         </div>
+                            
+                        <div className="float-right">
+                            <button type="button" disabled={this.state.disabledButton} className="btn btn-outline-secondary ml-3" onClick={()=>this.cancelForm()}>Cancel</button>
+                            <button type="submit" disabled={this.state.disabledButton} className="btn btn-outline-success ml-3">Loading</button>
+                        </div>
+                        </form>
                     </div>
-                        
-                    <div className="float-right">
-                        <button type="button" className="btn btn-outline-secondary ml-3" onClick={()=>this.cancelForm()}>Cancel</button>
-                        <button type="submit" className="btn btn-outline-success ml-3">Save and Check In</button>
-                    </div>
-                    </form>
                 </div>
-            </div>
-            </div>
-        )
+                </div>
+            )
+        }else{
+            return (
+                <div className="full-width">
+                <div className="row justify-content-center full-width no-margin">
+                    <div className="col-md-8 col-sm-10 col-11 pt-5 pb-5">
+                        <form className="form" onSubmit={(event)=>this.checkinNewUserToEvent(event)}>
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label text-black">Email</label>
+                            <div className="col-sm-10">
+                            <input 
+                                type="text" 
+                                className={'form-control '+this.state.invalidClassEmail}
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={(event)=>this.handleChangeInputEmail(event)}
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label text-black">First Name</label>
+                            <div className="col-sm-10">
+                            <input 
+                                type="text" 
+                                className={'form-control '+this.state.invalidClassFirst}
+                                placeholder="First Name"
+                                value={this.state.first_name}
+                                onChange={(event)=>this.handleChangeInputFirstName(event)}
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label text-black">Last Name</label>
+                            <div className="col-sm-10">
+                            <input 
+                                type="text" 
+                                className={'form-control '+this.state.invalidClassLast}
+                                placeholder="Last Name"
+                                value={this.state.last_name}
+                                onChange={(event)=>this.handleChangeInputLastName(event)}
+                                />
+                            </div>
+                        </div>
+                            
+                        <div className="float-right">
+                                <button type="button" className="btn btn-outline-secondary ml-3" onClick={()=>this.cancelForm()}>Cancel</button>
+                                <button type="submit" className="btn btn-outline-success ml-3">Save and Check In</button>
+                            
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            )
+        }
     }
 }

@@ -3,9 +3,8 @@ import {Notify, Notifier} from '@breathecode/react-notifier';
 import Success from './message/Success';
 import NotFind from './message/NotFind';
 import UserRegistered from './message/UserRegistered';
-
 import CheckEmailNotFoundAC from './CheckEmailNotFoundAC';
-import ModalNotFind from './message/ModalNotFind';
+import Warning from './message/warning';
 
 export default class Checkin extends React.Component{
     constructor(props){
@@ -19,6 +18,9 @@ export default class Checkin extends React.Component{
             message: '',
             typeMessage: '',
             usersChecked: [],
+            numberOfUsersInEvent: '',
+            capacityEvent: '',
+            disabledButton: false,
             //Form de nuevo registro
             first_name: '',
             last_name: '',
@@ -26,6 +28,50 @@ export default class Checkin extends React.Component{
             status: '',
             statusBreathecode: ''
         }
+    }
+
+    componentDidMount(){
+        this.getCapacityEvent();
+        this.controlCapacityEvent();
+    }
+
+    controlCapacityEvent(){
+        const endpoint = "https://assets-alesanchezr.c9users.io/apis/event/"+this.state.idEvent+"/checkin";
+        fetch(endpoint)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            const numbers = data.map((data, key)=>{
+                return key
+            })
+            this.setState({
+                numberOfUsersInEvent: numbers.length
+            })
+        })
+        .catch((error) => {
+            console.log('error', error);
+        })
+    }
+
+    getCapacityEvent(){
+        const endpoint = process.env.BREATHECODE+"all";
+        fetch(endpoint)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            const capacityEvent = data.filter((c)=> c.id == this.state.idEvent).map((c, k)=>{
+                return c.capacity
+            })
+
+            this.setState({
+                capacityEvent: capacityEvent[0]
+            })
+        })
+        .catch((error) => {
+            console.log('error', error);
+        })
     }
 
     //Mostrar y ocultar form para registrar usuarios a eventos
@@ -38,15 +84,18 @@ export default class Checkin extends React.Component{
     //Se registra usuario en evento y se envia a ListChecked lista de asistentes actualizada
     checkinUserToEvent(event){
         const existingUsers = this.state.usersChecked.filter((c) => c.email == this.state.valueInput );
-
         event.preventDefault();
+            const endpointCheckinEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin?access_token="+process.env.TOKEN;
+            const endpointBreathecode = process.env.BREATHECODE+"user/"+this.state.valueInput+"?access_token="+process.env.TOKEN;
+            const endpointSearchBreathecode = process.env.BREATHECODE+'user/'+this.state.valueInput+'?access_token='+process.env.TOKEN;
 
-            const endpointAC = process.env.ACTIVECAMPAING;
-            const endpointBreathecode = process.env.BREATHECODE;
-            const token = process.env.TOKEN;
+            //Se desabilita el boton de checkin en la peticion al api
+            this.setState({
+                disabledButton: true
+            })
 
             //checkin de active campaing
-            fetch(endpointBreathecode+this.state.idEvent+"/checkin?access_token="+token, {
+            fetch(endpointCheckinEvent, {
                 headers: {"Content-Type": "application/json"},
                 method: 'PUT',
                 body: JSON.stringify({email: this.state.valueInput})
@@ -56,21 +105,24 @@ export default class Checkin extends React.Component{
                 if (response.status == 200){
                     console.log('entro en 200, se ckekeo el user');
                     this.setState({
-                        status: '200'
+                        status: '200',
+                        disabledButton: false
                     })
                     return response.json();
                 //Algo esta mal en el correo o ya se registro
                 }else if(response.status == 400){
                     console.log('entro en 400, algo esta mal o ya se registro');
                     this.setState({
-                        status: '400'
+                        status: '400',
+                        disabledButton: false
                     })
                     return response.json();
                 //No existe el correo, no esta registrado en AC
                 }else if(response.status == 401){
                     console.log('entro en 401, no esta registrado en AC');
                     this.setState({
-                        status: '401'
+                        status: '401',
+                        disabledButton: false
                     })
                     return response.json();
                 }else{
@@ -81,11 +133,16 @@ export default class Checkin extends React.Component{
             .then((data) => {
                 console.log(this.state.status);
                 if(this.state.status == 200){
+                    if(this.state.numberOfUsersInEvent > this.state.capacityEvent){
+                        let noti = Notify.add('info', Warning, ()=>{
+                            noti.remove();
+                        }, 3000);    
+                    }
                     let noti = Notify.add('info', Success, ()=>{
                         noti.remove();
                     }, 3000);
                     this.setState({
-                        valueInput: ''
+                        valueInput: '',
                     })
                     this.getAllUsersInEventUpdated();
                 }else if(this.state.status == 400){
@@ -97,7 +154,7 @@ export default class Checkin extends React.Component{
                     })
                 }else if(this.state.status == 401){
                     //El usuario no esta registrado en AC, se va a consultar en breathecode
-                    return fetch(endpointAC+this.state.valueInput+'?access_token='+token)
+                    return fetch(endpointSearchBreathecode)
                     .then((response)=>{
                         if(response.status == 200){
                             this.setState({
@@ -114,6 +171,9 @@ export default class Checkin extends React.Component{
                     //Se muestra el form de lo que se encontro
                     .then((data)=>{
                         if(this.state.statusBreathecode == 200){
+                            this.setState({
+                                disabledButton: false
+                            })
                             let noti = Notify.add('info', NotFind, ()=>{
                                 noti.remove();
                             }, 3000);
@@ -127,8 +187,19 @@ export default class Checkin extends React.Component{
                             //Oculta el form de checkin al mostrar el modal de pregunta
                             this.setState({
                                 showFormCheckin: false,
-                                valueInput: ''
+                                disabledButton: false
                             })
+                            
+                            const ModalNotFind = ({ onConfirm }) => (
+                                <div className="modal-not-found">
+                                    <h3 className="text-center">The {this.state.valueInput} email was not found, do you want to register a new one?</h3>
+                                    <div className="center-btn-modal">
+                                        <button type="button" className="btn btn-outline-danger text-center mt-2" onClick={()=>onConfirm(false)}>No, back to the search</button>
+                                        <button type="button" className="btn btn-outline-primary text-center mt-2" onClick={()=>onConfirm(true)}>Yes, register user</button>
+                                    </div>
+                                </div>
+                            );
+
                             let noti = Notify.add('info', ModalNotFind, (answer)=>{
                                 if(answer){
                                     this.setState({
@@ -155,7 +226,7 @@ export default class Checkin extends React.Component{
     }
 
     getAllUsersInEventUpdated(){
-        const endpointGetAllUsersInEvent = "https://assets-alesanchezr.c9users.io/apis/event/"+this.state.idEvent+"/checkin"
+        const endpointGetAllUsersInEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin"
             
             fetch(endpointGetAllUsersInEvent)
             .then((response) => {
@@ -197,6 +268,7 @@ export default class Checkin extends React.Component{
                             </a>
                             <div className="ml-auto">
                                 <button 
+                                    disabled={this.state.disabledButton}
                                     type="button" 
                                     className="btn btn-primary"
                                     onClick={()=>this.showFormCheckin()}>Checkin User</button>
@@ -222,7 +294,11 @@ export default class Checkin extends React.Component{
                                     onChange={(event)=> this.handleChange(event)}
                                     />
                                 </div>
-                                <button type="submit" className="btn btn-primary ml-3 mt-3">Check In</button>
+                                {(this.state.disabledButton) ?
+                                    <button type="submit" disabled={this.state.disabledButton} className="btn btn-primary ml-3 mt-3">Loading</button>
+                                :
+                                    <button type="submit" className="btn btn-primary ml-3 mt-3">Check In</button>
+                                }
                             </div>
                         </form>
                     </div> : ''}
@@ -232,6 +308,8 @@ export default class Checkin extends React.Component{
                             idEvent={this.state.idEvent}
                             email={this.state.valueInput} 
                             first_name={this.state.first_name}
+                            capacityEvent={this.state.capacityEvent}
+                            numberOfUsersInEvent={this.state.numberOfUsersInEvent}
                             hiddenFormRegister={()=>this.hiddenFormRegister()}
                             showListUsersInEvent={()=>this.getAllUsersInEventUpdated()}/>
                      : ''}

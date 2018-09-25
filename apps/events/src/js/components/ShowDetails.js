@@ -12,7 +12,8 @@ export default class ShowDetails extends React.Component{
         this.state = {
             idEvent: this.props.data[0].id,
             listUsersInEvent: [],
-            showList: false
+            showList: false,
+            capacityEvent: ''
         }
     }
 
@@ -28,6 +29,7 @@ export default class ShowDetails extends React.Component{
             return response.json();
         })
         .then((data) => {
+            console.log(data);
             if(data.length > 0){
                 //Ordenar de mayor a menor
                 data.sort((a, b) => {
@@ -52,6 +54,46 @@ export default class ShowDetails extends React.Component{
         })
     }
 
+    // controlCapacityEvent(){
+    //     const endpoint = "https://assets-alesanchezr.c9users.io/apis/event/"+this.state.idEvent+"/checkin";
+    //     fetch(endpoint)
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((data) => {
+    //         const numbers = data.map((data, key)=>{
+    //             return key
+    //         })
+    //         this.setState({
+    //             numberOfUsers: numbers
+    //         })
+    //         console.log(this.state.numberOfUsers);
+    //     })
+    //     .catch((error) => {
+    //         console.log('error', error);
+    //     })
+    // }
+
+    // getCapacityEvent(){
+    //     const endpoint = process.env.BREATHECODE+"all";
+    //     fetch(endpoint)
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((data) => {
+    //         const capacityEvent = data.filter((c)=> c.id == this.state.idEvent).map((c, k)=>{
+    //             return c.capacity
+    //         })
+
+    //         this.setState({
+    //             capacityEvent
+    //         })
+    //     })
+    //     .catch((error) => {
+    //         console.log('error', error);
+    //     })
+    // }
+
     usersInEvent(data){
         (data.length > 0) ? 
         this.setState({
@@ -74,10 +116,6 @@ export default class ShowDetails extends React.Component{
                     dataEvent={this.props.data} 
                     idEvent={this.props.data[0].id}
                     getUsersInEvent={(data)=>this.usersInEvent(data)}/>
-                {/* <ListChecked 
-                    data={this.state.listUsersInEvent} 
-                    showList={this.state.showList}
-                    rafael="Rafael"/> */}
                 <ListChecked 
                     data={this.state.listUsersInEvent} 
                     showList={this.state.showList}/>

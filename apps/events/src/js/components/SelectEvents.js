@@ -15,16 +15,15 @@ export default class SelectEvents extends React.Component{
     }
     
     getAllEventsToDay(){
-        const endpoint = "https://assets-alesanchezr.c9users.io/apis/event/all";
+        const endpoint = process.env.UPCOMING;
         fetch(endpoint)
         .then((response) => {
             return response.json();
         })
         .then((data) => {
             var now = moment().format('YYYY-MM-DD');
-            const eventFiltered = data.filter((c)=> c.event_date >= now).map((c, k)=>{
-                // console.log(moment(c.event_date).format('YYYY-MM-DD'));
-                // console.log(now);
+            // const eventFiltered = data.filter((c)=> c.event_date >= now).map((c, k)=>{
+            const eventFiltered = data.map((c, k)=>{
                 return {
                     id: c.id,
                     description: c.description,
