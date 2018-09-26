@@ -280,7 +280,8 @@
 				{
 					"label": "Day 9",
 					"description": "We have learned a lot and very fast, your brain needs some time to adjust and move all that knowledge into the hypothalamus. This class is an excellent opportunity to bring questions, work on strenuous exercises and receive a lot of help from the mentors!",
-					"instructions": "Work with students in finishing all pending replits including DOM and Events."
+					"instructions": "Work with students in finishing all pending replits including DOM and Events.",
+					"homework": "Finish all replits and projects before we can start learning about React.js"
 				},
 				{
 					"label": "Weekend",
@@ -300,10 +301,9 @@
 					"instructions": "It's the first time students will be using objects, explain the concept. Make students create their first react components and explain the use of JSX. Explain the difference between Functional components and or class components and the render function",
 					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
 					"project": {
-						"title": "Todo list with React",
-						"solution": "https://bitbucket.org/codingacademy/todo-list/"
+						"title": "Landing Page with React"
 					},
-					"homework": "Students must have the CSS and HTML for the TodoList already finished in one big component and using a hard coded state",
+					"homework": "Students must finish the landing page with react for the next class",
 					"lessons": [{
 							"title": "Object Oriented Programming",
 							"slug": "object-oriented-programming"
@@ -321,7 +321,7 @@
 						"title": "Object Oriented Programming",
 						"slug": "object-oriented-programing"
 					}],
-					"assignments": ["simple-counter-react", "traffic-light-react"],
+					"assignments": ["simple-counter-react", "traffic-light-react", "landing-page-with-react"],
 					"key-concepts": ["Export -> Import modules", "You can create your own tags", "Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
 				},
@@ -330,7 +330,7 @@
 					"instructions": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props",
 					"description": "Finally we can create our own HTML tags and re-use them on several projects and views. The key to understand a component is understanding Props and The State. Please continue working on the Todo-List Application.",
 					"project": {
-						"title": "Continue with: Todo list with React",
+						"title": "Todo list with React",
 						"solution": "https://bitbucket.org/codingacademy/todo-list/"
 					},
 					"assignments": ["todo-list"],
