@@ -1,27 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
-
-var BUILD_DIR = path.resolve(__dirname, 'public');
-var APP_DIR = path.resolve(__dirname, 'src/js');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: {
-    index: APP_DIR + '/index.js',
-  },
+  entry: './src/js/index.js',
   output: {
-    path: BUILD_DIR,
-    filename: '[name].js'
-  },
-  optimization: {
-    splitChunks: {
-        cacheGroups: {
-            commons: {
-                test: /[\\/]node_modules[\\/]/,
-                name: 'vendor',
-                chunks: 'all'
-            }
-        }
-    }
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
   	rules: [
@@ -46,16 +31,24 @@ module.exports = {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
       },
-        { 
-          test: /\.(png|svg|jpg|gif)$/, use: {
-            loader: 'file-loader',
-            options: { name: '[name].[ext]' } 
-          }
-        } //for images
+      { 
+        test: /\.(png|svg|jpg|gif)$/, use: {
+          loader: 'file-loader',
+          options: { name: '[name].[ext]' } 
+        }
+      }
   	]
   },
   devtool: 'source-map',
   devServer: {
     contentBase:  './dist',
-  }
+  },
+  plugins: [
+    new Dotenv({
+      path: './.env', // load this now instead of the ones in '.env'
+      safe: false, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      systemvars: false, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+      silent: false // hide any errors
+    })
+  ]
 };
