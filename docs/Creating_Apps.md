@@ -105,8 +105,8 @@ Search and display any student external profile
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
-
-    SYLLABUS-MAKER:
+```
+SYLLABUS-MAKER:
     "@4geeksacademy/react-flux-dash": "^1.1.8",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
@@ -126,7 +126,8 @@ Search and display any student external profile
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
 ```
-    NPS:
+```
+ NPS:
     "bootstrap": "^4.0.0-beta.2",
     "dotenv-webpack": "^1.5.5",
     "events": "^1.1.1",
@@ -140,6 +141,7 @@ Search and display any student external profile
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "recharts": "^1.0.0-beta.10"
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM1ODMyMDE3XX0=
+eyJoaXN0b3J5IjpbLTk3MTM5MjUwN119
 -->
