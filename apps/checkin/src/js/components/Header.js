@@ -18,7 +18,7 @@ export default class Header extends React.Component{
                         </a>
                         {(this.props.backToHome) ?
                             <div className="ml-auto">
-                                <a href="/">
+                                <a href={process.env.STARTOFPROJECT}>
                                     <button 
                                         type="button" 
                                         className="btn btn-primary"

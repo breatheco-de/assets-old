@@ -19,6 +19,7 @@ export default class ShowDetails extends React.Component{
 
     componentDidMount(){
         this.getAllUsersInEvent();
+        console.log(this.props.token)
     }
 
     //Se muestra la lista de asistentes al ingresar al detalle del evento
@@ -29,7 +30,6 @@ export default class ShowDetails extends React.Component{
             return response.json();
         })
         .then((data) => {
-            console.log(data);
             if(data.length > 0){
                 //Ordenar de mayor a menor
                 data.sort((a, b) => {
@@ -54,46 +54,6 @@ export default class ShowDetails extends React.Component{
         })
     }
 
-    // controlCapacityEvent(){
-    //     const endpoint = "https://assets-alesanchezr.c9users.io/apis/event/"+this.state.idEvent+"/checkin";
-    //     fetch(endpoint)
-    //     .then((response) => {
-    //         return response.json();
-    //     })
-    //     .then((data) => {
-    //         const numbers = data.map((data, key)=>{
-    //             return key
-    //         })
-    //         this.setState({
-    //             numberOfUsers: numbers
-    //         })
-    //         console.log(this.state.numberOfUsers);
-    //     })
-    //     .catch((error) => {
-    //         console.log('error', error);
-    //     })
-    // }
-
-    // getCapacityEvent(){
-    //     const endpoint = process.env.BREATHECODE+"all";
-    //     fetch(endpoint)
-    //     .then((response) => {
-    //         return response.json();
-    //     })
-    //     .then((data) => {
-    //         const capacityEvent = data.filter((c)=> c.id == this.state.idEvent).map((c, k)=>{
-    //             return c.capacity
-    //         })
-
-    //         this.setState({
-    //             capacityEvent
-    //         })
-    //     })
-    //     .catch((error) => {
-    //         console.log('error', error);
-    //     })
-    // }
-
     usersInEvent(data){
         (data.length > 0) ? 
         this.setState({
@@ -110,12 +70,13 @@ export default class ShowDetails extends React.Component{
         return(
             <div>
                 <Header backToHome={true}/>
-                <RowText title="Hola" />
+                <RowText />
                 <DetailEvent dataEvent={this.props.data}/>
                 <CheckIn 
                     dataEvent={this.props.data} 
                     idEvent={this.props.data[0].id}
-                    getUsersInEvent={(data)=>this.usersInEvent(data)}/>
+                    getUsersInEvent={(data)=>this.usersInEvent(data)}
+                    token={this.props.token}/>
                 <ListChecked 
                     data={this.state.listUsersInEvent} 
                     showList={this.state.showList}/>

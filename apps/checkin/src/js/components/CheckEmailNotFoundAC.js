@@ -59,16 +59,13 @@ export default class CheckEmailNotFoundAC extends React.Component{
                 })
             })
             .then((response)=>{
-                console.log('response')
                 if (response.status == 200){
-                    console.log('entro en 200');
                     return response.json();
                 }else{
                     throw response;
                 }
             })
             .then((data)=>{
-                console.log('se registro en Active Campaing');
                 //Se chekea el usuario en el evento previamente creado en ActiveCampaing
                 return fetch(endpointCheckinEvent, {
                                     headers: {"Content-Type": "application/json"},
@@ -76,9 +73,7 @@ export default class CheckEmailNotFoundAC extends React.Component{
                                     body: JSON.stringify({email: this.state.email})
                                 })
                 .then((response)=>{
-                    console.log('response');
                     if (response.status == 200){
-                        console.log('entro en 200');
                         this.setState({
                             status: '200',
                             disabledButton: false
@@ -105,7 +100,6 @@ export default class CheckEmailNotFoundAC extends React.Component{
                     this.setState({
                         disabledButton: false
                     })
-                    console.log('no registro el evento', error);
                 })
             })
             .catch((error)=>{
@@ -138,8 +132,6 @@ export default class CheckEmailNotFoundAC extends React.Component{
             let noti = Notify.add('info', Empty, ()=>{
                 noti.remove();
             }, 3000);
-        }else if(this.state.email.length == 0 || this.state.first_name.length == 0 || this.state.last_name.length == 0){
-            console.log('no puede estar vacio')
         }
     }
 
