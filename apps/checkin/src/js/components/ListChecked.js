@@ -10,7 +10,6 @@ export default class ListChecked extends React.Component {
     }
 
     readMore(){
-        console.log('aqui')
         this.setState({
             cantUsersList: this.state.cantUsersList+5
         })

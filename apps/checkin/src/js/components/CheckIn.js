@@ -5,6 +5,7 @@ import NotFind from './message/NotFind';
 import UserRegistered from './message/UserRegistered';
 import CheckEmailNotFoundAC from './CheckEmailNotFoundAC';
 import Warning from './message/warning';
+import MissingToken from './message/MissingToken';
 
 export default class Checkin extends React.Component{
     constructor(props){
@@ -33,6 +34,7 @@ export default class Checkin extends React.Component{
     componentDidMount(){
         this.getCapacityEvent();
         this.controlCapacityEvent();
+        console.log(this.props.token);
     }
 
     controlCapacityEvent(){
@@ -85,9 +87,9 @@ export default class Checkin extends React.Component{
     checkinUserToEvent(event){
         const existingUsers = this.state.usersChecked.filter((c) => c.email == this.state.valueInput );
         event.preventDefault();
-            const endpointCheckinEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin?access_token="+process.env.TOKEN;
-            const endpointBreathecode = process.env.BREATHECODE+"user/"+this.state.valueInput+"?access_token="+process.env.TOKEN;
-            const endpointSearchBreathecode = process.env.BREATHECODE+'user/'+this.state.valueInput+'?access_token='+process.env.TOKEN;
+            const endpointCheckinEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin?access_token="+this.props.token;
+            const endpointBreathecode = process.env.BREATHECODE+"user/"+this.state.valueInput+"?access_token="+this.props.token;
+            const endpointSearchBreathecode = process.env.BREATHECODE+'user/'+this.state.valueInput+'?access_token='+this.props.token;
 
             //Se desabilita el boton de checkin en la peticion al api
             this.setState({
@@ -103,7 +105,6 @@ export default class Checkin extends React.Component{
             .then((response) => {
                 //Se guardo
                 if (response.status == 200){
-                    console.log('entro en 200, se ckekeo el user');
                     this.setState({
                         status: '200',
                         disabledButton: false
@@ -111,7 +112,6 @@ export default class Checkin extends React.Component{
                     return response.json();
                 //Algo esta mal en el correo o ya se registro
                 }else if(response.status == 400){
-                    console.log('entro en 400, algo esta mal o ya se registro');
                     this.setState({
                         status: '400',
                         disabledButton: false
@@ -119,9 +119,14 @@ export default class Checkin extends React.Component{
                     return response.json();
                 //No existe el correo, no esta registrado en AC
                 }else if(response.status == 401){
-                    console.log('entro en 401, no esta registrado en AC');
                     this.setState({
                         status: '401',
+                        disabledButton: false
+                    })
+                    return response.json();
+                }else if(response.status == 403){
+                    this.setState({
+                        status: '403',
                         disabledButton: false
                     })
                     return response.json();
@@ -131,7 +136,6 @@ export default class Checkin extends React.Component{
             })
             //Entra aqui si encuentra en ActiveCampaing y se guarda
             .then((data) => {
-                console.log(this.state.status);
                 if(this.state.status == 200){
                     if(this.state.numberOfUsersInEvent > this.state.capacityEvent){
                         let noti = Notify.add('info', Warning, ()=>{
@@ -147,6 +151,13 @@ export default class Checkin extends React.Component{
                     this.getAllUsersInEventUpdated();
                 }else if(this.state.status == 400){
                     let noti = Notify.add('info', UserRegistered, ()=>{
+                        noti.remove();
+                    }, 3000);
+                    this.setState({
+                        valueInput: ''
+                    })
+                }else if(this.state.status == 403){
+                    let noti = Notify.add('info', MissingToken, ()=>{
                         noti.remove();
                     }, 3000);
                     this.setState({
@@ -220,8 +231,9 @@ export default class Checkin extends React.Component{
                     })
                 }
             })
+            //No esta breathecode tampoco
             .catch((error)=>{
-                console.log('error, no esta en breathecode tampoco', error);
+                console.log('error', error);
             })
     }
 
