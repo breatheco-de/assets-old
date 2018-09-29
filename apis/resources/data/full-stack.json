@@ -34,5 +34,12 @@
         "title": "How to use git",
         "url": "http://rogerdudler.github.io/git-guide/",
         "tags": ["git"]
+    },
+    { 
+        "type": "challenge", 
+        "slug": "javascript-30", 
+        "title": "30 day vanilla js challenge",
+        "url": "https://javascript30.com",
+        "tags": ["js","vanilla-js"]
     }
 }

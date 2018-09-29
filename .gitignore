@@ -16,6 +16,7 @@ node_modules/
 
 #Composer related stuff
 vendor/
+!assets/js/vendor/
 
 #apis global variables
 /globals.php
