@@ -58,9 +58,14 @@
         
 		$teacher = $request->getQueryParam('teacher',null);
         if(isset($teacher)){
+        	$number = 0;
 	        foreach ($syllabus['weeks'] as $week) {
-	        	$week->days = array_map(function($day, $number) use ($syllabus){
-	        		$instructionsURL = "/instructions/".$syllabus['profile']."/day".($number+1).".md";
+	        	$week->days = array_map(function($day) use ($syllabus, &$number){
+	        		if(!isset($day->weekend) || !$day->weekend){
+	        			$number++;
+	        			$day->number = $number;
+	        		} 
+	        		$instructionsURL = "/instructions/".$syllabus['profile']."/day".($number).".md";
 	        		if(file_exists(__DIR__.$instructionsURL))
 	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus$instructionsURL";
 	        		return $day;
@@ -69,8 +74,13 @@
         	return $response->withJson($syllabus);
         } 
         else{
+        	$number = 0;
 	        foreach ($syllabus['weeks'] as $week) {
-	        	$week->days = array_map(function($day){
+	        	$week->days = array_map(function($day) use (&$number){
+	        		if(!isset($day->weekend) || !$day->weekend){
+	        			$number++;
+	        			$day->number = $number;
+	        		} 
 	        		if(isset($day->description)) return $day;
 	        		else return null;
 	        	}, $week->days);

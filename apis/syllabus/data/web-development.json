@@ -6,7 +6,8 @@
 			"label": "Week 1: How web works?",
 			"topic": "HTML, CSS & Bootstrap",
 			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 1",
 					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
 					"instructions": "You have 30 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
@@ -124,6 +125,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"description": "And God created the coding weekends, the perfect place to partice, share and collaborate with your classmates.",
 					"instructions": "Students must finish all pending proyects!"
 				}
@@ -133,7 +135,8 @@
 			"label": "Week 2: Wireframes, CMD & GIT",
 			"topic": "Prework done!",
 			"summary": "Time to start having a professional workflow",
-			"days": [{
+			"days": [
+				{
 					"label": "Day 4",
 					"description": "A text editor and the console, that's all you need to be a great coder. Time to master the second one.",
 					"instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
@@ -175,29 +178,6 @@
 				},
 				{
 					"label": "Day 6",
-					"description": "Coding is one of the most creative activities in the world, we need a process to make sense out of our messy brains: Wireframes are the ideal starting point!",
-					"instructions": "Make the students design a wireframe starting from the typical client requierment specs, teach them the importance of using components and how to pick them and draw a wireframe before jumping into coding.",
-					"project": {
-						"title": "ABC Chocolate (Wire-framing)",
-						"solution": "https://github.com/breatheco-de/exercise-abc-chocolate/"
-					},
-					"homework": "Finished Replits and Projects",
-					"key-concepts": ["Wireframes", "Bootstrap Components", "Website Sitemap & Sections"],
-					"technologies": ["Wireframing"]
-				},
-				{
-					"label": "Weekend",
-					"description": "It has been two crazy weeks, thank God we have another coding weekend to keep up and practice.",
-					"instructions": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects througouht the online platform"
-				}
-			]
-		},
-		{
-			"label": "Week 3: First coding skills",
-			"topic": "Create algorithms",
-			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
-			"days": [{
-					"label": "Day 7",
 					"description": "HTML & CSS are great, but the world needed interactive pages (not just beautiful text documents). Javascript comes to help us generate HTML & CSS based after the initial text document has already loaded and also re-write the website live based on the user activity.",
 					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts. Use the VanilaJS boilerplate, that way students will start getting used to it",
 					"project": {
@@ -229,7 +209,20 @@
 					"technologies": ["Javascript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
 				},
 				{
-					"label": "Day 8",
+					"label": "Weekend",
+					"weekend": true,
+					"description": "It has been two crazy weeks, thank God we have another coding weekend to keep up and practice.",
+					"instructions": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects througouht the online platform"
+				}
+			]
+		},
+		{
+			"label": "Week 3: First coding skills",
+			"topic": "Create algorithms",
+			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
+			"days": [
+				{
+					"label": "Day 7",
 					"instructions": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
 					"description": "When Julius Caesar and Napoleon said 'Divide and Conquer' they were probably talking about using functions in programming languages... master functions and the entire Europe will be yours :)",
 					"project": {
@@ -247,7 +240,7 @@
 					"technologies": ["JS Functions", "Arrow Functions"]
 				},
 				{
-					"label": "Day 9",
+					"label": "Day 8",
 					"instructions": "Do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS, make students do the 'Map Of Events' to strategize, start using the breathecode-cli and vanilla-js ",
 					"description": "Ok but how do we use Javascript to build websites? You have to interact with the DOM whenever an event occurs",
 					"project": {
@@ -285,7 +278,14 @@
 					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
 				},
 				{
+					"label": "Day 9",
+					"description": "We have learned a lot and very fast, your brain needs some time to adjust and move all that knowledge into the hypothalamus. This class is an excellent opportunity to bring questions, work on strenuous exercises and receive a lot of help from the mentors!",
+					"instructions": "Work with students in finishing all pending replits including DOM and Events.",
+					"homework": "Finish all replits and projects before we can start learning about React.js"
+				},
+				{
 					"label": "Weekend",
+					"weekend": true,
 					"description": "Saturdays are a great oportunity to work full-day on your coding skills, extra lessons without extra charge. You will only sacrifice 14 Saturdays and your life will change forever.",
 					"instructions": "During the weekend, students must finish all the replits"
 				}
@@ -301,10 +301,9 @@
 					"instructions": "It's the first time students will be using objects, explain the concept. Make students create their first react components and explain the use of JSX. Explain the difference between Functional components and or class components and the render function",
 					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
 					"project": {
-						"title": "Todo list with React",
-						"solution": "https://bitbucket.org/codingacademy/todo-list/"
+						"title": "Landing Page with React"
 					},
-					"homework": "Students must have the CSS and HTML for the TodoList already finished in one big component and using a hard coded state",
+					"homework": "Students must finish the landing page with react for the next class",
 					"lessons": [{
 							"title": "Object Oriented Programming",
 							"slug": "object-oriented-programming"
@@ -322,7 +321,7 @@
 						"title": "Object Oriented Programming",
 						"slug": "object-oriented-programing"
 					}],
-					"assignments": ["simple-counter-react", "traffic-light-react"],
+					"assignments": ["simple-counter-react", "traffic-light-react", "landing-page-with-react"],
 					"key-concepts": ["Export -> Import modules", "You can create your own tags", "Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
 					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
 				},
@@ -331,7 +330,7 @@
 					"instructions": "React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props",
 					"description": "Finally we can create our own HTML tags and re-use them on several projects and views. The key to understand a component is understanding Props and The State. Please continue working on the Todo-List Application.",
 					"project": {
-						"title": "Continue with: Todo list with React",
+						"title": "Todo list with React",
 						"solution": "https://bitbucket.org/codingacademy/todo-list/"
 					},
 					"assignments": ["todo-list"],
@@ -361,6 +360,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"description": "Every student, partner, teacher and alumni is invited to the academy on Saturdays, it is an oportunity to network and get some inspiration!",
 					"instructions": "Finish the TodoList with React and the Project User Stories",
 					"homework": "Finish the TodoList with React and the Project User Stories"
@@ -412,6 +412,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"description": "Now that you are working on the final project it is the best time to meet with your parner to work on the weends",
 					"instructions": "Student Projects Views must be finished by next class"
 				}
@@ -454,7 +455,8 @@
 				"homework": "Students (in groups) must create a 4 page website (Home, Blog, Product, Checkout-Cart) using React Router",
 				"technologies": ["React Router"]
 			}, {
-				"label": "Weekend"
+				"label": "Weekend",
+				"weekend": true
 			}],
 			"warning": "The students should keep working on their final project's documentation"
 		},
@@ -484,7 +486,8 @@
 				"key-concepts": ["React Context"],
 				"technologies": ["React Context"]
 			}, {
-				"label": "Weekend"
+				"label": "Weekend",
+				"weekend": true
 			}]
 		},
 		{
@@ -530,6 +533,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"instructions": "Students must build the API for the Meetup-Clone project"
 				}
 			]
@@ -580,6 +584,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"instructions": "Students must keep working on the Final Project API and Final React Application"
 				}
 			]
@@ -618,6 +623,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"instructions": "Students must keep working on the project"
 				}
 			]
@@ -656,6 +662,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"instructions": "Students must work on the project"
 				}
 			]
@@ -695,6 +702,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"instructions": "Students must keep working on the project"
 				}
 			]
@@ -734,6 +742,7 @@
 				},
 				{
 					"label": "Weekend",
+					"weekend": true,
 					"instructions": "Students must keep working on the project"
 				}
 			]

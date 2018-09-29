@@ -29,6 +29,13 @@
         "tags": ["fetch", "http", "javascript"]
     },
     { 
+        "type": "article", 
+        "slug": "fetch-api-explanation", 
+        "title": "Using Fetch (jQuery AJAX comparison)",
+        "url": "https://css-tricks.com/using-fetch/",
+        "tags": ["fetch", "http", "javascript", "ajax", "jquery-ajax"]
+    },
+    { 
         "type": "infographic", 
         "slug": "git-guide-rogerdudler", 
         "title": "How to use git",

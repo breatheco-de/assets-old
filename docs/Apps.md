@@ -61,11 +61,10 @@ Search and display any student external profile
 
     **TODO:** this applications is pending for development
 
-12. Dependencias por proyecto, vendor.bundle.js
-
-    QUIZ APP:
-
-    ``"@4geeksacademy/react-flux-dash": "^1.1.8",
+### Dependencias por proyecto, vendor.bundle.js:
+ ```
+ QUIZ APP:
+    "@4geeksacademy/react-flux-dash": "^1.1.8",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.8",
@@ -82,26 +81,11 @@ Search and display any student external profile
     "react-dom": "^16.0.0",
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"``
-
-    to do:
-    * upgrade a react-flux-dash LISTO
-    * unificar/upgrade versiones de bootstrap LISTO
-    * remover bootstrapjs LISTO
-    * remover jquery LISTO
-    * remover react-ace LISTO
-    * remover popperjs LISTO
-    * upgrade a dotenv NO LO TIENE
-    * actualizar react y react-dom ultimaV LISTO
-    * flux 3.1.3 de estar en esa version LISTO EN ESA VERSION
-    * moment a ultima version LISTO
-    * agregar react-polyfills a todos YA ESTA AGREGADO
-    * agregar prop-types a todos LISTO
-    - quitar fontawesome de vendor y agregarlo a bundle
-
-    REPLIT-MAKER:
-
-    ``"@4geeksacademy/react-flux-dash": "^3.0.2",
+    "react-router-dom": "^4.2.2"
+```
+```
+REPLIT-MAKER:
+    "@4geeksacademy/react-flux-dash": "^3.0.2",
     "@breathecode/breathecode-cli": "^1.0.1",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
@@ -121,27 +105,11 @@ Search and display any student external profile
     "react-dom": "^16.0.0",
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"``
-
-    to do:
-    * upgrade a react-flux-dash LISTO
-    * unificar/upgrade versiones de bootstrap LISTO
-    * remover bootstrapjs LISTO
-    * remover jquery LISTO
-    * remover react-ace LISTO
-    * remover popperjs de todos los proyectos LISTO
-    * upgrade a dotenv ESTA EN SU ULT VERSION
-    * actualizar react y react-dom ultimaV LISTO
-    * actualizar react y react-router ultimaV LISTO
-    * flux 3.1.3 de estar en esa version ESTA EN SU ULT VERSION
-    * moment a ultima version LISTO
-    * agregar react-polyfills a todos LISTO
-    * agregar react-protypes a todos LISTO
-    * quitar fontawesome de vendor y agregarlo a bundle SE DEJARA EN EL BUNDLE
-
-    SYLLABUS-MAKER:
-
-    ``"@4geeksacademy/react-flux-dash": "^1.1.8",
+    "react-router-dom": "^4.2.2"
+```
+```
+SYLLABUS-MAKER:
+    "@4geeksacademy/react-flux-dash": "^1.1.8",
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-regular": "^5.0.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.8",
@@ -158,27 +126,11 @@ Search and display any student external profile
     "react-dom": "^16.0.0",
     "react-polyfills": "0.0.1",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"``
-
-    to do:
-    * upgrade a react-flux-dash
-    * unificar/upgrade versiones de bootstrap LISTO
-    * remover bootstrapjs de todos los proyectos
-    * remover jquery de todos los proyectos LISTO
-    * remover react-ace de todos los proyectos LISTO
-    * remover popperjs de todos los proyectos LISTO
-    * upgrade a dotenv NO ESTA
-    * actualizar react y react-dom ultimaV LISTO
-    * actualizar react y react-router ultimaV LISTO
-    * flux 3.1.3 de estar en esa version ESTA EN LA ULT VERSION
-    * moment a ultima version LISTO
-    * agregar react-polyfills a todos LISTO
-    * agregar react-protypes a todos LISTO
-    * quitar fontawesome de vendor y agregarlo a bundle SE DEJARA EN EL BUNDLE
-
-    NPS:
-    
-    ``"bootstrap": "^4.0.0-beta.2",
+    "react-router-dom": "^4.2.2"
+```
+```
+ NPS:
+    "bootstrap": "^4.0.0-beta.2",
     "dotenv-webpack": "^1.5.5",
     "events": "^1.1.1",
     "flux": "^3.1.3",

@@ -98,6 +98,7 @@
 			"technologies": ["Bootstrap"]
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"description": "And God created the coding weekends - the perfect place to practice, share and collaborate with your classmates.",
 			"instructions": "Students must finish all pending projects!"
 		}]
@@ -175,6 +176,7 @@
 		}, 
 		{
 			"label": "Weekend",
+			"weekend": true,
 			"description": "It has been two crazy weeks, thank God we have another coding weekend to keep up and practice.",
 			"instructions": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects through the online platform."
 		}]
@@ -243,6 +245,7 @@
 		}, 
 		{
 			"label": "Weekend",
+			"weekend": true,
 			"description": "Saturdays are a great oportunity to work all day on your coding skills with extra lessons without extra charges. You will only sacrifice 14 Saturdays and your life will change forever.",
 			"instructions": "During the weekend, students must finish all the replits"
 		}]
@@ -310,6 +313,7 @@
 			"technologies": ["SCRUM", "User Stories", "Kanban", "Agile Methodologies"]
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"description": "Every student, partner, teacher and alumni is invited to the academy on Saturdays, it is an oportunity to network and get some inspiration!",
 			"instructions": "Finish the To-Do List with React and the Project User Stories",
 			"homework": "Finish the To-Do List with React and the Project User Stories"
@@ -368,6 +372,7 @@
 			"technologies": ["Flux", "NPM", "React Router", "React", "MVC"]
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"description": "Now that you are working on the final project, it is the best time to meet with your partner to work on the weekends",
 			"instructions": "Student Projects Flux.Views must be finished by next class"
 		}]
@@ -407,6 +412,7 @@
 			"homework": "Students must finish the contact list and start fluxifying their project"
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"description": "Yes! Another great weekend to keep becoming a developer",
 			"instructions": "Students must finish the AJAX Replits",
 			"homework": "Finish your project Flux.Views"
@@ -432,6 +438,7 @@
 			"homework": "Students must deliver all previous assignments"
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"instructions": "Finish the assignments with students",
 			"description": "Practice everything you've learned"
 		}]
@@ -471,6 +478,7 @@
 			"homework": "Students must finish the Contact Management Application"
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"description": "And here we go again, perfect saturday to work on the project!",
 			"instructions": "As homework students must review the Lessons and Videos about Python, Django-Rest"
 		}]
@@ -536,6 +544,7 @@
 			"technologies": ["ORM", "Django", "MySQL", "PHPMyAdmin"]
 		}, {
 			"label": "Weekend",
+			"weekend": true,
 			"instructions": "From now on repetition is key, start every class reviewing the development workflow, help students finish their project and motivate them until the end!",
 			"description": "We know you are really overwhelmed by the incredible amount of information, the next few weeks are about practice, practice, and practice! It's is time to become a master in software development"
 		}]
