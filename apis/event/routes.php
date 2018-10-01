@@ -158,8 +158,8 @@ function addAPIRoutes($api){
 	$api->put('/', function(Request $request, Response $response, array $args) use ($api) {
         $parsedBody = $request->getParsedBody();
         
-        $status = $api->optional($parsedBody,'status')->smallString();
-        if($status) throw new Exception('The status can only be a draft, you can later update the shift status on another request', 400);
+        // $status = $api->optional($parsedBody,'status')->smallString();
+        // if($status) throw new Exception('The status can only be a draft, you can later update the shift status on another request', 400);
         
         $desc = $api->validate($parsedBody,'description')->bigString();
         $title = $api->validate($parsedBody,'title')->smallString();
