@@ -3,7 +3,7 @@
 # ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128) Image API - Breathe Code
 HOST:</span> https://assets.breatheco.de/apis/img
 
-## Get list of images in JSON
+## Get list of all images in JSON ([preview](/apis/img/images.php))
 
 ```
 [GET] /apis/img/images.php
@@ -58,6 +58,10 @@ Params:
 
 ## Examples
 
+Get list off all images
+[/apis/img/images.php](/apis/img/images.php)
+Get one image in a particular size
+[/apis/img/images.php?blob&tags=bobdylan&size=200](/apis/img/images.php?blob&tags=bobdylan&size=200)
 Get the breathecode logo in 3 sizes
 [/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
 [/apis/img/images.php?blob&random&cat=icon&tags=breathecode,16](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
