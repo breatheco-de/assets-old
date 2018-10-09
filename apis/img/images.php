@@ -65,9 +65,10 @@ function isImg($path){
 }
 
 function printFile($files){
-	
-    if ($files and count($files)>0 and file_exists($files[0]['url'])) {
-		$file = $files[0];
+
+	$file = $files;
+	if(isset($files[0])) $file = $files[0];
+    if ($file) {
         header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
         header("Cache-Control: public"); // needed for internet explorer
         header("Content-Type: ".mime_content_type($file['url']));
