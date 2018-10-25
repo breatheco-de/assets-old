@@ -14,44 +14,44 @@ export default class ShowDetails extends React.Component{
             listUsersInEvent: [],
             showList: false,
             capacityEvent: ''
-        }
+        };
     }
 
     componentDidMount(){
         this.getAllUsersInEvent();
-        console.log(this.props.token)
+        console.log(this.props.token);
     }
 
     //Se muestra la lista de asistentes al ingresar al detalle del evento
     getAllUsersInEvent(){
         const endpoint = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin";
         fetch(endpoint)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            if(data.length > 0){
-                //Ordenar de mayor a menor
-                data.sort((a, b) => {
-                    return b.id - a.id;
-                });
-                this.setState({
-                    usersChecked: data
-                })
-                this.setState({
-                    listUsersInEvent: data,
-                    showList: true
-                })
-            }else{
-                this.setState({
-                    showList: false
-                })
-
-            }
-        })
-        .catch((error) => {
-            console.log('error', error);
-        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                if(data.length > 0){
+                    //Ordenar de mayor a menor
+                    data.sort((a, b) => {
+                        return b.id - a.id;
+                    });
+                    this.setState({
+                        usersChecked: data
+                    });
+                    this.setState({
+                        listUsersInEvent: data,
+                        showList: true
+                    });
+                }else{
+                    this.setState({
+                        showList: false
+                    });
+    
+                }
+            })
+            .catch((error) => {
+                console.log('error', error);
+            });
     }
 
     usersInEvent(data){
@@ -63,7 +63,7 @@ export default class ShowDetails extends React.Component{
         this.setState({
             listUsersInEvent: data,
             showList: false
-        })
+        });
     }
 
     render(){
@@ -81,6 +81,6 @@ export default class ShowDetails extends React.Component{
                     data={this.state.listUsersInEvent} 
                     showList={this.state.showList}/>
             </div>
-        )
+        );
     }
 }

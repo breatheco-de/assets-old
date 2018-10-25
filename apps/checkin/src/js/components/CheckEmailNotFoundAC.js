@@ -1,8 +1,5 @@
 import React from 'react';
-import {Notify, Notifier} from '@breathecode/react-notifier';
-import Empty from './message/Empty';
-import Success from './message/Success';
-import Warning from './message/warning';
+import {Notify} from 'bc-react-notifier';
 
 export default class CheckEmailNotFoundAC extends React.Component{
     constructor(props){
@@ -17,7 +14,7 @@ export default class CheckEmailNotFoundAC extends React.Component{
             invalidClassLast: '',
             showFormRegister: false,
             disabledButton: false
-        }
+        };
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -26,11 +23,11 @@ export default class CheckEmailNotFoundAC extends React.Component{
                 email: nextProps.email,
                 first_name: nextProps.first_name,
                 idEvent: nextProps.idEvent
-            }
+            };
         }else {
             return {
                 idEvent: nextProps.idEvent
-            }
+            };
         }
         return null;
     }
@@ -41,7 +38,7 @@ export default class CheckEmailNotFoundAC extends React.Component{
         //Se desabilita el boton de checkin en la peticion al api
         this.setState({
             disabledButton: true
-        })
+        });
 
         const endpointRegisterUserAC = process.env.BREATHECODE+"/active_campaign/user?access_token="+this.props.token;
         const endpointCheckinEvent = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin?access_token="+this.props.token;
@@ -77,21 +74,15 @@ export default class CheckEmailNotFoundAC extends React.Component{
                         this.setState({
                             status: '200',
                             disabledButton: false
-                        })
+                        });
                         return response.json();
                     }else{
                         throw response;
                     }
                 })
                 .then((data)=>{
-                    if(this.props.numberOfUsersInEvent > this.props.capacityEvent){
-                        let noti = Notify.add('info', Warning, ()=>{
-                            noti.remove();
-                        }, 3000);    
-                    }
-                    let noti = Notify.add('info', Success, ()=>{
-                        noti.remove();
-                    }, 3000);
+                    if(this.props.numberOfUsersInEvent > this.props.capacityEvent) Notify.info("The user was checked in, but beware that the event is full already.");
+                    else Notify.success('The user was successfully checked in');
                     this.props.hiddenFormRegister();
                     this.props.showListUsersInEvent();
                 })
@@ -99,39 +90,27 @@ export default class CheckEmailNotFoundAC extends React.Component{
                     //No chekeao el usuario creado en el evento
                     this.setState({
                         disabledButton: false
-                    })
-                })
+                    });
+                });
             })
             .catch((error)=>{
                 //No registro el usuario en activeCampaing
                 this.setState({
                     disabledButton: false
-                })
+                });
                 console.log('error', error);
-            })
+            });
 
         //Se condiciona si el campo esta vacio para mostrar rojo el input
         }else if(this.state.email.length == 0){
-            this.setState({
-                invalidClassEmail:'is-invalid'
-            })
-            let noti = Notify.add('info', Empty, ()=>{
-                noti.remove();
-            }, 3000);
+            this.setState({ invalidClassEmail:'is-invalid' });
+            Notify.error('The email is empty');
         }else if(this.state.first_name.length == 0){
-            this.setState({
-                invalidClassFirst:'is-invalid'
-            });
-            let noti = Notify.add('info', Empty, ()=>{
-                noti.remove();
-            }, 3000);
+            this.setState({ invalidClassFirst:'is-invalid' });
+            Notify.error('The first_name is empty');
         }else if(this.state.last_name.length == 0){
-            this.setState({
-                invalidClassLast:'is-invalid'
-            })
-            let noti = Notify.add('info', Empty, ()=>{
-                noti.remove();
-            }, 3000);
+            this.setState({ invalidClassLast:'is-invalid' });
+            Notify.error('The last_name is empty');
         }
     }
 
@@ -144,7 +123,7 @@ export default class CheckEmailNotFoundAC extends React.Component{
         : this.setState({
             email: event.target.value,
             invalidClassEmail: 'is-invalid'
-        })
+        });
     }
 
     handleChangeInputFirstName(event){
@@ -168,7 +147,7 @@ export default class CheckEmailNotFoundAC extends React.Component{
         : this.setState({
             last_name: event.target.value,
             invalidClassLast: 'is-invalid'
-        })
+        });
     }
 
     cancelForm(){
@@ -235,6 +214,6 @@ export default class CheckEmailNotFoundAC extends React.Component{
                     </div>
                 </div>
                 </div>
-            )
+            );
     }
 }

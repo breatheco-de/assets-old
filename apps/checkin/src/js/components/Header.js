@@ -1,6 +1,4 @@
-import React from 'React';
-
-import rigoImage from '../../img/logo.png';
+import React from 'react';
 
 export default class Header extends React.Component{
     constructor(props){
@@ -13,7 +11,7 @@ export default class Header extends React.Component{
                 <div className="col-md-12">    
                     <nav className="navbar navbar-light bg-light">
                         <a className="navbar-brand" href="#">
-                            <img src={rigoImage} width="30" height="30" className="d-inline-block align-top mr-2" alt="" />
+                            <img src="http://assets.breatheco.de/apis/img/images.php?blob&cat=icon&tags=breathecode" width="30" height="30" className="d-inline-block align-top mr-2" alt="" />
                             Event Checkin - BreatheCode
                         </a>
                         {(this.props.backToHome) ?

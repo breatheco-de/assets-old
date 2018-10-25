@@ -1,11 +1,6 @@
 import React from 'react';
-import {Notify, Notifier} from '@breathecode/react-notifier';
-import Success from './message/Success';
-import NotFind from './message/NotFind';
-import UserRegistered from './message/UserRegistered';
+import {Notify, Notifier} from 'bc-react-notifier';
 import CheckEmailNotFoundAC from './CheckEmailNotFoundAC';
-import Warning from './message/warning';
-import MissingToken from './message/MissingToken';
 
 export default class Checkin extends React.Component{
     constructor(props){
@@ -29,7 +24,7 @@ export default class Checkin extends React.Component{
             status: '',
             error: null,
             statusBreathecode: ''
-        }
+        };
     }
 
     componentDidMount(){
@@ -46,11 +41,11 @@ export default class Checkin extends React.Component{
         })
         .then((data) => {
             const numbers = data.map((data, key)=>{
-                return key
-            })
+                return key;
+            });
             this.setState({
                 numberOfUsersInEvent: numbers.length
-            })
+            });
         })
         .catch((error) => {
             console.log('error', error);
@@ -66,24 +61,24 @@ export default class Checkin extends React.Component{
         })
         .then((data) => {
             const capacityEvent = data.filter((c)=> c.id == this.state.idEvent).map((c, k)=>{
-                return c.capacity
-            })
+                return c.capacity;
+            });
 
             this.setState({
                 capacityEvent: capacityEvent[0]
-            })
+            });
         })
         .catch((error) => {
             console.log('error', error);
             this.setState({error});
-        })
+        });
     }
 
     //Mostrar y ocultar form para registrar usuarios a eventos
     showFormCheckin(){
         this.setState({
             showFormCheckin: !this.state.showFormCheckin
-        })
+        });
     }
 
     //Se registra usuario en evento y se envia a ListChecked lista de asistentes actualizada
@@ -97,7 +92,7 @@ export default class Checkin extends React.Component{
             //Se desabilita el boton de checkin en la peticion al api
             this.setState({
                 disabledButton: true
-            })
+            });
 
             //checkin de active campaing
             fetch(endpointCheckinEvent, {
@@ -111,27 +106,27 @@ export default class Checkin extends React.Component{
                     this.setState({
                         status: '200',
                         disabledButton: false
-                    })
+                    });
                     return response.json();
                 //Algo esta mal en el correo o ya se registro
                 }else if(response.status == 400){
                     this.setState({
                         status: '400',
                         disabledButton: false
-                    })
+                    });
                     return response.json();
                 //No existe el correo, no esta registrado en AC
                 }else if(response.status == 401){
                     this.setState({
                         status: '401',
                         disabledButton: false
-                    })
+                    });
                     return response.json();
                 }else if(response.status == 403){
                     this.setState({
                         status: '403',
                         disabledButton: false
-                    })
+                    });
                     return response.json();
                 }else{
                     throw response;
@@ -140,17 +135,9 @@ export default class Checkin extends React.Component{
             //Entra aqui si encuentra en ActiveCampaing y se guarda
             .then((data) => {
                 if(this.state.status == 200){
-                    if(this.state.numberOfUsersInEvent > this.state.capacityEvent){
-                        let noti = Notify.add('info', Warning, ()=>{
-                            noti.remove();
-                        }, 3000);    
-                    }
-                    let noti = Notify.add('info', Success, ()=>{
-                        noti.remove();
-                    }, 3000);
-                    this.setState({
-                        valueInput: '',
-                    })
+                    if(this.state.numberOfUsersInEvent > this.state.capacityEvent) Notify.info('The user was successfully checked in but beware that the event is full');    
+                    else Notify.success('The user was successfully checked in');    
+                    this.setState({ valueInput: '' })
                     this.getAllUsersInEventUpdated();
                 }else if(this.state.status == 400){
                     Notify.error(data.msg || data);
@@ -158,25 +145,17 @@ export default class Checkin extends React.Component{
                         valueInput: ''
                     })
                 }else if(this.state.status == 403){
-                    let noti = Notify.add('info', MissingToken, ()=>{
-                        noti.remove();
-                    }, 3000);
-                    this.setState({
-                        valueInput: ''
-                    })
+                    Notify.error("Missing or invalid token");
+                    this.setState({ valueInput: '' })
                 }else if(this.state.status == 401){
                     //El usuario no esta registrado en AC, se va a consultar en breathecode
                     return fetch(endpointSearchBreathecode)
                     .then((response)=>{
                         if(response.status == 200){
-                            this.setState({
-                                statusBreathecode: '200'
-                            })
+                            this.setState({ statusBreathecode: '200' });
                             return response.json();
                         }else if(response.status == 404){
-                            this.setState({
-                                statusBreathecode: '404'
-                            })
+                            this.setState({ statusBreathecode: '404' });
                             return response.json();
                         }
                     })
@@ -185,22 +164,20 @@ export default class Checkin extends React.Component{
                         if(this.state.statusBreathecode == 200){
                             this.setState({
                                 disabledButton: false
-                            })
-                            let noti = Notify.add('info', NotFind, ()=>{
-                                noti.remove();
-                            }, 3000);
+                            });
+                            Notify.info('This is what we found about this user');
                             this.setState({
                                 first_name: data.full_name,
                                 email: data.username,
                                 showFormRegister: true,
                                 showFormCheckin: false,
-                            })
+                            });
                         }else if(this.state.statusBreathecode == 404){
                             //Oculta el form de checkin al mostrar el modal de pregunta
                             this.setState({
                                 showFormCheckin: false,
                                 disabledButton: false
-                            })
+                            });
                             
                             const ModalNotFind = ({ onConfirm }) => (
                                 <div className="modal-not-found">
@@ -218,25 +195,25 @@ export default class Checkin extends React.Component{
                                         first_name: '',
                                         email: '',
                                         showFormRegister: true,
-                                    })
+                                    });
                                 }else{
                                     this.setState({
                                         showFormRegister: false,
                                         showFormCheckin: true,
                                         valueInput: ''
-                                    })
+                                    });
                                 }
                                 noti.remove();
                             }, 9999999999999);
                         }
-                    })
+                    });
                 }
             })
             //No esta breathecode tampoco
             .catch((error)=>{
                 console.log('error', error);
                 this.setState({error});
-            })
+            });
     }
 
     getAllUsersInEventUpdated(){

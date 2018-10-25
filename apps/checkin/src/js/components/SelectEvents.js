@@ -3,11 +3,11 @@ var moment = require('moment');
 
 export default class SelectEvents extends React.Component{
     constructor (props) {
-        super(props)
+        super(props);
         this.state = {
             dataEventsToDay: [],
             eventSelected: []
-        }
+        };
     }
 
     componentDidMount(){
@@ -33,17 +33,17 @@ export default class SelectEvents extends React.Component{
                     city_slug: c.city_slug,
                     location_slug: c.location_slug,
                     event_date: c.event_date
-                }
+                };
             });
             console.log(eventFiltered);
 
             this.setState({
                 dataEventsToDay: eventFiltered
-            })
+            });
         })
         .catch((error) => {
             console.log('error', error);
-        })
+        });
     }
 
     handleSubmit(event){
@@ -57,7 +57,7 @@ export default class SelectEvents extends React.Component{
 
         this.setState({
             eventSelected: eventDetail
-        })
+        });
     }
 
     render(){
@@ -65,7 +65,7 @@ export default class SelectEvents extends React.Component{
             return (
                 <option key={key} value={value.id}>{value.title}</option>
             )
-        })
+        });
 
         return(
         <div className="row full-width no-margin">
