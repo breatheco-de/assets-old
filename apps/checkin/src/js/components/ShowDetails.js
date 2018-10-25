@@ -24,7 +24,7 @@ export default class ShowDetails extends React.Component{
 
     //Se muestra la lista de asistentes al ingresar al detalle del evento
     getAllUsersInEvent(){
-        const endpoint = process.env.BREATHECODE+this.state.idEvent+"/checkin";
+        const endpoint = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin";
         fetch(endpoint)
         .then((response) => {
             return response.json();

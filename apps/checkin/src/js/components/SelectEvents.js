@@ -15,7 +15,7 @@ export default class SelectEvents extends React.Component{
     }
     
     getAllEventsToDay(){
-        const endpoint = process.env.UPCOMING;
+        const endpoint = process.env.BREATHECODE+'/all?status=upcoming';
         fetch(endpoint)
         .then((response) => {
             return response.json();

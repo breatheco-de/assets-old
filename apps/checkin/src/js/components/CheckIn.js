@@ -90,9 +90,9 @@ export default class Checkin extends React.Component{
     checkinUserToEvent(event){
         const existingUsers = this.state.usersChecked.filter((c) => c.email == this.state.valueInput );
         event.preventDefault();
-            const endpointCheckinEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin?access_token="+this.props.token;
-            const endpointBreathecode = process.env.BREATHECODE+"user/"+this.state.valueInput+"?access_token="+this.props.token;
-            const endpointSearchBreathecode = process.env.BREATHECODE+'user/'+this.state.valueInput+'?access_token='+this.props.token;
+            const endpointCheckinEvent = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin?access_token="+this.props.token;
+            const endpointBreathecode = process.env.BREATHECODE+"/user/"+this.state.valueInput+"?access_token="+this.props.token;
+            const endpointSearchBreathecode = process.env.BREATHECODE+'/user/'+this.state.valueInput+'?access_token='+this.props.token;
 
             //Se desabilita el boton de checkin en la peticion al api
             this.setState({
@@ -240,7 +240,7 @@ export default class Checkin extends React.Component{
     }
 
     getAllUsersInEventUpdated(){
-        const endpointGetAllUsersInEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin"
+        const endpointGetAllUsersInEvent = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin"
             
             fetch(endpointGetAllUsersInEvent)
             .then((response) => {
@@ -320,7 +320,8 @@ export default class Checkin extends React.Component{
                     {(this.state.showFormRegister) ?
                         <CheckEmailNotFoundAC 
                             idEvent={this.state.idEvent}
-                            email={this.state.valueInput} 
+                            email={this.state.valueInput}
+                            token={this.props.token}
                             first_name={this.state.first_name}
                             capacityEvent={this.state.capacityEvent}
                             numberOfUsersInEvent={this.state.numberOfUsersInEvent}

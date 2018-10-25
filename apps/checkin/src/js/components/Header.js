@@ -18,8 +18,7 @@ export default class Header extends React.Component{
                         </a>
                         {(this.props.backToHome) ?
                             <div className="ml-auto">
-                                {/* <a href={process.env.STARTOFPROJECT}> */}
-                                <a onClick={()=> location.reload()}>
+                                <a onClick={()=> window.location.reload()}>
                                     <button 
                                         type="button" 
                                         className="btn btn-primary"

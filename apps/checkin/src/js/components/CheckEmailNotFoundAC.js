@@ -43,8 +43,8 @@ export default class CheckEmailNotFoundAC extends React.Component{
             disabledButton: true
         })
 
-        const endpointRegisterUserAC = process.env.ADD_USER_AC+"?access_token="+process.env.TOKEN;
-        const endpointCheckinEvent = process.env.ACTIVECAMPAING+this.state.idEvent+"/checkin?access_token="+process.env.TOKEN;
+        const endpointRegisterUserAC = process.env.BREATHECODE+"/active_campaign/user?access_token="+this.props.token;
+        const endpointCheckinEvent = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin?access_token="+this.props.token;
 
         //Si los input en el form estan llenos, se hace el POST
         if(this.state.email.length != 0 && this.state.first_name.length != 0 && this.state.last_name.length != 0){
