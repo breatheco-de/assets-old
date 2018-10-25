@@ -42,7 +42,7 @@ function addAPIRoutes($api){
 		        BC::setToken($token->access_token);
 		        $user = BC::getMe();
 		        
-            	if($user->type == 'student' && $user->status == 'blocked'){
+            	if($user->type == 'student' && ($user->status == 'blocked' || $user->status == 'student_dropped')){
             	   return $response->withJson([
             	        'msg'=> 'You access to the BreatheCode platform has been revoked'
             	   ])->withStatus(403);
