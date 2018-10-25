@@ -1,0 +1,17 @@
+[
+   {
+      "ID":9,
+      "post_content":"The nicest Meetup ever",
+      "post_title":"Tech Enthusiasts"
+   },
+   {
+      "ID":10,
+      "post_content":"The geeks' Meetup",
+      "post_title":"Let's code"
+   },
+   {
+      "ID":9,
+      "post_content":"UFO meeting group",
+      "post_title":"Aliens, aliens everywhere"
+   }
+]
