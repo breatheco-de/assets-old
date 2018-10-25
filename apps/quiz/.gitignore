@@ -52,5 +52,8 @@ Thumbs.db
 # ignore node/grunt dependency directories
 node_modules/
 
+public/*
+!public/.gitkeep
+
 !.gitkeep
 !.htaccess

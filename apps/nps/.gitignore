@@ -56,5 +56,8 @@ node_modules/
 dist/*
 public-dev/*
 
+public/*
+!public/.gitkeep
+
 !.gitkeep
 !.htaccess
