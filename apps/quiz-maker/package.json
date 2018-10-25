@@ -4,15 +4,16 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "c9": "webpack-dev-server --mode development --open --host $IP --port 8080",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development"
+    "c9": "webpack-dev-server --mode development --open --host $IP --port $PORT",
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack --mode development --config webpack.dev.js",
+    "start": "webpack-dev-server --mode development --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.28.11",
+    "dotenv": "^6.0.0",
     "file-loader": "^1.1.11",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
@@ -32,6 +33,7 @@
     "bootstrap": "^4.1.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-polyfills": "0.0.1"
+    "react-polyfills": "0.0.1",
+    "webpack-merge": "^4.1.4"
   }
 }

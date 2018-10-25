@@ -142,8 +142,65 @@ SYLLABUS-MAKER:
     "react-flux-dash": "^1.1.4",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "recharts": "^1.0.0-beta.10"
-```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODE3MjEzNDVdfQ==
--->
+    "recharts": "^1.0.0-beta.10"``
+
+    to do:
+    * upgrade a react-flux-dash LISTO
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs de todos los proyectos NO ESTABA EN EL PROYECTO
+    * remover jquery de todos los proyectos LISTO
+    * remover react-ace de todos los proyectos LISTO
+    * remover popperjs de todos los proyectos NO ESTABA EN EL PROYECTO
+    * upgrade a dotenv NO ESTABA EN EL PROYECTO
+    * actualizar react y react-dom ultimaV LISTO
+    * actualizar react y react-router ultimaV LISTO
+    * flux 3.1.3 de estar en esa version ESTA EN LA ULTIMA VERSION
+    * moment a ultima version LISTO
+    * agregar react-polyfills a todos LISTO
+    * agregar react-protypes a todos LISTO
+    * quitar fontawesome de vendor y agregarlo a bundle SE DEJARA EN EL BUNDLE
+    
+    DA ERROR EN LA BUSQUEDAD
+
+    QUIZ-MAKER APP:
+
+    ``"babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"``
+
+    to do:
+    * unificar/upgrade versiones de bootstrap LISTO
+    * remover bootstrapjs de todos los proyectos NO ESTABA EN EL PROYECTO
+    * remover jquery de todos los proyectos LISTO
+    * remover react-ace de todos los proyectos NO ESTABA EN EL PROYECTO
+    * remover popperjs de todos los proyectos LISTO
+    * upgrade a dotenv NO ESTABA EN EL PROYECTO
+    * actualizar react y react-dom ultimaV LISTO
+    * actualizar react y react-router ultimaV NO ESTABA EN EL PROYECTO
+    * flux 3.1.3 de estar en esa version NO ESTABA EN EL PROYECTO
+    * moment a ultima version NO ESTABA EN EL PROYECTO
+    * agregar react-polyfills a todos LISTO
+    * agregar react-protypes a todos LISTO
+    * quitar fontawesome de vendor y agregarlo a bundle NO ESTA EN EL PROYECTO
+
+
+FUNCIONAMIENTO POR PROYECTO:
+
+1) NPS: Funcional.
+2) Quiz: Funcional
+3) Quiz-maker: Error con el CDN. ```Uncaught TypeError: Cannot read property 'call' of undefined```
+4) Replit maker: A veces falla, error reportado en github
+5) Syllabus-maker: Funcional
+
+
+
+
+quiz: sin cdn
+quiz-maker: cdn
+replit-maker: cdn
+syllabus-maker: sin cdn

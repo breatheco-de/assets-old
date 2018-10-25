@@ -1,16 +1,15 @@
-var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'src/js');
+var BUILD_DIR = path.resolve(__dirname, 'public');
 
 module.exports = {
-  entry: {
-    index: APP_DIR + '/index.js',
-  },
   output: {
     path: BUILD_DIR,
     filename: '[name].js'
+  },
+  entry: {
+    index: APP_DIR + '/index.js',
   },
   optimization: {
     splitChunks: {
@@ -53,9 +52,5 @@ module.exports = {
           }
         } //for images
   	]
-  },
-  devtool: 'source-map',
-  devServer: {
-    contentBase:  './dist',
   }
 };

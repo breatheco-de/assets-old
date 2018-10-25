@@ -1,14 +1,12 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
     './src/js/index.js'
   ],
   output: {
-    filename: '[name].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
   optimization: {
@@ -47,26 +45,7 @@ module.exports = {
         { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
     ]
   },
-  resolve: {
-    extensions: ['*', '.js']
-  },
-  devtool: "source-map",
-  devServer: {
-    contentBase:  './dist',
-    hot: true,
-    disableHostCheck: true,
-    historyApiFallback: true
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      Popper: 'popper.js',
-      jQuery: 'jquery',
-      // In case you imported plugins individually, you must also require them here:
-      Util: "exports-loader?Util!bootstrap/js/dist/util",
-      Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
-    }),
     new HtmlWebpackPlugin({
         favicon: '4geeks.ico',
         template: 'template.html'

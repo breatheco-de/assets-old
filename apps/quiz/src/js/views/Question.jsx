@@ -20,7 +20,7 @@ export default class Question extends Flux.View {
             rightQuestions: 0,
             seconds: 0,
             correctAnswer: null,
-            totalResults: null,
+            totalResults: null
         };
         this.timeLimit = null;
     }

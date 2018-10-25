@@ -1,3 +1,4 @@
+/* global process */
 import React from 'react';
 import Flux from "@4geeksacademy/react-flux-dash";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -15,7 +16,7 @@ export default class Layout extends Flux.View {
     render() {
         return (
             <div>
-                <BrowserRouter basename="/apps/quiz/">
+                <BrowserRouter basename={process.env.URL}>
                     <div>
                         <Switch>
                             <Route exact path="/:quiz_id" component={Quiz} />
