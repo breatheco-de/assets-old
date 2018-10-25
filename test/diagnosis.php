@@ -50,8 +50,6 @@
     
     $runner->addCheck(checkURL($assetsURL.'/activity/user/'.getSample('user')->username,'"full_name"'));
     
-    $runner->addCheck(checkURL($assetsURL.'/course-report/compare/full-stack','"4geeks"'));
-    
     $runner->addCheck(checkURL($assetsURL.'/event/all?type=4geeks_night','"description"'));
     // Add console reporter
     $runner->addReporter(new BasicConsole(80, true));
