@@ -5,10 +5,10 @@ module.exports = {
   entry: [
     './src/js/index.js'
   ],
-//   output: {
-//     filename: 'bundle.js',
-//     path: path.resolve(__dirname, 'public')
-//   },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'public')
+  },
   optimization: {
     splitChunks: {
         cacheGroups: {

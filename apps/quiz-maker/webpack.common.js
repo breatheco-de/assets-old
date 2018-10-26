@@ -4,10 +4,10 @@ module.exports = {
   entry: {
     index: path.resolve(__dirname, 'src/js/index.js'),
   },
-    output: {
-        path: path.resolve(__dirname, 'public'),
-        filename: '[name].js'
-    },
+  output: {
+      path: path.resolve(__dirname, 'public'),
+      filename: '[name].js'
+  },
   optimization: {
     splitChunks: {
         cacheGroups: {
