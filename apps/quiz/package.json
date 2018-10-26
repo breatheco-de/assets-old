@@ -26,13 +26,14 @@
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.5",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.4",
     "react-svg-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.9",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-merge": "^4.1.4",
+    "webpack-dev-server": "^3.1.10"
   },
   "babel": {
     "presets": [
@@ -55,7 +56,6 @@
     "react-dom": "^16.4.2",
     "react-polyfills": "0.0.1",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "webpack-merge": "^4.1.4"
+    "react-router-dom": "^4.3.1"
   }
 }

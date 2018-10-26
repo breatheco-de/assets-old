@@ -8,7 +8,7 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, 'public'),
         filename: '[name].js'
     },
-    mode: 'production',
+    mode: 'development',
     devtool: 'source-map',
     plugins: [
         new Dotenv({
