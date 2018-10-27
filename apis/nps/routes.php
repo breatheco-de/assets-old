@@ -5,12 +5,13 @@ require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
-use \BreatheCode\BCWrapper;
+use \BreatheCode\BCWrapper as BC;
 
+require('../BreatheCodeLogger.php');
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
 
-BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
-BCWrapper::setToken(BREATHECODE_TOKEN);
+BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
+BC::setToken(BREATHECODE_TOKEN);
 
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
@@ -26,7 +27,7 @@ function addAPIRoutes($api){
 		
 		$api->validate($args['user_id'])->int();
 		
-		$student = BCWrapper::getStudent(['student_id'=>$args['user_id']]);
+		$student = BC::getStudent(['student_id'=>$args['user_id']]);
 	    return $response->withJson($student);
 	});
 	
@@ -78,7 +79,12 @@ function addAPIRoutes($api){
 		$row->save();
 		
 		try{
-        	if(AC_INTEGRATION) $contact = \AC\ACAPI::trackEvent($email, 'nps_survey_answered', $score);
+			$user = BC::getUser(['user_id' => urlencode($email)]);
+	        BreatheCodeLogger::logActivity([
+	            'slug' => 'nps_survey_answered',
+	            'user' => ($user) ? $user : $email,
+	            'data' => $score
+	        ]);
 		}
 		catch(Exception $e)
 		{

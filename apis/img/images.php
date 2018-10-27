@@ -44,9 +44,12 @@ function filterImage($img){
 	array_pop($tags);
 	$img['tags'] = $tags;
 	
-	if(isset($_GET['tags']))
+	if(isset($_GET['tags']) || isset($_GET['tag']))
 	{
-		$tagArray = explode(',',$_GET['tags']);
+		$stringTags = '';
+		if(isset($_GET['tags'])) $stringTags = $_GET['tags'];
+		else if(isset($_GET['tag'])) $stringTags = $_GET['tag'];
+		$tagArray = explode(',', $stringTags);
 		foreach($tagArray as $t) if(!in_array($t,$tags)) return false;
 	}
 	
@@ -63,17 +66,35 @@ function isImg($path){
 
 function printFile($files){
 
-    if ($files and file_exists($files['url'])) {
-
+	$file = $files;
+	if(isset($files[0])) $file = $files[0];
+    if ($file) {
         header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
         header("Cache-Control: public"); // needed for internet explorer
-        header("Content-Type: ".mime_content_type($files['url']));
+        header("Content-Type: ".mime_content_type($file['url']));
         header("Content-Transfer-Encoding: Binary");
-        header("Content-Length:".filesize($files['url']));
-        echo file_get_contents($files['url']);
+        header("Content-Length:".filesize($file['url']));
+        
+		if(isset($_GET['size']))
+		{
+			$sizeArray = explode(',',$_GET['size']);
+			if(isset($sizeArray[0])){
+				$width = $sizeArray[0];
+				if(isset($sizeArray[1])) $heigh = $sizeArray[1];
+				else $heigh = 0;
+			}
+			else throw new Exception('Invalid Image Size');
+			// read the img
+			$image = new \Imagick($file['url']);
+			$image->scaleImage($width, $heigh);
+			echo $image->getImageBlob();
+		}
+        else echo file_get_contents($file['url']);
+        
         die();
     } else {
-        die("Error: File not found.");
+    	header("HTTP/1.0 404 Not Found");
+        die("Error: Image not found.");
     } 
 }
 

@@ -25,17 +25,17 @@ export default class Layout extends Flux.View {
   render() {
     
     let errors = this.state.errors.map((msg,i) => (<li key={i}>{ msg }</li>));
-    
+    const basename = process.env.BASENAME;
     return (
       <div className="container-fluid text-center">
         { (errors.length>0) ? (<div className="alert alert-danger mt-5">{errors}</div>) : ''}
-        <BrowserRouter basename={process.env.BASENAME}>
+        <BrowserRouter basename={basename}>
           <div>
             <Switch>
-              <Route exact path="/survey/:id" component={Survey} />
-              <Route exact path="/confirm" component={Confirm} />
-              <Route exact path="/thanks" component={Thanks} />
-              <Route exact path="/results" component={Results} />
+              <Route path="/survey/:id" component={Survey} />
+              <Route path="/confirm" component={Confirm} />
+              <Route path="/thanks" component={Thanks} />
+              <Route path="/results" component={Results} />
               <Route render={() => (<h1>Not found!</h1>)} />
             </Switch>
           </div>

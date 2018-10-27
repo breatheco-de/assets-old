@@ -56,6 +56,9 @@ node_modules/
 dist/*
 !dist/index.html
 
+public/*
+!public/.gitkeep
+
 !.gitkeep
 !.htaccess
 !.eslintrc

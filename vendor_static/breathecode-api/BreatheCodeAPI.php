@@ -165,7 +165,7 @@ class BCWrapper{
     }
     
     private static function validate($params,$key){
-        if(empty($params[$key])) throw new Exception('Undefined required parameter '.$key);
+        if(empty($params[$key])) throw new Exception('Undefined required parameter '.$key, 400);
     }
     
     public static function autenticate($username, $password, $scopes){

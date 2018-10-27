@@ -1,5 +1,4 @@
 import React from 'react';
-import 'jquery';
 
 export default class FormCohort extends React.Component{
     constructor(props){

@@ -12,6 +12,7 @@ php_errorlog
 !package.json
 !webpack.production.js
 !webpack.development.js
+.env.sample
 
 # track readme.md in the root (i.e. do NOT ignore it)
 !README.md
@@ -52,7 +53,11 @@ Thumbs.db
 node_modules/
 
 # ignore the dist directory were our bundle files are going to be
+dist/*
+public-dev/*
+
 public/*
+!public/.gitkeep
 
 !.gitkeep
 !.htaccess

@@ -5,12 +5,13 @@ require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
-use \BreatheCode\BCWrapper;
+use BreatheCode\BCWrapper as BC;
 
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
+require('../BreatheCodeLogger.php');
 
-BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
-BCWrapper::setToken(BREATHECODE_TOKEN);
+BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
+BC::setToken(BREATHECODE_TOKEN);
 
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
@@ -25,18 +26,22 @@ function addAPIRoutes($api){
 		if(isset($_GET['type'])) $content = $content->where('type',explode(",",$_GET['type']));
 		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
 		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
-		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 		if(isset($_GET['status'])){
 			if($_GET['status']=='upcoming') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date >= date("Y-m-d"));
 				});
 			} else if($_GET['status']=='past') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date < date("Y-m-d"));
 				});
 			} else {
 				$content = $content->where('status',explode(",",$_GET['status']));
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 			}
 		} 
 	    return $response->withJson($content);
@@ -49,18 +54,26 @@ function addAPIRoutes($api){
 		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
 		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
 		
-		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 		if(isset($_GET['status'])){
-			if($_GET['status']=='upcoming') 
+			if($_GET['status']=='upcoming') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+				
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date >= date("Y-m-d"));
 				});
-			if($_GET['status']=='past') 
+			}
+			else if($_GET['status']=='past') {
+				$content = $content->where('status','published');
+				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				$content = array_filter($content, function($evt){
 					return ($evt->event_date < date("Y-m-d"));
 				});
+			}
 		} 
 
+		if(!is_array($content)) $content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+		
 		if(isset($content[0])) return $response->withRedirect($content[0]->url); 
 		else{
 			$fallback = (isset($_GET['fallback'])) ? $_GET['fallback'] : null;
@@ -74,7 +87,7 @@ function addAPIRoutes($api){
         
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
 		
-		$row = $api->db['sqlite']->event()->fetch($args['event_id']);
+		$row = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
 
 		return $response->withJson($row);	
 	});
@@ -82,7 +95,7 @@ function addAPIRoutes($api){
 	$api->post('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
 		
-		$event = $api->db['sqlite']->event()->fetch($args['event_id']);
+		$event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
         
         $parsedBody = $request->getParsedBody();
         $desc = $api->optional($parsedBody,'description')->bigString();
@@ -134,7 +147,7 @@ function addAPIRoutes($api){
         
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
 		
-		$row = $api->db['sqlite']->event()->fetch($args['event_id']);
+		$row = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
 		if($row) $row->delete();
 		else throw new Exception('Event not found');
 		
@@ -144,6 +157,9 @@ function addAPIRoutes($api){
 
 	$api->put('/', function(Request $request, Response $response, array $args) use ($api) {
         $parsedBody = $request->getParsedBody();
+        
+        // $status = $api->optional($parsedBody,'status')->smallString();
+        // if($status) throw new Exception('The status can only be a draft, you can later update the shift status on another request', 400);
         
         $desc = $api->validate($parsedBody,'description')->bigString();
         $title = $api->validate($parsedBody,'title')->smallString();
@@ -183,6 +199,15 @@ function addAPIRoutes($api){
 	})
 		->add($api->auth());
 
+	$api->get('/user/{user_email}', function(Request $request, Response $response, array $args) use ($api) {
+        
+		if(empty($args['user_email'])) throw new Exception('Param user_email not found', 400);
+		
+		$user = BC::getUser(['user_id' => urlencode($args['user_email'])]);
+
+		return $response->withJson($user);	
+	})->add($api->auth());
+	
 	$api->get('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
         
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
@@ -195,12 +220,19 @@ function addAPIRoutes($api){
 	$api->put('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
         
         if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
+        $event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+        if(!$event) throw new Exception('Event not found', 401);
         
         $parsedBody = $request->getParsedBody();
         $email = $api->validate($parsedBody,'email')->email();
         
         $contact = \AC\ACAPI::getContactByEmail($email);
-        if(empty($contact)) throw new Exception('The user is not registered into Active Campaign', 400);
+        if(empty($contact)) throw new Exception('The user is not registered into Active Campaign', 401);
+        
+        $row = $api->db['sqlite']->event_checking()->where( 'event_id', $args['event_id'] )->fetchAll();
+		foreach($row as $checkin) 
+			if($checkin['email'] == $email) 
+				throw new Exception('The user has already checked in', 400);
         
         $props = [
 			'event_id' => $args['event_id'],
@@ -211,11 +243,40 @@ function addAPIRoutes($api){
 		$row = $api->db['sqlite']->createRow('event_checking', $props);
 		$row->save();
 		
-		\AC\ACAPI::trackEvent($email, 'public_event_attendance');
+		$user = null;
+		$trackOnBreathecode = true;
+		try{
+			$user = BC::getUser(['user_id' => urlencode($email)]);
+		}
+		catch(Exception $e){ $trackOnBreathecode = false; }
+        BreatheCodeLogger::logActivity([
+            'slug' => 'public_event_attendance',
+            'user' => ($user) ? $user : $email,
+            'track_on_log' => $trackOnBreathecode,
+            'data' => $event->title
+        ]);
 		
         return $response->withJson($row);
-	})
-		->add($api->auth());
+	})->add($api->auth());
+	
+	$api->post('/active_campaign/user', function(Request $request, Response $response, array $args) use ($api) {
+        
+        $parsedBody = $request->getParsedBody();
+        $email = $api->validate($parsedBody,'email')->email();
+        $firstName = $api->validate($parsedBody,'first_name')->smallString();
+        $lastName = $api->validate($parsedBody,'last_name')->smallString();
+        
+        $contact = \AC\ACAPI::getContactByEmail($email);
+        if(!empty($contact)) throw new Exception('The user is already registered on Active Campaign', 400);
+        
+        $contact = \AC\ACAPI::createContact($email, [
+    		"first_name"        => $firstName,
+    		"last_name"         => $lastName,
+    		"tags" => \AC\ACAPI::tag('event_signup')
+        ]);
+		
+        return $response->withJson(["status" => "ok"]);
+	})->add($api->auth());
 	
 	return $api;
 }

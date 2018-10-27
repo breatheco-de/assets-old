@@ -1,5 +1,4 @@
 import React from 'react';
-import 'jquery';
 
 export default class RowTitle extends React.Component{
     constructor(props){

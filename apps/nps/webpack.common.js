@@ -1,15 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
-const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/js/index.js', 
+    path.resolve(__dirname, './src/js/index.js')
   ],
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+  optimization: {
+    splitChunks: {
+        cacheGroups: {
+            commons: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendor',
+                chunks: 'all'
+            }
+        }
+    }
   },
   module: {
     rules: [
@@ -38,7 +44,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv(),
     new HtmlWebpackPlugin({
         title: 'Student Survey',
         favicon: 'bc-icon.ico',

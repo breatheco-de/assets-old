@@ -1,5 +1,20 @@
 import Flux from '@4geeksacademy/react-flux-dash';
 
+let _bcToken = null;
+let _assetsToken = null;
+export const loadTokens = () => {
+    var url = new URL(window.location.href);
+    _bcToken = url.searchParams.get("bc_token");
+    _assetsToken = url.searchParams.get("assets_token");
+    if(!_bcToken && !_assetsToken) console.warn("No bc_token or assets_token have been detected on the URL");
+};
+export const tokens = () => {
+    return {
+        bcToken: _bcToken,
+        assetsToken: _assetsToken
+    }
+}
+
 export const loadReplits = (cohort)=>{
     let endpoint = process.env.hostAssets+'/apis/replit/cohort/'+cohort;
     fetch(endpoint)

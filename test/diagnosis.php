@@ -48,6 +48,9 @@
     $runner->addCheck(checkURL($assetsURL.'/syllabus/full-stack','"label"'));
     $runner->addCheck(checkURL($assetsURL.'/syllabus/web-development','"label"'));
     
+    $runner->addCheck(checkURL($assetsURL.'/activity/user/'.getSample('user')->username,'"full_name"'));
+    
+    $runner->addCheck(checkURL($assetsURL.'/event/all?type=4geeks_night','"description"'));
     // Add console reporter
     $runner->addReporter(new BasicConsole(80, true));
     

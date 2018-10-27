@@ -1,4 +1,5 @@
 import React from 'react';
+import {tokens} from '../action';
 
 export default class BannerHeader extends React.Component{
     constructor(props){
@@ -6,7 +7,7 @@ export default class BannerHeader extends React.Component{
         this.state = {
             messageSuccess: null,
             messageFailure: null
-        }
+        };
     }
 
     handleStructureJson(filename){
@@ -27,7 +28,7 @@ export default class BannerHeader extends React.Component{
 
     postApi(){
         let slug = this.props.createJson[0];
-        let url = process.env.hostAssets+'/apis/replit/cohort/'+slug+'?access_token='+process.env.assetsToken;
+        let url = process.env.hostAssets+'/apis/replit/cohort/'+slug+'?access_token='+tokens().assetsToken;
         fetch(url, {
             headers: {"content-type": "application/json"},
             method: 'POST',  

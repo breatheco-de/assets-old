@@ -41,16 +41,24 @@ function addAPIRoutes($api){
 		    {
 		        BC::setToken($token->access_token);
 		        $user = BC::getMe();
+		        
+            	if($user->type == 'student' && ($user->status == 'blocked' || $user->status == 'student_dropped')){
+            	   return $response->withJson([
+            	        'msg'=> 'You access to the BreatheCode platform has been revoked'
+            	   ])->withStatus(403);
+            	}
+		        
 		        $user->access_token = $token->access_token;
 		        if($user->type == 'student'){
 		        	$user->cohorts = $user->full_cohorts;
 		        }
 		        $user->scope = $token->scope;
+		        $user->assets_token = $api->jwt_encode($user->id);
 		        
 		        try{
-		            BreatheCodeLogger::logActivity($username, [
+		            BreatheCodeLogger::logActivity([
 		                'slug' => 'breathecode_login',
-		                'user_id' => $user->id
+		                'user' => $user
 		            ]);
 		        }catch(Exception $e){  }
 		        
@@ -91,8 +99,10 @@ function addAPIRoutes($api){
                 "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
             ]);
             if($contact){
-                ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
-                ACAPI::trackEvent($username, 'online_platform_registration');
+                BreatheCodeLogger::logActivity([
+                    'slug' => 'online_platform_registration',
+                    'user' => $user
+                ]);
             } 
             
             return $response->withJson($user)->withStatus(200);

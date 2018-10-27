@@ -3,7 +3,7 @@
 # ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128) Image API - Breathe Code
 HOST:</span> https://assets.breatheco.de/apis/img
 
-## Get list of images in JSON
+## Get list of all images in JSON ([preview](/apis/img/images.php))
 
 ```
 [GET] /apis/img/images.php
@@ -56,14 +56,27 @@ Params:
 ]
 ```
 
-## Examples
+## Resize
 
+Append the `size` variable to the querstring and specify the with,height in that order, separated by comma `,`.
+```
+[GET] /apis/img/images.php?size=100,200
+
+//You can combine it witha ny other querystring variable (tag, category, etc).
+```
+
+# Several Examples
+
+Get list off all images
+[/apis/img/images.php](/apis/img/images.php)
+Get one image in a particular size
+[/apis/img/images.php?blob&tags=bobdylan&size=200](/apis/img/images.php?blob&tags=bobdylan&size=200)
 Get the breathecode logo in 3 sizes
 [/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
 [/apis/img/images.php?blob&random&cat=icon&tags=breathecode,16](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
 [/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
 Get 4geeks academy icon
-[/apis/img/images.php?blob&random&cat=icon&tags=4geeks](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128)
+[/apis/img/images.php?blob&random&cat=icon&tags=4geeks](/apis/img/images.php?blob&random&cat=icon&tags=4geeks,128)
 Get 4geeks academy logo in black and small
 [http://assets.breatheco.de/apis/img/images.php?blob&random&cat=logo&tags=4geeks,black,small](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=logo&tags=4geeks,black,small)
 Get random funny images

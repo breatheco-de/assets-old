@@ -31,6 +31,7 @@ class SlimAPI{
             'https://assets.breatheco.de',
             'https://bc-js-clients-alesanchezr.c9users.io',
             'https://bc-admin-alesanchezr.c9users.io',
+            'http://bc-admin-alesanchezr.c9users.io',
             'https://student.breatheco.de',
             'https://admin.breatheco.de',
             'https://www.student.breatheco.de'
@@ -40,12 +41,12 @@ class SlimAPI{
     function __construct($settings=null){
         if(!empty($settings['name'])) $this->appName = $settings['name'];
         if(!empty($settings['debug'])) $this->debug = $settings['debug'];
-        if(!empty($settings['allowedURLs'])){
+        if(!empty($settings['allowedURLs']) && $this->debug){
             if(is_array($settings['allowedURLs']))
                 $this->allowedURLs = array_push($settings['allowedURLs'], $this->allowedURLs);
             else if($settings['allowedURLs'] == 'all') $this->allowedURLs = ['all'];
             else throw new Exception('Invalid setting value for allowedURLs');
-        } 
+        }
 
     	$c = new \Slim\Container([
     	    'settings' => [
@@ -57,7 +58,7 @@ class SlimAPI{
         	    return function ($request, $response, $exception) use ($c) {
         	        
         	        //$this->log(self::$ERROR, $exception->getMessage());
-
+                
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404,403])) $code = 500;
     
@@ -75,6 +76,7 @@ class SlimAPI{
                     if(!in_array($code, [500,400,301,302,401,404])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
         	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode(['msg' => $exception->getMessage()]));
         	    };
@@ -84,11 +86,12 @@ class SlimAPI{
     	else{
         	$c['phpErrorHandler'] = $c['errorHandler'] = function ($c) {
         	    return function ($request, $response, $exception) use ($c) {
-        	        
+
         	        $code = $exception->getCode();
                     if(!in_array($code, [500,400,301,302,401,404,403])) $code = 500;
         	        return $c['response']->withStatus($code)
         	                             ->withHeader('Content-Type', 'application/json')
+        	                             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
         	                             ->withHeader('Access-Control-Allow-Origin', '*')
         	                             ->write( json_encode([
         	                                 'msg' => $exception->getMessage(),
@@ -154,13 +157,26 @@ class SlimAPI{
 
             $path = $request->getUri()->getPath();
             if($path != 'token/generate'){
-                if(!isset($_GET['access_token'])) throw new Exception('Invalid access token', 403);
-                else{
+                $token = '';
+                if(isset($_GET['access_token'])){
                     $parts = explode('.', $_GET['access_token']);
                     if(count($parts)!=3) throw new Exception('Invalid access token', 403);
+                    $token = $_GET['access_token'];
+                } 
+                else{
+                    $authHeader = $_SERVER["HTTP_AUTHORIZATION"];
+                    if(!empty($authHeader)){
+                        if(strpos($authHeader,"JWT") === false) throw new Exception('Authorization header must contain JWT', 403);
+                        $authHeader = str_replace("JWT ", "", $authHeader);
+                        $parts = explode('.', $authHeader);
+                        if(count($parts)!=3) throw new Exception('Invalid access token', 403);
+                        $token = $authHeader;
+                        
+                    }
+                    else throw new Exception('Invalid access token', 403);
                 }
 
-            	$decoded = JWT::decode($_GET['access_token'], JWT_KEY, array('HS256'));
+            	$decoded = JWT::decode($token, JWT_KEY, array('HS256'));
             }
         	
         	$response = $next($request, $response);
@@ -172,15 +188,32 @@ class SlimAPI{
     
     public function addTokenGenerationPath(){
         $this->app->post('/token/generate', function (Request $request, Response $response, array $args){
-                
-            if(empty($_POST['client_id']) || empty($_POST['client_pass']))
-                throw new Exception('Missing credentials');
             
-            if(JWT_CLIENTS[$_POST['client_id']] != $_POST['client_pass'])
-                throw new Exception('Invalid credentials');
+            $ct = $request->getHeader('Content-Type');
+            $cliendId = '';
+            $cliendPass = '';
+            
+            if($ct[0] == 'application/json'){
+                $parsedBody = $request->getParsedBody();
+                if(empty($parsedBody['client_id']) || empty($parsedBody['client_pass']))
+                     throw new Exception('MISSING credentials: client_id and client_pass');
+                $cliendId = $parsedBody['client_id'];
+                $cliendPass = $parsedBody['client_pass'];
+            }
+            else
+            {
+                if(empty($_POST['client_id']) || empty($_POST['client_pass']))
+                    throw new Exception('MISSING credentials: client_id and client_pass');
+                $cliendId = $_POST['client_id'];
+                $cliendPass = $_POST['client_pass'];
+                
+            }
+            
+            if(JWT_CLIENTS[$clientId] != $clientPass)
+                throw new Exception('INVALID credentials: client_id and client_pass');
 
     		$token = array(
-    		    "clientId" => $_POST['client_id'],
+    		    "clientId" => $clientId,
     		    "iat" => time(),
     		    "exp" => time() + 31556952000 // plus one year in miliseconds
     		);
@@ -191,7 +224,15 @@ class SlimAPI{
     	});
     }
     
-
+    public function jwt_encode($payload, $expiration=31556952000){
+		$token = array(
+		    "clientId" => $payload,
+		    "iat" => time(),
+		    "exp" => time() + $expiration
+		);
+	
+		return JWT::encode($token, JWT_KEY);
+    }
     /*
      * Get an instance of the application.
      *
