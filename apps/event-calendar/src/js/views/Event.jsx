@@ -104,7 +104,7 @@ const styles = theme => ({
   },
   chipAvatar: {
     backgroundColor: theme.palette.primary.contrastText,
-    height:30,
+    height:29,
     width:30
   },
   clickable: {
@@ -153,7 +153,7 @@ class Event extends React.Component {
                                         avatar={
                                             <Avatar
                                                 aria-label="Recipe"
-                                                src={event.logo_url || "https://pbs.twimg.com/profile_images/930433054371434496/v8GNrusZ_400x400.jpg"}
+                                                src={event.logo_url || "http://assets.breatheco.de/apis/img/images.php?blob&random&cat=logo&tags=4geeks,black,small"}
                                                 className={classNames(classes.avatar, classes.bigAvatar)}
                                             />
                                         }
