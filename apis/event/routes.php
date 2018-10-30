@@ -20,6 +20,7 @@ function addAPIRoutes($api){
 
 	$api->addTokenGenerationPath();
 
+	//deprecated
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 		
 		$content = $api->db['sqlite']->event();
@@ -30,20 +31,90 @@ function addAPIRoutes($api){
 			if($_GET['status']=='upcoming') {
 				$content = $content->where('status','published');
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
-				$content = array_filter($content, function($evt){
-					return ($evt->event_date >= date("Y-m-d"));
-				});
+				//compare dates from today and return non-recurring instances
+				$content = array_values(array_filter($content, function($evt){
+					return $evt->event_date >= date("Y-m-d") || (!empty($evt->recurrentType) && $evt->recurrentType != 'one_time');
+				}));
 			} else if($_GET['status']=='past') {
 				$content = $content->where('status','published');
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
-				$content = array_filter($content, function($evt){
-					return ($evt->event_date < date("Y-m-d"));
-				});
+				//compare dates from today and return non-recurring instances
+				$content = array_values(array_filter($content, function($evt){
+					return ($evt->event_date < date("Y-m-d")) || (!empty($evt->recurrentType) && $evt->recurrentType != 'one_time');
+				}));
 			} else {
 				$content = $content->where('status',explode(",",$_GET['status']));
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+				//only return non-recurring events
+				$content = array_values(array_filter($content, function($evt){
+					return (!empty($evt->recurrentType) && $evt->recurrentType != 'one_time');
+				}));
 			}
 		} 
+
+	    return $response->withJson($content);
+	});
+	
+	$api->get('/all/upcoming', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$content = $api->db['sqlite']->event();
+		if(isset($_GET['type'])) $content = $content->where('type',explode(",",$_GET['type']));
+		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
+		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
+		$content = $content->where('status','published');
+		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+		
+		//compare dates from today and return non-recurring instances
+		$content = array_filter($content, function($evt){
+			return $evt->event_date >= date("Y-m-d") || (!empty($evt->recurrentType) && $evt->recurrentType != 'one_time');
+		});
+
+	    return $response->withJson($content);
+	});
+	
+	$api->get('/all/recurrent', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$content = $api->db['sqlite']->event();
+		if(isset($_GET['type'])) $content = $content->where('type',explode(",",$_GET['type']));
+		if(isset($_GET['location'])) $content = $content->where('location_slug',explode(",",$_GET['location']));
+		if(isset($_GET['lang'])) $content = $content->where('lang',explode(",",$_GET['lang']));
+		$content = $content->where('status','published');
+		$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
+		
+		//compare dates from today
+		$content = array_filter($content, function($evt){
+			return $evt->event_date >= date("Y-m-d") || (!empty($evt->recurrentType) && $evt->recurrentType != 'one_time');
+		});
+
+	    return $response->withJson($content);
+	});
+	
+	$api->get('/hook/generate_next_recurrent_events', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$parentEvents = $api->db['sqlite']->event()
+					->where('status','published')
+					->where('parent_event', null)->fetchAll();
+		
+		//get all recurrent event parents
+		foreach($parentEvents as $parent){
+			
+			//get all childs (actual instances of the events)
+			$parentEvents = $api->db['sqlite']->event()
+						->where('status','published')
+						->where('parent_event', $parent->id)->fetchAll();
+			
+			//skip parent events with upcoming childs because we are only creating chils if there is none
+			if(count($parent) > 0) continue;
+			
+			$props = (array) $parent;
+			$dayOfWeek = $parent->event_date->format('l');
+			$props['event_date'] = DateTime::setTimestamp(strtotime("next ".$dayOfWeek));
+			$props['created_at'] = date("Y-m-d H:i:s");
+
+			print_r($props); die();
+			$row = $api->db['sqlite']->createRow('event', $props);
+		}
+
 	    return $response->withJson($content);
 	});
 	
@@ -92,6 +163,7 @@ function addAPIRoutes($api){
 		return $response->withJson($row);	
 	});
 	
+	//update
 	$api->post('/{event_id}', function(Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
 		
@@ -137,8 +209,30 @@ function addAPIRoutes($api){
         if($val) $event->city_slug = $val;
         $val = $api->optional($parsedBody,'banner_url')->url();
         if($val) $event->banner_url = $val;
+        $val = $api->optional($parsedBody,'recurrent_type')->enum(EventFunctions::$recurrentTypes);
+        if($val){
+        	$event->recurrent_type = $val;
+			$event->recurrent = (!empty($recurrentType) && $recurrentType != 'one_time');
+        } 
         
         $event->save();
+        
+		if($event->recurrent){
+			$eventChilds = $api->db['sqlite']->event()
+						->where('status','published')
+						->where('parent_event', $event->id)->fetchAll();
+			foreach($eventChild as $child) $chid->delete();
+						
+			$props['parent_event'] = $event->id;
+			$props['recurrent_type'] = 'one_time';
+			if($row->recurrent_type == "every week"){
+				$dayOfWeek = $row->event_date->format('l');
+				$props['event_date'] = new DateTime("next ".$dayOfWeek);
+			}
+			$props['created_at'] = date("Y-m-d H:i:s");
+			$child = $api->db['sqlite']->createRow('event', $props);
+			$child->save();
+		}
 
 		return $response->withJson($event);
 	})->add($api->auth());
@@ -174,6 +268,8 @@ function addAPIRoutes($api){
         $address = $api->validate($parsedBody,'address')->smallString();
         $date = $api->validate($parsedBody,'event_date')->date();
         $val = $api->validate($parsedBody,'invite_only')->bool();
+        $recurrentType = $api->optional($parsedBody,'recurrent_type')->enum(EventFunctions::$recurrentTypes);
+        $recurrent = (!empty($recurrentType) && $recurrentType != 'one_time');
         
         $props = [
 			'type' => EventFunctions::getType($type),
@@ -185,6 +281,9 @@ function addAPIRoutes($api){
 			'location_slug' => $location,
 			'city_slug' => $city,
 			'lang' => $lang,
+			'recurrent' => $recurrent,
+			'parent_event' => null,
+			'recurrent_type' => $recurrentType,
 			'status' => EventFunctions::getStatus('draft'),
 			'banner_url' => $banner,
 			'address' => $address,
@@ -194,8 +293,20 @@ function addAPIRoutes($api){
 		];
 		$row = $api->db['sqlite']->createRow('event', $props);
 		$row->save();
+
+		if($recurrent){
+			$props['parent_event'] = $row->id;
+			$props['recurrent_type'] = 'one_time';
+			if($row->recurrent_type == "every week"){
+				$dayOfWeek = $row->event_date->format('l');
+				$props['event_date'] = new DateTime("next ".$dayOfWeek);
+			}
+			$props['created_at'] = date("Y-m-d H:i:s");
+			$child = $api->db['sqlite']->createRow('event', $props);
+			$child->save();
+		}
 		
-        return $response->withJson($row);
+        return $response->withJson($child);
 	})
 		->add($api->auth());
 
@@ -208,18 +319,10 @@ function addAPIRoutes($api){
 		return $response->withJson($user);	
 	})->add($api->auth());
 	
-	$api->get('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
-        
-		if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
-		
-		$row = $api->db['sqlite']->event_checking()->where( 'event_id', $args['event_id'] )->fetchAll();
-
-		return $response->withJson($row);	
-	});
-	
 	$api->put('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
         
         if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
+        
         $event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
         if(!$event) throw new Exception('Event not found', 401);
         

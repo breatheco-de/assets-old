@@ -19,6 +19,10 @@ class EventFunctions{
         'pending_review' => 'pending_review',
         'draft' => 'draft'
     ];
+    static $recurrentTypes = [
+        'published' => 'every_week',
+        'unlisted' => 'one_time'
+    ];
     
     public static function setAPI($api){
         self::$api = $api;

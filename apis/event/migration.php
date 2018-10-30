@@ -22,6 +22,8 @@
       'event_date'      DATETIME NOT NULL, 
       'type'            TEXT NOT NULL, 
       'status'          TEXT NOT NULL, 
+      'parent_event'    INTEGER NULL,
+      'recurrent_type'  TEXT, 
       'address'         TEXT NOT NULL,
       'location_slug'   TEXT     NULL,
       'lang'            TEXT     NULL,
@@ -29,7 +31,8 @@
       'banner_url'      TEXT, 
       'invite_only'     INTEGER NOT NULL, 
       'created_at'      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-      'id'              INTEGER PRIMARY KEY NOT NULL  
+      'id'              INTEGER PRIMARY KEY NOT NULL,
+      FOREIGN KEY(parent_event) REFERENCES event(id)
    );
    CREATE TABLE 'event_checking' (
       'event_id' TEXT NOT NULL, 

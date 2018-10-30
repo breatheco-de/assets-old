@@ -1,23 +1,16 @@
 <?php
-    require_once('../../APIGenerator.php');
-    
-	$api_events = new APIGenerator('events.json','[]',false);
-	$api_events->get('events', 'Get all Calendar Events', function($request, $data){
-        return $data;
-	});
+	require_once('../../../vendor/autoload.php');
+	require_once('../../../globals.php');
+	require_once('../../JsonPDO.php');
+	require_once('../../SlimAPI.php');
+	require('routes.php');
 	
-	$api_events->run();
-
-	$api_meetups = new APIGenerator('meetups.json','[]',false);
-	$api_meetups->get('meetups', 'Get all Meetups', function($request, $data){
-        return $data;
-	});
-	
-	$api_meetups->run();
-
-	$api_session = new APIGenerator('session.json','[]',false);
-	$api_session->get('session', 'Get session', function($request, $data){
-        return $data;
-	});
-	
-	$api_session->run();
+	$api = new SlimAPI([
+		'debug' => API_DEBUG,
+		'name' => 'Fake Meetups API',
+		'allowedURLs' => 'all'
+	]);
+	$api->addReadme('/','./README.md');
+	$api->addDB('json', new JsonPDO('data/','[]',false));
+	$api = addAPIRoutes($api);
+	$api->run(); 
