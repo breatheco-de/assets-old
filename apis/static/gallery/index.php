@@ -5,14 +5,15 @@
         [ "value" => "php", "label" => "PHP" ],
         [ "value" => "reactjs", "label" => "Reactjs" ],
         [ "value" => "python", "label" => "Python" ],
+        [ "value" => "before-after", "label" => "Before & After" ],
         [ "value" => "other", "label" => "Other" ]
     );
     $categories = array(
         [ "value" => "cheat-sheet", "label" => "Cheat Sheet" ],
-        [ "value" => "photo", "label" => "Photo from photograper" ],
+        [ "value" => "photo", "label" => "Photo (from a camera)" ],
         [ "value" => "diagram", "label" => "Diagram Explanation (animated or not)" ],
-        [ "value" => "ilustration", "label" => "Hand mage ilustration" ],
-        [ "value" => "graphic", "label" => "Non-ilustrated graphic (screenshot, picture of code, etc.)" ],
+        [ "value" => "ilustration", "label" => "Ilustration (handmaid)" ],
+        [ "value" => "graphic", "label" => "Graphic (Screenshot, picture of code, etc.)" ],
         [ "value" => "meme", "label" => "Meme or joke" ]
     );
 ?>
@@ -194,7 +195,6 @@
             }
             function processForm(){
                 $('#errors').addClass('d-none');
-                $('.modal-footer').removeClass('d-none');
                 
                 var errors = [];
                 var tags = $('#img-tags').val();
@@ -302,6 +302,7 @@
                 $('.step').addClass('d-none');
                 $('#first-step').removeClass('d-none');
                 $('form input').val('');
+                $('.modal-footer').removeClass('d-none');
                 $('.selectpicker').selectpicker('val','');
                 $('form textarea').val('');
                 $('.alert').addClass('d-none');
