@@ -256,8 +256,7 @@ function addAPIRoutes($api){
 		else throw new Exception('Event not found');
 		
 		return $response->withJson([ "code" => 200 ]);	
-	})
-		->add($api->auth());
+	})->add($api->auth());
 
 	$api->put('/', function(Request $request, Response $response, array $args) use ($api) {
         $parsedBody = $request->getParsedBody();
@@ -305,8 +304,7 @@ function addAPIRoutes($api){
 		$row->save();
 
         return $response->withJson($row);
-	})
-		->add($api->auth());
+	})->add($api->auth());
 
 	$api->get('/user/{user_email}', function(Request $request, Response $response, array $args) use ($api) {
         

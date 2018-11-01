@@ -1,99 +1,110 @@
 <?php
-
+use Aws\Ses\SesClient;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
 
 class BreatheCodeMessages{
     
-    private static $_activites = [
-        "breathecode_login" => [ 
-            "track_on_active_campaign" => true,
-            "track_on_log" => true
-        ],
-        "online_platform_registration" => [ 
-            "track_on_active_campaign" => true,
-            "track_on_log" => true
-        ],
-        "public_event_attendance" => [ 
-            "track_on_active_campaign" => true,
-            "track_on_log" => true
-        ],
-        "nps_survey_answered" => [ 
-            "track_on_active_campaign" => true,
-            "track_on_log" => true
+    private static $_messages = [
+        "nps_survey" => [ 
+            "track_on_log" => true,
+            "type" => 'actionable'
         ]
     ];
     
-    static function getActivity($activity){
-        foreach(self::$_activites as $key => $obj)
-            if($key == $activity){
-                $obj["slug"] = $key;
-                return $obj;
-            } 
-        
-        return null;
+    private static $messageType = ['actionable','non-actionable'];
+    
+    public static function getType($type){
+        if(!in_array(self::messageType)) throw new Exception('Ivalid Message Type');
+        else return $type;
     }
     
-    static function logActivity($activity){
-        $student = $activity["user"];
-        $data = (empty($activity["data"])) ? null : $activity["data"];
-        
-        $activity = self::getActivity($activity["slug"]);
-        if($activity){
-            if($activity["track_on_log"]){
-                self::_logInternally($student, $activity["slug"], $data);
-            }
-                
-            if($activity["track_on_active_campaign"]) 
-                self::_logInActiveCampaign($student, $activity["slug"], $data);
-        }
-
-    }
-    
-    private static function _logInternally($student, $activity_slug, $data='No additional data'){
-        $datastore = new DatastoreClient([ 
+    private static function connect(){
+        return new DatastoreClient([ 
             'projectId' => 'breathecode-197918',
             'keyFilePath' => '../../breathecode-efde1976e6d3.json'
         ]);
+    }
+    
+    public static function sendMail($slug, $to, $subject, $data){
         
-        $activity = [
+        $templates = self::getTemplateName($slug);
+        $client = SesClient::factory(array(
+            'version'=> 'latest',     
+            'region' => 'us-west-2',
+            'credentials' => [
+                'key'    => S3_KEY,
+                'secret' => S3_SECRETE,
+            ]
+        ));
+        
+        try {
+             $result = $client->sendEmail([
+                'Destination' => [
+                    'ToAddresses' => [
+                        $to,
+                    ],
+                ],
+                'Message' => [
+                    'Body' => [
+                        'Html' => [
+                            'Charset' => 'UTF-8',
+                            'Data' => $templates["html"]->render($data),
+                        ],
+            			'Text' => [
+                            'Charset' => 'UTF-8',
+                            'Data' => $templates["txt"]->render($data),
+                        ],
+                    ],
+                    'Subject' => [
+                        'Charset' => 'UTF-8',
+                        'Data' => $subject,
+                    ],
+                ],
+                'Source' => 'info@breatheco.de',
+                //'ConfigurationSetName' => 'ConfigSet',
+            ]);
+             $messageId = $result->get('MessageId');
+             return true;
+        
+        } catch (SesException $error) {
+            throw new Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
+        }
+    }
+    
+    public static function addMessage($messageSlug, $student, $data='No additional data'){
+        
+        if(!isset(self::$_messages[$messageSlug])) throw new Exception('Invalid message slug '.$messageSlug);
+        if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
+        
+        $datastore = self::connect();
+        
+        $message = [
             'created_at' => new DateTime(),
-            'slug' => $activity_slug,
+            'slug' => $messageSlug,
+            'read' => false,
+            'answered' => false,
+            'type' => self::$_messages[$messageSlug]["type"],
             'data' => $data
         ];
 
-        if(is_string($student)) $activity['email'] = $student;
+        if(is_string($student)) $message['email'] = $student;
         else{
             //print_r($student); die();
-            if(!empty($student->id)) $activity['user_id'] = (string) $student->id;
+            if(!empty($student->id)) $message['user_id'] = (string) $student->id;
             
-            if(!empty($student->email)) $activity['email'] = (string) $student->email;
-            else if(!empty($student->username)) $activity['email'] = (string) $student->username;
+            if(!empty($student->email)) $message['email'] = (string) $student->email;
+            else if(!empty($student->username)) $message['email'] = (string) $student->username;
         }
         
-        $record = $datastore->entity('student_activity', $activity);
+        $record = $datastore->entity('student_message', $message);
         $datastore->insert($record);
     }
     
-    private static function _logInActiveCampaign($student, $activity_slug, $data=null){
-        \AC\ACAPI::start(AC_API_KEY);
-        \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
-        if(!is_string($student)){
-            if(!empty($student->email)) $student = $student->email;
-            else if(!empty($student->username)) $student = $student->username;
-            else throw new Exception('Missing user email or username');
-        }
-        \AC\ACAPI::trackEvent($student, $activity_slug, $data);
-    }
-    
-    public static function retrieveActivity($filters){
-        $datastore = new DatastoreClient([ 
-            'projectId' => 'breathecode-197918',
-            'keyFilePath' => '../../breathecode-efde1976e6d3.json'
-        ]);
-        //print_r($datastore); die();
+    public static function getMessage($filters){
+        $datastore = self::connect();
         
-        $query = $datastore->query()->kind('student_activity');
+        $query = $datastore->query()->kind('student_message');
         if(!empty($filters["slug"])) $query = $query->filter('slug', '=', $filters["slug"]);
         if(!empty($filters["user_id"])){
             $query = $query->filter('user_id', '=', $filters["user_id"]);
@@ -107,11 +118,30 @@ class BreatheCodeMessages{
                 "user_id" => $ans->user_id,
                 "email" => $ans->email,
                 "data" => $ans->data,
+                "read" => $ans->read,
+                "answered" => $ans->answered,
+                "type" => $ans->type,
                 "created_at" => $ans->created_at,
                 "slug" => $ans->slug,
             ];
         }
         return $results;
+    }
+    
+    public static function getTemplateName($slug){
+        
+        $basePath = './templates/';
+        if(!file_exists($basePath.$slug.'.html')) throw new Error('Missing HTML template for slug: '.$slug);
+        if(!file_exists($basePath.$slug.'.txt')) throw new Error('Missing TXT template for slug: '.$slug);
+        
+        else{
+            $loader = new \Twig_Loader_Filesystem($basePath);
+            $twig = new \Twig_Environment($loader);
+            return [
+                "html" => $twig->load($slug.'.html'),
+                "txt" => $twig->load($slug.'.txt')
+            ];
+        }
     }
     
 }

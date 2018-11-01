@@ -242,6 +242,13 @@ class BCWrapper{
 	    return self::request('GET','student/'.$params['student_id'],$params);
 	}
 	
+	public static function getStudentsFromCohort($params=[]){
+
+        self::validate($params,'cohort_id');
+	    //students/cohort/1
+	    return self::request('GET','students/cohort/'.$params['cohort_id'],[]);
+	}
+	
 	public static function getCohort($params=[]){
 
         self::validate($params,'cohort_id');

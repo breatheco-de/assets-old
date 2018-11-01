@@ -91,7 +91,7 @@ class JsonPDO{
             $jsonContent = file_get_contents($fileName);
             if(empty($jsonContent)) $this->throwError('Unable to get file "'.$fileName);
             $dataContent = (array) json_decode($jsonContent);
-            if(empty($dataContent)) $this->throwError('The file "'.$fileName.'" has invalid syntax');
+            if($dataContent === false or $dataContent === null ) $this->throwError('The file "'.$fileName.'" was imposible to parse, this is its content: '.$jsonContent);
             
             return $dataContent;
         }

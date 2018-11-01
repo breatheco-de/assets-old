@@ -4,7 +4,8 @@
         [ "value" => "css", "label" => "CSS" ],
         [ "value" => "php", "label" => "PHP" ],
         [ "value" => "reactjs", "label" => "Reactjs" ],
-        [ "value" => "python", "label" => "Python" ]
+        [ "value" => "python", "label" => "Python" ],
+        [ "value" => "other", "label" => "Other" ]
     );
     $categories = array(
         [ "value" => "cheat-sheet", "label" => "Cheat Sheet" ],

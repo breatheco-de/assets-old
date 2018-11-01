@@ -11,6 +11,7 @@
         "zendframework/zenddiagnostics": "^1.1",
         "aws/aws-sdk-php": "^3.55",
         "jamiehollern/eventbrite": "^1.0",
+        "uploadcare/uploadcare-php": ">=v1.1.0,<2.0",
         "respect/validation": "^1.1",
         "wrapi/slack": "^1.0",
         "firebase/php-jwt": "^5.0"
