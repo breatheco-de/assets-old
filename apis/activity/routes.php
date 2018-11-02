@@ -32,7 +32,8 @@ function addAPIRoutes($api){
 	        "log" => $result
 	    ]);
 	});
-	//get all cohorts and its replits
+	
+	//create user activity
 	$api->post('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
 
 		$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);

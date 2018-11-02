@@ -1,1 +1,0 @@
-# Day 9 - Full Stack

@@ -15,6 +15,25 @@ function addAPIRoutes($api){
 	
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
+	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
+
+		//$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
+		
+		//$parsedBody = $request->getParsedBody();
+        //$data = $api->optional($parsedBody,'data')->smallString();
+        //$slug = $api->validate($parsedBody,'slug')->slug();
+		
+        $messages = BreatheCodeMessages::getMessages();
+	    return $response->withJson($messages);
+	});//->add($api->auth());
+	$api->delete('/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
+
+		$user = BC::getUser(['user_id' => urlencode($args["student_id"])]);
+
+        $messages = BreatheCodeMessages::deleteMessages(["user_id" => $user->id ]);
+	    return $response->withJson($messages);
+	});//->add($api->auth());
+	
 	$api->get('/email/{template_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		$templates = BreatheCodeMessages::getTemplateName("nps_survey");
 		return $response->write($templates["html"]->render([
@@ -45,9 +64,31 @@ function addAPIRoutes($api){
     	if(!$student) throw new Exception('Student not found');
     	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
     	
-    	BreatheCodeMessages::addMessage("nps_survey", $student);
+    	$message = BreatheCodeMessages::addMessage("nps_survey", $student);
     	
-    	return $response->withJson($student);
+    	return $response->withJson(["key" => $message]);
+    	
+	});//->add($api->auth());
+	
+	$api->post('/{message_id}/answered', function (Request $request, Response $response, array $args) use ($api) {
+
+		if(empty($args['message_id'])) throw new Exception('Invalid param message_id');
+		
+		$parsedBody = $request->getParsedBody();
+        $data = $api->optional($parsedBody,'data')->bigString();
+    	$message = BreatheCodeMessages::markAsAnswred($args['message_id'], $data);
+    	return $response->withJson($message->get());
+    	
+	});//->add($api->auth());
+	
+	$api->post('/{message_id}/read', function (Request $request, Response $response, array $args) use ($api) {
+
+		if(empty($args['message_id'])) throw new Exception('Invalid param message_id');
+		
+		$parsedBody = $request->getParsedBody();
+        $data = $api->optional($parsedBody,'data')->bigString();
+    	$message = BreatheCodeMessages::markAsRead($args['message_id'], $data);
+    	return $response->withJson($message->get());
     	
 	});//->add($api->auth());
 	
@@ -55,17 +96,19 @@ function addAPIRoutes($api){
 
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
 		
-		// $parsedBody = $request->getParsedBody();
-  //      $cohortSlug = $api->validate($parsedBody,'cohort_slug')->slug();
-  //      if(empty($cohortSlug))  throw new Exception('Cohort '.$cohortSlug.' not found');
+		$parsedBody = $request->getParsedBody();
+        $type = $api->validate($parsedBody,'type')->slug();
         
     	$students = BC::getStudentsFromCohort(['cohort_id' => $args['cohort_slug']]);
-		$students = array_filter($students, function($student){
-			return $status->status != "currently_active";
-		});
+    	$count = 0;
+		foreach($students as $std){
+			if($std->status == "currently_active"){
+				$count++;
+				BreatheCodeMessages::addMessage($type, $std);
+			} 
+		};
     	
-    	
-    	return $response->withJson($students);
+    	return $response->withJson([ "msg" => "$count students notified", "total" => $count]);
 	});//->add($api->auth());
 	
 
