@@ -69,13 +69,13 @@
         <div class="row filters">
             <span class="filters-label">Filters:</span>
             <select class="selectpicker filter category" data-param="category">
-                <option value="">Select...</option>
+                <option value="">Select category...</option>
                 <?php foreach($categories as $cat){ ?>
                     <option value="<?php echo $cat["value"]; ?>"><?php echo $cat["label"]; ?></option>
                 <?php } ?>
             </select>
             <select class="selectpicker filter tag" data-param="tag">
-                <option value="">Select...</option>
+                <option value="">Select tag...</option>
                 <?php foreach($tags as $tag){ ?>
                     <option value="<?php echo $tag["value"]; ?>"><?php echo $tag["label"]; ?></option>
                 <?php } ?>
