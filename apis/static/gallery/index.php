@@ -1,9 +1,11 @@
 <?php
     $tags = array(
+        [ "value" => "logo", "label" => "Logo" ],
         [ "value" => "html", "label" => "HTML" ],
         [ "value" => "css", "label" => "CSS" ],
         [ "value" => "php", "label" => "PHP" ],
         [ "value" => "reactjs", "label" => "Reactjs" ],
+        [ "value" => "git", "label" => "GIT" ],
         [ "value" => "python", "label" => "Python" ],
         [ "value" => "before-after", "label" => "Before & After" ],
         [ "value" => "animated", "label" => "Animated GIF" ],
@@ -12,6 +14,7 @@
         [ "value" => "other", "label" => "Other" ]
     );
     $categories = array(
+        [ "value" => "logo", "label" => "Logo (company, technology or organization logo" ],
         [ "value" => "cheat-sheet", "label" => "Cheat Sheet" ],
         [ "value" => "photo", "label" => "Photo (from a camera)" ],
         [ "value" => "diagram", "label" => "Diagram Explanation (animated or not)" ],
