@@ -48,6 +48,22 @@
                 display: inline-block;
                 margin-right: 5px;
             }
+            .card-body{
+                padding: 5px;
+            }
+            .card-body p{
+                margin: 0;
+            }
+            @media only screen and (min-width: 900px) {
+                .card-columns {
+                    column-count: 4;
+                }
+            }
+            @media only screen and (min-width: 1300px) {
+                .card-columns {
+                    column-count: 5;
+                }
+            }
         </style>
         <div class="row filters">
             <span class="filters-label">Filters:</span>
@@ -135,6 +151,12 @@
                         <button class="input-group-text btn" onClick="copyText(this);">copy</button>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <div>
+                        <textarea id="img-click-description" class="form-control" readonly></textarea>
+                    </div>
+                </div>
                 <button class="btn mt-0" onClick="confirmDeletion(this);"><i class="fas fa-trash-alt"></i> delete</button>
               </div>
             </div>
@@ -151,6 +173,7 @@
                     $('.card-columns').html(images.map(img => renderImage(img)));
                     $('.card-columns img').click(e => {
                         $('#img-click-url').val(e.target.src);
+                        $('#img-click-description').val(e.target.alt);
                         $('#card-click-modal').modal();
                     });
                 });
@@ -235,6 +258,7 @@
                         $('.card-columns').html(images.map(img => renderImage(img)));
                         $('.card-columns img').click(e => {
                             $('#img-click-url').val(e.target.src);
+                            $('#img-click-description').val(e.target.alt);
                             $('#card-click-modal').modal();
                         });
                     });
