@@ -6,6 +6,8 @@
         [ "value" => "reactjs", "label" => "Reactjs" ],
         [ "value" => "python", "label" => "Python" ],
         [ "value" => "before-after", "label" => "Before & After" ],
+        [ "value" => "used-in-lesson", "label" => "Used in a lesson" ],
+        [ "value" => "used-in-exercise", "label" => "Used in an exercise" ],
         [ "value" => "other", "label" => "Other" ]
     );
     $categories = array(
