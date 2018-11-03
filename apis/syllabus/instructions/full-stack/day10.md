@@ -1,1 +1,0 @@
-# Day 10 - Full Stack

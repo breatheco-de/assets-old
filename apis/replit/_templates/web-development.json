@@ -13,7 +13,7 @@
     {"slug": "jquery-ajax", "title": "Ajax with jQuery"},
     {"slug": "functions", "title": "Functions with Javascript"},
     {"slug": "http-fetch", "title": "HTTP requests with Fetch API"},
-    {"slug": "react-js", "title": "Rendering with React.js"},
+    {"slug": "react-js", "title": "Rendering with React.js", "base": "https://github.com/4GeeksAcademy/react-exercises"},
     {"slug": "sql", "title": "sql", "base": "https://sqlbolt.com/lesson/select_queries_introduction"},
     {"slug": "git", "title": "git", "base": "https://try.github.io/levels/1/challenges/1"},
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/"},

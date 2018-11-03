@@ -82,7 +82,7 @@ var Timeline = (function(){
         var theProject = '';
         if(typeof(day.project)=='object')
         {
-            if(typeof(day.project.instructions) != 'undefined') theProject = `<a target="_blank" href="${day.project.instructions}">${day.project.title}</a>`;
+            if(typeof(day.project.instructions) != 'undefined' || typeof(day.project.teacher_instructions) != 'undefined') theProject = `<a target="_blank" href="${day.project.teacher_instructions || day.project.instructions}">${day.project.title}</a>`;
             else theProject = day.project.title;
             if(typeof(day.project.solution) != 'undefined') theProject += ` <a target="_blank" href="${day.project.solution}">(solution)</a>`;
         }
@@ -101,7 +101,7 @@ var Timeline = (function(){
           <h3 class="text-center">${day.label}</h3>
           <div class="day-topics">
             ${theKeyConcepts}
-            ${day.instructions || day.description || 'No instructions for this particular day'}
+            ${day.instructions || day.teacher_instructions || day.description || 'No instructions for this particular day'}
             ${
                 (typeof day.instructions_link != 'undefined') ?
                     `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">Full instructions</a>`

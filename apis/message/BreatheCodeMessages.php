@@ -8,7 +8,8 @@ class BreatheCodeMessages{
     private static $_messages = [
         "nps_survey" => [ 
             "track_on_log" => true,
-            "type" => 'actionable'
+            "type" => 'actionable',
+            "priority" => 'HIGH'
         ]
     ];
     
@@ -72,7 +73,54 @@ class BreatheCodeMessages{
         }
     }
     
-    public static function addMessage($messageSlug, $student, $data='No additional data'){
+    public static function markAsAnswred($messageKey, $data='No additional data'){
+        
+        if(!$messageKey) throw new Exception('The missing message id');
+        
+        $datastore = self::connect();
+        $key = $datastore->key('student_message', $messageKey);
+        $entity = $datastore->lookup($key);
+        
+        if(!$entity) throw new Exception("Message not found", 404);
+        
+        // Update the entity
+        $entity['read'] = 'true';
+        $entity['answered'] = 'true';
+        
+        if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
+        else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
+        else if(!$data) $entity['data'] = 'No additional data';
+        else throw new Exception("Invalid data format for message", 400);
+        
+        $datastore->update($entity);
+        
+        return $entity;
+    }
+    
+    public static function markAsRead($messageKey, $data='No additional data'){
+        
+        if(!$messageKey) throw new Exception('The missing message id');
+        
+        $datastore = self::connect();
+        $key = $datastore->key('student_message', $messageKey);
+        $entity = $datastore->lookup($key);
+        
+        if(!$entity) throw new Exception("Message not found", 404);
+        
+        // Update the entity
+        $entity['read'] = 'true';
+        
+        if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
+        else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
+        else if(!$data) $entity['data'] = 'No additional data';
+        else throw new Exception("Invalid data format for message", 400);
+        
+        $datastore->update($entity);
+        
+        return $entity;
+    }
+    
+    public static function addMessage($messageSlug, $student, $priority='LOW', $data='No additional data'){
         
         if(!isset(self::$_messages[$messageSlug])) throw new Exception('Invalid message slug '.$messageSlug);
         if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
@@ -81,9 +129,11 @@ class BreatheCodeMessages{
         
         $message = [
             'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
             'slug' => $messageSlug,
             'read' => false,
             'answered' => false,
+            'priority' => isset(self::$_messages[$messageSlug]["priority"]) ? self::$_messages[$messageSlug]["priority"] : $priority,
             'type' => self::$_messages[$messageSlug]["type"],
             'data' => $data
         ];
@@ -98,34 +148,47 @@ class BreatheCodeMessages{
         }
         
         $record = $datastore->entity('student_message', $message);
-        $datastore->insert($record);
+        return $datastore->insert($record);
     }
     
-    public static function getMessage($filters){
+    private static function filter($query, $filters){
+        if(!empty($filters["slug"])) $query->filter('slug', '=', (string) $filters["slug"]);
+        if(!empty($filters["user_id"])){
+            $query->filter('user_id', '=', (string) $filters["user_id"]);
+        } 
+        if(!empty($filters["email"])) $query->filter('email', '=', (string) $filters["email"]);
+        if(!empty($filters["priority"])) $query = $query->filter('priority', '=', (string) $filters["priority"]);
+        
+        return $query;
+    }
+    
+    public static function getMessages($filters=[]){
         $datastore = self::connect();
         
         $query = $datastore->query()->kind('student_message');
-        if(!empty($filters["slug"])) $query = $query->filter('slug', '=', $filters["slug"]);
-        if(!empty($filters["user_id"])){
-            $query = $query->filter('user_id', '=', $filters["user_id"]);
-        } 
-        if(!empty($filters["email"])) $query = $query->filter('email', '=', $filters["email"]);
-        //$query = $query->order('created_at', Query::ORDER_DESCENDING);
-        $items = $datastore->runQuery($query);
+        $items = $datastore->runQuery(self::filter($query, $filters));
+
         $results = [];
         foreach($items as $ans) {
-            $results[] = [
-                "user_id" => $ans->user_id,
-                "email" => $ans->email,
-                "data" => $ans->data,
-                "read" => $ans->read,
-                "answered" => $ans->answered,
-                "type" => $ans->type,
-                "created_at" => $ans->created_at,
-                "slug" => $ans->slug,
-            ];
+            $results[] = $ans->get();
         }
         return $results;
+    }
+    
+    public static function deleteMessages($filters=[]){
+        $datastore = self::connect();
+        
+        $query = $datastore->query()->kind('student_message');
+        //$query = $query->order('created_at', Query::ORDER_DESCENDING);
+        $messages = $datastore->runQuery(self::filter($query, $filters));
+        
+        $transaction = $datastore->transaction();
+        foreach($messages as $msg){
+            $transaction->delete($msg->key());
+        }
+        $transaction->commit();
+        
+        return true;
     }
     
     public static function getTemplateName($slug){
