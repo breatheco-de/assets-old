@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1330d0d0299bcabfb7a4a7d78af00556",
+    "content-hash": "69c9bd9c90cb0f4842f8da753a678469",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.70.1",
+            "version": "3.70.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "69bd5dd9a7df89b994b6b8a905a874da29f04f7c"
+                "reference": "8278052a097a4ebe2b798fab7e2e3c907bc01a47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/69bd5dd9a7df89b994b6b8a905a874da29f04f7c",
-                "reference": "69bd5dd9a7df89b994b6b8a905a874da29f04f7c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8278052a097a4ebe2b798fab7e2e3c907bc01a47",
+                "reference": "8278052a097a4ebe2b798fab7e2e3c907bc01a47",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-10-31T21:06:07+00:00"
+            "time": "2018-11-02T20:04:36+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -168,17 +168,11 @@
         },
         {
             "name": "glicer/link-checker",
-            "version": "dev-master",
+            "version": "dev-with-markdown",
             "source": {
                 "type": "git",
-                "url": "https://github.com/emmanuelroecker/php-linkchecker.git",
-                "reference": "be3a1655cce2530605d862cbd31c65efa5e91348"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/emmanuelroecker/php-linkchecker/zipball/be3a1655cce2530605d862cbd31c65efa5e91348",
-                "reference": "be3a1655cce2530605d862cbd31c65efa5e91348",
-                "shasum": ""
+                "url": "https://github.com/alesanchezr/php-linkchecker",
+                "reference": "2bcc7775b07e05766bcebed00c2d7738d0b3f160"
             },
             "require": {
                 "glicer/simply-html": "~1.0",
@@ -198,7 +192,11 @@
                     "GlLinkChecker\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "GlLinkChecker\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -219,7 +217,7 @@
                 "html",
                 "links"
             ],
-            "time": "2016-08-27 10:54:51"
+            "time": "2018-11-03 03:59:42"
         },
         {
             "name": "glicer/simply-html",

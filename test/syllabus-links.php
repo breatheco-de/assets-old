@@ -10,13 +10,27 @@
     
     //construct list of local html and json files to check
     $finder = new Finder();
-    $files  = $finder->files()
-                ->in('./apis/syllabus/data')
-                ->name("*.json");
+    $jsonFiles  = $finder->files()->in('./apis/syllabus/data')->name("*.json");
     
     //launch links checking
-    $result  = $linkChecker->checkFiles(
-        $files,
+    $resultJSON  = $linkChecker->checkFiles($jsonFiles,
+        function ($nbr) {
+            // called at beginning - $nbr urls to check
+        },
+        function ($url, $files) {
+            // called each $url - $files : list of filename containing $url link
+        },
+        function () {
+            // called at the end
+        }
+    );
+    $out = printErrors($resultJSON);
+    if($out > 0) return $out;
+    
+    $finder2 = new Finder();
+    $mdFiles = $finder2->files()->in('./apis/syllabus/data')->name("*.md");
+    //launch links checking
+    $resultMD  = $linkChecker->checkFiles($mdFiles,
         function ($nbr) {
             // called at beginning - $nbr urls to check
         },
@@ -28,7 +42,8 @@
         }
     );
     
-    return printErrors($result);
+    $out = printErrors($resultMD);
+    return $out;
     
     //convert $result array in a temp html file
     function printErrors(array $links){
