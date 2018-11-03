@@ -135,6 +135,13 @@
                             <button class="input-group-text btn" onClick="copyText(this);">copy</button>
                         </div>
                     </div>
+                    <p>Customize the size:</p>
+                    <div class="input-group mb-3">
+                        <input id="img-url-small" type="text" class="form-control" onClick="selectText(this);" />
+                        <div class="input-group-append copybtn" data-toggle="tooltip" title="">
+                            <button class="input-group-text btn" onClick="copyText(this);">copy</button>
+                        </div>
+                    </div>
                 </div>
               </div>
               <div class="modal-footer">
@@ -151,6 +158,13 @@
                 <p>Here is your image url:</p>
                 <div class="input-group mb-3">
                     <input id="img-click-url" type="text" class="form-control" onClick="selectText(this);" />
+                    <div class="input-group-append copybtn" data-toggle="tooltip" title="">
+                        <button class="input-group-text btn" onClick="copyText(this);">copy</button>
+                    </div>
+                </div>
+                <p>Customize the size:</p>
+                <div class="input-group mb-3">
+                    <input id="img-click-url-small" type="text" class="form-control" onClick="selectText(this);" />
                     <div class="input-group-append copybtn" data-toggle="tooltip" title="">
                         <button class="input-group-text btn" onClick="copyText(this);">copy</button>
                     </div>
@@ -177,6 +191,7 @@
                     $('.card-columns').html(images.map(img => renderImage(img)));
                     $('.card-columns img').click(e => {
                         $('#img-click-url').val(e.target.src);
+                        $('#img-click-url-small').val(e.target.src+"-/resize/200x/");
                         $('#img-click-description').val(e.target.alt);
                         $('#card-click-modal').modal();
                     });
@@ -219,8 +234,8 @@
                 const input = $(copyBtn).closest(".input-group").find("input");
                 input.select();
                 document.execCommand("copy");
-                $('.copybtn').attr('title','URL has been copied!').tooltip('show');
-                setTimeout(() => $('.copybtn').tooltip('dispose'), 1000);
+                $(copyBtn).attr('title','URL has been copied!').tooltip('show');
+                setTimeout(() => $(copyBtn).tooltip('dispose'), 1000);
             }
             function processForm(){
                 $('#errors').addClass('d-none');
@@ -262,6 +277,7 @@
                         $('.card-columns').html(images.map(img => renderImage(img)));
                         $('.card-columns img').click(e => {
                             $('#img-click-url').val(e.target.src);
+                            $('#img-click-url-small').val(e.target.src+"-/resize/200x/");
                             $('#img-click-description').val(e.target.alt);
                             $('#card-click-modal').modal();
                         });
@@ -344,6 +360,7 @@
                 }).done(function(file) {
                     file.promise().done(function(fileInfo){
                         $('#img-url').val(fileInfo.cdnUrl);
+                        $('#img-url-small').val(fileInfo.cdnUrl+"-/resize/200x/");
                         $('#url-modal').modal();
                     });
                 });
