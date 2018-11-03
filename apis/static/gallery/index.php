@@ -6,6 +6,7 @@
         [ "value" => "reactjs", "label" => "Reactjs" ],
         [ "value" => "python", "label" => "Python" ],
         [ "value" => "before-after", "label" => "Before & After" ],
+        [ "value" => "animated", "label" => "Animated GIF" ],
         [ "value" => "used-in-lesson", "label" => "Used in a lesson" ],
         [ "value" => "used-in-exercise", "label" => "Used in an exercise" ],
         [ "value" => "other", "label" => "Other" ]
@@ -56,12 +57,12 @@
             }
             @media only screen and (min-width: 900px) {
                 .card-columns {
-                    column-count: 4;
+                    column-count: 5;
                 }
             }
             @media only screen and (min-width: 1300px) {
                 .card-columns {
-                    column-count: 5;
+                    column-count: 6;
                 }
             }
         </style>
