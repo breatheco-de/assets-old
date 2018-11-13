@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.71.3",
+            "version": "3.71.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "fa7f498cb41c7eb47e952355b8be2061816a9a60"
+                "reference": "18f0f1c2224610b473c80690f0df0bac116da957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fa7f498cb41c7eb47e952355b8be2061816a9a60",
-                "reference": "fa7f498cb41c7eb47e952355b8be2061816a9a60",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/18f0f1c2224610b473c80690f0df0bac116da957",
+                "reference": "18f0f1c2224610b473c80690f0df0bac116da957",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-11-09T21:57:53+00:00"
+            "time": "2018-11-12T22:58:19+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -320,16 +320,16 @@
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.23.8",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-core.git",
-                "reference": "49a9086e5a402bd6d94c781368f6d88cbaab8835"
+                "reference": "4a6a81cf66c4ae556237cb78584ea6bf4d0f9edf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/49a9086e5a402bd6d94c781368f6d88cbaab8835",
-                "reference": "49a9086e5a402bd6d94c781368f6d88cbaab8835",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/4a6a81cf66c4ae556237cb78584ea6bf4d0f9edf",
+                "reference": "4a6a81cf66c4ae556237cb78584ea6bf4d0f9edf",
                 "shasum": ""
             },
             "require": {
@@ -375,7 +375,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2018-10-29T16:21:18+00:00"
+            "time": "2018-11-12T23:42:54+00:00"
         },
         {
             "name": "google/cloud-datastore",
@@ -839,16 +839,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.34.1",
+            "version": "1.34.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9"
+                "reference": "b9a444d829c9a16735aceca1b173e765745bcc0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9",
-                "reference": "19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/b9a444d829c9a16735aceca1b173e765745bcc0c",
+                "reference": "b9a444d829c9a16735aceca1b173e765745bcc0c",
                 "shasum": ""
             },
             "require": {
@@ -856,8 +856,11 @@
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
+            },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
+                "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
             },
             "type": "library",
             "extra": {
@@ -890,7 +893,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-11-08T13:33:47+00:00"
+            "time": "2018-11-13T08:26:10+00:00"
         },
         {
             "name": "nikic/fast-route",
