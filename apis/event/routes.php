@@ -358,6 +358,18 @@ function addAPIRoutes($api){
         return $response->withJson($row);
 	})->add($api->auth());
 	
+	$api->get('/{event_id}/checkin', function(Request $request, Response $response, array $args) use ($api) {
+        
+        if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
+        
+        $event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+        if(!$event) throw new Exception('Event not found', 401);
+        
+        $rows = $api->db['sqlite']->event_checking()->where( 'event_id', $args['event_id'] )->fetchAll();
+		
+        return $response->withJson($rows);
+	})->add($api->auth());
+	
 	$api->post('/active_campaign/user', function(Request $request, Response $response, array $args) use ($api) {
         
         $parsedBody = $request->getParsedBody();
