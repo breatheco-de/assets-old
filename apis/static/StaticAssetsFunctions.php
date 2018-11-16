@@ -25,7 +25,7 @@ class StaticAssetsFunctions{
 		return $templates;
     }
     
-    public static function deleteUnusedImages(){
+    public static function deleteUnusedImages($fake=true){
     	
 		$UCApi = new \Uploadcare\Api(UC_PUBLIC_KEY, UC_SECRET_KEY);
 		
@@ -35,11 +35,12 @@ class StaticAssetsFunctions{
 		function deleteUnsyncedImages($localImagesIds, $UCApi, $next='', &$log){
 			$resp = $UCApi->request('GET',$next);
 			$log[] = $resp->total." images were found on the CDN";
-			//if()
+			$imgToDelete = [];
 			foreach($resp->results as $remoteImage){
 				if(!in_array($remoteImage->uuid, $localImagesIds)){
-					$UCApi->request('DELETE','/files/'.$remoteImage->uuid.'/');
-					$log[] = "The image ".$remoteImage->uuid." was deleted";
+					if(!$fake) $UCApi->request('DELETE','/files/'.$remoteImage->uuid.'/');
+					$imgToDelete[] = $remoteImage->uuid;
+					$log[] = "The image ".$remoteImage->uuid." was supposed to be deleted";
 				}
 			}
 					

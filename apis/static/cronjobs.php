@@ -12,7 +12,13 @@
 	]);
 	$api->addDB('json', new JsonPDO('data/','[]',false));
 	StaticAssetsFunctions::setAPI($api);
-	$logs = StaticAssetsFunctions::deleteUnusedImages();
+	
+	// fake deletion of images
+	$logs = StaticAssetsFunctions::deleteUnusedImages(true); //true=fake
+	
+	// real deletion of images
+	//$logs = StaticAssetsFunctions::deleteUnusedImages(false); //false=hard delete
+	
 	print_r($logs);
 	
 	exit(0);
