@@ -37,7 +37,7 @@ function addAPIRoutes($api){
 				else $content = $content->where('status','published');
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				//compare dates from today and return non-recurring instances
-				$content = array_values(array_filter($content, function($evt){
+				$content = array_values(array_filter($content, function($evt) use ($includeRecurrents){
 					return $evt->event_date >= date("Y-m-d") && ($includeRecurrents || empty($evt->recurrent_type) || $evt->recurrent_type == 'one_time');
 				}));
 				return $response->withJson($content);
@@ -46,14 +46,14 @@ function addAPIRoutes($api){
 				else $content = $content->where('status','published');
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				//compare dates from today and return non-recurring instances
-				$content = array_values(array_filter($content, function($evt){
+				$content = array_values(array_filter($content, function($evt) use ($includeRecurrents){
 					return ($evt->event_date < date("Y-m-d")) && ($includeRecurrents || empty($evt->recurrent_type) || $evt->recurrent_type == 'one_time');
 				}));
 			} else {
 				$content = $content->where('status',explode(",",$_GET['status']));
 				$content = $content->orderBy( 'event_date', 'DESC' )->fetchAll();
 				//only return non-recurring events
-				$content = array_values(array_filter($content, function($evt){
+				$content = array_values(array_filter($content, function($evt) use ($includeRecurrents){
 					return ($includeRecurrents || empty($evt->recurrent_type) || $evt->recurrent_type == 'one_time');
 				}));
 			}
