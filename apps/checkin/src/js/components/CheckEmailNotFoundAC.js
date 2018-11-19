@@ -26,7 +26,8 @@ export default class CheckEmailNotFoundAC extends React.Component{
             };
         }else {
             return {
-                idEvent: nextProps.idEvent
+                idEvent: nextProps.idEvent,
+                email: nextProps.email
             };
         }
         return null;
