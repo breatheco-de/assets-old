@@ -5,6 +5,7 @@ require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use BreatheCode\BCWrapper as BC;
 
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
@@ -368,6 +369,22 @@ function addAPIRoutes($api){
         $rows = $api->db['sqlite']->event_checking()->where( 'event_id', $args['event_id'] )->fetchAll();
 		
         return $response->withJson($rows);
+	})->add($api->auth());
+	
+	//publish event on eventbrite
+	$api->post('/{event_id}/eventbrite', function(Request $request, Response $response, array $args) use ($api) {
+        
+        if(empty($args['event_id'])) throw new Exception('Invalid param event_id', 400);
+        
+        $event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
+        if(!$event) throw new Exception('Event not found', 401);
+        
+        $client = new Client();
+		$r = $client->request('POST', 'https://hooks.zapier.com/hooks/catch/2995810/c3tlmv/', [
+		    'body' => json_encode($event)
+		]);
+		
+        return $response->withJson(["status" => "ok"]);
 	})->add($api->auth());
 	
 	$api->post('/active_campaign/user', function(Request $request, Response $response, array $args) use ($api) {

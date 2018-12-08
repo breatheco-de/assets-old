@@ -65,9 +65,9 @@
 	        			$number++;
 	        			$day->number = $number;
 	        		} 
-	        		$instructionsURL = "/instructions/".$syllabus['profile']."/day".($number).".md";
-	        		if(file_exists(__DIR__.$instructionsURL))
-	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus$instructionsURL";
+        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/day".($number).".md";
+	        		if(file_exists($instructionsURL))
+	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions";
 	        		return $day;
 	        	}, $week->days, array_keys($week->days));
 	        }
@@ -76,17 +76,29 @@
         else{
         	$number = 0;
 	        foreach ($syllabus['weeks'] as $week) {
-	        	$week->days = array_map(function($day) use (&$number){
+	        	$week->days = array_map(function($day) use ($syllabus, &$number){
 	        		if(!isset($day->weekend) || !$day->weekend){
 	        			$number++;
 	        			$day->number = $number;
 	        		} 
+        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/day".($number).".md";
+	        		if(file_exists($instructionsURL))
+	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions";
 	        		if(isset($day->description)) return $day;
 	        		else return null;
 	        	}, $week->days);
 	        }
 	        return $response->withJson($syllabus);
         }
+        
+	});
+	
+	$api->get('/{slug}/day/{day_number}/instructions', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
+        
+		$instructionsURL = __DIR__."/data/".$args['slug']."/day".($args['day_number']).".md";
+		if(file_exists($instructionsURL)) 
+			$response->withHeader('Content-Type', 'text/plain')->write(file_get_contents($instructionsURL));
+        else throw new Exception('Instructions not found for: '.$args['slug'].", day ".$args['day_number'],404);
         
 	});
     
