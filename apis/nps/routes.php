@@ -85,6 +85,10 @@ function addAPIRoutes($api){
 	            'user' => ($user) ? $user : $email,
 	            'data' => $score
 	        ]);
+	        BreatheCodeLogger::markManyAs([ 
+	        	'slug' => 'nps_survey', 
+	        	'user' => ($user) ? $user->id : $email 
+	        ], 'answered', [ "score" => $score ]);
 		}
 		catch(Exception $e)
 		{

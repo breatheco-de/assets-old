@@ -1,7 +1,7 @@
 <?php
 
 require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-require('./BreatheCodeMessages.php');
+require('../BreatheCodeMessages.php');
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -26,25 +26,54 @@ function addAPIRoutes($api){
         $messages = BreatheCodeMessages::getMessages();
 	    return $response->withJson($messages);
 	});//->add($api->auth());
+	
+	$api->get('/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
+
+		if(empty($args["student_id"])) throw new Exception("Missing student_id", 400);
+		
+		$user = BC::getUser(['user_id' => urlencode($args["student_id"])]);
+		
+		$filters = [];
+
+		if(!empty($_GET['read'])) $filters['read'] = $_GET['read'];
+		else $filters['read'] = 0;
+		
+		if(!empty($_GET['answered'])) $filters['answered'] = $_GET['answered'];
+		else $filters['answered'] = 0;
+
+		if(!empty($_GET['priority'])) $filters['priority'] = $_GET['priority'];
+		if(!empty($_GET['type'])) $filters['type'] = $_GET['type'];
+		
+		if(is_numeric($args["student_id"])) $filters['user_id'] = $args["student_id"];
+		else $filters['email'] = $args["student_id"];
+
+        $messages = BreatheCodeMessages::getMessages($filters);
+
+	    return $response->withJson($messages);
+	});//->add($api->auth());
+	
 	$api->delete('/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
 
 		$user = BC::getUser(['user_id' => urlencode($args["student_id"])]);
 
-        $messages = BreatheCodeMessages::deleteMessages(["user_id" => $user->id ]);
-	    return $response->withJson($messages);
+        if(BreatheCodeMessages::deleteMessages(["user_id" => $user->id ])) return $response->withJson(["success" => true]);
+        else return $response->withJson(["success" => false, "error" => true ]);
 	});//->add($api->auth());
 	
-	$api->get('/email/{template_slug}', function (Request $request, Response $response, array $args) use ($api) {
-		$templates = BreatheCodeMessages::getTemplateName("nps_survey");
-		return $response->write($templates["html"]->render([
-			"intro" => "Hello %FIRSTNAME%, we need some feedback from your side, it's the only way to become a better academy and it's only one small question, we would really appreciate your answer",
-			"subject" => "Net Promoter Score - BreatheCode",
-			"question" => "How likely are you to recommend 4Geeks Academy to your friends or colleagues?",
-			"url" => "https://assets.breatheco.de/apps/nps/survey/123"
-		]));
+	$api->get('/email/{message_type}', function (Request $request, Response $response, array $args) use ($api) {
+		
+		$slug = 'nps_survey';
+		if(!empty($args['message_type'])) $slug = $args['message_type'];
+		
+		$templates = BreatheCodeMessages::getEmailTemplate($slug);
+		return $response->write($templates["html"]->render(BreatheCodeMessages::getTemplates($slug)));
+	});
+	
+	$api->get('/templates', function (Request $request, Response $response, array $args) use ($api) {
+		return $response->withJson(BreatheCodeMessages::getTemplates());
 	});
 
-	$api->post('/test-email', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/test-email', function (Request $request, Response $response, array $args) use ($api) {
 
 		//$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
 		
@@ -64,7 +93,9 @@ function addAPIRoutes($api){
     	if(!$student) throw new Exception('Student not found');
     	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
     	
-    	$message = BreatheCodeMessages::addMessage("nps_survey", $student);
+    	$parsedBody = $request->getParsedBody();
+    	$type = $api->validate($parsedBody,'type')->slug();
+    	$message = BreatheCodeMessages::addMessage($type, $student, null, null, 'https://assets.breatheco.de/apps/nps/survey/'.$student->id);
     	
     	return $response->withJson(["key" => $message]);
     	
@@ -78,6 +109,16 @@ function addAPIRoutes($api){
         $data = $api->optional($parsedBody,'data')->bigString();
     	$message = BreatheCodeMessages::markAsAnswred($args['message_id'], $data);
     	return $response->withJson($message->get());
+    	
+	});//->add($api->auth());
+
+	$api->post('/test_bulk_change_of_status', function (Request $request, Response $response, array $args) use ($api) {
+
+    	$messages = BreatheCodeMessages::markManyAs([
+    		'student_id' => 6
+    	], 'answered');
+    	
+    	return $response->withJson($messages);
     	
 	});//->add($api->auth());
 	

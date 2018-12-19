@@ -9,7 +9,13 @@ class BreatheCodeMessages{
         "nps_survey" => [ 
             "track_on_log" => true,
             "type" => 'actionable',
-            "priority" => 'HIGH'
+            "priority" => 'HIGH',
+            "template" => [
+                "subject" => "Take 20 seconds to give us some feedback",
+        		"intro" => "Hello %FIRSTNAME%, we need some feedback from your side, it's the only way to become a better academy and it's only one small question, we would really appreciate your answer",
+        		"question" => "How likely are you to recommend 4Geeks Academy to your friends or colleagues?",
+        		"url" => "https://assets.breatheco.de/apps/nps/survey/"
+            ]
         ]
     ];
     
@@ -97,6 +103,39 @@ class BreatheCodeMessages{
         return $entity;
     }
     
+    public static function markManyAs($filters, $status, $data='No additional data'){
+        
+        if($status !== 'read' and $status !== 'answered') throw new Exception('invalid new status: '.$status);
+        
+        if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
+        else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
+        else if(!$data) $entity['data'] = 'No additional data';
+        else throw new Exception("Invalid data format for message", 400);
+
+        $datastore = self::connect();
+        $query = $datastore->query()->kind('student_message');
+        $query = self::filter($query, $filters);
+        
+        //exclude the ones that already have the status
+        //if($status == 'answered') $query = $query->filter('answered', '=', 'false'); 
+        //if($status == 'read') $query = $query->filter('read', '=', 'false');
+        
+        $items = $datastore->runQuery($query);
+        
+        $messages = [];
+        foreach($items as $message) {
+            if($status === 'read') $message['read'] = 'true';
+            else if($status === 'answered'){
+                $message['read'] = 'true';
+                $message['answered'] = 'true';
+            } 
+            $messages[] = $message->get();
+            $datastore->update($message);
+        }
+        
+        return $messages;
+    }
+    
     public static function markAsRead($messageKey, $data='No additional data'){
         
         if(!$messageKey) throw new Exception('The missing message id');
@@ -106,6 +145,7 @@ class BreatheCodeMessages{
         $entity = $datastore->lookup($key);
         
         if(!$entity) throw new Exception("Message not found", 404);
+        if($entity['type'] === 'actionable') throw new Exception("This cannot be mark as read because it has a HIGH priority, it has to be answered.", 400);
         
         // Update the entity
         $entity['read'] = 'true';
@@ -120,9 +160,10 @@ class BreatheCodeMessages{
         return $entity;
     }
     
-    public static function addMessage($messageSlug, $student, $priority='LOW', $data='No additional data'){
+    public static function addMessage($messageSlug, $student, $priority, $data='No additional data', $url=null){
         
         if(!isset(self::$_messages[$messageSlug])) throw new Exception('Invalid message slug '.$messageSlug);
+        if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
         if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
         
         $datastore = self::connect();
@@ -135,7 +176,8 @@ class BreatheCodeMessages{
             'answered' => false,
             'priority' => isset(self::$_messages[$messageSlug]["priority"]) ? self::$_messages[$messageSlug]["priority"] : $priority,
             'type' => self::$_messages[$messageSlug]["type"],
-            'data' => $data
+            'data' => $data,
+            'url' => $url
         ];
 
         if(is_string($student)) $message['email'] = $student;
@@ -157,6 +199,8 @@ class BreatheCodeMessages{
             $query->filter('user_id', '=', (string) $filters["user_id"]);
         } 
         if(!empty($filters["email"])) $query->filter('email', '=', (string) $filters["email"]);
+        if(!empty($filters["type"])) $query->filter('type', '=', (string) $filters["type"]);
+        if(!empty($filters["slug"])) $query->filter('slug', '=', (string) $filters["slug"]);
         if(!empty($filters["priority"])) $query = $query->filter('priority', '=', (string) $filters["priority"]);
         
         return $query;
@@ -170,7 +214,10 @@ class BreatheCodeMessages{
 
         $results = [];
         foreach($items as $ans) {
-            $results[] = $ans->get();
+            $message = $ans->get();
+            $message['key'] = $ans->key()->pathEndIdentifier();
+            unset($message['email']);
+            $results[] = $message;
         }
         return $results;
     }
@@ -191,9 +238,9 @@ class BreatheCodeMessages{
         return true;
     }
     
-    public static function getTemplateName($slug){
+    public static function getEmailTemplate($slug){
         
-        $basePath = './templates/';
+        $basePath = './_templates/';
         if(!file_exists($basePath.$slug.'.html')) throw new Error('Missing HTML template for slug: '.$slug);
         if(!file_exists($basePath.$slug.'.txt')) throw new Error('Missing TXT template for slug: '.$slug);
         
@@ -205,6 +252,13 @@ class BreatheCodeMessages{
                 "txt" => $twig->load($slug.'.txt')
             ];
         }
+    }
+    
+    public static function getTemplates($slug=null){
+        
+        if(!$slug) return self::$_messages;
+        else if(!empty(self::$_messages[$slug])) return self::$_messages[$slug];
+        else throw new Exception("Inalid message type", 400);
     }
     
 }
