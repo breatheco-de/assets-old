@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use \BreatheCode\BCWrapper as BC;
 
 require('../BreatheCodeLogger.php');
+require('../BreatheCodeMessages.php');
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
 
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
@@ -15,6 +16,11 @@ BC::setToken(BREATHECODE_TOKEN);
 
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
+
+BreatheCodeMessages::connect([ 
+    'projectId' => 'breathecode-197918',
+    'keyFilePath' => '../../breathecode-efde1976e6d3.json'
+]);
 
 function addAPIRoutes($api){
 
@@ -85,10 +91,10 @@ function addAPIRoutes($api){
 	            'user' => ($user) ? $user : $email,
 	            'data' => $score
 	        ]);
-	        BreatheCodeLogger::markManyAs([ 
+	        BreatheCodeMessages::markManyAs('answered',[ 
 	        	'slug' => 'nps_survey', 
-	        	'user' => ($user) ? $user->id : $email 
-	        ], 'answered', [ "score" => $score ]);
+	        	'user_id' => ($user) ? $user->id : $email 
+	        ], [ "score" => $score ]);
 		}
 		catch(Exception $e)
 		{

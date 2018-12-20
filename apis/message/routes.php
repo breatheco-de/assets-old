@@ -11,6 +11,11 @@ use Google\Cloud\Datastore\DatastoreClient;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
+BreatheCodeMessages::connect([ 
+    'projectId' => 'breathecode-197918',
+    'keyFilePath' => '../../breathecode-efde1976e6d3.json'
+]);
+
 function addAPIRoutes($api){
 	
 	$api->addTokenGenerationPath();
@@ -94,8 +99,9 @@ function addAPIRoutes($api){
     	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
     	
     	$parsedBody = $request->getParsedBody();
-    	$type = $api->validate($parsedBody,'type')->slug();
-    	$message = BreatheCodeMessages::addMessage($type, $student, null, null, 'https://assets.breatheco.de/apps/nps/survey/'.$student->id);
+    	$slug = $api->validate($parsedBody,'slug')->slug();
+    	
+    	$message = BreatheCodeMessages::addMessage($slug, $student);
     	
     	return $response->withJson(["key" => $message]);
     	
@@ -114,9 +120,9 @@ function addAPIRoutes($api){
 
 	$api->post('/test_bulk_change_of_status', function (Request $request, Response $response, array $args) use ($api) {
 
-    	$messages = BreatheCodeMessages::markManyAs([
-    		'student_id' => 6
-    	], 'answered');
+    	$messages = BreatheCodeMessages::markManyAs('answered',[
+    		'user_id' => 6
+    	]);
     	
     	return $response->withJson($messages);
     	
