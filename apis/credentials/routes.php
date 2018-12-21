@@ -32,7 +32,7 @@ function addAPIRoutes($api){
         		'student' => ['read_basic_info', 'student_tasks'],
         		'teacher' => ['read_basic_info'],
         		'admissions' => ['read_basic_info', 'crud_student', 'crud_cohort'],
-        		'student_support' => ['read_basic_info', 'user_profile']
+        		'career-support' => ['read_basic_info', 'user_profile', 'crud_student']
         	];
         	if(!isset($permissions[$scope])) throw new Exception('Invalid scope'); 
         	
