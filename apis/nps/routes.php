@@ -7,7 +7,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
 use \BreatheCode\BCWrapper as BC;
 
-require('../BreatheCodeLogger.php');
 require('../BreatheCodeMessages.php');
 
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
