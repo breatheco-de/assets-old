@@ -63,10 +63,10 @@
     }
     function get($url){
         $content = file_get_contents($url);
-        if(!$content) throw new Exception('Invalid cohort url: '.$url);
+        if(!$content) throw new Exception('Invalid file url: '.$url);
         
         $obj = json_decode($content);
-        if(!$obj) throw new Exception('Invalid sample syntax for cohorts');
+        if(!$obj) throw new Exception('Invalid sample syntax');
         if(empty($samples[$url])) $samples[$url] = $obj;
         
         return $samples[$url];
@@ -124,3 +124,52 @@
             throw new Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
         }
     }
+    
+
+use PHPUnit\Framework\TestCase;
+use Slim\Http\Environment;
+use Slim\Http\Request;
+class BaseTestCase extends TestCase {
+ 
+    /**
+     * Default preparation for each test
+     */
+    public function setUp()
+    {
+        parent::setUp();
+ 
+    	$this->app = new SlimAPI([
+    		'debug' => API_DEBUG
+    	]);
+    }
+ 
+    /**
+       [
+            'REQUEST_METHOD' => 'GET',
+            'REQUEST_URI'    => '/catalog/countries/',
+       ]
+     */
+    protected function mockAPICall($params, $body=null){
+        $env = Environment::mock($params);
+        
+        $req = Request::createFromEnvironment($env);
+        $bodyStream = $req->getBody();
+        $bodyStream->write(json_encode($body));
+        $bodyStream->rewind();
+        $req = $req->withBody($bodyStream);
+        $req = $req->withHeader('Content-Type', 'application/json');
+        
+        $this->app->getContainer()["environment"] = $env;
+        $this->app->getContainer()["request"] =$req;
+        $response = $this->app->run(true);
+        
+        $responseBody = $response->getBody();
+        $responseObj = json_decode($responseBody);
+        
+        $this->assertSame($response->getStatusCode(), 200);
+        $this->assertSame($responseObj->code, 200);
+        
+        return $responseObj;
+    }
+    
+}

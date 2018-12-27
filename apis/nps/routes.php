@@ -9,11 +9,11 @@ use \BreatheCode\BCWrapper as BC;
 
 require('../BreatheCodeLogger.php');
 require('../BreatheCodeMessages.php');
-require('../../vendor_static/ActiveCampaign/ACAPI.php');
 
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
+require('../../vendor_static/ActiveCampaign/ACAPI.php');
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
 

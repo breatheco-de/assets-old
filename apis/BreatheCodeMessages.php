@@ -2,6 +2,7 @@
 use Aws\Ses\SesClient;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
+require('../BreatheCodeLogger.php');
 
 class BreatheCodeMessages{
     
@@ -20,11 +21,13 @@ class BreatheCodeMessages{
         self::$_messages = [
             "nps_survey" => [ 
                 "track_on_log" => true,
+                "track_on_active_campaign" => true,
+                "send_email" => true,
                 "type" => 'actionable',
                 "priority" => 'HIGH',
                 "template" => [
                     "subject" => "Take 20 seconds to give us some feedback",
-            		"intro" => "Hello %FIRSTNAME%, we need some feedback from your side, it's the only way to become a better academy and it's only one small question, we would really appreciate your answer",
+            		"intro" => "Hello! We need some feedback from your side, it's the only way to become a better academy and it's only one small question, we would really appreciate your answer",
             		"question" => "How likely are you to recommend 4Geeks Academy to your friends or colleagues?"
                 ],
                 "getURL" => function($student){
@@ -38,11 +41,13 @@ class BreatheCodeMessages{
         ];
         
         self::$datastore = new DatastoreClient($params);
+        BreatheCodeLogger::addMessatesToActivities(self::$_messages);
+        BreatheCodeLogger::setDatastore(self::$datastore);
     }
     
     public static function sendMail($slug, $to, $subject, $data){
         
-        $templates = self::getTemplateName($slug);
+        $template = self::getEmailTemplate($slug);
         $client = SesClient::factory(array(
             'version'=> 'latest',     
             'region' => 'us-west-2',
@@ -63,11 +68,11 @@ class BreatheCodeMessages{
                     'Body' => [
                         'Html' => [
                             'Charset' => 'UTF-8',
-                            'Data' => $templates["html"]->render($data),
+                            'Data' => $template["html"]->render($data),
                         ],
             			'Text' => [
                             'Charset' => 'UTF-8',
-                            'Data' => $templates["txt"]->render($data),
+                            'Data' => $template["txt"]->render($data),
                         ],
                     ],
                     'Subject' => [
@@ -171,8 +176,17 @@ class BreatheCodeMessages{
         if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
         
         if(self::$_messages[$messageSlug]["type"] == 'actionable')
-            if(!isset(self::$_messages[$messageSlug]["getURL"])) 
+            if(!isset(self::$_messages[$messageSlug]["getURL"]) || !is_callable(self::$_messages[$messageSlug]["getURL"])) 
                 throw new Exception('The message type: '.self::$_messages[$messageSlug]["type"].' needs to have a getURL method for its actions to be resolved');
+        
+        $url = self::$_messages[$messageSlug]["getURL"]($student);
+        
+        $token = '';
+        if(!empty($data["token"])){
+            $token = $data["token"];
+            unset($data["token"]);
+        } 
+        
         
         $message = [
             'created_at' => new DateTime(),
@@ -183,12 +197,11 @@ class BreatheCodeMessages{
             'priority' => (!$priority) ? self::$_messages[$messageSlug]["priority"] : $priority,
             'type' => self::$_messages[$messageSlug]["type"],
             'data' => $data,
-            'url' => self::$_messages[$messageSlug]["getURL"]($student)
+            'url' => $url
         ];
 
         if(is_string($student)) $message['email'] = $student;
         else{
-            //print_r($student); die();
             if(!empty($student->id)) $message['user_id'] = (string) $student->id;
             
             if(!empty($student->email)) $message['email'] = (string) $student->email;
@@ -196,7 +209,21 @@ class BreatheCodeMessages{
         }
         
         $record = self::$datastore->entity('student_message', $message);
-        return self::$datastore->insert($record);
+        $result = self::$datastore->insert($record);
+        
+        if($result){
+            if(self::$_messages[$messageSlug]["send_email"]){
+                $template = self::$_messages[$messageSlug]["template"];
+                $template["url"] = $url;
+                if($token != '') $template["url"] .= ((strpos($template["url"],'?')) ? '&':'?').'access_token='.$token;
+                
+                self::sendMail($messageSlug, $student->email, $template["subject"], $template);
+            }
+            BreatheCodeLogger::logActivity([
+                "slug" => $messageSlug,
+                "data" => $data
+            ], $student);
+        }
     }
     
     private static function filter($query, $filters){
@@ -244,7 +271,7 @@ class BreatheCodeMessages{
     
     public static function getEmailTemplate($slug){
         
-        $basePath = './_templates/';
+        $basePath = '../message/_templates/';
         if(!file_exists($basePath.$slug.'.html')) throw new Error('Missing HTML template for slug: '.$slug);
         if(!file_exists($basePath.$slug.'.txt')) throw new Error('Missing TXT template for slug: '.$slug);
         

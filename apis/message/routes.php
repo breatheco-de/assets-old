@@ -93,13 +93,14 @@ function addAPIRoutes($api){
 	$api->post('/notify/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
 
 		if(empty($args['student_id'])) throw new Exception('Invalid param student_id');
+    	
+    	$parsedBody = $request->getParsedBody();
+    	$slug = $api->validate($parsedBody,'slug')->slug();
         
     	$student = BC::getStudent(['student_id' => urlencode($args['student_id'])]);
     	if(!$student) throw new Exception('Student not found');
     	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
     	
-    	$parsedBody = $request->getParsedBody();
-    	$slug = $api->validate($parsedBody,'slug')->slug();
     	
     	$message = BreatheCodeMessages::addMessage($slug, $student);
     	
@@ -139,25 +140,5 @@ function addAPIRoutes($api){
     	
 	});//->add($api->auth());
 	
-	$api->post('/notify/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
-
-		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
-		
-		$parsedBody = $request->getParsedBody();
-        $type = $api->validate($parsedBody,'type')->slug();
-        
-    	$students = BC::getStudentsFromCohort(['cohort_id' => $args['cohort_slug']]);
-    	$count = 0;
-		foreach($students as $std){
-			if($std->status == "currently_active"){
-				$count++;
-				BreatheCodeMessages::addMessage($type, $std);
-			} 
-		};
-    	
-    	return $response->withJson([ "msg" => "$count students notified", "total" => $count]);
-	});//->add($api->auth());
-	
-
 	return $api;
 }

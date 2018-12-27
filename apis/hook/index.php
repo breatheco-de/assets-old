@@ -8,7 +8,7 @@
     require('HookFunctions.php');
     
 	$api = new SlimAPI([
-	    'debug' => true,
+	    'debug' => API_DEBUG,
 	    'name' => 'Hook API'
 	]);
 	$api->addReadme('/','./README.md');

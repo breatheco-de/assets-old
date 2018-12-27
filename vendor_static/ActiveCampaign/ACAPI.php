@@ -47,6 +47,7 @@ class ACAPI{
         'student_application',
         'student_referral',
         'syllabus_download',
+        'nps_survey', //nps survey has been sent
         'new_cohort_registration'
     ];
     
