@@ -12,7 +12,7 @@ class BreatheCodeMessages{
     private static $messageType = ['actionable','non-actionable'];
     
     public static function getType($type){
-        if(!in_array(self::messageType)) throw new Exception('Ivalid Message Type');
+        if(!in_array(self::messageType)) throw new Exception('Ivalid Message Type', 400);
         else return $type;
     }
     
@@ -202,6 +202,7 @@ class BreatheCodeMessages{
 
         if(is_string($student)) $message['email'] = $student;
         else{
+            if(!empty($student->status) && !in_array($student->status, ['currently_active','studies_finished'])) throw new Exception('This student is not currently_active or studies_finished', 400);
             if(!empty($student->id)) $message['user_id'] = (string) $student->id;
             
             if(!empty($student->email)) $message['email'] = (string) $student->email;

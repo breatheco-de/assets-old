@@ -21,16 +21,9 @@ function addAPIRoutes($api){
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
-
-		//$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
-		
-		//$parsedBody = $request->getParsedBody();
-        //$data = $api->optional($parsedBody,'data')->smallString();
-        //$slug = $api->validate($parsedBody,'slug')->slug();
-		
         $messages = BreatheCodeMessages::getMessages();
 	    return $response->withJson($messages);
-	});//->add($api->auth());
+	})->add($api->auth());
 	
 	$api->get('/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -55,7 +48,7 @@ function addAPIRoutes($api){
         $messages = BreatheCodeMessages::getMessages($filters);
 
 	    return $response->withJson($messages);
-	});//->add($api->auth());
+	})->add($api->auth());
 	
 	$api->delete('/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -63,9 +56,9 @@ function addAPIRoutes($api){
 
         if(BreatheCodeMessages::deleteMessages(["user_id" => $user->id ])) return $response->withJson(["success" => true]);
         else return $response->withJson(["success" => false, "error" => true ]);
-	});//->add($api->auth());
+	})->add($api->auth());
 	
-	$api->get('/email/{message_type}', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/render/email/{message_type}', function (Request $request, Response $response, array $args) use ($api) {
 		
 		$slug = 'nps_survey';
 		if(!empty($args['message_type'])) $slug = $args['message_type'];
@@ -74,22 +67,10 @@ function addAPIRoutes($api){
 		return $response->write($templates["html"]->render(BreatheCodeMessages::getTemplates($slug)));
 	});
 	
-	$api->get('/templates', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/types', function (Request $request, Response $response, array $args) use ($api) {
 		return $response->withJson(BreatheCodeMessages::getTemplates());
 	});
 
-	$api->get('/test-email', function (Request $request, Response $response, array $args) use ($api) {
-
-		//$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
-		
-		//$parsedBody = $request->getParsedBody();
-        //$data = $api->optional($parsedBody,'data')->smallString();
-        //$slug = $api->validate($parsedBody,'slug')->slug();
-		
-        BreatheCodeMessages::sendMail("nps_survey","aalejo@gmail.com","Feedback nps", []);
-	    return $response->withJson("ok");
-	});//->add($api->auth());
-	
 	$api->post('/notify/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
 
 		if(empty($args['student_id'])) throw new Exception('Invalid param student_id');
@@ -106,7 +87,7 @@ function addAPIRoutes($api){
     	
     	return $response->withJson(["key" => $message]);
     	
-	});//->add($api->auth());
+	})->add($api->auth());
 	
 	$api->post('/{message_id}/answered', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -117,7 +98,7 @@ function addAPIRoutes($api){
     	$message = BreatheCodeMessages::markAsAnswred($args['message_id'], $data);
     	return $response->withJson($message->get());
     	
-	});//->add($api->auth());
+	})->add($api->auth());
 
 	$api->post('/test_bulk_change_of_status', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -127,7 +108,7 @@ function addAPIRoutes($api){
     	
     	return $response->withJson($messages);
     	
-	});//->add($api->auth());
+	})->add($api->auth());
 	
 	$api->post('/{message_id}/read', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -138,7 +119,7 @@ function addAPIRoutes($api){
     	$message = BreatheCodeMessages::markAsRead($args['message_id'], $data);
     	return $response->withJson($message->get());
     	
-	});//->add($api->auth());
+	})->add($api->auth());
 	
 	return $api;
 }

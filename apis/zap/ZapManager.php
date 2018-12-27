@@ -11,14 +11,15 @@ class ZapManager{
     static $_zaps = [
         "change_cohort_status@not-started" => [],
         "change_cohort_status@on-prework" => [],
-        "change_cohort_status@on-course" => [],
+        "change_cohort_status@on-course" => ["nps_survey_cohort"],
         "change_cohort_status@on-final-project" => ["nps_survey_cohort"],
-        "change_cohort_status@finished" => []
+        "change_cohort_status@finished" => ["nps_survey_cohort"]
     ];
     
     static $actions = [
         "nps_survey_cohort" => [
-            "title" => "NPS Survey will be sent each cohort student"
+            "title" => "Send NPS Survey to each cohort student",
+            "run_by_default" => true
         ]
     ];
     

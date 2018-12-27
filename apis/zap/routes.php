@@ -56,19 +56,25 @@ function addAPIRoutes($api){
 		if(is_array($token)) $token = $token[0];
 		
     	$students = BC::getStudentsFromCohort(['cohort_id' => $payload['cohort_slug']]);
+    	$cohort = BC::getCohort(['cohort_id' => $payload['cohort_slug']]);
     	$count = 0;
+    	$errors = 0;
     	$ignored = 0;
 		foreach($students as $std){
-			if($std->status == "currently_active"){
+			if(in_array($std->status,["currently_active", "studies_finished"])){
 				$count++;
-				BreatheCodeMessages::addMessage('nps_survey', $std, 'HIGH', [ 'token' => $token ]);
+				try{
+				    BreatheCodeMessages::addMessage('nps_survey', $std, 'HIGH', [ 'token' => $token, 'cohort_stage' => $cohort->stage ]);
+				}catch(Exception $e){
+				    $errors++;
+				}
 			}
 			else{
 				$ignored++;
 			}
 		};
     	
-    	return $response->withJson([ "msg" => "$count students notified and $ignored were ignored because there are not currently_active", "total" => $count]);
+    	return $response->withJson([ "msg" => "$count students notified, $ignored ignored (there are not currently_active or studies_finished) and $errors gave errors", "total" => $count]);
         
 	})->add($api->auth());
 	
