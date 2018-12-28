@@ -256,6 +256,11 @@ class BCWrapper{
 	    return self::request('GET','cohort/'.$params['cohort_id'],$params);
 	}
 	
+	public static function getAllCohorts($params=[]){
+
+	    return self::request('GET','cohorts/',$params);
+	}
+	
 	public static function getPasswordToken($params=[]){
 
         self::validate($params,'user_id');

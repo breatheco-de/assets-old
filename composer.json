@@ -22,6 +22,7 @@
         "respect/validation": "^1.1",
         "wrapi/slack": "^1.0",
         "firebase/php-jwt": "^5.0",
+        "lawondyss/moment-php": "dev-master",
 		"paquettg/php-html-parser": "^1.7"
     },
     "require-dev": {

@@ -5,7 +5,7 @@
 	require_once('routes.php');
 	
 	$api = new SlimAPI([
-		'name' => 'BreatheCode Messaging - BreatheCode Platform',
+		'name' => 'BreatheCode Reminders - BreatheCode Platform',
 		'debug' => API_DEBUG
 	]);
 	
