@@ -18,18 +18,23 @@ use \BreatheCode\BCWrapper as BC;
 use MomentPHP\MomentPHP as Moment;
 
 function remind_abandoned_cohorts(){
+    //get cohorts with stage different from 'finished'.
     $cohorts = BC::getAllCohorts(["stage_not" => "finished"]);
     $expiredCohorts = [];
     foreach($cohorts as $c){
+        //loop them and make sure they have a kickoff date
         if(!empty($c->kickoff_date) && $c->kickoff_date != '0000-00-00'){
             $now = new Moment(new DateTime());
             $kickoff = new Moment($c->kickoff_date, 'Y-m-d');
+            //veryfy if more than 90 days have passed since the kickoffdate
             if($kickoff->add(90,'days')->isBefore($now)) $expiredCohorts[] = $c;
         }
     }
     
+    // create the plan text content that will be sent by email
     $content = "The following cohorts have to be updated on breathecode: \n\n";
     foreach($expiredCohorts as $c) $content .= "    - ".$c->name." (".$c->slug.") started on ".$c->kickoff_date." and the stage is still ".$c->stage." \n";
     
+    // send reminder
     emailReminder("reminders_careersupport@4geeksacademy.com", 'Expired Cohorts', $content);
 }
