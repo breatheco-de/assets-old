@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "15e616219751890b314963cf832a17d3",
+    "content-hash": "8fa51d3c26e24b46ad36205b9700ca8c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.82.3",
+            "version": "3.82.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a0353c24b18d2ba0f5bb7ca8a478b4ce0b8153f7"
+                "reference": "e9a22aaec00218e57dcd8915d2e06978255dac5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a0353c24b18d2ba0f5bb7ca8a478b4ce0b8153f7",
-                "reference": "a0353c24b18d2ba0f5bb7ca8a478b4ce0b8153f7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e9a22aaec00218e57dcd8915d2e06978255dac5f",
+                "reference": "e9a22aaec00218e57dcd8915d2e06978255dac5f",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-12-21T22:21:50+00:00"
+            "time": "2019-01-03T00:46:35+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -168,11 +168,17 @@
         },
         {
             "name": "glicer/link-checker",
-            "version": "dev-with-markdown",
+            "version": "dev-isolated-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alesanchezr/php-linkchecker",
-                "reference": "3654edae883f45134177a9f0d04bc1a22892eefb"
+                "url": "https://github.com/alesanchezr/php-linkchecker.git",
+                "reference": "751aacf8328cf6600b75cbcd79a5a07a7528f197"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alesanchezr/php-linkchecker/zipball/751aacf8328cf6600b75cbcd79a5a07a7528f197",
+                "reference": "751aacf8328cf6600b75cbcd79a5a07a7528f197",
+                "shasum": ""
             },
             "require": {
                 "glicer/simply-html": "~1.0",
@@ -211,13 +217,16 @@
                 }
             ],
             "description": "Check broken links in html files, sitemap.xml and robots.txt",
-            "homepage": "https://github.com/emmanuelroecker/php-linkchecker",
+            "homepage": "https://github.com/alesanchezr/php-linkchecker",
             "keywords": [
                 "broken",
                 "html",
                 "links"
             ],
-            "time": "2018-11-21 20:45:45"
+            "support": {
+                "source": "https://github.com/alesanchezr/php-linkchecker/tree/isolated-master"
+            },
+            "time": "2019-01-03 19:54:40"
         },
         {
             "name": "glicer/simply-html",

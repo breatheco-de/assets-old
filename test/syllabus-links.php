@@ -22,7 +22,8 @@
         },
         function () {
             // called at the end
-        }
+        },
+        ['absolute']
     );
     $out = printErrors($resultJSON);
     if($out > 0) return $out;
@@ -39,7 +40,8 @@
         },
         function () {
             // called at the end
-        }
+        },
+        ['absolute']
     );
     
     $out = printErrors($resultMD);

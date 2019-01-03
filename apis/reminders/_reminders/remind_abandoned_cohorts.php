@@ -36,5 +36,5 @@ function remind_abandoned_cohorts(){
     foreach($expiredCohorts as $c) $content .= "    - ".$c->name." (".$c->slug.") started on ".$c->kickoff_date." and the stage is still ".$c->stage." \n";
     
     // send reminder
-    emailReminder("reminders_careersupport@4geeksacademy.com", 'Expired Cohorts', $content);
+    if(count($expiredCohorts) > 0) emailReminder("reminders_careersupport@4geeksacademy.com", 'Expired Cohorts', $content);
 }

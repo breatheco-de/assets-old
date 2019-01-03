@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 function addAPIRoutes($api){
 
+	//old lessons from wordpress
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
         $data = $request->getParams();
         $limit = '';
@@ -12,6 +13,24 @@ function addAPIRoutes($api){
 		$content = file_get_contents(WP_PLATFORM_HOST.'/wp-json/bc/v1/lesson'.$limit);
 		$obj = json_decode($content);
 	    return $response->withJson($obj);
+	});
+	
+	//new lessons from gatsby
+	$api->get('/all/v2', function (Request $request, Response $response, array $args) use ($api) {
+        $data = $request->getParams();
+        $status = null;
+        if(isset($data["status"])) $status = $data["status"];
+		$content = file_get_contents('https://content.breatheco.de/static/api/lessons.json');
+		$lessons = json_decode($content);
+		
+		if($status){
+			$newLessons = [];
+			foreach($lessons as $l) if($l->status == $status) $newLessons[] = $l;
+			$lessons = $newLessons;
+		}
+
+    	return $response->withJson($lessons);
+		
 	});
 
 	$api->get('/link/{slug}', function (Request $request, Response $response, array $args) use ($api) {
@@ -56,9 +75,23 @@ function addAPIRoutes($api){
 
 	$api->post('/migrate-lessons', function (Request $request, Response $response, array $args) use ($api) {
 
-        //TODO : Script to change a lesson slug (migrate tasks from old slug to new slug)
+        // @TODO : Script to change a lesson slug (migrate tasks from old slug to new slug)
 		
 	    return $response->withRedirect($base.$args["slug"]."?plain=true".$token);
+	});
+	
+    //update the list of lessons
+	$api->post('/lessons', function (Request $request, Response $response, array $args) use ($api) {
+
+		// @TODO: save the lessons on a local json file
+
+		// $lessons = $request->getParsedBody();
+		// if(!is_array($lessons)) throw new Exception("You must specify an array of lessons", 400);
+
+		// $templatesPDO = new JsonPDO('_templates/','{}',false);
+		// if($originalCohort) $api->db['json']->toFile($args['cohort_slug'])->save($lessons);
+		
+	 //   return $response->withRedirect($base.$args["slug"]."?plain=true".$token);
 	});
 	
 	return $api;

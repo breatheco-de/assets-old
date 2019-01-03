@@ -1,13 +1,13 @@
 {
 	"repositories": [
         {
-            "type": "git",
+            "type": "vcs",
             "url": "https://github.com/alesanchezr/php-linkchecker"
         }
     ],
     "v": "0.1",
     "require": {
-        "glicer/link-checker": "dev-with-markdown",
+        "glicer/link-checker": "dev-isolated-master",
         "guzzlehttp/guzzle": "~6.0",
         "monolog/monolog": "^1.23",
         "google/cloud-datastore": "^1.3",
