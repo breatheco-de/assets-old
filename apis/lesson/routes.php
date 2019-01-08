@@ -80,19 +80,5 @@ function addAPIRoutes($api){
 	    return $response->withRedirect($base.$args["slug"]."?plain=true".$token);
 	});
 	
-    //update the list of lessons
-	$api->post('/lessons', function (Request $request, Response $response, array $args) use ($api) {
-
-		// @TODO: save the lessons on a local json file
-
-		// $lessons = $request->getParsedBody();
-		// if(!is_array($lessons)) throw new Exception("You must specify an array of lessons", 400);
-
-		// $templatesPDO = new JsonPDO('_templates/','{}',false);
-		// if($originalCohort) $api->db['json']->toFile($args['cohort_slug'])->save($lessons);
-		
-	 //   return $response->withRedirect($base.$args["slug"]."?plain=true".$token);
-	});
-	
 	return $api;
 }
