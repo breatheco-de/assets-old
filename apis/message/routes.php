@@ -19,7 +19,7 @@ BreatheCodeMessages::connect([
 function addAPIRoutes($api){
 	
 	$api->addTokenGenerationPath();
-	//get all cohorts and its replits
+
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
         $messages = BreatheCodeMessages::getMessages();
 	    return $response->withJson($messages);
@@ -65,6 +65,10 @@ function addAPIRoutes($api){
 		
 		$templates = BreatheCodeMessages::getEmailTemplate($slug);
 		return $response->write($templates["html"]->render(BreatheCodeMessages::getTemplates($slug)));
+	});
+
+	$api->get('/templates', function (Request $request, Response $response, array $args) use ($api) {
+		return $response->withJson(BreatheCodeMessages::getTemplates());
 	});
 	
 	$api->get('/types', function (Request $request, Response $response, array $args) use ($api) {
