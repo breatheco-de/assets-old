@@ -72,6 +72,24 @@ function addAPIRoutes($api){
         return $response->withJson('error');
 	});
 	
+	$api->post('/remind/{email}', function (Request $request, Response $response, array $args) use ($api) {
+        
+        $email = null;
+        if(empty($args['email'])) throw new Exception('Invalid or missing email');
+        else $email = $args['email'];
+
+        try{
+        	$result = BC::remind(['user_id' => urlencode($email)]);
+	    	return $response->withJson($result);
+        }
+        catch(Exception $e)
+        {
+	    	return $response->withJson(['msg'=> $e->getMessage()])->withStatus(400);
+	    	//return $response->withJson(['msg'=> "We don't seem to have that email in our records"])->withStatus(400);
+        }
+        return $response->withJson('error');
+	});
+	
 	$api->put('/signup', function (Request $request, Response $response, array $args) use ($api) {
         
         $body = $request->getParsedBody();

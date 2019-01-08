@@ -188,6 +188,13 @@ class BCWrapper{
 		
 		return false;
     }
+
+	public static function remind($params=[]){
+		
+		self::validate($params,'user_id');
+		
+	    return self::request('POST','remind/user/'.$params['user_id'],$params);
+	}
     
     public static function createStudent($params){
         
@@ -228,20 +235,21 @@ class BCWrapper{
 	public static function getMe($params=[]){
 	    return self::request('GET','me',$params);
 	}
+
 	public static function getUser($params=[]){
 	
         self::validate($params,'user_id');
 	    
 	    return self::request('GET','user/'.$params['user_id'],$params);
 	}
-	
+
 	public static function getStudent($params=[]){
 
         self::validate($params,'student_id');
 	    
 	    return self::request('GET','student/'.$params['student_id'],$params);
 	}
-	
+
 	public static function getStudentsFromCohort($params=[]){
 
         self::validate($params,'cohort_id');
