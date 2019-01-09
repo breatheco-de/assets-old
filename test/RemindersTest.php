@@ -7,7 +7,7 @@ $CURRENT = dirname(__FILE__);
 require_once($CURRENT.'/BaseTestCase.php');
 require($CURRENT.'/../apis/reminders/ReminderManager.php');
 
-class ReplitsTest extends BaseTestCase {
+class RemindersTest extends BaseTestCase {
 
     var $currentPath = '';
     
