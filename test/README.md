@@ -4,6 +4,10 @@
 
 On this folder is were all the assets.breatheco.de tests are created, right now the only test available
 are on diganosis.php.
+```
+./vendor/bin/phpunit test/ --colors
+```
+
 
 ## diganosis.php
 
