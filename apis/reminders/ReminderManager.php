@@ -106,6 +106,8 @@ class ReminderManager{
         if(empty($reminder['frequency'])) throw new Exception('Missing frequency');
         if($reminder['function'] != str_replace(".php","",$reminder['name'])) throw new Exception('The file must contain a function with the same name that represents the beginning of the execution');
         else if(!self::_parseFrequency($reminder['frequency'])) throw new Exception('Invalid frequency: '.$reminder['frequency']);
+        
+        return true;
     }
     
     private static function _getMetadata($filename)

@@ -14,7 +14,7 @@
 	StaticAssetsFunctions::setAPI($api);
 	
 	// fake deletion of images
-	$logs = StaticAssetsFunctions::deleteUnusedImages(true); //true=fake
+	//$logs = StaticAssetsFunctions::deleteUnusedImages(true); //true=fake
 	
 	// real deletion of images
 	//$logs = StaticAssetsFunctions::deleteUnusedImages(false); //false=hard delete
