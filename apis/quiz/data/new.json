@@ -3,7 +3,7 @@
         "slug":    "new",
         "name":    "Bootstrap 4 Quiz",
         "status":    "draft",
-        "main":    "Self-accessment",
+        "main":    "Self-assessment",
         "results": "Congratulations! You now know the basic general fundamentals of Bootsrap 4!",
         "badges": [
             { "slug": "css_master", "points": 23 }
