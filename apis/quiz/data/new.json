@@ -18,16 +18,18 @@
                 {"option": "Provides a clean and uniform solution for building an interface for developers.",      "correct": false},
                 {"option": "All of the above.",      "correct": true}
             ]
-        }
+        },
+        
         {
             "q": "What are the main differences between ID and Class?",
             "a": [
                 {"option": "ID's are better than Classes",      "correct": false},
                 {"option": "ID's are supposed to be only used once per page but Classes can be used multiple times per page, and one element can have more than one Class but should have only one ID",     "correct": true},
                 {"option": "Classes should be used only once per page, but ID's can be used as many times as you like on one page",      "correct": false},
-                {"option": "Classes should be used only once per page, but ID's can be used as many times as you like on one page",      "correct": false},
+                {"option": "Classes should be used only once per page, but ID's can be used as many times as you like on one page",      "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "The Bootstrap grid system is based on how many columns?",
             "a": [
@@ -36,7 +38,8 @@
                 {"option": "9",     "correct": false},
                 {"option": "24",     "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "In Bootstrap, content must be placed within which of the following:",
             "a": [
@@ -45,7 +48,8 @@
                 {"option": "containers",     "correct": false},
                 {"option": "columns",     "correct": true}
             ]
-        }
+        },
+        
         {
             "q": "Which programming languages were used to create Bootstrap?",
             "a": [
@@ -54,7 +58,8 @@
                 {"option": "LESS, SASS",     "correct": false},
                 {"option": "HTML, CSS plus optional Javascript",     "correct": true}
             ]
-        }
+        },
+        
         {
             "q": "What is the main plus point of using Bootstrap?",
             "a": [
@@ -63,7 +68,8 @@
                 {"option": "Responsive features",     "correct": false},
                 {"option": "All of the above",     "correct": true}
             ]
-        }
+        },
+        
         {
             "q": "Which of the following Bootstrap grid system class defines size of screen?",
             "a": [
@@ -72,15 +78,17 @@
                 {"option": "xs, sm, md, lg",     "correct": true},
                 {"option": "s, sm, mid, lg",     "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "Setting a grid tier of .col-sm-6 says:",
             "a": [
                 {"option": "Make this div 6 columns wide on the sm breakpoint and everything ABOVE",      "correct": true},
-                {"option": "Make this div 6 columns wide on the sm breakpoint and everything BELOW",     "correct": false}
+                {"option": "Make this div 6 columns wide on the sm breakpoint and everything BELOW",     "correct": false},
                 {"option": "Make this div 6 columns wide on JUST the sm breakpoint",     "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "What does the .container-fluid class provide?",
             "a": [
@@ -89,7 +97,8 @@
                 {"option": "Full width container",     "correct": false},
                 {"option": "None of the above",     "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "In Bootstrap class .sm is used for of the following?",
             "a": [
@@ -98,49 +107,52 @@
                 {"option": "tablets",     "correct": false},
                 {"option": "laptops",     "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "Which of the following indicates a big box for calling extra attention to some special content or information?",
             "a": [
-                {"option": "pager",      "correct": false},
+                {"option": "pager",          "correct": false},
                 {"option": "pagination",     "correct": false},
-                {"option": "jumbotron",     "correct": true},
-                {"option": "glyphicon",     "correct": false}
+                {"option": "jumbotron",       "correct": true},
+                {"option": "glyphicon",      "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "True or False: Bootstrap is mobile-first.",
             "a": [
                 {"option": "True",      "correct": true},
                 {"option": "False",     "correct": false}
             ]
-        }
+        },
+        
         {
             "q": "True or False: A Desktop first approach considers the goals of a mobile user and presents the content to help them achieve those goals. It removes all of the fluff and filler content and presents a concise collection of content that loads fast and is easy to use.",
             "a": [
                 {"option": "True",      "correct": false},
                 {"option": "False",     "correct": true}
             ]
-        }
+        },
+        
         {
             "q": "Which of the following is *not* compatible with Bootstrap 4?",
             "a": [
-                {"option": "Google Chrome",      "correct": false},
+                {"option": "Google Chrome",       "correct": false},
                 {"option": "Mozilla Firefox",     "correct": false},
                 {"option": "Microsoft Edge",      "correct": false},
-                {"option": "Safari",      "correct": true},
+                {"option": "Safari",      "correct": true}
             ]
-        }
+        },
+        
         {
             "q": "What are the three main elements of the Bootstrap grid listed in the proper order.",
             "a": [
                 {"option": ".container > .row > .col",      "correct": true},
-                {"option": ".grid > .row > .col",     "correct": false},
-                "option": ".col > .row > .container",     "correct": false}
+                {"option": ".grid > .row > .col",          "correct": false},
+                {"option": ".col > .row > .container",     "correct": false}
             ]
         }
             ]
         }
         
-    ]
-}
