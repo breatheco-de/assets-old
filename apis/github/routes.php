@@ -24,7 +24,7 @@ function addAPIRoutes($api){
 		preg_match("/^(?:http(?:s)?:\/\/(?:www\.)?github.com\/)?([a-zA-Z0-9]*)\/?\??(?:\s*)*$/", $student->github, $matches);
 		if(empty($matches[1])) throw new Exception('Imposible to determin the github username from '.$student->github , 400);
         
-		$resp = @file_get_contents('https://github.com/users/alesanchezr/contributions');
+		$resp = @file_get_contents('https://github.com/users/'.$matches[1].'/contributions');
 
 		if($resp){
 			$styles = 'style="fill:#aaa;text-align:center;font:10px Helvetica, arial, freesans, clean, sans-serif;white-space:nowrap;"';
