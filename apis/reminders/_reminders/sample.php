@@ -2,6 +2,7 @@
 /*
 * @title: Sample Reminder
 * @frequency: 1 seconds
+* @status: draft
 * @to: reminders_careersupport@4geeksacademy.com
 */
 

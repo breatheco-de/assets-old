@@ -2,7 +2,7 @@
 
 # Reminders API
 
-Setup and mantain reminders for the academy operations
+Setup and mantain reminders for the academy operations, you can check the active log for reminders here: [errors](https://assets.breatheco.de/apis/reminders/_data/errors.json) and [execution log](https://assets.breatheco.de/apis/reminders/_data/execution_info.json)
 
 #### Get all reminders
 ```
@@ -44,6 +44,7 @@ A reminder script called `notify_studets_birthdates.php` must have a function ca
 /*
 * @title: Sample Reminder
 * @frequency: 1 seconds
+* @status: draft
 * @to: reminders_careersupport@4geeksacademy.com
 */
 
@@ -61,11 +62,12 @@ Another thing you may notice is the initial comment with annotation on the top:
 /*
 * @title: Sample Reminder
 * @frequency: 1 seconds
+* @status: active
 * @to: reminders_careersupport@4geeksacademy.com
 */
 ```
 
-You need to specify the `title`, `frequency` and `to` what email is the reminder addressed, the possible types of frequencies are: `seconds`, `day`, `month` or `year`.
+You need to specify the `title`, `frequency`, `status` and `to` what email or audience is the reminder addressed, the possible types of frequencies are: `seconds`, `day`, `month` or `year` and the possible status are `active` or `draft`
 
 ### Utility functions:
 
@@ -78,6 +80,7 @@ Here is an example of script that reminds about all the cohorts that should be f
 /*
 * @title: Remind cohorts with more than 90 days
 * @frequency: 1 days
+* @status: active
 * @to: reminders_careersupport@4geeksacademy.com
 */
 

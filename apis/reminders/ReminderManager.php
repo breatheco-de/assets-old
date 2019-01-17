@@ -12,6 +12,7 @@ class ReminderManager{
     static $path = './_reminders';
     static $executionInfo = null;
     static $dateFormat = "Y-m-d";
+    static $possibleStatus = ['active', 'draft'];
     static $db = null;
     
     public static function init($basePath=''){
@@ -44,6 +45,8 @@ class ReminderManager{
         $pending = [];
         foreach(self::$executionInfo as $name => $info){
             $metadata = self::_getMetadata($name);
+            if($metadata['status'] != 'active') continue;
+            
             $lastExecution = new Moment($info->last_execution, self::$dateFormat);
             $nextExecution = new Moment($info->last_execution, self::$dateFormat);
             
@@ -104,6 +107,7 @@ class ReminderManager{
         if(empty($reminder['title'])) throw new Exception('Missing title');
         if(empty($reminder['name'])) throw new Exception('Missing name');
         if(empty($reminder['frequency'])) throw new Exception('Missing frequency');
+        if(empty($reminder['status']) or !in_array($reminder['status'], self::$possibleStatus)) throw new Exception('Missing status ('.explode(' or ', self::$possibleStatus).')');
         if($reminder['function'] != str_replace(".php","",$reminder['name'])) throw new Exception('The file must contain a function with the same name that represents the beginning of the execution');
         else if(!self::_parseFrequency($reminder['frequency'])) throw new Exception('Invalid frequency: '.$reminder['frequency']);
         
