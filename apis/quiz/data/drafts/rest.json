@@ -219,6 +219,7 @@
 				"option":"1XX",
 				"correct":false
 			}
+		]
 	}, {
 		"q": "Let's say you are looking to change the mailing address for a user, which http request would be most appropriate?",
 		"a": [{
@@ -267,5 +268,7 @@
 				"option": "Always, as there are no other options",
 				"correct": false
 			}
+	]
+	}
 	]
 }
