@@ -86,7 +86,8 @@
     <select id="select-location" class="form-control">
       <option value='-1'>Select a syllabus</option>
       <option value='web-development'>Web Development in WordPress</option>
-      <option value='full-stack'>Full Stack Development</option>
+      <option value='full-stack'>Full Stack Development (Part-Time)</option>
+      <option value='full-stack-ft'>Full Stack Development (Full-time)</option>
       <option value='coding-introduction'>Coding Introduction</option>
       <option value='boats'>Boats</option>
     </select>

@@ -16,6 +16,7 @@
 	$getSlug = function($slug){
 	    $allSlugs = [
 	        "full-stack" => "full-stack",
+	        "full-stack-ft" => "full-stack-ft",
 	        "web-development" => "web-development",
 	        "coding-introduction" => "coding-introduction",
 	        "blockchain" => "blockchain",
