@@ -140,7 +140,7 @@
 				"correct": false
 			},
 			{
-				"option": "Only the data that is traveling thru HTTP (like JSONs) or stored is text",
+				"option": "Only the data that is traveling through HTTP (like JSONs) or stored is text",
 				"correct": true
 			},
 			{
@@ -187,7 +187,7 @@
 			}
 		]
 	}, {
-		"q": "What are the ",
+		"q": "What are the reasons to generate an authentication token",
 		"a": [{
 				"option": "Making the API clients send a hash signature on every request to validate their session",
 				"correct": false
@@ -201,6 +201,74 @@
 				"correct": true
 			}
 		]
+	}, {
+		"q": "Which response status code indicates an issue with the server?",
+		"a": [{
+				"option": "2XX",
+				"correct": false
+			},
+			{
+				"option": "4XX",
+				"correct": false
+			},
+			{
+				"option": "5XX",
+				"correct": true
+			},
+			{
+				"option":"1XX",
+				"correct":false
+			}
+		]
+	}, {
+		"q": "Let's say you are looking to change the mailing address for a user, which http request would be most appropriate?",
+		"a": [{
+				"option": "PUT",
+				"correct": true
+			},
+			{
+				"option": "GET",
+				"correct": false
+			},
+			{
+				"option": "POST",
+				"correct": false
+			}
+		]
+	}, {
+		"q": "Why is GET operation considered a safe operation?",
+		"a": [{
+				"option": "Can be called many times without risk of data modification.",
+				"correct": false
+			},
+			{
+				"option": "Calling it once has the same effect as calling it ten times",
+				"correct": false
+			},
+			{
+				"option": "Can call it without risk of corruption of data",
+				"correct": false
+			},
+			{
+				"option": "All of the above",
+				"correct": true
+			}
+		]
+	}, {
+		"q": "In what scenario is POST used for all the writing operations such as updating, deleting, and creating?",
+		"a": [{
+				"option": "Never, POST is not the appropriate use for those operations",
+				"correct": false
+			},
+			{
+				"option": "Because PUT and DELETE are not available in HTML/Forms",
+				"correct": true
+			},
+			{
+				"option": "Always, as there are no other options",
+				"correct": false
+			}
+	]
 	}
 	]
 }
