@@ -24,7 +24,6 @@ if(!$readmeContent) die("The markdown file could not be loaded:".$_GET['path']);
     </head>
     <body>
         <style type="text/css">
-            img{max-height: 25px;}
             .markdown-body{ max-width: 800px; margin: 0 auto;}
         </style>
         <div class="markdown-body"></div>
