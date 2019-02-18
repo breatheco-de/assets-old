@@ -6,10 +6,10 @@ var Timeline = (function(){
             { label: "Week 2", days:[] },
         ],
         containerSelector: '',
-        replitBaseURL: 'https://breatheco.de/replit/?r=',
-        lessonBaseURL: 'https://breatheco.de/en/lesson/',
+        replitBaseURL: 'https://assets.breatheco.de/apps/replit/?r=',
+        lessonBaseURL: 'http://assets.breatheco.de/apis/lesson/redirect/',
         quizBaseURL: 'https://assets.breatheco.de/apps/quiz/',
-        projectBaseURL: 'https://breatheco.de/replit/?r=',
+        projectBaseURL: 'https://projects.breatheco.de/d/',
         assignmentBaseURL: '#',
         menuContainerSelector: ''
     };
