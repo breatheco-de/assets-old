@@ -1,0 +1,9 @@
+# Mentorship Best Practices
+
+Every guideline on this document is the result of years of experience teaching, we strongly encourage you to follow it literraly but we are also open to any upgrades or changes you want to propose.
+
+To propose any change just create a pull request explaining and justifiying your changes.
+
+## About GIT
+
+1. Do not use or teach ssh keys, use https all the time.  Expla

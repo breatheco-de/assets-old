@@ -1,0 +1,36 @@
+{
+	"label": "Blockchain",
+	"profile": "blockchain",
+	"weeks": [
+		{
+			"label": "Week 1: GIT, Branching, Workflow",
+			"topic": "Best Practices",
+			"summary": "Time to start having a professional workflow using Feature Branch Workflow, Pull Requests and Code Review",
+			"days":[
+				{
+					"label": "Day 1",
+					"key-concepts": ["Xcode", "Android Studio", "React Native CLI"],
+					"project": "Installing your first app (hello world)",
+					"homework": "Installing your first app (hello world)",
+					"technologies": [
+						"XCode", "Android Studio", "React Native CLI", "React Native CLI",
+						"Github", "GIT", "Github", "Redux", "OAuth", "Unit Testing",
+						"Buddy.Works", "Jesp", "Mocha", "HTTP on Mobile", "Firebase", "Facebook SDK"
+					]
+				},
+				{
+					"label": "Day 2",
+					"key-concepts": ["Github","GIT Introduction", "Branching", "Commit & Reset", "Gitflow"],
+					"project": "React-Native Collaborative Hello World",
+					"homework": "Students will continue the React Native Hello World and create a different branch for each one, then the intructor will merge and show the results"
+				},
+				{
+					"label": "Day 3",
+					"key-concepts": ["Code Review", "Pull Request", "React Native Components","Create your own components", "Styles", "Navigation","Layouts"],
+					"project": "React-Native Collaborative Project",
+					"homework": "Students have to create a prototipe app that looks like a real app but does not have the actual functionality, just looks"
+				}
+			]
+		}
+	]
+}
