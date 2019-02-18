@@ -1,0 +1,103 @@
+@import "~bootstrap/scss/bootstrap";
+
+//Colors
+$blue: #28ABE2;
+$black: black;
+$yellow: #FBB040;
+
+//General
+.full-width{
+    width: 100%;
+}
+
+.no-margin{
+    margin: 0px !important;
+}
+
+.no-padding{
+    padding: 0px !important;
+}
+
+.bg-blue{
+    background-color: $blue;
+}
+
+.bg-black{
+    background-color: $black;
+}
+
+.bg-yellow{
+    background-color: $yellow;
+}
+
+//Styles
+.logo{
+    width: 40%;
+}
+
+.container-header{
+    padding: 0px 35px;
+}
+
+#certificate{
+    max-width: 1400px;
+    min-width: 1200px;
+}
+
+.middle-center{
+    display: flex;
+    align-items: center;
+}
+
+.header-text{
+    h1:first-child{
+        font-size: 28px;
+    }
+    h1:last-child{
+        font-size: 30px;
+    }
+}
+
+.data-student{
+    div{
+        border-bottom: solid;
+        border-color: $blue;
+        border-bottom-width: 2px;
+    }
+    padding-top: 120px;
+    .text-recognize {
+        font-size: 25px;
+        color: $blue;
+        font-weight: 700;
+        padding-left: 42px;
+    }
+    .first-name{
+        font-size: 85px;
+        font-weight: 100;
+        letter-spacing: 5px;
+    }
+    .last-name{
+        font-size: 85px;
+        font-weight: 700;
+        padding-left: 115px;
+        position: relative;
+        top: -20px;
+    }
+}
+
+.description-certificate{
+    font-size: 20px;
+    padding-bottom: 120px;
+    p{
+        font-weight: 700;
+    }
+    h3{
+        font-weight: 700;
+    }
+}
+
+.download{
+    position: absolute;
+    left: 50%;
+    transform: translate(50%, 50%);
+}
