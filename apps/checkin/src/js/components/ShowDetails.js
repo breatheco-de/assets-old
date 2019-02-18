@@ -19,12 +19,11 @@ export default class ShowDetails extends React.Component{
 
     componentDidMount(){
         this.getAllUsersInEvent();
-        console.log(this.props.token);
     }
 
     //Se muestra la lista de asistentes al ingresar al detalle del evento
     getAllUsersInEvent(){
-        const endpoint = process.env.BREATHECODE+'/'+this.state.idEvent+"/checkin";
+        const endpoint = process.env.BREATHECODE+this.state.idEvent+"/checkin?access_token="+this.props.token;
         fetch(endpoint)
             .then((response) => {
                 return response.json();
@@ -69,7 +68,7 @@ export default class ShowDetails extends React.Component{
     render(){
         return(
             <div>
-                <Header backToHome={true}/>
+                <Header backToHome={true} btnSeeOldEvents={false}/>
                 <RowText />
                 <DetailEvent dataEvent={this.props.data}/>
                 <CheckIn 
