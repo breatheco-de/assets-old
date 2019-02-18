@@ -29,9 +29,7 @@ export default class App extends Component{
       <Router>
         <div>
           <Switch>
-            <Route exact path="/hola" component={Img} />
             <Route path="/student/:student_id/cohort/:cohort_slug" component={RenderCertificate}/>
-            <Route path="/asd" component={Notfound} />
           </Switch>
         </div>
       </Router>
