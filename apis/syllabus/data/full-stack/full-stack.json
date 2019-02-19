@@ -1,0 +1,631 @@
+{
+	"label": "Full-Stack Development",
+	"profile": "full-stack",
+	"description": "Become a full-stack web developer using the 2 most popular technologies in the world: Javascript, React and Python",
+	"weeks": [
+		{
+			"label": "Week 1: How does the web work?",
+			"topic": "HTML, CSS & Bootstrap",
+			"summary": "Understanding HTTP, the browser, the Client-Server model, creating your first HTML, The head & body HTML, tables.",
+			"days": [
+				{
+					"label": "Day 1",
+					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
+					"instructions": "You have 15 minutes to explain how HTTP works by sending-receiving text between servers & clients, and how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
+					"project": {
+						"title": "Digital Postcard",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/postcard\/"
+					},
+					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
+					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
+					"lessons": [{
+						"title": "Introduction to the Pre-work",
+						"slug": "intro-to-prework"
+					}, {
+						"title": "Internet Architecture",
+						"slug": "what-is-the-internet"
+					}, {
+						"title": "Learn HTML",
+						"slug": "what-is-html-learn-html"
+					}, {
+						"title": "Learn CSS",
+						"slug": "what-is-css-learn-css"
+					}],
+					"quizzes": [{
+						"title": "About the Pre-work",
+						"slug": "intro-to-prework"
+					}, {
+						"title": "Basics of HTML",
+						"slug": "html"
+					}],
+					"replits": [{
+						"title": "Learn HTML",
+						"slug": "html",
+						"vtutorial_slug": "html"
+					}, {
+						"title": "Learn CSS",
+						"slug": "css",
+						"vtutorial_slug": "css"
+					}],
+					"assignments": ["postcard"],
+					"technologies": ["HTML5", "CSS"]
+				}, {
+					"label": "Day 2",
+					"description": "Websites became popular and CSS evolved to enable amazing layouts with boxes and also a rich set of CSS Selectors",
+					"instructions": "Connecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
+					"project": {
+						"title": "Simple Instagram",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/instagram-without-bootstrap\/"
+					},
+					"homework": "Students must finish the Instagram & the Postcard.",
+					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
+					"lessons": [{
+						"title": "Doing Layouts",
+						"slug": "css-layouts"
+					}, {
+						"title": "Advanced CSS Selectors",
+						"slug": "mastering-css-selectors"
+					}],
+					"replits": [{
+						"title": "Doing Layouts",
+						"slug": "layouts"
+					}],
+					"quizzes": [{
+						"title": "Internet Architecture",
+						"slug": "internet-architecture"
+					}, {
+						"title": "Basics of CSS",
+						"slug": "css"
+					}],
+					"assignments": ["instagram-feed"],
+					"technologies": ["CSS3", "HTML5"]
+				}, {
+					"label": "Day 3",
+					"description": "Bootstrap arrived to profesionalize websites, removing 99% of the layout pain. Everything is a component from now on.",
+					"instructions": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own.",
+					"project": {
+						"title": "Bootstrap Instagram",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/instagram-with-bootstrap\/"
+					},
+					"lessons": [{
+						"title": "Working with Bootstrap",
+						"slug": "bootstrap-tutorial-of-bootstrap-4"
+					}],
+					"replits": [{
+						"title": "Working with Bootstrap",
+						"slug": "bootstrap"
+					}],
+					"assignments": ["instagram-feed-bootstrap"],
+					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper\/Utility Classes that come with Bootstrap"],
+					"technologies": ["Bootstrap"]
+				}, {
+					"label": "Weekend",
+					"weekend": true,
+					"description": "And God created the coding weekends - the perfect place to practice, share and collaborate with your classmates.",
+					"instructions": "Students must finish all pending projects!"
+				}
+			]
+		}, {
+			"label": "Week 2: The Terminal & GIT",
+			"topic": "Pre-work done!",
+			"summary": "Time to start having a professional workflow",
+			"days": [
+				{
+					"label": "Day 4",
+					"description": "A text editor and the console - that's all you need to be a great coder. Time to master the second one.",
+					"teacher_instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
+					"project": {
+						"title": "The CMD Challenge",
+						"instructions": "https:\/\/github.com\/breatheco-de\/exercise-terminal-challenge\/"
+					},
+					"replits": [{
+						"title": "Command Line Interactive Challenge",
+						"slug": "the-command-line"
+					}],
+					"lessons": [{
+						"title": "The Command Line",
+						"slug": "the-command-line-the-terminal"
+					}],
+					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
+					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative .\/ vs Absolute Paths ", "Moving Up ..", "Autocomplete with TAB", "GIT in a general way"],
+					"technologies": ["Command Line", "Bash Scripts"]
+				}, {
+					"label": "Day 5",
+					"description": "The CMD Line has millions of tools, it's time to learn the first ones: GIT & Github - together they make collaboration amazing!",
+					"instructions": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT project and make them clone it and upload their piece of the project. Review the key concepts.",
+					"project": {
+						"title": "GIT Colaborative Landing Page",
+						"instructions": "https:\/\/github.com\/breatheco-de\/exercise-git-collabration\/"
+					},
+					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the Landing Page. Suggested parts: navbar, jumbotron, 2 parts description, product showcase, marketing banner, contact us, footer",
+					"key-concepts": ["Creating SSH Keys", "Using Github", "The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts"],
+					"replits": [{
+						"title": "Git interactive tutorial",
+						"slug": "git"
+					}],
+					"lessons": [{
+						"title": "GIT (Version Control System)",
+						"slug": "how-to-use-git-version-control-system"
+					}],
+					"technologies": ["Git", "Github", "Markdown"]
+				},
+				{
+					"label": "Day 6",
+					"teacher_instructions": "Finish pending replits (all css and html related), upload student projects into their github accounts and finish the Student External Profile",
+					"description": "Your entire time at the academy can de summarized into one landing page: The Student External Profile. It is time to start building it.",
+					"project": {
+						"title": "Student External Profile",
+						"instructions": "http://sep.4geeksacademy.co/sharu725"
+					},
+					"key-concepts": ["How to Pull Request","How to use GIT", "What is the Student External Profile","Store Using YML"],
+					"technologies": ["git", "html","css"],
+					"assignments": ["student-external-profile"]
+				},
+				{
+					"label": "Weekend",
+					"weekend": true,
+					"description": "It has been two crazy weeks, thank God we have another coding weekend to keep up and practice.",
+					"instructions": "Students must finish HTML, CSS3, Layout, Bootstrap, GIT and deliver all the projects through the online platform."
+				}
+			]
+		}, {
+			"label": "Week 3: First coding skills",
+			"topic": "Create algorithms",
+			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
+			"days": [
+				{
+					"label": "Day 7",
+					"description": "HTML & CSS are great, but the world needed interactive pages (not just beautiful text documents). JavaScript comes to help us generate HTML & CSS based commands after the initial text document has already loaded.  JavaScript will also re-write the website live, based on the user's activity.",
+					"instructions": "First take time to do the group activity and explain coding concepts (read the full instrucitons), then start the excuse generator is a great way to explain how JavaScript and HTML\/CSS can play together. Do it with the students as you explain all the programming Key Concepts. Use the VanillaJS boilerplate, that way students will start getting used to it",
+					"project": {
+						"title": "The Excuse Generator",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/excuse-generator\/"
+					},
+					"homework": "Students need to finish the Excuse Generator, make the replits about JavaScript and complete the layout for the Random Card Generator",
+					"key-concepts": ["Arrays","Variables", "DataTypes", "Null"],
+					"lessons": [{
+						"title": "Learning to code with JS",
+						"slug": "what-is-javascript-learn-to-code-in-javascript"
+					}], 
+					"replits": [{
+						"title": "Introduction to JS",
+						"slug": "js-beginner",
+						"vtutorial_slug": "begin-js"
+					}],
+					"assignments": ["excuse-generator"],
+					"technologies": ["JavaScript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
+				},
+				{ 
+					"label": "Day 8",
+					"instructions": "Finish conditional profile card and all previous replits. Ask students to gather and create a flow chart on the whiteboard with the decision process behind building the html for the profile card project.",
+					"description": "What we call \"thinking\" it's basically the process of making decitions based on some information (variables) that we have available. You can replicate the same behavior in a computer by using conditionals and logical operations.",
+					"homework": "Finish the profile card and replits to date",
+					"project": {
+						"title": "Conditional Profile Card",
+						"instructions": "https://github.com/breatheco-de/conditional-profile-card"
+					},
+					"replits": [{
+						"title": "Working with functions",
+						"slug": "functions"
+					}],
+					"lessons": [{
+						"title": "Using Conditional in Algorithms",
+						"slug": "conditionals-in-programing-coding"
+					}],
+					"assignments": ["conditional-profile-card"],
+					"key-concepts": ["Every JavaScript code starts OnLoad", "String Concatenation", "Variable Initialization", "If... Else", "Some times else is not needed", "Ternaries" , "Main website events: PreLoad & OnLoad", "The-Runtime (after OnLoad)", "Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html"],
+					"technologies": ["Javascript", "HTML", "CSS3"]
+				},
+				{ 
+					"label": "Day 9",
+					"instructions": "Take 15 min for answers, 15 min to explain arrays and then present the Domain Name Generator to the students and ask them to strategize on the white board, before starting to code reinforce the ONLOAD function as the beginning of your application, start using the breathecode-cli and vanilla-js ",
+					"description": "Arrays are the only way to have a list of things in programming, and they are challenging because develoeprs need to master the art of getting or setting values from arrays using loops",
+					"project": {
+						"title": "Domain Name Generator",
+						"solution": "#"
+					},
+					"homework": "Finish the domain name generator and all the pending replits",
+					"replits": [{
+						"title": "Looping and Arrays",
+						"slug": "arrays"
+					}],
+					"lessons": [{
+						"title": "Looping and Arrays",
+						"slug": "what-is-an-array-define-array"
+					}],
+					"assignments": ["domain-generator"],
+					"key-concepts": ["Functions (anonymous vs normal)", "The forEach", "Every JavaScript code starts OnLoad", "String Concatenation", "Main website events: PreLoad & OnLoad", "The-Runtime (after OnLoad)", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add\/Remove CSS Classes to DOM elements", "Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html"],
+					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
+				},
+				{
+					"label": "Weekend",
+					"weekend": true,
+					"description": "Saturdays are a great oportunity to work all day on your coding skills with extra lessons without extra charges. You will only sacrifice 14 Saturdays and your life will change forever.",
+					"instructions": "During the weekend, students must finish all the replits"
+				}
+			]
+		}, {
+			"label": "Week 4: Mastering Vanilla JS",
+			"warning": "Students need to be comfortable looping already",
+			"topic": "",
+			"summary": "Create your first React application",
+			"days": [
+				{
+					"label": "Day 10",
+					"description": "You have a lot of things to cach up on, finish and deliver the replit exercises and projects.",
+					"instructions": "Help students finish the replit exercises and projects.",
+					"project": "Work on the replits and projects",
+					"homework": "Finished Replits and Projects"
+				},
+				{
+					"label": "Day 11",
+					"instructions": "Do the Random Card but focusing a lot on the workflow (how to plan and begin coding), reinforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS, make students do the 'Map Of Events' to strategize, start using the breathecode-cli and vanilla-js ",
+					"description": "Ok but how do we use JavaScript to build websites? You have to interact with the DOM whenever an event occurs",
+					"project": {
+						"title": "Random Card Generator",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/random-card\/"
+					},
+					"homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
+					"replits": [{
+						"title": "The DOM",
+						"slug": "the-dom"
+					}, {
+						"title": "Events",
+						"slug": "events"
+					}],
+					"lessons": [{
+						"title": "Introduction to Front-End Web Development",
+						"slug": "what-is-front-end-development"
+					}, {
+						"title": "Bundling with Webpack",
+						"slug": "what-is-webpack"
+					}, {
+						"title": "The DOM",
+						"slug": "what-is-dom-define-dom"
+					}, {
+						"title": "Events",
+						"slug": "event-driven-programming"
+					}],
+					"assignments": ["random-card", "sep1-experience-and-education"],
+					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after OnLoad)", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add\/Remove CSS Classes to DOM elements", "Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html"],
+					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
+				},
+				{
+					"label": "Day 12",
+					"description": "You have a lot of things to cach up on, finish and deliver the replit exercises and projects. Make sure to review the last replit of events (todo list).",
+					"instructions": "Help students finish the replit exercises and projects. Make sure to review the last replit of events (todo list). IMPORANT: This next coding weekend will be the last before getting into react, encourage students to attend.",
+					"project": "Work on the replits and projects",
+					"homework": "Finished Replits and Projects"
+				},
+			{
+				"label": "Weekend",
+				"weekend": true,
+				"description": "Every student, partner, teacher and alumni is invited to the academy on Saturdays, it is an oportunity to network and get some inspiration!",
+				"teacher_instructions": "Finish the all pending projects, replits and the Project User Stories",
+				"homework": "Finish all pending assignments and also your first draft of the project user stories"
+			}]
+		}, {
+			"label": "Week 5: React JS",
+			"topic": "React, Components & Web Apps",
+			"summary": "Time to start working on the project using Agile Methodologies",
+			"days": [
+				{
+					"label": "Day 13",
+					"instructions": "It's the first time students will be using objects, explain the concept. Make students create their first react components and explain the use of JSX. Explain the difference between Functional components and or class components and the render function. Landing page project should be a code along at start, then groups at end.",
+					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
+					"project": {
+						"title": "Landing Page with React",
+						"instructions": "https://projects.breatheco.de/d/landing-page-with-react#readme"
+					},
+					"homework": "Students must finish the landing page with react for the next class",
+					"lessons": [{
+							"title": "Object Oriented Programming",
+							"slug": "what-is-object-oriented-programming-concepts"
+						},
+						{
+							"title": "Building interfaces with React",
+							"slug": "learn-react-js-tutorial"
+						},
+						{
+							"title": "Creating React.js Components",
+							"slug": "making-react-components"
+						},{
+							"title": "Importing and Exporting from other JS files",
+							"slug": "javascript-import"
+						}
+					],
+					"replits": [{
+						"title": "Object Oriented Programming",
+						"slug": "object-oriented-programing"
+					},{
+						"title": "Using React.js as a Rendering Engine",
+						"slug": "react-js"
+					}],
+					"assignments": ["simple-counter-react", "traffic-light-react", "landing-page-with-react"],
+					"key-concepts": ["Export -> Import modules", "You can create your own tags", "Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
+					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
+				},
+				{
+					"label": "Day 14",
+					"description": "Its the first time you've heard or learn about react, we have given you a lot of exercises to practice. Please practice like crazy with all of them. Ask questions.",
+					"instructions": "Students have now a lot of homework: The React Replits, Traffic Light, Counter and the Landing page. Work with students to help them complete the developments.",
+					"project": "Work on the replits and projects",
+					"homework": "Finished Replits and Projects"
+				},
+				{
+					"label": "Day 15",
+					"instructions": "Review landing page. React as rendering engine: Students need to understand that now they can finally create their own HTML tags (React Components) and how to use the State and the Props. Have the class discuss the strategy for todo-list",
+					"description": "Finally we can create our own HTML tags and re-use them on several projects and views. The key to understand a component is understanding Props and The State. Please continue working on the Todo-List Application.",
+					"project": {
+						"title": "Todo list with React",
+						"solution": "https://bitbucket.org/codingacademy/todo-list/"
+					},
+					"assignments": ["todo-list"],
+					"key-concepts": ["Controlled Inputs","Condigional Rendering", "The component state", "The state is inmutable", "Using const, map, filter and concat to prevent state mutation"],
+					"homework": "Students must finish the TodoList being able to add & delete tasks.",
+					"technologies": ["React", "Javascript", "Events"]
+				}, 
+			{
+				"label": "Weekend",
+				"weekend": true,
+				"description": "Now that you are working on the final project, it is the best time to meet with your partner to work on the weekends",
+				"instructions": "Student Projects Views must be finished by next class"
+			}]
+		}, 
+		{
+			"label": "Week 6: React Router & Layout",
+			"topic": "Frontend apps",
+			"summary": "Real life frontend apps using React Router and Context",
+			"days": [
+			{
+				"label": "Day 16",
+				"teacher_instructions": "Time to start the Final project! Let's give the students a break and dive into User Stories and the SCRUM methodology. Students must pick their projects & partner, and start building the user stories on Trello.com, create the board with them.",
+				"description": "Force students to finish all that's due. Time to start the Final project! Lets review how software is built today, you'll learn and follow the same methods used by the top tech companies in the world.",
+				"project": {
+					"title": "Final Project User Stories and Wireframes",
+					"instructions": "https://projects.breatheco.de/d/full-stack-project-stories-and-wireframes#readme"
+				},
+				"lessons": [{
+					"title": "Agile Web Development",
+					"slug": "agile-development"
+				}, {
+					"title": "Creating User Stories",
+					"slug": "user-stories-examples"
+				}],
+				"assignments": ["full-stack-project-stories-and-wireframes"],
+				"key-concepts": ["What is a Kanban board and how does it work", "How to use Github's kanban automated board", "Adding one issue per user story", "Writting stories int he users point of view", "Acceptance Criteria", "You application roles & capabilities", "Standup Meeting"],
+				"homework": "Students must finish the user stories by next class, remember that the student projects must meet certain conditions to be accepted.",
+				"technologies": ["SCRUM", "User Stories", "Kanban", "Agile Methodologies"]
+			}, 
+			{
+				"label": "Day 17",
+				"instructions": "Students that have not finished the replits cannot enter the class and will practice separated from the main group. Explain the logic behind React Router, and the things to remember. React Router + React: How to create components that behave like Views (layouts), match show them when a particualr URL is in place",
+				"description": "But some React components will never be reused, they behave more like pages or layouts. We will call those components: 'Views'... React will help us connect them together to create our main website navigation",
+				"project": {
+					"title": "Coding the project views (hardcoded)",
+					"solution": "#"
+				},
+				"lessons": [{
+					"title": "Using React Router",
+					"slug": "routing-our-views-with-react-router"
+				}],
+				"assignments": ["full-stack-project-prototype"],
+				"key-concepts": ["Wireframing", "Minimum Viable Product", "Why create a prototype", "React Router", "Router: Matching URLs Views", "Component vs View", "The Component State", "Using the React Debugging Chrome Plugin", "Debugging code with the Chrome Source Tab"],
+				"homework": "Sit with every project team and discuss how to split the code into Views vs Components, students must finish their project home layout by next class",
+				"technologies": ["Minimum Viable Product", "React Router", "The Chrome Inspector", "Wireframing", "SCRUM", "Kanban"]
+			}, 
+			{
+				"label": "Day 18",
+				"instructions": "Demonstrate component lifecycle methods: getDerivedStateFromProps, DidMount and willUnmount.",
+				"description": "MVC (Model-View-Controller) is one of the most popular coding design patterns, its main goal is to split the business data from the component state. Now your project will have Views, Actions (the controller) and a centralized Store (the model)",
+				"project": {
+					"title": "The Contact List",
+					"solution": "#TODO"
+				},
+				"lessons": [{
+					"title": "Learning about Context.API",
+					"slug": "context-api"
+				}],
+				"assignments": ["contact-list"],
+				"homework": "Students must create a contact management app using React Router, Context & Component lifecycle methods",
+				"key-concepts": ["Mapping user actions in Context.Actions", "Updating the store from within the actions", "Using the Context.Consumer", "Redirect with history.push()"],
+				"technologies": ["Context.API", "NPM", "React Router", "React", "MVC"]
+			}, 
+			{
+				"label": "Weekend",
+				"weekend": true
+			}],
+			"warning": "The students should keep working on their final project's documentation"
+		}, {
+			"label": "Week 7: Practice Week!",
+			"topic": "Everything together",
+			"summary": "Work on the project and catch up with all the assignments",
+			"days": [
+			{
+				"label": "Day 19",
+				"description": "How to make a formal frontend web app using navigation (React Router)",
+				"instructions": "Force students to finish all that's due, students that have not finished the replits cannot enter the class and will remain separated from the big group. Explain the logic behind React Router, and the things to remember",
+				"project": {
+					"title": "Build your project Views",
+					"url": "#"
+				},
+				"homework": "Students must deliver the first views of their projects"
+			}, 
+			{
+				"label": "Day 20",
+				"instructions": "Force students to finish all that's due, students that have not finished the replits cannot enter the class and will remain separated from the big group. Explain the logic behind React Router, and the things to remember",
+				"description": "How to make a formal frontend web app using navigation (React Router)",
+				"project": {
+					"title": "Build your project Views",
+					"url": "#"
+				},
+				"key-concepts": ["Use of Link"],
+				"homework": "Students (in groups) must create a 4 page website (Home, Blog, Product, Checkout-Cart) using React Router",
+				"technologies": ["React Router"]
+			}, 
+			{
+				"label": "Day 21",
+				"teacher_instructions": "Finish the assignments with students",
+				"description": "Practice everything you've learned",
+				"homework": "Students must deliver all previous assignments",
+				"assignments": ["sep3-skills"]
+			}, {
+				"label": "Weekend",
+				"weekend": true,
+				"teacher_instructions": "Finish the assignments with students",
+				"description": "Practice everything you've learned"
+			}]
+		}, {
+			"label": "Week 8: fetch(HTTP-JSON)",
+			"topic": "Fetching API's",
+			"summary": "Use the JavaScript Fetch native object to do API Requests and Receive the JSON Responses",
+			"days": [{
+				"label": "Day 22",
+				"instructions": "Intro to HTTP: Re-Explain HTTP Requests but now using GET, POST, PUT & DELETE. Introduce JSON instead of HTML as the main communication format. Serialize and Unserialize.",
+				"description": "When your real application is almost ready, it's time to integrate with a real database. That will enable it to work with real information: Create, Update, Delete and get real data. We do HTTP Requests for that.",
+				"project": {
+					"title": "Use the Contact Manage API to save, delete and update the contacts",
+					"solution": "#TODO"
+				},
+				"replits": [],
+				"key-concepts": ["How to use POSTMan, set environment variables and use collections", "JSON is a JavaScript object but as TEXT", "The goal is to send\/receive everything as JSON Serialize>Send>Unserialize", "What is serialization and how to do it (Parsing)", "Why use several request types (GET, POST, PUT, DELETE)?", "Explain the 3 main content-types: Form, URL-Encoded, Raw (With JSON)"],
+				"homework": "Using POSTman, and then using React, students must consume the API to Save, Delete and Update Contacts.",
+				"technologies": ["HTTP", "AJAX", "JSON", "HTTP Fetch", "API", "Serialization"]
+			}, {
+				"label": "Day 23",
+				"instructions": "Finish the Contact Managment API integration, focus on Debugging procedures and start the introduction to Python",
+				"description": "Make sure to finish the contact management project",
+				"project": {
+					"title": "Contact Management API Integration",
+					"solution": "#TODO"
+				},
+				"homework": "Students must finish the Contact Management API Integration"
+			}, {
+				"label": "Day 24",
+				"instructions": "One last day to finish the Contact Managment Application with your students, review all the Context, React, Components and HTTP Ajax concepts and best practices",
+				"description": "Make sure to finish the contact management project",
+				"project": {
+					"title": "Contact Management API Integration",
+					"solution": "#TODO"
+				},
+				"homework": "Students must finish the Contact Management Application"
+			}, {
+				"label": "Weekend",
+				"weekend": true,
+				"description": "And here we go again, perfect saturday to work on the project!",
+				"instructions": "As homework students must review the Lessons and Videos about Python, Django-Rest"
+			}]
+		}, {
+			"label": "Week 9: Create your own API",
+			"topic": "Python, Django, ORM",
+			"summary": "Creating an API use Python, Django & Rest",
+			"days": [{
+				"label": "Day 25",
+				"instructions": "First, run a simple Python script in the shell, explain the benefits and capabilities that it brings in the back-end. Then, install Django using the boilerplate and create one simple endpoint with a very simple model (no relations)",
+				"description": "Welcome to the back-end! The back-end side has almost no limitations, you have access to the entire computer, printers or anything you need. Your life as a back-end developer will start by doing API's because it is the most needed skill in the market. We really hope you like it as much as we do!",
+				"project": {
+					"title": "Build a Contact Management API",
+					"solution": "#TODO"
+				},
+				"replits": [{
+					"title": "Learn Python",
+					"slug": "python"
+				}],
+				"lessons": [{
+					"title": "From JavaScript to Python",
+					"slug": "python-syntax"
+				}, {
+					"title": "Building REST API's",
+					"slug": "understanding-rest-apis"
+				}, {
+					"title": "Building REST API's with Django",
+					"slug": "django-rest-framework"
+				}],
+				"key-concepts": ["Python has access to the Entire Machine", "Django has packages too (PIP)", "Requirements.txt", "Django Framework", "Workflow for Creating an endpoint"],
+				"homework": "Students must create the required models for the Contact Management Application",
+				"technologies": ["Django", "API's", "Serialization", "PIP Package Manager"]
+			}, {
+				"label": "Day 26",
+				"instructions": "Practice the Django-Rest MVC Workflow to create new endpoints, focus on how the Django ORM works and how to create relationships",
+				"description": "The most frequent backend operation is writing in a database and there are two main ways of doing so: 'Using SQL' or 'not using SQL', let's start by reviewing how SQL works and why it's so influential in the database world",
+				"project": {
+					"title": "Continue: Contact Management API",
+					"solution": "https://bitbucket.org/codingacademy/contact-list-api/"
+				},
+				"replits": [{
+					"title": "Learn SQL",
+					"slug": "sql"
+				}],
+				"lessons": [{
+					"title": "Understanding SQL (Relational Databases)",
+					"slug": "what-is-sql-database"
+				}],
+				"key-concepts": ["Create new endpoints", "Configuring MySQL", "Creating Models", "Creating Migrations", "Running Migrations", "Using PHPMyAdmin", "OneToMany Relationships (models.py)", "ManyToMany Relationships (models.py)"],
+				"homework": "Stutents create all the models of the contact management API and continue building the endpoints",
+				"technologies": ["Data Modeling", "Migrations", "ORM", "Django"]
+			}, {
+				"label": "Day 27",
+				"instructions": "Continue doing the endpoints with your students",
+				"description": "Finish the Contact Management API and it's time to start working on your project API",
+				"project": {
+					"title": "Continue: Contact Management API",
+					"solution": "#TODO"
+				},
+				"replits": [],
+				"key-concepts": [""],
+				"homework": "",
+				"technologies": ["ORM", "Django", "MySQL", "PHPMyAdmin"]
+			}, {
+				"label": "Weekend",
+				"weekend": true,
+				"instructions": "From now on repetition is key, start every class reviewing the development workflow, help students finish their project and motivate them until the end!",
+				"description": "We know you are really overwhelmed by the incredible amount of information, the next few weeks are about practice, practice, and practice! It's is time to become a master in software development"
+			}]
+		}, {
+			"label": "Week 12: Keep it up",
+			"topic": "Final Project, Student Profile",
+			"summary": "Working on the Final Project and Resumé",
+			"days": [{
+				"label": "Day 34",
+				"instructions": "Student should be working on the final projects, continue working with them. Also, during this class, pelase take 20 minutes to make students update their Student Profile Projects",
+				"description": "You are in the middle of the final project development, but please take some time to review your Student Public Profile and update it",
+				"homework": "Student will continue working on their final project and also write their projects description, reame file, etc.",
+				"technologies": ["Resume Building"],
+				"assignments": ["sep2-projects"]
+			}, {
+				"label": "Weekend",
+				"weekend": true,
+				"instructions": "From now on repetition is key, start every class reviewing the development workflow, help students finish their project and motivate them until the end!",
+				"description": "Weekds are open to students as always, keep it up with your Final Project!"
+			}]
+		}, {
+			"label": "Week 16",
+			"topic": "Final Project Presentation",
+			"summary": "Last tweeks to the project and building of the final presentation",
+			"days": [{
+				"label": "Day 46",
+				"instructions": "Help students start their presentation, give them tips and setup a rehersal date to work with them on their presentation",
+				"description": "Did you notice that 16 weeks had passed? Times passes fast when you are having fun, not it's time to work on the final project presentation",
+				"project": {
+					"title": "Work on the Final Project Presentation",
+					"solution": "#"
+				},
+				"assignments": ["sep4-summary-statement", "sep5-resume"],
+				"key-concepts": ["Presenting my project", "Creating a real demo", "Making sure your dummy data looks great", "How to focus on the strengths"],
+				"homework": "Create your project presentation"
+			}, {
+				"label": "Day 47",
+				"instructions": "Create a 'rehersal day' and let the students present the project to their classmates",
+				"description": "A great way of rehearsing is by presenting the final project to your classmates",
+				"project": {
+					"title": "Final presentation rehersal",
+					"solution": "#"
+				}
+			}, {
+				"label": "Pitch Day",
+				"instructions": "Answer any question your students may have",
+				"description": "You have worked a lot during these weeks, it's time to present the final project and enjoy with your family and friends!"
+			}]
+		}
+	]
+}

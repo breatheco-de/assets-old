@@ -1,0 +1,366 @@
+{
+	"label": "Full-Stack Development (Full-Time)",
+	"profile": "full-stack-ft",
+	"description": "Become a full-stack web developer in just 9 weeks using the 3 most popular web technologies in the world: Javascript, React and Python",
+	"weeks": [
+		{
+			"label": "Week 1: Introduction to the WEB",
+			"topic": "HTML/CSS, Bootstrap and JS Intro",
+			"summary": "Understanding HTTP, the browser, the Client-Server model, creating your first websites using profesional tools and make your first algorithms in Javascript",
+			"days": [
+				{
+					"label": "Day 1",
+					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
+					"instructions": "You have 15 minutes to explain how HTTP works by sending-receiving text between servers & clients, and how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
+					"project": {
+						"title": "Instagram Post"
+					},
+					"homework": "The students must create an instagram post",
+					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
+					"lessons": [{
+						"title": "Introduction to the Pre-work",
+						"slug": "intro-to-prework"
+					}, {
+						"title": "Internet Architecture",
+						"slug": "what-is-the-internet"
+					}, {
+						"title": "Learn HTML",
+						"slug": "what-is-html-learn-html"
+					}, {
+						"title": "Learn CSS",
+						"slug": "what-is-css-learn-css"
+					}],
+					"quizzes": [{
+						"title": "About the Pre-work",
+						"slug": "intro-to-prework"
+					}, {
+						"title": "Basics of HTML",
+						"slug": "html"
+					}],
+					"replits": [{
+						"title": "Learn HTML",
+						"slug": "html",
+						"vtutorial_slug": "html"
+					}, {
+						"title": "Learn CSS",
+						"slug": "css",
+						"vtutorial_slug": "css"
+					}],
+					"assignments": ["postcard", "instagram-post"],
+					"technologies": ["HTML5", "CSS"]
+				}, 
+				{
+					"label": "Day 2 (AM)",
+					"description": "Websites became popular and CSS evolved to enable amazing layouts with boxes and also a rich set of CSS Selectors",
+					"instructions": "Connecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
+					"project": {
+						"title": "Simple Instagram",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/instagram-without-bootstrap\/"
+					},
+					"homework": "Students must finish the Instagram & the Postcard.",
+					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
+					"lessons": [{
+						"title": "Doing Layouts",
+						"slug": "css-layouts"
+					}, {
+						"title": "Advanced CSS Selectors",
+						"slug": "mastering-css-selectors"
+					}],
+					"replits": [{
+						"title": "Doing Layouts",
+						"slug": "layouts"
+					}],
+					"quizzes": [{
+						"title": "Internet Architecture",
+						"slug": "internet-architecture"
+					}, {
+						"title": "Basics of CSS",
+						"slug": "css"
+					}],
+					"assignments": ["instagram-feed"],
+					"technologies": ["CSS3", "HTML5"]
+				}, 
+				{
+					"label": "Day 2 (PM)",
+					"description": "Bootstrap arrived to profesionalize websites, removing 99% of the layout pain. Everything is a component from now on.",
+					"instructions": "Explain bootstrap and how it solves 99% of the pain. Everything is a component from now own.",
+					"project": {
+						"title": "Bootstrap Instagram",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/instagram-with-bootstrap\/"
+					},
+					"lessons": [{
+						"title": "Working with Bootstrap",
+						"slug": "bootstrap-tutorial-of-bootstrap-4"
+					}],
+					"replits": [{
+						"title": "Working with Bootstrap",
+						"slug": "bootstrap"
+					}],
+					"assignments": ["instagram-feed-bootstrap"],
+					"key-concepts": ["Bootstrap", "Components", "Workflow: Identify the components, Copy&Paste them and finally customize them", "Helper\/Utility Classes that come with Bootstrap"],
+					"technologies": ["Bootstrap"]
+				},
+				{
+					"label": "Day 3",
+					"description": "Now you know exactly how a static website is built, but how do you interact with a user? All interactions start using inputs and forms.",
+					"instructions": "",
+					"project": {
+						"title": "HTML5 Form",
+						"solution": "https://codepen.io/alesanchezr/pen/zeaaVx"
+					},
+					"lessons": [{
+						"title": "Using Inputs and Forms",
+						"slug": "html-input-html-textarea"
+					}],
+					"replits": [{
+						"title": "Working with Bootstrap",
+						"slug": "forms"
+					}],
+					"assignments": ["html5-form"],
+					"key-concepts": ["HTML5 Forms", "Using the different types of inputs", "FORM validations using HMTL5 (no JS)"],
+					"technologies": ["FORMS"]
+				},
+				{
+					"label": "Day 4 (AM)",
+					"description": "A text editor and the console - that's all you need to be a great coder. Time to master the second one.",
+					"teacher_instructions": "Teach the command line to your students, use the CMD challenge to make it very fun! Start with a small explanation about the importance of the CMD and then explain each command after its respective challenge is completed.",
+					"project": {
+						"title": "The CMD Challenge",
+						"instructions": "https:\/\/github.com\/breatheco-de\/exercise-terminal-challenge\/"
+					},
+					"replits": [{
+						"title": "Command Line Interactive Challenge",
+						"slug": "the-command-line"
+					}],
+					"lessons": [{
+						"title": "The Command Line",
+						"slug": "the-command-line-the-terminal"
+					}],
+					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the website.",
+					"key-concepts": ["Most used CMD commands", "File Directory Hierarchy", "Relative .\/ vs Absolute Paths ", "Moving Up ..", "Autocomplete with TAB", "GIT in a general way"],
+					"technologies": ["Command Line", "Bash Scripts"]
+				}, 
+				{
+					"label": "Day 4 (PM)",
+					"description": "The CMD Line has millions of tools, it's time to learn the first ones: GIT & Github - together they make collaboration amazing! Also, today you start building your developer resumé!",
+					"instructions": "Time to explain and practice with GIT in detail, create a repository for your Landing Page GIT project and make them clone it and upload their piece of the project. Review the key concepts.",
+					"project": {
+						"title": "GIT Colaborative Landing Page",
+						"instructions": "https:\/\/github.com\/breatheco-de\/exercise-git-collabration\/"
+					},
+					"homework": "At the end of the class, present the students with the GIT project & please ask each student to start coding its corresponding part of the Landing Page. Suggested parts: navbar, jumbotron, 2 parts description, product showcase, marketing banner, contact us, footer",
+					"key-concepts": ["Creating SSH Keys", "Using Github", "The Commit Object", "The HEAD", "The Stage", "Branch", "Git FLOW (profesional branching)", "Commit vs PUSH", "Resolving Conflicts","How to Pull Request","How to use GIT", "What is the Student External Profile","Store Using YML"],
+					"replits": [{
+						"title": "Git interactive tutorial",
+						"slug": "git"
+					}],
+					"lessons": [{
+						"title": "GIT (Version Control System)",
+						"slug": "how-to-use-git-version-control-system"
+					}],
+					"technologies": ["Git", "Github", "Markdown", "html","css"],
+					"assignments": ["student-external-profile"]
+				},
+				{
+					"label": "Day 5 (AM)",
+					"description": "After being able to create static HTML/CSS using all the best practices, it is time to make your code dynamic: Javascript it's an HTML/CSS code generator that will allow you to change your website code dynamically after it finished loading.",
+					"teacher_instructions": "Finish pending replits (all css and html related), upload student projects into their github accounts and finish the Student External Profile",
+					"instructions": "First take time to do the group activity and explain coding concepts (read the full instrucitons), then start the excuse generator is a great way to explain how JavaScript and HTML\/CSS can play together. Do it with the students as you explain all the programming Key Concepts. Use the VanillaJS boilerplate, that way students will start getting used to it",
+					"project": {
+						"title": "The Excuse Generator",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/excuse-generator\/"
+					},
+					"homework": "Students need to finish the Excuse Generator, make the replits about JavaScript and complete the layout for the Random Card Generator",
+					"key-concepts": ["Arrays","Variables", "DataTypes", "The forEach", "String Concatenation", "Variable Initialization", "If... Else", "Some times else is not needed" ],
+					"lessons": [{
+						"title": "Learning to code with JS",
+						"slug": "what-is-javascript-learn-to-code-in-javascript"
+					},{
+						"title": "Looping and Arrays",
+						"slug": "what-is-an-array-define-array"
+					}], 
+					"replits": [{
+						"title": "Introduction to JS",
+						"slug": "js-beginner",
+						"vtutorial_slug": "begin-js"
+					},{
+						"title": "Looping and Arrays",
+						"slug": "arrays"
+					}],
+					"assignments": ["excuse-generator"],
+					"technologies": ["JavaScript", "Arrays"]
+				},
+				{
+					"label": "Day 5 (PM)",
+					"description": "It is time to start working a real life development workflow, using webpack to compile our code and having the right folder structure is a must",
+					"teacher_instructions": "Take some time to explain the profesional workflow, what compiling is and why webpack has become so popular. Have the students install their first boilerplate and finish the project.",
+					"project": {
+						"title": "Conditional Profile Card",
+						"instructions": "https://github.com/breatheco-de/conditional-profile-card"
+					},
+					"homework": "Students need to finish all the pending replits and projects",
+					"key-concepts": [
+						"Functions (anonymous vs normal)", 
+						"Every JavaScript code starts OnLoad", 
+						"Main website events: PreLoad & OnLoad", 
+						"The-Runtime (after OnLoad)", "Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html", "Ternaries" , "Main website events: PreLoad & OnLoad", "The-Runtime (after OnLoad)", "Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html"],
+					"lessons": [{
+						"title": "Bundling with Webpack",
+						"slug": "what-is-webpack"
+					}, {
+						"title": "Understanding functions",
+						"slug": "working-with-functions"
+					}], 
+					"replits": [{
+						"title": "Working with functions",
+						"slug": "functions"
+					}],
+					"assignments": ["conditional-profile-card"],
+					"technologies": ["Webpack", "Javascript"]
+				},
+				{
+					"label": "Weekend",
+					"weekend": true,
+					"description": "Saturdays are a great oportunity to work all day on your coding skills with extra lessons without extra charges. You will only sacrifice 14 Saturdays and your life will change forever.",
+					"instructions": "During the weekend, students must finish all the replits"
+				}
+			]
+		},
+		{
+			"label": "Week 2: Front-End Development",
+			"topic": "Lets dive really hard into the wo",
+			"summary": "",
+			"days": [
+				{
+					"label": "Day 6 (AM)",
+					"description": "Lets continue or travel thru Javascript by depening into the bowels of a website: The DOM and Events. Mastering these two concepts will allow you to build interative high performing websites.",
+					"instructions": "Finish practicing loops and functions with the students by building the Domain Name Generator, later, explain the DOM and Events help them with the replits",
+					"project": {
+						"title": "Domain Name Generator",
+						"solution": "#"
+					},
+					"homework": "The students must finish pending projects and replits",
+					"key-concepts": [],
+					"lessons": [{
+						"title": "The DOM",
+						"slug": "what-is-dom-define-dom"
+					}, {
+						"title": "Events",
+						"slug": "event-driven-programming"
+					}],
+					"replits": [{
+						"title": "The DOM",
+						"slug": "the-dom"
+					}, {
+						"title": "Events",
+						"slug": "events"
+					}],
+					"assignments": ["domain-generator"],
+					"technologies": ["The DOM", "Events"]
+				}, 
+				{
+					"label": "Day 6 (PM)",
+					"description": "Now that you know a little bit about The DOM and Events you are ready for more! Lets validate a form and build a random card",
+					"instructions": "Last sprint to practice Vanilla Javascript with the students, review all the learned concepts with the students, ask them questions and challenge them using the quizzes. Finish all the pending projects including the Random Card and form validations described on this day",
+					"project": {
+						"title": "Form Validations",
+						"solution": "https://jsfiddle.net/BreatheCode/pygko3m8/19"
+					},
+					"homework": "The students must finish pending projects and replits",
+					"key-concepts": ["Using preventDefault to stop events from triggering", "How to retrieve an input value", "Chaning input styles using Javascript", "Listening to a form submition", "Hiding and showing div from the website"],
+					"lessons": [],
+					"quizzes": [],
+					"replits": [],
+					"assignments": ["html5-form-validations","random-card", "sep1-experience-and-education"],
+					"technologies": ["Form Validations"]
+				},
+				{
+					"label": "Day 7 (AM)",
+					"description": "Now lets use everything we have learn about the DOM and Events to build something cool!",
+					"instructions": "Strategize with the students using the white board, let them come up with a strategy and support them. Show them once or two tricks to inspire their creativity.",
+					"project": {
+						"title": "Random Card Generator",
+						"solution": "https:\/\/bitbucket.org\/codingacademy\/random-card\/"
+					},
+					"homework": "The students must finish pending projects and replits",
+					"key-concepts": ["Using preventDefault to stop events from triggering", "How to retrieve an input value", "Chaning input styles using Javascript", "Listening to a form submition", "Hiding and showing div from the website"],
+					"lessons": [],
+					"quizzes": [],
+					"replits": [],
+					"assignments": ["html5-form-validations","random-card", "sep1-experience-and-education"],
+					"technologies": ["Form Validations"]
+				},
+				{
+					"label": "Day 7 (PM)",
+					"description": "Test your knowledge! Start building sorting algorithms that use everything you have learn so far in Javascript",
+					"instructions": "Don't attempt to explain all sorting algorithms at once, explain just one and let the students practice an build on it. Once the bubble has been master you can try to explain the next one.",
+					"project": {
+						"title": "Bubble and Select Sorting",
+						"solution": "https://jsfiddle.net/BreatheCode/8c36nrk5/"
+					},
+					"homework": "The students must finish the rest of the sorting algorithms",
+					"key-concepts": ["Do the bubble in real life and on the board with them", "Force them to do pseudo code and strategy before starting to code"],
+					"lessons": [{
+						"title": "Sorting Algorithms Explained",
+						"slug": "sorting-algorithms-explanied-in-javascript"
+					}],
+					"quizzes": [],
+					"replits": [],
+					"assignments": ["sorting-cards-with-bubble","sorting-cards-with-select"],
+					"technologies": ["Sorting","Algorithms"]
+				},
+				{
+					"label": "Day 8 (AM)",
+					"instructions": "It's the first time students will be using objects, explain the concept. Make students create their first react components and explain the use of JSX. Explain the difference between Functional components and or class components and the render function. Landing page project should be a code along at start, then groups at end.",
+					"description": "But working with the DOM can get tricky and it's resource consuming, for that and many other reasons libraries like React.js got popular in the last couple of years. The let you create HTML and CSS using JS in a very intuitive way.",
+					"project": {
+						"title": "Landing Page with React",
+						"instructions": "https://projects.breatheco.de/d/landing-page-with-react#readme"
+					},
+					"homework": "Students must finish the landing page with react",
+					"lessons": [
+						{
+							"title": "Building interfaces with React",
+							"slug": "learn-react-js-tutorial"
+						},
+						{
+							"title": "Creating React.js Components",
+							"slug": "making-react-components"
+						},{
+							"title": "Importing and Exporting from other JS files",
+							"slug": "javascript-import"
+						}
+					],
+					"replits": [{
+						"title": "Using React.js as a Rendering Engine",
+						"slug": "react-js"
+					}],
+					"assignments": ["landing-page-with-react"],
+					"key-concepts": ["Export -> Import modules", "You can create your own tags", "Create a Component like a Class", "Create a Component like a Function", "Use of the render method"],
+					"technologies": ["React", "Webpack", "Babel.js", "JS Modules", "JS Classes"]
+				},
+				{
+					"label": "Day 8 (PM)",
+					"instructions": "Sudents just finished the React.js replits and they are overwhelmed with all the new concepts, please explain everything the basics of React and JSX again in 20min.",
+					"description": "React will change your life as a developer, we should continue practicing it and doing more and more projects.",
+					"project": {
+						"title": "Traffic Light With React",
+						"instructions": "https://projects.breatheco.de/d/traffic-light-react#readme"
+					},
+					"homework": "Students must finish all pending projects and replits",
+					"lessons": [{
+						"title": "Object Oriented Programming",
+						"slug": "what-is-object-oriented-programming-concepts"
+					}],
+					"replits": [{
+						"title": "Object Oriented Programming",
+						"slug": "object-oriented-programing"
+					}],
+					"assignments": ["traffic-light-react", "simple-counter-react"],
+					"key-concepts": ["Component Like a class vs Component like a function", "Using the State", "Object Oriented Programing"],
+					"technologies": ["React", "O.O.Programming"]
+				}
+			]
+		}
+	]
+}
