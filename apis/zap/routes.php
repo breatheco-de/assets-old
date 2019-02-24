@@ -64,7 +64,8 @@ function addAPIRoutes($api){
 			if(in_array($std->status,["currently_active", "studies_finished"])){
 				$count++;
 				try{
-				    BreatheCodeMessages::addMessage('nps_survey', $std, 'HIGH', [ 'token' => $token, 'cohort_stage' => $cohort->stage ]);
+				    $messages = BreatheCodeMessages::getMessages([ 'email' => "a.alejo@gmail.com", 'slug' => 'nps_survey' ]);
+				    if(count($messages) == 0) BreatheCodeMessages::addMessage('nps_survey', $std, 'HIGH', [ 'token' => $token, 'cohort_stage' => $cohort->stage ]);
 				}catch(Exception $e){
 				    $errors++;
 				}
@@ -76,7 +77,7 @@ function addAPIRoutes($api){
     	
     	return $response->withJson([ "msg" => "$count students notified, $ignored ignored (there are not currently_active or studies_finished) and $errors gave errors", "total" => $count]);
         
-	})->add($api->auth());
+	});//->add($api->auth());
 	
 	return $api;
 }

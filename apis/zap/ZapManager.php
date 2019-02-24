@@ -11,7 +11,7 @@ class ZapManager{
     static $_zaps = [
         "change_cohort_status@not-started" => [],
         "change_cohort_status@on-prework" => [],
-        "change_cohort_status@on-course" => ["nps_survey_cohort"],
+        "change_cohort_status@on-course" => [],
         "change_cohort_status@on-final-project" => ["nps_survey_cohort"],
         "change_cohort_status@finished" => ["nps_survey_cohort"]
     ];
