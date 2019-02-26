@@ -26,10 +26,10 @@
                     
                     $headers = get_headers($replits[$_GET['r']]);
                     foreach($headers as $h){
-                        if(strpos($h,'SAMEORIGIN')){
+                        if(strpos($h,'SAMEORIGIN')>-1 || strpos($h, 'X-Frame-Options: deny')>-1){
                             echo "<h1>";
-                            echo "This exercise needs to be opened in a new window, please copy and paste this url on your window url: ";
-                            echo "<a target='_blank' href='".$replits[$_GET['r']]."'>".$replits[$_GET['r']]."</a>";
+                                echo "This exercise needs to be opened in a new window, please copy and paste this url on your window url: ";
+                                echo "<a target='_blank' href='".$replits[$_GET['r']]."'>".$replits[$_GET['r']]."</a>";
                             echo "</h1>";
                             die();
                         }
