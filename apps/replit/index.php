@@ -28,7 +28,7 @@
                     foreach($headers as $h){
                         if(     strpos(strtolower($h),'SAMEORIGIN')>-1
                         //    ||  strpos(strtolower($h), 'x-frame-options: deny')>-1
-                            || strpos(strtolower($h),"HTTP/1.1 404 Not Found")>-1
+                            || strpos(strtolower($h),"http/1.1 404 not found")>-1
                         ){
                             header("Location: /apis/replit/404.php?link=".urlencode($replits[$_GET['r']]));
                             echo "<h2>";
