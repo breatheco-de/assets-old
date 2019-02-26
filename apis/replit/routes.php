@@ -109,6 +109,5 @@ function addAPIRoutes($api){
 	    return $response->withJson($data);
 	})->add($api->auth());
 	
-	
 	return $api;
 }

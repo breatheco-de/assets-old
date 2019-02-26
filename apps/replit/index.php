@@ -26,11 +26,12 @@
                     
                     $headers = get_headers($replits[$_GET['r']]);
                     foreach($headers as $h){
-                        if(strpos($h,'SAMEORIGIN')>-1 || strpos($h, 'X-Frame-Options: deny')>-1){
-                            echo "<h1>";
-                                echo "This exercise needs to be opened in a new window, please copy and paste this url on your window url: ";
+                        if(strpos(strtolower($h),'SAMEORIGIN')>-1 || strpos(strtolower($h), 'x-frame-options: deny')>-1 || strpos(strtolower($h),"HTTP/1.1 404 Not Found")>-1){
+                            header("Location: /apis/replit/404.php?link=".urlencode($replits[$_GET['r']]));
+                            echo "<h2>";
+                                echo "This exercise needs to be opened in a new window, please click on this url to opent it: ";
                                 echo "<a target='_blank' href='".$replits[$_GET['r']]."'>".$replits[$_GET['r']]."</a>";
-                            echo "</h1>";
+                            echo "</h2>";
                             die();
                         }
                     }
