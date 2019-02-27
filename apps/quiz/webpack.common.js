@@ -26,11 +26,6 @@ module.exports = {
           exclude: /node_modules/,
           use: ['babel-loader']
         },
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader']
-        },
         { test: /\.md$/, use: [
               {
                   loader: "html-loader"
@@ -52,13 +47,27 @@ module.exports = {
               loader: "sass-loader" // compiles Sass to CSS
           }]
         }, //css only files
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: "babel-loader"
+            },
+            {
+              loader: "react-svg-loader",
+              options: {
+                jsx: true // true outputs JSX tags
+              }
+            }
+          ]
+        },
         { 
-          test: /\.(png|svg|jpg|gif)$/, use: {
+          test: /\.(png|jpg|gif)$/, use: {
             loader: 'file-loader',
             options: { name: '[name].[ext]' } 
           }
         }, //for images
-        { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
+        { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/, use: ['file-loader'] } //for fonts
     ]
   }
 };
