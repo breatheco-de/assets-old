@@ -15,7 +15,7 @@
 <?php if(isset($_GET['program'])){ ?>
   <div class="jumbotron bg-image" id="cover">
     <div class="container">
-      <h1 class='syllabus-title'>Jumbotron Auto Viewport Height</h1>
+      <h1 class='syllabus-title'>Syllabus Title</h1>
       <h2 class="syllabus-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi pariatur laboriosam explicabo recusandae.</h2>
       <p id="syllabus-technologies">[Technologies]</p>
       <p><a class="btn btn-primary btn-lg" href="#" onClick="$('html, body').animate({scrollTop: $('#section1').offset().top+10}, 1000);" role="button">Ver Syllabus</a></p>

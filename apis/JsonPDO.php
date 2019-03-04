@@ -2,7 +2,7 @@
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-    
+
 class JsonPDO{
     
     //Onyl used if the data is stored in just one json file
@@ -33,7 +33,7 @@ class JsonPDO{
     }
     
     function getDataStructure($path, $defaultContent){
-        
+
         $pathParts = pathinfo($path);
         if(!empty($pathParts['extension']) && isset($pathParts['extension']) && $pathParts['extension'] == 'json'){
             $this->fileName = $path;
@@ -48,7 +48,7 @@ class JsonPDO{
         	$urlparts = explode("/", $path);
         	$level = 0;
         	foreach ($directories as $value){
-    		    $newPath = $path.$value;
+    		    $newPath = rtrim($path, '/') . '/'.$value;
         		if($this->debug) echo "Recorriendo: $newPath \n";
         		if($value!='.' and $value!='..' and is_dir($path)) 
         		{
@@ -147,29 +147,33 @@ class JsonPDO{
     }
     
     function toNewFile($fileName){
-        if(!$this->dataPath) throw new Exception('Missing data path', 400);
-        return new FileInterface($this->dataPath.$fileName.'.json', $create=true);
+        if(!$this->dataPath) $this->throwError('Missing data path', 400);
+        return new FileInterface(rtrim($this->dataPath, '/') . '/'.$fileName.'.json', $create=true);
+    }
+    
+    function deleteFile($fileName){
+        if(!$this->dataPath) $this->throwError('Missing data path', 400);
+        $file = new FileInterface(rtrim($this->dataPath, '/') . '/'.$fileName.'.json');
+        return $file->delete();
     }
     
     function getJsonByName($fileName){
+        if(empty($fileName)) $this->throwError("The name of the json you are requesting is empty");
         
-        if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
-        
-        if(!is_array($this->dataContent)) throw new Exception("There is only one json file as data model");
+        if(!is_array($this->dataContent)) $this->throwError("There is only one json file as data model");
         
         foreach ($this->dataContent as $key => $jsonObject) {
             $file = pathinfo($key);
             if($file['filename'] == $fileName) return $jsonObject;
         }
-        
-        throw new Exception("There json file ".$fileName." was not found");
+        $this->throwError("There json file ".$fileName." was not found");
     }
     
     function jsonExists($fileName){
         
-        if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
+        if(empty($fileName)) $this->throwError("The name of the json you are requesting is empty");
         
-        if(!is_array($this->dataContent)) throw new Exception("There is only one json file as data model");
+        if(!is_array($this->dataContent)) $this->throwError("There is only one json file as data model");
         
         foreach ($this->dataContent as $key => $jsonObject) {
             $file = pathinfo($key);
@@ -181,15 +185,15 @@ class JsonPDO{
     
     function getPathByName($fileName){
         
-        if(empty($fileName)) throw new Exception("The name of the json you are requesting is empty");
+        if(empty($fileName)) $this->throwError("The name of the json you are requesting is empty");
         
-        if(!is_array($this->dataContent)) throw new Exception("There is only one json file as data model");
+        if(!is_array($this->dataContent)) $this->throwError("There is only one json file as data model");
         
         foreach ($this->dataContent as $key => $jsonObject) {
             if(strpos($key,$fileName)) return $key;
         }
         
-        throw new Exception("There json file ".$fileName." was not found");
+        $this->throwError("There json file ".$fileName." was not found");
     }
     
     function getAllContent(){
@@ -197,7 +201,7 @@ class JsonPDO{
     }
     
     function throwError($msg){
-	    throw new Exception($msg);
+	    throw new \Exception($msg);
 	}
 }
 
@@ -218,4 +222,15 @@ class FileInterface{
         
         return $data;
     }
+    function delete(){
+        if(!$this->fileName) throw new Exception('You need to specify the JSON file name');
+        $result = unlink($this->fileName);
+        if(!$result) $this->throwError('Error deleting data from '.$this->fileName);
+        
+        return $data;
+    }
+    
+    function throwError($msg){
+	    throw new \Exception($msg);
+	}
 }

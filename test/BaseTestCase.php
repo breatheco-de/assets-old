@@ -57,7 +57,12 @@ class BaseTestCase extends TestCase {
         }
         foreach($quizFiles as $quiz){
             $quizSlug = pathinfo($quiz, PATHINFO_FILENAME);
-            $this->data['quizzes'][$quizSlug] = (array) json_decode(file_get_contents($quiz));
+            $re = '/^([a-zA-Z\d-_]+)\.?([a-z]{2})?$/m';
+            if(preg_match_all($re, $quizSlug, $matches, PREG_SET_ORDER, 0)){
+                if(empty($matches[0][2])) $this->data['quizzes'][$matches[0][1]]["en"] = (array) json_decode(file_get_contents($quiz));
+                else  $this->data['quizzes'][$matches[0][1]][$matches[0][2]] = (array) json_decode(file_get_contents($quiz));
+            }
+            else throw new Exception('There is quiz with a bad name: '.$quizSlug);
         }
         
         $this->data['lessons'] = $this->get(self::ASSETS_API.'lesson/all/v2');

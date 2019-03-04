@@ -55,11 +55,17 @@ function addAPIRoutes($api){
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
         
         $slug = $args['slug'];
-        $quizObj = $api->db['json']->getJsonByName($slug);
+        $slug .= !empty($_GET['lang']) ? '.'.$_GET['lang'] : '';
+    	try{
+        	$quizObj = $api->db['json']->getJsonByName($slug);
+    	}
+    	catch(Exception $e){
+        	$quizObj = $api->db['json']->getJsonByName(str_replace(".en","", $slug));
+    	}
 
         if(!empty($quizObj)){
 	        $quizObj['info'] = (array) $quizObj['info'];
-	        $quizObj['info']['slug'] = $slug;
+	        $quizObj['info']['slug'] = str_replace(".es","",str_replace(".en","", $slug));
 		    return $response->withJson($quizObj);
         }
 	    return $response->withJson($quizObj);
@@ -69,8 +75,10 @@ function addAPIRoutes($api){
         
         $quizObj = null;
         $slug = $args['slug'];
+		$lang = isset($data['lang']) ? $data['lang'] : 'es';
+		
         try{
-        	$quizObj = $api->db['json']->getJsonByName($slug);
+        	$quizObj = $api->db['json']->getJsonByName($slug.'.'.$lang);
         }
         catch(Exception $e){}
         
@@ -81,7 +89,7 @@ function addAPIRoutes($api){
 		if(!isset($data['questions']) || !is_array($data['questions'])) throw new Exception('Missing or invalid quiz questions');
 		if(count($data['questions']) <= 4) throw new Exception('A quiz needs to have at least 5 questions');
 		
-	    $api->db['json']->toNewFile($slug)->save($data);
+	    $api->db['json']->toNewFile($slug.'.'.$lang)->save($data);
 	    return $response->withJson($data);
 	})->add($api->auth());
 	
@@ -89,7 +97,9 @@ function addAPIRoutes($api){
         
         $quizObj = null;
         $slug = $args['slug'];
-        $quizObj = $api->db['json']->getJsonByName($slug);
+		$lang = isset($data['lang']) ? $data['lang'] : 'es';
+		
+        $quizObj = $api->db['json']->getJsonByName($slug.'.'.$lang);
         if(empty($quizObj)) throw new Exception('The quiz does not exists', 400);
 
 		$data = $request->getParsedBody();
@@ -98,7 +108,7 @@ function addAPIRoutes($api){
 		if(!isset($data['questions']) || !is_array($data['questions'])) throw new Exception('Missing or invalid quiz "questions"');
 		if(count($data['questions']) <= 4) throw new Exception('A quiz needs to have at least 5 questions');
 		
-	    $api->db['json']->toFile($slug)->save($data);
+	    $api->db['json']->toFile($slug.'.'.$lang)->save($data);
 	    return $response->withJson($data);
 	})->add($api->auth());
 	
