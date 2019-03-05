@@ -48,10 +48,10 @@ class SyllabusTest extends BaseTestCase {
         return false;
     }
     private function _quizExists($profileSlug, $quizSlug){
-        foreach($this->data['quizzes'] as $q){
-            if($q['info']->slug == $quizSlug) return $profileSlug.' => quiz:'.$quizSlug;
+        foreach($this->data['quizzes'] as $key => $q){
+            if(!isset($q["en"])) return "No enblish for ".$key;
+            if($key == $quizSlug and $q["en"]['info']->slug == $quizSlug) return $profileSlug.' => quiz:'.$quizSlug;
         }
-        
         return false;
     }
     private function _replitExists($profileSlug, $replitSlug){

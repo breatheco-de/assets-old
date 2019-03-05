@@ -64,7 +64,6 @@ class BaseTestCase extends TestCase {
             }
             else throw new Exception('There is quiz with a bad name: '.$quizSlug);
         }
-        
         $this->data['lessons'] = $this->get(self::ASSETS_API.'lesson/all/v2');
         
         $projects = $this->get('https://projects.breatheco.de/json');
