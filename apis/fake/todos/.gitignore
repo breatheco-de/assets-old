@@ -1,3 +1,4 @@
-data/
+data/*
 !.htaccess
 !data/example.json
+!data/.gitkeep
