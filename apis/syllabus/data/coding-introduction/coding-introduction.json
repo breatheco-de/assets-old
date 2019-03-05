@@ -1,0 +1,179 @@
+{
+	"label": "Coding Introduction",
+	"profile": "coding-introduction",
+	"weeks": [{
+			"label": "Week 1: How web works?",
+			"topic": "HTML, CSS & Bootstrap",
+			"summary": "Understand HTTP, the browser, the Client-Server model, create your first HTML, The head & body HTML, tables.",
+			"days": [{
+					"label": "Day 1",
+					"description": "Welcome to web development: At the beginning there was only HTML, years later CSS appeared, and that's how the web 1.0 came to life",
+					"instructions": "You have 15 min to explain how HTTP works sending-receiving text between servers & clients, how the browsers interpret that text as HTML, CSS or JS and then start coding. Start the postcard HTML on the screen and students should finishe it. Use float layout pursposes instead of display inline-block.",
+					"project": {
+						"title": "Digital Postcard",
+						"slug": "postcard",
+						"solution": "https://bitbucket.org/codingacademy/postcard/"
+					},
+					"homework": "The students must finish the Postcard on their own (there is a video-tutorial)",
+					"key-concepts": ["Everything is text!", "Always Be Closing", "Client vs Server", "HTTP Request vs Response", "Browser Interpretation", "HTML vs CSS", "CSS Selectors (basic ones)"],
+					"lessons": [{
+							"title": "Introduction to the pre-work",
+							"slug": "intro-to-prework"
+						},
+						{
+							"title": "Internet Architecture",
+							"slug": "what-is-the-internet"
+						},
+						{
+							"title": "Learn HTML",
+							"slug": "what-is-html-learn-html"
+						},
+						{
+							"title": "Learn CSS",
+							"slug": "what-is-css-learn-css"
+						}
+					],
+					"quizzes": [{
+							"title": "About the Prework",
+							"slug": "intro-to-prework"
+						},
+						{
+							"title": "Basics of HTML",
+							"slug": "html"
+						}
+					],
+					"replits": [{
+							"title": "Learn HTML",
+							"slug": "html",
+							"vtutorial_slug": "html"
+						},
+						{
+							"title": "Learn CSS",
+							"slug": "css",
+							"vtutorial_slug": "css"
+						}
+					],
+					"assignments": ["postcard"],
+					"technologies": ["HTML5", "CSS"]
+				},
+				{
+					"label": "Day 2",
+					"description": "Then, websites got popular and CSS evolved to enable amazing layouts with boxes and also a ritch set of CSS Selectors",
+					"instructions": "Connecting CSS & HTML: Finish the postcard and start the Instagram Feed. Review all the key concepts with your students.",
+					"project": {
+						"title": "Simple Instagram",
+						"solution": "https://bitbucket.org/codingacademy/instagram-without-bootstrap/"
+					},
+					"homework": "Students must finish the Instagram & the Postcard.",
+					"key-concepts": ["Do not use ID as CSS selectors (use specificity)", "::Before & ::After Selectors", "DRY Technique", "Box Model"],
+					"lessons": [{
+							"title": "Doing Layouts",
+							"slug": "css-layouts"
+						},
+						{
+							"title": "Advanced CSS Selectors",
+							"slug": "mastering-css-selectors"
+						}
+					],
+					"replits": [{
+						"title": "Doing Layouts",
+						"slug": "layouts"
+					}],
+					"quizzes": [{
+							"title": "Internet Architecture",
+							"slug": "internet-architecture"
+						},
+						{
+							"title": "Basics of CSS",
+							"slug": "css"
+						}
+					],
+					"assignments": ["instagram-feed"],
+					"technologies": ["CSS3", "HTML5"]
+				},
+				{
+					"label": "Day 3",
+					"description": "HTML & CSS are great, but the world needed interactive pages (not just beautiful text documents). Javascript comes to help us generate HTML & CSS based after the initial text document has already loaded and also re-write the website live based on the user activity.",
+					"instructions": "The excuse generator is a great way to explain how Javascript and HTML/CSS can play together. Do it with the students as you explain all the programing Key Concepts. Use the VanilaJS boilerplate, that way students will start getting used to it",
+					"project": {
+						"title": "The Excuse Generator",
+						"solution": "https://bitbucket.org/codingacademy/excuse-generator/"
+					},
+					"homework": "Students need to finish the Excuse Generator, make the replits about javascript and the layout for the Random Card Generator",
+					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
+					"lessons": [{
+							"title": "Learning to code with JS",
+							"slug": "what-is-javascript-learn-to-code-in-javascript"
+						},
+						{
+							"title": "Looping and Arrays",
+							"slug": "what-is-an-array-define-array"
+						}
+					],
+					"replits": [{
+							"title": "Introduction to JS",
+							"slug": "js-beginner",
+							"vtutorial_slug": "begin-js"
+						},
+						{
+							"title": "Arrays and Loops",
+							"slug": "arrays"
+						}
+					],
+					"assignments": ["excuse-generator"],
+					"technologies": ["Javascript", "HTML5", "CSS3", "Bootstrap", "Transitions"]
+				},
+				{
+					"label": "Weekend",
+					"description": "And God created the coding weekends, the perfect place to partice, share and collaborate with your classmates.",
+					"instructions": "Students must finish all pending proyects!"
+				}
+			]
+		},
+		{
+			"label": "Week 3: First coding skills",
+			"topic": "Create algorithms",
+			"summary": "Learn to loop, work with arrays, if..else and functions. Create algorithms.",
+			"days": [{
+					"label": "Day 4",
+					"instructions": "Finish the excuse generator and help the students do as many replits as they can during class, make sure to help them progress as much as you want in the arrays, loops, conditionals, functions, etc.",
+					"description": "When Julius Caesar and Napoleon said 'Divide and Conquer' they were probably talking about using functions in programming languages... master functions and the entire Europe will be yours :)",
+					"project": {
+						"title": "Replit session: Do the replits with the students"
+					},
+					"key-concepts": ["Variables", "DataTypes", "Arrays", "Functions (anonymus vs normal)", "The forEach", "Every javascript code starts OnLoad", "String Concatenation"],
+					"replits": [{
+						"title": "Working with functions",
+						"slug": "functions"
+					}],
+					"lessons": [],
+					"technologies": ["JS Functions", "Arrow Functions"]
+				},
+				{
+					"label": "Day 5",
+					"instructions": "Do the Random Card but focusing a lot on the workflow (how to plan and begin coding), re-inforce the ONLOAD and PRE-LOAD main events and how to change CSS with JS, make students do the 'Map Of Events' to strategize, start using the breathecode-cli and vanilla-js ",
+					"description": "Ok but how do we use Javascript to build websites? You have to interact with the DOM whenever an event occurs",
+					"project": {
+						"title": "Random Card Generator",
+						"solution": "https://bitbucket.org/codingacademy/random-card/"
+					},
+					"homework": "Finish the Random Card and pending replits, start DOM & EVENTS replits",
+					"assignments": ["random-card"],
+					"key-concepts": ["Main website events: PreLoad & OnLoad", "The-Runtime (after onload)", "Introduce the DOM", "Use querySelector() to select DOM Elements just like you do with CSS", "Add/Remove CSS Classes to DOM elements", "Please do not attempt to explain the Webpack Config.", "Bundling JS, CSS & Images.", "Include your bundle on index.html"],
+					"technologies": ["The DOM", "Events", "CSS", "CSS Transitions"]
+				},
+				{
+					"label": "Day 6",
+					"description": "Congratulations! We hope you have enjoyed this as much as we do, in just 2 weeks of training you are now able to do your small dynamic websites, can you imagine what you could do after 4 months? The sky is the limit!",
+					"instructions": "Help students finish the random card, excuse generator and finish the replits",
+					"lessons": []
+				},
+				{
+					"label": "Weekend",
+					"description": "Saturdays are a great oportunity to work full-day on your coding skills, extra lessons without extra charge. You will only sacrifice 14 Saturdays and your life will change forever.",
+					"instructions": "During the weekend, students must finish all the replits"
+				}
+			]
+		}
+	]
+}
