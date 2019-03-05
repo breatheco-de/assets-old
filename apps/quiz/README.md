@@ -12,6 +12,6 @@ Renders a particular quiz
 [Here you can find all the available quizzes](https://assets.breatheco.de/apis/quiz/all)
 
 ## Installation
-
+ 
 1. Run npm install
 2. Build
