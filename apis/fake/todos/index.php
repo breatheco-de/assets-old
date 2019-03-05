@@ -37,9 +37,7 @@
         if($args['username']) throw new Exception('The example user is read-only, please pick another username', 400);
         
 	    $body = $request->getParsedBody();
-        if(!is_array($body) or count($body) == 0) throw new Exception('The request body must be an array of todo\'s with at least one task');
-        
-		validateTasks($body);
+        if(!is_array($body)) throw new Exception('The request body must be an empty array');
         
 		try{
 			$oldTodos = $api->db['json']->getJsonByName($args['username']);

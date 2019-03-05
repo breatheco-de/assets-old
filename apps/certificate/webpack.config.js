@@ -1,10 +1,17 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production'
 
+var path = require('path');
+var BUILD_DIR = path.resolve(__dirname, 'public');
+
 module.exports = {
+    // output: {
+        // },
     output: {
-        publicPath: '/'
+        publicPath: '/',
+        path: path.join(__dirname, "/dist"),
     },
     devServer: {
         historyApiFallback: true
@@ -58,6 +65,16 @@ module.exports = {
             // both options are optional
             filename: devMode ? '[name].css' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
-        })
+        }),
+        new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: false,
+            uglifyOptions: {
+              output: {
+                comments: false
+              }
+            }
+          })
     ]
 };

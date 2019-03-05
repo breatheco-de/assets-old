@@ -16,14 +16,12 @@
 ]
 ```
 ## 2. Create list of todo's of a particular user
+
+This method is only for creation, you need to pass an empty array on the body because there are no todo yet.
+
 ```
   [POST] /todos/user/<username>
-  BODY:
-  [
-    { label: "Make the bed", done: false },
-    { label: "Walk the dog", done: false },
-    { label: "Do the replits", done: false }
-  ]
+  BODY: []
   
   RESPONSE:
   
@@ -32,6 +30,9 @@
     }
 ```
 ## 2. Update list of todo's of a particular user
+
+This method is to update only, if you want to create a new todo list for a particular user use the POST above.
+
 ```
   [PUT] /todos/user/<username>
   BODY:
@@ -47,7 +48,7 @@
         "result": "ok"
     }
 ```
-## 3. Delete all todos of a particular user
+## 3. Delete a user and all of their todo's
 ```
   [DELETE] /todos/user/<username>
   FORM PARAMS: none
