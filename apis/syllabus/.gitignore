@@ -1,3 +1,2 @@
-data/private/*
-data/private/.gitkeep
+data/*
 !.htaccess

@@ -1,4 +1,2 @@
 !.htaccess
-!data/private/
 data/private/*
-!data/private/
