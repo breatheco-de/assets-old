@@ -185,7 +185,7 @@ class BaseTestCase extends TestCase {
         $finder = new Finder();
         $links = [];
         foreach($extentions as $ext){
-            $scanedFiles = $finder->files()->in($pathToFolder)->name($ext);            
+            $scanedFiles = $finder->files()->in($pathToFolder)->name($ext);
             $links = array_merge($links, $linkChecker->checkFiles($scanedFiles,
                 function ($nbr) { /* called at beginning - $nbr urls to check */ },
                 function ($url, $files) { /* called each $url - $files : list of filename containing $url link */ },
