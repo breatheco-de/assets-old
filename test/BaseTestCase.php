@@ -208,11 +208,12 @@ class BaseTestCase extends TestCase {
             if (count($errors) <= 0) continue;
             else $errorsFound += count($errors);
 
-            if($silent)
-            $url    = $link->getLink();
-            $files  = implode(", ", $link->getFiles());
-
-            echo "\033[31m".$url . "\033[0m \033[33m->\033[0m " . implode(',', $errors). " \033[33min\033[0m ".$files."\n";
+            if(!$silent){
+                $url    = $link->getLink();
+                $files  = implode(", ", $link->getFiles());
+    
+                echo "\033[31m Link:".$url . " \033[0m \033[33m->\033[0m " . implode(',', $errors). " \033[33min\033[0m ".$files."\n";
+            }
         }
         
         if($errorsFound > 0){

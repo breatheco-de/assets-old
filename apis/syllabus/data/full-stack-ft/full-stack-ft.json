@@ -524,8 +524,8 @@
 					"description": "This is the first exercises students will have to use FETCH, explain it and explain also async programing using promises and callbacks. Please do not explain the async/await approach, students need to understand classic promises and callbacks first",
 					"project": {
 						"title": "Finish the music player",
-						"instructions": "https://projects.breatheco.de/d/music-player-react-with-fetch#readme",
-						"solution": "https://bitbucket.org/codingacademy/music-player-react-with-fetch"
+						"instructions": "https://projects.breatheco.de/d/music-player-react#readme",
+						"solution": "https://bitbucket.org/codingacademy/music-player-react"
 					},
 					"homework": "Students must finish all pending projects and replits",
 					"lessons": [{
@@ -533,7 +533,7 @@
 						"slug": "asynchronous-algorithms-async-await"
 					}],
 					"replits": [],
-					"assignments": ["music-player-react-with-fetch"],
+					"assignments": ["music-player-react"],
 					"key-concepts": ["Doing GET requests with Fetch", "DidMount its ideal for fetching async data", "If you are going to fetch, you have to initilialize your state with null or empty data and prepare for it", "Displaying loading or placeholders on the render while the data has not arrived"],
 					"technologies": []
 				},
