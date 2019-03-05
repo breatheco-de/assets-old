@@ -57,3 +57,5 @@ public/*
 
 !.gitkeep
 !.htaccess
+!.env.dev
+!.env.prod
