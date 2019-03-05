@@ -15,7 +15,7 @@
   { label: "Do the replits", done: false }
 ]
 ```
-## 2. Create list of todo's of a particular user
+## 2. Create a new todo list of a particular user
 
 This method is only for creation, you need to pass an empty array on the body because there are no todo yet.
 
@@ -29,7 +29,7 @@ This method is only for creation, you need to pass an empty array on the body be
         "result": "ok"
     }
 ```
-## 2. Update list of todo's of a particular user
+## 2. Update `the entire list` of todo's of a particular user
 
 This method is to update only, if you want to create a new todo list for a particular user use the POST above.
 
