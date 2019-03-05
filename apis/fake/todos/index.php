@@ -34,7 +34,7 @@
 	$api->post('/user/{username}', function (Request $request, Response $response, array $args) use ($api) {
 	    
         if(!isset($args['username'])) throw new Exception('The username is missing on the URL');
-        if($args['username']) throw new Exception('The example user is read-only, please pick another username', 400);
+        if($args['username'] == 'example') throw new Exception('The example user is read-only, please pick another username', 400);
         
 	    $body = $request->getParsedBody();
         if(!is_array($body)) throw new Exception('The request body must be an empty array');
@@ -53,7 +53,7 @@
 	$api->put('/user/{username}', function (Request $request, Response $response, array $args) use ($api) {
 	    
         if(!isset($args['username'])) throw new Exception('The username is missing on the URL', 400);
-        if($args['username']) throw new Exception('The example user is read-only, please pick another username', 400);
+        if($args['username'] == 'example') throw new Exception('The example user is read-only, please pick another username', 400);
         
 	    $body = $request->getParsedBody();
         if(!is_array($body)) throw new Exception('The request body must be an array of todo\'s', 400);
@@ -73,7 +73,7 @@
 	
 	$api->delete('/user/{username}', function (Request $request, Response $response, array $args) use ($api) {
 	    
-	    if($args['username']) throw new Exception('The example user is read-only, please pick another username', 400);
+	    if($args['username'] == 'example') throw new Exception('The example user is read-only, please pick another username', 400);
 	    $result = $api->db['json']->deleteFile($args['username']);
         return $response->withJson(["result" => "ok"]);
 	});
