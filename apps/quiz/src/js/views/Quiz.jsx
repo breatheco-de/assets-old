@@ -32,7 +32,7 @@ export default class Quiz extends Flux.View {
         const match = regex.exec(this.props.match.params.quiz_id);
         const lang = match[2] || 'en';
         const slug = match[1];
-        if(typeof this.state.quiz.msg != 'undefined') return (
+        if(typeof this.state.quiz.info === 'undefined') return (
             <div className="p-5 alert alert-error">
                 <h1>There was a problem loading the quiz: </h1>
                 <h2>{this.state.quiz.msg}</h2>
