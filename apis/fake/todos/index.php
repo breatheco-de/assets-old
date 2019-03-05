@@ -25,8 +25,9 @@
 	$api->get('/user/{username}', function (Request $request, Response $response, array $args) use ($api) {
 		
 		if(!isset($args['username'])) throw new Exception('The username is missing on the URL');
-			$todos = $api->db['json']->getJsonByName($args['username']);
-
+		
+		$todos = $api->db['json']->getJsonByName($args['username']);
+		
 		if($todos) return $response->withJson($todos);
 		else throw new Exception('This use does not exists, first call the POST method first to create the list for this username',404);
 	});
@@ -45,7 +46,7 @@
 		catch(Exception $e){}
 
 		if(!empty($oldTodos)) throw new Exception('This user already has a list of todos, use PUT instead to update it',400);
-		else $api->db['json']->toNewFile($args['username'])->save($body);
+		else $api->db['json']->toNewFile($args['username'])->save([ [ "label" => "sample task", "done" => false ] ]);
 
         return $response->withJson(["result" => "ok"]);
 	});
