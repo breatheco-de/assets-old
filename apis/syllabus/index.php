@@ -65,10 +65,10 @@
 	        		if(!isset($day->weekend) || !$day->weekend){
 	        			$number++;
 	        			$day->number = $number;
+	        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/day".($number).".md";
+		        		if(file_exists($instructionsURL))
+		        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions";
 	        		} 
-        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/day".($number).".md";
-	        		if(file_exists($instructionsURL))
-	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions";
 	        		return $day;
 	        	}, $week->days, array_keys($week->days));
 	        }

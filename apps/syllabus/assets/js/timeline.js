@@ -104,7 +104,7 @@ var Timeline = (function(){
             ${day.instructions || day.teacher_instructions || day.description || 'No instructions for this particular day'}
             ${
                 (typeof day.instructions_link != 'undefined') ?
-                    `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">Full instructions</a>`
+                    `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">FIRST 20 minutes</a>`
                     :''
             }
           </div>
