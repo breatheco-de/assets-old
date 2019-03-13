@@ -193,6 +193,12 @@ function addAPIRoutes($api){
         $val = $api->optional($parsedBody,'location_slug')->slug();
         if($val) $event->location_slug = $val;
         
+        // TODO: Add latitude longitude to the event API
+        // $val = $api->optional($parsedBody,'latitude')->slug();
+        // if($val) $event->latitude = $val;
+        // $val = $api->optional($parsedBody,'latitude')->slug();
+        // if($val) $event->latitude = $val;
+        
         $val = $api->optional($parsedBody,'lang')->slug();
         if($val) $event->lang = $val;
         $val = $api->optional($parsedBody,'city_slug')->slug();
@@ -276,6 +282,8 @@ function addAPIRoutes($api){
         $lang = $api->validate($parsedBody,'lang')->enum(['en','es']);
         $banner = $api->validate($parsedBody,'banner_url')->url();
         $address = $api->validate($parsedBody,'address')->smallString();
+        // $longitude = $api->validate($parsedBody,'latitude')->smallString();
+        // $latitude = $api->validate($parsedBody,'longitude')->smallString();
         $date = $api->validate($parsedBody,'event_date')->date();
         $val = $api->validate($parsedBody,'invite_only')->bool();
         $recurrentType = $api->optional($parsedBody,'recurrent_type')->enum(EventFunctions::$recurrentTypes);
@@ -297,6 +305,8 @@ function addAPIRoutes($api){
 			'status' => EventFunctions::getStatus('draft'),
 			'banner_url' => $banner,
 			'address' => $address,
+			// 'longitude' => $longitude,
+			// 'latitude' => $latitude,
 			'invite_only' => $val,
 			'event_date' => DateTime::createFromFormat('Y-m-d H:i:s', $date),
 			'created_at' => date("Y-m-d H:i:s")
