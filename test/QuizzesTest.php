@@ -13,15 +13,14 @@ class QuizzesTest extends BaseTestCase {
         parent::setUp();
     }
 
-    // function testRepeatedQuizzes(){
-    //     foreach($this->data['quizzes'] as $slug => $quiz){
-    //         $this->assertSame("El quiz $slug SI tiene idioma en",$this->tieneIdioma($slug, 'en'));
-    //         $this->assertSame("El quiz $slug SI tiene idioma es",$this->tieneIdioma($slug, 'es'));
-    //     }
-    //     print_r($this->data['quizzes']);
-    // }
+    function testRepeatedQuizzes(){
+        foreach($this->data['quizzes'] as $slug => $quiz){
+            $this->assertSame("El quiz $slug SI tiene idioma en",$this->hasLang($slug, 'en'));
+            //$this->assertSame("El quiz $slug SI tiene idioma es",$this->hasLang($slug, 'es'));
+        }
+    }
     
-    function tieneIdioma($slug,$lang){
+    function hasLang($slug,$lang){
         if(empty($this->data['quizzes'][$slug])) return "El quiz $slug NO existe";
         if(empty($this->data['quizzes'][$slug][$lang])) return "El quiz $slug NO tiene idioma $lang";
         else return "El quiz $slug SI tiene idioma $lang";
