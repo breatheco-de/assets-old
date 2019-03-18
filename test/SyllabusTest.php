@@ -45,7 +45,7 @@ class SyllabusTest extends BaseTestCase {
         foreach($this->data['lessons'] as $l)
             if($l->slug == $lessonSlug) return $profileSlug.' => lesson:'.$lessonSlug;
         
-        return false;
+        return "lesson $lessonSlug does not exists";
     }
     private function _quizExists($profileSlug, $quizSlug){
         foreach($this->data['quizzes'] as $key => $q){
@@ -62,7 +62,7 @@ class SyllabusTest extends BaseTestCase {
     }
     private function _assignmentExists($profileSlug, $assignmentSlug){
         if(isset($this->data['projects'][$assignmentSlug])) return $profileSlug.' => assignment:'.$assignmentSlug;
-        else return false;
+        else return "assignment $assignmentSlug does not exists";
     }
     
 }
