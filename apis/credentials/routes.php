@@ -49,7 +49,7 @@ function addAPIRoutes($api){
             	}
 		        
 		        $user->access_token = $token->access_token;
-		        if($user->type == 'student'){
+		        if($user->type == 'student' || $user->type == 'teacher'){
 		        	$user->cohorts = $user->full_cohorts;
 		        }
 		        $user->scope = $token->scope;

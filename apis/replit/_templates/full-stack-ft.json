@@ -6,6 +6,7 @@
     {"slug": "forms", "title": "Create FORMS"},
     {"slug": "bootstrap", "title": "Bootstrap 4"},
     {"slug": "js-beginner", "title": "General Javascript", "vtutorial_slug": "begin-js"},
+    {"slug": "js-devmaker", "title": "Endless Javascript", "base": "https://repl.it/teacher/classrooms/125038"},
     {"slug": "the-dom", "title": "Work with the DOM"},
     {"slug": "arrays", "title": "Looping and working with Arrays"},
     {"slug": "jquery-dom", "title": "Work with the DOM using jQuery"},

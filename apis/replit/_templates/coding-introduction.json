@@ -5,6 +5,6 @@
     {"slug": "layouts", "title": "Display vs Position"},
     {"slug": "forms", "title": "Create FORMS"},
     {"slug": "js-beginner", "title": "General Javascript"},
-    {"slug": "functions", "title": "Using Functions"},
-    {"slug": "arrays", "title": "Working with Arrays"}
+    {"slug": "js-devmaker", "title": "General Javascript", "base": "https://repl.it/teacher/classrooms/125038"},
+    {"slug": "functions", "title": "Using Functions"}
 ]
