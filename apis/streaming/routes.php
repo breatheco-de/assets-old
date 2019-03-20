@@ -74,9 +74,10 @@ function addAPIRoutes($api){
 	});
 	
 	$api->get('/hook', function (Request $request, Response $response, array $args) use ($api) {
-		if(count($_GET) == 0) return $response->withJson("ok");
 
 		$logs = $api->db['json']->getJsonByName('_svp_log');
+		if(count($_GET) == 0) return $response->withJson($logs);
+		
 		array_push($logs, $_GET);
 		$api->db['json']->toFile('_svp_log')->save($logs);
 		
