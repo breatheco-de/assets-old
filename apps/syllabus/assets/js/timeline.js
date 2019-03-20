@@ -13,6 +13,27 @@ var Timeline = (function(){
         assignmentBaseURL: '#',
         menuContainerSelector: ''
     };
+    let SyllabusDay = function(_day){
+        return Object.assign(_day, {
+            getInstructions: function(){
+                if(typeof(_day.project.instructions) != 'undefined') return _day.project.instructions;
+                if(typeof(_day.project.teacher_instructions) != 'undefined') return _day.project.teacher_instructions;
+                else return false;
+            },
+            getSolution: function(){
+                if(typeof(_day.project.solution) != 'undefined') return _day.project.solution;
+                else false;
+            },
+            getKeyConcepts: function(){
+                if(Array.isArray(_day['key-concepts']) && _day['key-concepts'].length > 0) return _day['key-concepts'];
+                else false;
+            },
+            getAvoidConcepts: function(){
+                if(Array.isArray(_day['avoid-concepts']) && _day['avoid-concepts'].length > 0) return _day['avoid-concepts'];
+                else false;
+            }
+        });
+    };
     
     pub.renderWeek = function(week){
         var content = '<div class="timeline-container">';
@@ -22,7 +43,7 @@ var Timeline = (function(){
         });
         content += '</div>';
         return content;
-    }
+    };
     
     pub.init = function(incomingSettings){
         this.settings = $.extend(this.settings,incomingSettings);
@@ -77,34 +98,42 @@ var Timeline = (function(){
         return content;
     }
     
-    pub.renderDay = function(day){
-        
+    pub.renderDay = function(rawDay){
+        const day = SyllabusDay(rawDay)
         var theProject = '';
         if(typeof(day.project)=='object')
         {
-            if(typeof(day.project.instructions) != 'undefined' || typeof(day.project.teacher_instructions) != 'undefined') theProject = `<a target="_blank" href="${day.project.teacher_instructions || day.project.instructions}">${day.project.title}</a>`;
+            if(day.getInstructions()) theProject = `<a target="_blank" href="${day.getInstructions()}">${day.project.title}</a>`;
             else theProject = day.project.title;
-            if(typeof(day.project.solution) != 'undefined') theProject += ` <a target="_blank" href="${day.project.solution}">(solution)</a>`;
+            if(day.getSolution()){
+                if(day.getInstructions()) theProject += ' -> ';
+                theProject += ` <a target="_blank" href="${day.project.solution}">(model solution)</a>`;
+            } 
         }
 
-        var theKeyConcepts = '';
-        if(typeof(day['key-concepts'])!='undefined'){
-            var popoverContent = '<ul>'; 
-            day['key-concepts'].forEach((concept) => {
-                popoverContent += `<li>- ${concept}</li>`;
-            });
-            popoverContent += '</ul>';
-            theKeyConcepts = `<p><a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">Key Concepts</a></p>`;
-        } 
+        var theKeyConcepts = '<p>';
+        if(day.getKeyConcepts() || day.getAvoidConcepts()) theKeyConcepts += '<strong>Most important </strong>';
+        if(day.getKeyConcepts()){
+            const popoverContent = '<ul>'+day['key-concepts'].map((concept) => `<li>- ${concept}</li>`).join('')+'</ul>';
+            theKeyConcepts += `<a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">key Concepts</a>`;
+        }
+        if(day.getAvoidConcepts()){
+            const popoverContent = '<ul>'+day['key-concepts'].map((concept) => `<li>- ${concept}</li>`).join('')+'</ul>';
+            if(day.getKeyConcepts()) theKeyConcepts += ' and ';
+            theKeyConcepts += `<a href="#" data-html="true" data-container="body" data-toggle="popover" title="Key Concepts" data-placement="top" data-content="${popoverContent}">what to avoid</a>`;
+            
+        }
+        theKeyConcepts += `</p>`;
         
         return `<div class="day ${(day.label.toLowerCase() == 'weekend') ? 'weekend' : ''}">
           <h3 class="text-center">${day.label}</h3>
           <div class="day-topics">
             ${theKeyConcepts}
+            <strong>Teacher instructions:</strong>
             ${day.instructions || day.teacher_instructions || day.description || 'No instructions for this particular day'}
             ${
                 (typeof day.instructions_link != 'undefined') ?
-                    `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">FIRST 20 minutes</a>`
+                    `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">Full Instructions</a>`
                     :''
             }
           </div>
@@ -112,7 +141,7 @@ var Timeline = (function(){
             <ul>
               <li><strong>Project:</strong> ${theProject || 'Work on previous projects'}</li>
               ${pub.getProjectHTML(day)}
-              <p class="text-right">${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)} - ${pub.getQuizzesHTML(day)}</p>
+              <p><strong>For students:</strong> ${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)} - ${pub.getQuizzesHTML(day)}</p>
             </ul>
           </div>
         </div>`;

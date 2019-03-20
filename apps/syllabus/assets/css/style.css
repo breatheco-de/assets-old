@@ -173,62 +173,32 @@
   width: 300px;
   background-color: #eee;
   top: 10px;
-  left: -320px;
+  left: -290px;
   font-size: 14px;
   padding: 5px;
-}
-.timeline-container .day .day-topics::before{
-    width: 10px;
-    height: 30px;
-    background-color: #1e5096;
-    position: absolute;
-    display: block;
-    top: 10px;
-    content: '';
-    left: 315px;
 }
 .timeline-container .day .day-topics:after{
     width: 20px;
     height: 2px;
     content: '';
-    background-color: #1e5096;
+    background-color: #8c8a8a;
     position: absolute;
     display: block;
-    top: 25px;
-    left: 300px;
+    top: 18px;
+    left: 287px;
 }
 
 .timeline-container .day .day-projects{
   position: absolute;
   top: 10px;
-  width: 300px;
+  width: 350px;
   background-color: #eee;
   font-size: 14px;
   padding: 5px;
-  right: -320px;
+  right: -340px;
 }
-.timeline-container .day .day-projects strong{
+.timeline-container .day .day-projects strong, .timeline-container .day .day-topics strong{
   color: #1c844b;
-}
-.timeline-container .day .day-projects::before{
-    width: 10px;
-    height: 30px;
-    background-color: #1c844b;
-    position: absolute;
-    display: block;
-    top: 10px;
-    content: '';
-    right: 315px;
-}
-.timeline-container .day .day-projects:after{
-    width: 20px;
-    height: 2px;
-    content: '';
-    background-color: #1c844b;
-    position: absolute;
-    display: block;
-    top: 25px;
-    right: 300px;
 }
 .timeline-container .day .day-projects ul{
   padding: 0;

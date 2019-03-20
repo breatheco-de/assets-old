@@ -67,7 +67,7 @@ class StreamingFunctions{
 			"sel_multiplaylist"=>null,
 			"is_responsive"=>true,
 			"is_vertical"=>null,
-			"one_thumb_per_row"=>null,
+			"one_thumb_per_row"=> true,
 			"disable_hash"=>true,
 			"skinAlpha"=>50,
 			"colorBase"=>null,
@@ -82,7 +82,7 @@ class StreamingFunctions{
 			"auto_hide_player_controls"=>true,
 			"chat_position"=>null,
 			"description_position"=>null,
-			"playlist_position"=>null,
+			"playlist_position"=> 1,
 			"allow_fullscreen"=>true,
 			"player_start_volume"=>null,
 			"widget_height_behavior"=>false
