@@ -12,9 +12,12 @@ function addAPIRoutes($api){
 	
 	$api->addTokenGenerationPath();
 	
-	//get all replits from a cohort
+	
+	
+	//get cohort streaming infor
 	$api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
+		
 		try{
 			$streaming = $api->db['json']->getJsonByName($args['cohort_slug']);
 			$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
@@ -29,6 +32,59 @@ function addAPIRoutes($api){
 			else throw new Exception('The Cohort has no streaming information or does not exists', 404);
 		}
 	    return $response->withJson($streaming);
+	});
+	
+	//update cohort streaming info
+	$api->put('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
+		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
+		
+		try{
+			$streaming = $api->db['json']->getJsonByName($args['cohort_slug']);
+			$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
+			if(!$cohort) throw new Exception('The cohort was not found on the Breathecode API', 400);
+			
+			$streaming["player"] = StreamingFunctions::getStreamingLink($streaming["it"], $cohort);
+			$streaming["iframe"] = StreamingFunctions::getIframeLink($streaming["it"], $cohort);
+			$streaming["rtmp"] = StreamingFunctions::getRTMPLink($streaming["rtmp"]);
+		}
+		catch(Exception $e){
+			if($e->getCode() == 400) throw $e;
+			else throw new Exception('The Cohort has no streaming information or does not exists', 404);
+		}
+	    return $response->withJson($streaming);
+	});
+	
+	//update cohort streaming info
+	$api->get('/cohort/{cohort_slug}/videos', function (Request $request, Response $response, array $args) use ($api) {
+		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
+		
+		$streaming = $api->db['json']->getJsonByName($args['cohort_slug']);
+			
+		StreamingFunctions::connect();
+		return $response->withJson(StreamingFunctions::getVideosFromPlaylist([
+			"channel_ref" => $streaming["playlist"],
+			"video_source" => "ondemand"
+		]));
+		
+	});
+	
+	$api->get('/playlists', function (Request $request, Response $response, array $args) use ($api) {
+		StreamingFunctions::connect();
+		return $response->withJson(StreamingFunctions::getPlaylists());
+	});
+	
+	$api->get('/hook', function (Request $request, Response $response, array $args) use ($api) {
+		if(count($_GET) == 0) return $response->withJson("ok");
+
+		$logs = $api->db['json']->getJsonByName('_svp_log');
+		array_push($logs, $_GET);
+		$api->db['json']->toFile('_svp_log')->save($logs);
+		
+		// if($_GET["operation_name"] == "video_transcode"){
+			
+		// }
+		
+	    return $response->withJson($logs);
 	});
 
 	return $api;

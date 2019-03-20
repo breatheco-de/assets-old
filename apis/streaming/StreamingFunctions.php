@@ -1,11 +1,60 @@
 <?php
 
+use GuzzleHttp\Client;
+
 class StreamingFunctions{
     
-    static $api;
+    static $host = "https://www.streamingvideoprovider.com/?l=api&a=";
+    static $client = "https://www.streamingvideoprovider.com/?l=api&a=";
+    static $token = null;
     
-    public static function setAPI($api){
-        self::$api = $api;
+    public static function connect($apiKey=null, $apiCode=null){
+        self::$client = new Client();
+		$response = self::execute("svp_auth_get_token", [
+			"api_key" => $apiKey ? $apiKey : SVP_KEY,
+			"api_code" => $apiCode ? $apiCode : SVP_CODE
+		]);
+		self::$token = $response['auth_token'];
+		if(!self::$token) throw new Exception("Invalid streaming API conection");
+    }
+    
+    public static function getVideosFromPlaylist($args=[]){
+		/**
+		 * [
+			"channel_ref" => 146965
+			]
+		*/
+
+		$response = self::execute("svp_list_videos",$args);
+		$videos = (array) $response["video_list"];
+		return array_map(function($v){
+			return (array) $v;
+		}, (array) $videos["video"]);
+    }
+    
+    public static function getPlaylists(){
+		$response = self::execute("svp_list_video_playlists");
+		$playlists = (array) $response["video_playlists"];
+		$playlists = array_map(function($vp){
+			return (array) $vp;
+		},(array) $playlists["video_playlist"]);
+		return $playlists;
+    }
+    
+    
+    public static function execute($method, $args=[]){
+    	if($method !== "svp_auth_get_token" and self::$token) $args["token"] = self::$token;
+		$response = self::$client->request('GET', self::$host.$method.'&'.http_build_query($args));
+		
+		$parsed = simplexml_load_string($response->getBody()->getContents());
+		if ($parsed === false) {
+			$errors = [];
+		    foreach(libxml_get_errors() as $error) {
+		        $errors[] = $error->message;
+		        throw new Exception($errors);
+		    }
+		}
+		return (array) $parsed;
     }
     
 	static function getStreamingLink($it, $cohort){
@@ -82,7 +131,7 @@ class StreamingFunctions{
 			"auto_hide_player_controls"=>true,
 			"chat_position"=>null,
 			"description_position"=>null,
-			"playlist_position"=> 1,
+			"playlist_position"=>null,
 			"allow_fullscreen"=>true,
 			"player_start_volume"=>null,
 			"widget_height_behavior"=>false

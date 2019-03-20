@@ -13,15 +13,51 @@ GET: streaming/cohort/<slug>
 RESPONSE:
 {
     cohort_slug: "mdc-iii",
-    playlist: [
-        {
-            video_id: "ADS32KJNSD324K",
-            duration: 20
-        },
-        {
-            video_id: "ADS32KJNSD324K",
-            duration: 20
-        }
-    ]
+    "it": "2ol69hioq4is",
+    "rtmp": "1k90nleph0m8c8cg4wws",
+    "playlist": "146965",
+    "player": "http://some/url/to/video/player",
+    "iframe": "http://some/url/to/iframe",
+    "rtmp": "rtmp://some/url",
+    "videos": []
 }
+```
+
+#### Get cohort videos
+```
+GET: /cohort/{cohort_slug}/videos
+
+RESPONSE:
+[
+    {   
+        "ref_no": "2045652",
+        "clip_key": "4u11zbuc5xgk",
+        "title": "Recording #2ol69hioq4is (Mar 13, 2019 15:29:02)",
+        "tags": {},
+        "tag_number": {},
+        "tag_string": {},
+        "video_source": "ondemand",
+        "stream_name": {},
+        "channel_ref": "146965",
+        "duration": "10828",
+        "date_created": "1552523635",
+        "date_modified": "1552523774",
+        "file_size": "1452591227"
+    },
+    ...
+]
+```
+
+#### Get all SVP playlists
+```
+GET: /playlists
+
+RESPONSE:
+[
+    {
+        "ref_no": "146965",
+        "title": "Santiago PT 1"
+    },
+    ...
+]
 ```
