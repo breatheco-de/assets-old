@@ -35,7 +35,8 @@ class SlimAPI{
             'https://student.breatheco.de',
             'https://admin.breatheco.de',
             'https://www.student.breatheco.de',
-            'https://repl.it'
+            'https://repl.it',
+            'https://replbox.repl.it'
         ];
     var $allowedMethods = ['GET','POST','PUT','DELETE','OPTIONS'];
     
