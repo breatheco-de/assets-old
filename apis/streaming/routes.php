@@ -73,6 +73,7 @@ function addAPIRoutes($api){
 		return $response->withJson(StreamingFunctions::getPlaylists());
 	});
 	
+	//used for SVP webhook url (optional)
 	$api->get('/hook', function (Request $request, Response $response, array $args) use ($api) {
 
 		$logs = $api->db['json']->getJsonByName('_svp_log');
@@ -80,10 +81,6 @@ function addAPIRoutes($api){
 		
 		array_push($logs, $_GET);
 		$api->db['json']->toFile('_svp_log')->save($logs);
-		
-		// if($_GET["operation_name"] == "video_transcode"){
-			
-		// }
 		
 	    return $response->withJson($logs);
 	});
