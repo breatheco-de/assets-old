@@ -26,6 +26,7 @@ class SlimAPI{
     var $db = [];
     var $debug = false;
     var $allowedURLs = [
+            'all',
             'https://coding-editor-alesanchezr.c9users.io',
             'https://assets-alesanchezr.c9users.io',
             'https://assets.breatheco.de',
