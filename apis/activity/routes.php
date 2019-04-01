@@ -33,6 +33,29 @@ function addAPIRoutes($api){
 	    ]);
 	});
 	
+	//create bulk user activity
+	$api->post('/user/bulk', function (Request $request, Response $response, array $args) use ($api) {
+
+		$activities = $request->getParsedBody();
+		foreach($activities as $activity){
+	        $id = $api->validate($activity,'id')->int();
+	        $email = $api->validate($activity,'email')->email();
+	        $slug = $api->validate($activity,'slug')->slug();
+	        $data = $api->optional($activity,'data')->smallString();
+			
+	        BreatheCodeLogger::logActivity([
+	            'slug' => $slug,
+	            'user' => [
+	            	'id' => $id,
+	            	'email' => $email
+	            ],
+	            'data' => $data
+	        ]);
+		}
+		
+	    return $response->withJson("ok");
+	})->add($api->auth());
+	
 	//create user activity
 	$api->post('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -49,6 +72,7 @@ function addAPIRoutes($api){
         ]);
 	    return $response->withJson("ok");
 	})->add($api->auth());
+	
 
 	return $api;
 }

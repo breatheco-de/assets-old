@@ -21,6 +21,14 @@ class BreatheCodeLogger{
             "track_on_active_campaign" => true,
             "track_on_log" => true
         ],
+        "classroom_attendance" => [ 
+            "track_on_active_campaign" => false,
+            "track_on_log" => true
+        ],
+        "classroom_unattendance" => [ 
+            "track_on_active_campaign" => false,
+            "track_on_log" => true
+        ],
         //when a nps survey is answered by the student
         "nps_survey_answered" => [ 
             "track_on_active_campaign" => true,
@@ -95,11 +103,11 @@ class BreatheCodeLogger{
 
         if(is_string($student)) $activity['email'] = $student;
         else{
-            //print_r($student); die();
-            if(!empty($student->id)) $activity['user_id'] = (string) $student->id;
+            $student = (array) $student;
+            if(!empty($student['id'])) $activity['user_id'] = (string) $student['id'];
             
-            if(!empty($student->email)) $activity['email'] = (string) $student->email;
-            else if(!empty($student->username)) $activity['email'] = (string) $student->username;
+            if(!empty($student['email'])) $activity['email'] = (string) $student['email'];
+            else if(!empty($student['username'])) $activity['email'] = (string) $student['username'];
         }
         
         $record = self::datastore()->entity('student_activity', $activity);
