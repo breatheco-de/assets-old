@@ -29,6 +29,7 @@ function addAPIRoutes($api){
 
         	$permissions = [
         		'admin' => ['super_admin'],
+        		'location-admin' => ['read_basic_info', 'crud_student', 'crud_cohort'],
         		'student' => ['read_basic_info', 'student_tasks'],
         		'teacher' => ['read_basic_info'],
         		'admission' => ['read_basic_info', 'crud_student', 'crud_cohort'],
