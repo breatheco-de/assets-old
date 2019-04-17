@@ -6,7 +6,7 @@ USER root
 # * Apache - the web server
 # * Multitail - see logs live in the terminal
 RUN apt-get update \
- && apt-get -y install apache2 multitail \
+ && apt-get -y install apache2 multitail libapache2-mod-php7.2 mcrypt \
  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
 # 1. give write permission to the gitpod-user to apache directories
