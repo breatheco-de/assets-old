@@ -111,12 +111,10 @@ function addAPIRoutes($api){
 
 		if(empty($args['agenda_slug'])) throw new Exception('Invalid param agenda_slug', 400);
 
-		if($args['contact_id'] == 'all'){
-		    $contacts = $api->db['sqlite']->fake_contact_list()
-                        ->where('agenda_slug',$parsedBody['agenda_slug'])
-                        ->fetchAll();
-		    foreach($contacts as $c) $c->delete();
-		}
+        $contacts = $api->db['sqlite']->fake_contact_list()
+                    ->where('agenda_slug',$args['agenda_slug'])
+                    ->fetchAll();
+        foreach($contacts as $c) $c->delete();
 
 		return $response->withJson([ "msg" => "ok" ]);
 	});
