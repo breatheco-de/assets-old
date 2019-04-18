@@ -17,7 +17,7 @@ function addAPIRoutes($api){
 		return $response->withJson($agendas);
 	});
 
-	$api->get($scope.'/agenda/{agenda_slug}/contacts', function(Request $request, Response $response, array $args) use ($api) {
+	$api->get($scope.'/agenda/{agenda_slug}', function(Request $request, Response $response, array $args) use ($api) {
 		$contacts = $api->db['sqlite']->fake_contact_list()
 		                ->where('agenda_slug',$args['agenda_slug'])
 		                ->fetchAll();
