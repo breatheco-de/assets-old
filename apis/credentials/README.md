@@ -2,3 +2,7 @@
 
 # Authentication API
 
+1. Get token
+```
+POST /auth
+```

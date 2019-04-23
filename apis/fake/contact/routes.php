@@ -3,9 +3,19 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-function addAPIRoutes($api){
+return function($api){
     
     $scope = '';
+
+	$api->get($scope.'/agenda', function(Request $request, Response $response, array $args) use ($api) {
+		$agendas = [];
+		$contacts = $api->db['sqlite']->fake_contact_list()->fetchAll();
+		foreach($contacts as $c){
+			if(!in_array($c["agenda_slug"], $agendas)) $agendas[] = $c["agenda_slug"];
+		}
+		                
+		return $response->withJson($agendas);	
+	});
 
 	$api->get($scope.'/agenda/{agenda_slug}', function(Request $request, Response $response, array $args) use ($api) {
 		$contacts = $api->db['sqlite']->fake_contact_list()
@@ -24,7 +34,7 @@ function addAPIRoutes($api){
 		return $response->withJson($row);	
 	});
 	
-	$api->put($scope.'/', function (Request $request, Response $response, array $args) use ($api) {
+	$api->post($scope.'/', function (Request $request, Response $response, array $args) use ($api) {
         
         $log = [];
         $parsedBody = $request->getParsedBody();
@@ -51,7 +61,7 @@ function addAPIRoutes($api){
         return $response->withJson($row);
 	});
 	
-	$api->post($scope.'/{contact_id}', function (Request $request, Response $response, array $args) use ($api) {
+	$api->put($scope.'/{contact_id}', function (Request $request, Response $response, array $args) use ($api) {
         
         $log = [];
         $parsedBody = $request->getParsedBody();
@@ -97,4 +107,4 @@ function addAPIRoutes($api){
 	});
 	
 	return $api;
-}
+};

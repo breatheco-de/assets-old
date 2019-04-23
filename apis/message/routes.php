@@ -16,7 +16,7 @@ BreatheCodeMessages::connect([
     'keyFilePath' => '../../breathecode-efde1976e6d3.json'
 ]);
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->addTokenGenerationPath();
 
@@ -26,7 +26,7 @@ function addAPIRoutes($api){
 	})->add($api->auth());
 	
 	$api->get('/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
-
+		
 		if(empty($args["student_id"])) throw new Exception("Missing student_id", 400);
 		
 		$user = BC::getUser(['user_id' => urlencode($args["student_id"])]);
@@ -126,4 +126,4 @@ function addAPIRoutes($api){
 	})->add($api->auth());
 	
 	return $api;
-}
+};

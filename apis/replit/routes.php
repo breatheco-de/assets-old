@@ -4,11 +4,12 @@ require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper;
+use \JsonPDO\JsonPDO;
 
 BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BCWrapper::setToken(BREATHECODE_TOKEN);
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
@@ -110,4 +111,4 @@ function addAPIRoutes($api){
 	})->add($api->auth());
 	
 	return $api;
-}
+};

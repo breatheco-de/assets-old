@@ -8,7 +8,7 @@ use \AC\ACAPI;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-function addBreatheCodeHooks($api){
+return function($api){
     
     $scope = 'breathecode';
 	/**
@@ -57,4 +57,4 @@ function addBreatheCodeHooks($api){
 	
 	return $api;
 	
-}
+};

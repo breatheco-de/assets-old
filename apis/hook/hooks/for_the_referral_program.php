@@ -7,7 +7,7 @@ use BreatheCode\BCWrapper as BC;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-function addReferralProgramRoutes($api){
+return function($api){
 	
 	$api->get('/referral_code/{email}', function (Request $request, Response $response, array $args) use ($api) {
         
@@ -47,4 +47,4 @@ function addReferralProgramRoutes($api){
 	});
 	
 	return $api;
-}
+};

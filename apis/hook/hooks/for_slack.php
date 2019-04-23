@@ -8,7 +8,7 @@ BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API
 BC::setToken(BREATHECODE_TOKEN);
 use BreatheCode\SlackWrapper;
 
-function addSlackRoutes($api){
+return function($api){
 	$scope = 'slack';
 	
 	$api->post('/'.$scope.'/invite', function (Request $request, Response $response, array $args) use ($api) {
@@ -51,4 +51,4 @@ function addSlackRoutes($api){
 	});
 	
 	return $api;
-}
+};

@@ -4,24 +4,29 @@ Use this API to test your skills doing AJAX requests with the [contact-list](htt
 
 [Right-click here to download the POSTMan Collection](https://assets.breatheco.de/apis/fake/contact/collection.json).
 
-#### 1) Get All contacts from an Agenda
+#### 1) Get All available agendas right now
+```
+GET: /apis/fake/contact/agenda
+```
+
+#### 2) Get All contacts from an Agenda
 ```
 GET: /apis/fake/contact/agenda/{agenda_slug}
 ```
 
-#### 2) Get One Particular Contact
+#### 3) Get One Particular Contact
 ```
 GET: /apis/fake/contact/{contact_id}
 ```
 
-#### 3) Delete One Particular Contact
+#### 4) Delete One Particular Contact
 ```
 DELETE: /apis/fake/contact/{contact_id}
 ```
 
-#### 4) Create one contact
+#### 5) Create one contact
 ```
-PUT: /apis/fake/contact/
+POST: /apis/fake/contact/
 
 Request (application/json)
 
@@ -37,7 +42,7 @@ Request (application/json)
 
 #### 5) Update one contact
 ```
-POST: /apis/fake/contact/{contact_id}
+PUT: /apis/fake/contact/{contact_id}
 
 Request (application/json)
 

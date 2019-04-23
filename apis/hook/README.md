@@ -4,7 +4,7 @@
 
 1. Get student referral_code
 ```sh
-GET: /referral_code&email=<some@email.com>
+GET: /referral_code/{email}
 ```
 
 2. Update student referral_code on active campaign

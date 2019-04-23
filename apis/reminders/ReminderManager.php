@@ -5,6 +5,7 @@ use GuzzleHttp\Client;
 use MomentPHP\MomentPHP as Moment;
 use Aws\Ses\SesClient;
 use Aws\Ses\Exception\SesException;
+use JsonPDO\JsonPDO;
 
 class ReminderManager{
     

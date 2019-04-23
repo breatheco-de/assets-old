@@ -1,13 +1,12 @@
 <?php
     require('../../vendor/autoload.php');
-    require_once('../../globals.php');
-    require_once('../SlimAPI.php');
+    require('../../globals.php');
     require('../../vendor_static/ActiveCampaign/ACAPI.php');
-    require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-    require_once('../../vendor_static/breathecode-api/SlackAPI.php');
+    require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
+    require('../../vendor_static/breathecode-api/SlackAPI.php');
     require('HookFunctions.php');
     
-	$api = new SlimAPI([
+	$api = new \SlimAPI\SlimAPI([
 	    'debug' => API_DEBUG,
 	    'name' => 'Hook API'
 	]);
@@ -20,27 +19,11 @@
 	\AC\ACAPI::start(AC_API_KEY);
 	\AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
     
-    require_once('hooks/for_the_referral_program.php');
-    $api = addReferralProgramRoutes($api);
-    
-    //eventbrite api integration
-    require_once('hooks/for_eventbrite_events.php');
-    $api = addEventbriteRoutes($api);
-
-    //eventbrite api integration
-    require_once('hooks/for_active_campaign.php');
-    $api = addActiveCampaignHooks($api);
-
-    //eventbrite api integration
-    require_once('hooks/for_samples.php');
-    $api = addSampleRoutes($api);
-
-    //breathecode api integration
-    require_once('hooks/for_breathecode.php');
-    $api = addBreatheCodeHooks($api);
-    
-    //slack api integration
-    require_once('hooks/for_slack.php');
-    $api = addSlackRoutes($api);
+    $api->addRoutes(require('hooks/for_the_referral_program.php'));
+    $api->addRoutes(require('hooks/for_eventbrite_events.php'));
+    $api->addRoutes(require('hooks/for_active_campaign.php'));
+    $api->addRoutes(require('hooks/for_samples.php'));
+    $api->addRoutes(require('hooks/for_breathecode.php'));
+    $api->addRoutes(require('hooks/for_slack.php'));
 	
 	$api->run();

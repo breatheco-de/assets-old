@@ -1,16 +1,14 @@
 <?php
 	require_once('../../../vendor/autoload.php');
 	require_once('../../../globals.php');
-	require_once('../../JsonPDO.php');
-	require_once('../../SlimAPI.php');
 	
 	use Psr\Http\Message\ServerRequestInterface as Request;
 	use Psr\Http\Message\ResponseInterface as Response;
-	$api = new SlimAPI([
+	$api = new \SlimAPI\SlimAPI([
 		'name' => 'Fake Todo\'s - BreatheCode Platform',
 		'debug' => true
 	]);
-	$api->addDB('json', new JsonPDO('./data','[]',false));
+	$api->addDB('json', new \JsonPDO\JsonPDO('./data','[]',false));
 	$api->addReadme('/','./README.md');
 	
 	function validateTasks($tasks){

@@ -1,10 +1,8 @@
 <?php
 	require_once('../../../vendor/autoload.php');
 	require_once('../../../globals.php');
-	require_once('../../SlimAPI.php');
-	require('routes.php');
 	
-	$api = new SlimAPI([
+	$api = new \SlimAPI\SlimAPI([
 		'debug' => API_DEBUG,
 		'name' => 'Fake Contacts API',
 		'allowedURLs' => 'all'
@@ -14,5 +12,5 @@
 	$db = new \LessQL\Database( $pdo );
 	$db->setPrimary( 'fake_contact_list', 'id' );
 	$api->addDB('sqlite', $db);
-	$api = addAPIRoutes($api);
+	$api->addRoutes(require('routes.php'));
 	$api->run(); 

@@ -1,10 +1,12 @@
 <?php
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-function addAPIRoutes($api){
+use JsonPDO\JsonPDO;
+
+return function($api){
 
 	//get all cohorts and its replits
-	$api->get('/resource/{profile_slug}', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/profile/{profile_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		
 		$templatesPDO = new JsonPDO('_templates/','{}',false);
 		$replits = $templatesPDO->getJsonByName($args['profile_url']);
@@ -14,4 +16,4 @@ function addAPIRoutes($api){
 	});
 
 	return $api;
-}
+};

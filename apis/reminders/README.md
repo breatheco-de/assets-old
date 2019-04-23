@@ -6,7 +6,7 @@ Setup and mantain reminders for the academy operations, you can check the active
 
 #### Get all reminders
 ```
-GET: /reminders/types
+GET: /reminders/all
 ```
 
 #### Get expired reminders (that should execute)

@@ -8,7 +8,7 @@ use \BreatheCode\BCWrapper;
 BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BCWrapper::setToken(BREATHECODE_TOKEN);
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->addTokenGenerationPath();
 	
@@ -86,4 +86,4 @@ function addAPIRoutes($api){
 	});
 
 	return $api;
-}
+};

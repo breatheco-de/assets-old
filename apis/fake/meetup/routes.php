@@ -3,7 +3,7 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-function addAPIRoutes($api){
+return function($api){
     
     $scope = '';
 
@@ -18,4 +18,4 @@ function addAPIRoutes($api){
 	});
 	
 	return $api;
-}
+};
