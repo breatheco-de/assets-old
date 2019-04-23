@@ -5,6 +5,7 @@
 ## 1. Get list of todo's for a particular user
 ```
   [GET] /todos/user/<username>
+  Content-Type: "application/json"
   PARAMS: None
 
   RESPONSE:
@@ -21,6 +22,7 @@ This method is only for creation, you need to pass an empty array on the body be
 
 ```
   [POST] /todos/user/<username>
+  Content-Type: "application/json"
   BODY: []
   
   RESPONSE:
@@ -35,6 +37,7 @@ This method is to update only, if you want to create a new todo list for a parti
 
 ```
   [PUT] /todos/user/<username>
+  Content-Type: "application/json"
   BODY:
   [
     { label: "Make the bed", done: false },
@@ -51,6 +54,7 @@ This method is to update only, if you want to create a new todo list for a parti
 ## 3. Delete a user and all of their todo's
 ```
   [DELETE] /todos/user/<username>
+  Content-Type: "application/json"
   FORM PARAMS: none
   RESPONSE:
   

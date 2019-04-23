@@ -9,22 +9,31 @@ Use this API to test your skills doing AJAX requests with the [contact-list](htt
 GET: /apis/fake/contact/agenda
 ```
 
-#### 2) Get All contacts from an Agenda
+#### 2) Create an agenda
+
+To create an agenda all you have to do is create a contact with a unused agenda_slug and the agenda will automatically be created.
+
+#### 3) Get All contacts from an Agenda
 ```
 GET: /apis/fake/contact/agenda/{agenda_slug}
 ```
 
-#### 3) Get One Particular Contact
+#### 4) Get One Particular Contact
 ```
 GET: /apis/fake/contact/{contact_id}
 ```
 
-#### 4) Delete One Particular Contact
+#### 5) Delete One Particular Contact
 ```
 DELETE: /apis/fake/contact/{contact_id}
 ```
 
-#### 5) Create one contact
+#### 6) Delete All Contacts from an Agenda
+```
+DELETE: /apis/fake/contact/agenda/{agenda_slug}
+```
+
+#### 7) Create one contact
 ```
 POST: /apis/fake/contact/
 
@@ -40,7 +49,7 @@ Request (application/json)
     }
 ```
 
-#### 5) Update one contact
+#### 8) Update one contact
 ```
 PUT: /apis/fake/contact/{contact_id}
 
