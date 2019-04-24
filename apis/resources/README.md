@@ -6,5 +6,5 @@ Academy recomendations and biblography
 
 #### Get course profile resources
 ```
-GET: resources/{profile_slug}
+GET: resources/profile/{profile_slug}
 ```

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../JsonPDO.php');
+use JsonPDO\JsonPDO;
 
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -14,7 +14,7 @@ BC::setToken(BREATHECODE_TOKEN);
 require('./ReminderManager.php');
 ReminderManager::init();
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
@@ -82,4 +82,4 @@ function addAPIRoutes($api){
 	});
 	
 	return $api;
-}
+};

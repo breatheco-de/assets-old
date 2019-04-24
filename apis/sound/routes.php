@@ -2,9 +2,9 @@
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use JsonPDO\JsonPDO;
 
-require_once('../../globals.php');
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
         
@@ -27,4 +27,4 @@ function addAPIRoutes($api){
 	});
 	
 	return $api;
-}
+};

@@ -11,7 +11,7 @@ use Google\Cloud\Datastore\DatastoreClient;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
@@ -75,4 +75,4 @@ function addAPIRoutes($api){
 	
 
 	return $api;
-}
+};

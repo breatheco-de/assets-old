@@ -2,7 +2,6 @@
 
 $CURRENT = dirname(__FILE__);
 require($CURRENT.'/../globals.php');
-require_once($CURRENT.'/../apis/JsonPDO.php');
 
 use Aws\Ses\SesClient;
 use Aws\Ses\Exception\SesException;

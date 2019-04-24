@@ -8,7 +8,7 @@ use \AC\ACAPI;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-function addActiveCampaignHooks($api){
+return function($api){
 	
 	$api->post('/initialize', function (Request $request, Response $response, array $args) use ($api) {
         
@@ -149,4 +149,4 @@ function addActiveCampaignHooks($api){
 	});
 	
 	return $api;
-}
+};

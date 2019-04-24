@@ -5,6 +5,7 @@ use GuzzleHttp\Client;
 use MomentPHP\MomentPHP as Moment;
 use Aws\Ses\SesClient;
 use Aws\Ses\Exception\SesException;
+use JsonPDO\JsonPDO;
 
 class ReminderManager{
     
@@ -108,7 +109,7 @@ class ReminderManager{
         if(empty($reminder['name'])) throw new Exception('Missing name');
         if(empty($reminder['frequency'])) throw new Exception('Missing frequency');
         if(empty($reminder['status']) or !in_array($reminder['status'], self::$possibleStatus)) throw new Exception('Missing status ('.explode(' or ', self::$possibleStatus).')');
-        if($reminder['function'] != str_replace(".php","",$reminder['name'])) throw new Exception('The file must contain a function with the same name that represents the beginning of the execution');
+        if($reminder['function'] != str_replace(".php","",$reminder['name'])) throw new Exception('The file '.$reminder['name'].' must contain a function with the same name that represents the beginning of the execution');
         else if(!self::_parseFrequency($reminder['frequency'])) throw new Exception('Invalid frequency: '.$reminder['frequency']);
         
         return true;

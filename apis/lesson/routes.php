@@ -3,7 +3,7 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-function addAPIRoutes($api){
+return function($api){
 
 	//old lessons from wordpress
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
@@ -81,4 +81,4 @@ function addAPIRoutes($api){
 	});
 	
 	return $api;
-}
+};

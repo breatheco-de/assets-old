@@ -17,7 +17,7 @@ BC::setToken(BREATHECODE_TOKEN);
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
 
-function addAPIRoutes($api){
+return function($api){
 
 	$api->addTokenGenerationPath();
 
@@ -417,4 +417,4 @@ function addAPIRoutes($api){
 	})->add($api->auth());
 	
 	return $api;
-}
+};

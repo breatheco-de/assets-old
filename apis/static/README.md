@@ -4,7 +4,7 @@
 
 #### Get all images
 ```
-GET: static/images
+GET: static/image/all
 ```
 
 #### Create single image

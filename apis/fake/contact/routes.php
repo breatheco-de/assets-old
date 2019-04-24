@@ -3,8 +3,8 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-function addAPIRoutes($api){
-
+return function($api){
+    
     $scope = '';
 
 	$api->get($scope.'/agenda', function(Request $request, Response $response, array $args) use ($api) {
@@ -33,9 +33,9 @@ function addAPIRoutes($api){
 			->where('id',$args['contact_id'])->fetch();
 		return $response->withJson($row);
 	});
-
+	
 	$api->post($scope.'/', function (Request $request, Response $response, array $args) use ($api) {
-
+        
         $log = [];
         $parsedBody = $request->getParsedBody();
         if(!$parsedBody) throw new Exception('Invalid request body (check the request body json)', 400);
@@ -60,9 +60,9 @@ function addAPIRoutes($api){
 
         return $response->withJson($row);
 	});
-
+	
 	$api->put($scope.'/{contact_id}', function (Request $request, Response $response, array $args) use ($api) {
-
+        
         $log = [];
         $parsedBody = $request->getParsedBody();
         if(!$parsedBody) throw new Exception('Invalid request body (check the request body json)', 400);
@@ -121,4 +121,4 @@ function addAPIRoutes($api){
 
 
 	return $api;
-}
+};

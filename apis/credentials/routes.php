@@ -7,13 +7,12 @@ require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 require_once('../../vendor_static/breathecode-api/SlackAPI.php');
 require('../../vendor_static/ActiveCampaign/ACAPI.php');
 require('../BreatheCodeLogger.php');
-require_once('../../globals.php');
 use \AC\ACAPI;
 use BreatheCode\BCWrapper as BC;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
         
@@ -131,10 +130,5 @@ function addAPIRoutes($api){
         }
 	});
 	
-	$api->post('/auth/github', function (Request $request, Response $response, array $args) use ($api) {
-        
-	    return $response->withJson($quizObj);
-	});
-	
 	return $api;
-}
+};

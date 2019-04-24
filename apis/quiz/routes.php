@@ -2,7 +2,7 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-function addAPIRoutes($api){
+return function($api){
 	
 	$api->addTokenGenerationPath();
 
@@ -113,4 +113,4 @@ function addAPIRoutes($api){
 	})->add($api->auth());
 	
 	return $api;
-}
+};
