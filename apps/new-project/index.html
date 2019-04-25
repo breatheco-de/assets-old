@@ -8,12 +8,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Gitpod Shortcut builder</title>
     <style>
         .button-box{
-            max-width: 500px;
+            max-width: 550px;
             margin-top: 50vh;
             transform: translateY(-50%);
+        }
+        .button-box .alert.alert-dark{
+            background: #FBFBFB;
+            border: 1px solid #efefef;
         }
         .button-box .btn{
             width: 100%;
@@ -22,6 +26,7 @@
             font-size: 12px;
             position: relative;
             height: 120px;
+            border: 1px solid #efefef;
         }
         .button-box .btn p{
             position: absolute;
@@ -40,7 +45,7 @@
   </head>
   <body>
     <div class="button-box mx-auto">
-        <h2 class="text-center mb-5">What type of proyect would you like to code?</h2>
+        <h2 class="text-center mb-3">What type of project are you starting?</h2>
         <div class="row">
             <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/html-hello.git" class="btn btn-light"><img src="./images/devicon.svg" /><p>New Empty</p></a></div>
             <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/vanillajs-hello.git" class="btn btn-light"><img src="./images/webpack.svg" /><p>New Vanilla JS <br />(with webpack)</p></a></div>
@@ -49,10 +54,13 @@
             <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/hello-flask-api.git" class="btn btn-light"><img src="./images/python.svg" /><p>New Python Flask</p></a></div>
             <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/wordpress-hello.git" class="btn btn-light"><img src="./images/wordpress.svg" /><p>New WordPress</p></a></div>
         </div>
-        <div class="mt-2">
-            Or continue a previous one by typing into your browser: <br />
-            <p class="alert alert-dark">https://gitpod.io#your_github_repository_url</p>
+        <div class="mt-4">
+            Or continue a previous one by typing into your browser URL bar: <br />
+            <p class="alert alert-dark mt-1">https://gitpod.io#your_github_repository_url</p>
         </div>
+    </div>
+    <div class="fixed-bottom text-center py-2">
+        This amazing one-click environments are possible thanks to <a target="_blank" href="https://gitpod.io">Gitpod.io</a> and <a target="_blank" href="https://4geeksacademy.io">4Geeks Academy</a>
     </div>
 
     <!-- Optional JavaScript -->
