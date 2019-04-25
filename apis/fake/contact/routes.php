@@ -71,16 +71,16 @@ return function($api){
 			->where('id',$args['contact_id'])->fetch();
 		if(!$contact) throw new Exception('The contact does not exist', 404);
 
-        $value = $api->optional($parsedBody,'full_name')->bigString();
+        $value = $api->optional($parsedBody,'full_name')->smallString();
         if($value) $contact->full_name = $value;
 
-        $value = $api->optional($parsedBody,'email')->bigString();
+        $value = $api->optional($parsedBody,'email')->smallString();
         if($value) $contact->email = $value;
 
-        $value = $api->optional($parsedBody,'phone')->bigString();
+        $value = $api->optional($parsedBody,'phone')->smallString();
         if($value) $contact->phone = $value;
 
-        $value = $api->optional($parsedBody,'address')->bigString();
+        $value = $api->optional($parsedBody,'address')->smallString();
         if($value) $contact->address = $value;
 
 		$contact->save();
