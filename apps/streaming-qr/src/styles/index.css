@@ -1,0 +1,17 @@
+/* 
+    General Styles
+*/
+.bcnotifier{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+}
+.bcnotifier li{
+    list-style: none;
+}
+#box{
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
