@@ -17,20 +17,20 @@ return function($api){
 	
 	//new lessons from gatsby
 	$api->get('/all/v2', function (Request $request, Response $response, array $args) use ($api) {
-        $data = $request->getParams();
-        $status = null;
-        if(isset($data["status"])) $status = $data["status"];
-		$content = file_get_contents('https://content.breatheco.de/static/api/lessons.json');
-		$lessons = json_decode($content);
-		
-		if($status){
-			$newLessons = [];
-			foreach($lessons as $l) if($l->status == $status) $newLessons[] = $l;
-			$lessons = $newLessons;
-		}
+		$data = $request->getParams();
+		$status = null;
+		if(isset($data["status"])) $status = explode(",",$data["status"]);
+			$content = file_get_contents('https://content.breatheco.de/static/api/lessons.json');
+			$lessons = json_decode($content);
 
-    	return $response->withJson($lessons);
-		
+			if($status){
+				$newLessons = [];
+				foreach($lessons as $l) if(in_array($l->status,$status)) $newLessons[] = $l;
+				$lessons = $newLessons;
+			}
+
+		return $response->withJson($lessons);
+
 	});
 
 	$api->get('/link/{slug}', function (Request $request, Response $response, array $args) use ($api) {
