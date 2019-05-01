@@ -21,55 +21,32 @@ This directory contains several APIs needed to run the breathecode platform:
 
 ## Usage
 
-The entire repository uses [SlimPHP](https://www.slimframework.com/) to create each of the APIs, and it also 
+All APIs are created using this package: [SlimAPI](https://github.com/alesanchezr/slim-api-wrapper) that is based on [Slim PHP Framwork](https://www.slimframework.com/) to create each of the APIs, and it also 
 contains other class helpers to interface with SQLite, JSON Files, Amazon Email Service, etc.
 
 ### Steps to create a new API
 
-1. Create a new folder inside the apis/ directory.
-```sh
-$ mkdir ./apis/<your_api_name_slug>
-$ cd <your_api_name_slug>
-```
-2. Add a .htaccess file to that folder to redirect all the request to index.php
-```sh
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.php [L]
-</IfModule>
-```
-3. Add an index.php file
-```php
-	require_once('../../vendor/autoload.php');
-	require_once('../SlimAPI.php');
-	require_once('routes.php');
-	
-	$api = new SlimAPI();
-	$api = addAPIRoutes($api);
-	$api->run(); 
-```
-4. All the routs of your API should be inside a routs.php file with the following content
+We have prepared this is the ideal boilerplate to start coding, please clone the repo or opened in Gitpod (recomended)  
+https://github.com/breatheco-de/assets-api-hello
+
+Here is an example of your routes.php file:
+
 ```php
  use Psr\Http\Message\ServerRequestInterface as Request;
  use Psr\Http\Message\ResponseInterface as Response;
  
- function addAPIRoutes($api){
+return function($api){
  
-  /**
-   * This is an example endpoint that matches the following URL:
-   * GET: /apis/<your_api_name_slug>/all
-  */
- 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
- 	    //any php logic for your function
- 	});
- 	
- 	//add here any other endpoints you want
- 	
- 	return $api;
- }
+/**
+* This is an example endpoint that matches the following URL:
+* GET: /apis/<your_api_name_slug>/all
+*/
+	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
+	    //any php logic for your function
+	});
+
+	//add here any other endpoints you want
+
+	return $api;
+}
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NjEzNzg4MV19
--->
