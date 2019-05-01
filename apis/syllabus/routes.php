@@ -4,7 +4,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 return function($api){
-	
+
 	$getSlug = function($slug){
 	    $allSlugs = [
 	        "full-stack" => "full-stack",
@@ -17,13 +17,13 @@ return function($api){
 	    if($allSlugs[$slug]) return $allSlugs[$slug];
 	    else throw new Exception('Syllabus slug not found');
 	};
-	
+
 	$api->addTokenGenerationPath();
-    
+
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
-        
+
         $syllabus = $api->db['json']->getAllContent();
-		$data = []; 
+		$data = [];
 		foreach($syllabus as $key => $temp){
 			$days = 0;
 			$tech = [];
@@ -32,8 +32,8 @@ return function($api){
 				foreach($w->days as $d){
 					if(isset($d->technologies) and is_array($d->technologies)) $tech = array_merge($tech,$d->technologies);
 				}
-			} 
-			
+			}
+
 			$data[] = [
 				"slug" => preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($key)),
 				"title" => $temp["label"],
@@ -41,14 +41,14 @@ return function($api){
 				"days" => $days,
 				"technologies" => $tech
 			];
-		} 
+		}
         return $response->withJson($data);
 	});
-	
+
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
-        
+
         $syllabus = $api->db['json']->getJsonByName($getSlug($args['slug']));
-        
+
 		$teacher = $request->getQueryParam('teacher',null);
         if(isset($teacher)){
         	$number = 0;
@@ -60,12 +60,12 @@ return function($api){
 	        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/day".($number).".md";
 		        		if(file_exists($instructionsURL))
 		        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions";
-	        		} 
+	        		}
 	        		return $day;
 	        	}, $week->days, array_keys($week->days));
 	        }
         	return $response->withJson($syllabus);
-        } 
+        }
         else{
         	$number = 0;
 	        foreach ($syllabus['weeks'] as $week) {
@@ -73,36 +73,38 @@ return function($api){
 	        		if(!isset($day->weekend) || !$day->weekend){
 	        			$number++;
 	        			$day->number = $number;
-	        		} 
+	        		}
         			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/day".($number).".md";
 	        		if(file_exists($instructionsURL))
 	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions";
 	        		if(isset($day->description)) return $day;
-	        		else return null;
+	        		else{
+                        return null;
+                    }
 	        	}, $week->days);
 	        }
 	        return $response->withJson($syllabus);
         }
-        
+
 	});
-	
+
 	$api->get('/{slug}/day/{day_number}/instructions', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
-        
+
 		$instructionsURL = __DIR__."/data/".$args['slug']."/day".($args['day_number']).".md";
-		if(file_exists($instructionsURL)) 
+		if(file_exists($instructionsURL))
 			$response->withHeader('Content-Type', 'text/plain')->write(file_get_contents($instructionsURL));
         else throw new Exception('Instructions not found for: '.$args['slug'].", day ".$args['day_number'],404);
-        
+
 	});
-    
+
 	$api->post('/{slug}', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
-        
+
         $syllabusSlug = $getSlug($args['slug']);
         $syllabus = $api->db['json']->getJsonByName($syllabusSlug);
-        
+
 		$data = $request->getParsedBody();
 		if(!is_array($data)) throw new Exception('The body must be a syllabus object', 400);
-		
+
 		if(empty($data['label'])) throw new Exception('The syllabus must have a label', 400);
 		if(empty($data['profile'])) throw new Exception('The syllabus must have a profile', 400);
 		if(!is_array($data['weeks'])) throw new Exception('The syllabus must an array of weeks', 400);
@@ -116,7 +118,7 @@ return function($api){
 				if(empty($w["summary"])) throw new Exception("The week $weekNumber must have a summary", 400);
 				if(!is_array($w["days"]) || count($w["days"])==0)
 					throw new Exception("The week $weekNumber at least one day", 400);
-					
+
 				$dayNumber = 0;
 				foreach($w["days"] as $d){
 					$dayNumber++;
@@ -126,11 +128,11 @@ return function($api){
 				}
 			}
 		}
-        
+
         $api->db['json']->toFile($syllabusSlug)->save($data);
-        
+
         return $response->withJson($syllabus);
 	})->add($api->auth());
-	
+
 	return $api;
 };
