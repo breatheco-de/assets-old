@@ -154,7 +154,7 @@ export class Home extends React.Component {
 				) : (
 					<div className="align-self-center border-info">
 						<h3>{this.state.selectedCohort.name}</h3>
-						<QRCode value={JSON.stringify(this.state.qrCode)} size="200" />
+						<QRCode value={JSON.stringify(this.state.qrCode)} size={200} />
 						<p className="mt-3">
 							<button type="button" className="btn btn-light" onClick={() => window.location.reload()}>
 								Clear
