@@ -39,6 +39,7 @@ export class Home extends React.Component {
 				})
 				.then(json => {
 					json.name = this.state.cohort;
+					console.log(json.rtmp);
 					this.setState({
 						isLoaded: true,
 						selectedCohort: json,
