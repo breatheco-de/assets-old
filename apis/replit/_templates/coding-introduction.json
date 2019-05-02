@@ -1,9 +1,9 @@
 [
-    {"slug": "html", "title": "Learn HTML", "vtutorial_slug": "html"},
-    {"slug": "css", "title": "Learn CSS", "vtutorial_slug": "css"},
+    {"slug": "html", "title": "Learn HTML", "vtutorial_slug": "html", "base": "https://repl.it/classroom/invite/CRmmEzs"},
+    {"slug": "css", "title": "Learn CSS", "vtutorial_slug": "css", "base": "https://repl.it/classroom/invite/CWx3Eug"},
     {"slug": "css-selectors", "title": "Master the CSS Selectors"},
-    {"slug": "layouts", "title": "Display vs Position"},
-    {"slug": "forms", "title": "Create FORMS"},
+    {"slug": "layouts", "title": "Display vs Position", "base": "https://repl.it/classroom/invite/CZkYSqf"},
+    {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "js-beginner", "title": "General Javascript"},
     {"slug": "js-devmaker", "title": "General Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"}
 ]
