@@ -29,7 +29,7 @@ export class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log("Params: ", this.state.params);
+		console.log("v1.0");
 		if (this.state.cohort)
 			fetch(HOST + "/cohort/" + this.state.cohort)
 				.then(res => {
