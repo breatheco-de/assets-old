@@ -12,27 +12,27 @@ BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API
 BC::setToken(BREATHECODE_TOKEN);
 
 return function($api){
-	
+
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
 	$api->get('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
-        
+
         $filters=[];
-        
+
         if(filter_var($args["user_id"], FILTER_VALIDATE_EMAIL)) $filters["email"] = $args["user_id"];
         else $filters["user_id"] = $args["user_id"];
-        
+
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         $result = BreatheCodeLogger::retrieveActivity($filters);
-        
+
 	    return $response->withJson([
 	        "user" => $user,
 	        "log" => $result
 	    ]);
 	});
-	
+
 	//create bulk user activity
 	$api->post('/user/bulk', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -42,7 +42,7 @@ return function($api){
 	        $email = $api->validate($activity,'email')->email();
 	        $slug = $api->validate($activity,'slug')->slug();
 	        $data = $api->optional($activity,'data')->smallString();
-			
+
 	        BreatheCodeLogger::logActivity([
 	            'slug' => $slug,
 	            'user' => [
@@ -52,27 +52,52 @@ return function($api){
 	            'data' => $data
 	        ]);
 		}
-		
+
 	    return $response->withJson("ok");
 	})->add($api->auth());
-	
+
 	//create user activity
 	$api->post('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
 
 		$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
-		
+
 		$parsedBody = $request->getParsedBody();
         $data = $api->optional($parsedBody,'data')->smallString();
         $slug = $api->validate($parsedBody,'slug')->slug();
-		
+
         BreatheCodeLogger::logActivity([
             'slug' => $slug,
             'user' => $user,
             'data' => $data
         ]);
 	    return $response->withJson("ok");
+
 	})->add($api->auth());
-	
+
+	//create user activity
+	$api->post('/coding/{github_username}', function (Request $request, Response $response, array $args) use ($api) {
+
+        $githubUsername = $args["github_username"];
+        if(empty($githubUsername)) throw new Exception("Missing github useraname on the URL", 400);
+
+        $parsedBody = $request->getParsedBody();
+        $details = $api->optional($parsedBody,'details')->string();
+        $slug = $api->validate($parsedBody,'slug')->slug();
+        $message = $api->validate($parsedBody,'message')->text();
+        $severity = $api->validate($parsedBody,'severity')->string(0,20);
+
+        BreatheCodeLogger::logActivity([
+            'slug' => $slug,
+            'user' => $githubUsername,
+            'details' => $details,
+            'message' => $message,
+            'severity' => $severity,
+        ]);
+
+	    return $response->withJson("ok");
+
+	})->add($api->auth());
+
 
 	return $api;
 };

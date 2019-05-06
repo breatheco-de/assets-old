@@ -2,10 +2,12 @@
 	require_once('../../vendor/autoload.php');
 	require_once('../../globals.php');
 	require('EventFunctions.php');
-	
+
 	$api = new \SlimAPI\SlimAPI([
 		'debug' => API_DEBUG,
-		'name' => 'Events API'
+		'name' => 'Events API',
+        'jwt_key' => JWT_KEY,
+        'jwt_clients' => JWT_CLIENTS
 	]);
 	$api->addReadme('/','./README.md');
 	$pdo = new \PDO( 'sqlite:db.sqlite3' );
@@ -13,4 +15,4 @@
 	$db->setPrimary( 'event', 'id' );
 	$api->addDB('sqlite', $db);
 	$api->addRoutes(require('routes.php'));
-	$api->run(); 
+	$api->run();

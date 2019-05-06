@@ -5,21 +5,21 @@ use Google\Cloud\Datastore\Query\Query;
 require('../BreatheCodeLogger.php');
 
 class BreatheCodeMessages{
-    
+
     private static $_messages = [];
     private static $datastore = null;
-    
+
     private static $messageType = ['actionable','non-actionable'];
-    
+
     public static function getType($type){
         if(!in_array(self::messageType)) throw new Exception('Ivalid Message Type', 400);
         else return $type;
     }
-    
+
     public static function connect($params){
-        
+
         self::$_messages = [
-            "nps_survey" => [ 
+            "nps_survey" => [
                 "track_on_log" => true,
                 "track_on_active_campaign" => true,
                 "send_email" => true,
@@ -34,29 +34,29 @@ class BreatheCodeMessages{
                     $id = '';
                     if(!empty($student->id)) $id = $student->id;
                     else if(is_string($student)) $id = $student;
-                    
+
                     return 'https://assets.breatheco.de/apps/nps/survey/'.$id;
                 }
             ]
         ];
-        
+
         self::$datastore = new DatastoreClient($params);
-        BreatheCodeLogger::addMessatesToActivities(self::$_messages);
+        BreatheCodeLogger::addMessagesToActivities(self::$_messages);
         BreatheCodeLogger::setDatastore(self::$datastore);
     }
-    
+
     public static function sendMail($slug, $to, $subject, $data){
-        
+
         $template = self::getEmailTemplate($slug);
         $client = SesClient::factory(array(
-            'version'=> 'latest',     
+            'version'=> 'latest',
             'region' => 'us-west-2',
             'credentials' => [
                 'key'    => S3_KEY,
                 'secret' => S3_SECRET,
             ]
         ));
-        
+
         try {
              $result = $client->sendEmail([
                 'Destination' => [
@@ -85,40 +85,40 @@ class BreatheCodeMessages{
             ]);
              $messageId = $result->get('MessageId');
              return true;
-        
+
         } catch (SesException $error) {
             throw new Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
         }
     }
-    
+
     public static function markAsAnswred($messageKey, $data='No additional data'){
-        
+
         if(!$messageKey) throw new Exception('The missing message id');
-        
+
         $key = self::$datastore->key('student_message', $messageKey);
         $entity = self::$datastore->lookup($key);
-        
+
         if(!$entity) throw new Exception("Message not found", 404);
-        
+
         // Update the entity
         $entity['read'] = 'true';
         $entity['answered'] = 'true';
-        
+
         if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
         else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
         else if(!$data) $entity['data'] = 'No additional data';
         else throw new Exception("Invalid data format for message", 400);
-        
+
         self::$datastore->update($entity);
-        
+
         return $entity;
     }
-    
+
     public static function markManyAs($status, $filters, $data='No additional data'){
-        
+
         if($status !== 'read' and $status !== 'answered') throw new Exception('invalid new status: '.$status, 400);
         if(empty($filters['user_id'])) throw new Exception('invalid or missing user_id',400);
-        
+
         if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
         else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
         else if(!$data) $entity['data'] = 'No additional data';
@@ -126,68 +126,68 @@ class BreatheCodeMessages{
 
         $query = self::$datastore->query()->kind('student_message');
         $query = self::filter($query, $filters);
-        
+
         //exclude the ones that already have the status
-        //if($status == 'answered') $query = $query->filter('answered', '=', 'false'); 
+        //if($status == 'answered') $query = $query->filter('answered', '=', 'false');
         //if($status == 'read') $query = $query->filter('read', '=', 'false');
-        
+
         $items = self::$datastore->runQuery($query);
-        
+
         $messages = [];
         foreach($items as $message) {
             if($status === 'read') $message['read'] = 'true';
             else if($status === 'answered'){
                 $message['read'] = 'true';
                 $message['answered'] = 'true';
-            } 
+            }
             $messages[] = $message->get();
             self::$datastore->update($message);
         }
-        
+
         return $messages;
     }
-    
+
     public static function markAsRead($messageKey, $data='No additional data'){
-        
+
         if(!$messageKey) throw new Exception('The missing message id');
-        
+
         $key = self::$datastore->key('student_message', $messageKey);
         $entity = self::$datastore->lookup($key);
-        
+
         if(!$entity) throw new Exception("Message not found", 404);
         if($entity['type'] === 'actionable') throw new Exception("This cannot be mark as read because it has a HIGH priority, it has to be answered.", 400);
-        
+
         // Update the entity
         $entity['read'] = 'true';
-        
+
         if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
         else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
         else if(!$data) $entity['data'] = 'No additional data';
         else throw new Exception("Invalid data format for message", 400);
-        
+
         self::$datastore->update($entity);
-        
+
         return $entity;
     }
-    
+
     public static function addMessage($messageSlug, $student, $priority=null, $data='No additional data'){
 
         if(!isset(self::$_messages[$messageSlug])) throw new Exception('Invalid message slug '.$messageSlug);
         if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
-        
+
         if(self::$_messages[$messageSlug]["type"] == 'actionable')
-            if(!isset(self::$_messages[$messageSlug]["getURL"]) || !is_callable(self::$_messages[$messageSlug]["getURL"])) 
+            if(!isset(self::$_messages[$messageSlug]["getURL"]) || !is_callable(self::$_messages[$messageSlug]["getURL"]))
                 throw new Exception('The message type: '.self::$_messages[$messageSlug]["type"].' needs to have a getURL method for its actions to be resolved');
-        
+
         $url = self::$_messages[$messageSlug]["getURL"]($student);
-        
+
         $token = '';
         if(!empty($data["token"])){
             $token = $data["token"];
             unset($data["token"]);
-        } 
-        
-        
+        }
+
+
         $message = [
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
@@ -204,20 +204,20 @@ class BreatheCodeMessages{
         else{
             if(!empty($student->status) && !in_array($student->status, ['currently_active','studies_finished'])) throw new Exception('This student is not currently_active or studies_finished', 400);
             if(!empty($student->id)) $message['user_id'] = (string) $student->id;
-            
+
             if(!empty($student->email)) $message['email'] = (string) $student->email;
             else if(!empty($student->username)) $message['email'] = (string) $student->username;
         }
-        
+
         $record = self::$datastore->entity('student_message', $message);
         $result = self::$datastore->insert($record);
-        
+
         if($result){
             if(self::$_messages[$messageSlug]["send_email"]){
                 $template = self::$_messages[$messageSlug]["template"];
                 $template["url"] = $url;
                 if($token != '') $template["url"] .= ((strpos($template["url"],'?')) ? '&':'?').'access_token='.$token;
-                
+
                 self::sendMail($messageSlug, $student->email, $template["subject"], $template);
             }
             BreatheCodeLogger::logActivity([
@@ -226,22 +226,22 @@ class BreatheCodeMessages{
             ], $student);
         }
     }
-    
+
     private static function filter($query, $filters){
         if(!empty($filters["slug"])) $query->filter('slug', '=', (string) $filters["slug"]);
         if(!empty($filters["user_id"])){
             $query->filter('user_id', '=', (string) $filters["user_id"]);
-        } 
+        }
         if(!empty($filters["email"])) $query->filter('email', '=', (string) $filters["email"]);
         if(!empty($filters["type"])) $query->filter('type', '=', (string) $filters["type"]);
         if(!empty($filters["slug"])) $query->filter('slug', '=', (string) $filters["slug"]);
         if(!empty($filters["priority"])) $query = $query->filter('priority', '=', (string) $filters["priority"]);
-        
+
         return $query;
     }
-    
+
     public static function getMessages($filters=[]){
-        
+
         $query = self::$datastore->query()->kind('student_message');
         $items = self::$datastore->runQuery(self::filter($query, $filters));
 
@@ -254,28 +254,28 @@ class BreatheCodeMessages{
         }
         return $results;
     }
-    
+
     public static function deleteMessages($filters=[]){
-        
+
         $query = self::$datastore->query()->kind('student_message');
         //$query = $query->order('created_at', Query::ORDER_DESCENDING);
         $messages = self::$datastore->runQuery(self::filter($query, $filters));
-        
+
         $transaction = self::$datastore->transaction();
         foreach($messages as $msg){
             $transaction->delete($msg->key());
         }
         $transaction->commit();
-        
+
         return true;
     }
-    
+
     public static function getEmailTemplate($slug){
-        
+
         $basePath = '../message/_templates/';
         if(!file_exists($basePath.$slug.'.html')) throw new Error('Missing HTML template for slug: '.$slug);
         if(!file_exists($basePath.$slug.'.txt')) throw new Error('Missing TXT template for slug: '.$slug);
-        
+
         else{
             $loader = new \Twig_Loader_Filesystem($basePath);
             $twig = new \Twig_Environment($loader);
@@ -285,12 +285,12 @@ class BreatheCodeMessages{
             ];
         }
     }
-    
+
     public static function getTemplates($slug=null){
-        
+
         if(!$slug) return self::$_messages;
         else if(!empty(self::$_messages[$slug])) return self::$_messages[$slug];
         else throw new Exception("Inalid message type", 400);
     }
-    
+
 }

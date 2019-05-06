@@ -9,7 +9,7 @@
     "require": {
         "glicer/link-checker": "dev-isolated-master",
         "guzzlehttp/guzzle": "~6.0",
-        "alesanchezr/slim-api-wrapper":"^0.0.3",
+        "alesanchezr/slim-api-wrapper":"dev-master",
         "alesanchezr/json-orm": "^0.0.3",
         "monolog/monolog": "^1.23",
         "google/cloud-datastore": "^1.3",
