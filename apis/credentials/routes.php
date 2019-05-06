@@ -13,13 +13,13 @@ BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API
 BC::setToken(BREATHECODE_TOKEN);
 
 return function($api){
-	
+
 	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $body = json_decode($request->getBody()->getContents());
         if(empty($body->username)) throw new Exception('Invalid username');
         if(empty($body->password)) throw new Exception('Invalid password');
-        
+
         $username = $body->username;
         $password = $body->password;
         try{
@@ -34,34 +34,34 @@ return function($api){
         		'admission' => ['read_basic_info', 'crud_student', 'crud_cohort'],
         		'career-support' => ['read_basic_info', 'user_profile', 'crud_student']
         	];
-        	if(!isset($permissions[$scope])) throw new Exception('Invalid scope: '.$scope); 
-        	
+        	if(!isset($permissions[$scope])) throw new Exception('Invalid scope: '.$scope);
+
         	$token = BC::autenticate($username,$password,$permissions[$scope]);
 		    if($token && $token->access_token)
 		    {
 		        BC::setToken($token->access_token);
 		        $user = BC::getMe();
-		        
+
             	if($user->type == 'student' && ($user->status == 'blocked' || $user->status == 'student_dropped')){
             	   return $response->withJson([
             	        'msg'=> 'You access to the BreatheCode platform has been revoked'
             	   ])->withStatus(403);
             	}
-		        
+
 		        $user->access_token = $token->access_token;
 		        if($user->type == 'student' || $user->type == 'teacher'){
 		        	$user->cohorts = $user->full_cohorts;
 		        }
 		        $user->scope = $token->scope;
 		        $user->assets_token = $api->jwt_encode($user->id);
-		        
+
 		        try{
 		            BreatheCodeLogger::logActivity([
 		                'slug' => 'breathecode_login',
 		                'user' => $user
 		            ]);
 		        }catch(Exception $e){  }
-		        
+
 	    		return $response->withJson($user);
 		    }
         }
@@ -71,9 +71,9 @@ return function($api){
         }
         return $response->withJson('error');
 	});
-	
+
 	$api->post('/remind/{email}', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $email = null;
         if(empty($args['email'])) throw new Exception('Invalid or missing email');
         else $email = $args['email'];
@@ -89,9 +89,9 @@ return function($api){
         }
         return $response->withJson('error');
 	});
-	
+
 	$api->put('/signup', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $body = $request->getParsedBody();
         $username = $api->validate($body,'email')->email();
         $firstName = $api->validate($body,'first_name')->smallString();
@@ -99,14 +99,15 @@ return function($api){
         $phone = $api->validate($body,'phone')->smallString();
         $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
         $profileSlug = $api->optional($body,'profile_slug');
-        
+
     	$user = BC::createStudent([
     		'email' => urlencode($username),
-    		'full_name' => $firstName.' '.$lastName,
+    		'first_name' => $firstName,
+    		'last_name' => $lastName,
     		'phone' => $phone,
     		'cohort_slug' => $cohortSlug
     	]);
-    	
+
     	if(!empty($user)){
             ACAPI::start(AC_API_KEY);
             $contact = ACAPI::createOrUpdateContact($username,[
@@ -121,14 +122,14 @@ return function($api){
                     'slug' => 'online_platform_registration',
                     'user' => $user
                 ]);
-            } 
-            
+            }
+
             return $response->withJson($user)->withStatus(200);
     	}
         else{
             throw new Exception('The student was not added into breathecode');
         }
 	});
-	
+
 	return $api;
 };

@@ -134,8 +134,8 @@ export default class Checkin extends React.Component{
             //Entra aqui si encuentra en ActiveCampaing y se guarda
             .then((data) => {
                 if(this.state.status == 200){
-                    if(this.state.numberOfUsersInEvent > this.state.capacityEvent) Notify.info('The user was successfully checked in but beware that the event is full');    
-                    else Notify.success('The user was successfully checked in');    
+                    if(this.state.numberOfUsersInEvent > this.state.capacityEvent) Notify.info('The user was successfully checked in but beware that the event is full');
+                    else Notify.success('The user was successfully checked in');
                     this.setState({ valueInput: '' })
                     this.getAllUsersInEventUpdated();
                 }else if(this.state.status == 400){
@@ -166,7 +166,7 @@ export default class Checkin extends React.Component{
                             });
                             Notify.info('This is what we found about this user');
                             this.setState({
-                                first_name: data.full_name,
+                                first_name: data.full_name || data.first_name,
                                 email: data.username,
                                 showFormRegister: true,
                                 showFormCheckin: false,
@@ -177,7 +177,7 @@ export default class Checkin extends React.Component{
                                 showFormCheckin: false,
                                 disabledButton: false
                             });
-                            
+
                             const ModalNotFind = ({ onConfirm }) => (
                                 <div className="modal-not-found">
                                     <h3 className="text-center">The {this.state.valueInput} email was not found, do you want to register a new one?</h3>
@@ -217,7 +217,7 @@ export default class Checkin extends React.Component{
 
     getAllUsersInEventUpdated(){
         const endpointGetAllUsersInEvent = process.env.BREATHECODE+this.state.idEvent+"/checkin?access_token="+this.props.token;
-            
+
             fetch(endpointGetAllUsersInEvent)
             .then((response) => {
                 return response.json()
@@ -257,15 +257,15 @@ export default class Checkin extends React.Component{
                                 Attendees
                             </a>
                             <div className="ml-auto">
-                                <button 
+                                <button
                                     disabled={this.state.disabledButton}
-                                    type="button" 
+                                    type="button"
                                     className="btn btn-primary"
                                     onClick={()=>this.showFormCheckin()}>Checkin User</button>
                             </div>
                         </nav>
                     </div>
-                    
+
                     <div className="col-md-12 no-padding">
                         <Notifier/>
                     </div>
@@ -277,7 +277,7 @@ export default class Checkin extends React.Component{
                             <div className="form-group row">
                                 <div className="col-sm-10">
                                 <input
-                                    type="text" 
+                                    type="text"
                                     className="form-control mt-3"
                                     placeholder="Specify attende email"
                                     value={this.state.valueInput}
@@ -294,7 +294,7 @@ export default class Checkin extends React.Component{
                     </div> : ''}
 
                     {(this.state.showFormRegister) ?
-                        <CheckEmailNotFoundAC 
+                        <CheckEmailNotFoundAC
                             idEvent={this.state.idEvent}
                             email={this.state.valueInput}
                             token={this.props.token}
