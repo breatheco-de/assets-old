@@ -46,7 +46,7 @@ class BreatheCodeLogger{
     public static function datastore(){
         if(!self::$datastore) self::$datastore = new DatastoreClient([
             'projectId' => GOOGLE_PROJECT_ID,
-            'keyFilePath' => '../../breathecode-efde1976e6d3.json'
+            'keyFilePath' => '../../breathecode-47bde0820564.json'
         ]);
         return self::$datastore;
     }

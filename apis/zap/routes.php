@@ -15,7 +15,7 @@ BC::setToken(BREATHECODE_TOKEN);
 require('../BreatheCodeMessages.php');
 BreatheCodeMessages::connect([
     'projectId' => GOOGLE_PROJECT_ID,
-    'keyFilePath' => '../../breathecode-efde1976e6d3.json'
+    'keyFilePath' => '../../breathecode-47bde0820564.json'
 ]);
 
 function addAPIRoutes($api){

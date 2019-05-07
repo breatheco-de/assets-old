@@ -11,7 +11,7 @@ BC::setToken(BREATHECODE_TOKEN);
 
 BreatheCodeMessages::connect([
     'projectId' => 'breathecode-197918',
-    'keyFilePath' => '../../breathecode-efde1976e6d3.json'
+    'keyFilePath' => '../../breathecode-47bde0820564.json'
 ]);
 
 return function($api){

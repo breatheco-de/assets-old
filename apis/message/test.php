@@ -5,9 +5,9 @@ require('apis/TestUtils.php');
 
 $l = new Logger();
 
-BreatheCodeMessages::connect([ 
+BreatheCodeMessages::connect([
     'projectId' => 'breathecode-197918',
-    'keyFilePath' => 'breathecode-efde1976e6d3.json'
+    'keyFilePath' => 'breathecode-47bde0820564.json'
 ]);
 
 $templates = BreatheCodeMessages::getTemplates();
@@ -17,7 +17,7 @@ foreach ($templates as $slug => $t){
     if(!isset($t["template"])){
         debug($t);
         $l->err("The message $slug needs a template");
-    } 
+    }
     else{
         if(!isset($t["template"]["subject"])) $l->err("The message $slug template needs a subject");
     }
