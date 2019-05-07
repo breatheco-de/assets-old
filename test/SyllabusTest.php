@@ -2,6 +2,8 @@
 /*
 * @title: Every cohort must have a replit
 */
+$CURRENT = dirname(__FILE__);
+require_once($CURRENT.'/BaseTestCase.php');
 
 class SyllabusTest extends BaseTestCase {
 
@@ -35,16 +37,16 @@ class SyllabusTest extends BaseTestCase {
             }
         }
     }
-    
+
     function testAllSyllabusLinks(){
         $errors = $this->checkLinksOnFiles('./apis/syllabus/data', ["*.json", "*.md"]);
         $this->assertSame($errors, 0);
     }
-    
+
     private function _lessonExists($profileSlug, $lessonSlug){
         foreach($this->data['lessons'] as $l)
             if($l->slug == $lessonSlug) return $profileSlug.' => lesson:'.$lessonSlug;
-        
+
         return "lesson $lessonSlug does not exists";
     }
     private function _quizExists($profileSlug, $quizSlug){
@@ -57,12 +59,12 @@ class SyllabusTest extends BaseTestCase {
     private function _replitExists($profileSlug, $replitSlug){
         foreach($this->data['replit-templates'][$profileSlug] as $replit)
             if($replit->slug == $replitSlug) return $profileSlug.' => replit:'.$replitSlug;
-        
+
         return false;
     }
     private function _assignmentExists($profileSlug, $assignmentSlug){
         if(isset($this->data['projects'][$assignmentSlug])) return $profileSlug.' => assignment:'.$assignmentSlug;
         else return "assignment $assignmentSlug does not exists";
     }
-    
+
 }

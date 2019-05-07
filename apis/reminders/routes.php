@@ -2,11 +2,9 @@
 
 use JsonPDO\JsonPDO;
 
-require('../../vendor_static/ActiveCampaign/ACAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 use \BreatheCode\BCWrapper as BC;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
@@ -15,7 +13,7 @@ require('./ReminderManager.php');
 ReminderManager::init();
 
 return function($api){
-	
+
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
@@ -24,13 +22,13 @@ return function($api){
 	});
 
 	$api->get('/expired', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $pending = ReminderManager::getPending();
 	    return $response->withJson($pending);
 	});
 
 	$api->get('/execute/all', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $pending = ReminderManager::getPending();
         $success = [];
         foreach($pending as $file){
@@ -43,15 +41,15 @@ return function($api){
     		}
         }
 
-	    return $response->withJson([ 
-    		"success" => (count($errors) === 0), 
+	    return $response->withJson([
+    		"success" => (count($errors) === 0),
     		"msg" => count($pending)." functions were executed, ".count($success)." succeded and ".count($errors)." failed",
 	    	"errors" => $errors
 	    ]);
 	});
-	
+
 	$api->get('/execute/next', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $pending = ReminderManager::getPending();
         if(!empty($pending[0])){
     		try{
@@ -65,9 +63,9 @@ return function($api){
         else return $response->withJson([ "success" => true, "msg" => "Nothing to execute", "errors" => [] ]);
 
 	});
-	
+
 	$api->get('/execute/single/{name}', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         if(!empty($args["name"])){
     		try{
         		$result = ReminderManager::execute(strpos( $args["name"],".php") ? $args["name"] : $args["name"].".php");
@@ -80,6 +78,6 @@ return function($api){
         else throw new Exception('Invalid reminder name', 400);
 
 	});
-	
+
 	return $api;
 };

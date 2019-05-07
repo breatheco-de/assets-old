@@ -1,8 +1,6 @@
 <?php
 
-require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
 require('../BreatheCodeLogger.php');
-require('../../vendor_static/ActiveCampaign/ACAPI.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper as BC;

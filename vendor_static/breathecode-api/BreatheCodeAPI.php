@@ -2,6 +2,7 @@
 
 namespace BreatheCode;
 use Exception;
+
 class BCWrapper{
 
     private static $clientId = '';

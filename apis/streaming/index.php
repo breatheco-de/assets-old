@@ -1,7 +1,7 @@
 <?php
 	require_once('../../vendor/autoload.php');
 	require_once('../../globals.php');
-	require('StreamingFunctions.php');
+	require_once('./StreamingFunctions.php');
 
 	$api = new \SlimAPI\SlimAPI([
 		'name' => 'Streaming API - BreatheCode Platform',

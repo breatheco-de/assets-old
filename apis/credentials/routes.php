@@ -3,9 +3,6 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-require_once('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-require_once('../../vendor_static/breathecode-api/SlackAPI.php');
-require('../../vendor_static/ActiveCampaign/ACAPI.php');
 require('../BreatheCodeLogger.php');
 use \AC\ACAPI;
 use BreatheCode\BCWrapper as BC;

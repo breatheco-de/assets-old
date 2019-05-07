@@ -1,7 +1,5 @@
 <?php
 
-require('../../vendor_static/breathecode-api/BreatheCodeAPI.php');
-
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
@@ -12,11 +10,10 @@ require('../BreatheCodeMessages.php');
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
-require('../../vendor_static/ActiveCampaign/ACAPI.php');
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
 
-BreatheCodeMessages::connect([ 
+BreatheCodeMessages::connect([
     'projectId' => 'breathecode-197918',
     'keyFilePath' => '../../breathecode-efde1976e6d3.json'
 ]);
@@ -27,49 +24,49 @@ function addAPIRoutes($api){
 		$content = $api->db['sqlite']->response()->orderBy( 'created_at', 'DESC' );
 	    return $response->withJson($content);
 	});
-	
+
 	$api->get('/student/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
-		
+
 		$api->validate($args['user_id'])->int();
-		
+
 		$student = BC::getStudent(['student_id'=>$args['user_id']]);
 	    return $response->withJson($student);
 	});
-	
+
 	$api->get('/responses/user/{user_id}', function(Request $request, Response $response, array $args) use ($api) {
-        
+
 		$api->validate($args['user_id'])->int();
-		
+
 		$row = $api->db['sqlite']->response()
 			->where('user_id',$args['user_id']);
 
 		if(!$row) $row = (object) [];
-		return $response->withJson($row);	
+		return $response->withJson($row);
 	});
 
 	$api->get('/response', function(Request $request, Response $response, array $args) use ($api) {
 		$responses = $api->db['sqlite']->response()->fetchAll();
-		return $response->withJson($responses);	
+		return $response->withJson($responses);
 	});
-	
+
 	$api->put('/response', function(Request $request, Response $response, array $args) use ($api) {
 
         $parsedBody = $request->getParsedBody();
         $score = $api->validate($parsedBody['score'])->int();
         $email = $api->validate($parsedBody['email'])->email();
-        
+
         $a1 = [];
 		if(isset($parsedBody['user_id']))
 			$a1 = $api->db['sqlite']->response()->where('user_id',$parsedBody['user_id'])->fetchAll();
-		
+
 		$a2 = $api->db['sqlite']->response()->where('email',$parsedBody['email'])->fetchAll();
 		$answers = array_merge($a1,$a2);
 		foreach($answers as $ans){
 			$now = Carbon::now();
 			$day = Carbon::createFromFormat('Y-m-d H:i:s', $ans->created_at);
 			if($now->diffInHours($day) < 24) throw new Exception('You have already answered',400);
-		} 
-        
+		}
+
 		$row = $api->db['sqlite']->createRow( 'response', [
 			'score' => $score,
 			'email' => $email,
@@ -80,9 +77,9 @@ function addAPIRoutes($api){
 			'tags' => $api->optional($parsedBody,'tags')->smallString(),
 			'created_at' => date("Y-m-d H:i:s")
 		]);
-		
+
 		$row->save();
-		
+
 		try{
 			$user = BC::getUser(['user_id' => urlencode($email)]);
 	        BreatheCodeLogger::logActivity([
@@ -90,21 +87,21 @@ function addAPIRoutes($api){
 	            'user' => ($user) ? $user : $email,
 	            'data' => $score
 	        ]);
-	        BreatheCodeMessages::markManyAs('answered',[ 
-	        	'slug' => 'nps_survey', 
-	        	'user_id' => ($user) ? $user->id : $email 
+	        BreatheCodeMessages::markManyAs('answered',[
+	        	'slug' => 'nps_survey',
+	        	'user_id' => ($user) ? $user->id : $email
 	        ], [ "score" => $score ]);
 		}
 		catch(Exception $e)
 		{
 			$api->sendMail(
-				ADMIN_EMAIL, 
+				ADMIN_EMAIL,
 				'API Error: Event tracking for nps_survey_answered',
 				'There has been an error trying to register the nps_survey_answered event in active campaign for the user '.$email
 			);
 		}
         return $response->withJson($row);
 	});
-	
+
 	return $api;
 }
