@@ -5,7 +5,6 @@
             "url": "https://github.com/alesanchezr/php-linkchecker"
         }
     ],
-    "v": "0.1",
     "require": {
         "glicer/link-checker": "dev-isolated-master",
         "guzzlehttp/guzzle": "~6.0",

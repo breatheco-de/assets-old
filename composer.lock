@@ -54,12 +54,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alesanchezr/slim-api-wrapper.git",
-                "reference": "5965d76dde4227c0a5e8fe5ac8be77aaf3ca8309"
+                "reference": "1d59eec17fd100d4c40e5716fd0ff4d794fc4b42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alesanchezr/slim-api-wrapper/zipball/5965d76dde4227c0a5e8fe5ac8be77aaf3ca8309",
-                "reference": "5965d76dde4227c0a5e8fe5ac8be77aaf3ca8309",
+                "url": "https://api.github.com/repos/alesanchezr/slim-api-wrapper/zipball/1d59eec17fd100d4c40e5716fd0ff4d794fc4b42",
+                "reference": "1d59eec17fd100d4c40e5716fd0ff4d794fc4b42",
                 "shasum": ""
             },
             "require": {
@@ -84,20 +84,20 @@
                 }
             ],
             "description": "Build Slim API's really fast",
-            "time": "2019-05-06T16:08:07+00:00"
+            "time": "2019-05-08T20:12:03+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.93.3",
+            "version": "3.93.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "874c1040edab52df3873157aa54ea51833d48c0e"
+                "reference": "75d6b1ec57f3438ac960d74e08366be43d52eca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/874c1040edab52df3873157aa54ea51833d48c0e",
-                "reference": "874c1040edab52df3873157aa54ea51833d48c0e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/75d6b1ec57f3438ac960d74e08366be43d52eca7",
+                "reference": "75d6b1ec57f3438ac960d74e08366be43d52eca7",
                 "shasum": ""
             },
             "require": {
@@ -167,7 +167,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-05-03T18:07:06+00:00"
+            "time": "2019-05-08T18:16:33+00:00"
         },
         {
             "name": "container-interop/container-interop",

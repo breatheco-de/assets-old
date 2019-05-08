@@ -96,6 +96,15 @@ return function($api){
 
 	})->add($api->auth());
 
+	//create user activity
+	$api->get('/test', function (Request $request, Response $response, array $args) use ($api) {
+
+        $token = $api->jwt_encode("abc");
+        $result = $api->jwt_decode($token);
+	    return $response->withJson($result);
+
+	});
+
 
 	return $api;
 };
