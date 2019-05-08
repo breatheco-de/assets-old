@@ -7,4 +7,4 @@
 	]);
 	$api->addReadme('/','./README.md');
 	$api->addRoutes(require('routes.php'));
-	$api->run(); 
+	$api->run();
