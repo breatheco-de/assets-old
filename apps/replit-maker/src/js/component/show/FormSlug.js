@@ -26,11 +26,12 @@ export default class FormSlug extends React.Component{
                 <form>
                 <div className="form-row justify-content-md-center banner-form">
                     <div className="form-group col-md-10 no-margin">
-                        <input 
-                            type="text" 
-                            className="form-control" 
+                        <input
+                            type="text"
+                            className="form-control"
                             placeholder="Cohort slug"
-                            value={this.state.cohortSlug} 
+                            value={this.state.cohortSlug}
+                            readOnly
                             onChange={(event)=>this.handleChange(event)}/>
                     </div>
                 </div>
