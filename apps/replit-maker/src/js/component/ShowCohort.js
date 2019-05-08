@@ -62,7 +62,7 @@ export default class ShowCohort extends Flux.DashView{
 
     getApiProfile(profile){
 
-        let endpoint = process.env.hostAssets+'/apis/replit/template/'+profile;
+        let endpoint = process.env.ASSETS_HOST+'/apis/replit/template/'+profile;
     		fetch(endpoint)
     		.then((response) => {
     			return response.json();
