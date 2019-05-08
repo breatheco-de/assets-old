@@ -80,3 +80,4 @@ class _store extends Flux.DashStore{
 }
 
 export let store = new _store();
+

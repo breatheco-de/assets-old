@@ -6,6 +6,7 @@ uploaded/
 php.ini
 *.log
 breathecode-47bde0820564.json
+*.key
 
 .sass-cache/
 
