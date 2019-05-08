@@ -17,7 +17,6 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv({
         path: './.env.dev',
-        systemvars: true
     }),
   ]
 })

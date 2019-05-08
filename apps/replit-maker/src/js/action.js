@@ -16,7 +16,7 @@ export const tokens = () => {
 }
 
 export const loadReplits = (cohort)=>{
-    let endpoint = process.env.hostAssets+'/apis/replit/cohort/'+cohort;
+    let endpoint = process.env.ASSETS_HOST+'/apis/replit/cohort/'+cohort;
     fetch(endpoint)
         .then((resp) => {
             if(resp.status != 200){
@@ -26,7 +26,7 @@ export const loadReplits = (cohort)=>{
         })
         .then((data) => {
             if(typeof data != 'undefined' && data) Flux.dispatchEvent('replits', data);
-            
+
         })
         .catch((error) => {
             console.log('error', error);
@@ -34,7 +34,7 @@ export const loadReplits = (cohort)=>{
 }
 
 export const loadTemplates = (profile_slug)=>{
-    let endpoint = process.env.hostAssets+'/apis/replit/template/'+profile_slug;
+    let endpoint = process.env.ASSETS_HOST+'/apis/replit/template/'+profile_slug;
     fetch(endpoint)
         .then((response) => {
             return response.json();
@@ -55,7 +55,7 @@ class _store extends Flux.DashStore{
             if(!templatesAdded) return replits;
             let templates = this.getState('templates');
             if(!Array.isArray(templates)) return templates;
-            
+
             let newReplits = (replits) ? replits : {};
             templates.forEach((t)=>{
                 if(typeof newReplits[t.slug] == 'undefined') newReplits[t.slug] = t.base || '';
@@ -65,7 +65,7 @@ class _store extends Flux.DashStore{
         this.addEvent('templates', (templates)=>{
             templatesAdded = true;
             if(!Array.isArray(templates)) return templates;
-            
+
             let oldReplits = this.getState('replits');
             let newReplits = (oldReplits) ? oldReplits : {};
             templates.forEach((t)=>{

@@ -2,11 +2,11 @@ import React from 'react';
 import Flux from '@4geeksacademy/react-flux-dash';
 import {store, loadReplits, loadTemplates} from '../action.js';
 
-import RowTitle from './show/RowTitle.jsx';
-import FormSlug from './show/FormSlug.jsx';
-import FormCohort from './show/FormCohort.jsx';
-import BannerHeader from './BannerHeader.jsx';
-import SelectReplits from './show/SelectReplits.jsx';
+import RowTitle from './show/RowTitle.js';
+import FormSlug from './show/FormSlug.js';
+import FormCohort from './show/FormCohort.js';
+import BannerHeader from './BannerHeader.js';
+import SelectReplits from './show/SelectReplits.js';
 
 export default class ShowCohort extends Flux.DashView{
     constructor(props){
@@ -26,12 +26,12 @@ export default class ShowCohort extends Flux.DashView{
     }
 
     static getDerivedStateFromProps(nextProps, prevState){
-        
-        if (nextProps.data.cohortSelected.profile_slug != prevState.typeProfile 
-            && 
+
+        if (nextProps.data.cohortSelected.profile_slug != prevState.typeProfile
+            &&
             nextProps.data.cohortSelected.slug != prevState.typeCohort) {
-            return { 
-                    typeProfile: nextProps.data.cohortSelected.profile_slug, 
+            return {
+                    typeProfile: nextProps.data.cohortSelected.profile_slug,
                     typeCohort: nextProps.data.cohortSelected.slug,
                     allCohorts: nextProps.data.allCohorts
             }
@@ -41,12 +41,12 @@ export default class ShowCohort extends Flux.DashView{
     }
 
     componentDidMount(){
-        
+
         loadReplits(this.state.typeCohort);
         this.subscribe(store, 'replits', (data)=>{
             this.setState({ cohortDataInput: data, forJsonCohort: data });
         });
-        
+
         if(!this.state.typeProfile){
             alert("This cohort is missing the profile_slug, therefor is impossible to load its template");
         }
@@ -61,7 +61,7 @@ export default class ShowCohort extends Flux.DashView{
     }
 
     getApiProfile(profile){
-        
+
         let endpoint = process.env.hostAssets+'/apis/replit/template/'+profile;
     		fetch(endpoint)
     		.then((response) => {
@@ -98,7 +98,7 @@ export default class ShowCohort extends Flux.DashView{
     getDataSelectReplits(data){
         this.props.getData(data);
     }
-    
+
     render(){
 
         let selectReplits = (this.state.showPreLoad) ? <SelectReplits cohorts={this.props.data.allCohorts.filter((c)=>c.profile_slug == this.state.typeProfile)}/> : ''
@@ -107,7 +107,7 @@ export default class ShowCohort extends Flux.DashView{
             <BannerHeader button="downloadProgress" createJson={[this.state.typeCohort ,this.state.forJsonCohort]} jsonByPost={this.state.forJsonCohort[1]}/>
             <RowTitle title="General Cohort Information"/>
             <FormSlug input={this.state.typeCohort} getData={(data)=>this.getDataFormSlug(data)}/>
-            
+
             <div className="container-fluid p-0">
                 <div className="row">
                     <div className="col-12">
@@ -115,8 +115,8 @@ export default class ShowCohort extends Flux.DashView{
                             <a className="navbar-brand" href="#">
                                 Replits
                             </a>
-                            <button 
-                                type="button" 
+                            <button
+                                type="button"
                                 className="btn btn-primary float-right"
                                 onClick={()=>this.openRow()}
                                 >pre-load values from previous cohort</button>
@@ -125,7 +125,7 @@ export default class ShowCohort extends Flux.DashView{
                     </div>
                 </div>
             </div>
-            <FormCohort 
+            <FormCohort
                 replits={this.state.cohortDataInput}
                 getData={(data)=>this.getDataFormCohort(data)}
                 />

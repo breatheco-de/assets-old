@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "c9": "webpack-dev-server --mode development --open --host $IP --port $PORT",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack --mode development --config webpack.dev.js",
-    "start": "webpack-dev-server --mode development --config webpack.dev.js"
+    "start": "webpack-dev-server --config webpack.dev.js"
   },
   "author": "Alejandro Sanchez",
   "license": "ISC",
