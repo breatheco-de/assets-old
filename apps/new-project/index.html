@@ -47,13 +47,13 @@
     <div class="button-box mx-auto">
         <h2 class="text-center mb-3">What type of project are you starting?</h2>
         <div class="row">
-            <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/html-hello.git" class="btn btn-light"><img src="./images/devicon.svg" /><p>New Empty</p></a></div>
-            <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/vanillajs-hello.git" class="btn btn-light"><img src="./images/webpack.svg" /><p>New Vanilla JS <br />(with webpack)</p></a></div>
-            <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/react-hello.git" class="btn btn-light"><img src="./images/react.svg" /><p>New React JS</p></a></div>
-            <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/react-hello-webapp.git" class="btn btn-light"><img src="./images/flux.svg" /><p>New React FLUX</p></a></div>
-            <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/flask-rest-hello.git" class="btn btn-light"><img src="./images/python.svg" /><p>New Python Flask</p></a></div>
-            <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/django-rest-hello" class="btn btn-light"><img src="./images/django.svg" /><p>New Django</p></a></div>
-            <!-- <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/wordpress-hello.git" class="btn btn-light"><img src="./images/wordpress.svg" /><p>New WordPress</p></a></div> -->
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/html-hello.git"><img src="./images/devicon.svg" /><p>New Empty</p></a></div>
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/vanillajs-hello.git"><img src="./images/webpack.svg" /><p>New Vanilla JS <br />(with webpack)</p></a></div>
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/react-hello.git"><img src="./images/react.svg" /><p>New React JS</p></a></div>
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/react-hello-webapp.git"><img src="./images/flux.svg" /><p>New React FLUX</p></a></div>
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/flask-rest-hello.git"><img src="./images/python.svg" /><p>New Python Flask</p></a></div>
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/django-rest-hello"><img src="./images/django.svg" /><p>New Django</p></a></div>
+            <!-- <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/wordpress-hello.git"><img src="./images/wordpress.svg" /><p>New WordPress</p></a></div> -->
         </div>
         <div class="mt-4">
             Or type here your Github URL to continue a previous one: <br />
@@ -80,17 +80,40 @@
             const regex = /(?:https:\/\/)?github\.com\/[0-9A-Za-z\-_]+\/[0-9A-Za-z\-_]+(?:\.git)?/gm;
             return regex.exec(string);
         };
+
+        var getEnvironmentVariables = function(){
+            var url = new URL(window.location.href);
+            var environment = {
+                ERROR_HOOK: 'https://assets.breatheco.de/apis/activity/coding',
+                ASSETS_TOKEN: url.searchParams.get("assets_token") || '',
+                BC_STUDENT_EMAIL: url.searchParams.get("email") || ''
+            }
+            return Object.keys(environment).map(function(key) {
+                return key + '=' + environment[key]
+            }).join('&');
+        }
         window.onload = function(){
             var button = document.querySelector('#open-project');
             var githubUrl = document.querySelector('#github-url');
             var err = document.querySelector('#error');
+            var boilerplateBtns = document.querySelectorAll('.open-workspace');
+            boilerplateBtns.forEach(function(btn){
+                btn.addEventListener("click",function(e){
+                    console.log(e.currentTarget);
+                    var path = e.currentTarget.getAttribute('path');
+                    var env = getEnvironmentVariables();
+                    window.open('https://gitpod.io#'+env+'/'+path);
+                });
+            });
+
             button.addEventListener("click",function(e){
                 err.classList.add("d-none");
                 setTimeout(function(){
                     var result = isPlainGhUrl(githubUrl.value);
                     console.log(githubUrl.value);
                     if(result){
-                        window.open('https://gitpod.io#'+githubUrl.value);
+                        var env = getEnvironmentVariables();
+                        window.open('https://gitpod.io#'+env+'/'+githubUrl.value);
                     }
                     else{
                         err.classList.remove("d-none");
