@@ -84,7 +84,7 @@
         var getEnvironmentVariables = function(){
             var url = new URL(window.location.href);
             var environment = {
-                BC_ERROR_HOOK: encodeURI('https://assets.breatheco.de/apis/activity/coding'),
+                BC_ERROR_HOOK: encodeURIComponent('https://assets.breatheco.de/apis/activity/coding'),
                 BC_ASSETS_TOKEN: url.searchParams.get("assets_token") || '',
                 BC_STUDENT_EMAIL: url.searchParams.get("email") || ''
             }
