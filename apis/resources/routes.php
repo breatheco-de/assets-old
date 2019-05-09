@@ -5,14 +5,22 @@ use JsonPDO\JsonPDO;
 
 return function($api){
 
+    $media = [];
+    $types = ["article", "video", "infographic", "cheatcheet"];
+    $types = ["article", "video", "infographic", "cheatcheet"];
+
 	//get all cohorts and its replits
-	$api->get('/profile/{profile_slug}', function (Request $request, Response $response, array $args) use ($api) {
-		
-		$templatesPDO = new JsonPDO('_templates/','{}',false);
-		$replits = $templatesPDO->getJsonByName($args['profile_url']);
-		if(!$replits) throw new Exception('Invalid profile: '.$args['profile_url'], 400);
-		
-	    return $response->withJson($replits);
+	$api->get('/type', function (Request $request, Response $response, array $args) use ($api, $types) {
+	    return $response->withJson($types);
+	});
+
+	//get all cohorts and its replits
+	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
+
+		$resources = $api->db['json']->getJsonByName('resources');
+		if(!$resources) throw new Exception("Unable to find resources", 400);
+
+	    return $response->withJson($resources);
 	});
 
 	return $api;
