@@ -117,6 +117,11 @@ class BreatheCodeLogger{
 
     }
 
+    // public static function deleteActivity($student, $type=null){
+    //     $record = self::datastore()->entity($type, $activity);
+    //     self::datastore()->insert($record);
+    // }
+
     public static function _logInternally($student, $activity, $type='student_activity'){
         if(!is_callable('BreatheCodeLogger::encode_'.$type)) throw new Exception("No encoder for activity type: ".$type);
         $activity = call_user_func('BreatheCodeLogger::encode_'.$type, $student, $activity);

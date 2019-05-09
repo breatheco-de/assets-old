@@ -122,5 +122,17 @@ return function($api){
 	    ]);
 	});
 
+
+	// $api->delete('/coding_error/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
+
+    //     if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
+    //     $result = BreatheCodeLogger::retrieveActivity($filters, 'coding_error');
+
+	//     return $response->withJson([
+	//         "user" => $user,
+	//         "log" => $result
+	//     ]);
+	// });
+
 	return $api;
 };
