@@ -73,17 +73,14 @@ return function($api){
 	})->add($api->auth());
 
 	//create user activity
-	$api->post('/coding/{github_username}', function (Request $request, Response $response, array $args) use ($api) {
-
-        $githubUsername = $args["github_username"];
-        if(empty($githubUsername)) throw new Exception("Missing github username on the URL", 400);
+	$api->post('/coding', function (Request $request, Response $response, array $args) use ($api) {
 
         $parsedBody = $request->getParsedBody();
         function logError($api, $data){
             $details = $api->optional($data,'details')->string();
             $slug = $api->validate($data,'slug')->slug();
             $message = $api->validate($data,'message')->text();
-            $user = $api->validate($data,'user')->string();
+            $user = $api->validate($data,'username')->string();
             $severity = $api->validate($data,'severity')->int();
             $name = $api->validate($data,'name')->string(0,20);
 
@@ -97,15 +94,8 @@ return function($api){
             ]);
         }
 
-        if(is_array($parsedBody))
-            foreach($parsedBody as $error){
-                $error["user"] = $githubUsername;
-                logError($api, $error);
-            }
-        else{
-            $parsedBody["user"] = $githubUsername;
-            logError($api, $parsedBody);
-        }
+        if(is_array($parsedBody)) foreach($parsedBody as $error) logError($api, $error);
+        else logError($api, $parsedBody);
 
 	    return $response->withJson("ok");
 
