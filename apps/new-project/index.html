@@ -90,7 +90,7 @@
             }
             return Object.keys(environment).map(function(key) {
                 return key + '=' + environment[key]
-            }).join('&');
+            }).join(',');
         }
         window.onload = function(){
             var button = document.querySelector('#open-project');
