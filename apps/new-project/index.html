@@ -44,7 +44,8 @@
     </style>
   </head>
   <body>
-    <div class="button-box mx-auto">
+
+    <div id="selector" class="button-box mx-auto d-none">
         <h2 class="text-center mb-3">What type of project are you starting?</h2>
         <div class="row">
             <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/html-hello.git"><img src="./images/devicon.svg" /><p>New Empty</p></a></div>
@@ -66,6 +67,10 @@
             </div>
         </div>
     </div>
+    <div id="no-token" class="button-box mx-auto d-none text-center">
+        <h2>Whooops!</h2>
+        <p>We have not been able to find your session information, make sure you are accessing this page thru <a href="https://students.breatheco.de">https://students.breatheco.de</a></p>
+    </div>
     <div class="fixed-bottom text-center py-2">
         This amazing one-click environments are possible thanks to <a target="_blank" href="https://gitpod.io">Gitpod.io</a> and <a target="_blank" href="https://4geeksacademy.io">4Geeks Academy</a>
     </div>
@@ -83,43 +88,53 @@
 
         var getEnvironmentVariables = function(){
             var url = new URL(window.location.href);
-            var environment = {
-                BC_ERROR_HOOK: encodeURIComponent('https://assets.breatheco.de/apis/activity/coding'),
-                BC_ASSETS_TOKEN: encodeURIComponent(url.searchParams.get("assets_token") || ''),
-                BC_STUDENT_EMAIL: encodeURIComponent(url.searchParams.get("email") || '')
+            return {
+                BC_ERROR_HOOK: 'https://assets.breatheco.de/apis/activity/coding',
+                BC_ASSETS_TOKEN: url.searchParams.get("assets_token") || '',
+                BC_STUDENT_EMAIL: url.searchParams.get("email") || ''
             }
-            return Object.keys(environment).map(function(key) {
-                return key + '=' + environment[key]
+        }
+
+        var buildQuery = function(params){
+            return Object.keys(params).map(function(key) {
+                return key + '=' + encodeURIComponent(environment[key])
             }).join(',');
         }
-        window.onload = function(){
-            var button = document.querySelector('#open-project');
-            var githubUrl = document.querySelector('#github-url');
-            var err = document.querySelector('#error');
-            var boilerplateBtns = document.querySelectorAll('.open-workspace');
-            boilerplateBtns.forEach(function(btn){
-                btn.addEventListener("click",function(e){
-                    console.log(e.currentTarget);
-                    var path = e.currentTarget.getAttribute('path');
-                    var env = getEnvironmentVariables();
-                    window.open('https://gitpod.io#'+env+'/'+path);
-                });
-            });
 
-            button.addEventListener("click",function(e){
-                err.classList.add("d-none");
-                setTimeout(function(){
-                    var result = isPlainGhUrl(githubUrl.value);
-                    console.log(githubUrl.value);
-                    if(result){
-                        var env = getEnvironmentVariables();
-                        window.open('https://gitpod.io#'+env+'/'+githubUrl.value);
-                    }
-                    else{
-                        err.classList.remove("d-none");
-                    }
-                }, 200)
-            });
+        window.onload = function(){
+
+            var env = getEnvironmentVariables();
+            if(env.BC_ASSETS_TOKEN != ''){
+
+                var screen = document.querySelector('#selector');
+                screen.classList.remove('d-none');
+
+                var boilerplateBtns = document.querySelectorAll('.open-workspace');
+                boilerplateBtns.forEach(function(btn){
+                    btn.addEventListener("click",function(e){
+                        console.log(e.currentTarget);
+                        var path = e.currentTarget.getAttribute('path');
+                        window.open('https://gitpod.io#'+buildQuery(env)+'/'+path);
+                    });
+                });
+
+                var button = document.querySelector('#open-project');
+                var githubUrl = document.querySelector('#github-url');
+                var err = document.querySelector('#error');
+                button.addEventListener("click",function(e){
+                    err.classList.add("d-none");
+                    setTimeout(function(){
+                        var result = isPlainGhUrl(githubUrl.value);
+                        console.log(githubUrl.value);
+                        if(result)window.open('https://gitpod.io#'+buildQuery(env)+'/'+githubUrl.value);
+                        else err.classList.remove("d-none");
+                    }, 200)
+                });
+            }
+            else{
+                var screen = document.querySelector('#no-token');
+                screen.classList.remove('d-none');
+            }
         }
     </script>
   </body>
