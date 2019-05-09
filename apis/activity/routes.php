@@ -13,7 +13,10 @@ return function($api){
 
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
-	$api->get('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/types', function (Request $request, Response $response, array $args) use ($api) {
+	    return $response->withJson(BreatheCodeLogger::getAllTypes());
+	});
+    $api->get('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
 
         $user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
 
@@ -73,7 +76,7 @@ return function($api){
 	})->add($api->auth());
 
 	//create user activity
-	$api->post('/coding', function (Request $request, Response $response, array $args) use ($api) {
+	$api->post('/coding_error', function (Request $request, Response $response, array $args) use ($api) {
 
         $parsedBody = $request->getParsedBody();
         function logError($api, $data){
@@ -100,6 +103,24 @@ return function($api){
 	    return $response->withJson("ok");
 
 	});//->add($api->auth());
+
+	$api->get('/coding_error/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
+
+        $user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
+
+        $filters=[];
+
+        if(filter_var($args["user_id"], FILTER_VALIDATE_EMAIL)) $filters["email"] = $args["user_id"];
+        else $filters["user_id"] = $args["user_id"];
+
+        if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
+        $result = BreatheCodeLogger::retrieveActivity($filters, 'coding_error');
+
+	    return $response->withJson([
+	        "user" => $user,
+	        "log" => $result
+	    ]);
+	});
 
 	return $api;
 };
