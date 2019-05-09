@@ -96,21 +96,5 @@ return function($api){
 
 	})->add($api->auth());
 
-	//create user activity
-	$api->get('/encode', function (Request $request, Response $response, array $args) use ($api) {
-
-        $token = $api->jwt_encode("abc");
-	    return $response->withJson($token);
-
-	});
-
-	//create user activity
-	$api->get('/restricted', function (Request $request, Response $response, array $args) use ($api) {
-
-	    return $response->withJson("hello");
-
-	})->add($api->auth());
-
-
 	return $api;
 };
