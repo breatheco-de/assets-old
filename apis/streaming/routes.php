@@ -11,9 +11,7 @@ return function($api){
 
 	$api->addTokenGenerationPath();
 
-
-
-	//get cohort streaming infor
+	//get cohort streaming info
 	$api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
 
@@ -33,27 +31,12 @@ return function($api){
 	    return $response->withJson($streaming);
 	});
 
-	//update cohort streaming info
-	$api->put('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
-		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
+	// update cohort streaming info
+	$api->post('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
+		// @TODO: Add a new cohort from Stream Video Provider
+	})->add($api->auth());
 
-		try{
-			$streaming = $api->db['json']->getJsonByName($args['cohort_slug']);
-			$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
-			if(!$cohort) throw new Exception('The cohort was not found on the Breathecode API', 400);
-
-			$streaming["player"] = StreamingFunctions::getStreamingLink($streaming["it"], $cohort);
-			$streaming["iframe"] = StreamingFunctions::getIframeLink($streaming["it"], $cohort);
-			$streaming["rtmp"] = StreamingFunctions::getRTMPLink($streaming["rtmp"]);
-		}
-		catch(Exception $e){
-			if($e->getCode() == 400) throw $e;
-			else throw new Exception('The Cohort has no streaming information or does not exists', 404);
-		}
-	    return $response->withJson($streaming);
-	});
-
-	//update cohort streaming info
+	//get cohort videos
 	$api->get('/cohort/{cohort_slug}/videos', function (Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
 
