@@ -84,8 +84,8 @@
         var getEnvironmentVariables = function(){
             var url = new URL(window.location.href);
             var environment = {
-                ERROR_HOOK: 'https://assets.breatheco.de/apis/activity/coding',
-                ASSETS_TOKEN: url.searchParams.get("assets_token") || '',
+                BC_ERROR_HOOK: 'https://assets.breatheco.de/apis/activity/coding',
+                BC_ASSETS_TOKEN: url.searchParams.get("assets_token") || '',
                 BC_STUDENT_EMAIL: url.searchParams.get("email") || ''
             }
             return Object.keys(environment).map(function(key) {
