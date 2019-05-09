@@ -178,6 +178,7 @@ class BreatheCodeLogger{
             'data' => (empty($data["data"])) ? 'No additional data' : $data["data"],
             'user_id' =>  $student,
             'message' => $data["message"],
+            'name' => $data["name"],
             'severity' => $data["severity"],
             'details' => $data["details"],
         ];
@@ -189,6 +190,7 @@ class BreatheCodeLogger{
             "slug" => $ans->slug,
             "data" => (empty($data["data"])) ? 'No additional data' : $data["data"],
             "message" => $ans->message,
+            "name" => $ans->name,
             "severity" => $ans->severity,
             "created_at" => $data->created_at,
             "details" => $ans->error
