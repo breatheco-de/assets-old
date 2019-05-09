@@ -76,25 +76,40 @@ return function($api){
 	$api->post('/coding/{github_username}', function (Request $request, Response $response, array $args) use ($api) {
 
         $githubUsername = $args["github_username"];
-        if(empty($githubUsername)) throw new Exception("Missing github useraname on the URL", 400);
+        if(empty($githubUsername)) throw new Exception("Missing github username on the URL", 400);
 
         $parsedBody = $request->getParsedBody();
-        $details = $api->optional($parsedBody,'details')->string();
-        $slug = $api->validate($parsedBody,'slug')->slug();
-        $message = $api->validate($parsedBody,'message')->text();
-        $severity = $api->validate($parsedBody,'severity')->string(0,20);
+        function logError($api, $data){
+            $details = $api->optional($data,'details')->string();
+            $slug = $api->validate($data,'slug')->slug();
+            $message = $api->validate($data,'message')->text();
+            $user = $api->validate($data,'user')->string();
+            $severity = $api->validate($data,'severity')->int();
+            $name = $api->validate($data,'name')->string(0,20);
 
-        BreatheCodeLogger::logActivity([
-            'slug' => $slug,
-            'user' => $githubUsername,
-            'details' => $details,
-            'message' => $message,
-            'severity' => $severity,
-        ]);
+            BreatheCodeLogger::logActivity([
+                'slug' => $slug,
+                'user' => $user,
+                'details' => $details,
+                'name' => $name,
+                'message' => $message,
+                'severity' => $severity,
+            ]);
+        }
+
+        if(is_array($parsedBody))
+            foreach($parsedBody as $error){
+                $error["user"] = $githubUsername;
+                logError($api, $error);
+            }
+        else{
+            $parsedBody["user"] = $githubUsername;
+            logError($api, $parsedBody);
+        }
 
 	    return $response->withJson("ok");
 
-	})->add($api->auth());
+	});//->add($api->auth());
 
 	return $api;
 };
