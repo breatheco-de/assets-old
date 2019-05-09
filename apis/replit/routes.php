@@ -107,7 +107,7 @@ return function($api){
 		else $api->db['json']->toNewFile($args['cohort_slug'])->save($data);
 
 	    return $response->withJson($data);
-	});//->add($api->auth());
+	})->add($api->auth());
 
 	return $api;
 };

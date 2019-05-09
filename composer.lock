@@ -54,12 +54,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alesanchezr/slim-api-wrapper.git",
-                "reference": "1d59eec17fd100d4c40e5716fd0ff4d794fc4b42"
+                "reference": "607059a4ba0f3becbcaf80a2e74caabb24c39617"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alesanchezr/slim-api-wrapper/zipball/1d59eec17fd100d4c40e5716fd0ff4d794fc4b42",
-                "reference": "1d59eec17fd100d4c40e5716fd0ff4d794fc4b42",
+                "url": "https://api.github.com/repos/alesanchezr/slim-api-wrapper/zipball/607059a4ba0f3becbcaf80a2e74caabb24c39617",
+                "reference": "607059a4ba0f3becbcaf80a2e74caabb24c39617",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 }
             ],
             "description": "Build Slim API's really fast",
-            "time": "2019-05-08T20:12:03+00:00"
+            "time": "2019-05-09T01:33:01+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
