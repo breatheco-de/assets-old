@@ -12,7 +12,8 @@ body {
   display: inline-block;
   position: absolute;
   top: -30px;
-  left: 0px; }
+  left: 0px;
+}
 
 .dr-menu {
   width: 70%;
@@ -20,10 +21,12 @@ body {
   position: relative;
   font-size: 1.8em;
   font-weight: 400;
+  height: 0px;
   color: #fff;
   padding-top: 2em; }
   .dr-menu.dr-menu-open {
     padding-top: 3em;
+    height: inherit;
     background: rgba(0, 0, 0, 0.8); }
   .dr-menu > div {
     cursor: pointer;
