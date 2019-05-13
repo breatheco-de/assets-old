@@ -82,7 +82,7 @@ class BreatheCodeLogger{
         ];
     }
 
-    static function getActivityTypes($activitySlug){
+    static function getTrackingActivity($activitySlug){
         foreach(self::$_activites as $key => $obj)
             if($key == $activitySlug){
                 $obj["type"] = "student_activity";
