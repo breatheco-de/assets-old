@@ -75,7 +75,14 @@ class BreatheCodeLogger{
         }
     }
 
-    static function getTrackingActivity($activitySlug){
+    static function getAllTypes(){
+        return [
+            "student_activity" => self::$_activites,
+            "coding_error" => self::$_codingErrorActivites,
+        ];
+    }
+
+    static function getActivityTypes($activitySlug){
         foreach(self::$_activites as $key => $obj)
             if($key == $activitySlug){
                 $obj["type"] = "student_activity";
@@ -110,6 +117,11 @@ class BreatheCodeLogger{
 
     }
 
+    // public static function deleteActivity($student, $type=null){
+    //     $record = self::datastore()->entity($type, $activity);
+    //     self::datastore()->insert($record);
+    // }
+
     public static function _logInternally($student, $activity, $type='student_activity'){
         if(!is_callable('BreatheCodeLogger::encode_'.$type)) throw new Exception("No encoder for activity type: ".$type);
         $activity = call_user_func('BreatheCodeLogger::encode_'.$type, $student, $activity);
@@ -132,7 +144,7 @@ class BreatheCodeLogger{
     public static function retrieveActivity($filters, $type='student_activity'){
 
         $query = self::datastore()->query()->kind($type);
-        $query = call_user_func('BreatheCodeLogger::filter_'.$type);
+        $query = call_user_func('BreatheCodeLogger::filter_'.$type, $query, $filters);
         //$query = $query->order('created_at', Query::ORDER_DESCENDING);
         $items = self::datastore()->runQuery($query);
         $results = [];

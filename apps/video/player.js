@@ -1,30 +1,23 @@
-(function(videotutorial,$,undefined) { 
+(function(videotutorial,$,undefined) {
 
   var player,
-  	  playerSelector,
-  	  menuSelector,
   	  videoStringId,
-  	  videoURL,
-  	  autoPlay,
-      menuTitle,
   	  menuTitleValue,
   	  done = false,
       settings = {};
 
-  const ASSETS_URL = 'https://assets.breatheco.de/';
- 
   videotutorial.initialize = function(theSettings){
 
     defaults(theSettings);
 
-    loadInfoJSON(videoURL);
-
+    if(settings["timeline-url"].indexOf('/') === -1) loadInfoJSON('/apis/vtutorial/'+settings["timeline-url"]);
+    else loadInfoJSON(settings["timeline-url"]);
   }
 
   function initializePlayer(){
     if (typeof(YT) == 'undefined' || typeof(YT.Player) == 'undefined') {
       window.onYouTubeIframeAPIReady = function() {
-        loadPlayer(playerSelector, videoStringId);
+        loadPlayer(settings["selector"], videoStringId);
       };
 
       $.getScript('https://www.youtube.com/iframe_api');
@@ -32,7 +25,8 @@
   }
 
   function loadPlayer() {
-    player = new YT.Player(playerSelector, {
+      console.log("Selector: ", settings["selector"]);
+    player = new YT.Player(settings["selector"], {
 		height: '100%',
 		width: '100%',
 		videoId: videoStringId,
@@ -51,7 +45,7 @@
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
-	   if(autoPlay) player.playVideo();
+	   if(settings['autoplay']) player.playVideo();
   }
 
   // 5. The API calls this function when the player's state changes.
@@ -69,7 +63,7 @@
 
   function defaults(theSettings)
   {
-    settings = {
+    var _settings = {
     	'selector': 'player',
     	'autoplay': false,
     	'menu-selector': 'menu-items',
@@ -77,22 +71,16 @@
     	'menu-title': 'Menu'
     };
 
-    if(theSettings['selector']) playerSelector = theSettings['selector'];
-    else playerSelector = settings['selector'];
+    var objAssign = function(a,b){
+        var result = {};
+        for( var key in b) result[key] = a[key];
+        for( var key in b) result[key] = b[key];
+        return result;
+    }
+    settings = objAssign(_settings , theSettings);
 
-    if(theSettings['menu-selector']) menuSelector = theSettings['menu-selector'];
-    else menuSelector = settings['menu-selector'];
-
-    if(theSettings['autoplay']) autoPlay = theSettings['autoplay'];
-    else autoPlay = settings['autoplay'];
-
-    if(theSettings['timeline-url']) videoURL = theSettings['timeline-url'];
-    else videoURL = settings['timeline-url'];
-
-    if(theSettings['menu-title']) menuTitle = theSettings['menu-title'];
-    else menuTitle = settings['menu-title'];
-    menuTitleValue = $('#'+menuTitle).html();
-    $('#'+menuTitle).html('Loading');
+    menuTitleValue = $('#'+settings['menu-title']).html();
+    $('#'+settings['menu-title']).html('Loading');
 
     return settings;
   }
@@ -101,7 +89,7 @@
 
   	var cont = 1;
   	timeline.forEach(function(elm){
-  		$('#'+menuSelector).append(renderMenuItem(cont,elm.seconds,elm.description));
+  		$('#'+settings['menu-selector']).append(renderMenuItem(cont,elm.seconds,elm.description));
   		cont++;
   	});
 
@@ -114,7 +102,7 @@
 
   function displayTime(seconds) {
     if(typeof seconds != 'string' || seconds.indexOf(':') != -1) return seconds;
-    
+
     var hh = Math.floor(seconds / 3600);
     var mm = Math.floor((seconds % 3600) / 60);
     var ss = seconds % 60;
@@ -142,7 +130,7 @@
   	  }
   		videotutorial.jumpTo(seconds);
   	});
-  	
+
   	$('.dr-menu').click(function(){
   	  $(this).toggleClass('dr-menu-open');
   	});
@@ -150,7 +138,7 @@
 
   function loadInfoJSON(jsonURL){
       $.ajax({
-        url: '/apis/vtutorial/'+jsonURL,
+        url: jsonURL,
         cache: false,
         dataType: 'json',
         success: function(data){
@@ -160,11 +148,11 @@
           }
           else
           {
-          	$('#'+menuTitle).html(menuTitleValue);
+          	$('#'+settings['menu-title']).html(menuTitleValue);
           	if(data.timeline && data.timeline.length>0) renderTimeline(data.timeline);
           	videoStringId = data['video-id'];
-          	
-          	if(data.menuname) $('#'+menuTitle).html(data.menuname);
+
+          	if(data.menuname) $('#'+settings['menu-title']).html(data.menuname);
             initializePlayer();
           }
         },

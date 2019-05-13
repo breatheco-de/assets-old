@@ -31,7 +31,7 @@
 				'autoplay': <?php echo $autoplay; ?>,
 				'menu':'dr-menu',
 				'menu-selector':'menu-items',
-				'timeline-url': '<?php echo $_GET['v']; ?>',
+				'timeline-url': '<?php echo urldecode($_GET['v']); ?>',
 				'menu-title':'menu-title'
 			});
 			<?php } ?>

@@ -7,6 +7,9 @@ All BreatheCode classes can be streamied thanks to its integration with Streamin
 This is the API that interactes with StreamingVideoProvider.com to retrieve and organize all the streaming information related to a particular cohort.
 
 #### Get streaming information from a cohort
+
+Here is and example for [Miami Downtown VII](http://assets.breatheco.de/apis/streaming/cohort/miami-downtown-vii)
+
 ```
 GET: streaming/cohort/<slug>
 
@@ -23,13 +26,17 @@ RESPONSE:
 }
 ```
 
+#### Add new cohort streaming info
+
+This enpoing is not finished, [here is the issue](https://github.com/breatheco-de/assets/issues/57)
+
 #### Get cohort videos
 ```
 GET: /cohort/{cohort_slug}/videos
 
 RESPONSE:
 [
-    {   
+    {
         "ref_no": "2045652",
         "clip_key": "4u11zbuc5xgk",
         "title": "Recording #2ol69hioq4is (Mar 13, 2019 15:29:02)",

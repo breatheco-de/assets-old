@@ -1,0 +1,52 @@
+[
+    {
+        "type": "youtube",
+        "slug": "the-net-ninja",
+        "url": "https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg?pbjreload=10"
+    },
+    {
+        "type": "youtube",
+        "slug": "learn-to-code-academy",
+        "url": "https://www.youtube.com/user/learncodeacademy"
+    },
+    {
+        "type": "youtube",
+        "slug": "the-new-boston",
+        "url": "https://www.youtube.com/user/thenewboston"
+    },
+    {
+        "type": "video",
+        "slug": "how-to-use-postman",
+        "title": "How to use postman",
+        "url": "https://www.youtube.com/watch?v=t5n07Ybz7yI",
+        "tags": ["postman", "how to"]
+    },
+    {
+        "type": "video",
+        "slug": "fetch-api-introduction",
+        "title": "How to use the fetch function",
+        "url": "https://www.youtube.com/watch?v=Oive66jrwBs",
+        "tags": ["fetch", "http", "javascript"]
+    },
+    {
+        "type": "article",
+        "slug": "fetch-api-explanation",
+        "title": "Using Fetch (jQuery AJAX comparison)",
+        "url": "https://css-tricks.com/using-fetch/",
+        "tags": ["fetch", "http", "javascript", "ajax", "jquery-ajax"]
+    },
+    {
+        "type": "infographic",
+        "slug": "git-guide-rogerdudler",
+        "title": "How to use git",
+        "url": "http://rogerdudler.github.io/git-guide/",
+        "tags": ["git"]
+    },
+    {
+        "type": "challenge",
+        "slug": "javascript-30",
+        "title": "30 day vanilla js challenge",
+        "url": "https://javascript30.com",
+        "tags": ["js","vanilla-js"]
+    }
+]
