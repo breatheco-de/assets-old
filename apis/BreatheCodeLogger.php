@@ -149,7 +149,7 @@ class BreatheCodeLogger{
         $items = self::datastore()->runQuery($query);
         $results = [];
         foreach($items as $ans) {
-            $results[] = $query = call_user_func('BreatheCodeLogger::decode_'.$type);
+            $results[] = $query = call_user_func('BreatheCodeLogger::decode_'.$type, $ans);
         }
         return $results;
     }
