@@ -1,6 +1,11 @@
 [
     {
         "type": "youtube",
+        "topics": ["programming"],
+        "technologies": [],
+        "created_at": "20/10/1985",
+        "up_votes": 23,
+        "referrer": null,
         "slug": "the-net-ninja",
         "url": "https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg?pbjreload=10"
     },

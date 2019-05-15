@@ -79,7 +79,7 @@ class BaseTestCase extends TestCase {
 
         $this->runner = new Runner();
         $this->runner->addReporter(new BasicConsole(80, true));
-        
+
         $this->client = new \GuzzleHttp\Client();
 
         if(!defined('RUNING_TEST')) define('RUNING_TEST',true);
@@ -177,6 +177,7 @@ class BaseTestCase extends TestCase {
         foreach($syllabusFiles as $syllabus){
             $profileSlug = pathinfo($syllabus, PATHINFO_FILENAME);
             $this->data['syllabis'][$profileSlug] = json_decode(file_get_contents($syllabus));
+            $this->assertSame("Syllabus json for $profileSlug is good", "Syllabus json for $profileSlug is ".($this->data['syllabis'][$profileSlug] ? "good" : "wrong"));
             $this->assertSame($profileSlug, $this->data['syllabis'][$profileSlug]->profile);
         }
         foreach($replitFiles as $template){
@@ -192,7 +193,7 @@ class BaseTestCase extends TestCase {
             }
             else throw new Exception('There is quiz with a bad name: '.$quizSlug);
         }
-        
+
         if(empty($this->data['lessons'])) $this->data['lessons'] = $this->get(self::ASSETS_API.'lesson/all/v2');
 
         $projects = $this->get('https://projects.breatheco.de/json');
