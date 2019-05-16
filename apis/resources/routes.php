@@ -6,7 +6,7 @@ use JsonPDO\JsonPDO;
 return function($api){
 
     $media = [];
-    $types = ["article", "video", "infographic", "cheatcheet"];
+    $types = [];
 
 	//get all cohorts and its replits
 	$api->get('/types', function (Request $request, Response $response, array $args) use ($api, $types) {
