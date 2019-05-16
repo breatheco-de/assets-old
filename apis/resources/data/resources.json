@@ -3,13 +3,24 @@
     {
         "types": ["youtube"],
         "slug": "learn-to-code-academy",
-        "url": "https://www.youtube.com/user/learncodeacademy"
+        "url": "https://www.youtube.com/user/learncodeacademy",
+        "topics": ["programming","Responsive Design","Dev Ops"],
+        "technologies": ["HTML", "CSS", "JavaScript", "CSS", "React.js", "Node.js", "Angular.js", "Docker" ],
+        "created_at":"12/20/2012",
+        "up_votes": 0,
+        "referrer": null
     },
     {
         "types": ["video"],
         "slug": "how-to-use-postman",
         "title": "How to use postman",
         "url": "https://www.youtube.com/watch?v=t5n07Ybz7yI",
+        "topics": ["programming","back-end"],
+        "technologies": ["postman"],
+        "created_at": "08/03/2017",
+        "up_votes": 0,
+        "referrer": null
+      
        
     },
     {
@@ -17,28 +28,44 @@
         "slug": "fetch-api-introduction",
         "title": "How to use the fetch function",
         "url": "https://www.youtube.com/watch?v=Oive66jrwBs",
-        "technologies": ["fetch", "http", "javascript"]
+        "technologies": ["fetch", "http", "javascript"],
+        "topics": ["programming"],
+        "created_at": "08/31/2017",
+        "up_votes": 0,
+        "referrer": null
     },
     {
         "types": ["article"],
         "slug": "fetch-api-explanation",
         "title": "Using Fetch (jQuery AJAX comparison)",
         "url": "https://css-tricks.com/using-fetch/",
-        "technologies": ["fetch", "http", "javascript", "ajax", "jquery-ajax"]
+        "technologies": ["fetch", "http", "javascript", "ajax", "jquery-ajax"],
+        "topics": ["programming"],
+        "created_at":"05/02/2017",
+        "up_votes": 0,
+        "referrer": null
     },
     {
         "types": ["infographic"],
         "slug": "git-guide-rogerdudler",
         "title": "How to use git",
         "url": "http://rogerdudler.github.io/git-guide/",
-        "technologies": ["git"]
+        "technologies": ["git"],
+        "topics": ["programming"],
+        "created_at":null,
+        "up_votes": 0,
+        "referrer": null
     },
     {
         "types": ["challenge"],
         "slug": "javascript-30",
         "title": "30 day vanilla js challenge",
         "url": "https://javascript30.com",
-        "technologies": ["js","vanilla-js"]
+        "technologies": ["js","vanilla-js"],
+        "topics": ["programming"],
+        "created_at":null,
+        "up_votes": 0,
+        "referrer": null
     },
     {
         "types": ["Cheat Sheet"],
