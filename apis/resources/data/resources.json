@@ -3,6 +3,7 @@
 	{
 		"types": ["youtube"],
 		"slug": "learn-to-code-academy",
+		"title":"LearnCode.academy",
 		"url": "https://www.youtube.com/user/learncodeacademy",
 		"topics": ["programming", "Responsive Design", "Dev Ops"],
 		"technologies": ["HTML", "CSS", "JavaScript", "CSS", "React.js", "Node.js", "Angular.js", "Docker"],
