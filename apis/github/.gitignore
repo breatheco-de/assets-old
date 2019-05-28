@@ -1,3 +1,4 @@
 !.htaccess
 ./issues
+./issues/*
 !./issues/.gitkeep
