@@ -176,7 +176,8 @@ class BaseTestCase extends TestCase {
 
         foreach($syllabusFiles as $syllabus){
             $profileSlug = pathinfo($syllabus, PATHINFO_FILENAME);
-            $profileSlug = substr($profileSlug, 0, strrpos($profileSlug, ".")); //remove syllabus version
+            $versionNumberPosition = strrpos($profileSlug, ".v");
+            if($versionNumberPosition) $profileSlug = substr($profileSlug, 0, $versionNumberPosition); //remove syllabus version
 
             $this->data['syllabis'][$profileSlug] = json_decode(file_get_contents($syllabus));
             $this->assertSame("Syllabus json for $profileSlug is good", "Syllabus json for $profileSlug is ".($this->data['syllabis'][$profileSlug] ? "good" : "wrong"));
