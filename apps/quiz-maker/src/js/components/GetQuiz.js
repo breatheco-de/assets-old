@@ -3,7 +3,7 @@ import React from 'react';
 export default class GetQuiz extends React.Component {
 	constructor(){
         super();
-        
+
         this.state = {
             slugQuiz: '',
             allQuiz: []
@@ -11,7 +11,7 @@ export default class GetQuiz extends React.Component {
     }
 
     handleGetQuiz(){
-        fetch('https://assets.breatheco.de/apis/quiz/all')
+        fetch(process.env.ASSET_URL+'/apis/quiz/all')
 		.then(function(response) {
 			return response.json();
 		})
@@ -28,7 +28,7 @@ export default class GetQuiz extends React.Component {
     componentDidMount(){
         this.handleGetQuiz();
     }
-    
+
     handleSubmit(event){
         event.preventDefault();
         console.log(this.state.slugQuiz);
@@ -49,7 +49,7 @@ export default class GetQuiz extends React.Component {
         };
         let slugQuiz = Object.entries(this.state.allQuiz);
         let optionSelect = slugQuiz.map((value, key)=>(
-            (value[1].info.slug) ? <option key={key} value={value[1].info.slug} onChange={(event)=>this.handleChange(event)}>{value[1].info.slug}</option> : ''
+            (value[1].info && value[1].info.slug) ? <option key={key} value={value[1].info.slug} onChange={(event)=>this.handleChange(event)}>{value[1].info.slug} ({value[1].info.lang})</option> : `Invalid quiz ${value[0]}`
         ))
 		return (
             <div className="alert alert-primary">
