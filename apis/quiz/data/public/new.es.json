@@ -1,0 +1,23 @@
+{
+    "info": {
+        "slug":    "new",
+        "name":    "Example Quiz",
+        "status":    "draft",
+        "main":    "Self-assessment",
+        "results": "Congratulations! Now you know Kung Fu!",
+        "badges": [
+            { "slug": "css_master", "points": 23 }
+        ]
+    },
+    "questions": [
+        {
+            "q": "Which of the following is correct ?",
+            "a": [
+                {"option": "Wulululu.",      "correct": false},
+                {"option": "Welelelele",     "correct": false},
+                {"option": "PEPEPE",      "correct": false},
+                {"option": "PIPIPIPI",      "correct": true}
+            ]
+        }
+    ]
+}
