@@ -434,12 +434,25 @@
 	{
 
 		"types": ["Cheat Sheets"],
-        "preview":"https://ucarecdn.com/0c3ba060-a785-4f46-9bb2-0f2f72eb8d84/CheatSheetCSS.jpg",
+        	"preview":"https://ucarecdn.com/0c3ba060-a785-4f46-9bb2-0f2f72eb8d84/CheatSheetCSS.jpg",
 		"slug": "css3-cheat-sheet",
 		"title": "CSS3 Cheat Sheet",
 		"url": "https://ucarecdn.com/0c3ba060-a785-4f46-9bb2-0f2f72eb8d84/-/resize/90x/",
 		"topics": ["programming"],
 		"technologies": ["CSS"],
+		"created_at": null,
+		"up_votes": 0,
+		"referrer": null
+	},
+	{
+
+		"types": ["Cheat Sheets"],
+        	"preview":"https://ucarecdn.com/e65b1c52-8e17-49ba-a7fe-e9031d2ae434/es6.jpg",
+		"slug": "es6-cheat-sheet",
+		"title": "ES6 Cheat Sheet",
+		"url": "https://devhints.io/es6",
+		"topics": ["programming"],
+		"technologies": ["CSS", "javascript"],
 		"created_at": null,
 		"up_votes": 0,
 		"referrer": null
