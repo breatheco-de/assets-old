@@ -49,12 +49,19 @@ return function($api){
         ];
 		$orm = new JsonPDO('./issues/');
         $client = new Client();
+        function removePullRequests($issues){
+            $result = [];
+            foreach($issues as $issue)
+                if(!isset($issue["pull_request"])) $result[] = $issue;
+            return $result;
+        }
         foreach($projects as $p){
 			$resp = $client->request('GET', "https://api.github.com/repos/breatheco-de/$p/issues", [
 			    'Headers' => ["Authorization" => "63a8bc87eac02fa19ac128f47b710aba73b7e10d"]
 			]);
 			$respText = $resp->getBody()->getContents();
-			$issues = json_decode($respText, true);
+			$issues = removePullRequests(json_decode($respText, true));
+
 			try{
 				$original = $orm->getJsonByName($p.'.json');
 				$orm->toFile($p)->save($issues);
