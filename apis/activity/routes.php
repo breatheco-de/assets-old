@@ -16,6 +16,7 @@ return function($api){
 	$api->get('/types', function (Request $request, Response $response, array $args) use ($api) {
 	    return $response->withJson(BreatheCodeLogger::getAllTypes());
 	});
+
     $api->get('/user/{user_id}', function (Request $request, Response $response, array $args) use ($api) {
 
         $user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
@@ -25,6 +26,20 @@ return function($api){
         if(filter_var($args["user_id"], FILTER_VALIDATE_EMAIL)) $filters["email"] = $args["user_id"];
         else $filters["user_id"] = $args["user_id"];
 
+        if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
+        $result = BreatheCodeLogger::retrieveActivity($filters);
+
+	    return $response->withJson([
+	        "user" => $user,
+	        "log" => $result
+	    ]);
+	});
+
+    $api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
+
+        $filters=[];
+
+        $filters["cohort_slug"] = $args["cohort_slug"];
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         $result = BreatheCodeLogger::retrieveActivity($filters);
 
