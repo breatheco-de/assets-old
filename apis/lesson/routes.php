@@ -14,7 +14,7 @@ return function($api){
 		$obj = json_decode($content);
 	    return $response->withJson($obj);
 	});
-	
+
 	//new lessons from gatsby
 	$api->get('/all/v2', function (Request $request, Response $response, array $args) use ($api) {
 		$data = $request->getParams();
@@ -36,18 +36,13 @@ return function($api){
 	$api->get('/link/{slug}', function (Request $request, Response $response, array $args) use ($api) {
 
         if(!isset($args["slug"])) throw new Exception("Missing Slug", 400);
-        
+
         $token = '';
         if(isset($args["access_token"])) $token = "&access_token=".$args["access_token"];
-        
+
 		//?plain=true&access_token=
 		$base = 'https://content.breatheco.de/lesson/';
-		$fileHeaders = @get_headers($base);
-		
-		$badResponses = ['HTTP/1.1 404 Not Found', 'HTTP/1.1 403 Forbidden'];
-		if(!$fileHeaders || in_array($fileHeaders[0], $badResponses))
-			$base = 'https://breatheco.de/en/lesson/';
-			
+
 	    return $response->withJson([
 	    	"slug" => $args["slug"],
 	    	"url" => $base.$args["slug"]."?plain=true".$token
@@ -61,24 +56,11 @@ return function($api){
         $token = '';
         $data = $request->getParams();
         if(isset($data["access_token"])) $token = "&access_token=".$data["access_token"];
-        
+
 		$base = 'https://content.breatheco.de/lesson/';
-		$fileHeaders = @get_headers($base.rtrim($args["slug"], '/') . '/');
-
-		$badResponses = ['HTTP/1.1 404 Not Found', 'HTTP/1.1 403 Forbidden'];
-		if(!$fileHeaders || in_array($fileHeaders[0], $badResponses))
-			$base = 'https://breatheco.de/en/lesson/';
-		
 	    return $response->withRedirect($base.$args["slug"]."?plain=true".$token);
 	});
-	
 
-	$api->post('/migrate-lessons', function (Request $request, Response $response, array $args) use ($api) {
 
-        // @TODO : Script to change a lesson slug (migrate tasks from old slug to new slug)
-		
-	    return $response->withRedirect($base.$args["slug"]."?plain=true".$token);
-	});
-	
 	return $api;
 };
