@@ -2,6 +2,7 @@
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use GuzzleHttp\Client;
 
 return function($api){
 
@@ -19,9 +20,11 @@ return function($api){
 	$api->get('/all/v2', function (Request $request, Response $response, array $args) use ($api) {
 		$data = $request->getParams();
 		$status = null;
+
 		if(isset($data["status"])) $status = explode(",",$data["status"]);
-			$content = file_get_contents('https://content.breatheco.de/static/api/lessons.json');
-			$lessons = json_decode($content);
+            $client = new Client();
+            $r = $client->request('GET', 'https://content.breatheco.de/static/api/lessons.json');
+            $lessons = json_decode($r->getBody()->getContents());
 
 			if($status){
 				$newLessons = [];
