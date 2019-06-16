@@ -238,7 +238,7 @@ class BaseTestCase extends TestCase {
         if(!$content) throw new Exception('Invalid file url: '.$url);
 
         $obj = json_decode($content);
-        if(!$obj) throw new Exception('Invalid sample syntax');
+        if(!$obj) throw new Exception('Invalid sample syntax for '.$url);
         if(empty($this->cache[$url])) $this->cache[$url] = $obj;
 
         return $this->cache[$url];
