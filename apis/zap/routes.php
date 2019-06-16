@@ -18,7 +18,7 @@ BreatheCodeMessages::connect([
     'keyFilePath' => '../../breathecode-47bde0820564.json'
 ]);
 
-function addAPIRoutes($api){
+return function($api){
 
     $api->addTokenGenerationPath();
 
@@ -78,4 +78,4 @@ function addAPIRoutes($api){
 	});//->add($api->auth());
 
 	return $api;
-}
+};
