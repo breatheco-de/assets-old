@@ -49,7 +49,8 @@ return function($api){
             $res = (array) $r;
             if(!isset($res["up_votes"])) $res["up_votes"] = 0;
             if(!isset($res["description"])) $res["description"] = null;
-		if(!isset($res["download"])) $res["download"] = null;
+            if(!isset($res["lang"])) $res["lang"] = null;
+		    if(!isset($res["download"])) $res["download"] = null;
             if(!isset($res["preview"])) $res["preview"] = null;
             if(!isset($res["referrer"])) $res["up_votes"] = null;
             if(!isset($res["created_at"])) $res["created_at"] = null;
