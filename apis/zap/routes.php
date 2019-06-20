@@ -3,6 +3,7 @@
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \AC\ACAPI;
 require('./ZapManager.php');
 
 use \BreatheCode\BCWrapper as BC;
@@ -53,8 +54,8 @@ return function($api){
         $lastName = $api->validate($body,'last_name')->smallString();
         $phone = $api->validate($body,'phone')->smallString();
 
-        if(empty($_POST['cohorts'])) throw new Exception('Invalid list of cohorts, it must be an array', 400);
-        $cohorts = $_POST['cohorts'];
+        if(empty($body['cohorts'])) throw new Exception('Invalid list of cohorts, it must be an array', 400);
+        $cohorts = $body['cohorts'];
 
         ACAPI::start(AC_API_KEY);
         $contact = ACAPI::createOrUpdateContact($username,[
