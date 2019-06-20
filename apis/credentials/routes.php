@@ -100,6 +100,7 @@ return function($api){
         $github = $api->optional($body,'github');
 
         if($github){
+            $client = new Client();
             $resp = $client->request('GET','https://github.com/'.$github);
             if($resp->getStatusCode() == 404) throw new Exception('Github not not found', 400);
         }
