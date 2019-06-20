@@ -102,7 +102,7 @@ return function($api){
         if($github){
             $client = new Client();
             $resp = $client->request('GET','https://github.com/'.$github);
-            if($resp->getStatusCode() == 404) throw new Exception('Github not not found', 400);
+            if($resp->getStatusCode() == 404) throw new Exception('Github username not not found', 400);
         }
 
     	$user = BC::createStudent([
