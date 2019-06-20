@@ -105,27 +105,16 @@ return function($api){
     		'cohort_slug' => $cohortSlug
     	]);
 
-    	if(!empty($user)){
-            ACAPI::start(AC_API_KEY);
-            $contact = ACAPI::createOrUpdateContact($username,[
-                "first_name" => $firstName,
-                "last_name" => $lastName,
-                "phone" => $phone,
-                "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
-                "tags" => ACAPI::tag('platform_signup').','.$cohortSlug
-            ]);
-            if($contact){
-                BreatheCodeLogger::logActivity([
-                    'slug' => 'online_platform_registration',
-                    'user' => $user
-                ]);
-            }
+        //the students is added to active campaign using the zap engine
 
+    	if(!empty($user)){
+            BreatheCodeLogger::logActivity([
+                'slug' => 'online_platform_registration',
+                'user' => $user
+            ]);
             return $response->withJson($user)->withStatus(200);
-    	}
-        else{
-            throw new Exception('The student was not added into breathecode');
         }
+        else throw new Exception('The student was not added into breathecode');
 	});
 
 	return $api;

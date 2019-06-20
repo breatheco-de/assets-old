@@ -12,6 +12,19 @@ return function($api){
 	$api->addTokenGenerationPath();
 
 	//get cohort streaming info
+	$api->get('/cohort/all', function (Request $request, Response $response, array $args) use ($api) {
+
+        $streaming = $api->db['json']->getAllContent();
+        $cohorts = [];
+        foreach($streaming as $key => $temp){
+            $temp['slug'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($key));
+            $cohorts[] = $temp;
+        }
+
+        return $response->withJson($cohorts);
+	})->add($api->auth());
+
+	//get cohort streaming info
 	$api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 		if(empty($args['cohort_slug'])) throw new Exception('Invalid param cohort_slug');
 
