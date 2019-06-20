@@ -97,7 +97,7 @@ return function($api){
         $phone = $api->validate($body,'phone')->smallString();
         $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
         $profileSlug = $api->optional($body,'profile_slug');
-        $github = $api->optional($body,'github');
+        $github = $api->optional($body,'github')->smallString();
 
         if($github){
             $client = new Client();
