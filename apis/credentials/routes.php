@@ -2,6 +2,7 @@
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use GuzzleHttp\Client;
 
 require('../BreatheCodeLogger.php');
 use \AC\ACAPI;
@@ -96,11 +97,18 @@ return function($api){
         $phone = $api->validate($body,'phone')->smallString();
         $cohortSlug = $api->validate($body,'cohort_slug')->smallString();
         $profileSlug = $api->optional($body,'profile_slug');
+        $github = $api->optional($body,'github');
+
+        if($github){
+            $resp = $client->request('GET','https://github.com/'.$github);
+            if($resp->getStatusCode() == 404) throw new Exception('Github not not found', 400);
+        }
 
     	$user = BC::createStudent([
     		'email' => urlencode($username),
     		'first_name' => $firstName,
     		'last_name' => $lastName,
+    		'github' => $github,
     		'phone' => $phone,
     		'cohort_slug' => $cohortSlug
     	]);
