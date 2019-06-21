@@ -3,11 +3,11 @@
 use GuzzleHttp\Client;
 
 class StreamingFunctions{
-    
+
     static $host = "https://www.streamingvideoprovider.com/?l=api&a=";
     static $client = "https://www.streamingvideoprovider.com/?l=api&a=";
     static $token = null;
-    
+
     public static function connect($apiKey=null, $apiCode=null){
         self::$client = new Client();
 		$response = self::execute("svp_auth_get_token", [
@@ -17,7 +17,7 @@ class StreamingFunctions{
 		self::$token = $response['auth_token'];
 		if(!self::$token) throw new Exception("Invalid streaming API conection");
     }
-    
+
     public static function getVideosFromPlaylist($args=[]){
 		/**
 		 * [
@@ -31,7 +31,7 @@ class StreamingFunctions{
 			return (array) $v;
 		}, (array) $videos["video"]);
     }
-    
+
     public static function getPlaylists(){
 		$response = self::execute("svp_list_video_playlists");
 		$playlists = (array) $response["video_playlists"];
@@ -40,12 +40,12 @@ class StreamingFunctions{
 		},(array) $playlists["video_playlist"]);
 		return $playlists;
     }
-    
-    
+
+
     public static function execute($method, $args=[]){
     	if($method !== "svp_auth_get_token" and self::$token) $args["token"] = self::$token;
 		$response = self::$client->request('GET', self::$host.$method.'&'.http_build_query($args));
-		
+
 		$parsed = simplexml_load_string($response->getBody()->getContents());
 		if ($parsed === false) {
 			$errors = [];
@@ -56,15 +56,15 @@ class StreamingFunctions{
 		}
 		return (array) $parsed;
     }
-    
-	static function getStreamingLink($it, $cohort){
+
+	static function getStreamingLink($it, $cohortName){
 		$args = [
 			"it" => $it,
 			"is_link" => true,
 			"w" => "710",
 			"h" => "405",
 			"pause" => true,
-			"title" => $cohort->name,
+			"title" => $cohortName,
 			"skin" => 3,
 			"repeat" => null,
 			"brandNW" => true,
@@ -92,7 +92,7 @@ class StreamingFunctions{
 			"mainBg_Color" => "#ffffff",
 			"aspect_ratio" => "16:9",
 		];
-		return "https://play.webvideocore.net/popplayer.php?".http_build_query($args);	
+		return "https://play.webvideocore.net/popplayer.php?".http_build_query($args);
 	}
 	static function getIframeLink($it, $cohort){
 		$args = [
@@ -101,7 +101,7 @@ class StreamingFunctions{
 			"w"=>720,
 			"h"=>800,
 			"p"=>"4GE35AGFE12D4C4",
-			"title"=> $cohort->name,
+			"title"=> $cohortName,
 			"bgcolor1"=>"#ffffff",
 			"bgcolor2"=>"#e0e0e0",
 			"hide_playlist" => null,
@@ -136,10 +136,10 @@ class StreamingFunctions{
 			"player_start_volume"=>null,
 			"widget_height_behavior"=>false
 		];
-		return "https://play.webvideocore.net/popapp.php?".http_build_query($args);	
+		return "https://play.webvideocore.net/popapp.php?".http_build_query($args);
 	}
 	static function getRTMPLink($key){
-		return "rtmp://livecast.webvideocore.net/live/$key";	
+		return "rtmp://livecast.webvideocore.net/live/$key";
 	}
-    
+
 }
