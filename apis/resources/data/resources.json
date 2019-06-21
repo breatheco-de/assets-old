@@ -250,21 +250,6 @@
 		"referrer": null
 	},
 	{
-		"types": ["Responsive design"],
-        "preview":"https://ucarecdn.com/49f29df7-3d5b-4a8d-b609-f7b8d91d9b0f/responsivewebdesign.jpg",
-		"slug": "bootstrap-sizes-in-media-query",
-		"title": "Bootstrap Sizes in Media Query",
-		"url": "pending",
-        "description":"Below you'll find nicely formatted Media Queries for starting with either of the Bootstrap versions. You can use this as a starting point for your projects. It's basically what I use when creating a new website or webapp.",
-		"technologies": ["Bootstrap", "CSS", "HTML", "SCSS"],
-		"topics": ["programming", "web development"],
-		"created_at": null,
-		"up_votes": 0,
-         "download":null,
-         "lang":"en",
-		"referrer": null
-	},
-	{
 		"types": ["Cheat Sheet"],
         "preview":"https://ucarecdn.com/1c97ee7e-9694-4303-b670-c40dccb9102e/MOD_REWRITE.jpg",
 		"slug": "working-with-apache-htaccess-cheat-sheet",
