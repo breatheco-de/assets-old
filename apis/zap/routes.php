@@ -3,6 +3,7 @@
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \AC\ACAPI;
 require('./ZapManager.php');
 
 use \BreatheCode\BCWrapper as BC;
@@ -43,12 +44,36 @@ return function($api){
         $zaps = ZapManager::getZaps($withDetails=true);
         return $response->withJson($zaps);
 
-	})->add($api->auth());
+	});//->add($api->auth());
+
+	$api->post('/execute/add_student_to_active_campaign', function (Request $request, Response $response, array $args) use ($api) {
+
+        $body = $request->getParsedBody();
+        $username = $api->validate($body,'email')->email();
+        $firstName = $api->validate($body,'first_name')->smallString();
+        $lastName = $api->validate($body,'last_name')->smallString();
+        $phone = $api->validate($body,'phone')->smallString();
+
+        if(empty($body['cohorts'])) throw new Exception('Invalid list of cohorts, it must be an array', 400);
+        $cohorts = $body['cohorts'];
+
+        ACAPI::start(AC_API_KEY);
+        $contact = ACAPI::createOrUpdateContact($username,[
+            "first_name" => $firstName,
+            "last_name" => $lastName,
+            "phone" => $phone,
+            "p[".ACAPI::list('active_student')."]" => ACAPI::list('active_student'),
+            "tags" => ACAPI::tag('platform_signup').','.implode(",",$cohorts)
+        ]);
+
+    	return $response->withJson([ "msg" => "$count students notified, $ignored ignored (there are not currently_active or studies_finished) and $errors gave errors", "total" => $count]);
+
+	});//->add($api->auth());
 
 	$api->post('/execute/nps_survey_cohort', function (Request $request, Response $response, array $args) use ($api) {
 
         $payload = $request->getParsedBody();
-        if(empty($payload['cohort_slug'])) throw new Exception('Invalid or missing cohort_slug');
+        if(empty($payload['cohort_slug'])) throw new Exception('Invalid or missing cohort_slug', 400);
 
 		$token = str_replace("JWT ","",$request->getHeader('Authorization'));
 		if(is_array($token)) $token = $token[0];

@@ -9,7 +9,6 @@
     use ZendDiagnostics\Runner\Reporter\BasicConsole;
 
 
-    //$assetsURL = 'https://assets.breatheco.de/apis';
     $assetsURL = ASSETS_HOST.'/apis';
     // Create Runner instance
     $runner = new Runner();
