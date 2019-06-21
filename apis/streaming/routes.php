@@ -30,11 +30,15 @@ return function($api){
 
 		try{
 			$streaming = $api->db['json']->getJsonByName($args['cohort_slug']);
-			$cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
-			if(!$cohort) throw new Exception('The cohort was not found on the Breathecode API', 400);
 
-			$streaming["player"] = StreamingFunctions::getStreamingLink($streaming["it"], $cohort);
-			$streaming["iframe"] = StreamingFunctions::getIframeLink($streaming["it"], $cohort);
+            $cohort = null;
+            try{
+                $cohort = BCWrapper::getCohort(['cohort_id' => $args['cohort_slug']]);
+            }
+            catch(Exception $e){}
+
+			$streaming["player"] = StreamingFunctions::getStreamingLink($streaming["it"], $cohort ? $cohort->name : $args['cohort_slug']);
+			$streaming["iframe"] = StreamingFunctions::getIframeLink($streaming["it"], $cohort ? $cohort->name : $args['cohort_slug']);
 			$streaming["rtmp"] = StreamingFunctions::getRTMPLink($streaming["rtmp"]);
 		}
 		catch(Exception $e){
