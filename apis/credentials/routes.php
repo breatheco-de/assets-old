@@ -28,7 +28,7 @@ return function($api){
         		'admin' => ['super_admin'],
         		'location-admin' => ['read_basic_info', 'crud_student', 'crud_cohort'],
         		'student' => ['read_basic_info', 'student_tasks'],
-        		'teacher' => ['read_basic_info', 'update_cohort_current_day'],
+        		'teacher' => ['read_basic_info', 'update_cohort_current_day', 'student_tasks'],
         		'admission' => ['read_basic_info', 'crud_student', 'crud_cohort'],
         		'career-support' => ['read_basic_info', 'user_profile', 'crud_student']
         	];
