@@ -57,7 +57,6 @@ module.exports = {
       Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
     }),
     new HtmlWebpackPlugin({
-        favicon: '4geeks.ico',
         template: 'template.html'
     }),
     new PrettierPlugin({
