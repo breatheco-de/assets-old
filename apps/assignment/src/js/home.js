@@ -1,8 +1,9 @@
+/* global process */
 import React, { useState } from "react";
 import qs from "query-string";
 import { Notifier, Notify } from "bc-react-notifier";
 
-const host = "https://api.breatheco.de";
+const host = process.env.API_HOST;
 
 const ModalComponent = properties => {
 	const [comments, setComments] = useState("");
@@ -48,7 +49,7 @@ export class Home extends React.Component {
 				cohort: null,
 				student: null,
 				teacher: null,
-				access_token: null
+				bc_token: null
 			},
 			qs.parse(window.location.search)
 		);
@@ -62,7 +63,7 @@ export class Home extends React.Component {
 		else if (params.teacher) url = `${host}/task/?teacher=${params.teacher}`;
 		else url = `${host}/task/?`;
 
-		fetch(`${url}&access_token=${params.access_token}`, {
+		fetch(`${url}&bc_token=${params.bc_token}`, {
 			cache: "no-cache"
 		})
 			.then(resp => resp.json())
@@ -107,14 +108,12 @@ export class Home extends React.Component {
 					return "badge-light";
 			}
 		};
-		if (!this.state.access_token) return <div className="alert alert-danger">Unable to authorize the use of this app</div>;
+		if (!this.state.bc_token) return <div className="alert alert-danger">Unable to authorize the use of this app</div>;
 		return (
 			<div>
 				<Notifier />
 				<div className="text-center mt-5 container">
-					<h2>
-						Student Assignments
-					</h2>
+					<h2>Student Assignments</h2>
 					{this.state.catalogs && (
 						<div className="row mb-2">
 							<div className="col">
@@ -196,113 +195,114 @@ export class Home extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
-							{this.state.assignments
-								.filter(a => {
-									if (
-										this.state.filters.student &&
-										this.state.filters.student != "" &&
-										a.student_user_id != this.state.filters.student
-									)
-										return false;
-									if (
-										this.state.filters.status &&
-										this.state.filters.status != "" &&
-										a.status != this.state.filters.status
-									)
-										return false;
-									if (
-										this.state.filters.revision_status &&
-										this.state.filters.revision_status != "" &&
-										a.revision_status != this.state.filters.revision_status
-									)
-										return false;
-									if (
-										this.state.filters.associated_slug &&
-										this.state.filters.associated_slug != "" &&
-										a.associated_slug != this.state.filters.associated_slug
-									)
-										return false;
-									return true;
-								})
-								.map((a, i) => (
-									<tr key={i}>
-										<td>
-											<span className={`badge ${badgeColor(a.status)}`}>{a.status == "done" ? "Yes" : "No"}</span>
-										</td>
-										<td>
-											<span className={`badge ${badgeColor(a.revision_status)}`}>
-												{a.revision_status ? a.revision_status : "pending"}
-											</span>
-										</td>
-										<td>{a.student ? a.student.first_name + " " + a.student.last_name : "Loading..."}</td>
-										<td>
-											<a
-												rel="noopener noreferrer"
-												href={`https://projects.breatheco.de/project/${a.associated_slug}`}
-												target="_blank">
-												{a.title}
-											</a>
-										</td>
-										<td>
-											{a.github_url && (
-												<button className="btn btn-primary btn-sm" onClick={() => window.open(a.github_url)}>
-													Github
-												</button>
-											)}
-											{a.live_url && (
-												<button className="btn btn-primary btn-sm" onClick={() => window.open(a.live_url)}>
-													Live
-												</button>
-											)}
-										</td>
-										<td>
-											<select
-												className="form-control"
-												value={a.revision_status}
-												onChange={e => {
-													let noti = Notify.add(
-														"info",
-														ModalComponent,
-														answer => {
-															fetch(host + "/teachers/assignment/" + a.id, {
-																method: "PUT",
-																headers: {
-																	"Content-Type": "application/json",
-																	Authorization: `Bearer ${this.state.access_token}`
-																},
-																body: JSON.stringify(
-																	Object.assign(a, {
-																		revision_status: answer.revision_status,
-																		comments: answer.description
-																	})
-																)
-															})
-																.then(resp => resp.json())
-																.then(data => {
-																	if (data.code == 200) {
-																		Notify.success("The task was successfully updated");
-																		this.setState({
-																			assignments: this.state.assignments.map(a => {
-																				if (a.id == data.data.id)
-																					a.revision_status = data.data.revision_status;
-																				return a;
-																			})
-																		});
-																	} else Notify.error(data.msg || data);
+							{this.state.assignments &&
+								this.state.assignments
+									.filter(a => {
+										if (
+											this.state.filters.student &&
+											this.state.filters.student != "" &&
+											a.student_user_id != this.state.filters.student
+										)
+											return false;
+										if (
+											this.state.filters.status &&
+											this.state.filters.status != "" &&
+											a.status != this.state.filters.status
+										)
+											return false;
+										if (
+											this.state.filters.revision_status &&
+											this.state.filters.revision_status != "" &&
+											a.revision_status != this.state.filters.revision_status
+										)
+											return false;
+										if (
+											this.state.filters.associated_slug &&
+											this.state.filters.associated_slug != "" &&
+											a.associated_slug != this.state.filters.associated_slug
+										)
+											return false;
+										return true;
+									})
+									.map((a, i) => (
+										<tr key={i}>
+											<td>
+												<span className={`badge ${badgeColor(a.status)}`}>{a.status == "done" ? "Yes" : "No"}</span>
+											</td>
+											<td>
+												<span className={`badge ${badgeColor(a.revision_status)}`}>
+													{a.revision_status ? a.revision_status : "pending"}
+												</span>
+											</td>
+											<td>{a.student ? a.student.first_name + " " + a.student.last_name : "Loading..."}</td>
+											<td>
+												<a
+													rel="noopener noreferrer"
+													href={`https://projects.breatheco.de/project/${a.associated_slug}`}
+													target="_blank">
+													{a.title}
+												</a>
+											</td>
+											<td>
+												{a.github_url && (
+													<button className="btn btn-primary btn-sm" onClick={() => window.open(a.github_url)}>
+														Github
+													</button>
+												)}
+												{a.live_url && (
+													<button className="btn btn-primary btn-sm" onClick={() => window.open(a.live_url)}>
+														Live
+													</button>
+												)}
+											</td>
+											<td>
+												<select
+													className="form-control"
+													value={a.revision_status}
+													onChange={e => {
+														let noti = Notify.add(
+															"info",
+															ModalComponent,
+															answer => {
+																fetch(host + "/teachers/assignment/" + a.id, {
+																	method: "PUT",
+																	headers: {
+																		"Content-Type": "application/json",
+																		Authorization: `Bearer ${this.state.bc_token}`
+																	},
+																	body: JSON.stringify(
+																		Object.assign(a, {
+																			revision_status: answer.revision_status,
+																			comments: answer.description
+																		})
+																	)
 																})
-																.catch(err => Notify.error(err.msg || err));
-															noti.remove();
-														},
-														9999999999999
-													);
-												}}>
-												<option value={null}>Mark as...</option>
-												<option value={"approved"}>Approved</option>
-												<option value={"rejected"}>Rejected</option>
-											</select>
-										</td>
-									</tr>
-								))}
+																	.then(resp => resp.json())
+																	.then(data => {
+																		if (data.code == 200) {
+																			Notify.success("The task was successfully updated");
+																			this.setState({
+																				assignments: this.state.assignments.map(a => {
+																					if (a.id == data.data.id)
+																						a.revision_status = data.data.revision_status;
+																					return a;
+																				})
+																			});
+																		} else Notify.error(data.msg || data);
+																	})
+																	.catch(err => Notify.error(err.msg || err));
+																noti.remove();
+															},
+															9999999999999
+														);
+													}}>
+													<option value={null}>Mark as...</option>
+													<option value={"approved"}>Approved</option>
+													<option value={"rejected"}>Rejected</option>
+												</select>
+											</td>
+										</tr>
+									))}
 						</tbody>
 					</table>
 				</div>

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 var PrettierPlugin = require("prettier-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -69,6 +70,7 @@ module.exports = {
       jsxBracketSameLine: true,
       semi: true,                 // Print semicolons at the ends of statements.
       encoding: 'utf-8'           // Which encoding scheme to use on files
-    })
+    }),
+    new Dotenv()
   ]
 };
