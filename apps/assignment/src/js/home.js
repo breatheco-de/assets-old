@@ -66,7 +66,7 @@ export class Home extends React.Component {
 		else if (params.teacher) url = `${host}/task/?teacher=${params.teacher}`;
 		else url = `${host}/task/?`;
 
-		fetch(`${url}&bc_token=${params.bc_token}`, {
+		fetch(`${url}&access_token=${params.bc_token}`, {
 			cache: "no-cache"
 		})
 			.then(resp => resp.json())
