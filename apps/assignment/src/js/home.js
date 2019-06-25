@@ -14,11 +14,14 @@ const ModalComponent = properties => {
 				{comments}
 			</textarea>
 			<p className="text-center">
-				<button className="btn btn-success" onClick={() => properties.onConfirm({ comments, revision_status: "approved" })}>
-					Approve
+				<button className="btn btn-secondary" onClick={() => properties.onConfirm(false)}>
+					Cancel
 				</button>
 				<button className="btn btn-danger" onClick={() => properties.onConfirm({ comments, revision_status: "rejected" })}>
-					Reject
+					Mark as Rejected
+				</button>
+				<button className="btn btn-success" onClick={() => properties.onConfirm({ comments, revision_status: "approved" })}>
+					Mark as Approved
 				</button>
 			</p>
 		</div>
@@ -63,7 +66,7 @@ export class Home extends React.Component {
 		else if (params.teacher) url = `${host}/task/?teacher=${params.teacher}`;
 		else url = `${host}/task/?`;
 
-		fetch(`${url}&bc_token=${params.bc_token}`, {
+		fetch(`${url}&access_token=${params.bc_token}`, {
 			cache: "no-cache"
 		})
 			.then(resp => resp.json())
@@ -264,33 +267,34 @@ export class Home extends React.Component {
 															"info",
 															ModalComponent,
 															answer => {
-																fetch(host + "/teachers/assignment/" + a.id, {
-																	method: "PUT",
-																	headers: {
-																		"Content-Type": "application/json",
-																		Authorization: `Bearer ${this.state.bc_token}`
-																	},
-																	body: JSON.stringify(
-																		Object.assign(a, {
-																			revision_status: answer.revision_status,
-																			comments: answer.description
-																		})
-																	)
-																})
-																	.then(resp => resp.json())
-																	.then(data => {
-																		if (data.code == 200) {
-																			Notify.success("The task was successfully updated");
-																			this.setState({
-																				assignments: this.state.assignments.map(a => {
-																					if (a.id == data.data.id)
-																						a.revision_status = data.data.revision_status;
-																					return a;
-																				})
-																			});
-																		} else Notify.error(data.msg || data);
+																if (answer)
+																	fetch(host + "/teachers/assignment/" + a.id, {
+																		method: "PUT",
+																		headers: {
+																			"Content-Type": "application/json",
+																			Authorization: `Bearer ${this.state.bc_token}`
+																		},
+																		body: JSON.stringify(
+																			Object.assign(a, {
+																				revision_status: answer.revision_status,
+																				description: answer.comments
+																			})
+																		)
 																	})
-																	.catch(err => Notify.error(err.msg || err));
+																		.then(resp => resp.json())
+																		.then(data => {
+																			if (data.code == 200) {
+																				Notify.success("The task was successfully updated");
+																				this.setState({
+																					assignments: this.state.assignments.map(a => {
+																						if (a.id == data.data.id)
+																							a.revision_status = data.data.revision_status;
+																						return a;
+																					})
+																				});
+																			} else Notify.error(data.msg || data);
+																		})
+																		.catch(err => Notify.error(err.msg || err));
 																noti.remove();
 															},
 															9999999999999
