@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import qs from "query-string";
 import { Notifier, Notify } from "bc-react-notifier";
 
-const host = "https://test.api.breatheco.de";
+const host = "https://api.breatheco.de";
 
 const ModalComponent = properties => {
 	const [comments, setComments] = useState("");
@@ -48,7 +48,7 @@ export class Home extends React.Component {
 				cohort: null,
 				student: null,
 				teacher: null,
-				bc_token: null
+				access_token: null
 			},
 			qs.parse(window.location.search)
 		);
@@ -62,7 +62,7 @@ export class Home extends React.Component {
 		else if (params.teacher) url = `${host}/task/?teacher=${params.teacher}`;
 		else url = `${host}/task/?`;
 
-		fetch(`${url}&access_token=${params.bc_token}`, {
+		fetch(`${url}&access_token=${params.access_token}`, {
 			cache: "no-cache"
 		})
 			.then(resp => resp.json())
@@ -107,7 +107,7 @@ export class Home extends React.Component {
 					return "badge-light";
 			}
 		};
-		if (!this.state.bc_token) return <div className="alert alert-danger">Unable to authorize the use of this app</div>;
+		if (!this.state.access_token) return <div className="alert alert-danger">Unable to authorize the use of this app</div>;
 		return (
 			<div>
 				<Notifier />
@@ -268,7 +268,7 @@ export class Home extends React.Component {
 																method: "PUT",
 																headers: {
 																	"Content-Type": "application/json",
-																	Authorization: `Bearer ${this.state.bc_token}`
+																	Authorization: `Bearer ${this.state.access_token}`
 																},
 																body: JSON.stringify(
 																	Object.assign(a, {
