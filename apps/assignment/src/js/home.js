@@ -112,9 +112,9 @@ export class Home extends React.Component {
 			<div>
 				<Notifier />
 				<div className="text-center mt-5 container">
-					<h1>
-						Student Assignments for teacher {this.state.teacher} cohort {this.state.cohort}
-					</h1>
+					<h2>
+						Student Assignments
+					</h2>
 					{this.state.catalogs && (
 						<div className="row mb-2">
 							<div className="col">
