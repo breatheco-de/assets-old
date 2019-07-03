@@ -38,3 +38,10 @@ GET: /sounds/songs
 
 ## Here is an example of a song hosted on our servers:
 [https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3](https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3)
+
+You can see that all songs URL's start with `https://assets.breatheco.de/apis/sound/` and then are concatenated with the song path like this:
+
+```js
+const songURL = "https://assets.breatheco.de/apis/sound/" + "files/mario/songs/castle.mp3";
+```
+```
