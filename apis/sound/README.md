@@ -35,3 +35,6 @@ GET: /sounds/songs
     	{ "id":3, "category":"game", "name":"Mario Overworld", "url":"files/mario/songs/overworld.mp3"}
     ]
 ```
+
+## Here is an example of a song hosted on our servers:
+[https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3](https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3)
