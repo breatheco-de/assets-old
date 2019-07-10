@@ -27,6 +27,14 @@ POST: activity/user/{email_or_id}
     'data' => 'any aditional data (string or json-encoded-string)'
 }
 ```
+💡Node: You can pass the cohort in the data json object and it will be possible to filter on the activity graph like this:
+
+```json
+{
+    'slug' => 'activity_slug',
+    'data' => "{ \"cohort\": \"mdc-iii\" }" (json encoded string with the cohort id)
+}
+```
 
 ## Endpoints for the coding_error's
 

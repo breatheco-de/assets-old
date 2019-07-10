@@ -67,11 +67,12 @@ function addAPIRoutes($api){
 			if($now->diffInHours($day) < 24) throw new Exception('You have already answered',400);
 		}
 
+        $cohort = $api->optional($parsedBody,'cohort_slug')->smallString();
 		$row = $api->db['sqlite']->createRow( 'response', [
 			'score' => $score,
 			'email' => $email,
 			'user_id' => $api->optional($parsedBody,'user_id')->int(),
-			'cohort_slug' => $api->optional($parsedBody,'cohort_slug')->smallString(),
+			'cohort_slug' => $cohort,
 			'profile_slug' => $api->optional($parsedBody,'profile_slug')->smallString(),
 			'comment' => $api->optional($parsedBody,'comment')->bigString(),
 			'tags' => $api->optional($parsedBody,'tags')->smallString(),
@@ -85,7 +86,7 @@ function addAPIRoutes($api){
 	        BreatheCodeLogger::logActivity([
 	            'slug' => 'nps_survey_answered',
 	            'user' => ($user) ? $user : $email,
-	            'data' => $score
+	            'data' => json_encode([ "score" => $score, "cohort" => $cohort ])
 	        ]);
 	        BreatheCodeMessages::markManyAs('answered',[
 	        	'slug' => 'nps_survey',
