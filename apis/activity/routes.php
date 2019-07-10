@@ -33,7 +33,7 @@ return function($api){
 	        "user" => $user,
 	        "log" => $result
 	    ]);
-	});
+	})->add($api->auth());
 
     $api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -47,7 +47,7 @@ return function($api){
 	        "user" => $user,
 	        "log" => $result
 	    ]);
-	});
+	})->add($api->auth());
 
 	//create bulk user activity
 	$api->post('/user/bulk', function (Request $request, Response $response, array $args) use ($api) {
@@ -57,7 +57,7 @@ return function($api){
 	        $id = $api->validate($activity,'id')->int();
 	        $email = $api->validate($activity,'email')->email();
 	        $slug = $api->validate($activity,'slug')->slug();
-	        $data = $api->optional($activity,'data')->smallString();
+	        $data = $api->optional($activity,'data')->string();
 
 	        BreatheCodeLogger::logActivity([
 	            'slug' => $slug,
@@ -78,7 +78,7 @@ return function($api){
 		$user = BC::getUser(['user_id' => urlencode($args["user_id"])]);
 
 		$parsedBody = $request->getParsedBody();
-        $data = $api->optional($parsedBody,'data')->smallString();
+        $data = $api->optional($parsedBody,'data')->string();
         $slug = $api->validate($parsedBody,'slug')->slug();
 
         BreatheCodeLogger::logActivity([
