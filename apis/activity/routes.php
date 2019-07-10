@@ -40,7 +40,7 @@ return function($api){
 
         $filters=[];
 
-        $filters["cohort_slug"] = $args["cohort_slug"];
+        $filters["cohort"] = $args["cohort_slug"];
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         $result = BreatheCodeLogger::retrieveActivity($filters);
 

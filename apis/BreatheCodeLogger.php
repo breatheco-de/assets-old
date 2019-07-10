@@ -213,6 +213,7 @@ class BreatheCodeLogger{
 
     public static function filter_student_activity($query, $filters){
         if(!empty($filters["slug"])) $query = $query->filter('slug', '=', $filters["slug"]);
+        //print_r($filters); die();
         if(!empty($filters["cohort"])) $query = $query->filter('cohort', '=', $filters["cohort"]);
         if(!empty($filters["user_id"])){
             $query = $query->filter('user_id', '=', $filters["user_id"]);
