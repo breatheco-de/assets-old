@@ -155,10 +155,11 @@ class BreatheCodeLogger{
     }
 
     public static function encode_student_activity($student, $data){
-
+        $dataObj = json_decode($data['data'], true);
         $activity = [
             'created_at' => new DateTime(),
             'slug' => $data["slug"],
+            'cohort' => (empty($dataObj)) ? null : (empty($dataObj["cohort"])) ? null : $dataObj["cohort"],
             'data' => (empty($data["data"])) ? null : $data["data"]
         ];
 
@@ -178,6 +179,7 @@ class BreatheCodeLogger{
             "user_id" => $data->user_id,
             "email" => $data->email,
             "data" => $data->data,
+            "cohort"=>$data->cohort,
             "created_at" => $data->created_at,
             "slug" => $data->slug,
         ];
@@ -211,7 +213,7 @@ class BreatheCodeLogger{
 
     public static function filter_student_activity($query, $filters){
         if(!empty($filters["slug"])) $query = $query->filter('slug', '=', $filters["slug"]);
-        if(!empty($filters["cohort_slug"])) $query = $query->filter('cohort_slug', '=', $filters["cohort_slug"]);
+        if(!empty($filters["cohort"])) $query = $query->filter('cohort', '=', $filters["cohort"]);
         if(!empty($filters["user_id"])){
             $query = $query->filter('user_id', '=', $filters["user_id"]);
         }
