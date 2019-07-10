@@ -27,6 +27,7 @@ return function($api){
         else $filters["user_id"] = $args["user_id"];
 
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
+        if(!empty($_GET['cohort'])) $filters["cohort"] = $_GET['cohort'];
         $result = BreatheCodeLogger::retrieveActivity($filters);
 
 	    return $response->withJson([
