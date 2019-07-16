@@ -3,8 +3,7 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use GuzzleHttp\Client;
-
-require('../BreatheCodeLogger.php');
+use \BreatheCode\BreatheCodeLogger;
 use \AC\ACAPI;
 use BreatheCode\BCWrapper as BC;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);

@@ -1,6 +1,7 @@
 <?php
 
-require('../BreatheCodeLogger.php');
+
+use \BreatheCode\BreatheCodeLogger;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper as BC;

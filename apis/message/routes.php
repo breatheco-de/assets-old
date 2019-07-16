@@ -1,9 +1,9 @@
 <?php
 
-require('../BreatheCodeMessages.php');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper as BC;
+use \BreatheCode\BreatheCodeMessages;
 use Google\Cloud\Datastore\DatastoreClient;
 
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);

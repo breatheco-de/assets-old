@@ -1,11 +1,11 @@
 <?php
 
+
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Carbon\Carbon;
+use \BreatheCode\BreatheCodeMessages;
 use \BreatheCode\BCWrapper as BC;
-
-require('../BreatheCodeMessages.php');
 
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
