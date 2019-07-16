@@ -25,7 +25,7 @@ class ActivityTest extends BaseTestCase {
     }
 
     public function testGetStudentActivity(){
-        $this->mockGET('/activity/student/a.alejo@gmail.com')->expectSuccess(); //expects 200
+        $this->mockGET('/activity/user/a.alejo@gmail.com')->expectSuccess(); //expects 200
     }
 
 }
