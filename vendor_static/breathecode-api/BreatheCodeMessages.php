@@ -1,8 +1,12 @@
 <?php
+
+namespace BreatheCode;
+
 use Aws\Ses\SesClient;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
-require('../BreatheCodeLogger.php');
+use BreatheCodeLogger;
+use Exception;
 
 class BreatheCodeMessages{
 

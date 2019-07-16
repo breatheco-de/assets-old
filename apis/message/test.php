@@ -1,7 +1,8 @@
 <?php
 require('vendor/autoload.php');
-require('apis/BreatheCodeMessages.php');
 require('apis/TestUtils.php');
+
+use \BreatheCode\BreatheCodeMessages;
 
 $l = new Logger();
 

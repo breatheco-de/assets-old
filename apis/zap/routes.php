@@ -3,6 +3,7 @@
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \BreatheCode\BreatheCodeMessages;
 use \AC\ACAPI;
 require('./ZapManager.php');
 
@@ -13,7 +14,6 @@ BC::setToken(BREATHECODE_TOKEN);
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('25182870', AC_EVENT_KEY);
 
-require('../BreatheCodeMessages.php');
 BreatheCodeMessages::connect([
     'projectId' => GOOGLE_PROJECT_ID,
     'keyFilePath' => '../../breathecode-47bde0820564.json'

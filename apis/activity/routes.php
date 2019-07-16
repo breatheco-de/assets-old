@@ -1,6 +1,7 @@
 <?php
 
-require('../BreatheCodeLogger.php');
+
+use \BreatheCode\BreatheCodeLogger;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper as BC;
@@ -34,7 +35,7 @@ return function($api){
 	        "user" => $user,
 	        "log" => $result
 	    ]);
-	})->add($api->auth());
+	});//->add($api->auth());
 
     $api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 
