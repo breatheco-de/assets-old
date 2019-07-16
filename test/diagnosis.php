@@ -13,7 +13,7 @@
     // Create Runner instance
     $runner = new Runner();
 
-    $runner->addCheck(checkURL($assetsURL.'/nps/student/5', 'full_name'));
+    $runner->addCheck(checkURL($assetsURL.'/nps/student/5', 'first_name'));
     $runner->addCheck(checkURL($assetsURL.'/nps/responses'));
 
     $runner->addCheck(checkURL($assetsURL.'/quiz/rest/user/5/response'));
