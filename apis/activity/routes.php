@@ -38,6 +38,8 @@ return function($api){
 
     $api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 
+        $cohort = BC::getCohort(['cohort_id' => urlencode($args["cohort_slug"])]);
+
         $filters=[];
 
         $filters["cohort"] = $args["cohort_slug"];
@@ -45,7 +47,7 @@ return function($api){
         $result = BreatheCodeLogger::retrieveActivity($filters);
 
 	    return $response->withJson([
-	        "user" => $user,
+            "cohort" => $cohort,
 	        "log" => $result
 	    ]);
 	})->add($api->auth());
