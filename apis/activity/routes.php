@@ -35,7 +35,7 @@ return function($api){
 	        "user" => $user,
 	        "log" => $result
 	    ]);
-	});//->add($api->auth());
+	})->add($api->auth());
 
     $api->get('/cohort/{cohort_slug}', function (Request $request, Response $response, array $args) use ($api) {
 
