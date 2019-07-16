@@ -36,6 +36,14 @@ POST: activity/user/{email_or_id}
 }
 ```
 
+## Endpoints for the Cohort
+
+#### Get recent user activity
+```
+GET: activity/cohort/{slug_or_id}?slug=activity_slug
+```
+
+
 ## Endpoints for the coding_error's
 
 #### Get recent user coding_errors

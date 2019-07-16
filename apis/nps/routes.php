@@ -18,7 +18,7 @@ BreatheCodeMessages::connect([
     'keyFilePath' => '../../breathecode-47bde0820564.json'
 ]);
 
-function addAPIRoutes($api){
+return function($api){
 
 	$api->get('/responses', function (Request $request, Response $response, array $args) use ($api) {
 		$content = $api->db['sqlite']->response()->orderBy( 'created_at', 'DESC' );
@@ -105,4 +105,4 @@ function addAPIRoutes($api){
 	});
 
 	return $api;
-}
+};
