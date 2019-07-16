@@ -6,6 +6,8 @@
 $CURRENT = dirname(__FILE__);
 require_once($CURRENT.'/BaseTestCase.php');
 
+use \BreatheCode\BreatheCodeLogger;
+
 class ActivityTest extends BaseTestCase {
 
     public function setUp()
@@ -23,7 +25,7 @@ class ActivityTest extends BaseTestCase {
     }
 
     public function testGetStudentActivity(){
-        $this->mockGET('/activity/student/a@4geeks.us')->expectSuccess(); //expects 200
+        $this->mockGET('/activity/student/a.alejo@gmail.com')->expectSuccess(); //expects 200
     }
 
 }
