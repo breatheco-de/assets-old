@@ -3,8 +3,6 @@
 namespace BreatheCode;
 use \Google\Cloud\Datastore\DatastoreClient;
 use \Google\Cloud\Datastore\Query\Query;
-use \Exception;
-use \DateTime;
 
 class BreatheCodeLogger{
 
@@ -62,14 +60,14 @@ class BreatheCodeLogger{
         $props = ['track_on_active_campaign','track_on_log'];
         foreach($props as $prop)
             if(!isset($activity[$prop])){
-                throw new Exception("Activity ".$slug." is missing property: ".$prop);
+                throw new \Exception("Activity ".$slug." is missing property: ".$prop);
             }
         return true;
     }
 
     public static function addMessagesToActivities($messages){
         foreach($messages as $slug => $msg){
-            if(isset(self::$_activites[$slug])) throw new Exception("Duplicated Activity Slug");
+            if(isset(self::$_activites[$slug])) throw new \Exception("Duplicated Activity Slug");
             self::validateActivityProperties($msg, $slug);
             self::$_activites[$slug] = [
                 "track_on_active_campaign" => $msg["track_on_active_campaign"],
@@ -105,7 +103,7 @@ class BreatheCodeLogger{
     static function logActivity($activity, $user=null){
         $student = (!$user) ? $activity["user"] : $user;
 
-        if(empty($student)) throw new Exception('Invalid or empty user for the activity');
+        if(empty($student)) throw new \Exception('Invalid or empty user for the activity');
 
         $tracking = self::getTrackingActivity($activity["slug"]);
 
@@ -126,7 +124,7 @@ class BreatheCodeLogger{
     // }
 
     public static function _logInternally($student, $activity, $type='student_activity'){
-        if(!is_callable('BreatheCode\BreatheCodeLogger::encode_'.$type)) throw new Exception("No encoder for activity type: ".$type);
+        if(!is_callable('BreatheCode\BreatheCodeLogger::encode_'.$type)) throw new \Exception("No encoder for activity type: ".$type);
         $activity = call_user_func('BreatheCode\BreatheCodeLogger::encode_'.$type, $student, $activity);
         $record = self::datastore()->entity($type, $activity);
         self::datastore()->insert($record);
@@ -138,7 +136,7 @@ class BreatheCodeLogger{
         if(!is_string($student)){
             if(!empty($student->email)) $student = $student->email;
             else if(!empty($student->username)) $student = $student->username;
-            else throw new Exception('Missing user email or username');
+            else throw new \Exception('Missing user email or username');
         }
         $data = (empty($data["data"])) ? 'No additional data' : $data["data"];
         \AC\ACAPI::trackEvent($student, $activity["slug"], $data);
@@ -164,7 +162,7 @@ class BreatheCodeLogger{
     public static function encode_student_activity($student, $data){
         $dataObj = json_decode($data['data'], true);
         $activity = [
-            'created_at' => new DateTime(),
+            'created_at' => new \DateTime(),
             'slug' => $data["slug"],
             'cohort' => (empty($dataObj)) ? null : (empty($dataObj["cohort"])) ? null : $dataObj["cohort"],
             'data' => (empty($data["data"])) ? null : $data["data"]
@@ -194,7 +192,7 @@ class BreatheCodeLogger{
 
     public static function encode_coding_error($student, $data){
         return [
-            'created_at' => new DateTime(),
+            'created_at' => new \DateTime(),
             'slug' => $data["slug"],
             'data' => (empty($data["data"])) ? 'No additional data' : $data["data"],
             'user_id' =>  $student,
