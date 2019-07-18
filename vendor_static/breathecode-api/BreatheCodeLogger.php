@@ -1,9 +1,9 @@
 <?php
 
 namespace BreatheCode;
-use Google\Cloud\Datastore\DatastoreClient;
-use Google\Cloud\Datastore\Query\Query;
-use Exception;
+use \Google\Cloud\Datastore\DatastoreClient;
+use \Google\Cloud\Datastore\Query\Query;
+use \Exception;
 
 class BreatheCodeLogger{
 
@@ -49,6 +49,7 @@ class BreatheCodeLogger{
             'projectId' => GOOGLE_PROJECT_ID,
             'keyFilePath' => '../../breathecode-47bde0820564.json'
         ]);
+
         return self::$datastore;
     }
 
@@ -124,8 +125,8 @@ class BreatheCodeLogger{
     // }
 
     public static function _logInternally($student, $activity, $type='student_activity'){
-        if(!is_callable('BreatheCodeLogger::encode_'.$type)) throw new Exception("No encoder for activity type: ".$type);
-        $activity = call_user_func('BreatheCodeLogger::encode_'.$type, $student, $activity);
+        if(!is_callable('BreatheCode\BreatheCodeLogger::encode_'.$type)) throw new Exception("No encoder for activity type: ".$type);
+        $activity = call_user_func('BreatheCode\BreatheCodeLogger::encode_'.$type, $student, $activity);
         $record = self::datastore()->entity($type, $activity);
         self::datastore()->insert($record);
     }
@@ -145,12 +146,16 @@ class BreatheCodeLogger{
     public static function retrieveActivity($filters, $type='student_activity'){
 
         $query = self::datastore()->query()->kind($type);
-        $query = call_user_func('BreatheCodeLogger::filter_'.$type, $query, $filters);
+
+        if(!is_callable('BreatheCode\BreatheCodeLogger::filter_'.$type)) throw new \Exception("No method filter_".$type);
+        $query = call_user_func('BreatheCode\BreatheCodeLogger::filter_'.$type, $query, $filters);
         //$query = $query->order('created_at', Query::ORDER_DESCENDING);
+        if(!$query) throw new \Exception("Undefined query for ".$type);
+
         $items = self::datastore()->runQuery($query);
         $results = [];
         foreach($items as $ans) {
-            $results[] = $query = call_user_func('BreatheCodeLogger::decode_'.$type, $ans);
+            $results[] = $query = call_user_func('BreatheCode\BreatheCodeLogger::decode_'.$type, $ans);
         }
         return $results;
     }
@@ -214,12 +219,12 @@ class BreatheCodeLogger{
 
     public static function filter_student_activity($query, $filters){
         if(!empty($filters["slug"])) $query = $query->filter('slug', '=', $filters["slug"]);
-        //print_r($filters); die();
         if(!empty($filters["cohort"])) $query = $query->filter('cohort', '=', $filters["cohort"]);
         if(!empty($filters["user_id"])){
             $query = $query->filter('user_id', '=', $filters["user_id"]);
         }
         if(!empty($filters["email"])) $query = $query->filter('email', '=', $filters["email"]);
+
         return $query;
     }
 

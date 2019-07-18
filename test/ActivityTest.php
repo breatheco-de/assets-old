@@ -14,18 +14,18 @@ class ActivityTest extends BaseTestCase {
     {
         parent::setUp();
 
+        //$this->credentials['clientKey'] = $this->app->generatePrivateKey("my_super_id");
         $this->app->setJWTKey("adSAD43gtterT%rtwre32@");
-        $this->credentials['clientKey'] = $this->app->generatePrivateKey("my_super_id");
         $this->app->addRoutes(require(__DIR__.'/../apis/activity/routes.php'));
     }
 
-    function testAllActivitiesMustBeValid(){
-        foreach(BreatheCodeLogger::$_activites as $slug => $props)
-        $this->assertTrue(BreatheCodeLogger::validateActivityProperties($props, $slug));
-    }
+    // function testAllActivitiesMustBeValid(){
+    //     foreach(BreatheCodeLogger::$_activites as $slug => $props)
+    //         $this->assertTrue(BreatheCodeLogger::validateActivityProperties($props, $slug));
+    // }
 
     public function testGetStudentActivity(){
-        $this->mockGET('/activity/user/a.alejo@gmail.com')->expectSuccess(); //expects 200
+        $this->mockGET('/user/a.alejo@gmail.com')->expectSuccess(); //expects 200
     }
 
 }
