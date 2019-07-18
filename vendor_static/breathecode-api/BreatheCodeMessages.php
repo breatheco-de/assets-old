@@ -5,7 +5,6 @@ namespace BreatheCode;
 use Aws\Ses\SesClient;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
-use BreatheCodeLogger;
 use Exception;
 
 class BreatheCodeMessages{
@@ -45,8 +44,8 @@ class BreatheCodeMessages{
         ];
 
         self::$datastore = new DatastoreClient($params);
-        BreatheCodeLogger::addMessagesToActivities(self::$_messages);
-        BreatheCodeLogger::setDatastore(self::$datastore);
+        \BreatheCode\BreatheCodeLogger::addMessagesToActivities(self::$_messages);
+        \BreatheCode\BreatheCodeLogger::setDatastore(self::$datastore);
     }
 
     public static function sendMail($slug, $to, $subject, $data){
@@ -224,7 +223,7 @@ class BreatheCodeMessages{
 
                 self::sendMail($messageSlug, $student->email, $template["subject"], $template);
             }
-            BreatheCodeLogger::logActivity([
+            \BreatheCode\BreatheCodeLogger::logActivity([
                 "slug" => $messageSlug,
                 "data" => $data
             ], $student);
