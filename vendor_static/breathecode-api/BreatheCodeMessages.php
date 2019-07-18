@@ -5,7 +5,6 @@ namespace BreatheCode;
 use Aws\Ses\SesClient;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
-use Exception;
 
 class BreatheCodeMessages{
 
@@ -15,7 +14,7 @@ class BreatheCodeMessages{
     private static $messageType = ['actionable','non-actionable'];
 
     public static function getType($type){
-        if(!in_array(self::messageType)) throw new Exception('Ivalid Message Type', 400);
+        if(!in_array(self::messageType)) throw new \Exception('Ivalid Message Type', 400);
         else return $type;
     }
 
@@ -90,18 +89,18 @@ class BreatheCodeMessages{
              return true;
 
         } catch (SesException $error) {
-            throw new Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
+            throw new \Exception("The email was not sent. Error message: ".$error->getAwsErrorMessage()."\n");
         }
     }
 
     public static function markAsAnswred($messageKey, $data='No additional data'){
 
-        if(!$messageKey) throw new Exception('The missing message id');
+        if(!$messageKey) throw new \Exception('The missing message id');
 
         $key = self::$datastore->key('student_message', $messageKey);
         $entity = self::$datastore->lookup($key);
 
-        if(!$entity) throw new Exception("Message not found", 404);
+        if(!$entity) throw new \Exception("Message not found", 404);
 
         // Update the entity
         $entity['read'] = 'true';
@@ -110,7 +109,7 @@ class BreatheCodeMessages{
         if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
         else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
         else if(!$data) $entity['data'] = 'No additional data';
-        else throw new Exception("Invalid data format for message", 400);
+        else throw new \Exception("Invalid data format for message", 400);
 
         self::$datastore->update($entity);
 
@@ -119,13 +118,13 @@ class BreatheCodeMessages{
 
     public static function markManyAs($status, $filters, $data='No additional data'){
 
-        if($status !== 'read' and $status !== 'answered') throw new Exception('invalid new status: '.$status, 400);
-        if(empty($filters['user_id'])) throw new Exception('invalid or missing user_id',400);
+        if($status !== 'read' and $status !== 'answered') throw new \Exception('invalid new status: '.$status, 400);
+        if(empty($filters['user_id'])) throw new \Exception('invalid or missing user_id',400);
 
         if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
         else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
         else if(!$data) $entity['data'] = 'No additional data';
-        else throw new Exception("Invalid data format for message", 400);
+        else throw new \Exception("Invalid data format for message", 400);
 
         $query = self::$datastore->query()->kind('student_message');
         $query = self::filter($query, $filters);
@@ -152,13 +151,13 @@ class BreatheCodeMessages{
 
     public static function markAsRead($messageKey, $data='No additional data'){
 
-        if(!$messageKey) throw new Exception('The missing message id');
+        if(!$messageKey) throw new \Exception('The missing message id');
 
         $key = self::$datastore->key('student_message', $messageKey);
         $entity = self::$datastore->lookup($key);
 
-        if(!$entity) throw new Exception("Message not found", 404);
-        if($entity['type'] === 'actionable') throw new Exception("This cannot be mark as read because it has a HIGH priority, it has to be answered.", 400);
+        if(!$entity) throw new \Exception("Message not found", 404);
+        if($entity['type'] === 'actionable') throw new \Exception("This cannot be mark as read because it has a HIGH priority, it has to be answered.", 400);
 
         // Update the entity
         $entity['read'] = 'true';
@@ -166,7 +165,7 @@ class BreatheCodeMessages{
         if(is_string($data) || is_numeric($data) || is_bool($data)) $entity['data'] = (string) $data;
         else if(is_object($data) || is_array($data)) $entity['data'] = json_encode($data);
         else if(!$data) $entity['data'] = 'No additional data';
-        else throw new Exception("Invalid data format for message", 400);
+        else throw new \Exception("Invalid data format for message", 400);
 
         self::$datastore->update($entity);
 
@@ -175,12 +174,12 @@ class BreatheCodeMessages{
 
     public static function addMessage($messageSlug, $student, $priority=null, $data='No additional data'){
 
-        if(!isset(self::$_messages[$messageSlug])) throw new Exception('Invalid message slug '.$messageSlug);
-        if(!isset(self::$_messages[$messageSlug]["type"])) throw new Exception('The message '.$messageSlug.' has an invalid type');
+        if(!isset(self::$_messages[$messageSlug])) throw new \Exception('Invalid message slug '.$messageSlug);
+        if(!isset(self::$_messages[$messageSlug]["type"])) throw new \Exception('The message '.$messageSlug.' has an invalid type');
 
         if(self::$_messages[$messageSlug]["type"] == 'actionable')
             if(!isset(self::$_messages[$messageSlug]["getURL"]) || !is_callable(self::$_messages[$messageSlug]["getURL"]))
-                throw new Exception('The message type: '.self::$_messages[$messageSlug]["type"].' needs to have a getURL method for its actions to be resolved');
+                throw new \Exception('The message type: '.self::$_messages[$messageSlug]["type"].' needs to have a getURL method for its actions to be resolved');
 
         $url = self::$_messages[$messageSlug]["getURL"]($student);
 
@@ -205,7 +204,7 @@ class BreatheCodeMessages{
 
         if(is_string($student)) $message['email'] = $student;
         else{
-            if(!empty($student->status) && !in_array($student->status, ['currently_active','studies_finished'])) throw new Exception('This student is not currently_active or studies_finished', 400);
+            if(!empty($student->status) && !in_array($student->status, ['currently_active','studies_finished'])) throw new \Exception('This student is not currently_active or studies_finished', 400);
             if(!empty($student->id)) $message['user_id'] = (string) $student->id;
 
             if(!empty($student->email)) $message['email'] = (string) $student->email;
@@ -293,7 +292,7 @@ class BreatheCodeMessages{
 
         if(!$slug) return self::$_messages;
         else if(!empty(self::$_messages[$slug])) return self::$_messages[$slug];
-        else throw new Exception("Inalid message type", 400);
+        else throw new \Exception("Inalid message type", 400);
     }
 
 }
