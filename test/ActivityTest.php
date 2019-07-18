@@ -19,13 +19,13 @@ class ActivityTest extends BaseTestCase {
         $this->app->addRoutes(require(__DIR__.'/../apis/activity/routes.php'));
     }
 
-    function testAllActivitiesMustBeValid(){
-        foreach(BreatheCodeLogger::$_activites as $slug => $props)
-        $this->assertTrue(BreatheCodeLogger::validateActivityProperties($props, $slug));
-    }
+    // function testAllActivitiesMustBeValid(){
+    //     foreach(BreatheCodeLogger::$_activites as $slug => $props)
+    //         $this->assertTrue(BreatheCodeLogger::validateActivityProperties($props, $slug));
+    // }
 
     public function testGetStudentActivity(){
-        $this->mockGET('/activity/user/a.alejo@gmail.com')->expectSuccess(); //expects 200
+        $this->mockGET('user/a.alejo@gmail.com')->expectSuccess(); //expects 200
     }
 
 }

@@ -116,7 +116,6 @@ class BaseTestCase extends TestCase {
         ];
 
         if(!empty($parts[1])) $params['QUERY_STRING'] = $parts[1];
-
         return $this->mockRequest($params);
     }
 
@@ -367,7 +366,8 @@ class BaseTestCase extends TestCase {
         }
     }
     function _logTest($params, $response, $responseObj, $assertion=null){
-        if(DEBUG){
+        
+        if(API_DEBUG){
             $code = $response->getStatusCode();
             $expected = (!$assertion) ? '' : $assertion->getExpectedRespCode();
             if($code != 200 && $code != 400 && $code != 404){
