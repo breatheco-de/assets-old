@@ -14,8 +14,8 @@ class ActivityTest extends BaseTestCase {
     {
         parent::setUp();
 
+        //$this->credentials['clientKey'] = $this->app->generatePrivateKey("my_super_id");
         $this->app->setJWTKey("adSAD43gtterT%rtwre32@");
-        $this->credentials['clientKey'] = $this->app->generatePrivateKey("my_super_id");
         $this->app->addRoutes(require(__DIR__.'/../apis/activity/routes.php'));
     }
 
@@ -25,7 +25,7 @@ class ActivityTest extends BaseTestCase {
     // }
 
     public function testGetStudentActivity(){
-        $this->mockGET('user/a.alejo@gmail.com')->expectSuccess(); //expects 200
+        $this->mockGET('/user/a.alejo@gmail.com')->expectSuccess(); //expects 200
     }
 
 }
