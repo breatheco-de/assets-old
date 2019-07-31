@@ -1,7 +1,13 @@
 [<- Back to the APIs Readme](../docs/README.md) or [APIs Readme](../README.md)
 
 # TodoList API
-          
+
+How to use this API:
+
+1. Create your todolist with `[POST] /todos/user/<username>`. (you can pick any username)
+2. Update your todolist with `[PUT] /todos/user/<username>`, you have to pass the whole todolist every time.
+3. Delete your todolist (if needed) `[DELETE] /todos/user/<username>`.
+
 ## 1. Get list of todo's for a particular user
 ```
   [GET] /todos/user/<username>
