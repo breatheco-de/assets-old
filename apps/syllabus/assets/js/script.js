@@ -20,7 +20,7 @@ $(document).ready(function(){
       var href = $(this).attr("href");
       console.log(href+", offset: "+$(href).offset().top);
       var offsetTop = (href === "#") ? 0 : $(href).offset().top+1;
-      $('html, body').stop().animate({ 
+      $('html, body').stop().animate({
           scrollTop: offsetTop
       }, 300);
       e.preventDefault();
@@ -28,10 +28,10 @@ $(document).ready(function(){
 
     // Bind to scroll
     $(window).scroll(function(){
-        
+
        // Get container scroll position
        var fromTop = $(this).scrollTop()+topMenuHeight;
-       
+
        // Get id of current scroll item
        var cur = scrollItems.map(function(){
          if ($(this).offset().top < fromTop)
@@ -40,16 +40,16 @@ $(document).ready(function(){
        // Get the id of the current element
        cur = cur[cur.length-2];
        var id = cur && cur.length ? cur[0].id : "";
-       
+
        if (lastId !== id) {
            lastId = id;
            // Set/remove active class
            menuItems
              .parent().removeClass("active")
              .end().filter("[href='#"+lastId+"']").parent().addClass("active");
-       }                   
+       }
     });
-    
+
     if(typeof(queryString['program']) =='undefined') alert('Please Specify a Syllabus on the QueryString ?program=<slug>');
     else
     {
@@ -58,25 +58,26 @@ $(document).ready(function(){
             Timeline.init({
                 containerSelector: 'section',
                 menuContainerSelector: '.nav__wrapper .nav',
+                fullMode: typeof(queryString['teacher']) === 'undefined' ? false : queryString['teacher'] == "true",
                 data: data.weeks
             });
-            
+
             $('.syllabus-title').html(data.label);
-            
+
             let allTechnologies = flatten(data.weeks.map(function(week){
                 let weekTechnologies = [];
                 let dayTechnologies = week.days.map(function(day){ return day.technologies; });
                 dayTechnologies = dayTechnologies.filter(function(item){return typeof(item)!='undefined';});
                 return weekTechnologies.concat(dayTechnologies);
             }));
-            
+
             var uniqueTechnologies = [];
             allTechnologies.forEach(function(tech, index){
                 if(uniqueTechnologies.indexOf(tech) === -1) uniqueTechnologies.push(tech);
             });
             document.querySelector('#syllabus-technologies').innerHTML = uniqueTechnologies.map(function(tech){ return wrap(tech); });
             $('.syllabus-description').html(data.description || "No Description for this syllabus");
-            
+
             topMenu = $("nav.nav__wrapper");
             topMenuHeight = topMenu.outerHeight();
             // All list items
@@ -86,9 +87,9 @@ $(document).ready(function(){
               var item = $($(this).attr("href"));
               if (item.length) { return item; }
             });
-            
+
         }).fail(function(msg){
-            console.log('Error!!', msg);      
+            console.log('Error!!', msg);
         });
     }
 
