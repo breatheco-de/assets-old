@@ -18,7 +18,7 @@
       <h1 class='syllabus-title'>Syllabus Title</h1>
       <h2 class="syllabus-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi pariatur laboriosam explicabo recusandae.</h2>
       <p id="syllabus-technologies">[Technologies]</p>
-      <p><a class="btn btn-primary btn-lg" href="#" onClick="$('html, body').animate({scrollTop: $('#section1').offset().top+10}, 1000);" role="button">Ver Syllabus</a></p>
+      <p><a class="btn btn-primary btn-lg" href="#" onClick="$('html, body').animate({scrollTop: $('#section1').offset().top+10}, 1000);" role="button">Syllabus Details</a></p>
     </div>
   </div>
   <div class="syllabus-wrapper" >
@@ -88,6 +88,7 @@
       <option value='web-development'>Web Development in WordPress</option>
       <option value='full-stack'>Full Stack Development (Part-Time)</option>
       <option value='full-stack-ft'>Full Stack Development (Full-time)</option>
+      <option value='front-end-development'>Front End Development (with hooks)</option>
       <option value='coding-introduction'>Coding Introduction</option>
       <option value='boats'>Boats</option>
     </select>
@@ -95,7 +96,7 @@
   <script type="text/javascript">
     window.onload = function(){
       document.querySelector('#select-location').addEventListener('change',function(evt){
-         window.location.href = window.location.href +"?program="+evt.target.value; 
+         window.location.href = window.location.href +"?program="+evt.target.value;
       });
     }
   </script>

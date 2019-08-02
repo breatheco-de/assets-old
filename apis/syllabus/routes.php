@@ -9,6 +9,7 @@ return function($api){
 	    $allSlugs = [
 	        "full-stack" => "full-stack",
 	        "full-stack-ft" => "full-stack-ft",
+	        "front-end-development" => "front-end-development",
 	        "web-development" => "web-development",
 	        "coding-introduction" => "coding-introduction",
 	        "blockchain" => "blockchain",
