@@ -1,8 +1,6 @@
 # ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Fake Contact-List API
 
-Use this API to test your skills doing AJAX requests with the [contact-list](https://projects.breatheco.de/d/contact-list#readme) ajax exercise on the BreatheCode Platform.
-
-[Right-click here to download the POSTMan Collection](https://assets.breatheco.de/apis/fake/contact/collection.json).
+⚠️ The use of Insomnia.rest is strongly recomended for this API, [download it here](https://insomnia.rest/).
 
 #### 1) Get All available agendas right now
 ```

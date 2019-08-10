@@ -1,52 +1,53 @@
 # ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Fake Contact-List API
 
-Use this API to test your skills doing AJAX requests with the [contact-list](https://projects.breatheco.de/d/contact-list#readme) ajax exercise on the BreatheCode Platform.
+⚠️ The use of Insomnia.rest is strongly recomended for this API, [download it here](https://insomnia.rest/).
 
-[Right-click here to download the POSTMan Collection](https://assets.breatheco.de/apis/fake/contact/collection.json).
+#### 1) Get All meetups
+```
+GET: /apis/fake/meetup
 
-#### 1) Get All contacts from an Agenda
-```
-GET: /apis/fake/contact/agenda/{agenda_slug}
-```
+RESPONSE:
 
-#### 2) Get One Particular Contact
-```
-GET: /apis/fake/contact/{contact_id}
-```
-
-#### 3) Delete One Particular Contact
-```
-DELETE: /apis/fake/contact/{contact_id}
-```
-
-#### 4) Create one contact
-```
-PUT: /apis/fake/contact/
-
-Request (application/json)
-
-    body:
+[
     {
-        "full_name": "Dave Bradley",
-        "email": "dave@gmail.com",
-        "agenda_slug": "my_super_agenda",
-        "address":"47568 NW 34ST, 33434 FL, USA",
-        "phone":"7864445566"
+        ID: 9,
+        post_content: "The nicest Meetup ever",
+        post_title: "Tech Enthusiasts"
     }
+]
 ```
 
-#### 5) Update one contact
+#### 2) Get all events
 ```
-POST: /apis/fake/contact/{contact_id}
+GET: /apis/fake/events
 
-Request (application/json)
+RESPONSE:
 
-    body:
+[
     {
-        "full_name": "Dave Bradley",
-        "email": "dave@gmail.com",
-        "agenda_slug": "my_super_agenda",
-        "address":"47568 NW 34ST, 33434 FL, USA",
-        "phone":"7864445566"
+        ID: 36,
+        post_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec libero consectetur risus vehicula interdum eu at elit. Proin a commodo erat, eu molestie ipsum. Aliquam tristique nunc a est tristique, et convallis risus ullamcorper. Fusce nec massa ac enim pellentesque ornare. Pellentesque non sapien varius, pellentesque tellus sit amet, facilisis justo. Duis rhoncus nunc id elementum dapibus. Sed dictum lacinia vestibulum.",
+        post_title: "Lorem Event",
+        meta_keys: {
+            day: "20180428",
+            time: "07:00:00",
+            _meetup: "9",
+            _rsvpNo: ["robert","jjtime","username2"],
+            _rsvpYes: ["cheeselover","neweradude","james1996"]
+        }
     }
+]
+```
+
+#### 3) Get all sessions
+```
+DELETE: /apis/fake/session
+
+RESPONSE:
+
+{
+    ID: 2,
+    username: "theUser",
+    token: "qwerty12345asdfgzxcv"
+}
 ```
