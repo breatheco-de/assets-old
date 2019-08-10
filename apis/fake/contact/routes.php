@@ -4,7 +4,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 return function($api){
-    
+
     $scope = '';
 
 	$api->get($scope.'/agenda', function(Request $request, Response $response, array $args) use ($api) {
@@ -31,11 +31,14 @@ return function($api){
 
         $row = $api->db['sqlite']->fake_contact_list()
 			->where('id',$args['contact_id'])->fetch();
+
+        if(!$row) throw new Exception("The contact was not found", 404);
+
 		return $response->withJson($row);
 	});
-	
+
 	$api->post($scope.'/', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $log = [];
         $parsedBody = $request->getParsedBody();
         if(!$parsedBody) throw new Exception('Invalid request body (check the request body json)', 400);
@@ -60,9 +63,9 @@ return function($api){
 
         return $response->withJson($row);
 	});
-	
+
 	$api->put($scope.'/{contact_id}', function (Request $request, Response $response, array $args) use ($api) {
-        
+
         $log = [];
         $parsedBody = $request->getParsedBody();
         if(!$parsedBody) throw new Exception('Invalid request body (check the request body json)', 400);
