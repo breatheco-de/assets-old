@@ -233,6 +233,7 @@ class BaseTestCase extends TestCase {
     }
 
     public function get($url){
+        //echo $url; die();
         $content = file_get_contents($url);
         if(!$content) throw new Exception('Invalid file url: '.$url);
 
@@ -366,7 +367,7 @@ class BaseTestCase extends TestCase {
         }
     }
     function _logTest($params, $response, $responseObj, $assertion=null){
-        
+
         if(API_DEBUG){
             $code = $response->getStatusCode();
             $expected = (!$assertion) ? '' : $assertion->getExpectedRespCode();

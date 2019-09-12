@@ -5,7 +5,7 @@ import ShowDetails from './components/ShowDetails';
 import {Notify, Notifier} from 'bc-react-notifier';
 import { updateLocale } from 'moment';
 
-const ModalComponent = ({ onConfirm }) => 
+const ModalComponent = ({ onConfirm }) =>
         <div>
             <h1>Are you sure?</h1>
             <button onClick={()=>onConfirm(true)}>Yes</button>
@@ -55,8 +55,8 @@ export default class App extends React.Component {
 	usersByIdEvent(idEvent){
 		var url = new URL(window.location.href);
 		var tokenUrl = url.searchParams.get("access_token");
-		
-		const endpoint = process.env.BREATHECODE+idEvent+'/checkin?access_token='+tokenUrl;
+
+		const endpoint = process.env.BREATHECODE+"/"+idEvent+'/checkin?access_token='+tokenUrl;
 		fetch(endpoint)
 		.then((response)=>{
 			return response.json();
@@ -96,7 +96,7 @@ export default class App extends React.Component {
 				<p className="no-margin title">Description</p>
 				<p className="no-margin text-title">{data.description}</p>
 			</div>
-			{(this.state.usersInOldEvent && this.state.showUsersInEventsOld && this.state.idEventOld == data.id) ? 
+			{(this.state.usersInOldEvent && this.state.showUsersInEventsOld && this.state.idEventOld == data.id) ?
 				this.state.usersInOldEvent.map((eventOld, i)=>{
 					return (
 						<div className="col-12" key={i}>
@@ -112,12 +112,12 @@ export default class App extends React.Component {
         <div>
             <Header sendOldEventsToApp={(data)=>this.oldEventsFromHeader(data)} btnSeeOldEvents={true}/>
             <Notifier />
-            <SelectEvents 
-              label="Select the event you are working at:" 
-              placeholder="Select an event" 
+            <SelectEvents
+              label="Select the event you are working at:"
+              placeholder="Select an event"
               receiveData={(data)=> this.dataForForm(data)}/>
             {
-              (this.state.showOldEvents && this.state.dataOldEvents) ? 
+              (this.state.showOldEvents && this.state.dataOldEvents) ?
 				<div className="container">
 					{listOldEvents}
 				</div>

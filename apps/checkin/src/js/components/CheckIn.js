@@ -53,7 +53,7 @@ export default class Checkin extends React.Component{
     }
 
     getCapacityEvent(){
-        const endpoint = process.env.BREATHECODE+"all";
+        const endpoint = process.env.BREATHECODE+"/all";
         fetch(endpoint)
         .then((response) => {
             return response.json();
@@ -84,9 +84,9 @@ export default class Checkin extends React.Component{
     checkinUserToEvent(event){
         const existingUsers = this.state.usersChecked.filter((c) => c.email == this.state.valueInput );
         event.preventDefault();
-            const endpointCheckinEvent = process.env.BREATHECODE+this.state.idEvent+"/checkin?access_token="+this.props.token;
-            const endpointBreathecode = process.env.BREATHECODE+"user/"+this.state.valueInput+"?access_token="+this.props.token;
-            const endpointSearchBreathecode = process.env.BREATHECODE+'user/'+this.state.valueInput+'?access_token='+this.props.token;
+            const endpointCheckinEvent = process.env.BREATHECODE+"/"+this.state.idEvent+"/checkin?access_token="+this.props.token;
+            const endpointBreathecode = process.env.BREATHECODE+"/user/"+this.state.valueInput+"?access_token="+this.props.token;
+            const endpointSearchBreathecode = process.env.BREATHECODE+'/user/'+this.state.valueInput+'?access_token='+this.props.token;
 
             //Se desabilita el boton de checkin en la peticion al api
             this.setState({
@@ -216,7 +216,7 @@ export default class Checkin extends React.Component{
     }
 
     getAllUsersInEventUpdated(){
-        const endpointGetAllUsersInEvent = process.env.BREATHECODE+this.state.idEvent+"/checkin?access_token="+this.props.token;
+        const endpointGetAllUsersInEvent = process.env.BREATHECODE+"/"+this.state.idEvent+"/checkin?access_token="+this.props.token;
 
             fetch(endpointGetAllUsersInEvent)
             .then((response) => {
