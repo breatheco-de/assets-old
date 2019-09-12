@@ -96,7 +96,7 @@ return function($api){
 		if(empty($args['message_id'])) throw new Exception('Invalid param message_id');
 
 		$parsedBody = $request->getParsedBody();
-        $data = $api->optional($parsedBody,'data')->bigString();
+        $data = $api->optional($parsedBody,'data')->text();
     	$message = BreatheCodeMessages::markAsAnswred($args['message_id'], $data);
     	return $response->withJson($message->get());
 
@@ -117,7 +117,7 @@ return function($api){
 		if(empty($args['message_id'])) throw new Exception('Invalid param message_id');
 
 		$parsedBody = $request->getParsedBody();
-        $data = $api->optional($parsedBody,'data')->bigString();
+        $data = $api->optional($parsedBody,'data')->text();
     	$message = BreatheCodeMessages::markAsRead($args['message_id'], $data);
     	return $response->withJson($message->get());
 

@@ -6,7 +6,7 @@ export default class SelectEvents extends React.Component{
         super(props);
         this.state = {
             dataEventsToDay: [],
-            eventSelected: []
+            eventSelected: null
         };
     }
 
@@ -52,11 +52,12 @@ export default class SelectEvents extends React.Component{
 
     handleChange(event){
         const idEvent = event.target.value;
-        const eventDetail = this.state.dataEventsToDay.filter((c)=> c.id == idEvent);
-
-        this.setState({
-            eventSelected: eventDetail
-        });
+        if(event.target.value){
+            const eventDetail = this.state.dataEventsToDay.find((c)=> c.id == idEvent);
+            this.setState({
+                eventSelected: eventDetail
+            });
+        }
     }
 
     render(){
@@ -75,13 +76,16 @@ export default class SelectEvents extends React.Component{
                         <div className="form-row justify-content-md-center justify-content-sm-center banner-form">
                             <div className="form-group col-md-4 col-sm-5 col-12 no-margin pt-2">
                                 <select className="custom-select" onChange={(event)=>this.handleChange(event)}>
-                                    <option value="0" defaultValue="default">{this.props.placeholder}</option>
-                                    {optionEvents}
+                                    <option value={null} defaultValue="default">{this.props.placeholder}</option>
+                                    {optionEvents.length ? optionEvents : <option value={null}>No upcoming events, create a new event?</option>}
                                 </select>
                             </div>
-                            <div className="form-group col-md-3 col-sm-2 col-4 no-margin pt-2">
-                                <button type="submit" className="btn btn-light form-control">START</button>
-                            </div>
+                            {
+                                this.state.eventSelected && <div className="form-group col-md-3 col-sm-2 col-4 no-margin pt-2">
+                                    <button type="submit" className="btn btn-light form-control">START</button>
+                                </div>
+
+                            }
                         </div>
                     </form>
                 </div>
