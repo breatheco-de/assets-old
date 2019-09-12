@@ -29,7 +29,7 @@ export default class App extends React.Component {
   componentDidMount(){
     //Se toma el token por url para enviarse a los diferentes component que lo necesitan
     var url = new URL(window.location.href);
-    var tokenUrl = url.searchParams.get("access_token");
+    var tokenUrl = url.searchParams.get("bc_token");
     if(tokenUrl !== null) this.setState({tokenUrl});
     else Notify.error('Missing API token');
   }
@@ -88,13 +88,10 @@ export default class App extends React.Component {
     const listOldEvents = this.state.dataOldEvents.map((data, key) => {
       return(
         <div className="row full-width border no-margin" key={key} onClick={()=>this.showUsersInEventsOld(data.id)}>
-			<div className="col-6 header-oldevents">
-				<p className="no-margin title">Title</p>
-				<p className="no-margin text-title">{data.title}</p>
-			</div>
-			<div className="col-6 header-oldevents">
-				<p className="no-margin title">Description</p>
-				<p className="no-margin text-title">{data.description}</p>
+			<div className="col-12 header-oldevents">
+                <p className="no-margin date">{data.event_date}</p>
+				<p className="no-margin title">{data.title}</p>
+				<p className="no-margin text-title">{data.description.substring(0,120)}</p>
 			</div>
 			{(this.state.usersInOldEvent && this.state.showUsersInEventsOld && this.state.idEventOld == data.id) ?
 				this.state.usersInOldEvent.map((eventOld, i)=>{

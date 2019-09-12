@@ -156,7 +156,7 @@ return function($api){
 		$event = $api->db['sqlite']->event()->where('id',$args['event_id'])->fetch();
 
         $parsedBody = $request->getParsedBody();
-        $desc = $api->optional($parsedBody,'description')->bigString();
+        $desc = $api->optional($parsedBody,'description')->text();
         if($desc) $event->description = $desc;
 
         $title = $api->optional($parsedBody,'title')->smallString();
@@ -267,7 +267,7 @@ return function($api){
         // $status = $api->optional($parsedBody,'status')->smallString();
         // if($status) throw new Exception('The status can only be a draft, you can later update the shift status on another request', 400);
 
-        $desc = $api->validate($parsedBody,'description')->bigString();
+        $desc = $api->validate($parsedBody,'description')->text();
         $title = $api->validate($parsedBody,'title')->smallString();
         $url = $api->validate($parsedBody,'url')->url();
         $capacity = $api->validate($parsedBody,'capacity')->int();

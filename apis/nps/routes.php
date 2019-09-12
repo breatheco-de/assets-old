@@ -74,7 +74,7 @@ return function($api){
 			'user_id' => $api->optional($parsedBody,'user_id')->int(),
 			'cohort_slug' => $cohort,
 			'profile_slug' => $api->optional($parsedBody,'profile_slug')->smallString(),
-			'comment' => $api->optional($parsedBody,'comment')->bigString(),
+			'comment' => $api->optional($parsedBody,'comment')->text(),
 			'tags' => $api->optional($parsedBody,'tags')->smallString(),
 			'created_at' => date("Y-m-d H:i:s")
 		]);
