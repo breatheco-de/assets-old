@@ -28,7 +28,7 @@ class StudentActivity extends BCActivity{
             "track_on_log" => true
         ],
         //when a lessons is opened on the platform
-        "lesson_open" => [
+        "lesson_opened" => [
             "track_on_active_campaign" => false,
             "track_on_log" => true
         ],
