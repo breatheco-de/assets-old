@@ -11,15 +11,34 @@ BC::setToken(BREATHECODE_TOKEN);
 
 return function($api){
 
-    $userAgents = [ 'bc/student', 'bc/mobile', 'bc/cli', 'bc/admin', 'bc/teacher' ];
+	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
 
-	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api, $userAgents) {
+        function getCurrentCohort($cohorts) {
+            if(count($cohorts) == 0) return null;
+            else if(count($cohorts) == 1) return $cohorts[0];
+            else if($cohorts == 2) for($i=0;$i<count($cohorts); $i++) if (strpos($cohorts[$i]->profile_slug, 'prework') !== false) return $cohorts[$i];
+            //print_r(count($cohorts)); die();
+
+            for($i=0;$i<count($cohorts); $i++) {
+                $c = $cohorts[$i];
+                $start = strtotime($c->kickoff_date);
+                $end = strtotime($c->ending_date);
+                $current = strtotime("now");
+
+                // Check that user date is between start & end
+                $inRange = [];
+                if(($current >= $start) && ($current <= $end)){
+                    $inRange[] = $c;
+                }
+                if(count($inRange) > 0) return $inRange[0];
+                else return end($cohorts);
+            }
+            return null;
+        }
 
         $body = json_decode($request->getBody()->getContents());
         if(empty($body->username)) throw new Exception('Invalid username');
         if(empty($body->password)) throw new Exception('Invalid password');
-
-        if(isset($body->user_agent) and !in_array($body->user_agent, $userAgents)) throw new Exception('Invalid user agent, options: '.implode(",",$userAgents));
 
         $username = $body->username;
         $password = $body->password;
@@ -50,8 +69,11 @@ return function($api){
             	}
 
 		        $user->access_token = $token->access_token;
+                $currentCohort = null;
 		        if($user->type == 'student' || $user->type == 'teacher'){
 		        	$user->cohorts = $user->full_cohorts;
+                    //stage
+                    $currentCohort = getCurrentCohort($user->cohorts);
 		        }
 		        $user->scope = $token->scope;
 		        $user->assets_token = $api->jwt_encode($user->id);
@@ -60,6 +82,8 @@ return function($api){
 		            BreatheCodeLogger::logActivity([
 		                'slug' => 'breathecode_login',
 		                'user' => $user,
+                        'cohort' => $currentCohort ? $currentCohort->slug : null,
+                        'day' => $currentCohort ? $currentCohort->current_day : null,
                         'user_agent' => isset($body->user_agent) ? $body->user_agent : null
 		            ]);
 		        }catch(Exception $e){  }

@@ -10,6 +10,28 @@ use Google\Cloud\Datastore\DatastoreClient;
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
 
+function getCurrentCohort($cohorts) {
+    if(count($cohorts) == 0) return null;
+    else if(count($cohorts) == 1) return $cohorts[0];
+    else if($cohorts == 2) for($i=0;$i<count($cohorts); $i++) if (strpos($cohorts[$i]->profile_slug, 'prework') !== false) return $cohorts[$i];
+
+    for($i=0;$i<count($cohorts); $i++) {
+        $c = $cohorts[$i];
+        $start = strtotime($c->kickoff_date);
+        $end = strtotime($c->ending_date);
+        $current = strtotime("now");
+
+        // Check that user date is between start & end
+        $inRange = [];
+        if(($current >= $start) && ($current <= $end)){
+            $inRange[] = $c;
+        }
+        if(count($inRange) > 0) return $inRange[0];
+        else return end($cohorts);
+    }
+    return null;
+}
+
 return function($api){
 
 	$api->addTokenGenerationPath();
@@ -63,6 +85,8 @@ return function($api){
 	        $slug = $api->validate($activity,'slug')->slug();
 	        $data = $api->optional($activity,'data')->string();
             $agent = $api->optional($activity,'user_agent')->string();
+            $cohort = $api->optional($activity,'cohort')->string();
+            $day = $api->optional($activity,'day')->string();
 
 	        BreatheCodeLogger::logActivity([
 	            'slug' => $slug,
@@ -71,6 +95,8 @@ return function($api){
 	            	'email' => $email
 	            ],
                 'user_agent' => $agent,
+                'cohort' => $cohort,
+                'day' => $day,
 	            'data' => $data
 	        ]);
 		}
@@ -87,11 +113,16 @@ return function($api){
         $data = $api->optional($parsedBody,'data')->string();
         $slug = $api->validate($parsedBody,'slug')->slug();
         $agent = $api->optional($parsedBody,'user_agent')->string();
+        $cohort = $api->optional($parsedBody,'cohort')->string();
+        $day = $api->optional($parsedBody,'day')->string();
 
         BreatheCodeLogger::logActivity([
             'slug' => $slug,
             'user' => $user,
-            'user_agent' => $agent
+            'user_agent' => $agent,
+            'cohort' => $cohort,
+            'day' => $day,
+            'data' => $data
         ]);
 	    return $response->withJson("ok");
 
