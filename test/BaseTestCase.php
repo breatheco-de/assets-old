@@ -59,6 +59,9 @@ class BaseTestCase extends TestCase {
     var $cache = [];
     var $samples = [];
     var $client = null;
+    var $credentials = [
+        "clientKey" => null
+    ];
     var $data = [
         'syllabis' => [],
         'replit-templates' => [],
@@ -156,6 +159,7 @@ class BaseTestCase extends TestCase {
         $bodyStream->rewind();
         $req = $req->withBody($bodyStream);
         $req = $req->withHeader('Content-Type', 'application/json');
+        $req = $req->withHeader('Authorization', 'JWT '.$this->credentials["clientKey"]);
 
         $this->app->getContainer()["environment"] = $env;
         $this->app->getContainer()["request"] = $req;
