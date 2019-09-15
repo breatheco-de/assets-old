@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper as BC;
 use Google\Cloud\Datastore\DatastoreClient;
+use \Exception;
 
 BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BC::setToken(BREATHECODE_TOKEN);
@@ -168,7 +169,7 @@ return function($api){
 
         if(isset($parsedBody["slug"])) logError($api, $parsedBody);
         else if(is_array($parsedBody)) foreach($parsedBody as $error) logError($api, $error);
-        else throw new Exceptiion('Invalid error format', 400);
+        else throw new Exception('Invalid error format', 400);
 
 	    return $response->withJson($parsedBody);
 
