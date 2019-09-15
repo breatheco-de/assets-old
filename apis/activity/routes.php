@@ -62,6 +62,7 @@ return function($api){
 	        $email = $api->validate($activity,'email')->email();
 	        $slug = $api->validate($activity,'slug')->slug();
 	        $data = $api->optional($activity,'data')->string();
+            $agent = $api->optional($activity,'user_agent')->string();
 
 	        BreatheCodeLogger::logActivity([
 	            'slug' => $slug,
@@ -69,6 +70,7 @@ return function($api){
 	            	'id' => $id,
 	            	'email' => $email
 	            ],
+                'user_agent' => $agent,
 	            'data' => $data
 	        ]);
 		}
@@ -84,11 +86,12 @@ return function($api){
 		$parsedBody = $request->getParsedBody();
         $data = $api->optional($parsedBody,'data')->string();
         $slug = $api->validate($parsedBody,'slug')->slug();
+        $agent = $api->optional($parsedBody,'user_agent')->string();
 
         BreatheCodeLogger::logActivity([
             'slug' => $slug,
             'user' => $user,
-            'data' => $data
+            'user_agent' => $agent
         ]);
 	    return $response->withJson("ok");
 
@@ -106,6 +109,11 @@ return function($api){
             $severity = $api->validate($data,'severity')->int();
             $name = $api->validate($data,'name')->string(0,20);
 
+            $user_agent = $api->optional($data,'user_agent')->string(0,50);
+            $builder = $api->optional($data,'builder')->string(0,50);
+            $framework = $api->optional($data,'framework')->string(0,50);
+            $language = $api->optional($data,'language')->string(0,50);
+
             BreatheCodeLogger::logActivity([
                 'slug' => $slug,
                 'user' => $user,
@@ -113,6 +121,10 @@ return function($api){
                 'name' => $name,
                 'message' => $message,
                 'severity' => $severity,
+                'user_agent' => $agent,
+                'builder' => $builder,
+                'framework' => $framework,
+                'language' => $language,
             ]);
         }
 

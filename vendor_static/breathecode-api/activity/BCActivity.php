@@ -1,0 +1,39 @@
+<?php
+
+namespace BreatheCode\Activity;
+
+use \Exception;
+
+abstract class BCActivity{
+
+    public $possibleTypes = [];
+    abstract public function encode($student, $data);
+    abstract public function decode($data);
+    abstract public function filter($query, $filters);
+
+    public static function factory($type){
+
+        $ins = new ErrorActivity();
+        if($ins->setType($type)) return $ins;
+        $ins = new StudentActivity();
+        if($ins->setType($type)) return $ins;
+
+        throw new Exception('Invalid Activity Type');
+    }
+
+    public function setType($type){
+        if(isset($this->possibleTypes[$type])){
+            $this->type = $type;
+            return true;
+        }
+        return false;
+    }
+
+    public function trackOnActiveCampaign(){ return $this->possibleTypes[$this->type]["track_on_active_campaign"]; }
+    public function trackOnLog(){
+        //if($this->type == "breathecode_login"){
+            //print_r($this->type);die();
+        //}
+        return $this->possibleTypes[$this->type]["track_on_log"];
+    }
+}
