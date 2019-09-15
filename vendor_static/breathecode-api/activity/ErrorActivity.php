@@ -7,7 +7,13 @@ class ErrorActivity extends BCActivity{
     var $type = null;
     var $slug = "coding_error";
     var $possibleTypes = [
-        "webpack_error" => [
+        //errors made during compilation time, normally when building projects
+        "compilation_error" => [
+            "track_on_active_campaign" => false,
+            "track_on_log" => true
+        ],
+        //errors made during testing of a small exercise like a replit
+        "exercise_error" => [
             "track_on_active_campaign" => false,
             "track_on_log" => true
         ],
@@ -19,6 +25,8 @@ class ErrorActivity extends BCActivity{
         if(!empty($filters["user_agent"])) $query = $query->filter('language', '=', $filters["user_agent"]);
         if(!empty($filters["builder"])) $query = $query->filter('language', '=', $filters["builder"]);
         if(!empty($filters["framework"])) $query = $query->filter('framework', '=', $filters["framework"]);
+        if(!empty($filters["cohort"])) $query = $query->filter('cohort', '=', $filters["cohort"]);
+        if(!empty($filters["day"])) $query = $query->filter('day', '=', $filters["day"]);
         if(!empty($filters["user_id"])){
             $query = $query->filter('user_id', '=', $filters["user_id"]);
         }
@@ -38,7 +46,9 @@ class ErrorActivity extends BCActivity{
             "builder" => $ans->builder,
             "severity" => $ans->severity,
             "created_at" => $data->created_at,
-            "details" => $ans->error
+            "details" => $ans->error,
+            "cohort" => $ans->cohort,
+            "day" => $ans->day,
         ];
     }
 
@@ -54,6 +64,8 @@ class ErrorActivity extends BCActivity{
             'language' => (empty($data["language"])) ? null : $data["language"],
             'framework' => (empty($data["framework"])) ? null : $data["framework"],
             'builder' => (empty($data["builder"])) ? null : $data["builder"],
+            'cohort' => (empty($data["cohort"])) ? null : $data["cohort"],
+            'day' => (empty($data["day"])) ? null : $data["day"],
             'severity' => $data["severity"],
             'details' => $data["details"],
         ];
