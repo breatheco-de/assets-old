@@ -27,6 +27,16 @@ class StudentActivity extends BCActivity{
             "track_on_active_campaign" => false,
             "track_on_log" => true
         ],
+        //when a lessons is opened on the platform
+        "lesson_opened" => [
+            "track_on_active_campaign" => false,
+            "track_on_log" => true
+        ],
+        //when the office raspberry pi detects the student
+        "office_attendance" => [
+            "track_on_active_campaign" => false,
+            "track_on_log" => true
+        ],
         //when a nps survey is answered by the student
         "nps_survey_answered" => [
             "track_on_active_campaign" => true,
