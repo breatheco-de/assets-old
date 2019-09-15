@@ -15,7 +15,7 @@ class ActivityTest extends BaseTestCase {
         parent::setUp();
 
         //$this->credentials['clientKey'] = $this->app->generatePrivateKey("my_super_id");
-        $this->app->setJWTKey("!SC96fa4!!#%88730397!sd#$$%3423454523");
+        $this->app->setJWTKey($this->app->generatePrivateKey("test_client"));
         $this->app->addRoutes(require(__DIR__.'/../apis/activity/routes.php'));
     }
 
