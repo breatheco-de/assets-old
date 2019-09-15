@@ -8,10 +8,6 @@ use \BreatheCode\BCWrapper;
 
 class StreamingTest extends BaseTestCase
 {
-    private $credentials = [
-        "clientId" => "my_super_id",
-        "clientKey" => null
-    ];
 
     public function setUp(){
         parent::setUp();
@@ -20,7 +16,7 @@ class StreamingTest extends BaseTestCase
         $this->app->setJWTKey("adSAD43gtterT%rtwre32@");
 
         //generating credentials for one client.
-        $this->credentials['clientKey'] = $this->app->generatePrivateKey($this->credentials['clientId']);
+        $this->credentials['clientKey'] = $this->app->generatePrivateKey("test_client");
         $this->app->addRoutes(require(__DIR__.'/../apis/streaming/routes.php'));
     }
 
