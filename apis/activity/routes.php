@@ -166,11 +166,11 @@ return function($api){
             ]);
         }
 
+        if(isset($parsedBody["slug"])) logError($api, $parsedBody);
+        else if(is_array($parsedBody)) foreach($parsedBody as $error) logError($api, $error);
+        else throw new Exceptiion('Invalid error format', 400);
 
-        if(is_array($parsedBody)) foreach($parsedBody as $error) logError($api, $error);
-        else logError($api, $parsedBody);
-
-	    return $response->withJson("ok");
+	    return $response->withJson($parsedBody);
 
 	});//->add($api->auth());
 
