@@ -154,5 +154,33 @@ return function($api){
         else throw new Exception('The student was not added into breathecode');
 	});
 
+	$api->get('/me', function (Request $request, Response $response, array $args) use ($api) {
+
+        //if(empty($args['email'])) throw new Exception('Invalid or missing email');
+        //$user = BC::getMe(['user_id' => urlencode($username)]);
+        $token = !empty($_SERVER["HTTP_AUTHORIZATION"]) ? str_replace("JWT ","",$_SERVER["HTTP_AUTHORIZATION"]) : null;
+        if(!$token) $token = isset($_GET['access_token']) ? str_replace("JWT ","", $_GET['access_token']) : null;
+        if(!$token) throw new Exception('Missing access token', 401);
+
+        $payload = $api->jwt_decode($token);
+        if(!$payload) throw new Exception('Invalid access token', 403);
+
+        $user = BC::getUser(['user_id' => $payload->clientId ]);
+        $scope = (empty($user->type)) ? 'student': $user->type;
+
+            if($user->type == 'student'){
+                if($user->status == 'blocked' || $user->status == 'student_dropped'){
+                    return $response->withJson([
+                        'msg'=> 'You access to the BreatheCode platform has been revoked'
+                    ])->withStatus(403);
+                }
+
+                $user = BC::getStudent(['student_id' => $payload->clientId ]);
+            }
+
+            return $response->withJson($user);
+
+	});
+
 	return $api;
 };
