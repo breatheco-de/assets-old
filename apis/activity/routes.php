@@ -133,6 +133,7 @@ return function($api){
 
         $parsedBody = $request->getParsedBody();
         function logError($api, $data){
+
             $details = $api->optional($data,'details')->string();
             $slug = $api->validate($data,'slug')->slug();
             $message = $api->validate($data,'message')->text();
@@ -164,6 +165,7 @@ return function($api){
                 'day' => $day,
             ]);
         }
+
 
         if(is_array($parsedBody)) foreach($parsedBody as $error) logError($api, $error);
         else logError($api, $parsedBody);
