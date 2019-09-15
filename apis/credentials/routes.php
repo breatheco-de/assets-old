@@ -11,11 +11,15 @@ BC::setToken(BREATHECODE_TOKEN);
 
 return function($api){
 
-	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api) {
+    $userAgents = [ 'bc/student', 'bc/mobile', 'bc/cli', 'bc/admin', 'bc/teacher' ];
+
+	$api->post('/auth', function (Request $request, Response $response, array $args) use ($api, $userAgents) {
 
         $body = json_decode($request->getBody()->getContents());
         if(empty($body->username)) throw new Exception('Invalid username');
         if(empty($body->password)) throw new Exception('Invalid password');
+
+        if(isset($body->user_agent) and !in_array($body->user_agent, $userAgents)) throw new Exception('Invalid user agent, options: '.implode(",",$userAgents));
 
         $username = $body->username;
         $password = $body->password;
@@ -55,7 +59,8 @@ return function($api){
 		        try{
 		            BreatheCodeLogger::logActivity([
 		                'slug' => 'breathecode_login',
-		                'user' => $user
+		                'user' => $user,
+                        'user_agent' => isset($body->user_agent) ? $body->user_agent : null
 		            ]);
 		        }catch(Exception $e){  }
 
