@@ -168,7 +168,7 @@ class BaseTestCase extends TestCase {
         $responseObj = json_decode($responseBody);
 
         $assertion =  new \SlimAPI\AssertResponse($this, $response, $responseObj);
-        //$this->_logTest($params, $response, $responseObj, $assertion);
+        $this->_logTest($params, $response, $responseObj, $assertion, $token);
         return $assertion;
     }
 
@@ -370,7 +370,7 @@ class BaseTestCase extends TestCase {
             echo "\033[0m";
         }
     }
-    function _logTest($params, $response, $responseObj, $assertion=null){
+    function _logTest($params, $response, $responseObj, $assertion=null, $token='no_credentials'){
 
         if(API_DEBUG){
             $code = $response->getStatusCode();
@@ -387,6 +387,7 @@ class BaseTestCase extends TestCase {
                 else {
                     echo "\033[31m \n ****    FOUND SOME MISMATCHES:    **** \n \033[0m";
                     echo "   [request]  => \033[36m".$params['REQUEST_METHOD'].": ".$params['REQUEST_URI']."\033[0m \n";
+                    echo "   [token]  => \033[36m".$token."\033[0m \n";
                     echo "   [details]  => \033[33m No details or response was provided \033[0m \n \n";
                 }
             }
