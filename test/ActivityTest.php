@@ -25,8 +25,8 @@ class ActivityTest extends BaseTestCase {
     //         $this->assertTrue(BreatheCodeLogger::validateActivityProperties($props, $slug));
     // }
 
-    public function testGetStudentActivity(){
-        $this->mockGET('/user/a.alejo@gmail.com?access_token='.$this->credentials["clientKey"])->expectSuccess(); //expects 200
-    }
+    // public function testGetStudentActivity(){
+    //     $this->mockGET('/user/a.alejo@gmail.com?access_token='.$this->credentials["clientKey"])->expectSuccess(); //expects 200
+    // }
 
 }
