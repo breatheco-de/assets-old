@@ -14,8 +14,9 @@ class ActivityTest extends BaseTestCase {
     {
         parent::setUp();
 
-        //$this->credentials['clientKey'] = $this->app->generatePrivateKey("my_super_id");
-        $this->app->setJWTKey("adSAD43gtterT%rtwre32@");
+        $this->app->setJWTKey("sgfsdfgtr5545545rg23232323DFDFDF");
+        $this->credentials['clientKey'] = $this->app->generatePrivateKey("test_client");
+        //$this->app->generatePrivateKey("test_client");
         $this->app->addRoutes(require(__DIR__.'/../apis/activity/routes.php'));
     }
 
@@ -24,8 +25,8 @@ class ActivityTest extends BaseTestCase {
     //         $this->assertTrue(BreatheCodeLogger::validateActivityProperties($props, $slug));
     // }
 
-    public function testGetStudentActivity(){
-        $this->mockGET('/user/a.alejo@gmail.com')->expectSuccess(); //expects 200
-    }
+    // public function testGetStudentActivity(){
+    //     $this->mockGET('/user/a.alejo@gmail.com?access_token='.$this->credentials["clientKey"])->expectSuccess(); //expects 200
+    // }
 
 }
