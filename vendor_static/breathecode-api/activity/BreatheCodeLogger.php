@@ -4,6 +4,7 @@ namespace BreatheCode;
 use \Google\Cloud\Datastore\DatastoreClient;
 use \Google\Cloud\Datastore\Query\Query;
 use \BreatheCode\Activity\BCActivity;
+use \Exception;
 
 class BreatheCodeLogger{
 
@@ -46,6 +47,9 @@ class BreatheCodeLogger{
         $student = (!$user) ? $activity["user"] : $user;
 
         if(empty($student)) throw new \Exception('Invalid or empty user for the activity');
+
+        $agents = [ 'bc/student', 'bc/mobile', 'bc/cli', 'bc/admin', 'bc/teacher' ];
+        if(!empty($activity["user_agent"]) && !in_array($activity["user_agent"], $agents)) throw new Exception('Invalid user agent, options: '.implode(",",$agents));
 
         $instance = BCActivity::factory($activity["slug"]);
         if($instance->trackOnLog()){

@@ -73,8 +73,8 @@ class StudentActivity extends BCActivity{
         $activity = [
             'created_at' => new \DateTime(),
             'slug' => $data["slug"],
-            'cohort' => (empty($dataObj)) ? null : (empty($dataObj["cohort"])) ? null : $dataObj["cohort"],
-            'day' => (empty($dataObj)) ? null : (empty($dataObj["day"])) ? null : $dataObj["day"],
+            'cohort' => isset($data["cohort"]) ? $data["cohort"] : null,
+            'day' => isset($data["day"]) ? $data["day"] : null,
             'user_agent' => (empty($data["user_agent"])) ? null : $data["user_agent"],
             'data' => (empty($data["data"])) ? null : $data["data"]
         ];
