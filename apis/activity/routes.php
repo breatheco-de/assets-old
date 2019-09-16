@@ -147,8 +147,8 @@ return function($api){
             $framework = $api->optional($data,'framework')->string(0,50);
             $language = $api->optional($data,'language')->string(0,50);
 
-            $cohort = $api->optional($parsedBody,'cohort')->string();
-            $day = $api->optional($parsedBody,'day')->string();
+            $cohort = $api->optional($data,'cohort')->string();
+            $day = $api->optional($data,'day')->string();
 
             BreatheCodeLogger::logActivity([
                 'slug' => $slug,
