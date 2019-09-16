@@ -11,7 +11,7 @@ export default class FormCohort extends React.Component{
 
     static getDerivedStateFromProps(nextProps, prevState){
         if (nextProps.replits != prevState.replits) {
-            return { 
+            return {
                 replits: nextProps.replits
             }
         }
@@ -19,28 +19,26 @@ export default class FormCohort extends React.Component{
     }
 
     handleChange(value, key){
-        const newReplits = Object.assign(this.state.replits)
-        newReplits[key] = value
-        
-        this.setState({
-            replits: newReplits
-        });
-        
-        this.props.getData(newReplits);
+        const replits = Object.assign(this.state.replits);
+        replits[key].updatedValue = value;
+        this.setState({ replits });
+        this.props.getData(replits);
     }
 
     render(){
-        let form = Object.entries(this.props.replits).map((value, i)=>{
+        let form = Object.entries(this.props.replits).filter(data => data[1]).map((data, i)=>{
+            const r = data[1];
             return(
                 <div className="form-group row" key={i}>
-                    <label className="col-md-2 col-form-label">{value[0]}:</label>
+                    <label className="col-md-2 col-form-label">{r.title}:</label>
                     <div className="col-md-10">
                     <input key={i}
-                        type="text" 
-                        className="form-control" 
+                        readOnly={typeof r.value !== 'undefined'}
+                        type="text"
+                        className="form-control"
                         placeholder=""
-                        value={value[1]}
-                        onChange={(event)=>this.handleChange(event.target.value, value[0])} />
+                        value={r.value || r.updatedValue || r.base}
+                        onChange={(e)=> typeof r.value === 'undefined' && this.handleChange(e.target.value, r.slug)} />
                     </div>
                 </div>
             )
@@ -56,7 +54,7 @@ export default class FormCohort extends React.Component{
                     </div>
                 </div>
             </div>
-            
+
         );
     }
 }

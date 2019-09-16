@@ -58,9 +58,13 @@ class _store extends Flux.DashStore{
 
             let newReplits = (replits) ? replits : {};
             templates.forEach((t)=>{
-                if(typeof newReplits[t.slug] == 'undefined') newReplits[t.slug] = t.base || '';
+                t.updatedValue = typeof newReplits[t.slug] != 'undefined' ? newReplits[t.slug] : '';
+                newReplits[t.slug] = t;
             });
-            return replits;
+
+            console.log("New replits", newReplits);
+
+            return newReplits;
         });
         this.addEvent('templates', (templates)=>{
             templatesAdded = true;
@@ -69,7 +73,7 @@ class _store extends Flux.DashStore{
             let oldReplits = this.getState('replits');
             let newReplits = (oldReplits) ? oldReplits : {};
             templates.forEach((t)=>{
-                if(typeof newReplits[t.slug] == 'undefined') newReplits[t.slug] = t.base || '';
+                if(typeof newReplits[t.slug] == 'undefined') newReplits[t.slug] = t;
             });
             this.events.forEach((event)=>{
                 if(event.name == 'replits') event.value = newReplits;

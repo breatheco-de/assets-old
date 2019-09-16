@@ -51,7 +51,12 @@ return function($api){
 		$cohorts = [];
 		foreach($content as $file => $replits){
 			foreach($baseReplits as $brepl){
-				if(!empty($brepl->base)){
+				//if the template has a value property, i have to enforce it
+                if(!empty($brepl->value)){
+                    $replits[$brepl->slug] = $brepl->value;
+
+                //if it does not have a value, but it has a base, I can sugest it if the teacher did not set it
+				}else if(!empty($brepl->base)){
 					if(empty($replits[$brepl->slug])) $replits[$brepl->slug] = $brepl->base;
 				}
 			}
@@ -71,7 +76,12 @@ return function($api){
 
 			$baseReplits = ReplitFunctions::getTemplates($profileSlug);
 			foreach($baseReplits as $brepl){
-				if(!empty($brepl->base)){
+                //if the template has a value property, i have to enforce it
+                if(!empty($brepl->value)){
+                    $replits[$brepl->slug] = $brepl->value;
+
+                //if it does not have a value, but it has a base, I can sugest it if the teacher did not set it
+				}else if(!empty($brepl->base)){
 					if(empty($replits[$brepl->slug])) $replits[$brepl->slug] = $brepl->base;
 				}
 			}

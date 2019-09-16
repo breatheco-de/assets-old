@@ -29,10 +29,18 @@ export default class BannerHeader extends React.Component{
     postApi(){
         let slug = this.props.createJson[0];
         let url = process.env.ASSETS_HOST+'/apis/replit/cohort/'+slug+'?access_token='+tokens().assetsToken;
+
+
+        let body = {};
+        for(let key in this.props.createJson[1]){
+            body[key] = this.props.createJson[1][key].value || this.props.createJson[1][key].updatedValue || this.props.createJson[1][key].base || '';
+        }
+
+
         fetch(url, {
             headers: {"content-type": "application/json"},
             method: 'POST',
-            body: JSON.stringify(this.props.createJson[1])
+            body: JSON.stringify(body)
         })
         .then(resp => {
             if(resp.status!=200){
