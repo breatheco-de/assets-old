@@ -68,7 +68,25 @@ return function($api){
 
     	return $response->withJson([ "msg" => "$count students notified, $ignored ignored (there are not currently_active or studies_finished) and $errors gave errors", "total" => $count]);
 
-	});//->add($api->auth());
+	})->add($api->auth());
+
+	$api->post('/execute/add_student_to_cohort', function (Request $request, Response $response, array $args) use ($api) {
+
+        $body = $request->getParsedBody();
+        $cohortSlug = $api->validate($body,'cohort_slug')->slug();
+        $studentsStr = $api->validate($body,'students')->string();
+
+        $students = explode(",", $studentsStr);
+
+        ACAPI::start(AC_API_KEY);
+        foreach($students as $studentId){
+            $stu = BC::getStudent(['student_id' => $studentId]);
+            $contact = ACAPI::tagContact($stu->email,$cohortSlug);
+        }
+
+    	return $response->withJson([ "msg" => "The cohort tag $cohortSlug was added to the students $studentsStr"]);
+
+	})->add($api->auth());
 
 	$api->post('/execute/nps_survey_cohort', function (Request $request, Response $response, array $args) use ($api) {
 
