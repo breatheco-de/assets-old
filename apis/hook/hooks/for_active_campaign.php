@@ -9,10 +9,10 @@ BC::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API
 BC::setToken(BREATHECODE_TOKEN);
 
 return function($api){
-	
+
 	//initialize fields in active campaign with "undefined"
 	$api->post('/initialize', function (Request $request, Response $response, array $args) use ($api) {
-        
+
 		$parsedBody = $request->getParsedBody();
 		$userEmail = null;
 		if(isset($parsedBody['email'])) $userEmail = $parsedBody['email'];
@@ -37,21 +37,21 @@ return function($api){
 			    //initialize the field with undefined
 			    $fields['field['.$id.','.$field->dataid.']'] = 'undefined';
 
-			    //override the initialization for language, making EN by default 
+			    //override the initialization for language, making EN by default
 			    if($field->perstag == 'UTM_LANGUAGE')
 				$fields['field['.$id.','.$field->dataid.']'] = 'en';
 			}
 		    }
 
-		}    
+		}
 		\AC\ACAPI::updateContact($contact->email,$fields);
 
 		return $response->withJson('ok');
 	});
-	
+
 	// grab values from breathecode and send them to active campaign
 	$api->post('/sync/breathecode_id', function (Request $request, Response $response, array $args) use ($api) {
-        
+
 		$parsedBody = $request->getParsedBody();
 		$userEmail = null;
 		if(isset($parsedBody['email'])) $userEmail = $parsedBody['email'];
@@ -71,12 +71,13 @@ return function($api){
 			$updatedContact = \AC\ACAPI::updateContact($contact->email,$fields);
 			return $updatedContact;
 		    }
-		}    
+		}
 
 		return $response->withJson('ok');
-		});
+	});
 
-		$api->post('/sync/contact', function (Request $request, Response $response, array $args) use ($api) {
+
+	$api->post('/sync/contact', function (Request $request, Response $response, array $args) use ($api) {
 
 		$log = [];
 		$parsedBody = $request->getParsedBody();
@@ -97,8 +98,8 @@ return function($api){
 		$student=null;
 		try{
 		    $student = BC::getStudent(["student_id" => $userEmail]);
-		}catch(Exception $e){ 
-		    if(!in_array($e->getCode(), [200,404])) throw $e; 
+		}catch(Exception $e){
+		    if(!in_array($e->getCode(), [200,404])) throw $e;
 		    else $log[] = 'The email was not found on BreatheCode';
 		}
 
@@ -114,22 +115,22 @@ return function($api){
 		    if(!empty($status['locations'])){
 			$newFields['UTM_LOCATION'] = $status['locations'];
 			$log[] = 'The UTM_LOCATION '.$status['locations'].' was added to the student';
-		    } 
+		    }
 		    if(!empty($status['courses'])){
 			$newFields['COURSE'] = $status['courses'];
 			$log[] = 'The courses '.$status['courses'].' were added to the student';
-		    } 
+		    }
 		    if(!empty($student->id)){
 			$newFields['BREATHECODEID'] = $student->id;
 			$log[] = 'The breathecode_id '.$student->id.' was added to the student';
-		    } 
+		    }
 
 		    $contactFields = ACAPI::updateContactFields($contact, $newFields);
 
 		    if(!empty($student->phone)){
 			$contactFields["phone"] = $student->phone;
 			$log[] = 'The following phone was added to the student: '.$student->phone;
-		    } 
+		    }
 		    //apply tags for each cohort
 		    $contactFields["tags"] = $status['cohorts'];
 		    $log[] = 'The following tags were added to the student: '.$status['cohorts'];
@@ -149,6 +150,6 @@ return function($api){
 
 		return $response->withJson($log);
 	});
-	
+
 	return $api;
 };

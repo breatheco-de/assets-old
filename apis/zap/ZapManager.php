@@ -14,7 +14,8 @@ class ZapManager{
         "change_cohort_status@on-course" => [],
         "change_cohort_status@on-final-project" => ["nps_survey_cohort"],
         "change_cohort_status@finished" => ["nps_survey_cohort"],
-        "add_student" => ["add_student_to_active_campaign"]
+        "add_student" => ["add_student_to_active_campaign"],
+        "add_student_to_cohort" => ["add_student_to_cohort"]
     ];
 
     static $actions = [
@@ -24,6 +25,10 @@ class ZapManager{
         ],
         "add_student_to_active_campaign" => [
             "title" => "Add student to active campaign",
+            "run_by_default" => true
+        ],
+        "add_student_to_cohort" => [
+            "title" => "Add tag to students active campign's contact",
             "run_by_default" => true
         ]
     ];
