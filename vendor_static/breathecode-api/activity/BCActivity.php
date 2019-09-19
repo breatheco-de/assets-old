@@ -21,6 +21,15 @@ abstract class BCActivity{
         throw new Exception('Invalid Activity Type');
     }
 
+    public static function getAllTypes(){
+
+        $error = new ErrorActivity();
+        $student = new StudentActivity();
+        $types = array_merge($error->possibleTypes, $student->possibleTypes);
+
+        return $types;
+    }
+
     public function setType($type){
         if(isset($this->possibleTypes[$type])){
             $this->type = $type;

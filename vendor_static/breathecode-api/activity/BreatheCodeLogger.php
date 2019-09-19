@@ -32,16 +32,17 @@ class BreatheCodeLogger{
         return true;
     }
 
-    // public static function addMessagesToActivities($messages){
-    //     foreach($messages as $slug => $msg){
-    //         if(isset(self::$_activites[$slug])) throw new \Exception("Duplicated Activity Slug");
-    //         self::validateActivityProperties($msg, $slug);
-    //         self::$_activites[$slug] = [
-    //             "track_on_active_campaign" => $msg["track_on_active_campaign"],
-    //             "track_on_log" => $msg["track_on_log"]
-    //         ];
-    //     }
-    // }
+    public static function addMessagesToActivities($messages){
+        $activities = BCActivity::getAllTypes();
+        foreach($messages as $slug => $msg){
+            if(isset($activities[$slug])) throw new \Exception("Duplicated Activity Slug");
+            self::validateActivityProperties($msg, $slug);
+            $activities[$slug] = [
+                "track_on_active_campaign" => $msg["track_on_active_campaign"],
+                "track_on_log" => $msg["track_on_log"]
+            ];
+        }
+    }
 
     static function logActivity($activity, $user=null){
         $student = (!$user) ? $activity["user"] : $user;
