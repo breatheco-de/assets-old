@@ -40,6 +40,7 @@ return function($api){
         if(empty($body->username)) throw new Exception('Invalid username');
         if(empty($body->password)) throw new Exception('Invalid password');
 
+        $exp = isset($body->exp) ? $body->exp : null;
         $username = $body->username;
         $password = $body->password;
         try{
@@ -56,7 +57,8 @@ return function($api){
         	];
         	if(!isset($permissions[$scope])) throw new Exception('Invalid scope: '.$scope);
 
-        	$token = BC::autenticate($username,$password,$permissions[$scope]);
+            $token = BC::autenticate($username,$password,$permissions[$scope], $exp);
+            //print_r($token); die();
 		    if($token && $token->access_token)
 		    {
 		        BC::setToken($token->access_token);
@@ -76,7 +78,7 @@ return function($api){
                     $currentCohort = getCurrentCohort($user->cohorts);
 		        }
 		        $user->scope = $token->scope;
-		        $user->assets_token = $api->jwt_encode($user->id);
+		        $user->assets_token = $api->jwt_encode($user->id, $exp ? $exp : 31556952000);
 
 		        try{
 		            BreatheCodeLogger::logActivity([
