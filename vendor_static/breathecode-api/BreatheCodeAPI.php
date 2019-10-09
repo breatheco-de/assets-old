@@ -169,7 +169,7 @@ class BCWrapper{
         if(empty($params[$key])) throw new Exception('Undefined required parameter '.$key, 400);
     }
 
-    public static function autenticate($username, $password, $scopes){
+    public static function autenticate($username, $password, $scopes, $exp=null){
 
 		$args = [
     		'grant_type' => "password",
@@ -177,10 +177,12 @@ class BCWrapper{
     		'username' => $username,
     		'password' => $password,
     		'scope' => implode(" ",$scopes)
-		];
+        ];
+        if($exp) $args["expires_in"] = $exp;
 
 		// send the response back to the front end
-		$token = self::request('post','token',$args);
+        $token = self::request('post','token',$args);
+        //print_r($token); die();
 		if(!empty($token->access_token))
 		{
     		return $token;

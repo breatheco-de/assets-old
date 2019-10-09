@@ -181,7 +181,7 @@
           </div>
         </div>
         <script type="text/javascript">
-        
+
             function updateGallery(){
                 let query = {
                     tag: $('.filter .tag').val(),
@@ -199,10 +199,10 @@
             }
             window.onload = function(){
                 updateGallery();
-                
+
                 $('.filter').change(() => updateGallery());
             }
-            
+
             function confirmDeletion(deleteBtn){
                 const input = $(deleteBtn).closest(".modal-body").find("input");
                 bootbox.confirm({
@@ -223,7 +223,7 @@
                                 .then(()=>updateGallery())
                                 .catch(err => console.error(err));
                             $('.modal').modal('hide');
-                        } 
+                        }
                     }
                 });
             }
@@ -239,7 +239,7 @@
             }
             function processForm(){
                 $('#errors').addClass('d-none');
-                
+
                 var errors = [];
                 var tags = $('#img-tags').val();
                 if(tags == '') errors.push('Tags are empty');
@@ -256,31 +256,34 @@
                     description: description,
                     url: url
                 };
-                
+
                 if(errors.length == 0) addImage(image).then(function(){
                     $('#errors').removeClass('d-none');
                     $('#errors').removeClass('alert-danger');
                     $('#errors').addClass('alert-success');
                     $('#errors').html('The image was uploaded successfully!');
-                    
+
                     $('.step').addClass('d-none');
                     $('#second-step').removeClass('d-none');
                     $('#img-url').select();
-                    
+
                     $('.modal-footer').addClass('d-none');
-                    
+
                     let query = {
                         tag: $('.filter .tag').val(),
                         category: $('.filter .category').val()
                     };
                     getImages(query).then(images => {
-                        $('.card-columns').html(images.map(img => renderImage(img)));
-                        $('.card-columns img').click(e => {
-                            $('#img-click-url').val(e.target.src);
-                            $('#img-click-url-small').val(e.target.src+"-/resize/200x/");
-                            $('#img-click-description').val(e.target.alt);
-                            $('#card-click-modal').modal();
-                        });
+                        if(images.length === 0) $('.card-columns').html("<div>There are no images on the database</div>");
+                        else{
+                            $('.card-columns').html(images.map(img => renderImage(img)));
+                            $('.card-columns img').click(e => {
+                                $('#img-click-url').val(e.target.src);
+                                $('#img-click-url-small').val(e.target.src+"-/resize/200x/");
+                                $('#img-click-description').val(e.target.alt);
+                                $('#card-click-modal').modal();
+                            });
+                        }
                     });
                 }).catch(function(error){
                     $('#errors').html(error.message || error.msg || error);
@@ -366,7 +369,7 @@
                 });
             }
         </script>
-        
+
         <div class="contaner-fluid">
             <div class="card-columns">
             </div>
