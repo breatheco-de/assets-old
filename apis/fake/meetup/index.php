@@ -4,7 +4,7 @@
 	
 	$api = new \SlimAPI\SlimAPI([
 		'debug' => API_DEBUG,
-		'name' => 'Fake Meetups API',
+		'name' => 'Fake Meetup API',
 		'allowedURLs' => 'all'
 	]);
 	$api->addReadme('/','./README.md');

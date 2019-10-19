@@ -1,24 +1,32 @@
-# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Fake Contact-List API
+# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Meetup Clone API
 
-⚠️ The use of Insomnia.rest is strongly recomended for this API, [download it here](https://insomnia.rest/).
+⚠️ The use of Postman is strongly recomended for this API, [download it here](https://getpostman.com/).
 
-#### 1) Get All meetups
-```
+## 1) Get All meetups
+
+```json
 GET: /apis/fake/meetup
 
 RESPONSE:
 
 [
-    {
-        ID: 9,
-        post_content: "The nicest Meetup ever",
-        post_title: "Tech Enthusiasts"
-    }
+    "ID":9,
+    "post_content":"The nicest Meetup ever",
+    "post_title":"Tech Enthusiasts",
+    "members": [
+        "robert",
+        "jjtime",
+        "username2",
+        "cheeselover",
+        "neweradude",
+        "james1996"
+    ]
 ]
 ```
 
-#### 2) Get all events
-```
+## 2) Get all events
+
+```json
 GET: /apis/fake/events
 
 RESPONSE:
@@ -39,15 +47,17 @@ RESPONSE:
 ]
 ```
 
-#### 3) Get all sessions
-```
-DELETE: /apis/fake/session
+## 3) Get all sessions
+
+```json
+GET: /apis/fake/session
 
 RESPONSE:
 
 {
-    ID: 2,
-    username: "theUser",
-    token: "qwerty12345asdfgzxcv"
+   "ID":2,
+   "username":"newKid143",
+   "user_friendly_name":"Joey",
+   "token":"qwerty12345asdfgzxcv"
 }
 ```

@@ -1,0 +1,55 @@
+[
+   {
+      "ID":9,
+      "post_content":"The nicest Meetup ever",
+      "post_title":"Tech Enthusiasts",
+      "members": [
+         "robert",
+         "jjtime",
+         "username2",
+         "cheeselover",
+         "neweradude",
+         "james1996"
+      ]
+   },
+   {
+      "ID":10,
+      "post_content":"The geeks' Meetup",
+      "post_title": "Let's code",
+      "members": [
+         "billycoder",
+         "r0bby",
+         "jayphelps",
+         "newschooldev",
+         "jaimieluvscode"
+      ]
+   },
+   {
+      "ID":11,
+      "post_content":"UFO meeting group",
+      "post_title": "Aliens, aliens everywhere",
+      "members": [
+         "littlegrey",
+         "flyingthroughspace",
+         "blinkin42",
+         "th3govl13z",
+         "consprcytheorizt"
+      ]
+   },
+   {
+      "ID":12,
+      "post_content": "Cats, Dogs, Reptiles and Siblings. All Animals are Loved.",
+      "post_title": "Animal Lovers",
+      "members": [
+         "robertperkins",
+         "jjtime",
+         "neko143",
+         "cheeselover",
+         "neweradude",
+         "bobjenkins",
+         "jayphelps",
+         "inulvr03",
+         "james1996"
+      ]
+   }
+]
