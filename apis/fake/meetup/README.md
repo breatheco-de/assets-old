@@ -1,11 +1,19 @@
 # ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Meetup Clone API
 
-⚠️ The use of Postman is strongly recomended for this API, [download it here](https://getpostman.com/).
+## Details
 
-## 1) Get All meetups
+This API is for use with the Meetup Clone project that is found in the Breathecode platform.
+
+API Methods and their corresponding response formats are detailed below. It is recommended that you test your endpoints first to ensure that you know how many records the API will return before you implement in your application. Then you can compare this against your implementation in React so that you can see if the complete set of data is being stored in your WebApp.
+
+⚠️ The use of Postman is strongly recomended for testing this API, [download it here](https://getpostman.com/).
+
+## API Methods
+
+### 1. `GET` All Groups
 
 ```json
-GET: /apis/fake/meetup
+GET: /apis/fake/groups
 
 RESPONSE:
 
@@ -24,7 +32,7 @@ RESPONSE:
 ]
 ```
 
-## 2) Get all events
+### 2. `GET` All Events
 
 ```json
 GET: /apis/fake/events
@@ -47,7 +55,7 @@ RESPONSE:
 ]
 ```
 
-## 3) Get all sessions
+### 3. `GET` All Sessions
 
 ```json
 GET: /apis/fake/session
