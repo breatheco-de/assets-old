@@ -3,6 +3,8 @@
 namespace BreatheCode;
 
 use Aws\Ses\SesClient;
+use Kreait\Firebase;
+use Kreait\Firebase\Messaging\CloudMessage;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
 
@@ -12,6 +14,8 @@ class BreatheCodeMessages{
     private static $datastore = null;
 
     private static $messageType = ['actionable','non-actionable'];
+    private static $priorityType = ['HIGH','LOW'];
+
 
     public static function getType($type){
         if(!in_array(self::messageType)) throw new \Exception('Ivalid Message Type', 400);
@@ -27,6 +31,25 @@ class BreatheCodeMessages{
                 "send_email" => true,
                 "type" => 'actionable',
                 "priority" => 'HIGH',
+                "template" => [
+                    "subject" => "Take 20 seconds to give us some feedback",
+            		"intro" => "Hello! We need some feedback from your side, it's the only way to become a better academy and it's only one small question, we would really appreciate your answer",
+            		"question" => "How likely are you to recommend 4Geeks Academy to your friends or colleagues?"
+                ],
+                "getURL" => function($student){
+                    $id = '';
+                    if(!empty($student->id)) $id = $student->id;
+                    else if(is_string($student)) $id = $student;
+
+                    return 'https://assets.breatheco.de/apps/nps/survey/'.$id;
+                }
+            ],
+            "job_position" => [
+                "track_on_log" => false,
+                "track_on_active_campaign" => false,
+                "send_email" => true,
+                "type" => 'non-actionable',
+                "priority" => 'LOW',
                 "template" => [
                     "subject" => "Take 20 seconds to give us some feedback",
             		"intro" => "Hello! We need some feedback from your side, it's the only way to become a better academy and it's only one small question, we would really appreciate your answer",
@@ -172,6 +195,59 @@ class BreatheCodeMessages{
         return $entity;
     }
 
+    public static function addCustomMessage($messageObject, $student, $priority=null){
+
+        if($priority != null) $messageObject["priority"] = "LOW";
+        else if(!isset($messageObject["priority"])) $messageObject["priority"] = "LOW";
+        else if(!in_array($messageObject["priority"], strtoupper(self::$priorityType))) throw new Exception('Invalid priority '.$messageObject["priority"]);
+
+        if(!isset($messageObject["type"]) || !in_array($messageObject["type"], strtolower(self::$messageType)))
+            throw new Exception('Invalid message type');
+
+        if(!isset($messageObject["subject"]) || empty($messageObject["type"]))
+            throw new Exception('Invalid or empty message subject');
+
+        if($messageObject["type"] == 'actionable')
+            if(!isset($messageObject["url"]))
+                throw new \Exception('Missing to have url for the actionable message, add a url or make it non-actionable');
+
+        $message = [
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+            'slug' => 'custom_message',
+            'read' => false,
+            'answered' => false,
+            'priority' => $messageObject["priority"],
+            'subject' => $messageObject["subject"],
+            'type' => $messageObject["type"],
+            'url' => $messageObject["url"]
+        ];
+
+
+        $firebase = (new Firebase\Factory())->createMessaging();
+        $fmsMsg = CloudMessage::fromArray([
+            'token' => 'euiptJWhvTQ:APA91bHcnaWMBQmJZkwcBoWTbRmK9Gvnm48XogH0dWDh2rhLkDBMx6PVfZM3_Gb9c3jfqLK6BHmauBn8aq5li0IHeHkJ3PLgLMiMkYeLlOhnyvQIh6e5O55aMuTYixO7mu22rFKdXhz-',
+            'notification' => [
+                'title' => $messageObject["subject"],
+            ],
+            'data' => $messageObject
+        ]);
+        $firebase->send($fmsMsg);
+
+
+        if(is_string($student)) $message['email'] = $student;
+        else{
+            if(!empty($student->status) && !in_array($student->status, ['currently_active','studies_finished'])) throw new \Exception('This student is not currently_active or studies_finished', 400);
+            if(!empty($student->id)) $message['user_id'] = (string) $student->id;
+
+            if(!empty($student->email)) $message['email'] = (string) $student->email;
+            else if(!empty($student->username)) $message['email'] = (string) $student->username;
+        }
+
+        $record = self::$datastore->entity('student_message', $message);
+        $result = self::$datastore->insert($record);
+    }
+
     public static function addMessage($messageSlug, $student, $priority=null, $data='No additional data'){
 
         if(!isset(self::$_messages[$messageSlug])) throw new \Exception('Invalid message slug '.$messageSlug);
@@ -197,6 +273,7 @@ class BreatheCodeMessages{
             'read' => false,
             'answered' => false,
             'priority' => (!$priority) ? self::$_messages[$messageSlug]["priority"] : $priority,
+            'subject' => $_messages[$messageSlug]["template"]["subject"],
             'type' => self::$_messages[$messageSlug]["type"],
             'data' => $data,
             'url' => $url

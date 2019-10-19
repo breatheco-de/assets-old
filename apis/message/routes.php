@@ -89,7 +89,32 @@ return function($api){
 
     	return $response->withJson(["key" => $message]);
 
-	})->add($api->auth());
+    })->add($api->auth());
+
+	$api->post('/custom/student/{student_id}', function (Request $request, Response $response, array $args) use ($api) {
+
+		if(empty($args['student_id'])) throw new Exception('Invalid param student_id');
+
+    	$parsedBody = $request->getParsedBody();
+        $subject = $api->validate($parsedBody,'subject')->text();
+        $priority = $api->validate($parsedBody,'priority')->slug();
+        $type = $api->validate($parsedBody,'type')->slug();
+        $url = $api->optional($parsedBody,'url')->url();
+
+    	$student = BC::getStudent(['student_id' => urlencode($args['student_id'])]);
+    	if(!$student) throw new Exception('Student not found');
+    	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
+
+    	$message = BreatheCodeMessages::addCustomMessage($student, [
+            "subject" => $subject,
+            "priority" => $priority,
+            "type" => $type,
+            "url" => $url
+        ]);
+
+    	return $response->withJson(["key" => $message]);
+
+	});//->add($api->auth());
 
 	$api->post('/{message_id}/answered', function (Request $request, Response $response, array $args) use ($api) {
 
