@@ -1,24 +1,40 @@
-# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Fake Contact-List API
+# ![alt text](/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Meetup Clone API
 
-⚠️ The use of Insomnia.rest is strongly recomended for this API, [download it here](https://insomnia.rest/).
+## Details
 
-#### 1) Get All meetups
-```
-GET: /apis/fake/meetup
+This API is for use with the Meetup Clone project that is found in the Breathecode platform.
+
+API Methods and their corresponding response formats are detailed below. It is recommended that you test your endpoints first to ensure that you know how many records the API will return before you implement in your application. Then you can compare this against your implementation in React so that you can see if the complete set of data is being stored in your WebApp.
+
+⚠️ The use of Postman is strongly recomended for testing this API, [download it here](https://getpostman.com/).
+
+## API Methods
+
+### 1. `GET` All Groups
+
+```json
+GET: /apis/fake/groups
 
 RESPONSE:
 
 [
-    {
-        ID: 9,
-        post_content: "The nicest Meetup ever",
-        post_title: "Tech Enthusiasts"
-    }
+    "ID":9,
+    "post_content":"The nicest Meetup ever",
+    "post_title":"Tech Enthusiasts",
+    "members": [
+        "robert",
+        "jjtime",
+        "username2",
+        "cheeselover",
+        "neweradude",
+        "james1996"
+    ]
 ]
 ```
 
-#### 2) Get all events
-```
+### 2. `GET` All Events
+
+```json
 GET: /apis/fake/events
 
 RESPONSE:
@@ -39,15 +55,17 @@ RESPONSE:
 ]
 ```
 
-#### 3) Get all sessions
-```
-DELETE: /apis/fake/session
+### 3. `GET` All Sessions
+
+```json
+GET: /apis/fake/session
 
 RESPONSE:
 
 {
-    ID: 2,
-    username: "theUser",
-    token: "qwerty12345asdfgzxcv"
+   "ID":2,
+   "username":"newKid143",
+   "user_friendly_name":"Joey",
+   "token":"qwerty12345asdfgzxcv"
 }
 ```

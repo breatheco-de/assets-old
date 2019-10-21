@@ -10,8 +10,8 @@ return function($api){
 	$api->get($scope.'/events', function(Request $request, Response $response, array $args) use ($api) {
 		return $response->withJson($api->db['json']->getJsonByName('events'));	
 	});
-	$api->get($scope.'/meetups', function(Request $request, Response $response, array $args) use ($api) {
-		return $response->withJson($api->db['json']->getJsonByName('meetups'));	
+	$api->get($scope.'/groups', function(Request $request, Response $response, array $args) use ($api) {
+		return $response->withJson($api->db['json']->getJsonByName('groups'));	
 	});
 	$api->get($scope.'/session', function(Request $request, Response $response, array $args) use ($api) {
 		return $response->withJson($api->db['json']->getJsonByName('session'));	
