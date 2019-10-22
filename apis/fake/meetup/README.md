@@ -13,7 +13,7 @@ API Methods and their corresponding response formats are detailed below. It is r
 ### 1. `GET` All Groups
 
 ```json
-GET: /apis/fake/groups
+GET: /apis/fake/meetup/groups
 
 RESPONSE:
 
@@ -35,7 +35,7 @@ RESPONSE:
 ### 2. `GET` All Events
 
 ```json
-GET: /apis/fake/events
+GET: /apis/fake/meetup/events
 
 RESPONSE:
 
