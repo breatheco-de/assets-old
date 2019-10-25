@@ -41,6 +41,7 @@ return function($api){
         if(empty($body->password)) throw new Exception('Invalid password');
 
         $exp = isset($body->exp) ? $body->exp : null;
+        $device = isset($body->device) ? $body->device : null;
         $username = $body->username;
         $password = $body->password;
         try{
@@ -69,6 +70,8 @@ return function($api){
             	        'msg'=> 'You access to the BreatheCode platform has been revoked'
             	   ])->withStatus(403);
             	}
+
+                if($device) BC::addDevice([ "user_id" => $user->id, "token" => $device]);
 
 		        $user->access_token = $token->access_token;
                 $currentCohort = null;
