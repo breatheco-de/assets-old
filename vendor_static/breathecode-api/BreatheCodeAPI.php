@@ -218,6 +218,14 @@ class BCWrapper{
         return self::request('post','/credentials/user/',$params);
     }
 
+    public static function addDevice($params){
+
+        self::validate($params,'user_id');
+        self::validate($params,'token');
+
+        return self::request('post','/user/'.$params['user_id'].'/device',$params);
+    }
+
     public static function updateCredentials($params){
 
         self::validate($params,'user_id');
