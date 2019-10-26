@@ -4,7 +4,9 @@ namespace BreatheCode;
 
 use Aws\Ses\SesClient;
 use Kreait\Firebase;
-use Kreait\Firebase\Messaging\CloudMessage;
+use Exception;
+use DateTime;
+//use Kreait\Firebase\Messaging\CloudMessage;
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Query\Query;
 
@@ -197,12 +199,13 @@ class BreatheCodeMessages{
 
     public static function addCustomMessage($messageObject, $student, $priority=null){
 
-        if($priority != null) $messageObject["priority"] = "LOW";
+        if($priority != null) $messageObject["priority"] = $priority;
         else if(!isset($messageObject["priority"])) $messageObject["priority"] = "LOW";
-        else if(!in_array($messageObject["priority"], strtoupper(self::$priorityType))) throw new Exception('Invalid priority '.$messageObject["priority"]);
 
-        if(!isset($messageObject["type"]) || !in_array($messageObject["type"], strtolower(self::$messageType)))
-            throw new Exception('Invalid message type');
+        if(!in_array(strtoupper($messageObject["priority"]), self::$priorityType)) throw new Exception('Invalid priority '.$messageObject["priority"]);
+
+        if(!isset($messageObject["type"]) || !in_array(strtolower($messageObject["type"]), self::$messageType))
+            throw new Exception('Invalid message type: '.$messageObject["type"]);
 
         if(!isset($messageObject["subject"]) || empty($messageObject["type"]))
             throw new Exception('Invalid or empty message subject');
@@ -224,15 +227,15 @@ class BreatheCodeMessages{
         ];
 
 
-        $firebase = (new Firebase\Factory())->createMessaging();
-        $fmsMsg = CloudMessage::fromArray([
-            'token' => 'euiptJWhvTQ:APA91bHcnaWMBQmJZkwcBoWTbRmK9Gvnm48XogH0dWDh2rhLkDBMx6PVfZM3_Gb9c3jfqLK6BHmauBn8aq5li0IHeHkJ3PLgLMiMkYeLlOhnyvQIh6e5O55aMuTYixO7mu22rFKdXhz-',
-            'notification' => [
-                'title' => $messageObject["subject"],
-            ],
-            'data' => $messageObject
-        ]);
-        $firebase->send($fmsMsg);
+        // $firebase = (new Firebase\Factory())->createMessaging();
+        // $fmsMsg = CloudMessage::fromArray([
+        //     'token' => 'euiptJWhvTQ:APA91bHcnaWMBQmJZkwcBoWTbRmK9Gvnm48XogH0dWDh2rhLkDBMx6PVfZM3_Gb9c3jfqLK6BHmauBn8aq5li0IHeHkJ3PLgLMiMkYeLlOhnyvQIh6e5O55aMuTYixO7mu22rFKdXhz-',
+        //     'notification' => [
+        //         'title' => $messageObject["subject"],
+        //     ],
+        //     'data' => $messageObject
+        // ]);
+        // $firebase->send($fmsMsg);
 
 
         if(is_string($student)) $message['email'] = $student;

@@ -81,8 +81,9 @@ return function($api){
     	$slug = $api->validate($parsedBody,'slug')->slug();
 
     	$student = BC::getStudent(['student_id' => urlencode($args['student_id'])]);
-    	if(!$student) throw new Exception('Student not found');
-    	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
+        if(!$student) throw new Exception('Student not found');
+
+    	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$student->status);
 
 
     	$message = BreatheCodeMessages::addMessage($slug, $student);
@@ -102,15 +103,16 @@ return function($api){
         $url = $api->optional($parsedBody,'url')->url();
 
     	$student = BC::getStudent(['student_id' => urlencode($args['student_id'])]);
-    	if(!$student) throw new Exception('Student not found');
-    	if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$status->status);
+        if(!$student) throw new Exception('Student not found');
 
-    	$message = BreatheCodeMessages::addCustomMessage($student, [
+    	//if($student->status != "currently_active") throw new Exception('The student is not currently_active: '.$student->status);
+
+    	$message = BreatheCodeMessages::addCustomMessage([
             "subject" => $subject,
             "priority" => $priority,
             "type" => $type,
             "url" => $url
-        ]);
+        ], $student);
 
     	return $response->withJson(["key" => $message]);
 
