@@ -52,7 +52,10 @@ return function($api){
 
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         if(!empty($_GET['cohort'])) $filters["cohort"] = $_GET['cohort'];
-        $result = BreatheCodeLogger::retrieveActivity($filters);
+	    
+	$activities = '';
+	if(!empty($_GET['activities'])) $activities = $_GET['activities'];
+        $result = BreatheCodeLogger::retrieveActivity($filters, $activities);
 
 	    return $response->withJson([
 	        "user" => $user,
@@ -67,8 +70,12 @@ return function($api){
         $filters=[];
 
         $filters["cohort"] = $args["cohort_slug"];
+
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
-        $result = BreatheCodeLogger::retrieveActivity($filters);
+
+	$activities = '';
+	if(!empty($_GET['activities'])) $activities = $_GET['activities'];
+        $result = BreatheCodeLogger::retrieveActivity($filters, $activities);
 
 	    return $response->withJson([
             "cohort" => $cohort,
