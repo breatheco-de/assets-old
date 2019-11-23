@@ -83,49 +83,49 @@
             ]
         },
         {
-            " quiz " : "9.- " ,
+            " quiz " : "9.- After Rigoberto initialized a new Git repository and create a file named GitQuiz.json, which of the following commands will not work if issued?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git add GitQuiz.json " , " correct " : false },
+                { " option " : " git status " , " correct " : false },
+                { " option " : " git add . " , " correct " : false },
+                { " option " : " git commit -m 'GitQuiz.json file added' " , " correct " : true }
             ]
         },
         {
-            " quiz " : "10.- " ,
+            " quiz " : "10.- Which command should you use to initialize a new Git repository?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git start " , " correct " : false },
+                { " option " : " git init " , " correct " : true },
+                { " option " : " git initialize " , " correct " : false },
+                { " option " : " git install " , " correct " : false }
             ]
         },
         {
-            " quiz " : "11.- " ,
+            " quiz " : "11.- Which file can you configure to ensure that certain file types are never committed to the local Git repository?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " ignore.md " , " correct " : false },
+                { " option " : " ignore.git " , " correct " : false },
+                { " option " : " git.ignore " , " correct " : false },
+                { " option " : " .gitignore " , " correct " : true }
             ]
         },
 
         {
-            " quiz " : "12.- " ,
+            " quiz " : "12.- Rigoberto needs to switch to a work branch, how would he do it?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git checkout <branch name> " , " correct " : true },
+                { " option " : " git switch <branch name> " , " correct " : false },
+                { " option " : " git change branch " , " correct " : false },
+                { " option " : " git git branch -d <branch name> " , " correct " : false }
             ]
         },
         {
-            " quiz " : "13.- " ,
+            " quiz " : "13.- I need to delete a branch, how would did it " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git -d <branch name> " , " correct " : false },
+                { " option " : " git -d checkout <branch name> " , " correct " : false },
+                { " option " : " git checkout -d <branch name> " , " correct " : true },
+                { " option " : " delete all of my repository " , " correct " : false }
             ]
         },
         {
