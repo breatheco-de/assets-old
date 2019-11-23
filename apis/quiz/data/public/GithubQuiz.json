@@ -131,109 +131,109 @@
         {
             " quiz " : "14.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "15.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "16.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "17.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "18.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "19.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "20.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "21.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "22.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "23.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "24.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         },
         {
             " quiz " : "25.- " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " any " , " correct " : true },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false },
+                { " option " : " any " , " correct " : false }
             ]
         }
     ]
