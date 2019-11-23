@@ -165,76 +165,31 @@
             ]
         },
         {
-            " quiz " : "18.- " ,
+            " quiz " : "18.- How to display your entire Commit History? " ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git log " , " correct " : true },
+                { " option " : " git log commit " , " correct " : false },
+                { " option " : " git log commits " , " correct " : false },
+                { " option " : " git log a . " , " correct " : false }
             ]
         },
         {
-            " quiz " : "19.- " ,
+            " quiz " : "19.- How generate patch files or statistics of differences between paths of files in your git repository, your index or your working directory?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git diff a ." , " correct " : false },
+                { " option " : " git log" , " correct " : false },
+                { " option " : " git diff " , " correct " : true },
+                { " option " : " git tag " , " correct " : false }
             ]
         },
         {
-            " quiz " : "20.- " ,
+            " quiz " : "20.- How to Optimize your repository?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
-            ]
-        },
-        {
-            " quiz " : "21.- " ,
-            " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
-            ]
-        },
-        {
-            " quiz " : "22.- " ,
-            " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
-            ]
-        },
-        {
-            " quiz " : "23.- " ,
-            " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
-            ]
-        },
-        {
-            " quiz " : "24.- " ,
-            " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
-            ]
-        },
-        {
-            " quiz " : "25.- " ,
-            " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " git -gc . " , " correct " : false },
+                { " option " : " git optimize " , " correct " : false },
+                { " option " : " git gc" , " correct " : true },
+                { " option " : " git Garbage Collector " , " correct " : false }
             ]
         }
     ]
-}
+} 
