@@ -47,7 +47,7 @@
             ]
         },
         {
-            " quiz " : "5.- Rigoberto has created and cloned a GitHub repository and created a new one to play with some changes and can't push to his personal repository, he need..." ,
+            " quiz " : "5.- Rigoberto has cloned a GitHub repository and created a new one to play with some changes and can't push to his personal repository, he need..." ,
             " answers " : [
                 { " option " : " git request origin master " , " correct " : false },
                 { " option " : " Rigoberto must change the url of the previous repository because he has used git clone " , " correct " : true },
@@ -65,21 +65,21 @@
             ]
         },
         {
-            " quiz " : "7.- " ,
+            " quiz " : "7.- What is the default text editor for the Bash shell with a Windows-based Git install?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " Emacs " , " correct " : false },
+                { " option " : " VSCode " , " correct " : false },
+                { " option " : " Notepad++ " , " correct " : false },
+                { " option " : " Vim " , " correct " : true }
             ]
         },
         {
-            " quiz " : "8.- " ,
+            " quiz " : "8.- Which of the following is not a Git configuration?" ,
             " answers " : [
-                { " option " : " git pull " , " correct " : true },
-                { " option " : " git pull request " , " correct " : false },
-                { " option " : " git merge <branch name> " , " correct " : false },
-                { " option " : " git merge origin " , " correct " : false }
+                { " option " : " User " , " correct " : true },
+                { " option " : " Local " , " correct " : false },
+                { " option " : " System " , " correct " : false },
+                { " option " : " Global " , " correct " : false }
             ]
         },
         {
