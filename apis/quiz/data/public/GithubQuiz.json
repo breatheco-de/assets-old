@@ -1,0 +1,240 @@
+{
+     " info " : {
+         " slug " :     " new " ,
+         " name " :     " Student " ,
+         " status " :     " draft " ,
+         " main " :     " Some falso description " ,
+         " results " : "Congratulations, you completed the quiz and you are above 70% of the average, keep it up. ",
+         " badges" : [
+            { " slug " : "Git_GodOfPractices" , " points " : 23 }
+        ]
+    },
+    " questions" : [
+        {
+            " quiz " : "1.- If i have errors with my repository i need use ... " ,
+            " answers " : [
+                { " option " : " cry and wait for it to be miraculously resolved " , " correct " : false },
+                { " option " : " i use 'git fix' " , " correct " : false },
+                { " option " : " npm audit fix " , " correct " : true },
+                { " option " : " git audit fix " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "2.- I have 2 branch and 1 are not in used, i need Remove the branch in desuse: " ,
+            " answers " : [
+                { " option " : " git d <name of branch> " , " correct " : false },
+                { " option " : " git delete <name of branch> " , " correct " : false },
+                { " option " : " git branch -d <name of branch> " , " correct " : true },
+                { " option " : " git rm <name of branch> " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "3.- Rigoberto need Push all branches(2) to his remote repository: " ,
+            " answers " : [
+                { " option " : " git push origin master " , " correct " : false },
+                { " option " : " git push all origin " , " correct " : false },
+                { " option " : " git push -u origin " , " correct " : false },
+                { " option " : " git push --all origin " , " correct " : true }
+            ]
+        },
+        {
+            " quiz " : "4.- Rigoberto finished his project, now need fetch and merge his project to the main repository of the team, Rigoberto needs ... " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "5.- Rigoberto has created and cloned a GitHub repository and created a new one to play with some changes and can't push to his personal repository, he need..." ,
+            " answers " : [
+                { " option " : " git request origin master " , " correct " : false },
+                { " option " : " Rigoberto must change the url of the previous repository because he has used git clone " , " correct " : true },
+                { " option " : " Rigoberto must manually copy and paste the code to his local repository " , " correct " : false },
+                { " option " : " Rigoberto must use pull request " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "6.- how to see local branch? " ,
+            " answers " : [
+                { " option " : " git branch -a " , " correct " : false },
+                { " option " : " git branch " , " correct " : true },
+                { " option " : " git -v branch " , " correct " : false },
+                { " option " : " git -l branch " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "7.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "8.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "9.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "10.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "11.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+
+        {
+            " quiz " : "12.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "13.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "14.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "15.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "16.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "17.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "18.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "19.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "20.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "21.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "22.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "23.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "24.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        },
+        {
+            " quiz " : "25.- " ,
+            " answers " : [
+                { " option " : " git pull " , " correct " : true },
+                { " option " : " git pull request " , " correct " : false },
+                { " option " : " git merge <branch name> " , " correct " : false },
+                { " option " : " git merge origin " , " correct " : false }
+            ]
+        }
+    ]
+}
