@@ -64,6 +64,22 @@ class BreatheCodeMessages{
 
                     return 'https://assets.breatheco.de/apps/nps/survey/'.$id;
                 }
+            ],
+            "custom_message" => [
+                "track_on_log" => false,
+                "track_on_active_campaign" => false,
+                "send_email" => true,
+                "type" => 'non-actionable',
+                "priority" => 'LOW',
+                "template" => [
+                    "subject" => "You have a message",
+            		"intro" => "",
+                ],
+                "getURL" => function($student){
+                    
+
+                    return '';
+                }
             ]
         ];
 
