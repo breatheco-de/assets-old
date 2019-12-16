@@ -5,8 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"c9": "webpack-dev-server --mode development --open --host $IP --port $PORT",
-		"gitpod": "webpack-dev-server --mode development --host 0.0.0.0 --port 3000",
-		"dev-server": "webpack-dev-server --mode development --hot",
+		"start": "webpack-dev-server --mode development --host 0.0.0.0 --port 3000",
 		"build": "webpack --mode development",
 		"deploy": "node deploy-to-github.js"
 	},
