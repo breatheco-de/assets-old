@@ -24,6 +24,16 @@ return function($api){
 	    return $response->withJson($templates);
 	});
 
+	// get all available replits
+	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
+
+		$templatesPDO = new JsonPDO('_templates/','{}',false);
+		$replits = $templatesPDO->getJsonByName('all');
+		if(!$replits) throw new Exception('Invalid profile: '.$args['profile_url'], 400);
+
+	    return $response->withJson($replits);
+	});
+
 	//get all cohorts and its replits
 	$api->get('/template/{profile_url}', function (Request $request, Response $response, array $args) use ($api) {
 

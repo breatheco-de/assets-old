@@ -23,7 +23,7 @@ return function($api){
 
 		if(isset($data["status"])) $status = explode(",",$data["status"]);
             $client = new Client();
-            $r = $client->request('GET', 'https://content.breatheco.de/static/api/lessons.json');
+            $r = $client->request('GET', 'http://content.breatheco.de/static/api/lessons.json');
             $lessons = json_decode($r->getBody()->getContents());
 
 			if($status){
