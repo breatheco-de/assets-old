@@ -2,7 +2,7 @@
 
 # TodoList API
 
-⚠️ The use of [Postman](https://www.getpostman.com/downloads/) or [Insomnia.rest](https://insomnia.rest/) is strongly recomended for testing the API.
+⚠️ The use of [Postman](https://www.getpostman.com/downloads/) or [Insomnia (recomended)](https://insomnia.rest/) is strongly recomended for testing the API.
 
 ### How to use this API:
 
