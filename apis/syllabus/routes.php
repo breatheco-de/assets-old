@@ -49,7 +49,7 @@ return function($api){
 	$api->get('/{slug}/day/{day_number}/instructions', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
 
         $version = '1';
-        if(isset($_GET['v'])) $version = $_GET['v'];
+        if(!empty($_GET['v'])) $version = $_GET['v'];
         if(is_numeric($version)) $version = "v".$version;
 
 		$instructionsURL = __DIR__."/data/".$args['slug']."/$version/day".($args['day_number']).".md";
@@ -62,7 +62,7 @@ return function($api){
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
 
         $version = '1';
-        if(isset($_GET['v'])) $version = $_GET['v'];
+        if(!empty($_GET['v'])) $version = $_GET['v'];
         if(is_numeric($version)) $version = "v".$version;
 
         $syllabus = $api->db['json']->getJsonByName($getSlug($args['slug']).'.'.$version);
