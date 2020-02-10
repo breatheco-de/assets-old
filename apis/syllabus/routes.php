@@ -50,20 +50,22 @@ return function($api){
 
         $version = '1';
         if(isset($_GET['v'])) $version = $_GET['v'];
+        if(is_integer($version)) $version = "v".$version;
 
-		$instructionsURL = __DIR__."/data/".$args['slug']."/v$version/day".($args['day_number']).".md";
+		$instructionsURL = __DIR__."/data/".$args['slug']."/$version/day".($args['day_number']).".md";
 		if(file_exists($instructionsURL))
 			$response->withHeader('Content-Type', 'text/plain')->write(file_get_contents($instructionsURL));
         else throw new Exception('Instructions not found for: '.$args['slug'].", day ".$args['day_number']." version $version",404);
 
-	});
+	}); 
 
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api, $getSlug) {
 
         $version = '1';
         if(isset($_GET['v'])) $version = $_GET['v'];
+        if(is_integer($version)) $version = "v".$version;
 
-        $syllabus = $api->db['json']->getJsonByName($getSlug($args['slug']).'.v'.$version);
+        $syllabus = $api->db['json']->getJsonByName($getSlug($args['slug']).'.'.$version);
 
 		$teacher = $request->getQueryParam('teacher',null);
         if(isset($teacher)){
@@ -73,7 +75,7 @@ return function($api){
 	        		if(!isset($day->weekend) || !$day->weekend){
 	        			$number++;
 	        			$day->number = $number;
-	        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/v$version/day".($number).".md";
+	        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/$version/day".($number).".md";
 		        		if(file_exists($instructionsURL))
 		        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions?v=$version";
 	        		}
@@ -90,7 +92,7 @@ return function($api){
 	        			$number++;
 	        			$day->number = $number;
 	        		}
-        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/v$version/day".($number).".md";
+        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/$version/day".($number).".md";
 	        		if(file_exists($instructionsURL))
 	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions?v=$version";
 	        		if(isset($day->description)) return $day;
