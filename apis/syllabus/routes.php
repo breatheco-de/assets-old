@@ -50,7 +50,7 @@ return function($api){
 
         $version = '1';
         if(isset($_GET['v'])) $version = $_GET['v'];
-        if(is_integer($version)) $version = "v".$version;
+        if(is_numeric($version)) $version = "v".$version;
 
 		$instructionsURL = __DIR__."/data/".$args['slug']."/$version/day".($args['day_number']).".md";
 		if(file_exists($instructionsURL))
@@ -63,7 +63,7 @@ return function($api){
 
         $version = '1';
         if(isset($_GET['v'])) $version = $_GET['v'];
-        if(is_integer($version)) $version = "v".$version;
+        if(is_numeric($version)) $version = "v".$version;
 
         $syllabus = $api->db['json']->getJsonByName($getSlug($args['slug']).'.'.$version);
 
