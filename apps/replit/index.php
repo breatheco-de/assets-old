@@ -22,6 +22,30 @@
     $assetsToken = '';
     if(isset($_GET['assets_token'])) $assetsToken = $_GET['assets_token'];
 
+    function try_redirect_profile(){
+        if(!empty($_GET['profile'])){
+            $templateReplits = file_get_contents(ASSETS_HOST.'/apis/replit/template/'.$_GET['profile']);
+            $templateReplits = (array) json_decode($templateReplits);
+            if(!$templateReplits){
+                echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
+                die();
+            }
+            else{
+                $replit_slug = $_GET['r'];
+                forEach($templateReplits as $r){
+                    $r = (array) $r;
+                    if($r["slug"] == $replit_slug and !empty($r["value"])){
+                        header("Location: ".$r["value"], true, 302);
+                        echo "Redirecting to... ".$r["value"];
+                    }
+                }
+                echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
+                die();
+            }
+        }
+    }
+
+    // Redirection based on the cohort
     if(isset($_GET['c'])){
         if(!empty($cohorts[$_GET['c']])){
             $replits = (array) $cohorts[$_GET['c']];
@@ -68,31 +92,13 @@
             }
         }
         else{
-            if(!empty($_GET['profile'])){
-                $templateReplits = file_get_contents(ASSETS_HOST.'/apis/replit/template/'.$_GET['profile']);
-                $templateReplits = (array) json_decode($templateReplits);
-                if(!$templateReplits){
-                    echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
-                    die();
-                }
-                else{
-                    $replit_slug = $_GET['r'];
-                    forEach($templateReplits as $r){
-                        $r = (array) $r;
-                        if($r["slug"] == $replit_slug and !empty($r["value"])){
-                            header("Location: ".$r["value"], true, 302);
-                            echo "Redirecting to... ".$r["value"];
-                        }
-                    }
-                    echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
-                    die();
-                }
-            }
+            redirect_based_on_profile();
             echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
             die();
         }
     }
-
+    
+    redirect_based_on_profile();
     echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
     die();
 ?>
