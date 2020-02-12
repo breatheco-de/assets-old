@@ -22,7 +22,7 @@
     $assetsToken = '';
     if(isset($_GET['assets_token'])) $assetsToken = $_GET['assets_token'];
 
-    function try_redirect_profile(){
+    function redirect_based_on_profile(){
         if(!empty($_GET['profile'])){
             $templateReplits = file_get_contents(ASSETS_HOST.'/apis/replit/template/'.$_GET['profile']);
             $templateReplits = (array) json_decode($templateReplits);
