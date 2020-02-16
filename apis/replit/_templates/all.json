@@ -21,5 +21,6 @@
     {"slug": "from-js-to-php", "title": "Going from JS to PHP"},
     {"slug": "python", "title": "Basics of Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-exercises"},
     {"slug": "python-mastering", "title": "Mastering Python", "value": "https://github.com/4GeeksAcademy/master-python-exercises"},
-    {"slug": "python-lists", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-exercises"}
+    {"slug": "python-lists", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-exercises"},
+    {"slug": "python-functions", "title": "Python functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-exercises"}
 ]
