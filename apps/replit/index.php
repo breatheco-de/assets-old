@@ -87,6 +87,7 @@
             }
             else
             {
+                redirect_based_on_profile($twig);
                 echo $twig->render('error.html', array('msg' => "This cohort: ".$_GET['c']." does not have '".$_GET['r']."' excercises setup yet, talk to your teacher to report the issue."));
                 die();
             }
