@@ -94,7 +94,7 @@
         }
         else{
             redirect_based_on_profile($twig);
-            echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
+            echo $twig->render('pick-cohort.html', array('replit' =>  $_GET['r']));
             die();
         }
     }
