@@ -14,8 +14,8 @@
     {"slug": "jquery-ajax", "title": "Ajax with jQuery"},
     {"slug": "functions", "title": "Functions with Javascript"},
     {"slug": "http-fetch", "title": "HTTP requests with Fetch API"},
-    {"slug": "react-js", "title": "Rendering with React.js", "base": "https://github.com/4GeeksAcademy/react-exercises"},
-    {"slug": "git", "title": "git", "base": "https://try.github.io/levels/1/challenges/1"},
-    {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/"},
+    {"slug": "react-js", "title": "Rendering with React.js", "base": "https://4geeksacademy.github.io/react-exercises/", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/react-exercises"},
+    {"slug": "git", "title": "git", "base": "https://4geeksacademy.github.io/git-interactive-tutorial/", "value": "https://4geeksacademy.github.io/git-interactive-tutorial/"},
+    {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/", "value": "https://cmdchallenge.com/"},
     {"slug": "javascript-modules", "title": "Javascript Modules (import vs export)"}
 ]
