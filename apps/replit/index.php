@@ -22,7 +22,7 @@
     $assetsToken = '';
     if(isset($_GET['assets_token'])) $assetsToken = $_GET['assets_token'];
 
-    function redirect_based_on_profile(){
+    function redirect_based_on_profile($_twig){
         if(!empty($_GET['profile'])){
             $templateReplits = file_get_contents(ASSETS_HOST.'/apis/replit/template/'.$_GET['profile']);
             $templateReplits = (array) json_decode($templateReplits);
@@ -39,7 +39,7 @@
                         echo "Redirecting to... ".$r["value"];
                     }
                 }
-                echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
+                echo $_twig->render('pick-cohort.html', array('replit' => $_GET['r']));
                 die();
             }
         }
@@ -92,13 +92,13 @@
             }
         }
         else{
-            redirect_based_on_profile();
+            redirect_based_on_profile($twig);
             echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
             die();
         }
     }
     
-    redirect_based_on_profile();
+    redirect_based_on_profile($twig);
     echo $twig->render('pick-cohort.html', array('replit' => $_GET['r']));
     die();
 ?>
