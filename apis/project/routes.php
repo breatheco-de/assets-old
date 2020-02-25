@@ -13,7 +13,7 @@ return function($api){
     $api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 
         $content = $api->db['json']->getJsonByName('registry');
-        
+
         $client = new Client();
         $resp = $client->request('GET','https://projects.breatheco.de/json/');
         if($resp->getStatusCode() != 200) throw new Exception('The project list was not found', 404);
@@ -54,6 +54,8 @@ return function($api){
                 $newProject = array_merge((array) $json, (array) $p);
                 $newProject["updated_at"] = strtotime("now");
                 $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
+                if(!isset($newProject["likes"])) = $newProject["likes"] = 0;
+                if(!isset($newProject["downloads"])) = $newProject["downloads"] = 0;
                 $registry[$newProject["slug"]] = $newProject;
             }
         }
