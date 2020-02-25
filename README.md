@@ -3,7 +3,7 @@
 Resources for Teachers and Students using the [BreatheCode Platform](https://breatheco.de).
 ## Available Assets API's
 
-[Images](apis/img/), [Sounds](apis/sound/), [Quizzes](apis/quiz/), [Lessons](apis/lesson/), [Videos](apis/video/), [Replits](apis/replit/), [Events](apis/event/), [Activity](apis/activity/), [Class Streaming](apis/streaming/)
+[Images](apis/img/), [Sounds](apis/sound/), [Quizzes](apis/quiz/), [Lessons](apis/lesson/), [Videos](apis/video/), [Replits](apis/replit/), [Projects](apis/project/), [Events](apis/event/), [Activity](apis/activity/), [Class Streaming](apis/streaming/)
 
 #### Important Note:
 Some API methods are private and they will require the use of and access token in the URL query string like this:

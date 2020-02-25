@@ -110,7 +110,9 @@
   }
 ```
 
-6. Delete all pending attempts
+6. Delete all pending attempts [clean now](https://assets.breatheco.de/apis/kill-the-bug/api.php?method=clean_attempts)
+
+
 ```js
   [POST] /clean_attempts
   
