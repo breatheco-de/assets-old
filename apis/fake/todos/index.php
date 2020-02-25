@@ -69,7 +69,8 @@
         if($args['username'] == 'example') throw new Exception('The example user is read-only, please pick another username', 400);
 
 	    $body = $request->getParsedBody();
-        if(!is_array($body)) throw new Exception('The request body must be an array of todo\'s', 400);
+        if(empty($body)) throw new Exception('The request body is empty but it must be an array of todo\'s', 400);
+        else if(!is_array($body)) throw new Exception('The request body its NOT empty but must be an array of todo\'s', 400);
 
         validateTasks($body);
 
