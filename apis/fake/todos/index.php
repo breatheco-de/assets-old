@@ -14,7 +14,7 @@
 	function validateTasks($tasks){
         foreach($tasks as $task)
         	if(empty($task['label']) or !isset($task['done'])){
-        		throw new Exception('The request body must be an array of todo\'s with at least one task, also make sure every task has a "label" and done "property", read the API documentation for more details');
+        		throw new Exception('The request body must be an array of todo\'s with at least one task, also make sure every task has a "label" and "done" property, read the API documentation for more details');
         	}
         	else if(!is_bool($task['done']))
         		throw new Exception('Each task "done" property must be a boolean with value either true or false, make sure it\'s not a string either');
