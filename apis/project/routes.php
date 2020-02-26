@@ -12,15 +12,23 @@ return function($api){
     
     $api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 
-        $content = $api->db['json']->getJsonByName('registry');
-
+        $projects = [];
+        $slugs = [];
+        $registry = $api->db['json']->getJsonByName('registry');
+        forEach($registry as $slug => $project){
+            $projects[] = $project;
+            $slugs[] = $slug;
+        }
+        
         $client = new Client();
         $resp = $client->request('GET','https://projects.breatheco.de/json/');
         if($resp->getStatusCode() != 200) throw new Exception('The project list was not found', 404);
-
-        $body = $response->getBody();
-		$body->write($resp->getBody()->getContents());
-	    return $response->withHeader('Content-type', 'application/json');
+        $oldProjectsBody = $resp->getBody()->getContents();
+        $oldProjects = json_decode($oldProjectsBody);
+        forEach($oldProjects as $old){
+            if(!in_array($old->slug, $slugs)) $projects[] = $old;
+        }
+	    return $response->withJson($projects);
 	});
 
 	$api->get('/registry/all', function (Request $request, Response $response, array $args) use ($api) {
