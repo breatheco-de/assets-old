@@ -36,6 +36,7 @@ return function($api){
     });
 
 	$api->get('/registry/update', function (Request $request, Response $response, array $args) use ($api) {
+        $force = (empty($_GET['force'])) ? false : $_GET['force'] === "true";
         $client = new Client();
         $seeds = $api->db['json']->getJsonByName('seed');
         $registry = $api->db['json']->getJsonByName('registry');
@@ -44,7 +45,7 @@ return function($api){
                 $lastUpdate = $registry[$p->slug]->updated_at;
                 $diff = (strtotime("now") - $lastUpdate);
                 // more than one day
-                if($diff < 86400) continue; 
+                if(!$force && $diff < 86400) continue; 
             }
             $url = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/bc.json';
             $resp = $client->request('GET',$url);
