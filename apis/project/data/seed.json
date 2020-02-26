@@ -1,3 +1,4 @@
 [
-    { "slug": "todo-list-cli-with-cloud", "repository": "https://github.com/breatheco-de/todo-list-cli-with-cloud" }
+    { "slug": "todo-list-cli-with-cloud", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-with-cloud" },
+    { "slug": "todo-list-cli-python", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-python" }
 ]
