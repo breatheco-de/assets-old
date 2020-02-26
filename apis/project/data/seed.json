@@ -1,5 +1,7 @@
 [
     { "slug": "todo-list-cli-with-cloud", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-with-cloud" },
     { "slug": "todo-list-cli-python", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-python" },
-    { "slug": "excuse-generator-python-cli", "repository": "https://github.com/breatheco-de/exercise-excuse-generator-python-cli" }
+    { "slug": "excuse-generator-python-cli", "repository": "https://github.com/breatheco-de/exercise-excuse-generator-python-cli" },
+    { "slug": "random-card-cli-python", "repository": "https://github.com/breatheco-de/exercise-random-card-cli-python" },
+    { "slug": "queue-management-cli-python", "repository": "https://github.com/breatheco-de/exercise-queue-management-cli-python" }
 ]
