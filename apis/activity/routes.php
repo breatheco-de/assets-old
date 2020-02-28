@@ -73,8 +73,8 @@ return function($api){
 
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
 
-	$activities = '';
-	if(!empty($_GET['activities'])) $activities = $_GET['activities'];
+        $activities = '';
+        if(!empty($_GET['activities'])) $activities = $_GET['activities'];
         $result = BreatheCodeLogger::retrieveActivity($filters, $activities);
 
 	    return $response->withJson([
