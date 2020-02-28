@@ -37,6 +37,18 @@ return function($api){
 	    return $response->withJson($content);
     });
 
+    $api->put('/registry/{project_slug}', function (Request $request, Response $response, array $args) use ($api) {
+        
+        if(empty($args['project_slug'])) throw new Exception('Invalid param value project_slug');
+
+        $user = DB::getMe();
+        print_r($user);die();
+
+        $content = $api->db['json']->getJsonByName('registry');
+        return $response->withJson($content);
+        
+    })->add($api->auth());
+
 	$api->get('/registry/seed', function (Request $request, Response $response, array $args) use ($api) {
         
         $content = $api->db['json']->getJsonByName('seed');
