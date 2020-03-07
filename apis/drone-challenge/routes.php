@@ -9,6 +9,11 @@ return function($api){
 	//deprecated
 	$api->get('/scripts/all', function (Request $request, Response $response, array $args) use ($api) {
 
+        if(!is_dir("./scrips/")){
+            mkdir("./scripts/");     // Create scripts if not exists
+            file_put_contents("./scripts/example.py","print('Hello I am a script')");
+        }
+
         $scripts = scandir("./scripts/");
         $scripts = array_values(array_filter($scripts, function($fileName){
             return $fileName != "." and $fileName != "..";
