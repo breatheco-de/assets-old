@@ -11,7 +11,7 @@ return function($api){
 
         if(!file_exists("./scripts/")){
             mkdir("./scripts/");     // Create scripts if not exists
-            if(!file_exists("./scripts/example.py")) file_put_contents("./scripts/example.py", "print('Hello I am a script')");
+            if(!file_exists("./scripts/example.py")) file_put_contents("./scripts/example.py", file_get_contents("example.py"));
         }
 
         $scripts = scandir("./scripts/");
