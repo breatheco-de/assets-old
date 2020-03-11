@@ -38,6 +38,7 @@ return function($api){
                  throw new Exception('File not writable',400);
             }
         }
+        if(!file_exists("./scripts/example.py")) file_put_contents("./scripts/example.py", file_get_contents("example.py"));
 	    return $response->withJson([ "details" => $total." scripts deleted successfully"]);
     });
 
