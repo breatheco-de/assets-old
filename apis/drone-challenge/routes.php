@@ -9,7 +9,7 @@ return function($api){
 	//deprecated
 	$api->get('/scripts/all', function (Request $request, Response $response, array $args) use ($api) {
 
-        if(!is_dir("./scrips/")){
+        if(!file_exists("./scripts/")){
             mkdir("./scripts/");     // Create scripts if not exists
             if(!file_exists("./scripts/example.py")) file_put_contents("./scripts/example.py", "print('Hello I am a script')");
         }
