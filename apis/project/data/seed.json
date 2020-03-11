@@ -3,5 +3,6 @@
     { "slug": "todo-list-cli-python", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-python" },
     { "slug": "excuse-generator-python-cli", "repository": "https://github.com/breatheco-de/exercise-excuse-generator-python-cli" },
     { "slug": "random-card-cli-python", "repository": "https://github.com/breatheco-de/exercise-random-card-cli-python" },
-    { "slug": "queue-management-cli-python", "repository": "https://github.com/breatheco-de/exercise-queue-management-cli-python" }
+    { "slug": "queue-management-cli-python", "repository": "https://github.com/breatheco-de/exercise-queue-management-cli-python" },
+    { "slug": "file-hierarchy-report", "repository": "https://github.com/breatheco-de/exercise-file-hierarchy-report" }
 ]
