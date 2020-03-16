@@ -2,6 +2,8 @@
 
 # Registry API
 
+[Update registry](./update)
+
 Get all projects from the old database
 ```
 GET: /registry/all
