@@ -23,6 +23,9 @@ return function($api){
     });
 
 	$api->get('/update', function (Request $request, Response $response, array $args) use ($api) {
+        
+        if(!file_exists("./data/_registry.json")) file_put_contents("./data/_registry.json", "{}");
+
         $force = (empty($_GET['force'])) ? false : $_GET['force'] === "true";
         $client = new Client();
         $seeds = $api->db['json']->getJsonByName('_seed');
