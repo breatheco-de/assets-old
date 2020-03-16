@@ -1,0 +1,6 @@
+[
+    { "slug": "html-exercises", "repository": "https://github.com/4GeeksAcademy/html-exercises" },
+    { "slug": "css-exercises", "repository": "https://github.com/4GeeksAcademy/css-exercises" },
+    { "slug": "react-exercises", "repository": "https://github.com/4GeeksAcademy/react-exercises" },
+    { "slug": "bootstrap-exercises", "repository": "https://github.com/4GeeksAcademy/bootstrap-exercises" }
+]
