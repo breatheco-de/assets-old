@@ -47,6 +47,7 @@ return function($api){
                 $registry[$newProject["slug"]] = $newProject;
 
                 if(!file_exists("./data/".$p->slug.".json")) file_put_contents("./data/".$p->slug.".json", $body);
+                else $api->db['json']->toFile($p->slug)->save($body);
             }
         }
         $api->db['json']->toFile('registry')->save($registry);

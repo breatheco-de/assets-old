@@ -14,7 +14,7 @@ return function($api){
 
         $projects = [];
         $slugs = [];
-        $registry = $api->db['json']->getJsonByName('registry');
+        $registry = $api->db['json']->getJsonByName('_registry');
         forEach($registry as $slug => $project){
             $projects[] = $project;
             $slugs[] = $slug;
@@ -33,7 +33,7 @@ return function($api){
 
 	$api->get('/registry/all', function (Request $request, Response $response, array $args) use ($api) {
         
-        $content = $api->db['json']->getJsonByName('registry');
+        $content = $api->db['json']->getJsonByName('_registry');
 	    return $response->withJson($content);
     });
 
@@ -44,22 +44,25 @@ return function($api){
         $user = DB::getMe();
         print_r($user);die();
 
-        $content = $api->db['json']->getJsonByName('registry');
+        $content = $api->db['json']->getJsonByName('_registry');
         return $response->withJson($content);
         
     })->add($api->auth());
 
 	$api->get('/registry/seed', function (Request $request, Response $response, array $args) use ($api) {
         
-        $content = $api->db['json']->getJsonByName('seed');
+        $content = $api->db['json']->getJsonByName('_seed');
 	    return $response->withJson($content);
     });
 
 	$api->get('/registry/update', function (Request $request, Response $response, array $args) use ($api) {
+
+        if(!file_exists("./data/_registry.json")) file_put_contents("./data/_registry.json", "{}");
+
         $force = (empty($_GET['force'])) ? false : $_GET['force'] === "true";
         $client = new Client();
-        $seeds = $api->db['json']->getJsonByName('seed');
-        $registry = $api->db['json']->getJsonByName('registry');
+        $seeds = $api->db['json']->getJsonByName('_seed');
+        $registry = $api->db['json']->getJsonByName('_registry');
         forEach($seeds as $p){
             if(!empty($registry[$p->slug]) and !empty($registry[$p->slug]->updated_at)){
                 $lastUpdate = $registry[$p->slug]->updated_at;
@@ -80,7 +83,7 @@ return function($api){
                 $registry[$newProject["slug"]] = $newProject;
             }
         }
-        $api->db['json']->toFile('registry')->save($registry);
+        $api->db['json']->toFile('_registry')->save($registry);
 	    return $response->withJson($registry);
     });
 
@@ -88,7 +91,7 @@ return function($api){
 
         if(empty($args['project_slug'])) throw new Exception('Invalid param value project_slug');
 
-        $registry = $api->db['json']->getJsonByName('registry');
+        $registry = $api->db['json']->getJsonByName('_registry');
         if(!empty($registry[$args['project_slug']])) return $response->withJson($registry[$args['project_slug']]);
 
         $client = new Client();
