@@ -9,7 +9,7 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 
 return function($api){
 
-    $categories = ['exercise','website','project'];
+    $categories = ['exercise','website','project','lesson'];
     $tags = ['infographic','cartoon','funny','screenshot'];
 
 	$api->addTokenGenerationPath();
