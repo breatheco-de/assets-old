@@ -80,11 +80,11 @@ class BreatheCodeLogger{
 
     public static function retrieveActivity($filters, $type='student_activity'){
 
-        $query = self::datastore()->query()->kind($type);
-
         $instance = BCActivity::factory($type);
+        $query = self::datastore()->query()->kind($instance->slug);
+
         $query = $instance->filter($query, $filters);
-        if(!$query) throw new \Exception("Undefined query for ".$type);
+        if(!$query) throw new \Exception("Undefined query for ".$instance->slug);
 
         $items = self::datastore()->runQuery($query);
         $results = [];
