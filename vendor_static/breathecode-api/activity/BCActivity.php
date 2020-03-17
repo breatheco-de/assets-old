@@ -18,7 +18,7 @@ abstract class BCActivity{
         $ins = new StudentActivity();
         if($ins->setType($type)) return $ins;
 
-        throw new Exception('Invalid Activity Type');
+        throw new Exception('Invalid Activity Type: '.$type);
     }
 
     public static function getAllTypes(){
