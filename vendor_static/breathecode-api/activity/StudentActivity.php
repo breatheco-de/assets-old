@@ -52,6 +52,8 @@ class StudentActivity extends BCActivity{
             $query = $query->filter('user_id', '=', $filters["user_id"]);
         }
         if(!empty($filters["email"])) $query = $query->filter('email', '=', $filters["email"]);
+        
+        // print_r($filters);die();
 
         return $query;
     }
