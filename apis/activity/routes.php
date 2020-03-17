@@ -53,8 +53,14 @@ return function($api){
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         if(!empty($_GET['cohort'])) $filters["cohort"] = $_GET['cohort'];
 	    
-	$activities = '';
-	if(!empty($_GET['activities'])) $activities = $_GET['activities'];
+        $activities = '';
+        if(!empty($_GET['activities'])) $activities = $_GET['activities'];
+        $activities = explode(",", $activities);
+        $result= [];
+        forEach($activities as $type){
+            $result = array_merge($result, BreatheCodeLogger::retrieveActivity($filters, $type));
+        }
+        
         $result = BreatheCodeLogger::retrieveActivity($filters, $activities);
 
 	    return $response->withJson([
@@ -75,7 +81,13 @@ return function($api){
 
         $activities = '';
         if(!empty($_GET['activities'])) $activities = $_GET['activities'];
-        $result = BreatheCodeLogger::retrieveActivity($filters, $activities);
+        else throw new Exception("Please specify what activities you want to look for", 400);
+
+        $activities = explode(",", $activities);
+        $result= [];
+        forEach($activities as $type){
+            $result = array_merge($result, BreatheCodeLogger::retrieveActivity($filters, $type));
+        }
 
 	    return $response->withJson([
             "cohort" => $cohort,
