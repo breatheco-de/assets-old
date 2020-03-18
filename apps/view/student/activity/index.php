@@ -1,10 +1,15 @@
 <?php
+
+    // use GuzzleHttp\Client;
+
     $user = null;
     $activity = null;
+    $token = "";
+    if(!empty($_GET["assets_token"])) $token = $_GET["assets_token"];
     $activityEndpoint = 'https://'.$_SERVER['SERVER_NAME'].'/apis/activity/user/';
     if(!empty($_GET['user'])){
         $user = $_GET['user'];
-        $activityEndpoint .= $user;
+        $activityEndpoint .= $user."?activitties=student_activity&access_token=".$token;
         $data = trim(file_get_contents($activityEndpoint));
         if(!empty($data)){
             $activity = json_decode($data);
