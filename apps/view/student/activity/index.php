@@ -9,7 +9,7 @@
     $activityEndpoint = 'https://'.$_SERVER['SERVER_NAME'].'/apis/activity/user/';
     if(!empty($_GET['user'])){
         $user = $_GET['user'];
-        $activityEndpoint .= $user."?activitties=student_activity&access_token=".$token;
+        $activityEndpoint .= $user."?activities=student_activity&access_token=".$token;
         $data = trim(file_get_contents($activityEndpoint));
         if(!empty($data)){
             $activity = json_decode($data);
@@ -19,9 +19,9 @@
     function activity($slug){
         switch($slug){
             case "breathecode_login": return "Login into the BreatheCode Platform"; break;
-            default: return "Uknown Activity"; break;
+            default: return "Uknown Activity $slug"; break;
         }
-        return "Uknown Activity";
+        return "Uknown Activity $slug";
     }
 
     function time_elapsed_string($datetime, $full = false) {
