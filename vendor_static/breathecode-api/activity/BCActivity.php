@@ -19,6 +19,8 @@ abstract class BCActivity{
         if($ins->setType($type)) return $ins;
 
         if(empty($type)) throw new Exception('Empty Activity Type');
+        else if($type=="student_activity") return new StudentActivity();
+        else if($type=="coding_error") return new ErrorActivity();
         else throw new Exception('Invalid Activity Type: '.$type);
     }
 

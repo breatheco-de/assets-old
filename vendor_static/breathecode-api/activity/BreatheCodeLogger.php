@@ -78,7 +78,23 @@ class BreatheCodeLogger{
     //     self::datastore()->insert($record);
     // }
 
-    public static function retrieveActivity($filters, $type='student_activity'){
+    public static function retrieveActivity($filters, $type=null){
+
+        $instance = BCActivity::factory($type);
+        $query = self::datastore()->query()->kind($instance->slug);
+
+        $query = $instance->filter($query, $filters);
+        if(!$query) throw new \Exception("Undefined query for ".$instance->slug);
+
+        $items = self::datastore()->runQuery($query);
+        $results = [];
+        foreach($items as $ans) {
+            $results[] = $query = $instance->decode($ans);
+        }
+        return $results;
+    }
+
+    public static function retrieveAllActivity($filters, $type='student_activity'){
 
         $instance = BCActivity::factory($type);
         $query = self::datastore()->query()->kind($instance->slug);

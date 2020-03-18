@@ -52,16 +52,17 @@ return function($api){
         if(!empty($_GET['slug'])) $filters["slug"] = $_GET['slug'];
         if(!empty($_GET['cohort'])) $filters["cohort"] = $_GET['cohort'];
 	    
-        $activities = '';
-        if(!empty($_GET['activities'])) $activities = $_GET['activities'];
-        $activities = explode(",", $activities);
         $result= [];
-        forEach($activities as $type){
-            $result = array_merge($result, BreatheCodeLogger::retrieveActivity($filters, $type));
+        $activities = '';
+        if(!empty($_GET['activities'])){
+            $activities = $_GET['activities'];
+            $activities = explode(",", $activities);
+            forEach($activities as $type){
+                $result = array_merge($result, BreatheCodeLogger::retrieveActivity($filters, $type));
+            }
         }
+        else throw new \Exception("Please specify one ore more 'activities' separated by comma");
         
-        $result = BreatheCodeLogger::retrieveActivity($filters, $activities);
-
 	    return $response->withJson([
 	        "user" => $user,
 	        "log" => $result
