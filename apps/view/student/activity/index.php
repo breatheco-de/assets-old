@@ -16,12 +16,16 @@
         }
     }
 
-    function activity($slug){
-        switch($slug){
+    function activity($activity){
+        switch($activity->slug){
             case "breathecode_login": return "Login into the BreatheCode Platform"; break;
-            default: return "Uknown Activity $slug"; break;
+            case "lesson_opened": return "🗒 Opened the lesson: <a href='https://content.breatheco.de/lesson/$activity->data' target='_blank'>$activity->data</a>"; break;
+            case "classroom_unattendance": return "😢 Missed the class (did not attend) for $activity->cohort"; break;
+            case "classroom_attendance": return "😀 Assisted to class for $activity->cohort"; break;
+            case "nps_survey": return "⭐️ Completed NPS survey"; break;
+            default: return "Uknown Activity $activity->slug"; break;
         }
-        return "Uknown Activity $slug";
+        return "Uknown Activity $activity->slug";
     }
 
     function time_elapsed_string($datetime, $full = false) {
@@ -80,7 +84,7 @@
                                     <?php echo substr($act->created_at->date, 0, 10); ?>
                                     <span class="daysago"><?php echo time_elapsed_string($act->created_at->date); ?></span>
                                 </span>
-                                <h3><?php echo activity($act->slug); ?></h3>
+                                <h3><?php echo activity($act); ?></h3>
                             </li>
                         <?php } ?>
                     </ul>
