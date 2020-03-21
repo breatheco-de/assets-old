@@ -1,5 +1,8 @@
 [
     { "slug": "product-landing-page-plain-css", "repository": "https://github.com/breatheco-de/exercise-product-landing-page-plain-css" },
+    { "slug": "instagram-feed", "repository": "https://github.com/breatheco-de/exercise-instagram-feed" },
+    { "slug": "instagram-feed-bootstrap", "repository": "https://github.com/breatheco-de/exercise-instagram-feed-bootstrap" },
+    { "slug": "instagram-post", "repository": "https://github.com/breatheco-de/exercise-instagram-post" },
     { "slug": "todo-list-cli-with-cloud", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-with-cloud" },
     { "slug": "todo-list-cli-python", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-python" },
     { "slug": "excuse-generator-python-cli", "repository": "https://github.com/breatheco-de/exercise-excuse-generator-python-cli" },
