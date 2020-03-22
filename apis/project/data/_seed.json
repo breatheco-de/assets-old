@@ -1,4 +1,5 @@
 [
+    { "slug": "html5-form", "repository": "https://github.com/breatheco-de/exercise-html5-form" },
     { "slug": "product-landing-page-plain-css", "repository": "https://github.com/breatheco-de/exercise-product-landing-page-plain-css" },
     { "slug": "instagram-feed", "repository": "https://github.com/breatheco-de/exercise-instagram-feed" },
     { "slug": "instagram-feed-bootstrap", "repository": "https://github.com/breatheco-de/exercise-instagram-feed-bootstrap" },
