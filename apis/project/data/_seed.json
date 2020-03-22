@@ -1,5 +1,8 @@
 [
+    { "slug": "build-your-resume-html-css", "repository": "https://github.com/breatheco-de/exercise-build-your-resume-html-css" },
     { "slug": "html5-form", "repository": "https://github.com/breatheco-de/exercise-html5-form" },
+    { "slug": "pop-baloons-javascript", "repository": "https://github.com/breatheco-de/exercise-pop-baloons-javascript" },
+    { "slug": "todo-list", "repository": "https://github.com/breatheco-de/exercise-todo-list" },    
     { "slug": "product-landing-page-plain-css", "repository": "https://github.com/breatheco-de/exercise-product-landing-page-plain-css" },
     { "slug": "instagram-feed", "repository": "https://github.com/breatheco-de/exercise-instagram-feed" },
     { "slug": "instagram-feed-bootstrap", "repository": "https://github.com/breatheco-de/exercise-instagram-feed-bootstrap" },
