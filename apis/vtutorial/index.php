@@ -27,7 +27,7 @@
 
         $client = new Client();
 
-        $resp = $client->request('GET','https://raw.githubusercontent.com/breatheco-de/exercise-'.$args['project_slug'].'/blob/master/bc.json');
+        $resp = $client->request('GET','https://raw.githubusercontent.com/breatheco-de/exercise-'.$args['project_slug'].'/master/bc.json');
         if($resp->getStatusCode() != 200){
             $resp = $client->request('GET','https://projects.breatheco.de/json/?slug='.$args['project_slug']);
             if($resp->getStatusCode() != 200) throw new Exception('The project was not found', 404);
