@@ -26,20 +26,26 @@ return function($api){
         $syllabus = $api->db['json']->getAllContent();
 		$data = [];
 		foreach($syllabus as $key => $temp){
-			$days = 0;
-			$tech = [];
-			foreach($temp["weeks"] as $w){
-				$days += count($w->days);
-				foreach($w->days as $d){
-					if(isset($d->technologies) and is_array($d->technologies)) $tech = array_merge($tech,$d->technologies);
-				}
-			}
+			$totalDays = 0;
+			$totalWeeks = 0;
+            $tech = [];
+            $days = [];
+            if(isset($temp["weeks"])){
+                foreach($temp["weeks"] as $w)
+                    $days = array_merge($days,$w->days);
+                $totalWeeks = count($temp["weeks"]);
+            }
+            
+            $totalDays += count($days);
+            foreach($days as $d){
+                if(isset($d->technologies) and is_array($d->technologies)) $tech = array_merge($tech,$d->technologies);
+            }
 
 			$data[] = [
 				"slug" => preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($key)),
 				"title" => $temp["label"],
-				"weeks" => count($temp["weeks"]),
-				"days" => $days,
+				"weeks" => $totalWeeks,
+				"days" => $totalDays,
 				"technologies" => $tech
 			];
 		}
@@ -69,38 +75,42 @@ return function($api){
 
 		$teacher = $request->getQueryParam('teacher',null);
         if(isset($teacher)){
-        	$number = 0;
-	        foreach ($syllabus['weeks'] as $week) {
-	        	$week->days = array_map(function($day) use ($syllabus, &$number){
-	        		if(!isset($day->weekend) || !$day->weekend){
-	        			$number++;
-	        			$day->number = $number;
-	        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/$version/day".($number).".md";
-		        		if(file_exists($instructionsURL))
-		        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions?v=$version";
-	        		}
-	        		return $day;
-	        	}, $week->days, array_keys($week->days));
-	        }
+            $number = 0;
+            $days = [];
+            if(isset($temp["weeks"])) foreach($temp["weeks"] as $w) $days = array_merge($days,$w->days);
+
+            $days = array_map(function($day) use ($syllabus, &$number){
+                if(!isset($day->weekend) || !$day->weekend){
+                    $number++;
+                    $day->number = $number;
+                    $instructionsURL = __DIR__."/data/".$syllabus['profile']."/$version/day".($number).".md";
+                    if(file_exists($instructionsURL))
+                        $day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions?v=$version";
+                }
+                return $day;
+            }, $days, array_keys($days));
+
         	return $response->withJson($syllabus);
         }
         else{
-        	$number = 0;
-	        foreach ($syllabus['weeks'] as $week) {
-	        	$week->days = array_map(function($day) use ($syllabus, &$number){
-	        		if(!isset($day->weekend) || !$day->weekend){
-	        			$number++;
-	        			$day->number = $number;
-	        		}
-        			$instructionsURL = __DIR__."/data/".$syllabus['profile']."/$version/day".($number).".md";
-	        		if(file_exists($instructionsURL))
-	        			$day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions?v=$version";
-	        		if(isset($day->description)) return $day;
-	        		else{
-                        return null;
-                    }
-	        	}, $week->days);
-	        }
+            $number = 0;
+            $days = [];
+            if(isset($temp["weeks"])) foreach($temp["weeks"] as $w) $days = array_merge($days,$w->days);
+
+            $days = array_map(function($day) use ($syllabus, &$number){
+                if(!isset($day->weekend) || !$day->weekend){
+                    $number++;
+                    $day->number = $number;
+                }
+                $instructionsURL = __DIR__."/data/".$syllabus['profile']."/$version/day".($number).".md";
+                if(file_exists($instructionsURL))
+                    $day->instructions_link = ASSETS_HOST."/apis/syllabus/".$syllabus['profile']."/day/".$number."/instructions?v=$version";
+                if(isset($day->description)) return $day;
+                else{
+                    return null;
+                }
+            }, $days);
+            
 	        return $response->withJson($syllabus);
         }
 
@@ -116,26 +126,36 @@ return function($api){
 
 		if(empty($data['label'])) throw new Exception('The syllabus must have a label', 400);
 		if(empty($data['profile'])) throw new Exception('The syllabus must have a profile', 400);
-		if(!is_array($data['weeks'])) throw new Exception('The syllabus must an array of weeks', 400);
+		if(!is_array($data['weeks']) and !is_array($data['days'])) throw new Exception('The syllabus must an array of weeks or an array of days', 400);
 		else{
-			if(count($data['weeks']) == 0) throw new Exception('The syllabus must at least 1 week', 400);
-			$weekNumber = 0;
-			foreach($data['weeks'] as $w){
-				$weekNumber++;
-				if(empty($w["label"])) throw new Exception("The week $weekNumber must have a label", 400);
-				if(empty($w["topic"])) throw new Exception("The week $weekNumber must have a topic", 400);
-				if(empty($w["summary"])) throw new Exception("The week $weekNumber must have a summary", 400);
-				if(!is_array($w["days"]) || count($w["days"])==0)
-					throw new Exception("The week $weekNumber at least one day", 400);
-
-				$dayNumber = 0;
-				foreach($w["days"] as $d){
-					$dayNumber++;
-					if(empty($d["label"])) throw new Exception("The day $dayNumber of the week $weekNumber must have a label", 400);
-					if(empty($d["description"])) throw new Exception("The day $dayNumber of the week $weekNumber must have a description", 400);
-					if(empty($d["instructions"])) throw new Exception("The day $dayNumber of the week $weekNumber must have instructions", 400);
-				}
-			}
+			if(count($data['weeks']) == 0 and count($data['day']) == 0) throw new Exception('The syllabus must at least 1 week or at least one day', 400);
+            $weekNumber = 0;
+            if(count($data['weeks']) > 0){
+                foreach($data['weeks'] as $w){
+                    $weekNumber++;
+                    if(empty($w["label"])) throw new Exception("The week $weekNumber must have a label", 400);
+                    if(empty($w["topic"])) throw new Exception("The week $weekNumber must have a topic", 400);
+                    if(empty($w["summary"])) throw new Exception("The week $weekNumber must have a summary", 400);
+                    if(!is_array($w["days"]) || count($w["days"])==0)
+                        throw new Exception("The week $weekNumber at least one day", 400);
+    
+                    $dayNumber = 0;
+                    foreach($w["days"] as $d){
+                        $dayNumber++;
+                        if(empty($d["label"])) throw new Exception("The day $dayNumber of the week $weekNumber must have a label", 400);
+                        if(empty($d["description"])) throw new Exception("The day $dayNumber of the week $weekNumber must have a description", 400);
+                        if(empty($d["instructions"])) throw new Exception("The day $dayNumber of the week $weekNumber must have instructions", 400);
+                    }
+                }
+            }
+            else if($data["days"]){
+                foreach($data["days"] as $d){
+                    $dayNumber++;
+                    if(empty($d["label"])) throw new Exception("The day $dayNumber must have a label", 400);
+                    if(empty($d["description"])) throw new Exception("The day $dayNumber must have a description", 400);
+                    if(empty($d["teacher_instructions"])) throw new Exception("The day $dayNumber must have teacher_instructions", 400);
+                }
+            }
 		}
 
         $api->db['json']->toFile($syllabusSlug)->save($data);
