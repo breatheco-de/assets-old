@@ -10,7 +10,7 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 return function($api){
 
     $categories = ['exercise','website','project','lesson','boilerplate'];
-    $tags = ['infographic','cartoon','funny','screenshot','background','picture','drawing','explanation','css-exercises','html-exercises','react-exercises','javascript-exercises','python-exercises'];
+    $tags = ['infographic','cartoon','funny','screenshot','background','picture','drawing','explanation','css-exercises','html-exercises','react-exercises','javascript-exercises','python-exercises','fake-video-preview'];
 
 	$api->addTokenGenerationPath();
 	//get all cohorts and its replits
