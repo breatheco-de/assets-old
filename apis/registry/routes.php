@@ -55,6 +55,11 @@ return function($api){
         $registry = $api->db['json']->getJsonByName('_registry');
         $log = [];
         forEach($seeds as $p){
+            if(!isset($p->repository) or empty($p->repository)){
+                $log[] = "Missing repository url for $p->slug";
+                continue;
+            }
+
             if(!empty($registry[$p->slug]) and !empty($registry[$p->slug]->updated_at)){
                 $lastUpdate = $registry[$p->slug]->updated_at;
                 $diff = (strtotime("now") - $lastUpdate);
@@ -65,35 +70,43 @@ return function($api){
                 } 
             }
             $url = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/bc.json';
-            $resp = $client->request('GET',$url);
-            if($resp->getStatusCode() == 200){
-                $body = $resp->getBody()->getContents();
-                $json = json_decode($body);
-                $newProject = array_merge((array) $json, (array) $p);
-                $newProject["updated_at"] = strtotime("now");
-                $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
-                if(!isset($newProject["likes"])) $newProject["likes"] = 0;
-                if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
+            $log[] = "Trying to fetch $p->slug with $p->repository";
 
-                if(!isset($newProject["technology"])) $newProject["technology"] = 0;
-                $registry[$newProject["slug"]] = $newProject;
+            try{
 
-                //validate for errors
-                $errors = $getRecordErrors($newProject);
-                if($errors){
-                    $log[] = "Record ".$p->slug." ignored because of following errors: ".implode($errors, ", ");
-                    continue;
-                } 
-
-                if(!file_exists("./data/".$p->slug.".json")){
-                    $log[] = "The record added successfully: ".$p->slug;
-                    file_put_contents("./data/".$p->slug.".json", $body);
-                } 
-                else{
-                    $log[] = "The record replaced successfully: ".$p->slug;
-                    $api->db['json']->toFile($p->slug)->save($json);
-                } 
-
+                $resp = $client->request('GET',$url);
+                if($resp->getStatusCode() == 200){
+                    $body = $resp->getBody()->getContents();
+                    $json = json_decode($body);
+                    $newProject = array_merge((array) $json, (array) $p);
+                    $newProject["updated_at"] = strtotime("now");
+                    $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
+                    if(!isset($newProject["likes"])) $newProject["likes"] = 0;
+                    if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
+                    
+                    if(!isset($newProject["technology"])) $newProject["technology"] = 0;
+                    $registry[$newProject["slug"]] = $newProject;
+                    
+                    //validate for errors
+                    $errors = $getRecordErrors($newProject);
+                    if($errors){
+                        $log[] = "Record ".$p->slug." ignored because of following errors: ".implode($errors, ", ");
+                        continue;
+                    } 
+                    
+                    if(!file_exists("./data/".$p->slug.".json")){
+                        $log[] = "The record added successfully: ".$p->slug;
+                        file_put_contents("./data/".$p->slug.".json", $body);
+                    } 
+                    else{
+                        $log[] = "The record replaced successfully: ".$p->slug;
+                        $api->db['json']->toFile($p->slug)->save($json);
+                    } 
+                    
+                }
+            }
+            catch(Exception $e){
+                $log[] = "Error fetching $p->slug for url: $url";
             }
         }
         $api->db['json']->toFile('registry')->save($registry);
