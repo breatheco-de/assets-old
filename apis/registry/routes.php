@@ -10,6 +10,29 @@ BCWrapper::setToken(BREATHECODE_TOKEN);
 
 return function($api){
 
+    $getRecordErrors = function($r){
+        $difficulty = ['beginner', 'easy', 'medium', 'hard'];
+        $language = ['html','css', 'react', 'javascript', 'node', "java", "python3"];
+
+        if(!isset($r["difficulty"])) $log[] = "Missing difficulty";
+        else if(!in_array($r["difficulty"], $difficulty)) $log[] = "Invalid difficulty";
+
+        if(!isset($r["duration"])) $log[] = "Missing duration";
+        else if(!is_numeric($r["duration"])) $log[] = "Invalid duration: ".$r["duration"];
+
+        if(!isset($r["graded"])) $log[] = "Missing graded (expected bool)";
+        else if(!is_bool($r["graded"])) $log[] = "Invalid graded (expected bool): ".$r["graded"];
+
+        if(!isset($r["video-solutions"])) $log[] = "Missing video-solutions (expected bool)";
+        else if(!is_bool($r["video-solutions"])) $log[] = "Invalid video-solutions (expected bool): ".$r["video-solutions"];
+        
+        if(!isset($r["language"])) $log[] = "Missing language";
+        else if(!in_array($r["language"], $language)) $log[] = "Invalid language: ".$r["language"];
+
+        if(count($log) == 0) return false;
+        else return $log;
+    };
+
 	$api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
         
         $content = $api->db['json']->getJsonByName('_registry');
@@ -22,7 +45,7 @@ return function($api){
 	    return $response->withJson($content);
     });
 
-	$api->get('/update', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/update', function (Request $request, Response $response, array $args) use ($api, $getRecordErrors) {
         
         if(!file_exists("./data/_registry.json")) file_put_contents("./data/_registry.json", "{}");
 
@@ -30,12 +53,16 @@ return function($api){
         $client = new Client();
         $seeds = $api->db['json']->getJsonByName('_seed');
         $registry = $api->db['json']->getJsonByName('_registry');
+        $log = [];
         forEach($seeds as $p){
             if(!empty($registry[$p->slug]) and !empty($registry[$p->slug]->updated_at)){
                 $lastUpdate = $registry[$p->slug]->updated_at;
                 $diff = (strtotime("now") - $lastUpdate);
                 // more than one day
-                if(!$force && $diff < 86400) continue; 
+                if(!$force && $diff < 86400){
+                    $log[] = "Record ignored, already on the registry ".$p->slug;
+                    continue; 
+                } 
             }
             $url = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/bc.json';
             $resp = $client->request('GET',$url);
@@ -47,14 +74,30 @@ return function($api){
                 $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
                 if(!isset($newProject["likes"])) $newProject["likes"] = 0;
                 if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
+
+                if(!isset($newProject["technology"])) $newProject["technology"] = 0;
                 $registry[$newProject["slug"]] = $newProject;
 
-                if(!file_exists("./data/".$p->slug.".json")) file_put_contents("./data/".$p->slug.".json", $body);
-                else $api->db['json']->toFile($p->slug)->save($json);
+                //validate for errors
+                $errors = $getRecordErrors($newProject);
+                if($errors){
+                    $log[] = "Record ".$p->slug." ignored because of following errors: ".implode($errors, ", ");
+                    continue;
+                } 
+
+                if(!file_exists("./data/".$p->slug.".json")){
+                    $log[] = "The record added successfully: ".$p->slug;
+                    file_put_contents("./data/".$p->slug.".json", $body);
+                } 
+                else{
+                    $log[] = "The record replaced successfully: ".$p->slug;
+                    $api->db['json']->toFile($p->slug)->save($json);
+                } 
+
             }
         }
         $api->db['json']->toFile('registry')->save($registry);
-	    return $response->withJson($registry);
+	    return $response->withJson($log);
     });
 
 	$api->get('/{slug}', function (Request $request, Response $response, array $args) use ($api) {
