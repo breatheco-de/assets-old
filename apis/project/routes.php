@@ -80,6 +80,12 @@ return function($api){
                 $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
             
                 if(!isset($newProject["likes"])) $newProject["likes"] = 0;
+                if(isset($newProject["difficulty"])){
+                    if($newProject["difficulty"] == "junior") $newProject["difficulty"] = "easy";
+                    else if($newProject["difficulty"] == "semi-senior") $newProject["difficulty"] = "intermediate";
+                    else if($newProject["difficulty"] == "senior") $newProject["difficulty"] = "hard";
+                }
+                
                 if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
                 $registry[$newProject["slug"]] = $newProject;
             }
