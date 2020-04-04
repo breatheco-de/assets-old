@@ -9,6 +9,30 @@ BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HO
 BCWrapper::setToken(BREATHECODE_TOKEN);
 
 return function($api){
+
+    $fetchProject = function($p){
+        $url = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/bc.json';
+        $client = new Client();
+        $resp = $client->request('GET',$url);
+        if($resp->getStatusCode() == 200){
+            $body = $resp->getBody()->getContents();
+            $json = json_decode($body);
+            $newProject = array_merge((array) $json, (array) $p);
+            $newProject["updated_at"] = strtotime("now");
+            $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
+        
+            if(!isset($newProject["likes"])) $newProject["likes"] = 0;
+            if(isset($newProject["difficulty"])){
+                if($newProject["difficulty"] == "junior") $newProject["difficulty"] = "easy";
+                else if($newProject["difficulty"] == "semi-senior") $newProject["difficulty"] = "intermediate";
+                else if($newProject["difficulty"] == "senior") $newProject["difficulty"] = "hard";
+            }
+            
+            if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
+            return $newProject;
+            
+        }
+    };
     
     $api->get('/all', function (Request $request, Response $response, array $args) use ($api) {
 
@@ -37,15 +61,39 @@ return function($api){
 	    return $response->withJson($content);
     });
 
-    $api->put('/registry/{project_slug}', function (Request $request, Response $response, array $args) use ($api) {
+    $api->post('/registry/{project_slug}', function (Request $request, Response $response, array $args) use ($api, $fetchProject) {
         
         if(empty($args['project_slug'])) throw new Exception('Invalid param value project_slug');
+		$data = (object) $request->getParsedBody();
+        if(!$data) throw new Exception('The body must be an object');
+		if(!isset($data->repository)) throw new Exception('Seed must contain a repository');
+        
+        // $data = $request->getParams();
+        // if(!isset($data["bc_token"])) throw new Exception('Invalid breathecode token');
+        // BCWrapper::setToken($data["bc_token"]);
+        // $user = BCWrapper::getMe();
+        
+        $seed = $api->db['json']->getJsonByName('_seed');
+        if(!is_array($seed)) throw new Exeption("Internal error: Invalid seed json", 500);
+        $registry = $api->db['json']->getJsonByName('_registry');
+        if(empty($registry)) throw new Exeption("Internal error: Invalid registry json", 500);
+        
+        $newProject = $fetchProject($data);
+        if($args['project_slug'] !== $newProject["slug"]) throw new Exception("The slug in the bc.json does not match the slug on the request URL", 400);
+        
+        if(!isset($registry[$args['project_slug']])){
+            $new = [ 
+                "slug" => $newProject["slug"], 
+                "repository" => $newProject["repository"] 
+            ];
+            if(isset($user)) $new["user"] = $user->id;
+            $seed[] = $new;
+            $api->db['json']->toFile('_seed')->save($seed);
+        }
+        $registry[$newProject["slug"]] = $newProject;
+        $api->db['json']->toFile('_registry')->save($registry);
 
-        $user = DB::getMe();
-        print_r($user);die();
-
-        $content = $api->db['json']->getJsonByName('_registry');
-        return $response->withJson($content);
+        return $response->withJson($newProject);
         
     })->add($api->auth());
 
@@ -55,12 +103,11 @@ return function($api){
 	    return $response->withJson($content);
     });
 
-	$api->get('/registry/update', function (Request $request, Response $response, array $args) use ($api) {
+	$api->get('/registry/update', function (Request $request, Response $response, array $args) use ($api, $fetchProject) {
 
         if(!file_exists("./data/_registry.json")) file_put_contents("./data/_registry.json", "{}");
 
         $force = (empty($_GET['force'])) ? false : $_GET['force'] === "true";
-        $client = new Client();
         $seeds = $api->db['json']->getJsonByName('_seed');
         $registry = $api->db['json']->getJsonByName('_registry');
         forEach($seeds as $p){
@@ -70,25 +117,9 @@ return function($api){
                 // more than one day
                 if(!$force && $diff < 86400) continue; 
             }
-            $url = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/bc.json';
-            $resp = $client->request('GET',$url);
-            if($resp->getStatusCode() == 200){
-                $body = $resp->getBody()->getContents();
-                $json = json_decode($body);
-                $newProject = array_merge((array) $json, (array) $p);
-                $newProject["updated_at"] = strtotime("now");
-                $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
-            
-                if(!isset($newProject["likes"])) $newProject["likes"] = 0;
-                if(isset($newProject["difficulty"])){
-                    if($newProject["difficulty"] == "junior") $newProject["difficulty"] = "easy";
-                    else if($newProject["difficulty"] == "semi-senior") $newProject["difficulty"] = "intermediate";
-                    else if($newProject["difficulty"] == "senior") $newProject["difficulty"] = "hard";
-                }
-                
-                if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
-                $registry[$newProject["slug"]] = $newProject;
-            }
+
+            $newProject = $fetchProject($p);
+            $registry[$newProject["slug"]] = $newProject;
         }
         $api->db['json']->toFile('_registry')->save($registry);
 	    return $response->withJson($registry);
