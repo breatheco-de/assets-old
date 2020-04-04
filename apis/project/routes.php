@@ -123,6 +123,7 @@ return function($api){
         }
         $api->db['json']->toFile('_registry')->save($registry);
 
+        //temporal hook to trigger buddy build when a new project is added
         $client = new Client();
         $resp = $client->request('GET',"https://app.buddy.works/breathecode/projects/pipelines/pipeline/239100/trigger-webhook?token=".BUDDY_TOKEN);
 
