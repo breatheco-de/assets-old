@@ -53,3 +53,5 @@ define('GOOGLE_PLACES_KEY', '');
 //Stream Video Provider
 define('SVP_KEY', "apc-");
 define('SVP_CODE', "apc-");
+
+define('BUDDY_TOKEN', "sdsdsdsd");
