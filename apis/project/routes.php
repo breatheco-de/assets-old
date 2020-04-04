@@ -122,7 +122,11 @@ return function($api){
             $registry[$newProject["slug"]] = $newProject;
         }
         $api->db['json']->toFile('_registry')->save($registry);
-	    return $response->withJson($registry);
+
+        $client = new Client();
+        $resp = $client->request('GET',"https://app.buddy.works/breathecode/projects/pipelines/pipeline/239100/trigger-webhook?token=".BUDDY_TOKEN);
+
+        return $response->withJson($registry);
     });
 
 	$api->get('/{project_slug}', function (Request $request, Response $response, array $args) use ($api) {
