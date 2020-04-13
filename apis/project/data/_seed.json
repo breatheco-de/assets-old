@@ -1,20 +1,58 @@
-[
-    { "slug": "build-your-resume-html-css", "repository": "https://github.com/breatheco-de/exercise-build-your-resume-html-css" },
-    { "slug": "html5-form", "repository": "https://github.com/breatheco-de/exercise-html5-form" },
-    { "slug": "pop-baloons-javascript", "repository": "https://github.com/breatheco-de/exercise-pop-baloons-javascript" },
-    { "slug": "todo-list", "repository": "https://github.com/breatheco-de/exercise-todo-list" },    
-    { "slug": "todolist-vanilla-js", "repository": "https://github.com/breatheco-de/exercise-todolist-vanilla-js"},
-    { "slug": "product-landing-page-plain-css", "repository": "https://github.com/breatheco-de/exercise-product-landing-page-plain-css" },
-    { "slug": "instagram-feed", "repository": "https://github.com/breatheco-de/exercise-instagram-feed" },
-    { "slug": "instagram-feed-bootstrap", "repository": "https://github.com/breatheco-de/exercise-instagram-feed-bootstrap" },
-    { "slug": "instagram-post", "repository": "https://github.com/breatheco-de/exercise-instagram-post" },
-    { "slug": "postcard", "repository": "https://github.com/breatheco-de/exercise-postcard" },
-    { "slug": "todo-list-cli-with-cloud", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-with-cloud" },
-    { "slug": "todo-list-cli-python", "repository": "https://github.com/breatheco-de/exercise-todo-list-cli-python" },
-    { "slug": "excuse-generator-python-cli", "repository": "https://github.com/breatheco-de/exercise-excuse-generator-python-cli" },
-    { "slug": "random-card-cli-python", "repository": "https://github.com/breatheco-de/exercise-random-card-cli-python" },
-    { "slug": "queue-management-cli-python", "repository": "https://github.com/breatheco-de/exercise-queue-management-cli-python" },
-    { "slug": "file-hierarchy-report", "repository": "https://github.com/breatheco-de/exercise-file-hierarchy-report" },
-    { "slug": "starwars-blog-reading-list", "repository": "https://github.com/breatheco-de/exercise-starwars-blog-reading-list" },
-    { "slug": "landing-page-javascript", "repository": "https://github.com/breatheco-de/exercise-landing-page-javascript" }
-]
+[{
+	"slug": "build-your-resume-html-css",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-build-your-resume-html-css"
+}, {
+	"slug": "html5-form",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-html5-form"
+}, {
+	"slug": "pop-baloons-javascript",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-pop-baloons-javascript"
+}, {
+	"slug": "todo-list",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-todo-list"
+}, {
+	"slug": "todolist-vanilla-js",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-todolist-vanilla-js"
+}, {
+	"slug": "product-landing-page-plain-css",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-product-landing-page-plain-css"
+}, {
+	"slug": "instagram-feed",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-instagram-feed"
+}, {
+	"slug": "instagram-feed-bootstrap",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-instagram-feed-bootstrap"
+}, {
+	"slug": "instagram-post",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-instagram-post"
+}, {
+	"slug": "postcard",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-postcard"
+}, {
+	"slug": "todo-list-cli-with-cloud",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-todo-list-cli-with-cloud"
+}, {
+	"slug": "todo-list-cli-python",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-todo-list-cli-python"
+}, {
+	"slug": "excuse-generator-python-cli",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-excuse-generator-python-cli"
+}, {
+	"slug": "random-card-cli-python",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-random-card-cli-python"
+}, {
+	"slug": "queue-management-cli-python",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-queue-management-cli-python"
+}, {
+	"slug": "file-hierarchy-report",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-file-hierarchy-report"
+}, {
+	"slug": "starwars-blog-reading-list",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-starwars-blog-reading-list"
+}, {
+	"slug": "landing-page-javascript",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-landing-page-javascript"
+}, {
+	"slug": "random-card",
+	"repository": "https:\/\/github.com\/breatheco-de\/exercise-random-card"
+}]
