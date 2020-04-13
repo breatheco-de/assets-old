@@ -12,7 +12,6 @@
     {"slug": "functions", "title": "Functions with Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-functions-exercises"},
     {"slug": "object-oriented-programing", "title": "Object Oriented in JS"},
     {"slug": "object-oriented-programing-php", "title": "Object Oriented in PHP"},
-    {"slug": "object-oriented-programing-python", "title": "Object Oriented in Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-object-oriented-exercises"},
     {"slug": "http-fetch", "title": "HTTP requests with Fetch API"},
     {"slug": "react-js", "title": "Rendering with React.js", "value": "https://gitpod.io/#https://4geeksacademy.github.io/react-exercises/"},
     {"slug": "sql", "title": "sql", "value": "https://sqlbolt.com/lesson/select_queries_introduction"},
@@ -22,5 +21,6 @@
     {"slug": "python", "title": "Basics of Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-exercises"},
     {"slug": "python-mastering", "title": "Mastering Python", "value": "https://github.com/4GeeksAcademy/master-python-exercises"},
     {"slug": "python-lists", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-exercises"},
+    {"slug": "object-oriented-programing-python", "title": "Object Oriented in Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-object-oriented-exercises"},
     {"slug": "python-functions", "title": "Python functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-exercises"}
 ]

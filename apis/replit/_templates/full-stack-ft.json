@@ -5,11 +5,9 @@
     {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "bootstrap", "title": "Bootstrap 4", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/bootstrap-exercises"},
     {"slug": "js-beginner", "title": "General Javascript", "vtutorial_slug": "begin-js"},
-    {"slug": "python-beginner", "title": "General Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-exercises"},
     {"slug": "js-devmaker", "title": "Endless Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"},
     {"slug": "the-dom", "title": "Work with the DOM"},
     {"slug": "arrays", "title": "Looping and working with Arrays"},
-    {"slug": "python-lists", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-exercises"},
     {"slug": "jquery-dom", "title": "Work with the DOM using jQuery"},
     {"slug": "events", "title": "Javascript Events"},
     {"slug": "object-oriented-programing", "title": "Object Oriented in JS"},
@@ -23,5 +21,8 @@
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/", "value": "https://cmdchallenge.com/"},
     {"slug": "javascript-modules", "title": "Javascript Modules (import vs export)"},
     {"slug": "from-js-to-php", "title": "Going from JS to PHP"},
-    {"slug": "python", "title": "Basics of Python", "base": "https://repl.it/community/classrooms/17929"}
+    {"slug": "python", "title": "Begin with Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-exercises"},
+    {"slug": "python-functions", "title": "Python Functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-exercises"},
+    {"slug": "python-lists", "title": "Python Lists", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-exercises"},
+    {"slug": "python-mastering", "title": "Mastering Python", "base": "https://repl.it/community/classrooms/17929"}
 ]
