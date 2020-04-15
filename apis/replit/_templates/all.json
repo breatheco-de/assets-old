@@ -18,9 +18,9 @@
     {"slug": "git", "title": "git", "value": "https://4geeksacademy.github.io/git-interactive-tutorial/"},
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "value": "https://cmdchallenge.com/"},
     {"slug": "from-js-to-php", "title": "Going from JS to PHP"},
-    {"slug": "python", "title": "Basics of Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-exercises"},
-    {"slug": "python-mastering", "title": "Mastering Python", "value": "https://github.com/4GeeksAcademy/master-python-exercises"},
-    {"slug": "python-lists", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-exercises"},
-    {"slug": "object-oriented-programing-python", "title": "Object Oriented in Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-object-oriented-exercises"},
-    {"slug": "python-functions", "title": "Python functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-exercises"}
+    {"slug": "python", "title": "Basics of Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-programming-exercises"},
+    {"slug": "python-mastering", "title": "Mastering Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/master-python-programming-exercises"},
+    {"slug": "python-lists", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-programming-exercises"},
+    {"slug": "object-oriented-programing-python", "title": "Object Oriented in Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-object-oriented-programming-exercises"},
+    {"slug": "python-functions", "title": "Python functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-programming-exercises"}
 ]
