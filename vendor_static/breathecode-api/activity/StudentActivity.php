@@ -41,6 +41,11 @@ class StudentActivity extends BCActivity{
         "nps_survey_answered" => [
             "track_on_active_campaign" => true,
             "track_on_log" => true
+        ],
+        //when student successfuly tests exercise
+        "exercise_success" => [
+            "track_on_active_campaign" => false,
+            "track_on_log" => true
         ]
     ];
 
