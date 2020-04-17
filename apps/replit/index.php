@@ -35,8 +35,15 @@
                 forEach($templateReplits as $r){
                     $r = (array) $r;
                     if($r["slug"] == $replit_slug and !empty($r["value"])){
-                        header("Location: ".$r["value"], true, 302);
-                        echo "Redirecting to... ".$r["value"];
+                        $redirectUrl = $r["value"];
+                        $hashPosition = stripos($redirectUrl,'/#');
+                        if($hashPosition && stripos($redirectUrl,'gitpod.io')){
+                            $after =  substr($redirectUrl, $hashPosition+2);
+                            $redirectUrl = "https://gitpod.io/#BC_ASSETS_TOKEN=$assetsToken/$after";
+                        }
+                        
+                        header("Location: ".$redirectUrl], true, 302);
+                        echo "Redirecting to... ".$redirectUrl;
                     }
                 }
                 echo $_twig->render('pick-cohort.html', array('replit' => $_GET['r']));
