@@ -21,7 +21,7 @@
 
     function sanitizeURL($redirectUrl){
         $assetsToken = '';
-        if(isset($_GET['assets_token'])) $assetsToken = $_GET['assets_token'];
+        if(isset($_GET['assets_token']) and $_GET['assets_token']!='') $assetsToken = $_GET['assets_token'];
         else return $redirectUrl;
         
         $hashPosition = stripos($redirectUrl,'/#');
