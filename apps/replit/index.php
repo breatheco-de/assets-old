@@ -54,7 +54,7 @@
 
                     $redirectUrl = $replits[$_GET['r']];
                     $hashPosition = stripos($redirectUrl,'/#');
-                    if($hashPosition && stripos($redirectUrl,'gitpod')){
+                    if($hashPosition && stripos($redirectUrl,'gitpod.io')){
                         $after =  substr($redirectUrl, $hashPosition+2);
                         $redirectUrl = "https://gitpod.io/#BC_ASSETS_TOKEN=$assetsToken/$after";
                     }
