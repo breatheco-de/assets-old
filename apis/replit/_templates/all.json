@@ -13,7 +13,7 @@
     {"slug": "object-oriented-programing", "title": "Object Oriented in JS"},
     {"slug": "object-oriented-programing-php", "title": "Object Oriented in PHP"},
     {"slug": "http-fetch", "title": "HTTP requests with Fetch API"},
-    {"slug": "react-js", "title": "Rendering with React.js", "value": "https://gitpod.io/#https://4geeksacademy.github.io/react-exercises/"},
+    {"slug": "react-js", "title": "Rendering with React.js", "value": "https://gitpod.io/#https://4geeksacademy.github.io/react-tutorial-exercises/"},
     {"slug": "sql", "title": "sql", "value": "https://sqlbolt.com/lesson/select_queries_introduction"},
     {"slug": "git", "title": "git", "value": "https://4geeksacademy.github.io/git-interactive-tutorial/"},
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "value": "https://cmdchallenge.com/"},
