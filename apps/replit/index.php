@@ -42,7 +42,7 @@
                             $redirectUrl = "https://gitpod.io/#BC_ASSETS_TOKEN=$assetsToken/$after";
                         }
                         
-                        header("Location: ".$redirectUrl], true, 302);
+                        header("Location: ".$redirectUrl, true, 302);
                         echo "Redirecting to... ".$redirectUrl;
                     }
                 }
