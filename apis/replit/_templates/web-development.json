@@ -1,6 +1,6 @@
 [
-    {"slug": "html", "title": "Learn HTML", "vtutorial_slug": "html", "base": "https://repl.it/classroom/invite/CRmmEzs"},
-    {"slug": "css", "title": "Learn CSS", "vtutorial_slug": "css", "base": "https://repl.it/classroom/invite/CWx3Eug"},
+    {"slug": "html", "title": "Practice HTML", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-tutorial-exercises-course"},
+    {"slug": "css", "title": "Practice CSS", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-tutorial-exercises-course"},
     {"slug": "css-selectors", "title": "Master the CSS Selectors"},
     {"slug": "layouts", "title": "Display vs Position", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
