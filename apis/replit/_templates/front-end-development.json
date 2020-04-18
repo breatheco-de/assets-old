@@ -1,6 +1,6 @@
 [
-    {"slug": "html", "title": "Learn HTML", "vtutorial_slug": "html", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-exercises"},
-    {"slug": "css", "title": "Learn CSS", "vtutorial_slug": "css", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-exercises"},
+    {"slug": "html", "title": "Learn HTML", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-tutorial-exercises-course"},
+    {"slug": "css", "title": "Learn CSS", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-tutorial-exercises-course"},
     {"slug": "layouts", "title": "Display vs Position", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "bootstrap", "title": "Bootstrap 4", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/bootstrap-exercises"},
