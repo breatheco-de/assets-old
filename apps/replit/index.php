@@ -19,8 +19,19 @@
         die();
     }
 
-    $assetsToken = '';
-    if(isset($_GET['assets_token'])) $assetsToken = $_GET['assets_token'];
+    function sanitizeURL($redirectUrl){
+        $assetsToken = '';
+        if(isset($_GET['assets_token']) and $_GET['assets_token']!='') $assetsToken = $_GET['assets_token'];
+        else return $redirectUrl;
+        
+        $hashPosition = stripos($redirectUrl,'/#');
+        if($hashPosition && stripos($redirectUrl,'gitpod.io')){
+            $after =  substr($redirectUrl, $hashPosition+2);
+            $redirectUrl = "https://gitpod.io/#BC_ASSETS_TOKEN=$assetsToken/$after";
+        }
+        
+        return $redirectUrl;
+    }
 
     function redirect_based_on_profile($_twig){
         if(!empty($_GET['profile'])){
@@ -35,8 +46,11 @@
                 forEach($templateReplits as $r){
                     $r = (array) $r;
                     if($r["slug"] == $replit_slug and !empty($r["value"])){
-                        header("Location: ".$r["value"], true, 302);
-                        echo "Redirecting to... ".$r["value"];
+
+                        $redirectUrl = sanitizeURL($r["value"]);
+                        
+                        header("Location: ".$redirectUrl, true, 302);
+                        echo "Redirecting to... ".$redirectUrl;
                     }
                 }
                 echo $_twig->render('pick-cohort.html', array('replit' => $_GET['r']));
@@ -52,12 +66,7 @@
             if(isset($replits[$_GET['r']])){
                 if (!empty($replits[$_GET['r']])) {
 
-                    $redirectUrl = $replits[$_GET['r']];
-                    $hashPosition = stripos($redirectUrl,'/#');
-                    if($hashPosition && stripos($redirectUrl,'gitpod')){
-                        $after =  substr($redirectUrl, $hashPosition+2);
-                        $redirectUrl = "https://gitpod.io/#BC_ASSETS_TOKEN=$assetsToken/$after";
-                    }
+                    $redirectUrl = sanitizeURL($replits[$_GET['r']]);
 
                     $headers = get_headers($redirectUrl);
                     foreach($headers as $h){

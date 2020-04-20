@@ -1,6 +1,6 @@
 [
-    {"slug": "html", "title": "Learn HTML", "vtutorial_slug": "html", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-exercises"},
-    {"slug": "css", "title": "Learn CSS", "vtutorial_slug": "css", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-exercises"},
+    {"slug": "html", "title": "Learn HTML", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-tutorial-exercises-course"},
+    {"slug": "css", "title": "Learn CSS", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-tutorial-exercises-course"},
     {"slug": "layouts", "title": "Display vs Position", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "bootstrap", "title": "Bootstrap 4", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/bootstrap-exercises"},
@@ -15,7 +15,7 @@
     {"slug": "jquery-ajax", "title": "Ajax with jQuery"},
     {"slug": "functions", "title": "Functions with Javascript"},
     {"slug": "http-fetch", "title": "HTTP requests with Fetch API"},
-    {"slug": "react-js", "title": "Rendering with React.js", "base": "https://gitpod.io/#https://github.com/4GeeksAcademy/react-exercises", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/react-exercises"},
+    {"slug": "react-js", "title": "Rendering with React.js", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/react-tutorial-exercises"},
     {"slug": "sql", "title": "sql", "base": "https://sqlbolt.com/lesson/select_queries_introduction", "value": "https://sqlbolt.com/lesson/select_queries_introduction"},
     {"slug": "git", "title": "git", "base": "https://4geeksacademy.github.io/git-interactive-tutorial/", "value": "https://4geeksacademy.github.io/git-interactive-tutorial/"},
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/", "value": "https://cmdchallenge.com/"},

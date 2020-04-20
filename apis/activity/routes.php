@@ -134,7 +134,7 @@ return function($api){
         $slug = $api->validate($parsedBody,'slug')->slug();
         $agent = $api->optional($parsedBody,'user_agent')->string();
         $cohort = $api->optional($parsedBody,'cohort')->string();
-        $day = $api->optional($parsedBody,'day')->string();
+        $day = $api->optional($parsedBody,'day')->int();
 
         BreatheCodeLogger::logActivity([
             'slug' => $slug,
@@ -167,7 +167,7 @@ return function($api){
             $language = $api->optional($data,'language')->string(0,50);
 
             $cohort = $api->optional($data,'cohort')->string();
-            $day = $api->optional($data,'day')->string();
+            $day = $api->optional($data,'day')->int();
 
             BreatheCodeLogger::logActivity([
                 'slug' => $slug,

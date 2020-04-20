@@ -3,5 +3,8 @@
     { "slug": "css-exercises", "repository": "https://github.com/4GeeksAcademy/css-exercises" },
     { "slug": "react-exercises", "repository": "https://github.com/4GeeksAcademy/react-exercises" },
     { "slug": "bootstrap-exercises", "repository": "https://github.com/4GeeksAcademy/bootstrap-exercises" },
-    { "slug": "python-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/python-beginner-exercises" }
+    { "slug": "python-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/python-beginner-programming-exercises" },
+    { "slug": "master-python-exercises", "repository": "https://github.com/4GeeksAcademy/master-python-programming-exercises" },
+    { "slug": "python-function-exercises", "repository": "https://github.com/4GeeksAcademy/python-functions-programming-exercises" },
+    { "slug": "python-loos-lists-exercises", "repository": "https://github.com/4GeeksAcademy/python-lists-loops-programming-exercises" }
 ]
