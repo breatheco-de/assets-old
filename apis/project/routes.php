@@ -24,7 +24,7 @@ return function($api){
             if(!isset($newProject["translations"])) $newProject["translations"] = ["us"];
             else{
                 foreach($newProject["translations"] as $lang){
-                    if($lang != "us") $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.'.$lang.'.md';
+                    if($lang != "us" && $lang != "en") $newProject["readme-".$lang] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.'.$lang.'.md';
                 }
             }
         
