@@ -4,7 +4,7 @@
     {"slug": "layouts", "title": "Display vs Position", "base": "https://gitpod.io/#https://github.com/4GeeksAcademy/layouts-exercises"},
     {"slug": "forms", "title": "Create FORMS", "base": "https://gitpod.io/#https://github.com/4GeeksAcademy/form-exercises"},
     {"slug": "bootstrap", "title": "Bootstrap 4", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/bootstrap-exercises"},
-    {"slug": "js-beginner", "title": "General Javascript", "vtutorial_slug": "begin-js", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
+    {"slug": "js-beginner", "title": "General Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
     {"slug": "js-devmaker", "title": "Endless Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"},
     {"slug": "arrays", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-arrays-exercises-tutorial" },
     {"slug": "the-dom", "title": "Work with the DOM", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/dom-exercises"},
