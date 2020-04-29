@@ -3,7 +3,7 @@
     header("Access-Control-Allow-Origin: *");
     
     $data = [
-        "hours" => date('h'),
+        "hours" => date('H'),
         "minutes" => date('i'),
         "seconds" => date('s')
     ];
