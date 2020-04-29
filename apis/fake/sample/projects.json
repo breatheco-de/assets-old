@@ -6,8 +6,6 @@
 		"images" : [
 			"https://unsplash.it/450/320?image=778",
 			"https://unsplash.it/450/320?image=779",
-			"https://unsplash.it/450/320?image=780",
-			"https://unsplash.it/450/320?image=781"
 		]
 	},
 	{
@@ -27,9 +25,8 @@
 		"description" : "Super boring company porfolio website with the tipical about us, home, contact us sections",
 		"images" : [
 			"https://unsplash.it/450/320?image=278",
-			"https://unsplash.it/450/320?image=279",
 			"https://unsplash.it/450/320?image=280",
-			"https://unsplash.it/450/320?image=281"
+			"https://image.shutterstock.com/image-vector/trophy-cup-award-vector-icon-260nw-592525184.jpg"
 		]
 	}
 ]
