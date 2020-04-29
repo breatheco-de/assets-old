@@ -8,33 +8,39 @@ But you also have these small apis for very particular purposes:
 
 Hello World API Example
 ```
-[GET] /hello.php
+[GET] /sample/hello.php
+Small hello world example, for those how love to start with a Hello World.
+```
+
+Random response code
+```
+[GET] /sample/hello.php
 Small hello world example, for those how love to start with a Hello World.
 ```
 
 Fake portfolio API:
 ```
-[GET] /project1.php
+[GET] /sample/project1.php
 A Project object json example, is the perfect first example.
 
-[GET] /project_list.php
+[GET] /sample/project_list.php
 A list of projects json example, is great for the first JSON array example, you can make them loop the projects.
 ```
 
 Very weird json
 ```
-[GET] /weird_portfolio.php
+[GET] /sample/weird_portfolio.php
 A Wordpress blog example, is good to teach the students how to work with very big JSONs.
 ```
 
 Big sized file that takes some time to download
 ```
-[GET] /zips.php
+[GET] /sample/zips.php
 All zips in the US (very big json), is great to teach students that some requests take longer and AJAXs is asynchronous.
 ```
 
 Price of bitcoing (live!)
 ```
-[GET] /crypto.php
+[GET] /sample/crypto.php
 Get the current bitcoin price in real time. Request limit: every 5 sec.
 ```
