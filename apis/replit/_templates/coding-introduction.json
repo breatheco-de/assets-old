@@ -4,6 +4,6 @@
     {"slug": "css-selectors", "title": "Master the CSS Selectors"},
     {"slug": "layouts", "title": "Display vs Position", "base": "https://repl.it/classroom/invite/CZkYSqf"},
     {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
-    {"slug": "js-beginner", "title": "General Javascript"},
+    {"slug": "js-beginner", "vtutorial_slug": "begin-js", "title": "General Javascript"},
     {"slug": "js-devmaker", "title": "General Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"}
 ]

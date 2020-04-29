@@ -1,10 +1,11 @@
 [
-    { "slug": "html-exercises", "repository": "https://github.com/4GeeksAcademy/html-exercises" },
-    { "slug": "css-exercises", "repository": "https://github.com/4GeeksAcademy/css-exercises" },
-    { "slug": "react-exercises", "repository": "https://github.com/4GeeksAcademy/react-exercises" },
+    { "slug": "html-exercises", "repository": "https://github.com/4GeeksAcademy/html-tutorial-exercises-course" },
+    { "slug": "css-exercises", "repository": "https://github.com/4GeeksAcademy/css-tutorial-exercises-course" },
+    { "slug": "react-exercises", "repository": "https://github.com/4GeeksAcademy/react-tutorial-exercises" },
     { "slug": "bootstrap-exercises", "repository": "https://github.com/4GeeksAcademy/bootstrap-exercises" },
     { "slug": "python-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/python-beginner-programming-exercises" },
     { "slug": "master-python-exercises", "repository": "https://github.com/4GeeksAcademy/master-python-programming-exercises" },
     { "slug": "python-function-exercises", "repository": "https://github.com/4GeeksAcademy/python-functions-programming-exercises" },
-    { "slug": "python-loos-lists-exercises", "repository": "https://github.com/4GeeksAcademy/python-lists-loops-programming-exercises" }
+    { "slug": "python-loops-lists-exercises", "repository": "https://github.com/4GeeksAcademy/python-lists-loops-programming-exercises" },
+    { "slug": "javascript-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" }
 ]
