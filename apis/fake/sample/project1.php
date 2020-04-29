@@ -1,15 +1,7 @@
 <?php 
 	header("Content-type: application/json"); 
-	header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Origin: *");
+    $projects = json_decode(file_get_contents("./projects.json"));
+    $index = rand(0,count($projects) - 1);
+    echo json_encode($projects[$index]);
 ?>
-{
-	"name" : "Amazon eCommerce",
-	"thumb" : "https://unsplash.it/450/320?image=778",
-	"description" : "This website is an eCommerce made to sell books online",
-	"images" : [
-		"https://unsplash.it/450/320?image=778",
-		"https://unsplash.it/450/320?image=779",
-		"https://unsplash.it/450/320?image=780",
-		"https://unsplash.it/450/320?image=781"
-	]
-}
