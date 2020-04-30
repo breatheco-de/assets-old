@@ -12,7 +12,10 @@
 		if(!$entityBody) throw new Exception('The body\'s content is empty, please set the body with a JSON string');
 		
 		$content = json_decode($entityBody);
-		if(!$content) throw new Exception('The body\'s content is not a json or it has some misspells, make sure the format of the body is correct');
+		if(!$content){
+            $msg = json_last_error_msg();
+            throw new Exception('The body\'s content is not a json or it has some misspells, make sure the format of the body is correct, details: '.$msg);
+        } 
 		if(!isset($content->title)) throw new Exception('The project body content is missing a title');
 		
 		$response['message'] = 'The project with the id '.$content->id.' was successfully saved.';
