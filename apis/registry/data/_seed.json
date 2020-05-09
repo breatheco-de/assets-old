@@ -7,5 +7,8 @@
     { "slug": "master-python-exercises", "repository": "https://github.com/4GeeksAcademy/master-python-programming-exercises" },
     { "slug": "python-function-exercises", "repository": "https://github.com/4GeeksAcademy/python-functions-programming-exercises" },
     { "slug": "python-loops-lists-exercises", "repository": "https://github.com/4GeeksAcademy/python-lists-loops-programming-exercises" },
-    { "slug": "javascript-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" }
+    { "slug": "javascript-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
+    { "slug": "the-dom-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-dom-tutorial-exercises" },
+    { "slug": "javascript-events-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-events-tutorial-exercises" },
+    { "slug": "react-js-exercises", "repository": "https://github.com/4GeeksAcademy/react-tutorial-exercises" }
 ]
