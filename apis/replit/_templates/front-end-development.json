@@ -6,10 +6,10 @@
     {"slug": "bootstrap", "title": "Bootstrap 4", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/bootstrap-exercises"},
     {"slug": "js-beginner", "title": "General Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
     {"slug": "js-devmaker", "title": "Endless Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"},
-    {"slug": "the-dom", "title": "Work with the DOM"},
+    {"slug": "the-dom", "title": "Work with the DOM", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-dom-tutorial-exercises" },
     {"slug": "arrays", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-arrays-exercises-tutorial" },
     {"slug": "jquery-dom", "title": "Work with the DOM using jQuery"},
-    {"slug": "events", "title": "Javascript Events"},
+    {"slug": "events", "title": "Javascript Events", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-events-tutorial-exercises" },
     {"slug": "object-oriented-programing-php", "title": "Object Oriented in PHP"},
     {"slug": "object-oriented-programing", "title": "Object Oriented in Javascript"},
     {"slug": "jquery-ajax", "title": "Ajax with jQuery"},
@@ -20,5 +20,6 @@
     {"slug": "git", "title": "git", "base": "https://4geeksacademy.github.io/git-interactive-tutorial/", "value": "https://4geeksacademy.github.io/git-interactive-tutorial/"},
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/", "value": "https://cmdchallenge.com/"},
     {"slug": "javascript-modules", "title": "Javascript Modules (import vs export)"},
-    {"slug": "from-js-to-php", "title": "Going from JS to PHP"}
+    {"slug": "from-js-to-php", "title": "Going from JS to PHP"},
+    {"slug": "python-http", "title": "Python API Requests", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-http-requests-api-tutorial-exercises"}
 ]
