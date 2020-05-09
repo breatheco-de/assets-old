@@ -7,15 +7,16 @@
     {"slug": "bootstrap", "title": "Bootstrap 4"},
     {"slug": "js-beginner", "title": "General Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
     {"slug": "js-devmaker", "title": "Endless Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"},
-    {"slug": "the-dom", "title": "Work with the DOM"},
+    {"slug": "the-dom", "title": "Work with the DOM", "value": "https://github.com/4GeeksAcademy/javascript-dom-tutorial-exercises"},
     {"slug": "arrays", "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-arrays-exercises-tutorial" },
     {"slug": "jquery-dom", "title": "Work with the DOM using jQuery"},
-    {"slug": "events", "title": "Javascript Events"},
+    {"slug": "events", "title": "Javascript Events", "value": "https://github.com/4GeeksAcademy/javascript-events-tutorial-exercises"},
     {"slug": "jquery-ajax", "title": "Ajax with jQuery"},
-{"slug": "functions", "title": "Functions with Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-functions-exercises-tutorial"},
+    {"slug": "functions", "title": "Functions with Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-functions-exercises-tutorial"},
     {"slug": "http-fetch", "title": "HTTP requests with Fetch API"},
     {"slug": "react-js", "title": "Rendering with React.js", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/react-tutorial-exercises"},
     {"slug": "git", "title": "git", "base": "https://4geeksacademy.github.io/git-interactive-tutorial/", "value": "https://4geeksacademy.github.io/git-interactive-tutorial/"},
     {"slug": "the-command-line", "title": "The Command Line (terminal)", "base": "https://cmdchallenge.com/", "value": "https://cmdchallenge.com/"},
-    {"slug": "javascript-modules", "title": "Javascript Modules (import vs export)"}
+    {"slug": "javascript-modules", "title": "Javascript Modules (import vs export)"},
+    {"slug": "python-http", "title": "Python API Requests", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-http-requests-api-tutorial-exercises"}
 ]
