@@ -4,6 +4,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use \BreatheCode\BCWrapper;
 use \JsonPDO\JsonPDO;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 BCWrapper::init(BREATHECODE_CLIENT_ID, BREATHECODE_CLIENT_SECRET, BREATHECODE_HOST, API_DEBUG);
 BCWrapper::setToken(BREATHECODE_TOKEN);
@@ -12,35 +13,37 @@ return function($api){
 
     $fetchProject = function($p){
         $_options = ["bc.json", "learn.json"];
+        $client = new Client();
         foreach($_options as $opt){
             $url = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository)."/master/$opt";
-            $client = new Client();
-            $resp = $client->request('GET',$url);
-            if($resp->getStatusCode() == 200){
-                $body = $resp->getBody()->getContents();
-                $json = json_decode($body);
-                $newProject = array_merge((array) $json, (array) $p);
-                $newProject["updated_at"] = strtotime("now");
-                $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
-                
-                if(!isset($newProject["translations"])) $newProject["translations"] = ["us"];
-                else{
-                    foreach($newProject["translations"] as $lang){
-                        if($lang != "us" && $lang != "en") $newProject["readme-".$lang] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.'.$lang.'.md';
-                    }
-                }
-            
-                if(!isset($newProject["likes"])) $newProject["likes"] = 0;
-                if(isset($newProject["difficulty"])){
-                    if($newProject["difficulty"] == "junior") $newProject["difficulty"] = "easy";
-                    else if($newProject["difficulty"] == "semi-senior") $newProject["difficulty"] = "intermediate";
-                    else if($newProject["difficulty"] == "senior") $newProject["difficulty"] = "hard";
-                }
-                
-                if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
-                return $newProject;
-                
+            try {
+                $resp = $client->request('GET',$url);
+            } catch (ClientException $e) {
+                if($resp->getStatusCode() == 404) continue;
+                else throw $e;
             }
+            $body = $resp->getBody()->getContents();
+            $json = json_decode($body);
+            $newProject = array_merge((array) $json, (array) $p);
+            $newProject["updated_at"] = strtotime("now");
+            $newProject["readme"] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.md';
+            
+            if(!isset($newProject["translations"])) $newProject["translations"] = ["us"];
+            else{
+                foreach($newProject["translations"] as $lang){
+                    if($lang != "us" && $lang != "en") $newProject["readme-".$lang] = str_replace("https://github.com/", 'https://raw.githubusercontent.com/', $p->repository).'/master/README.'.$lang.'.md';
+                }
+            }
+        
+            if(!isset($newProject["likes"])) $newProject["likes"] = 0;
+            if(isset($newProject["difficulty"])){
+                if($newProject["difficulty"] == "junior") $newProject["difficulty"] = "easy";
+                else if($newProject["difficulty"] == "semi-senior") $newProject["difficulty"] = "intermediate";
+                else if($newProject["difficulty"] == "senior") $newProject["difficulty"] = "hard";
+            }
+            
+            if(!isset($newProject["downloads"])) $newProject["downloads"] = 0;
+            return $newProject;
         }
 
         return null;
@@ -92,7 +95,7 @@ return function($api){
         
         $newProject = $fetchProject($data);
         if(empty($newProject)) throw new Exeption("Project learn.json or bc.json not found on github", 500);
-        
+
         if($args['project_slug'] !== $newProject["slug"]) throw new Exception("The slug in the bc.json does not match the slug on the request URL", 400);
         
         if(!isset($registry[$args['project_slug']])){
