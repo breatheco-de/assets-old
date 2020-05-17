@@ -19,6 +19,7 @@ return function($api){
             try {
                 $resp = $client->request('GET',$url);
             } catch (ClientException $e) {
+                $resp = $e->getResponse();
                 if($resp->getStatusCode() == 404) continue;
                 else throw $e;
             }
