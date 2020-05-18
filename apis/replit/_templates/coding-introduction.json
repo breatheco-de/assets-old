@@ -1,9 +1,0 @@
-[
-    {"slug": "html", "title": "Learn HTML", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-tutorial-exercises-course"},
-    {"slug": "css", "title": "Learn CSS", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-tutorial-exercises-course"},
-    {"slug": "css-selectors", "title": "Master the CSS Selectors"},
-    {"slug": "layouts", "title": "Display vs Position", "base": "https://repl.it/classroom/invite/CZkYSqf"},
-    {"slug": "forms", "title": "Create FORMS", "base": "https://repl.it/classroom/invite/CZkYSqf"},
-    {"slug": "js-beginner", "vtutorial_slug": "begin-js", "title": "General Javascript"},
-    {"slug": "js-devmaker", "title": "General Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"}
-]
