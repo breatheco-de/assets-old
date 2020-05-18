@@ -4,5 +4,5 @@
     {"slug": "layouts", "title": "Display vs Position", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/css-layouts-tutorial-exercises"},
     {"slug": "forms", "title": "Create FORMS", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/html-forms-tutorial-exercises"},
     {"slug": "js-beginner", "vtutorial_slug": "begin-js", "title": "General Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
-    {"slug": "js-devmaker", "title": "General Javascript", "base": "https://repl.it/classroom/invite/8FaFGSO"}
+    {"slug": "js-devmaker", "title": "General Javascript", "value": "https://repl.it/classroom/invite/8FaFGSO"}
 ]
