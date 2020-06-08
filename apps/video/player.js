@@ -148,7 +148,7 @@
           {
           	$('#'+settings['menu-title']).html(menuTitleValue);
           	if(data.timeline && data.timeline.length>0) renderTimeline(data.timeline);
-            else $('#'+settings['menu-title']).hide();
+            else $('#'+settings['menu']).hide();
 
           	videoStringId = data['video-id'];
 
