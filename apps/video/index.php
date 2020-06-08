@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css?v2">
 </head>
 <body>
-	<?php if(!isset($_GET['v'])){ ?>
-		<div class="alert alert-danger">You need to specify what tutorial you want to see using ?v=[vtutorial_slug]</div>
+	<?php if(!isset($_GET['slug'])){ ?>
+		<div class="alert alert-danger">You need to specify what project you want to see using ?slug=[project_slug]</div>
 	<?php } else { ?>
 	<nav id="videomenu" class="dr-menu">
 		<div class="dr-trigger">
@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="player.js?v2"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			<?php if(isset($_GET['v'])){
+			<?php if(isset($_GET['slug'])){
 			$autoplay = 'false';
 			if(isset($_GET['autoplay'])) $autoplay = ($_GET['autoplay'] == 'true') ? 'true' : 'false';
 			?>
@@ -31,7 +31,7 @@
 				'autoplay': <?php echo $autoplay; ?>,
 				'menu':'dr-menu',
 				'menu-selector':'menu-items',
-				'timeline-url': '<?php echo urldecode($_GET['v']); ?>',
+				'project-slug': '<?php echo urldecode($_GET['slug']); ?>',
 				'menu-title':'menu-title'
 			});
 			<?php } ?>

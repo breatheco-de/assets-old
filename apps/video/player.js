@@ -9,9 +9,7 @@
   videotutorial.initialize = function(theSettings){
 
     defaults(theSettings);
-
-    if(settings["timeline-url"].indexOf('/') === -1) loadInfoJSON('/apis/vtutorial/'+settings["timeline-url"]);
-    else loadInfoJSON(settings["timeline-url"]);
+    loadInfoJSON(settings["project-slug"]);
   }
 
   function initializePlayer(){
@@ -136,20 +134,22 @@
   	});
   }
 
-  function loadInfoJSON(jsonURL){
+  function loadInfoJSON(projectSlug){
       $.ajax({
-        url: jsonURL,
+        url: 'https://assets.breatheco.de/apis/project/'+projectSlug,
         cache: false,
         dataType: 'json',
         success: function(data){
           if(!data['video-id'] || data['video-id']==='')
           {
-            alert('No timeline could be loaded');
+            alert('No video-id found');
           }
           else
           {
           	$('#'+settings['menu-title']).html(menuTitleValue);
           	if(data.timeline && data.timeline.length>0) renderTimeline(data.timeline);
+            else $('#'+settings['menu-title']).hide();
+
           	videoStringId = data['video-id'];
 
           	if(data.menuname) $('#'+settings['menu-title']).html(data.menuname);
@@ -157,7 +157,7 @@
           }
         },
         error: function(p1, p2,errorString){
-          alert("Error loading the video timeline "+errorString);
+          alert("Error loading the project video tutorial "+errorString);
         }
       });
 	}
