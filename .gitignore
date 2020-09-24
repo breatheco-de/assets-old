@@ -7,6 +7,7 @@ php.ini
 *.log
 breathecode-47bde0820564.json
 *.key
+sec.txt
 
 .sass-cache/
 

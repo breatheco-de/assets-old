@@ -5,7 +5,7 @@
     "forms": { "title": "Create FORMS", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/form-exercises"},
     "bootstrap": { "title": "Bootstrap 4", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/bootstrap-exercises"},
     "js-beginner": { "title": "General Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
-    "js-devmaker": { "title": "Endless Javascript", "value": "https://repl.it/classroom/invite/8FaFGSO"},
+    "js-devmaker": { "title": "Endless Javascript", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/master-javascript-programming-exercises"},
     "arrays": { "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-arrays-exercises-tutorial" },
     "the-dom": { "title": "Work with the DOM", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-dom-tutorial-exercises"},
     "events": { "title": "Javascript Events", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/javascript-events-tutorial-exercises"},
