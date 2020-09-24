@@ -11,5 +11,6 @@
     { "slug": "javascript-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-beginner-exercises-tutorial" },
     { "slug": "the-dom-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-dom-tutorial-exercises" },
     { "slug": "javascript-events-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-events-tutorial-exercises" },
-    { "slug": "react-js-exercises", "repository": "https://github.com/4GeeksAcademy/react-tutorial-exercises" }
+    { "slug": "react-js-exercises", "repository": "https://github.com/4GeeksAcademy/react-tutorial-exercises" },
+    { "slug": "master-javascript-exercises", "repository": "https://github.com/4GeeksAcademy/master-javascript-programming-exercises" }
 ]
