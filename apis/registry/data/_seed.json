@@ -1,7 +1,7 @@
 [
     { "slug": "html-exercises", "repository": "https://github.com/4GeeksAcademy/html-tutorial-exercises-course" },
-    { "slug": "css-exercises", "repository": "https://github.com/4GeeksAcademy/html-forms-tutorial-exercises" },
-    { "slug": "forms-exercises", "repository": "https://github.com/4GeeksAcademy/css-tutorial-exercises-course" },
+    { "slug": "forms-exercises", "repository": "https://github.com/4GeeksAcademy/html-forms-tutorial-exercises" },
+    { "slug": "css-exercises", "repository": "https://github.com/4GeeksAcademy/css-tutorial-exercises-course" },
     { "slug": "react-exercises", "repository": "https://github.com/4GeeksAcademy/react-tutorial-exercises" },
     { "slug": "bootstrap-exercises", "repository": "https://github.com/4GeeksAcademy/bootstrap-exercises" },
     { "slug": "python-beginner-exercises", "repository": "https://github.com/4GeeksAcademy/python-beginner-programming-exercises" },
