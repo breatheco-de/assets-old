@@ -54,7 +54,7 @@
             <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/react-hello.git"><img src="./images/react.svg" /><p>New React JS</p></a></div>
             <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/react-hello-webapp.git"><img src="./images/flux.svg" /><p>New React FLUX</p></a></div>
             <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/flask-rest-hello.git"><img src="./images/python.svg" /><p>New Python Flask</p></a></div>
-            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/django-rest-hello"><img src="./images/django.svg" /><p>New Django</p></a></div>
+            <div class="col-6 col-sm-4 mb-2"><a class="open-workspace btn btn-light" href="#" path="https://github.com/4GeeksAcademy/react-flask-hello"><img src="./images/happy.svg" /><p>Final Project</p></a></div>
             <!-- <div class="col-6 col-sm-4 mb-2"><a target="_blank" href="https://gitpod.io#https://github.com/4GeeksAcademy/wordpress-hello.git"><img src="./images/wordpress.svg" /><p>New WordPress</p></a></div> -->
         </div>
         <div class="mt-4">
@@ -89,10 +89,17 @@
 
         var getEnvironmentVariables = function(){
             var url = new URL(window.location.href);
+
+            const get = (key) => {
+                const value = url.searchParams.get("assets_token");
+                if(!value || value == undefined || value == "") return "none";
+                else return value;
+            }
+            
             return {
                 BC_ERROR_HOOK: 'https://assets.breatheco.de/apis/activity/coding_error',
-                BC_ASSETS_TOKEN: url.searchParams.get("assets_token") || '',
-                BC_STUDENT_EMAIL: url.searchParams.get("email") || ''
+                BC_ASSETS_TOKEN:  get('assets_token'),
+                BC_STUDENT_EMAIL: get('email'),
             }
         }
 
