@@ -105,37 +105,31 @@
         window.onload = function(){
 
             var env = getEnvironmentVariables();
-            if(env.BC_ASSETS_TOKEN != ''){
 
-                var screen = document.querySelector('#selector');
-                screen.classList.remove('d-none');
+            var screen = document.querySelector('#selector');
+            screen.classList.remove('d-none');
 
-                var boilerplateBtns = document.querySelectorAll('.open-workspace');
-                boilerplateBtns.forEach(function(btn){
-                    btn.addEventListener("click",function(e){
-                        console.log(e.currentTarget);
-                        var path = e.currentTarget.getAttribute('path');
-                        window.open('https://gitpod.io#'+buildQuery(env)+'/'+path);
-                    });
+            var boilerplateBtns = document.querySelectorAll('.open-workspace');
+            boilerplateBtns.forEach(function(btn){
+                btn.addEventListener("click",function(e){
+                    console.log(e.currentTarget);
+                    var path = e.currentTarget.getAttribute('path');
+                    window.open('https://gitpod.io#'+buildQuery(env)+'/'+path);
                 });
+            });
 
-                var button = document.querySelector('#open-project');
-                var githubUrl = document.querySelector('#github-url');
-                var err = document.querySelector('#error');
-                button.addEventListener("click",function(e){
-                    err.classList.add("d-none");
-                    setTimeout(function(){
-                        var result = isPlainGhUrl(githubUrl.value);
-                        console.log(githubUrl.value);
-                        if(result)window.open('https://gitpod.io#'+buildQuery(env)+'/'+githubUrl.value);
-                        else err.classList.remove("d-none");
-                    }, 200)
-                });
-            }
-            else{
-                var screen = document.querySelector('#no-token');
-                screen.classList.remove('d-none');
-            }
+            var button = document.querySelector('#open-project');
+            var githubUrl = document.querySelector('#github-url');
+            var err = document.querySelector('#error');
+            button.addEventListener("click",function(e){
+                err.classList.add("d-none");
+                setTimeout(function(){
+                    var result = isPlainGhUrl(githubUrl.value);
+                    console.log(githubUrl.value);
+                    if(result)window.open('https://gitpod.io#'+buildQuery(env)+'/'+githubUrl.value);
+                    else err.classList.remove("d-none");
+                }, 200)
+            });
         }
     </script>
   </body>
