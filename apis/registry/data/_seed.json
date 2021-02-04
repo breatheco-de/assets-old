@@ -13,5 +13,6 @@
     { "slug": "javascript-events-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-events-tutorial-exercises" },
     { "slug": "react-js-exercises", "repository": "https://github.com/4GeeksAcademy/react-tutorial-exercises" },
     { "slug": "master-javascript-exercises", "repository": "https://github.com/4GeeksAcademy/master-javascript-programming-exercises" },
-    { "slug": "javascript-array-loops-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-arrays-exercises-tutorial" }
+    { "slug": "javascript-array-loops-exercises", "repository": "https://github.com/4GeeksAcademy/javascript-arrays-exercises-tutorial" },
+    { "slug": "javascript-functions-exercises-tutorial", "repository": "https://github.com/4GeeksAcademy/javascript-functions-exercises-tutorial" }
 ]
