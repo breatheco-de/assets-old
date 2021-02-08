@@ -3,14 +3,14 @@
 # Sound's used on BreatheCode Exercises
 
 
-GET: /sounds/all
+GET: /sound/all
 ```json
     {
         data/fx.json: [],
         data/songs.json: []
     }
 ```
-GET: /sounds/fx
+GET: /sound/fx
 ```json
     [
         {
@@ -27,7 +27,7 @@ GET: /sounds/fx
         }
     ]
 ```
-GET: /sounds/songs
+GET: /sound/songs
 ```json
     [
     	{ "id":1, "category":"game", "name":"Mario Castle", "url":"files/mario/songs/castle.mp3" },
