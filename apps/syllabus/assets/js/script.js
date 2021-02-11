@@ -33,13 +33,13 @@ $(document).ready(function(){
        var fromTop = $(this).scrollTop()+topMenuHeight;
 
        // Get id of current scroll item
-       var cur = scrollItems.map(function(){
-         if ($(this).offset().top < fromTop)
-           return this;
+       var cur = scrollItems.find(function(){
+            return ($(this).offset().top < fromTop);
        });
        // Get the id of the current element
-       cur = cur[cur.length-2];
-       var id = cur && cur.length ? cur[0].id : "";
+       var id = cur ? cur.id : "";
+
+       console.log("Id to show: ", id, cur)
 
        if (lastId !== id) {
            lastId = id;
@@ -53,23 +53,18 @@ $(document).ready(function(){
     if(typeof(queryString['program']) =='undefined') alert('Please Specify a Syllabus on the QueryString ?program=<slug>');
     else
     {
-        $.get('/apis/syllabus/'+queryString['program']+'?teacher=true').done(function(data){
+        let parts = queryString['program'].split(".");
+        $.get('/apis/syllabus/'+parts[0]+'?v='+parts[1]+'&teacher=true').done(function(data){
             console.log('AJAX Incoming');
+
             Timeline.init({
                 containerSelector: 'section',
                 menuContainerSelector: '.nav__wrapper .nav',
                 fullMode: typeof(queryString['teacher']) === 'undefined' ? false : queryString['teacher'] == "true",
-                data: data.weeks
+                data: data.weeks ? data.weeks.days : data
             });
 
             $('.syllabus-title').html(data.label);
-
-            let allTechnologies = flatten(data.weeks.map(function(week){
-                let weekTechnologies = [];
-                let dayTechnologies = week.days.map(function(day){ return day.technologies; });
-                dayTechnologies = dayTechnologies.filter(function(item){return typeof(item)!='undefined';});
-                return weekTechnologies.concat(dayTechnologies);
-            }));
 
             var uniqueTechnologies = [];
             allTechnologies.forEach(function(tech, index){

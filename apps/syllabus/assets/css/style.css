@@ -20,7 +20,6 @@
 
 .syllabus-wrapper section {
   height: 100vh;
-  font-size: 40px;
   font-weight: 100;
   margin-bottom: 600px;
   background-color: white;
@@ -147,29 +146,46 @@
   color: #313131;
 }
 .timeline-container .day{
-  background-color: #d4e4e4;
-  width: 100px;
   margin: auto;
   min-height: 80px;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
+  display: flex;
+  margin: 10px 0px;
+  position: relative;
 }
 .timeline-container .day ul{
   margin: 0;
 }
 .timeline-container .day p{
-  margin: 0;
+    margin: 0;
+}
+.timeline-container .day .day-label{
+    font-weight: 800;
+    z-index: 10;
+}
+.timeline-container .day .day-label:before{
+    content: ' ';
+    height: 400px;
+    position: absolute;
+    top: 30px;
+    left: 47%;
+    background: #d4e4e4;
+    width: 2px;
+    z-index: 0;
 }
 .timeline-container .day.weekend{
   background-color: #fff6ea;
 }
 .timeline-container .day h3{
-  font-size: 15px;
-  position: relative;
+    font-size: 15px;
+    position: relative;
+    
+}
+.timeline-container .day-timeline h3{
+    background-color: #d4e4e4;
+    padding: 10px;
+    z-index: 5;
 }
 .timeline-container .day .day-topics{
-  position: absolute;
   width: 300px;
   background-color: #eee;
   top: 10px;
@@ -177,20 +193,8 @@
   font-size: 14px;
   padding: 5px;
 }
-.timeline-container .day .day-topics:after{
-    width: 20px;
-    height: 2px;
-    content: '';
-    background-color: #8c8a8a;
-    position: absolute;
-    display: block;
-    top: 18px;
-    left: 287px;
-}
 
 .timeline-container .day .day-projects{
-  position: absolute;
-  top: 10px;
   width: 350px;
   background-color: #eee;
   font-size: 14px;

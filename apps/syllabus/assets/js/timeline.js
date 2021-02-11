@@ -36,11 +36,11 @@ var Timeline = (function(){
         });
     };
 
-    pub.renderWeek = function(week){
+    pub.wrapDays = function(days){
         var content = '<div class="timeline-container">';
-        content += `<h2 class="text-center">${week.label}</h2>`;
-        week.days.forEach((day) => {
-            content += pub.renderDay(day, this.settings.fullMode);
+        content += `<h2 class="text-center">Timeline</h2>`;
+        days.forEach((day, i) => {
+            content += pub.renderDay(day, this.settings.fullMode, i);
         });
         content += '</div>';
         return content;
@@ -54,27 +54,27 @@ var Timeline = (function(){
 
         if(typeof this.settings.data == 'undefined') throw new Error('The JSON came empty or invalid');
 
-        this.settings.data.forEach(function(week){
-            $(sections[cont]).html(pub.renderWeek(week));
-            var marginTop = 70;
-            $(sections[cont]).find('.day').each(function(){
-               $(this).css('top', marginTop);
-               var topicsHeight = $(this).find('.day-topics').first().height();
-               var projectsHeight = $(this).find('.day-projects').first().height();
+        $(sections[cont]).html(pub.wrapDays(this.settings.data.days));
+        // this.settings.data.forEach(function(day){
+        //     var marginTop = 70;
+        //     $(sections[cont]).find('.day').each(function(){
+        //        $(this).css('top', marginTop);
+        //        var topicsHeight = $(this).find('.day-topics').first().height();
+        //        var projectsHeight = $(this).find('.day-projects').first().height();
 
-               if(topicsHeight > projectsHeight){
-                    $(this).height(topicsHeight+30);
-                    marginTop += topicsHeight+15;
-               }
-               else
-               {
-                    $(this).height(projectsHeight+30);
-                    marginTop += projectsHeight+15;
-               }
+        //        if(topicsHeight > projectsHeight){
+        //             $(this).height(topicsHeight+30);
+        //             marginTop += topicsHeight+15;
+        //        }
+        //        else
+        //        {
+        //             $(this).height(projectsHeight+30);
+        //             marginTop += projectsHeight+15;
+        //        }
 
-            });
-            cont++;
-        });
+        //     });
+        //     cont++;
+        // });
 
         $(this.settings.menuContainerSelector).append(pub.renderMenu(this.settings.data, this.settings.containerSelector));
 
@@ -85,21 +85,21 @@ var Timeline = (function(){
 
     }
 
-    pub.renderMenu = function(weeks, weekContainerId){
+    pub.renderMenu = function(syllabus, weekContainerId){
         var content = '';
         var cont = 1;
-        weeks.forEach(function(week){
-            content += `<li role="presentation"><a href="#${weekContainerId+cont.toString()}">
-            <span class="nav__counter">${week.label}</span>
-            <h3 class="nav__title">${week.topic}</h3>
-            <p class="nav__body">${(typeof week.summary != 'undefined') ? week.summary:''}</p>
+        syllabus.days.forEach(function(day){
+            content += `<li role="presentation"><a href="#day${cont.toString()}">
+            <span class="nav__counter">Day ${cont}</span>
+            <h3 class="nav__title">${day.label}</h3>
+            <!-- <p class="nav__body">${(typeof day.summary != 'undefined') ? day.summary:''}</p> -->
           </a></li>`;
           cont++;
         });
         return content;
     }
 
-    pub.renderDay = function(rawDay, full){
+    pub.renderDay = function(rawDay, full, index){
         const fullMode = typeof full === 'undefined' ? false : full;
         const day = SyllabusDay(rawDay)
         var theProject = '';
@@ -127,11 +127,10 @@ var Timeline = (function(){
         }
         theKeyConcepts += `</p>`;
 
-        return `<div class="day ${(day.label.toLowerCase() == 'weekend') ? 'weekend' : ''}">
-          <h3 class="text-center">${day.label}</h3>
-          <div class="day-topics">
+        return `<div class="day ${(day.label.toLowerCase() == 'weekend') ? 'weekend' : ''}" id="day${index}">
+            <div class="day-topics">
             ${fullMode ? theKeyConcepts : ''}
-
+            
             ${fullMode ?
                 "<strong>Teacher instructions:</strong>" + (day.instructions || day.teacher_instructions || day.description || 'No instructions for this particular day')
                 :
@@ -139,17 +138,18 @@ var Timeline = (function(){
             }
             ${
                 (!fullMode ? '' : typeof day.instructions_link != 'undefined') ?
-                    `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">Full Instructions</a>`
-                    :''
+                `<a target="_blank" href="/apps/markdown-parser/?path=${day.instructions_link}">Full Instructions</a>`
+                :''
             }
-          </div>
-          <div class="day-projects">
-            <ul>
-              <li><strong>Project:</strong> ${theProject || 'Work on previous projects'}</li>
-              ${pub.getProjectHTML(day)}
-              ${!fullMode ? '': `<p><strong>For students:</strong> ${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)} - ${pub.getQuizzesHTML(day)}</p>`}
-            </ul>
-          </div>
+            </div>
+            <div class="day-timeline"><h3 class="text-center">${day.label}</h3><p class="text-center day-label">Day ${index+1}</p></div>
+            <div class="day-projects">
+                <ul>
+                <li><strong>Project:</strong> ${theProject || 'Work on previous projects'}</li>
+                ${pub.getProjectHTML(day)}
+                ${!fullMode ? '': `<p><strong>For students:</strong><br /> ${pub.getLessonsHTML(day)} - ${pub.getReplitsHTML(day)} - ${pub.getAssignmentsHTML(day)} - ${pub.getQuizzesHTML(day)}</p>`}
+                </ul>
+            </div>
         </div>`;
     }
 

@@ -17,7 +17,6 @@
     <div class="container">
       <h1 class='syllabus-title'>Syllabus Title</h1>
       <h2 class="syllabus-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi pariatur laboriosam explicabo recusandae.</h2>
-      <p id="syllabus-technologies">[Technologies]</p>
       <p><a class="btn btn-primary btn-lg" href="#" onClick="$('html, body').animate({scrollTop: $('#section1').offset().top+10}, 1000);" role="button">Syllabus Details</a></p>
     </div>
   </div>
@@ -80,10 +79,20 @@
   <script type="text/javascript" src="assets/js/timeline.js"></script>
   <script type="text/javascript" src="assets/js/script.js"></script>
 <?php } else { ?>
+<script>
+    fetch('/apis/syllabus/all')
+        .then(resp => resp.json())
+        .then(data => {
+            const syllabis = data.map(s => "<option value='"+s.slug+"'>"+s.slug+"</option>").join('');
+            const selector = document.querySelector('#select-syllabus');
+            selector.innerHTML = syllabis;
+        })
+        .catch(error => console.error(error));
+</script>
   <div class="container text-center pd-5">
     <img class='mt-5' alt="breathe code logo" src="https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,128">
     <h1>Choose a Syllabus</h1>
-    <select id="select-location" class="form-control">
+    <select id="select-syllabus" class="form-control">
       <option value='-1'>Select a syllabus</option>
       <option value='web-development'>Web Development in WordPress</option>
       <option value='full-stack'>Full Stack Development (Part-Time)</option>
@@ -95,7 +104,7 @@
   </div>
   <script type="text/javascript">
     window.onload = function(){
-      document.querySelector('#select-location').addEventListener('change',function(evt){
+      document.querySelector('#select-syllabus').addEventListener('change',function(evt){
          window.location.href = window.location.href +"?program="+evt.target.value;
       });
     }
