@@ -85,7 +85,7 @@
         .then(data => {
             const syllabis = data.map(s => "<option value='"+s.slug+"'>"+s.slug+"</option>").join('');
             const selector = document.querySelector('#select-syllabus');
-            selector.innerHTML = syllabis;
+            selector.innerHTML = '<option>Select a syllabus</option>'+syllabis;
         })
         .catch(error => console.error(error));
 </script>
