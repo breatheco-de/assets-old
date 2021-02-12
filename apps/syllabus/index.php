@@ -105,7 +105,7 @@
   <script type="text/javascript">
     window.onload = function(){
       document.querySelector('#select-syllabus').addEventListener('change',function(evt){
-         window.location.href = window.location.href +"?program="+evt.target.value;
+         window.location.href = window.location.href +"?program="+evt.target.value+"&teacher=true";
       });
     }
   </script>
