@@ -12,6 +12,7 @@ return function($api){
 	        "full-stack-pt-immersive" => "full-stack-pt-immersive",
 	        "backend-python" => "backend-python",
 	        "full-stack-ft" => "full-stack-ft",
+	        "front-end-pt-immersive" => "front-end-pt-immersive",
 	        "front-end-development" => "front-end-development",
 	        "web-development" => "web-development",
 	        "coding-introduction" => "coding-introduction",
