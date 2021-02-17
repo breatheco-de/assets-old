@@ -97,11 +97,14 @@ class BCWrapper{
         	$resp = self::$guz->get(self::$host.$resource.'?'.http_build_query($args));
         }
         else if($method=='POST'){
-	        $options = [
-	        	'json' => $args
-	        ];
-	        if($resource==='token') $options['auth'] = [self::$clientId, self::$clientSecret];
+            if($resource==='token'){
+                $args['client_id'] = self::$clientId;
+                $args['client_secret'] = self::$clientSecret;
+            }
 	        else $resource .= '?access_token='.self::getToken();
+            $options = [
+                'json' => $args
+            ];
 	        $resp = self::$guz->post(self::$host.$resource, $options);
         }
         else if($method=='PUT'){
