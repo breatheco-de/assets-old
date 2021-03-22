@@ -141,7 +141,7 @@
 	},
 	{
 		"types": ["Youtube Channel"],
-        "preview":"http://breatheco.de/wp-content/uploads/2018/01/webconcepts-logo.jpg",
+        "preview":"http://breatheco.de/wp-content/uploads/2018/01/webconcepts-logo.jpg?raw=true",
 		"slug": "web-concepts-video-explanations",
 		"title": "Web Concepts video explanations",
         "description":"Videos introducing concepts in modern web development. With the goal of providing enough background for small business owners and those interested in learning web development to ask the right questions going forward.",
