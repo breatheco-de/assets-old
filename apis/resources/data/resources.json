@@ -64,7 +64,7 @@
 	},
 	{
 		"types": ["infographic"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/GIT-Cheat-Sheet.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/GIT-Cheat-Sheet.jpg?raw=true",
 		"slug": "git-guide-rogerdudler",
 		"title": "How to use git",
         "description":"So, what is GIT in a nutshell? this is just a simple guide for getting started with git. no deep shit ;) ",
@@ -297,7 +297,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/key-codes.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/key-codes.jpg?raw=true",
 		"slug": "javascript-keyboard-event-scan-codes",
 		"title": "Javascript Keyboard Event Scan Codes",
         "description":"How is going to remember all those keyboard codes? Is imposible! In this image you will find an actual keyboard representation with all the correspondent codes on top of each keyboard key.",
@@ -362,7 +362,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuery-CSS-Cheat-Sheet.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuery-CSS-Cheat-Sheet.jpg?raw=true",
 		"slug": "jquery-css-cheat-sheet",
 		"title": "jQuery + CSS Cheat Sheet",
         "description":"How to work with CSS rules and properties from jQuery to dynamically update everything in your Stylesheet.",
@@ -378,7 +378,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Events.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Events.jpg?raw=true",
 		"slug": "jquery-events-cheat-sheet",
 		"title": "jQuery Events Cheat Sheet",
         "description":"Working with events is the only way to make a website really interactive. This is a summarized collection (Cheat Sheet) of all the functions jQuery has available to work with Events.",
@@ -394,7 +394,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Core.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Core.jpg?raw=true",
 		"slug": "jquery-core-cheat-sheet",
 		"title": "jQuery Core Cheat Sheet",
         "description":"Summerize collection of all the functions you need to work the very core of jQuery.",
@@ -410,7 +410,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Ajax.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Ajax.jpg?raw=true",
 		"slug": "jquery-ajax-cheat-sheet",
 		"title": "jQuery Ajax Cheat Sheet",
         "description":"Summerize collection of all the functions you will need to work with Javascript and jQuery.",
@@ -426,7 +426,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JAVASCRIPT-DOM.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JAVASCRIPT-DOM.jpg?raw=true",
 		"slug": "working-with-the-dom-in-javascript-cheat-sheet",
 		"title": "Working with the DOM in Javascript Cheat Sheet",
         "description":"This is a collection of the most used Javascript functions to add, update or delete elements in the DOM. Working with the DOM is the most important skill for a front-end web developer. This Cheat Sheet will help you become familiar with the syntax very fast.",
@@ -442,7 +442,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/SQL-1.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/SQL-1.jpg?raw=true",
 		"slug": "sql-syntaxis-cheat-sheet",
 		"title": "SQL Syntaxis Cheat Sheet",
         "description":"Working with SQL? This sheet will help you struggle with the Syntaxis for the most typical operations: INSERT, SELECT, DELETE, GROUP, ORDER and JOINTS.",
@@ -474,7 +474,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/Bootstrap.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/Bootstrap.jpg?raw=true",
 		"slug": "bootstrap-css-and-layout-cheat-sheet",
 		"title": "Bootstrap CSS and Layout Cheat Sheet",
         "description":"Here you will find everything you need to remember how to create layouts with bootstrap (scaffolding) and also the most basic CSS classes to help you with your website. Bootstrap components are going to be summarized in another cheat sheet.",
@@ -490,7 +490,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/GIT-Cheat-Sheet.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/GIT-Cheat-Sheet.jpg?raw=true",
 		"slug": "git-cheat-sheet",
 		"title": "GIT Cheat Sheet",
         "description":"A great coder is not the one that remembers every single command. Use this Cheat Sheet to search for the right GIT command according to your needs!",
@@ -506,7 +506,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/Cheat-Sheet-HTML.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/Cheat-Sheet-HTML.jpg?raw=true",
 		"slug": "html5-cheat-sheet",
 		"title": "HTML5 Cheat Sheet",
         "description":"This is all you need to know about HTML &lt;tags&gt;... 99% of the tags you will ever use summarized in a simple infographic. HTML5, Inputs, Boxes, frames, tables, footer, header and more.",
