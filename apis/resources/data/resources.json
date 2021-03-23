@@ -64,7 +64,7 @@
 	},
 	{
 		"types": ["infographic"],
-        "preview":"https://ucarecdn.com/ea11ab89-8001-455b-b912-0b2969e2d1b2/ScreenShot20190517at34703PM.png",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/GIT-Cheat-Sheet.jpg",
 		"slug": "git-guide-rogerdudler",
 		"title": "How to use git",
         "description":"So, what is GIT in a nutshell? this is just a simple guide for getting started with git. no deep shit ;) ",
@@ -297,7 +297,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/10d3cb2e-e8f9-41c9-a472-8dea39ecfd44/keycodes.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/key-codes.jpg",
 		"slug": "javascript-keyboard-event-scan-codes",
 		"title": "Javascript Keyboard Event Scan Codes",
         "description":"How is going to remember all those keyboard codes? Is imposible! In this image you will find an actual keyboard representation with all the correspondent codes on top of each keyboard key.",
@@ -341,6 +341,7 @@
          "download":null,
          "lang":"en",
 		"referrer": null
+	
 	},
 	{
 
@@ -361,7 +362,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/77e06db0-4ee2-4fb3-b1b8-1f8293669e49/JQueryCSSCheatSheet.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuery-CSS-Cheat-Sheet.jpg",
 		"slug": "jquery-css-cheat-sheet",
 		"title": "jQuery + CSS Cheat Sheet",
         "description":"How to work with CSS rules and properties from jQuery to dynamically update everything in your Stylesheet.",
@@ -377,7 +378,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/c27303a0-3c15-4f72-ade9-540fc667f51b/JQuertEvents.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Events.jpg",
 		"slug": "jquery-events-cheat-sheet",
 		"title": "jQuery Events Cheat Sheet",
         "description":"Working with events is the only way to make a website really interactive. This is a summarized collection (Cheat Sheet) of all the functions jQuery has available to work with Events.",
@@ -393,7 +394,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/e5cdc42e-1a2e-47ea-8363-54364bc66792/JQuertCore.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Core.jpg",
 		"slug": "jquery-core-cheat-sheet",
 		"title": "jQuery Core Cheat Sheet",
         "description":"Summerize collection of all the functions you need to work the very core of jQuery.",
@@ -409,7 +410,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/c880859b-dc50-4c50-a298-ae27a975356b/JQuertAjax.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JQuert-Ajax.jpg",
 		"slug": "jquery-ajax-cheat-sheet",
 		"title": "jQuery Ajax Cheat Sheet",
         "description":"Summerize collection of all the functions you will need to work with Javascript and jQuery.",
@@ -425,7 +426,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/63f956c8-63ed-44b9-b0a9-6a2ff01b0498/JAVASCRIPTDOM.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/JAVASCRIPT-DOM.jpg",
 		"slug": "working-with-the-dom-in-javascript-cheat-sheet",
 		"title": "Working with the DOM in Javascript Cheat Sheet",
         "description":"This is a collection of the most used Javascript functions to add, update or delete elements in the DOM. Working with the DOM is the most important skill for a front-end web developer. This Cheat Sheet will help you become familiar with the syntax very fast.",
@@ -441,7 +442,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/e2f3f547-23ee-4af0-937d-7dfce757600b/SQL1.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/SQL-1.jpg",
 		"slug": "sql-syntaxis-cheat-sheet",
 		"title": "SQL Syntaxis Cheat Sheet",
         "description":"Working with SQL? This sheet will help you struggle with the Syntaxis for the most typical operations: INSERT, SELECT, DELETE, GROUP, ORDER and JOINTS.",
@@ -473,7 +474,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/7a7a93ba-f9de-408b-bf7a-c74ba0cdc28b/Bootstrap.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/Bootstrap.jpg",
 		"slug": "bootstrap-css-and-layout-cheat-sheet",
 		"title": "Bootstrap CSS and Layout Cheat Sheet",
         "description":"Here you will find everything you need to remember how to create layouts with bootstrap (scaffolding) and also the most basic CSS classes to help you with your website. Bootstrap components are going to be summarized in another cheat sheet.",
@@ -489,7 +490,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/d56f6b58-e4f6-4395-bff8-85c62436d44a/GITCheatSheet.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/GIT-Cheat-Sheet.jpg",
 		"slug": "git-cheat-sheet",
 		"title": "GIT Cheat Sheet",
         "description":"A great coder is not the one that remembers every single command. Use this Cheat Sheet to search for the right GIT command according to your needs!",
@@ -505,7 +506,7 @@
 	{
 
 		"types": ["Cheat Sheet"],
-        "preview":"https://ucarecdn.com/77176e02-daa8-46fb-8757-450cf260ac92/CheatSheetHTML.jpg",
+        "preview":"https://github.com/breatheco-de/content/blob/master/src/assets/assets/assets/Cheat-Sheet-HTML.jpg",
 		"slug": "html5-cheat-sheet",
 		"title": "HTML5 Cheat Sheet",
         "description":"This is all you need to know about HTML &lt;tags&gt;... 99% of the tags you will ever use summarized in a simple infographic. HTML5, Inputs, Boxes, frames, tables, footer, header and more.",
