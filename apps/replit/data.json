@@ -30,9 +30,18 @@
     "the-command-line": { "title": "The Command Line (terminal)", "value": "https://cmdchallenge.com/"},
     "from-js-to-php": { "title": "Going from JS to PHP", "value": "https://repl.it/classroom/invite/DvzFkS0" },
     "python-beginner": { "title": "Basics of Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-programming-exercises"},
+    "python-beginner-exercises": { "title": "Basics of Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-beginner-programming-exercises"},
+
     "python-mastering": { "title": "Mastering Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/master-python-programming-exercises"},
+    "master-python-exercises": { "title": "Mastering Python", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/master-python-programming-exercises"},
+    
     "python-lists": { "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-loops-programming-exercises"},
+    "python-loops-lists-exercises": { "title": "Looping and working with Arrays", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-lists-loops-programming-exercises"},
+    
     "python-functions": { "title": "Python functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-programming-exercises"},
+    "python-function-exercises": { "title": "Python functions", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-functions-programming-exercises"},
+    
     "python-http": { "title": "Python API Requests", "value": "https://gitpod.io/#https://github.com/4GeeksAcademy/python-http-requests-api-tutorial-exercises"},
+    
     "markdown": { "title": "Learn Markdown", "value": "https://commonmark.org/help/tutorial/"}
 }
